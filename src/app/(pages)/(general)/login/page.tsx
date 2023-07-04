@@ -1,6 +1,5 @@
-// 後で要変更
-const Page = () => {
-    return <div></div>;
+const LoginPage = () => {
+    return <div>ログイン画面</div>;
 }
 
-export default Page;
+export default LoginPage;

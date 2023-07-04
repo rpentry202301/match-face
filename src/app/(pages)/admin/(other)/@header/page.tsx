@@ -1,6 +1,6 @@
 // 後で要変更
-const Page = () => {
+const AdminHeader = () => {
     return <div></div>;
 }
 
-export default Page;
+export default AdminHeader;
