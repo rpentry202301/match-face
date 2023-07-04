@@ -1,6 +1,5 @@
-// 後で要変更
-const Page = () => {
-    return <div></div>;
+const AdminLoginPage = () => {
+    return <div>管理者ログイン画面</div>;
 }
 
-export default Page;
+export default AdminLoginPage;
