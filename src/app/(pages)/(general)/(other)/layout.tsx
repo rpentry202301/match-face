@@ -12,8 +12,8 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <>{header}</>
-      <>{children}</>
+      <div>{header}</div>
+      <div>{children}</div>
     </>
   );
 }
