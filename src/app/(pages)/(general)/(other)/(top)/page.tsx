@@ -1,6 +1,9 @@
+import Header from "@/components/elements/header/Header";
+
 const Home = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main>
+      <Header />
       <div>トップページ</div>
     </main>
   );
