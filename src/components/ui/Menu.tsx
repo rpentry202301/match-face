@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { ComponentProps } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-
 type MenuProps = {
   link: {
     url: string;
@@ -14,11 +13,14 @@ type MenuProps = {
     imgUrl: string;
     imgAlt: string;
   };
-}& ComponentProps<'button'>;
+} & ComponentProps<'button'>;
 
-export default function Menu({ link, elements, ...props}: MenuProps) {
-    //buttonのclassNameは親コンポーネントでclassNameを指定して上書き可能
-    const className = twMerge("flex p-5 w-96 h-40 shadow-lg hover:bg-gray-100 flex-col active:bg-gray-200",props.className)
+export default function Menu({ link, elements, ...props }: MenuProps) {
+  //buttonのclassNameは親コンポーネントでclassNameを指定して上書き可能
+  const className = twMerge(
+    'flex p-5 w-96 h-40 shadow-lg hover:bg-gray-100 flex-col active:bg-gray-200',
+    props.className
+  );
 
   return (
     <Link href={link.url}>
