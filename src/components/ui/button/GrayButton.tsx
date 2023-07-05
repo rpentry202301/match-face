@@ -1,7 +1,7 @@
 "use client";
 import { ComponentProps } from "react";
 
-type ButtonProps = {
+type GrayBtnProps = {
   label: string;
 } & ComponentProps<"button">;
 
