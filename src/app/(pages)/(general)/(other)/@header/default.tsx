@@ -1,6 +1,8 @@
+import Header from "@/components/elements/header/Header";
+
 // 後で要変更
 const GeneralHeaderPage = () => {
-    return <div>ヘッダー</div>;
-}
+  return <Header />;
+};
 
 export default GeneralHeaderPage;
