@@ -1,5 +1,5 @@
 import MatchFaceLogo from "@/components/ui/logo/MatchFaceLogo";
-import HumburgerBtn from "./modal/HumburgerBtn";
+import HumburgerBtn from "./button/HumburgerBtn";
 
 const Header = () => {
   return (

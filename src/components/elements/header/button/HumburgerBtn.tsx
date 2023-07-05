@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import UserIcon from "../nav/UserIcon";
+import Logout from "../nav/Logout";
 
 const HumburgerBtn = () => {
   const [opened, setOpened] = useState<boolean>(false);
@@ -18,10 +20,15 @@ const HumburgerBtn = () => {
           <div className="opacity-0 transition duration-500 ease-out" />
           <div className="w-8 h-0.5 bg-gray-600 -rotate-45 transition duration-500 ease-out" />
         </button>
-        <nav className="text-center fixed bg-light-gray right-0 top-0 w-2/12 flex flex-col justify-start py-6 px-3 ease-out duration-200">
+        <nav className="text-center fixed bg-light-gray bg-opacity-90 right-0 top-0 w-2/12 flex flex-col justify-start py-6 px-3 ease-out duration-200">
           <ul className="mt-6">
-            <li className="pb-2">ユーザー名</li>
-            <li className="pb-2">ログアウト</li>
+            {/* 追加する場合は"nav/menu/template/MenuTemp.tsx"を参照 */}
+            <li className="pb-5">
+              <UserIcon />
+            </li>
+            <li>
+              <Logout />
+            </li>
           </ul>
         </nav>
       </>
@@ -40,11 +47,15 @@ const HumburgerBtn = () => {
         <div className="w-8 h-0.5 bg-gray-600 transition duration-500 ease-out" />
       </button>
       <nav className="fixed right-[-100%]">
-          <ul className="mt-6">
-            <li>ユーザー名</li>
-            <li>ログアウト</li>
-          </ul>
-        </nav>
+        <ul className="mt-6 w-4/5">
+          <li>
+            <UserIcon />
+          </li>
+          <li>
+            <Logout />
+          </li>
+        </ul>
+      </nav>
     </>
   );
 };
