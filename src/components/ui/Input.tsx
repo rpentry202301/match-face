@@ -7,6 +7,7 @@ const Input = (props:Props) => {
     <div>
       <input
         {...props}
+        className={'border border-black'}
       />
     </div>
   );
