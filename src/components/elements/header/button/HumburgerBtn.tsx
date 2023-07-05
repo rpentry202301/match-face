@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
-import UserIcon from "../nav/UserIcon";
+import React, { useState } from "react";
 import Logout from "../nav/Logout";
 
-const HumburgerBtn = () => {
+// childrenにはUserIcon.tsxが入る
+// (UserIcon.tsxはServer Componentなので、importして使うとエラーが出る)
+// 将来的にネストするServerComponentを増やす場合は、コードの書き方を変える必要あり
+const HumburgerBtn = ({ children }: { children: React.ReactNode }) => {
   const [opened, setOpened] = useState<boolean>(false);
 
   // モーダルウィンドウ表示
@@ -24,7 +26,7 @@ const HumburgerBtn = () => {
           <ul className="mt-6">
             {/* 追加する場合は"nav/menu/template/MenuTemp.tsx"を参照 */}
             <li className="pb-5">
-              <UserIcon />
+              {children}
             </li>
             <li>
               <Logout />
@@ -48,8 +50,8 @@ const HumburgerBtn = () => {
       </button>
       <nav className="fixed right-[-100%]">
         <ul className="mt-6 w-4/5">
-          <li>
-            <UserIcon />
+          <li className="pb-5">
+            {children}
           </li>
           <li>
             <Logout />
