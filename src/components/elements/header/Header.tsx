@@ -1,7 +1,11 @@
+import MatchFaceLogo from "@/components/ui/logo/MatchFaceLogo";
+import HumburgerBtn from "./modal/HumburgerBtn";
+
 const Header = () => {
   return (
-    <div>
-      <div className="bg-orange h-10"></div>
+    <div className="flex justify-between py-2 px-3 h-full">
+      <MatchFaceLogo />
+      <HumburgerBtn />
     </div>
   );
 };

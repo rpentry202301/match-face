@@ -12,7 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <div>{header}</div>
+      <header className="bg-orange h-10">{header}</header>
       <div>{children}</div>
     </>
   );
