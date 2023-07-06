@@ -10,14 +10,14 @@ const SearchByJobs = () => {
     <div className="flex flex-col items-center border-2 rounded-md w-3/6 mx-auto mt-6 p-3">
       <div className="flex items-center mb-4">
         <Input id="search" />
-        <WhiteButton label="検索" className="text-xs" />
+        <WhiteButton label="検索" className="text-xs ml-2" />
       </div>
       <div className="flex items-center mb-4">
         {/* ToDo: 職種データを非同期通信でGET */}
         {departments.map((department) => {
           return (
             <div key={department.id} className="mx-3">
-              <WhiteButton label={department.name} className="text-xs" />
+              <WhiteButton label={department.name} className="text-xs w-16" />
             </div>
           );
         })}
