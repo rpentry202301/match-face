@@ -1,5 +1,5 @@
 const AdminLoginPage = () => {
-    return <div>管理者ログイン画面</div>;
-}
+  return <h1>管理者ログイン画面</h1>;
+};
 
 export default AdminLoginPage;
