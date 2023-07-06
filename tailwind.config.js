@@ -16,14 +16,15 @@ module.exports = {
         transparent: 'transparent',
         transparent: 'transparent',
         // ex) className='bg-orange'
-        'orange': '#ff8c32',
-        'navy': '#06113c',
+        orange: '#ff8c32',
+        navy: '#06113c',
         'deep-gray': '#dddddd',
         'light-gray': '#eeeeee',
-        'green': '#70fa4e',
-        'red': '#ff3f5f'
-      }
+        green: '#70fa4e',
+        red: '#ff3f5f',
+        blue: '#0882F3',
+      },
     },
   },
   plugins: [],
-}
+};
