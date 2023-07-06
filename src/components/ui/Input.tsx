@@ -1,6 +1,5 @@
 'use client';
 
-import { type } from 'os';
 import { ComponentProps } from 'react';
 import { twMerge } from 'tailwind-merge';
 
