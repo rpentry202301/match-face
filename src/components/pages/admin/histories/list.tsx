@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { projects } from "@/const/admin_histories"
 import {HistoriesUserListHead,HistoriesUserListBody} from "./user_list"
 export default function HistoriesList (){

@@ -7,7 +7,9 @@ const HistoriesSelect = () => {
     function handleSubmit(e:SyntheticEvent){
         e.preventDefault()
     }
+
     
+
     return (
         <section  className="w-[80vw] ml-[10vw] border-2 text-center my-[5vh] py-[5vh]">
             <form action="submit" onSubmit={handleSubmit}>
@@ -19,13 +21,13 @@ const HistoriesSelect = () => {
                 </div>
                 <div className="mb-[2vh]">
                 {departments.map((department)=>(
-                    <WhiteButton label={department} key={department}/>
+                    <WhiteButton label={department} key={department} className="mx-[10px]"/>
                 ))}
                 </div>
-                <fieldset id="skill" name="skill" className="mb-[2vh]">
+                <fieldset id="skill" name="skill" className="mb-[2vh] max-w-[50vw] ml-[15vw]">
                 <legend>使用技術：</legend>
                     {skills.map((skill)=>(
-                        <span  key={skill.id}>
+                        <span  key={skill.id} className="px-[5px] whitespace-nowrap">
                         <input type="checkbox" id={skill.skill} name={skill.skill}/>
                         <label htmlFor={skill.skill}>{skill.skill}</label>
                         </span>

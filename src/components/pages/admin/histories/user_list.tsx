@@ -11,12 +11,11 @@ export function HistoriesUserListHead(){
     )
 }
 export function HistoriesUserListBody({id}:{id:number}){
-    console.log(answered_user)
     const project_answered_user = answered_user.filter((user)=>user.project_id===id)
     return(
         <>                
             {project_answered_user.map((user)=>(
-                <tr> 
+                <tr key={user.id}> 
                 <td></td>
                 <td className="border border-slate-deep-gray" id="detail"><button type="button">詳細</button></td>
                 <td className="border border-slate-deep-gray" id="answer_status">{user.answer_status?"回答済み":"未回答"}</td>
