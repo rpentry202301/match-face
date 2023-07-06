@@ -6,14 +6,16 @@ type Props = {
   isOpen: boolean;
   setIsOpen: Function;
   message: string;
-  label: string;
+  firstLabel: string;
+  secondLabel: string;
 } & ComponentProps<"button">;
 
 const ConfirmationModal = ({
   isOpen,
   setIsOpen,
   message,
-  label,
+  firstLabel,
+  secondLabel,
   ...props
 }: Props) => {
   const toggleModal = () => {
@@ -34,10 +36,10 @@ const ConfirmationModal = ({
           {message}
           <div className={style.wrap}>
             <button {...props} className={style.actionButton}>
-              {label}
+              {firstLabel}
             </button>
             <button className={style.cancelButton} onClick={toggleModal}>
-              キャンセル
+              {secondLabel}
             </button>
           </div>
         </div>
@@ -49,25 +51,3 @@ const ConfirmationModal = ({
 };
 
 export default ConfirmationModal;
-
-// ↓import先での使用例
-// "use client";
-// import { useState } from "react";
-// import ConfirmationModal from "@/components/ui/ConfirmationModal";
-
-// const Page = () => {
-//   const [isOpen, setIsOpen] = useState(false);
-//   return (
-//     <div>
-//       <button onClick={() => setIsOpen(true)}>Click</button>
-//       <ConfirmationModal
-//         message="送信してよろしいですか？"
-//         label="送信する"
-//         isOpen={isOpen}
-//         setIsOpen={setIsOpen}
-//       />
-//     </div>
-//   );
-// };
-
-// export default Page;
