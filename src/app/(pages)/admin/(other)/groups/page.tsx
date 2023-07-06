@@ -1,5 +1,7 @@
+import GroupTable from "@/components/pages/admin/groups/GroupTable";
+
 const GroupsPage = () => {
-  return <div>グループ一覧画面</div>;
+  return <GroupTable />;
 };
 
 export default GroupsPage;
