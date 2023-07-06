@@ -8,17 +8,17 @@ const GroupTable = () => {
       <table>
         <thead>
           <tr>
-            <th>グループ作成日</th>
-            <th>グループ名</th>
-            <th>人数</th>
+            <th className="border px-4 py-2">グループ作成日</th>
+            <th className="border px-4 py-2">グループ名</th>
+            <th className="border px-4 py-2">人数</th>
           </tr>
         </thead>
         <tbody>
           {data.map((group) => (
             <tr key={group.id}>
-              <td>{group.grouping_date}</td>
-              <td>{group.group_name}</td>
-              <td>{group.group_member.length}</td>
+              <td className="border px-4 py-2">{group.grouping_date}</td>
+              <td className="border px-4 py-2">{group.group_name}</td>
+              <td className="border px-4 py-2">{group.group_member.length}</td>
             </tr>
           ))}
         </tbody>

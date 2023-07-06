@@ -5,11 +5,9 @@ import GroupTable from "@/components/pages/admin/groups/GroupTable";
 const GroupsPage = () => {
   return (
     <>
-      <div>グループ一覧画面</div>
-      <br />
       <GroupTable/>
+      <br />
       <Link href={"/admin/groups/register"}>
-        <br />
         <OrangeButton label="新規グループ作成" />
       </Link>
     </>
