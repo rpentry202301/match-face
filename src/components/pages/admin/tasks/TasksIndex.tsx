@@ -5,13 +5,13 @@ import TaskList from "./parts/TaskList";
 const TasksIndex = () => {
   return (
     <main>
-      <div>
+      <div className="mb-8">
         <SearchByJobs />
       </div>
-      <div>
+      <div className="flex justify-center mb-8">
         <OrangeButton label="新規追加" />
       </div>
-      <div>
+      <div className="flex justify-center">
         <TaskList />
       </div>
     </main>

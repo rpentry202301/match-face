@@ -9,7 +9,7 @@ const SearchByJobs = () => {
   return (
     <div className="flex flex-col items-center border-2 rounded-md w-3/6 mx-auto mt-6 p-3">
       <div className="flex items-center mb-4">
-        <Input id="search" />
+        <Input id="search" className="border-light-gray text-xs p-1 w-96"/>
         <WhiteButton label="検索" className="text-xs ml-2" />
       </div>
       <div className="flex items-center mb-4">
