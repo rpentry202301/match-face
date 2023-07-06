@@ -1,14 +1,18 @@
 'use client';
 
+import { type } from 'os';
+import { ComponentProps } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-type Props = React.ComponentProps<'input'>;
+type InputProps = {
+  id: string;
+} & ComponentProps<'input'>;
 
-const Input = (props: Props) => {
+const Input = ({ id, ...props }: InputProps) => {
   const className = twMerge('border border-black', props.className);
   return (
     <div>
-      <input {...props} className={className} />
+      <input {...props} className={className} id={id} />
     </div>
   );
 };
