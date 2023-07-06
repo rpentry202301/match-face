@@ -1,6 +1,8 @@
+'use client';
 import Input from "@/components/ui/Input";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import WhiteButton from "@/components/ui/button/WhiteButton";
+import WhiteCheckButton from "@/components/ui/button/WhiteCheckButton";
 
 // 削除予定
 import { departments } from "@/const/tasks";
@@ -17,7 +19,7 @@ const SearchByJobs = () => {
         {departments.map((department) => {
           return (
             <div key={department.id} className="mx-3">
-              <WhiteButton label={department.name} className="text-xs w-16" />
+              <WhiteCheckButton label={department.name} className="text-xs w-16" />
             </div>
           );
         })}
