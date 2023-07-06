@@ -17,6 +17,7 @@ module.exports = {
         transparent: 'transparent',
         // ex) className='bg-orange'
         orange: '#ff8c32',
+        'depp-orange': '#E16C2A',
         navy: '#06113c',
         'deep-gray': '#dddddd',
         'light-gray': '#eeeeee',
