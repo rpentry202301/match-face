@@ -20,6 +20,8 @@ module.exports = {
         'navy': '#06113c',
         'deep-gray': '#dddddd',
         'light-gray': '#eeeeee',
+        'green': '#70fa4e',
+        'red': '#ff3f5f'
       }
     },
   },
