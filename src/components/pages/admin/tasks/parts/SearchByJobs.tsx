@@ -1,14 +1,30 @@
 import Input from "@/components/ui/Input";
+import OrangeButton from "@/components/ui/button/OrangeButton";
 import WhiteButton from "@/components/ui/button/WhiteButton";
+
+// 削除予定
+import { departments } from "@/const/tasks";
 
 const SearchByJobs = () => {
   return (
-    <div>
-      <div className="flex items-center">
-        <Input id="search"/>
-        <WhiteButton label="検索" textSize="text-sm"/>
+    <div className="flex flex-col items-center border-2 rounded-md w-3/6 mx-auto mt-6 p-3">
+      <div className="flex items-center mb-4">
+        <Input id="search" />
+        <WhiteButton label="検索" textSize="text-xs" />
       </div>
-      
+      <div className="flex items-center mb-4">
+        {/* ToDo: 職種データを非同期通信でGET */}
+        {departments.map((department) => {
+          return (
+            <div key={department.id} className="mx-3">
+              <WhiteButton label={department.name} textSize="text-xs" />
+            </div>
+          );
+        })}
+      </div>
+      <div>
+        <OrangeButton label="絞り込み" className="w-28 h-8 text-sm" />
+      </div>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-const departments = [
+export const departments = [
   {
     id: 1,
     name: "Java",
