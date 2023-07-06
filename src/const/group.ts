@@ -1,4 +1,20 @@
-export const group = [
+
+
+interface GroupMember {
+  user_id:string;
+  user_name:string
+}
+
+interface Group {
+  id:number;
+  grouping_date:string;
+  group_name:string;
+  group_member:GroupMember[];
+  grouping_description:string
+}
+
+
+export const group:Group[] = [
   {
     id: 1,
     grouping_date: "2023/7/1",
