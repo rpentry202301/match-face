@@ -9,7 +9,7 @@ type OrangeBtnProps = {
 const OrangeButton = ({ label, ...props }: OrangeBtnProps) => {
   // console.log(label);
   const style = twMerge(
-    'bg-orange drop-shadow-lg hover:saturate-150 active:drop-shadow-none active:shadow-inner active:mt-0.5 text-white rounded-xl w-40 h-8 text-lg',
+    'bg-orange drop-shadow-lg hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange text-white rounded-xl w-40 h-8 text-lg',
     props.className
   );
   return (
