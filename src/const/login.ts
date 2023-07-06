@@ -19,6 +19,11 @@ const users: Users = [
     user_id: 'user2',
     password: 'password2',
   },
+  {
+    id: 3,
+    user_id: 'adminuser',
+    password: 'adminpassword',
+  },
 ];
 
 export default users;
