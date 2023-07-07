@@ -1,5 +1,8 @@
+import RegisterForm from "@/components/pages/admin/groups/register/RegisterForm";
+
+
 const GroupRegisterPage = () => {
-  return <div>グループ設定画面</div>;
+  return <RegisterForm/>
 };
 
 export default GroupRegisterPage;
