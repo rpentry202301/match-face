@@ -1,5 +1,5 @@
 import AnswerButton from "@/components/pages/general/questions/AnswerButton";
-import { data } from "src/const/questions";
+import { data } from "@/const/questions";
 
 type ProjectData = {
   id: string;

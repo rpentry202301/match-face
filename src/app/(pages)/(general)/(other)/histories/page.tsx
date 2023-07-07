@@ -1,6 +1,6 @@
 import GrayButton from "@/components/ui/button/GrayButton";
 import OrangeButton from "@/components/ui/button/OrangeButton";
-import { data } from "src/const/histories";
+import { data } from "@/const/histories";
 
 type ProjectData = {
   id: string;
@@ -30,17 +30,23 @@ const HistoriesPage = () => {
           {projectData.map((project) => (
             <tr key={project.id}>
               <td className="border text-center p-3">
-                <OrangeButton
-                  label={"新着"}
-                  className="bg-orange drop-shadow-lg hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange text-white rounded-xl w-20 h-8 text-lg'"
-                />
-                {project.comment_status}
+                {project.comment_status ? (
+                  <OrangeButton
+                    label={"新着"}
+                    className="w-15 rounded py-2 px-4 text-white text-sm"
+                  />
+                ) : (
+                  ""
+                )}
               </td>
               <td className="border text-center p-3">{project.answer_date}</td>
               <td className="border text-center">{project.project_name}</td>
               <td className="border text-center">{project.project_detail}</td>
-              <td className="border text-center">
-                <GrayButton label={"詳細"} />
+              <td className="border text-center px-4">
+                <GrayButton
+                  label={"詳細"}
+                  className="w-15 rounded py-2 px-4 text-sm"
+                />
               </td>
             </tr>
           ))}

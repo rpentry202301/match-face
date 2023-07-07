@@ -17,7 +17,7 @@ export const data: Data = [
   },
   {
     id: "2",
-    comment_status: true,
+    comment_status: false,
     project_name: "ポムポムプリン",
     project_detail:
       "日本のサンリオによるゴールデン・レトリバーの男のコをモチーフにしたキャラクター。",
@@ -25,7 +25,7 @@ export const data: Data = [
   },
   {
     id: "3",
-    comment_status: true,
+    comment_status: false,
     project_name: "ポムポムプリン",
     project_detail:
       "日本のサンリオによるゴールデン・レトリバーの男のコをモチーフにしたキャラクター。",
@@ -49,7 +49,7 @@ export const data: Data = [
   },
   {
     id: "6",
-    comment_status: true,
+    comment_status: false,
     project_name: "ポムポムプリン",
     project_detail:
       "日本のサンリオによるゴールデン・レトリバーの男のコをモチーフにしたキャラクター。",
