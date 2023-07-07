@@ -8,7 +8,7 @@ const Home = async () => {
         <Notification title="進捗状況" description="対応済" className="" />
       </div>
 
-      <div className="flex items-center">
+      <div className="flex flex-wrap justify-center">
         <Menu
           url="/questions"
           title="回答する"
