@@ -2,7 +2,7 @@
 
 import { ComponentProps } from "react";
 
-const SelectBox = ({ value, ...props }: Props) => {
+const SelectBox = ({ optionVal, ...props }: Props) => {
   const style =
   "border-2 border-light-gray" +
     " " +
@@ -10,8 +10,8 @@ const SelectBox = ({ value, ...props }: Props) => {
 
   return (
     <select {...props} className={style}>
-      {value ? (
-        value.map((val, index) => (
+      {optionVal ? (
+        optionVal.map((val, index) => (
           <option key={index} value={val}>
             {val}
           </option>
@@ -24,7 +24,7 @@ const SelectBox = ({ value, ...props }: Props) => {
 };
 
 type Props = {
-  value: any[];
+  optionVal: any[];
 } & ComponentProps<"select">;
 
 export default SelectBox;
