@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge';
 type MenuProps = {
   title: string;
   description: string;
-  className: string | undefined;
+  className: string;
 };
 
 export default function Notification({
@@ -13,7 +13,7 @@ export default function Notification({
 }: MenuProps) {
   //buttonのclassNameは親コンポーネントでclassNameを指定して上書き可能
   const mergedClassName = twMerge(
-    'flex p-5 w-96 h-40 shadow-lg flex-col',
+    'flex p-5 w-1/2 h-96 shadow-lg flex-col',
     className
   );
   return (
