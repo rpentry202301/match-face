@@ -2,13 +2,21 @@
 import Input from '@/components/ui/Input';
 import OrangeButton from '@/components/ui/button/OrangeButton';
 import Link from 'next/link';
-import { FormEvent } from 'react';
+import { useState } from 'react';
 
 const RemindPage = () => {
+  const [email, setEmail] = useState<string>();
+  const [emailBlankError, setEmailBlankError] = useState<boolean>(false);
+
   // （仮）リマインドメール送信
   const sentRemindEmail = (event: any) => {
     event.preventDefault();
-    console.log('リマインドメールが送信されました');
+    if (!email) {
+      setEmailBlankError(true);
+    } else if (email) {
+      setEmailBlankError(false);
+      alert('リマインドメールが送信されました');
+    }
   };
 
   return (
@@ -22,7 +30,16 @@ const RemindPage = () => {
 
           <div className="">
             <label htmlFor="email">メールアドレス</label>
-            <Input id="email" className=" w-72 h-8" />
+            <Input
+              id="email"
+              className=" w-72 h-8"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setEmail(e.target.value)
+              }
+            />
+            {emailBlankError && (
+              <p className="text-red">※メールアドレスを入力してください</p>
+            )}
           </div>
           <OrangeButton
             label="再設定用メール送信"

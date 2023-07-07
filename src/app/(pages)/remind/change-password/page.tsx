@@ -50,7 +50,7 @@ const ChangePasswordPage = () => {
           }
         />
         {passwordBlankError && (
-          <p className="text-red">※パスワードを入力してください</p>
+          <p className="text-red">※新しいパスワードを入力してください</p>
         )}
       </div>
       <div>
@@ -64,7 +64,7 @@ const ChangePasswordPage = () => {
             setConfirmPassword(e.target.value)
           }
         />
-        {passwordBlankError && (
+        {confirmPasswordBlankError && (
           <p className="text-red">※確認用パスワードを入力してください</p>
         )}
       </div>
