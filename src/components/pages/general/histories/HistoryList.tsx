@@ -1,3 +1,5 @@
+"use client";
+
 import GrayButton from "@/components/ui/button/GrayButton";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import { data } from "@/const/histories";
@@ -54,7 +56,7 @@ const HistoryList = () => {
                   value={project.id}
                   onClick={() => {
                     router.push({
-                      pathname: "/result/",
+                      pathname: "/result",
                       query: { id: project.id },
                     });
                   }}
