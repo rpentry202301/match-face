@@ -1,5 +1,3 @@
-import { type } from 'os';
-
 type User = {
   id: number;
   user_id: string;
