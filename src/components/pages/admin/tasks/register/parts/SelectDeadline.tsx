@@ -1,5 +1,6 @@
 'use client';
 import SelectBox from "@/components/ui/selectbox/SelectBox";
+import getThis_NextYear from "@/lib/common/date/getThis_NextYear";
 
 const SelectDeadline = () => {
   return (
@@ -9,7 +10,7 @@ const SelectDeadline = () => {
           <p>締め切り日時を設定する</p>
         </div>
         <div>
-          <SelectBox className="w-20 h-6 text-sm" value={hoge}/>
+          <SelectBox className="w-20 h-6 text-sm" optionVal={getThis_NextYear()}/>
         </div>
       </div>
     </div>
@@ -19,4 +20,4 @@ const SelectDeadline = () => {
 export default SelectDeadline;
 
 // 削除予定
-const hoge = Array(20).fill("hoge");
+const hoge = Array(20).fill(10);
