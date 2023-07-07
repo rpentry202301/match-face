@@ -4,14 +4,21 @@ import { project } from "@/const/testing";
 import { AnswerList } from "./answerList";
 import { CommentContent } from "./comment";
 import OrangeButton from "@/components/ui/button/OrangeButton";
+import GrayButton from "@/components/ui/button/GrayButton";
 import { Answer } from "@/const/review";
+import { useRouter } from "next/navigation";
+import ConfirmationModal from "@/components/ui/ConfirmationModal";
+import { useState } from "react";
 
 type Props = {
   user_id: string;
   project_id: number;
+  admin_id: string;
 };
 
-export const AnswerContent = ({ user_id, project_id }: Props) => {
+export const AnswerContent = ({ user_id, project_id, admin_id }: Props) => {
+  const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
   const currentProject = project.filter((project) => project.id === project_id);
   const currentAnswer = Answer.filter((answer) => project_id == project_id);
 
@@ -25,10 +32,28 @@ export const AnswerContent = ({ user_id, project_id }: Props) => {
       <h2 className="text-xl my-2">{currentProject[0].name}</h2>
       <p className="text-lg">{currentProject[0].project_detail}</p>
       <AnswerList user_id={user_id} project_id={project_id} />
-      <CommentContent user_id={user_id} project_id={project_id} />
+      <CommentContent
+        user_id={user_id}
+        project_id={project_id}
+        admin_id={admin_id}
+      />
       <div className="flex justify-around my-20">
-        <OrangeButton label="質問一覧へ" />
-        <OrangeButton label="回答履歴一覧へ" />
+        <ConfirmationModal
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          message="コメントを送信してよろしいですか？"
+          firstLabel="コメントを送信する"
+          secondLabel="キャンセル"
+        />
+        <OrangeButton
+          label="コメントを送信する"
+          className="w-50"
+          onClick={() => setIsOpen(true)}
+        />
+        <GrayButton
+          label="回答履歴一覧へ"
+          onClick={() => router.push("/admin/histories")}
+        />
       </div>
     </div>
   );
