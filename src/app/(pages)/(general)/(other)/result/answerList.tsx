@@ -43,6 +43,10 @@ export const AnswerList = ({ project_id }: Props) => {
                   <label htmlFor={`choice${index}`}>{choice}</label>
                 </div>
               ))}
+              <div className="border border-gray p-3 mt-5 rounded-md shadow-md">
+                <h3 className="mb-2 text-xl">あなたの回答</h3>
+                {currentAnswer[index].content}
+              </div>
             </>
           )}
           <ModelAnswerContent

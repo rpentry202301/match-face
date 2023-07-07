@@ -12,8 +12,7 @@ export const Answer = [
     project_id: 1,
     question_id: 2,
     answer_date: new Date("2023-07-06"),
-    content:
-      "回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。",
+    content: "選択肢A",
   },
   {
     user_id: "user1",
