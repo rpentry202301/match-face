@@ -45,8 +45,7 @@ const LoginPage = () => {
       <form onSubmit={checkLogin}>
         <div className="flex flex-col items-center justify-center h-screen">
           <h1 className=" text-orange text-2xl font-bold m-6">Match Face</h1>
-          <div className="flex flex-col">
-            {/* <form className="mt-2 mb-2"> */}
+          <div className="mt-2 mb-2">
             <label htmlFor="userId" className="">
               ユーザーID
             </label>
@@ -63,6 +62,8 @@ const LoginPage = () => {
             {userIdBlankError && (
               <p className="text-red">※ユーザーIDを入力してください</p>
             )}
+          </div>
+          <div>
             <label htmlFor="password" className="">
               パスワード
             </label>
