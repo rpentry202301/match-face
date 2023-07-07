@@ -3,7 +3,7 @@ import HistoriesSelect from '@/components/pages/admin/histories/select'
 const HistoriesPage = () => {
   return (
     <>
-      <HistoriesSelect />
+      <HistoriesSelect className=''/>
       <HistoriesList />
     </>);
 };
