@@ -1,29 +1,38 @@
-'use client'
+"use client";
 import GrayButton from "@/components/ui/button/GrayButton";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import WhiteButton from "@/components/ui/button/WhiteButton"
 import { skills,departments,projects } from "@/const/admin_histories";
+import { twMerge } from "tailwind-merge";
 import { SyntheticEvent } from "react";
 import { useState } from "react";
 
-const HistoriesSelect = () => {
+type Style = {
+    className: string;
+  };
+
+const HistoriesSelect = (props: Style) => {
     const [formData,setFormData] = useState<{month:string,department:string,skills:string[]}>({month:"",department:"",skills:[]})
+    const style = twMerge(
+        "w-[80vw] ml-[10vw] border-2 text-center my-[5vh] py-[5vh]",
+        props.className
+        );
 
     function handleSubmit(e:SyntheticEvent){
         e.preventDefault()
         console.log(formData)
     }
 
-    // 選択用日付
-    const allDeadlines:string[] = []
-    projects.map((project)=>
-        allDeadlines.push(project.answer_deadline)
-    )
-    const set = new Set(allDeadlines)
-    const deadlines = Array.from(set)
+        // 選択用日付
+        const allDeadlines:string[] = []
+        projects.map((project)=>
+            allDeadlines.push(project.answer_deadline)
+        )
+        const set = new Set(allDeadlines)
+        const deadlines = Array.from(set)
 
     return (
-        <section  className="w-[80vw] ml-[10vw] border-2 text-center my-[5vh] py-[5vh]">
+        <section  className={style}>
             <form action="submit" onSubmit={handleSubmit}>
                 <div className="mb-[2vh]">
                 <label htmlFor="month">回答月：</label>
