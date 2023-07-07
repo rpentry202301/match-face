@@ -10,7 +10,7 @@ const getDayArrInMonth = (year: number | string, month: number | string) => {
     console.error(
       'Error occured in function "getDayArrInMonth": 年、月の値が不正です。'
     );
-    return "error";
+    return ["error"];
   }
   // 指定月の日数取得
   const lastDay = new Date(Number(year), Number(month), 0).getDate();
