@@ -1,7 +1,6 @@
 'use client';
 import Input from '@/components/ui/Input';
 import OrangeButton from '@/components/ui/button/OrangeButton';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 
@@ -11,12 +10,25 @@ const ChangePasswordPage = () => {
   const [confirmPassword, setConfirmPassword] = useState<string>();
   // const [passwordError, setPasswordError] = useState<boolean>(false);
   const [passwordBlankError, setPasswordBlankError] = useState<boolean>(false);
+  const [confirmPasswordBlankError, setConfirmPasswordBlankError] =
+    useState<boolean>(false);
 
   // （仮）登録認証ボタン
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    alert('変更完了');
-    router.push('/login');
+    if (!password && !confirmPassword) {
+      setPasswordBlankError(true);
+      setConfirmPasswordBlankError(true);
+    } else if (password && !confirmPassword) {
+      setPasswordBlankError(false);
+      setConfirmPasswordBlankError(true);
+    } else if (!password && confirmPassword) {
+      setPasswordBlankError(true);
+      setConfirmPasswordBlankError(false);
+    } else if (password && confirmPassword) {
+      alert('変更完了');
+      router.push('/login');
+    }
   };
 
   return (
@@ -37,6 +49,9 @@ const ChangePasswordPage = () => {
             setPassword(e.target.value)
           }
         />
+        {passwordBlankError && (
+          <p className="text-red">※パスワードを入力してください</p>
+        )}
       </div>
       <div>
         <label htmlFor="confirmPassword" className="">
@@ -49,9 +64,11 @@ const ChangePasswordPage = () => {
             setConfirmPassword(e.target.value)
           }
         />
+        {passwordBlankError && (
+          <p className="text-red">※確認用パスワードを入力してください</p>
+        )}
       </div>
-      <OrangeButton label="登録" className="m-12" />
-      <Link href="/login">（移動用、削除要）ログインへ</Link>
+      <OrangeButton label="登録" className="m-12" type="submit" />
     </form>
   );
 };
