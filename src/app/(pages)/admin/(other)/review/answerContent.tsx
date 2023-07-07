@@ -46,7 +46,8 @@ export const AnswerContent = ({ user_id, project_id, admin_id }: Props) => {
           secondLabel="キャンセル"
         />
         <OrangeButton
-          label="コメントを編集する"
+          label="コメントを送信する"
+          className="w-50"
           onClick={() => setIsOpen(true)}
         />
         <GrayButton
