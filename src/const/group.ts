@@ -17,7 +17,7 @@ interface Group {
 export const group:Group[] = [
   {
     id: 1,
-    grouping_date: "2023/7/1",
+    grouping_date: "2023-07-01",
     group_name: "2023年7月入社",
     group_member: [
       { user_id: "1", user_name: "テスト太郎" },
@@ -29,7 +29,7 @@ export const group:Group[] = [
 
   {
     id: 2,
-    grouping_date: "2023/7/2",
+    grouping_date: "2023-07-02",
     group_name: "2023年7月入社フロント",
     group_member: [{ user_id: "1", user_name: "テスト太郎" }],
     grouping_description: "",
@@ -37,7 +37,7 @@ export const group:Group[] = [
 
   {
     id: 3,
-    grouping_date: "2023/7/6",
+    grouping_date: "2023-07-06",
     group_name: "テストグループその3",
     group_member: [
       { user_id: "2", user_name: "テスト二郎" },
