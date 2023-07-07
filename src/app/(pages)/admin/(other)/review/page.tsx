@@ -9,7 +9,11 @@ const data = {
 const ReviewPage = () => {
   return (
     <div className="flex flex-col items-center">
-      <AnswerContent user_id={data.user_id} project_id={data.project_id} />
+      <AnswerContent
+        user_id={data.user_id}
+        project_id={data.project_id}
+        admin_id={data.admin_id}
+      />
     </div>
   );
 };

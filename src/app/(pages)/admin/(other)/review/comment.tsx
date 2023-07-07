@@ -1,25 +1,24 @@
 import TextArea from "@/components/ui/TextArea";
-import { Comment } from "@/const/review";
 import { User } from "@/const/review";
 import Image from "next/image";
+import { useState } from "react";
 
 type Props = {
   user_id: string;
+  admin_id: string;
   project_id: number;
 };
 
-export const CommentContent = ({ user_id, project_id }: Props) => {
-  const currentComment = Comment.filter(
-    (comment) => comment.user_id === user_id && project_id === project_id
-  );
-  const commentUser = User.filter(
-    (user) => user.id === currentComment[0].admin_id
-  );
+export const CommentContent = ({ user_id, admin_id, project_id }: Props) => {
+  const commentUser = User.filter((user) => user.id === admin_id);
+  const [comment, setComment] = useState("");
 
   return (
     <>
-      <h3 className="text-xl mb-3">{commentUser[0].name}からのコメント</h3>
-      <div className="border border-black rounded-md p-3 flex justify-between ">
+      <label htmlFor="comment">
+        <h3 className="text-xl mb-3">▶︎コメントを入力する</h3>
+      </label>
+      <div className=" flex justify-between ">
         <div className="w-1/6 flex justify-center items-center">
           <Image
             src={commentUser[0].image_url}
@@ -28,7 +27,15 @@ export const CommentContent = ({ user_id, project_id }: Props) => {
             height={70}
           />
         </div>
-        <div className="w-5/6">{currentComment[0].content}</div>
+        <TextArea
+          id="comment"
+          cols={50}
+          rows={6}
+          value={comment}
+          onChange={(e) => {
+            setComment(e.target.value);
+          }}
+        />
       </div>
     </>
   );
