@@ -1,5 +1,11 @@
+import HistoriesList from '@/components/pages/admin/histories/list';
+import HistoriesSelect from '@/components/pages/admin/histories/select'
 const HistoriesPage = () => {
-  return <div>回答履歴一覧画面</div>;
+  return (
+    <>
+      <HistoriesSelect />
+      <HistoriesList />
+    </>);
 };
 
 export default HistoriesPage;
