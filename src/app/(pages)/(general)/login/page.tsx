@@ -3,7 +3,7 @@ import Input from '@/components/ui/Input';
 import OrangeButton from '@/components/ui/button/OrangeButton';
 import Link from 'next/link';
 import users from '@/const/login';
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 const LoginPage = () => {
@@ -20,7 +20,8 @@ const LoginPage = () => {
   // console.log('crrectUser', correctUser);
 
   // todo:（仮）ログイン認証チェック(入力欄がブランクの時のみエラー感知)
-  const checkLogin = () => {
+  const checkLogin = (event: FormEvent) => {
+    event.preventDefault();
     if (!userId && !password) {
       setUserIdBlankError(true);
       setPasswordBlankError(true);
@@ -41,16 +42,16 @@ const LoginPage = () => {
   // console.log('passWord', typeof password);
   return (
     <>
-      <div className="flex flex-col items-center justify-center h-screen">
-        <h1 className=" text-orange text-2xl font-bold m-6">Match Face</h1>
-        <div className="flex flex-col">
-          <form className="mt-2 mb-2">
+      <form onSubmit={checkLogin}>
+        <div className="flex flex-col items-center justify-center h-screen">
+          <h1 className=" text-orange text-2xl font-bold m-6">Match Face</h1>
+          <div className="mt-2 mb-2">
             <label htmlFor="userId" className="">
               ユーザーID
             </label>
             <Input
               id="userId"
-              className="w-72"
+              className="w-72 h-8"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setUserId(e.target.value)
               }
@@ -61,14 +62,14 @@ const LoginPage = () => {
             {userIdBlankError && (
               <p className="text-red">※ユーザーIDを入力してください</p>
             )}
-          </form>
-          <form>
+          </div>
+          <div>
             <label htmlFor="password" className="">
               パスワード
             </label>
             <Input
               id="password"
-              className="w-72"
+              className="w-72 h-8"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setPassword(e.target.value)
               }
@@ -79,17 +80,17 @@ const LoginPage = () => {
             {passwordBlankError && (
               <p className="text-red">※パスワードを入力してください</p>
             )}
-          </form>
-        </div>
+          </div>
 
-        <OrangeButton label="ログイン" className="m-4" onClick={checkLogin} />
-        <Link href="/remind" className=" text-blue">
-          パスワードを忘れた
-        </Link>
-        <Link href="/admin/login" className="text-blue pt-16">
-          管理者ログイン
-        </Link>
-      </div>
+          <OrangeButton label="ログイン" className="m-4" type="submit" />
+          <Link href="/remind" className=" text-blue">
+            パスワードを忘れた
+          </Link>
+          <Link href="/admin/login" className="text-blue pt-16">
+            管理者ログイン
+          </Link>
+        </div>
+      </form>
     </>
   );
 };
