@@ -1,6 +1,6 @@
 import TextArea from "@/components/ui/TextArea";
-import { Comment } from "@/const/result";
-import { User } from "@/const/result";
+import { Comment } from "@/const/review";
+import { User } from "@/const/review";
 import Image from "next/image";
 
 type Props = {

@@ -4,7 +4,7 @@ import { project } from "@/const/testing";
 import { AnswerList } from "./answerList";
 import { CommentContent } from "./comment";
 import OrangeButton from "@/components/ui/button/OrangeButton";
-import { Answer } from "@/const/result";
+import { Answer } from "@/const/review";
 
 type Props = {
   user_id: string;
@@ -24,7 +24,7 @@ export const AnswerContent = ({ user_id, project_id }: Props) => {
       <hr className="border border-black" />
       <h2 className="text-xl my-2">{currentProject[0].name}</h2>
       <p className="text-lg">{currentProject[0].project_detail}</p>
-      <AnswerList project_id={project_id} />
+      <AnswerList user_id={user_id} project_id={project_id} />
       <CommentContent user_id={user_id} project_id={project_id} />
       <div className="flex justify-around my-20">
         <OrangeButton label="質問一覧へ" />

@@ -32,17 +32,11 @@ export const AnswerList = ({ project_id }: Props) => {
             </>
           ) : (
             <>
-              {question.choices?.map((choice, index) => (
-                <div key={index}>
-                  <input
-                    id={`choice${index}`}
-                    type="radio"
-                    value={choice}
-                    name={question.name}
-                  />
-                  <label htmlFor={`choice${index}`}>{choice}</label>
-                </div>
-              ))}
+              <ul>
+                {question.choices?.map((choice, index) => (
+                  <li key={index}>・{choice}</li>
+                ))}
+              </ul>
               <div className="border border-gray p-3 mt-5 rounded-md shadow-md">
                 <h3 className="mb-2 text-xl">あなたの回答</h3>
                 {currentAnswer[index].content}

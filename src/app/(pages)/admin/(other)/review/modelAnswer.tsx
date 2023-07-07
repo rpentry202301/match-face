@@ -1,4 +1,4 @@
-import { ModelAnswer } from "@/const/result";
+import { ModelAnswer } from "@/const/review";
 
 type Props = {
   project_id: number;

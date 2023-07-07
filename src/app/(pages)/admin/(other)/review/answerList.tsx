@@ -1,12 +1,14 @@
 import { question } from "@/const/testing";
-import { Answer } from "@/const/result";
+import { Answer } from "@/const/review";
+import { User } from "@/const/review";
 import ModelAnswerContent from "./modelAnswer";
 
 type Props = {
   project_id: number;
+  user_id: string;
 };
 
-export const AnswerList = ({ project_id }: Props) => {
+export const AnswerList = ({ user_id, project_id }: Props) => {
   const currentQuestion = question.filter(
     (question) => question.project_id === project_id
   );
@@ -14,6 +16,8 @@ export const AnswerList = ({ project_id }: Props) => {
   const currentAnswer = Answer.filter(
     (answer) => answer.project_id === project_id
   );
+
+  const answerUser = User.filter((user) => user.id === user_id);
 
   return (
     <>
@@ -26,25 +30,19 @@ export const AnswerList = ({ project_id }: Props) => {
           {question.type === "writing" ? (
             <>
               <div className="border border-gray p-3 mt-2 rounded-md shadow-md">
-                <h3 className="mb-2 text-xl">あなたの回答</h3>
+                <h3 className="mb-2 text-xl">{answerUser[0].name}の回答</h3>
                 {currentAnswer[index].content}
               </div>
             </>
           ) : (
             <>
-              {question.choices?.map((choice, index) => (
-                <div key={index}>
-                  <input
-                    id={`choice${index}`}
-                    type="radio"
-                    value={choice}
-                    name={question.name}
-                  />
-                  <label htmlFor={`choice${index}`}>{choice}</label>
-                </div>
-              ))}
+              <ul>
+                {question.choices?.map((choice, index) => (
+                  <li key={index}>・{choice}</li>
+                ))}
+              </ul>
               <div className="border border-gray p-3 mt-5 rounded-md shadow-md">
-                <h3 className="mb-2 text-xl">あなたの回答</h3>
+                <h3 className="mb-2 text-xl">{answerUser[0].name}の回答</h3>
                 {currentAnswer[index].content}
               </div>
             </>
