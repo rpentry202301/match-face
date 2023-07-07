@@ -17,7 +17,7 @@ const UserList = () => {
         </thead>
         <tbody>
           {userTable.map((user) => (
-            <tr key={user.id}>
+            <tr key={`userId_${user.id}`}>
               <td className={`${tableDefaultClassName}`}></td>
               <td className={`${tableDefaultClassName}`}>{user.entry_date}</td>
               <td className={`${tableDefaultClassName}`}>{user.department}</td>

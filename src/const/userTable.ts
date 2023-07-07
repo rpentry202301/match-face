@@ -15,14 +15,14 @@ export const userTable: User[] = [
     department: "Java"
   },
   {
-    id: 1,
+    id: 2,
     user_name: "鈴木二郎",
     user_status: "待機中",
     entry_date: "2023-07-01",
     department: "Java"
   },
   {
-    id: 1,
+    id: 3,
     user_name: "伊藤三郎",
     user_status: "待機中",
     entry_date: "2023-07-01",

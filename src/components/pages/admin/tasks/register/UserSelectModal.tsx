@@ -1,14 +1,15 @@
 'use client'
-import { useState } from "react"
+import { useState, ReactNode } from "react"
+import { createPortal } from "react-dom"
 import WhiteButton from "@/components/ui/button/WhiteButton"
 import WhiteCheckButton from "@/components/ui/button/WhiteCheckButton"
 import Input from "@/components/ui/Input"
 import OrangeButton from "@/components/ui/button/OrangeButton"
 import { group as groupConst } from "@/const/group"
+import { departments } from "@/const/tasks"
 import UserList from "./UserList"
-import useModal from "@/hooks/modal/useModal"
 
-const teck = ['Java', 'PHP', 'FR', 'CL', 'ML', 'QA']
+
 const state = ['研修中', '待機中', 'アサイン中']
 
 // 実際にレンダリングされるモーダルは以下に記述
@@ -17,8 +18,10 @@ const UserSelectModal = () => {
   const [ year, setYear ] = useState('')
   const [ month, setMonth ] = useState('')
   const [ group, setGroup ] = useState('')
-
-  const { Modal, close } = useModal()
+  const [ isOpened, setIsOpened ] = useState(false)
+  
+  const open = () => setIsOpened(true)
+  const close = () => setIsOpened(false)
 
   // 2000年からの配列を作成
   const maxYear = (new Date()).getFullYear()
@@ -33,8 +36,38 @@ const UserSelectModal = () => {
     .map((num, index) => `${num + index}`)
   monthArr.unshift("")
 
+  const Modal = ({
+    children,
+    buttonText,
+    canCloseByClickingBackground = true
+  }: {
+    children: ReactNode,
+    buttonText: string,
+    canCloseByClickingBackground?: boolean,
+  }) => {
+    if (!isOpened) {
+      return (
+        <WhiteButton label={buttonText} onClick={open} className="text-xs" />
+      )
+    }
+  
+    // レンダリングするDOMをbodyに固定するためPortalを使用
+    const elmModal = (
+      <div className="fixed top-0 left-0 z-30 flex items-center justify-center w-full h-full">
+        <div className="relative z-20 px-10 py-6 w-4/5 max-w-3xl bg-white">
+          {children}
+        </div>
+        {canCloseByClickingBackground
+          ? <div className="absolute top-0 left-0 w-full h-full bg-black opacity-30" onClick={close} />
+          : <div className="absolute top-0 left-0 w-full h-full bg-black opacity-30" />
+        }
+      </div>
+    )
+    return createPortal(elmModal, document.body)
+  }
+
   return (
-    <Modal buttonText="追加" canCloseByClickingBackground={false}>
+    <Modal buttonText="追加">
       <div>
         <h2>▶️ユーザーを選択する</h2>
       </div>
@@ -77,10 +110,10 @@ const UserSelectModal = () => {
           <span className="ml-2">月入社</span>
         </div>
         <div className="flex items-center mb-4 ml-10">
-          {teck.map((element) => (
+          {departments.map((element) => (
             <WhiteCheckButton
-              key={element}
-              label={element}
+              key={`teck_${element.id}`}
+              label={element.name}
               className="text-xs w-16 mx-3"
             />
           ))}
