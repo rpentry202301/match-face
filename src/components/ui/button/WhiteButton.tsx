@@ -1,15 +1,15 @@
-"use client";
-import { ComponentProps } from "react";
+'use client';
+import { ComponentProps } from 'react';
+import { twMerge } from 'tailwind-merge';
 
-// textSizeを指定することでbutton自体のサイズも調節可能
-const WhiteButton = ({ label, textSize, error, ...props }: W_BtnProps) => {
-  const style = error
-    ? // error=trueの場合、font & border を赤に
-      "bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md border-red-600 text-red-600 "
-    : "bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md " +
-      textSize;
+const WhiteButton = ({ label, error, ...props }: W_BtnProps) => {
+  // error=trueの場合、font & border を赤に
+  const baseStyle = error
+    ? 'bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md border-red-600 text-red-600 '
+    : 'bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md ';
+  const mergeStyle = twMerge(baseStyle + props.className);
   return (
-    <button {...props} className={style}>
+    <button {...props} className={mergeStyle}>
       {label}
     </button>
   );
@@ -17,8 +17,7 @@ const WhiteButton = ({ label, textSize, error, ...props }: W_BtnProps) => {
 
 type W_BtnProps = {
   label: string;
-  textSize?: string;
   error?: boolean;
-} & ComponentProps<"button">;
+} & ComponentProps<'button'>;
 
 export default WhiteButton;

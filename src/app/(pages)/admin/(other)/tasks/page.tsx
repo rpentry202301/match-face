@@ -1,5 +1,7 @@
+import TasksIndex from "@/components/pages/admin/tasks/TasksIndex";
+
 const TasksPage = () => {
-  return <div>タスク一覧画面</div>;
+  return <TasksIndex />;
 };
 
 export default TasksPage;

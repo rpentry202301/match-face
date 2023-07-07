@@ -15,7 +15,7 @@ const HumburgerBtn = ({ children }: { children: React.ReactNode }) => {
       <>
         <button
           type="button"
-          className="z-10 space-y-2"
+          className="z-10 space-y-2 fixed right-2.5 top-2.5"
           onClick={() => setOpened(false)}
         >
           <div className="w-8 h-0.5 bg-gray-600 translate-y-2.5 rotate-45 transition duration-500 ease-out" />
