@@ -1,5 +1,7 @@
+import TaskRegisterIndex from "@/components/pages/admin/tasks/register/TaskRegisterIndex";
+
 const TaskRegisterPage = () => {
-  return <div>タスク設定画面</div>
+  return <TaskRegisterIndex />;
 };
 
 export default TaskRegisterPage;
