@@ -1,5 +1,6 @@
 "use client";
 import { ComponentProps } from "react";
+import { twMerge } from "tailwind-merge";
 
 type Props = {
   answered?: boolean;
@@ -12,7 +13,7 @@ const AnswerButton = ({ answered, ...props }: Props) => {
   const label = answered ? "確認する" : "回答する";
   //親要素でlabelを指定する
   return (
-    <button {...props} className={style}>
+    <button {...props} className={mergeStyle}>
       {label}
     </button>
   );
