@@ -10,31 +10,39 @@ const LoginPage = () => {
   const router = useRouter();
   const [userId, setUserId] = useState<string>();
   const [password, setPassword] = useState<string>();
+  // const [userIdError, setUserIdError] = useState<boolean>(false);
+  const [userIdBlankError, setUserIdBlankError] = useState<boolean>(false);
+  // const [passwordError, setPasswordError] = useState<boolean>(false);
+  const [passwordBlankError, setPasswordBlankError] = useState<boolean>(false);
 
   // ダミーデータ
-  const userOne = users[0];
-  console.log('userOne', userOne);
+  const correctUser = users[0];
+  // console.log('crrectUser', correctUser);
 
-  // （仮）ログイン認証チェック
+  // todo:（仮）ログイン認証チェック(入力欄がブランクの時のみエラー感知)
   const checkLogin = () => {
-    if (userId !== userOne.user_id && password === userOne.password) {
-      alert('ユーザーIDが違います');
-    } else if (userId === userOne.user_id && password !== userOne.password) {
-      alert('パスワードが違います');
-    } else if (userId !== userOne.user_id && password !== userOne.password) {
-      alert('両方違います');
-    } else {
+    if (!userId && !password) {
+      setUserIdBlankError(true);
+      setPasswordBlankError(true);
+    } else if (!userId && password) {
+      setUserIdBlankError(true);
+      setPasswordBlankError(false);
+    } else if (userId && !password) {
+      setUserIdBlankError(false);
+      setPasswordBlankError(true);
+    } else if (
+      userId === correctUser.user_id &&
+      password === correctUser.password
+    ) {
       router.push('/');
     }
   };
-
-  console.log('userId', userId);
-  console.log('passWord', password);
+  // console.log('typeof userId', typeof userId);
+  // console.log('passWord', typeof password);
   return (
     <>
       <div className="flex flex-col items-center justify-center h-screen">
         <h1 className=" text-orange text-2xl font-bold m-6">Match Face</h1>
-
         <div className="flex flex-col">
           <form className="mt-2 mb-2">
             <label htmlFor="userId" className="">
@@ -47,6 +55,12 @@ const LoginPage = () => {
                 setUserId(e.target.value)
               }
             />
+            {/* {userIdError && (
+              <p className="text-red">※ユーザーIDに誤りがあります</p>
+            )} */}
+            {userIdBlankError && (
+              <p className="text-red">※ユーザーIDを入力してください</p>
+            )}
           </form>
           <form>
             <label htmlFor="password" className="">
@@ -59,6 +73,12 @@ const LoginPage = () => {
                 setPassword(e.target.value)
               }
             />
+            {/* {passwordError && (
+              <p className="text-red">※パスワードに誤りがあります。</p>
+            )} */}
+            {passwordBlankError && (
+              <p className="text-red">※パスワードを入力してください</p>
+            )}
           </form>
         </div>
 

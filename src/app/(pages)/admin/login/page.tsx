@@ -10,26 +10,30 @@ const AdminLoginPage = () => {
   const router = useRouter();
   const [userId, setUserId] = useState<string>();
   const [password, setPassword] = useState<string>();
+  // const [userIdError, setUserIdError] = useState<boolean>(false);
+  const [userIdBlankError, setUserIdBlankError] = useState<boolean>(false);
+  // const [passwordError, setPasswordError] = useState<boolean>(false);
+  const [passwordBlankError, setPasswordBlankError] = useState<boolean>(false);
 
   // ダミーデータ
-  const adminUser = users[2];
-  console.log('adminUser', adminUser);
+  const adminCorrectUser = users[2];
+  // console.log('adminCorrectUser', adminCorrectUser);
 
-  // （仮）ログイン認証チェック
+  // todo:（仮）ログイン認証チェック(入力欄がブランクの時のみエラー感知)
   const checkLogin = () => {
-    if (userId !== adminUser.user_id && password === adminUser.password) {
-      alert('ユーザーIDが違います');
+    if (!userId && !password) {
+      setUserIdBlankError(true);
+      setPasswordBlankError(true);
+    } else if (!userId && password) {
+      setUserIdBlankError(true);
+      setPasswordBlankError(false);
+    } else if (userId && !password) {
+      setUserIdBlankError(false);
+      setPasswordBlankError(true);
     } else if (
-      userId === adminUser.user_id &&
-      password !== adminUser.password
+      userId === adminCorrectUser.user_id &&
+      password === adminCorrectUser.password
     ) {
-      alert('パスワードが違います');
-    } else if (
-      userId !== adminUser.user_id &&
-      password !== adminUser.password
-    ) {
-      alert('両方違います');
-    } else {
       router.push('/admin');
     }
   };
@@ -53,6 +57,9 @@ const AdminLoginPage = () => {
               setUserId(e.target.value)
             }
           />
+          {userIdBlankError && (
+            <p className="text-red">※ユーザーIDを入力してください</p>
+          )}
         </form>
         <form>
           <label htmlFor="password" className="">
@@ -65,6 +72,9 @@ const AdminLoginPage = () => {
               setPassword(e.target.value)
             }
           />
+          {passwordBlankError && (
+            <p className="text-red">※パスワードを入力してください</p>
+          )}
         </form>
       </div>
 
