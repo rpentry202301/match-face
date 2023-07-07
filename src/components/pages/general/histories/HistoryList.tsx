@@ -1,6 +1,7 @@
 import GrayButton from "@/components/ui/button/GrayButton";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import { data } from "@/const/histories";
+import Link from "next/link";
 
 type ProjectData = {
   id: string;
@@ -11,16 +12,20 @@ type ProjectData = {
 }[];
 
 const HistoryList = () => {
-  const response = data;
-  // const projectData = response.json()
-  const projectData: ProjectData = response;
+  // const response = await fetch('http://localhost:3000/api');
+  // if (!response.ok) throw new Error('Failed to fetch data');
+  // const projectData: ProjectData = await response.json();
+  const projectData: ProjectData = data;
+  const toTesting = () => {
+
+  }
   return (
     <div>
       <table className="table-auto border border-collapse my-20">
         <thead>
           <tr>
             <th className="border p-4 bg-neutral-300">コメント</th>
-            <th className="border p-4 bg-neutral-300">回答日</th>
+            <th className="border  bg-neutral-300">回答日</th>
             <th className="border  bg-neutral-300">案件名</th>
             <th className="border  bg-neutral-300">案件概要</th>
             <th className="border  bg-neutral-300"></th>
@@ -43,10 +48,11 @@ const HistoryList = () => {
               <td className="border text-center">{project.project_name}</td>
               <td className="border text-center">{project.project_detail}</td>
               <td className="border text-center px-4">
-                <GrayButton
-                  label={"詳細"}
-                  className="w-15 rounded py-2 px-4 text-sm"
-                />
+                  <GrayButton
+                    label={"詳細"}
+                    className="w-15 rounded py-2 px-4 text-sm"
+                    onClick={toTesting}project.id
+                  />
               </td>
             </tr>
           ))}

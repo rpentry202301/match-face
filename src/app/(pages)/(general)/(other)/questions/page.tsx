@@ -10,9 +10,10 @@ type ProjectData = {
 }[];
 
 const QuestionsPage = () => {
-  const response = data;
-  // const projectData = response.json()
-  const projectData: ProjectData = response;
+  // const response = await fetch('http://localhost:3000/api');
+  // if (!response.ok) throw new Error('Failed to fetch data');
+  // const projectData: ProjectData = await response.json();
+  const projectData: ProjectData = data;
   return (
     <div className="flex flex-col items-center h-screen ">
       <table className="table-auto border border-collapse my-20 w-3/4">
