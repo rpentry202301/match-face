@@ -13,11 +13,19 @@ const GroupTable = () => {
   const [selectedGroupingDate, setSelectedGroupingDate] = useState("");
   const [selectedGroupName, setSelectedGroupName] = useState("");
   const [selectedGroupDescription, setSelectedGroupDescription] = useState("");
+  const [selectedGroupMember, setSelectedGroupMember] = useState("");
 
   const toggleModal = (group: any) => {
     setSelectedGroupingDate(group.grouping_date);
     setSelectedGroupName(group.group_name);
     setSelectedGroupDescription(group.grouping_description);
+    if (group.group_member) {
+      setSelectedGroupMember(
+        group.group_member.map((member: any) => member.user_name).join(",")
+      );
+    } else {
+      setSelectedGroupMember("");
+    }
     setIsOpen(!isOpen);
   };
 
@@ -29,7 +37,7 @@ const GroupTable = () => {
             <div className="flex flex-col items-center justify-center h-screen">
               <div className="bg-white px-7 pt-5 pb-2">
                 <div className="bg-orange py-2">
-                <h1 className="font-black">グループ詳細</h1>
+                  <h1 className="font-black">グループ詳細</h1>
                 </div>
                 <table className="border-collapse">
                   <tbody>
@@ -45,7 +53,9 @@ const GroupTable = () => {
                     </tr>
                     <tr>
                       <th className="border px-4 py-2">メンバー</th>
-                      <td className="border px-4 py-2"></td>
+                      <td className="border px-4 py-2">
+                        {selectedGroupMember}
+                      </td>
                     </tr>
                     <tr>
                       <th className="border px-4 py-2">備考</th>
