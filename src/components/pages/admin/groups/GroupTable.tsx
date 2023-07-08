@@ -27,8 +27,10 @@ const GroupTable = () => {
         <div id="modal" className="hidden target:block">
           <div className="block w-full h-full bg-black/70 absolute top-0 left-0">
             <div className="flex flex-col items-center justify-center h-screen">
-              <div className="bg-white px-5 py-3">
-                <h1>グループ詳細</h1>
+              <div className="bg-white px-7 pt-5 pb-2">
+                <div className="bg-orange py-2">
+                <h1 className="font-black">グループ詳細</h1>
+                </div>
                 <table className="border-collapse">
                   <tbody>
                     <tr>
