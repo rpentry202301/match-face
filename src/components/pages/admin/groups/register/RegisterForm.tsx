@@ -6,6 +6,10 @@ import WhiteButton from "@/components/ui/button/WhiteButton";
 import Link from "next/link";
 import Input from "@/components/ui/Input";
 
+
+// グループ一覧に遷移する機能作ったほうが良い？
+
+
 const RegisterForm = () => {
 
   // モーダル表示用

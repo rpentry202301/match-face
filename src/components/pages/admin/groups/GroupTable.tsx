@@ -94,7 +94,7 @@ const GroupTable = () => {
                 <td className="border px-4 py-2">{group.grouping_date}</td>
                 <td className="border px-4 py-2">
                   <a href="#modal">
-                    <button onClick={() => toggleModal(group)}>
+                    <button onClick={() => toggleModal(group)} className="hover:bg-amber-200 duration-200">
                       {group.group_name}
                     </button>
                   </a>
