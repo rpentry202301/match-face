@@ -45,4 +45,14 @@ export const group:Group[] = [
     ],
     grouping_description: "空欄でも可",
   },
+
+  {
+    id: 4,
+    grouping_date: "2023-07-08",
+    group_name: "テストグループその4",
+    group_member: [
+      { user_id: "3", user_name: "テスト三郎" },
+    ],
+    grouping_description: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  },
 ];
