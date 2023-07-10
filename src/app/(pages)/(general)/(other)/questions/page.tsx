@@ -1,5 +1,6 @@
 import AnswerButton from "@/components/pages/general/questions/AnswerButton";
 import { data } from "@/const/questions";
+import Link from "next/link";
 
 type ProjectData = {
   id: string;
@@ -14,6 +15,7 @@ const QuestionsPage = () => {
   // if (!response.ok) throw new Error('Failed to fetch data');
   // const projectData: ProjectData = await response.json();
   const projectData: ProjectData = data;
+  let toLink;
   return (
     <div className="flex flex-col items-center h-screen ">
       <table className="table-auto border border-collapse my-20 w-3/4">
@@ -34,7 +36,17 @@ const QuestionsPage = () => {
               <td className="border text-center">{project.project_name}</td>
               <td className="border text-center">{project.project_detail}</td>
               <td className="border text-center">
-                <AnswerButton answered={project.answer_status} />
+                {
+                  (toLink = project.answer_status ? (
+                    <Link href="/result">
+                      <AnswerButton answered={project.answer_status} />
+                    </Link>
+                  ) : (
+                    <Link href="/testing">
+                      <AnswerButton answered={project.answer_status} />
+                    </Link>
+                  ))
+                }
               </td>
             </tr>
           ))}
