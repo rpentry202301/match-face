@@ -5,6 +5,8 @@ import OrangeButton from "@/components/ui/button/OrangeButton";
 import WhiteButton from "@/components/ui/button/WhiteButton";
 import Link from "next/link";
 import Input from "@/components/ui/Input";
+import TextArea from "@/components/ui/TextArea";
+import { group } from "console";
 
 
 // グループ一覧に遷移する機能作ったほうが良い？
@@ -33,6 +35,8 @@ const RegisterForm = () => {
           <br />
           <label htmlFor="group_description">▶備考</label>
           <Input id="group_description" />
+          {/* テキストエリアにするかも*/}
+          {/* <TextArea id="group_description" cols={1} rows={1} value={''}/> */}
         </form>
         <br />
         <a href="#modal">
