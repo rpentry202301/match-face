@@ -1,6 +1,5 @@
 "use client";
 import { ComponentProps } from "react";
-import { twMerge } from "tailwind-merge";
 
 type Props = {
   answered?: boolean;
