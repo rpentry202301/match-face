@@ -11,6 +11,7 @@ const TextArea = ({ cols, rows, value, ...props }: Props) => {
   const mergeStyle = twMerge("border border-black w-full p-3", props.className);
   return (
     <textarea
+      {...props}
       cols={cols}
       rows={rows}
       value={value}
