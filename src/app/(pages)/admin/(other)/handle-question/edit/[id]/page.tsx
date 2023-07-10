@@ -43,6 +43,12 @@ const EditQuestionPage = () => {
     setNewId(newID + 1);
   };
 
+  const handleQuestionDelete = (index: number) => {
+    const updatedData = [...editData];
+    updatedData.splice(index, 1);
+    setEditData(updatedData);
+  };
+
   const sendData = () => {
     console.log(editData);
   };
@@ -131,6 +137,7 @@ const EditQuestionPage = () => {
               <WhiteButton
                 label="削除"
                 className="w-20 text-xs py-1 mx-auto mt-5"
+                onClick={() => handleQuestionDelete(index)}
               />
             </div>
           );
@@ -190,6 +197,7 @@ const EditQuestionPage = () => {
               <WhiteButton
                 label="削除"
                 className="w-20 text-xs py-1 mx-auto mt-5"
+                onClick={() => handleQuestionDelete(index)}
               />
             </div>
           );
