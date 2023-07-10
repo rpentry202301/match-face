@@ -1,9 +1,8 @@
-import { fireEvent, render,screen } from '@testing-library/react'
+import { render,screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import HistoriesPage from '@/app/(pages)/admin/(other)/histories/page'
 import React from 'react'
-import {handleSubmit} from '../../../../../components/pages/admin/histories/select'
-// import * as SelectModule from '../../../../../components/pages/admin/histories/select'
+import "@testing-library/jest-dom"
 
 describe('管理者/履歴一覧画面のテスト',() => {
     const user = userEvent.setup()
@@ -29,10 +28,10 @@ describe('管理者/履歴一覧画面のテスト',() => {
     })
     describe('絞り込みテスト',()=>{
         it('回答月の選択',async()=>{
-            const beforeSelectMonth = screen.getByRole("option",{name:"--"})
+            const beforeSelectMonth = screen.getByRole("option",{name:"--"}) as HTMLOptionElement
             expect(beforeSelectMonth.selected).toBe(true)
             await user.selectOptions(screen.getByTestId('month'),'2023-07')
-            const selectMonth = screen.getByRole("option",{name:"2023-07"})
+            const selectMonth = screen.getByRole("option",{name:"2023-07"}) as HTMLOptionElement
             expect(selectMonth.selected).toBe(true)
             expect(beforeSelectMonth.selected).toBe(false)
         })
@@ -59,17 +58,19 @@ describe('管理者/履歴一覧画面のテスト',() => {
             expect(selectReact).toBeChecked()
         })
         it('絞り込みボタンを押下',async()=>{
+            const consoleMock = jest.fn()
+            global.console.log = consoleMock
             const selectMonth = screen.getByTestId('month')
             const selectJava = screen.getByRole('button',{name:"Java"})
             const selectTypescript = screen.getByRole('checkbox',{name:"TypeScript"})
             await user.selectOptions(selectMonth,'2023-07')
             await user.click(selectJava)
             await user.click(selectTypescript)
-            const formEvent = new Event('submit',{bubbles:true})
-            Object.assign(formEvent,{preventDefault:jest.fn()})
             const form = screen.getByRole('button',{name:"絞り込み"})
-            fireEvent(form,formEvent)
-            expect(formEvent.preventDefault).toHaveBeenCalledTimes(1)
+            await user.click(form)
+            expect(consoleMock).toHaveBeenCalled()
+            expect(consoleMock).toHaveBeenCalledTimes(1)
+            expect(consoleMock).toHaveBeenCalledWith({ month: '2023-07', department: 'Java', skills: [ 'TypeScript' ] })
         })
     })
 })

@@ -7,6 +7,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
   >
     <form
       action="submit"
+      data-testid="form"
     >
       <div
         class="mb-[2vh]"
@@ -312,7 +313,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
       </fieldset>
       <div>
         <button
-          class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white rounded-xl w-40 h-8 text-lg"
+          class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white rounded-xl p-2 w-40 h-auto text-lg"
           type="submit"
         >
           絞り込み

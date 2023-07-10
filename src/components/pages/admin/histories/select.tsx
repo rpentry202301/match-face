@@ -22,7 +22,6 @@ const HistoriesSelect = (props: Style) => {
     projects.map((project)=>
         allDeadlines.push(project.answer_deadline)
     )
-    // 同じ日付をまとめる
     const set = new Set(allDeadlines)
     const deadlines = Array.from(set)
 
@@ -30,7 +29,7 @@ const HistoriesSelect = (props: Style) => {
 
     return (
         <section  className={style}>
-            <form action="submit" onSubmit={(e)=>{handleSubmit(e,formData);console.log(e)}}>
+            <form data-testid="form" action="submit" onSubmit={(e)=>{handleSubmit(e,formData)}}>
                 <div className="mb-[2vh]">
                     <label htmlFor="month">回答月：</label>
                     <select data-testid="month" name="month" id="month" className="border-2" onChange={(e)=>setFormData({...formData,month:e.target.value})}>
@@ -45,10 +44,14 @@ const HistoriesSelect = (props: Style) => {
                         <span key={department}>
                         {department!==formData.department&&
                             <WhiteButton label={department} key={department} className="mx-[10px] w-[8vw]" value={department} 
-                                    onClick={(e)=>setFormData({...formData,department:e.currentTarget.value})}/>}
+                                    onClick={(e)=>
+                                        {e.preventDefault()
+                                        setFormData({...formData,department:e.currentTarget.value})}}/>}
                         {department===formData.department&&
                             <WhiteButton label={department} key={department} value={""} className="bg-deep-gray mx-[10px] w-[8vw]"
-                            onClick={(e)=>setFormData({...formData,department:e.currentTarget.value})}/>}
+                                    onClick={(e)=>
+                                        {e.preventDefault()
+                                        setFormData({...formData,department:e.currentTarget.value})}}/>}
                         </span>
                     ))}
                 </div>
@@ -83,7 +86,6 @@ export function setSkill(
 
 export function handleSubmit(e:FormEvent<HTMLFormElement>,formData:{month:string,department:string,skills:string[]}){
     e.preventDefault()
-    // 絞り込み条件をformDataに格納ずみ
+    // 絞り込み条件をformDataに格納
     console.log(formData)
-    return formData
 }
