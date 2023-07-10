@@ -26,13 +26,13 @@ export default function Notification({
           {title}
         </h1>
 
-        <div className="">
+        <div className="pt-5">
           {/* answer_statusがtrueの件数? */}
           <h2 className="">【対応済】{completedTasksNumbers}件</h2>
           {/* answer_statusがfalseの件数? */}
-          <h2 className="pt-4">【未対応】{incompletedTasksNumbers}件</h2>
+          <h2 className="pt-5">【未対応】{incompletedTasksNumbers}件</h2>
           {/* データ構造がはっきりしてから編集要*/}
-          <ul className=" pl-4">
+          <ul className=" pl-5">
             <li className="pt-2">
               {deadlineDay}までに対応必須の項目が{deadlineNumbers}件あります
             </li>
