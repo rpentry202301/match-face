@@ -6,7 +6,7 @@ import WhiteButton from "@/components/ui/button/WhiteButton";
 import Link from "next/link";
 import Input from "@/components/ui/Input";
 import TextArea from "@/components/ui/TextArea";
-import { group } from "console";
+import UserSelectModal from "../../tasks/register/UserSelectModal";
 
 
 // グループ一覧に遷移する機能作ったほうが良い？
@@ -30,7 +30,8 @@ const RegisterForm = () => {
           <br />
           <label htmlFor="user">▶ユーザーを選択する</label>
           <span>&nbsp;</span>
-          <WhiteButton label="追加" className=" px-3 py-1 text-xs" />
+          {/* <WhiteButton label="追加" className=" px-3 py-1 text-xs" /> */}
+          <UserSelectModal/>
           <Input id="user" />
           <br />
           <label htmlFor="group_description">▶備考</label>
