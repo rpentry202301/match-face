@@ -8,9 +8,9 @@ const Refinement = () => {
     <div className="border-2 flex flex-col items-center w-5/12 max-w-5/12">
       <div className="mt-7 flex items-center w-4/5 ">
         <div className=" w-4/5">
-          <Input id="search" className="w-full pl-1" />
+          <Input id="search" className="w-full pl-1 border-deep-gray" />
         </div>
-        <div className=" w-1/5 flex justify-end">
+        <div className=" w-1/5 flex justify-end" >
           <WhiteButton label="検索" className="text-xs py-1 px-5" />
         </div>
       </div>

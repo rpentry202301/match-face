@@ -5,6 +5,7 @@ import { AnswerList } from "./answerList";
 import { CommentContent } from "./comment";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import { Answer } from "@/const/result";
+import { useRouter } from "next/navigation";
 
 type Props = {
   user_id: string;
@@ -12,6 +13,7 @@ type Props = {
 };
 
 export const AnswerContent = ({ user_id, project_id }: Props) => {
+  const router = useRouter();
   const currentProject = project.filter((project) => project.id === project_id);
   const currentAnswer = Answer.filter((answer) => project_id == project_id);
 
@@ -27,8 +29,14 @@ export const AnswerContent = ({ user_id, project_id }: Props) => {
       <AnswerList project_id={project_id} />
       <CommentContent user_id={user_id} project_id={project_id} />
       <div className="flex justify-around my-20">
-        <OrangeButton label="質問一覧へ" />
-        <OrangeButton label="回答履歴一覧へ" />
+        <OrangeButton
+          label="質問一覧へ"
+          onClick={() => router.push("/questions")}
+        />
+        <OrangeButton
+          label="回答履歴一覧へ"
+          onClick={() => router.push("/histories")}
+        />
       </div>
     </div>
   );
