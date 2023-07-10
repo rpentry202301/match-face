@@ -18,9 +18,15 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
         </label>
         <select
           class="border-2"
+          data-testid="month"
           id="month"
           name="month"
         >
+          <option
+            value=""
+          >
+            --
+          </option>
           <option
             value="2023-07"
           >
@@ -36,36 +42,54 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
       <div
         class="mb-[2vh]"
       >
-        <button
-          class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw]"
-        >
-          Java
-        </button>
-        <button
-          class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw]"
-        >
-          PHP
-        </button>
-        <button
-          class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw]"
-        >
-          FR
-        </button>
-        <button
-          class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw]"
-        >
-          CL
-        </button>
-        <button
-          class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw]"
-        >
-          ML
-        </button>
-        <button
-          class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw]"
-        >
-          QA
-        </button>
+        <span>
+          <button
+            class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw]"
+            value="Java"
+          >
+            Java
+          </button>
+        </span>
+        <span>
+          <button
+            class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw]"
+            value="PHP"
+          >
+            PHP
+          </button>
+        </span>
+        <span>
+          <button
+            class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw]"
+            value="FR"
+          >
+            FR
+          </button>
+        </span>
+        <span>
+          <button
+            class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw]"
+            value="CL"
+          >
+            CL
+          </button>
+        </span>
+        <span>
+          <button
+            class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw]"
+            value="ML"
+          >
+            ML
+          </button>
+        </span>
+        <span>
+          <button
+            class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw]"
+            value="QA"
+          >
+            QA
+          </button>
+        </span>
       </div>
       <fieldset
         class="mb-[2vh] max-w-[50vw] ml-[15vw]"
@@ -82,6 +106,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
             id="JavaScript"
             name="JavaScript"
             type="checkbox"
+            value="JavaScript"
           />
           <label
             for="JavaScript"
@@ -96,6 +121,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
             id="TypeScript"
             name="TypeScript"
             type="checkbox"
+            value="TypeScript"
           />
           <label
             for="TypeScript"
@@ -110,6 +136,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
             id="React"
             name="React"
             type="checkbox"
+            value="React"
           />
           <label
             for="React"
@@ -124,6 +151,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
             id="Next.js"
             name="Next.js"
             type="checkbox"
+            value="Next.js"
           />
           <label
             for="Next.js"
@@ -138,6 +166,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
             id="Vue.js"
             name="Vue.js"
             type="checkbox"
+            value="Vue.js"
           />
           <label
             for="Vue.js"
@@ -152,6 +181,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
             id="Angular"
             name="Angular"
             type="checkbox"
+            value="Angular"
           />
           <label
             for="Angular"
@@ -166,6 +196,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
             id="Nuxt.js"
             name="Nuxt.js"
             type="checkbox"
+            value="Nuxt.js"
           />
           <label
             for="Nuxt.js"
@@ -180,6 +211,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
             id="jQuery"
             name="jQuery"
             type="checkbox"
+            value="jQuery"
           />
           <label
             for="jQuery"
@@ -194,6 +226,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
             id="Redux"
             name="Redux"
             type="checkbox"
+            value="Redux"
           />
           <label
             for="Redux"
@@ -208,6 +241,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
             id="vuex"
             name="vuex"
             type="checkbox"
+            value="vuex"
           />
           <label
             for="vuex"
@@ -222,6 +256,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
             id="MaterialUI"
             name="MaterialUI"
             type="checkbox"
+            value="MaterialUI"
           />
           <label
             for="MaterialUI"
@@ -236,6 +271,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
             id="tailwind"
             name="tailwind"
             type="checkbox"
+            value="tailwind"
           />
           <label
             for="tailwind"
@@ -250,6 +286,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
             id="Bootstrap"
             name="Bootstrap"
             type="checkbox"
+            value="Bootstrap"
           />
           <label
             for="Bootstrap"
@@ -264,6 +301,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
             id="Vercel"
             name="Vercel"
             type="checkbox"
+            value="Vercel"
           />
           <label
             for="Vercel"
@@ -274,7 +312,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
       </fieldset>
       <div>
         <button
-          class="bg-orange drop-shadow-lg hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange text-white rounded-xl w-40 h-8 text-lg"
+          class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white rounded-xl w-40 h-8 text-lg"
           type="submit"
         >
           絞り込み

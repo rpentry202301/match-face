@@ -3,7 +3,7 @@ import OrangeButton from "@/components/ui/button/OrangeButton";
 import WhiteButton from "@/components/ui/button/WhiteButton"
 import { skills,departments,projects } from "@/const/admin_histories";
 import { twMerge } from "tailwind-merge";
-import { Dispatch, SetStateAction, SyntheticEvent } from "react";
+import { Dispatch, FormEvent, SetStateAction, SyntheticEvent } from "react";
 import { useState } from "react";
 
 type Style = {
@@ -17,25 +17,23 @@ const HistoriesSelect = (props: Style) => {
         props.className
         );
 
-    function handleSubmit(e:SyntheticEvent){
-        e.preventDefault()
-        console.log(formData)
-    }
-
     // 選択用日付
     const allDeadlines:string[] = []
     projects.map((project)=>
         allDeadlines.push(project.answer_deadline)
     )
+    // 同じ日付をまとめる
     const set = new Set(allDeadlines)
     const deadlines = Array.from(set)
 
+    
+
     return (
         <section  className={style}>
-            <form action="submit" onSubmit={handleSubmit}>
+            <form action="submit" onSubmit={(e)=>{handleSubmit(e,formData);console.log(e)}}>
                 <div className="mb-[2vh]">
                     <label htmlFor="month">回答月：</label>
-                    <select name="month" id="month" className="border-2" onChange={(e)=>setFormData({...formData,month:e.target.value})}>
+                    <select data-testid="month" name="month" id="month" className="border-2" onChange={(e)=>setFormData({...formData,month:e.target.value})}>
                         <option value="">--</option>
                         {deadlines.map((deadline)=>(
                             <option value={deadline} key={deadline}>{deadline}</option>
@@ -58,7 +56,7 @@ const HistoriesSelect = (props: Style) => {
                     <legend>使用技術：</legend>
                         {skills.map((skill)=>(
                             <span  key={skill.id} className="px-[10px] whitespace-nowrap">
-                            <input type="checkbox" id={skill.skill} name={skill.skill} 
+                            <input type="checkbox" id={skill.skill} name={skill.skill} value={skill.skill}
                                 onChange={(e)=>setSkill(e,formData,setFormData)}/>
                             <label htmlFor={skill.skill}>{skill.skill}</label>
                             </span>
@@ -75,8 +73,17 @@ export function setSkill(
     e:any,
     formData:{month:string,department:string,skills:string[]},setFormData:Dispatch<SetStateAction<{ month: string; department: string; skills: string[] }>>
     ){
+    const selectSkills = []
+    // 選択済みの項目は選択解除、未選択の項目は選択済みにする
     formData.skills.includes(e.currentTarget.value)?
-        formData.skills.filter((skill:string)=>skill!==e.currentTarget.value)
-        :formData.skills.push(e.currentTarget.value)
-    setFormData({...formData,skills:formData.skills})
+        selectSkills.push(...(formData.skills.filter((skill:string)=>skill!==e.currentTarget.value)))
+        :selectSkills.push(...formData.skills,e.currentTarget.value)
+    setFormData({...formData,skills:selectSkills})
+}
+
+export function handleSubmit(e:FormEvent<HTMLFormElement>,formData:{month:string,department:string,skills:string[]}){
+    e.preventDefault()
+    // 絞り込み条件をformDataに格納ずみ
+    console.log(formData)
+    return formData
 }
