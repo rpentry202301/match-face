@@ -1,5 +1,4 @@
 import Input from "@/components/ui/Input";
-import WhiteButton from "@/components/ui/button/WhiteButton";
 import UserSelectModal from "../UserSelectModal";
 
 const SelectUsers = () => {
