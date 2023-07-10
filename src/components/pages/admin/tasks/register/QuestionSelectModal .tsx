@@ -13,26 +13,10 @@ import QuestionList from "./QuestionList"
 // 実際にレンダリングされるモーダルは以下に記述
 const QuestionSelectModal = () => {
   const [ search, setSearch ] = useState('')
-  const [ year, setYear ] = useState('')
-  const [ month, setMonth ] = useState('')
-  const [ group, setGroup ] = useState('')
   const [ isOpened, setIsOpened ] = useState(false)
   
   const open = () => setIsOpened(true)
   const close = () => setIsOpened(false)
-
-  // 2000年からの配列を作成
-  const maxYear = (new Date()).getFullYear()
-  const yearArr = Array(maxYear-1999)
-    .fill(2000)
-    .map((num, index) => `${num + index}`)
-  yearArr.unshift("")
-  
-  // 月の配列を作成
-  const monthArr = Array(12)
-    .fill(1)
-    .map((num, index) => `${num + index}`)
-  monthArr.unshift("")
 
   const Modal = ({
     children,
