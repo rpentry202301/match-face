@@ -66,6 +66,10 @@ const QuestionSelectModal = () => {
 
   return (
     <Modal buttonText="追加">
+      <div className="ml-16">
+        <h2>▶️質問を選択する</h2>
+      </div>
+
       <div className="flex flex-col item-center border-2 rounded-md w-5/6 mx-auto mt-2 p-8">
         <div className="flex items-center mb-4 mx-auto">
           <Input
