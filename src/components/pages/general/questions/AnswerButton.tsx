@@ -13,7 +13,7 @@ const AnswerButton = ({ answered, ...props }: Props) => {
   const label = answered ? "確認する" : "回答する";
   //親要素でlabelを指定する
   return (
-    <button {...props} className={mergeStyle}>
+    <button {...props} className={style}>
       {label}
     </button>
   );
