@@ -1,13 +1,46 @@
 "use client";
-import SortUserList from "@/components/pages/admin/users/SortUserList";
+import { useState } from "react";
 import { entry_data } from "@/const/userList";
 
 const UserList = () => {
+  const [sortedData, setSortedData] = useState(entry_data);
+
+  // データを昇順もしくは降順に並べ替える
+  const sortOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const sortOption = event.target.value;
+    if (sortOption === "入社日昇順") {
+      const sortedData = [...entry_data].sort(function (a, b) {
+        return a.entry_date < b.entry_date ? -1 : 1;
+      });
+      // console.log(sortedData);
+      setSortedData(sortedData);
+    } else {
+      const sortedData = [...entry_data].sort(function (a, b) {
+        return b.entry_date < a.entry_date ? -1 : 1;
+      });
+      // console.log(sortedData);
+      setSortedData(sortedData);
+    }
+    return setSortedData;
+  };
+
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center mb-10">
       <div className="flex flex-col justify-center w-max">
         <div className="flex justify-end">
-          <SortUserList />
+          <div>
+            <label htmlFor="sortData">ソート：</label>
+            <select
+              name="userList"
+              id="userList"
+              className=" border border-deep-gary"
+              onChange={sortOptionChange}
+              defaultValue="入社日昇順"
+            >
+              <option value="入社日昇順">入社日昇順</option>
+              <option value="入社日降順">入社日降順</option>
+            </select>
+          </div>
         </div>
         <table className=" w-[720px] my-1">
           <thead>
@@ -18,7 +51,7 @@ const UserList = () => {
               <th className=" border">氏名</th>
             </tr>
           </thead>
-          {entry_data.map((data: any, index: number) => (
+          {sortedData.map((data: any, index: number) => (
             <tbody key={index}>
               <tr className="border text-center">
                 <td className=" border py-3">{data.entry_date}</td>
