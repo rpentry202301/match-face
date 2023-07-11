@@ -1,0 +1,300 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`質問・回答例編集画面テスト スナップショット 1`] = `
+<div>
+  <div
+    class="flex flex-col items-center my-20 w-4/5 mx-auto h-auto"
+  >
+    <div
+      class="w-2/3"
+    >
+      <div
+        class="flex items-end justify-between border-b-2 border-black pb-3"
+      >
+        <h1
+          class="text-3xl"
+        >
+          質問・回答例の編集
+        </h1>
+        <p>
+          登録日:
+          2023-7-6
+        </p>
+      </div>
+      <div
+        class="my-8"
+      >
+        <h2
+          class="text-2xl"
+        >
+          案件名：
+          test1
+        </h2>
+        <p
+          class="border p-3 mt-2"
+        >
+          案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示
+        </p>
+      </div>
+    </div>
+    <div
+      class="flex flex-col w-2/3 my-5 border-b border-black pb-16 border-dashed"
+    >
+      <h2
+        class="text-2xl"
+        data-testid="write_1"
+      >
+        Q
+        1
+        .
+      </h2>
+      <textarea
+        class="border-deep-gray border  p-1 mt-2"
+        id="question"
+        name="question"
+        rows="5"
+      >
+        問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１
+      </textarea>
+      <label
+        class="my-3 text-2xl"
+        for="answer_ex"
+      >
+        回答例
+      </label>
+      <textarea
+        class="border-deep-gray border p-1"
+        id="answer_ex"
+        name="answer_ex"
+        rows="5"
+      >
+        問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例
+      </textarea>
+      <button
+        class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-20 text-xs py-1 mx-auto mt-5"
+      >
+        削除
+      </button>
+    </div>
+    <div
+      class="flex flex-col w-2/3 my-5 border-b border-black pb-16 border-dashed"
+    >
+      <h2
+        class="text-2xl"
+        data-testid="write_2"
+      >
+        Q
+        2
+        .
+      </h2>
+      <textarea
+        class="border-deep-gray border  p-1 mt-2"
+        id="question"
+        name="question"
+        rows="5"
+      >
+        問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２
+      </textarea>
+      <label
+        class="my-3 text-2xl"
+        for="answer_ex"
+      >
+        回答例
+      </label>
+      <textarea
+        class="border-deep-gray border p-1"
+        id="answer_ex"
+        name="answer_ex"
+        rows="5"
+      >
+        問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例
+      </textarea>
+      <button
+        class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-20 text-xs py-1 mx-auto mt-5"
+      >
+        削除
+      </button>
+    </div>
+    <div
+      class="flex flex-col w-2/3 my-5 border-b border-black pb-16 border-dashed"
+    >
+      <h2
+        class="text-2xl"
+        data-testid="select_3"
+      >
+        Q
+        3
+        .
+      </h2>
+      <textarea
+        class="border-deep-gray border p-1 mt-2"
+        id="question"
+        name="question"
+        rows="5"
+      >
+        問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３
+      </textarea>
+      <div
+        class="flex mt-5"
+      >
+        <label
+          for="select2"
+        >
+          選択肢
+          3
+          :
+        </label>
+        <div>
+          <input
+            class="border border-deep-gray pl-1"
+            id="select2"
+            value="選択肢1"
+          />
+        </div>
+      </div>
+      <div
+        class="flex mt-5"
+      >
+        <label
+          for="select2"
+        >
+          選択肢
+          3
+          :
+        </label>
+        <div>
+          <input
+            class="border border-deep-gray pl-1"
+            id="select2"
+            value="選択肢2"
+          />
+        </div>
+      </div>
+      <div
+        class="flex mt-5"
+      >
+        <label
+          for="select2"
+        >
+          選択肢
+          3
+          :
+        </label>
+        <div>
+          <input
+            class="border border-deep-gray pl-1"
+            id="select2"
+            value="選択肢3"
+          />
+        </div>
+      </div>
+      <div
+        class="flex mt-5"
+      >
+        <label
+          for="select2"
+        >
+          選択肢
+          3
+          :
+        </label>
+        <div>
+          <input
+            class="border border-deep-gray pl-1"
+            id="select2"
+            value="選択肢4"
+          />
+        </div>
+      </div>
+      <div
+        class="flex mt-5"
+      >
+        <label
+          for="answer"
+        >
+          回答:
+        </label>
+        <select
+          class="border-deep-gray"
+          id="answer"
+          name="answer"
+        >
+          <option
+            class="border-deep-gray"
+            value="選択肢1"
+          >
+            選択肢1
+          </option>
+          <option
+            class="border-deep-gray"
+            selected=""
+            value="選択肢2"
+          >
+            選択肢2
+          </option>
+          <option
+            class="border-deep-gray"
+            value="選択肢3"
+          >
+            選択肢3
+          </option>
+          <option
+            class="border-deep-gray"
+            value="選択肢4"
+          >
+            選択肢4
+          </option>
+        </select>
+      </div>
+      <button
+        class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-20 text-xs py-1 mx-auto mt-5"
+      >
+        削除
+      </button>
+    </div>
+    <div
+      class="flex flex-col"
+    >
+      <div
+        class="flex justify-around m-3"
+      >
+        <button
+          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md m-10"
+          data-testid="addWriteButton"
+        >
+          記述質問追加
+        </button>
+        <button
+          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md m-10"
+          data-testid="addSelectButton"
+        >
+          選択質問追加
+        </button>
+      </div>
+      <div
+        class="flex m-3"
+      >
+        <a
+          data-testid="backList"
+          href="/admin/handle-question"
+        >
+          <div>
+            <button
+              class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white p-2 w-40 h-auto text-lg m-10 rounded-none py-5 flex items-center justify-center"
+            >
+              &lt; 一覧へ戻る
+            </button>
+          </div>
+        </a>
+        <div>
+          <button
+            class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white p-2 w-40 h-auto text-lg m-10 rounded-none py-5 flex items-center justify-center"
+          >
+            保存する
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

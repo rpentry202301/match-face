@@ -8,8 +8,12 @@ const HandleQuestionPage = () => {
     <>
       <div className="flex flex-col items-center my-10">
         <Refinement />
-        <Link href={"/admin/handle-question/create"}> 
-        <OrangeButton label="新規追加" className="my-10 active:my-10" />
+        <Link
+          href={"/admin/handle-question/create"}
+          id="createButton"
+          data-testid="createButton"
+        >
+          <OrangeButton label="新規追加" className="my-10 active:my-10" />
         </Link>
         <ProjectTable />
       </div>
