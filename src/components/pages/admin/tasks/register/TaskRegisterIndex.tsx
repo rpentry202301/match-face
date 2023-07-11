@@ -12,7 +12,7 @@ const TaskRegisterIndex = () => {
           <SelectQuestions />
           <SelectDeadline />
           <div className="flex justify-center mt-10">
-            <OrangeButton label="タスクを追加する" className="text-base"/>
+            <OrangeButton label="新規タスクを作成" className="text-base"/>
           </div>
         </div>
       </div>
