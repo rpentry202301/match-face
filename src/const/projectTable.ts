@@ -1,22 +1,43 @@
+export type Question = {
+  question_id: number;
+  question: string;
+  answer_example?: string;
+  answer?: string;
+  choices?: string[];
+};
+
+export type AnswerEditData = {
+  id: number;
+  project_name: string;
+  project_detail: string;
+  questions: Question[];
+  edit_date: string;
+  department: string;
+};
+
 const ProjectTableData = [
   {
+    id: 1,
     project_name: "test1",
     project_detail:
       "案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示",
     questions: [
       {
+        question_id: 1,
         question:
           "問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１",
         answer_example:
           "問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例",
       },
       {
+        question_id: 2,
         question:
           "問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２",
         answer_example:
           "問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例",
       },
       {
+        question_id: 3,
         question:
           "問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３",
         answer_example:
@@ -27,23 +48,27 @@ const ProjectTableData = [
     department: "FR",
   },
   {
+    id: 2,
     project_name: "test2",
     project_detail:
       "案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示",
     questions: [
       {
+        question_id: 1,
         question:
           "問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１",
         answer_example:
           "問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例",
       },
       {
+        question_id: 2,
         question:
           "問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２",
         answer_example:
           "問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例",
       },
       {
+        question_id: 3,
         question:
           "問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３",
         answer_example:
@@ -54,23 +79,27 @@ const ProjectTableData = [
     department: "java",
   },
   {
+    id: 3,
     project_name: "test3",
     project_detail:
       "案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示",
     questions: [
       {
+        question_id: 1,
         question:
           "問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１",
         answer_example:
           "問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例",
       },
       {
+        question_id: 2,
         question:
           "問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２",
         answer_example:
           "問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例",
       },
       {
+        question_id: 3,
         question:
           "問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３",
         answer_example:
@@ -81,23 +110,27 @@ const ProjectTableData = [
     department: "PHP",
   },
   {
+    id: 4,
     project_name: "test4",
     project_detail:
       "案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示",
     questions: [
       {
+        question_id: 1,
         question:
           "問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１",
         answer_example:
           "問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例",
       },
       {
+        question_id: 2,
         question:
           "問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２",
         answer_example:
           "問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例",
       },
       {
+        question_id: 3,
         question:
           "問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３",
         answer_example:
@@ -108,23 +141,27 @@ const ProjectTableData = [
     department: "PHP",
   },
   {
+    id: 5,
     project_name: "test5",
     project_detail:
       "案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示",
     questions: [
       {
+        question_id: 1,
         question:
           "問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１",
         answer_example:
           "問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例",
       },
       {
+        question_id: 2,
         question:
           "問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２",
         answer_example:
           "問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例",
       },
       {
+        question_id: 3,
         question:
           "問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３",
         answer_example:
@@ -135,23 +172,27 @@ const ProjectTableData = [
     department: "PHP",
   },
   {
+    id: 6,
     project_name: "test6",
     project_detail:
       "案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示",
     questions: [
       {
+        question_id: 1,
         question:
           "問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１",
         answer_example:
           "問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例",
       },
       {
+        question_id: 2,
         question:
           "問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２",
         answer_example:
           "問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例",
       },
       {
+        question_id: 3,
         question:
           "問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３",
         answer_example:
@@ -162,23 +203,27 @@ const ProjectTableData = [
     department: "PHP",
   },
   {
+    id: 7,
     project_name: "test7",
     project_detail:
       "案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示",
     questions: [
       {
+        question_id: 1,
         question:
           "問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１",
         answer_example:
           "問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例",
       },
       {
+        question_id: 2,
         question:
           "問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２",
         answer_example:
           "問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例",
       },
       {
+        question_id: 3,
         question:
           "問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３",
         answer_example:
@@ -189,6 +234,7 @@ const ProjectTableData = [
     department: "PHP",
   },
   {
+    id: 8,
     project_name: "test8",
     project_detail:
       "案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示",
@@ -216,23 +262,27 @@ const ProjectTableData = [
     department: "PHP",
   },
   {
+    id: 9,
     project_name: "test9",
     project_detail:
       "案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示",
     questions: [
       {
+        question_id: 1,
         question:
           "問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１",
         answer_example:
           "問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例",
       },
       {
+        question_id: 2,
         question:
           "問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２",
         answer_example:
           "問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例",
       },
       {
+        question_id: 3,
         question:
           "問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３",
         answer_example:
@@ -243,23 +293,27 @@ const ProjectTableData = [
     department: "PHP",
   },
   {
+    id: 10,
     project_name: "test10",
     project_detail:
       "案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示",
     questions: [
       {
+        question_id: 1,
         question:
           "問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１",
         answer_example:
           "問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例",
       },
       {
+        question_id: 2,
         question:
           "問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２",
         answer_example:
           "問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例",
       },
       {
+        question_id: 3,
         question:
           "問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３",
         answer_example:
@@ -270,6 +324,7 @@ const ProjectTableData = [
     department: "PHP",
   },
   {
+    id: 11,
     project_name: "test11",
     project_detail:
       "案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示",
@@ -297,23 +352,27 @@ const ProjectTableData = [
     department: "PHP",
   },
   {
+    id: 12,
     project_name: "test12",
     project_detail:
       "案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示",
     questions: [
       {
+        question_id: 1,
         question:
           "問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１",
         answer_example:
           "問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例",
       },
       {
+        question_id: 2,
         question:
           "問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２",
         answer_example:
           "問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例",
       },
       {
+        question_id: 3,
         question:
           "問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３",
         answer_example:
@@ -324,23 +383,27 @@ const ProjectTableData = [
     department: "PHP",
   },
   {
+    id: 13,
     project_name: "test13",
     project_detail:
       "案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示",
     questions: [
       {
+        question_id: 1,
         question:
           "問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１",
         answer_example:
           "問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例",
       },
       {
+        question_id: 2,
         question:
           "問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２",
         answer_example:
           "問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例",
       },
       {
+        question_id: 3,
         question:
           "問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３",
         answer_example:
@@ -351,23 +414,27 @@ const ProjectTableData = [
     department: "PHP",
   },
   {
+    id: 14,
     project_name: "test14",
     project_detail:
       "案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示案件詳細が表示",
     questions: [
       {
+        question_id: 1,
         question:
           "問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１",
         answer_example:
           "問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例",
       },
       {
+        question_id: 2,
         question:
           "問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２",
         answer_example:
           "問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例",
       },
       {
+        question_id: 3,
         question:
           "問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３",
         answer_example:
