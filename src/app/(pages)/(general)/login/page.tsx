@@ -5,6 +5,7 @@ import Link from 'next/link';
 import users from '@/const/login';
 import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import SiteTitle from '@/components/ui/SiteTitle';
 
 const LoginPage = () => {
   const router = useRouter();
@@ -44,14 +45,14 @@ const LoginPage = () => {
     <>
       <form onSubmit={checkLogin}>
         <div className="flex flex-col items-center justify-center h-screen">
-          <h1 className=" text-orange text-2xl font-bold m-6">Match Face</h1>
+          <SiteTitle className="m-6" />
           <div className="mt-2 mb-2">
             <label htmlFor="userId" className="">
               ユーザーID
             </label>
             <Input
               id="userId"
-              className="w-72 h-8"
+              className=" w-96 h-8 mt-2"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setUserId(e.target.value)
               }
@@ -69,7 +70,7 @@ const LoginPage = () => {
             </label>
             <Input
               id="password"
-              className="w-72 h-8"
+              className="w-96 h-8 mt-2"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setPassword(e.target.value)
               }
@@ -82,7 +83,11 @@ const LoginPage = () => {
             )}
           </div>
 
-          <OrangeButton label="ログイン" className="m-4" type="submit" />
+          <OrangeButton
+            label="ログイン"
+            className="mt-10 mb-4 w-48 rounded-none"
+            type="submit"
+          />
           <Link href="/remind" className=" text-blue">
             パスワードを忘れた
           </Link>
