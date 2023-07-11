@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 
 type Props = {
   user_id: string;
-  project_id: number;
+  project_id: string;
 };
 
 export const AnswerContent = ({ user_id, project_id }: Props) => {
