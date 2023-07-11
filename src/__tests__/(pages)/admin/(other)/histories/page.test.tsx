@@ -9,13 +9,6 @@ describe('管理者/履歴一覧画面のテスト',() => {
     beforeEach(()=>{
         render(<HistoriesPage />);
     })
-    jest.mock('next/navigation',()=>({
-        useRouter(){
-            return {
-                push:jest.fn()
-            }
-        }
-    }))
     describe('スナップショットテスト',() => {
         it('レンダリング時',async() => {
             const view = render(<HistoriesPage/>)
