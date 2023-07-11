@@ -37,21 +37,20 @@ const SearchUser = () => {
   return (
     <div className="flex justify-center">
       <div className="border border-deep-gray w-max my-10">
-        <div className="flex my-5">
-          <Input id="1" className=" w-80 mx-5" />
+        <div className="flex items-center my-5">
+          <Input id="1" className=" w-[516px] mx-5 border-deep-gray" />
           <WhiteButton label="検索" className="w-20 py-0.5" />
         </div>
-        <div className="mx-5">
+        <div className=" w-4/5 mx-5">
           <select name="year" id="year" className="border">
             {setYear()}
           </select>
-          <label htmlFor="year"> 年</label>
+          <label htmlFor="year">&nbsp;年&nbsp;</label>
           <select name="month" id="month" className="border">
             {setMonth()}
           </select>
-          <label htmlFor="month"> 月</label>
+          <label htmlFor="month">&nbsp;月</label>
         </div>
-
         <div className="my-5">
           {department.map((department, id) => (
             <WhiteButton
