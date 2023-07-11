@@ -6,13 +6,13 @@ exports[`AnswerContentコンポーネントのテスト スナップショット
   "baseElement": <body>
     <div>
       <div
-        class=" w-1/2 py-5"
+        class="w-1/2 py-5"
       >
         <div
           class="flex justify-between items-center my-3"
         >
           <h1
-            class=" text-2xl"
+            class="text-2xl"
           >
             回答の確認
           </h1>
@@ -33,7 +33,7 @@ exports[`AnswerContentコンポーネントのテスト スナップショット
         <p
           class="text-lg"
         >
-          テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+          案件の詳細内容が入ります。テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
         </p>
         <div
           class="py-5"
@@ -217,13 +217,13 @@ exports[`AnswerContentコンポーネントのテスト スナップショット
   </body>,
   "container": <div>
     <div
-      class=" w-1/2 py-5"
+      class="w-1/2 py-5"
     >
       <div
         class="flex justify-between items-center my-3"
       >
         <h1
-          class=" text-2xl"
+          class="text-2xl"
         >
           回答の確認
         </h1>
@@ -244,7 +244,7 @@ exports[`AnswerContentコンポーネントのテスト スナップショット
       <p
         class="text-lg"
       >
-        テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+        案件の詳細内容が入ります。テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
       </p>
       <div
         class="py-5"
