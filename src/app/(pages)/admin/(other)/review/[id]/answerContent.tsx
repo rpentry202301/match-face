@@ -29,7 +29,7 @@ export const AnswerContent = ({ user_id, project_id, admin_id }: Props) => {
         <p>回答日時：{currentAnswer[0].answer_date.toLocaleDateString()}</p>
       </div>
       <hr className="border border-black" />
-      <h2 className="text-xl my-2">{currentProject[0].name}</h2>
+      <h2 className="text-xl my-2">案件名：{currentProject[0].name}</h2>
       <p className="text-lg">{currentProject[0].project_detail}</p>
       <AnswerList user_id={user_id} project_id={project_id} />
       <CommentContent
@@ -51,7 +51,7 @@ export const AnswerContent = ({ user_id, project_id, admin_id }: Props) => {
           onClick={() => setIsOpen(true)}
         />
         <GrayButton
-          className="border rounded-none"
+          className="border rounded-none w-50"
           label="回答履歴一覧へ戻る"
           onClick={() => router.push("/admin/histories")}
         />

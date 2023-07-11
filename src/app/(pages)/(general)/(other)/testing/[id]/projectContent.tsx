@@ -14,7 +14,7 @@ export const ProjectContent = ({ id }: { id: string }) => {
 
   return (
     <div className="w-1/2 py-5">
-      <h1 className="text-xl my-2">{currentProject[0].name}</h1>
+      <h1 className="text-xl my-2">案件名：{currentProject[0].name}</h1>
       <p className="text-lg">{currentProject[0].project_detail}</p>
       <QuestionList id={id} />
       <div className="flex justify-around my-20">

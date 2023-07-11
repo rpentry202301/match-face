@@ -26,7 +26,7 @@ export const AnswerContent = ({ user_id, project_id }: Props) => {
         <p>回答日時：{currentAnswer[0].answer_date.toLocaleDateString()}</p>
       </div>
       <hr className="border border-black" />
-      <h2 className="text-xl my-2">{currentProject[0].name}</h2>
+      <h2 className="text-xl my-2">案件名：{currentProject[0].name}</h2>
       <p className="text-lg">{currentProject[0].project_detail}</p>
       <AnswerList project_id={project_id} />
       <CommentContent user_id={user_id} project_id={project_id} />
