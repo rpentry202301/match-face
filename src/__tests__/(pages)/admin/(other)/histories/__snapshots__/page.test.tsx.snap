@@ -3,7 +3,7 @@
 exports[`管理者/履歴一覧画面のテスト スナップショットテスト レンダリング時 1`] = `
 <div>
   <section
-    class="w-[80vw] ml-[10vw] border-2 text-center my-[5vh] py-[5vh]"
+    class="w-[75vw] ml-[12.5vw] border-2 text-center my-[5vh] py-[5vh]"
   >
     <form
       action="submit"
@@ -92,225 +92,230 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
           </button>
         </span>
       </div>
-      <fieldset
-        class="mb-[2vh] max-w-[50vw] ml-[15vw]"
-        id="skill"
-        name="skill"
+      <div
+        class="flex justify-center mb-[2vh] max-w-[55vw] ml-[10vw]"
       >
-        <legend>
+        <legend
+          class="w-[215px] h-10 leading-10"
+        >
           使用技術：
         </legend>
-        <span
-          class="px-[10px] whitespace-nowrap"
+        <fieldset
+          id="skill"
+          name="skill"
         >
-          <input
-            id="JavaScript"
-            name="JavaScript"
-            type="checkbox"
-            value="JavaScript"
-          />
-          <label
-            for="JavaScript"
+          <span
+            class="px-[10px] whitespace-nowrap"
           >
-            JavaScript
-          </label>
-        </span>
-        <span
-          class="px-[10px] whitespace-nowrap"
-        >
-          <input
-            id="TypeScript"
-            name="TypeScript"
-            type="checkbox"
-            value="TypeScript"
-          />
-          <label
-            for="TypeScript"
+            <input
+              id="JavaScript"
+              name="JavaScript"
+              type="checkbox"
+              value="JavaScript"
+            />
+            <label
+              for="JavaScript"
+            >
+              JavaScript
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
           >
-            TypeScript
-          </label>
-        </span>
-        <span
-          class="px-[10px] whitespace-nowrap"
-        >
-          <input
-            id="React"
-            name="React"
-            type="checkbox"
-            value="React"
-          />
-          <label
-            for="React"
+            <input
+              id="TypeScript"
+              name="TypeScript"
+              type="checkbox"
+              value="TypeScript"
+            />
+            <label
+              for="TypeScript"
+            >
+              TypeScript
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
           >
-            React
-          </label>
-        </span>
-        <span
-          class="px-[10px] whitespace-nowrap"
-        >
-          <input
-            id="Next.js"
-            name="Next.js"
-            type="checkbox"
-            value="Next.js"
-          />
-          <label
-            for="Next.js"
+            <input
+              id="React"
+              name="React"
+              type="checkbox"
+              value="React"
+            />
+            <label
+              for="React"
+            >
+              React
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
           >
-            Next.js
-          </label>
-        </span>
-        <span
-          class="px-[10px] whitespace-nowrap"
-        >
-          <input
-            id="Vue.js"
-            name="Vue.js"
-            type="checkbox"
-            value="Vue.js"
-          />
-          <label
-            for="Vue.js"
+            <input
+              id="Next.js"
+              name="Next.js"
+              type="checkbox"
+              value="Next.js"
+            />
+            <label
+              for="Next.js"
+            >
+              Next.js
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
           >
-            Vue.js
-          </label>
-        </span>
-        <span
-          class="px-[10px] whitespace-nowrap"
-        >
-          <input
-            id="Angular"
-            name="Angular"
-            type="checkbox"
-            value="Angular"
-          />
-          <label
-            for="Angular"
+            <input
+              id="Vue.js"
+              name="Vue.js"
+              type="checkbox"
+              value="Vue.js"
+            />
+            <label
+              for="Vue.js"
+            >
+              Vue.js
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
           >
-            Angular
-          </label>
-        </span>
-        <span
-          class="px-[10px] whitespace-nowrap"
-        >
-          <input
-            id="Nuxt.js"
-            name="Nuxt.js"
-            type="checkbox"
-            value="Nuxt.js"
-          />
-          <label
-            for="Nuxt.js"
+            <input
+              id="Angular"
+              name="Angular"
+              type="checkbox"
+              value="Angular"
+            />
+            <label
+              for="Angular"
+            >
+              Angular
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
           >
-            Nuxt.js
-          </label>
-        </span>
-        <span
-          class="px-[10px] whitespace-nowrap"
-        >
-          <input
-            id="jQuery"
-            name="jQuery"
-            type="checkbox"
-            value="jQuery"
-          />
-          <label
-            for="jQuery"
+            <input
+              id="Nuxt.js"
+              name="Nuxt.js"
+              type="checkbox"
+              value="Nuxt.js"
+            />
+            <label
+              for="Nuxt.js"
+            >
+              Nuxt.js
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
           >
-            jQuery
-          </label>
-        </span>
-        <span
-          class="px-[10px] whitespace-nowrap"
-        >
-          <input
-            id="Redux"
-            name="Redux"
-            type="checkbox"
-            value="Redux"
-          />
-          <label
-            for="Redux"
+            <input
+              id="jQuery"
+              name="jQuery"
+              type="checkbox"
+              value="jQuery"
+            />
+            <label
+              for="jQuery"
+            >
+              jQuery
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
           >
-            Redux
-          </label>
-        </span>
-        <span
-          class="px-[10px] whitespace-nowrap"
-        >
-          <input
-            id="vuex"
-            name="vuex"
-            type="checkbox"
-            value="vuex"
-          />
-          <label
-            for="vuex"
+            <input
+              id="Redux"
+              name="Redux"
+              type="checkbox"
+              value="Redux"
+            />
+            <label
+              for="Redux"
+            >
+              Redux
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
           >
-            vuex
-          </label>
-        </span>
-        <span
-          class="px-[10px] whitespace-nowrap"
-        >
-          <input
-            id="MaterialUI"
-            name="MaterialUI"
-            type="checkbox"
-            value="MaterialUI"
-          />
-          <label
-            for="MaterialUI"
+            <input
+              id="vuex"
+              name="vuex"
+              type="checkbox"
+              value="vuex"
+            />
+            <label
+              for="vuex"
+            >
+              vuex
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
           >
-            MaterialUI
-          </label>
-        </span>
-        <span
-          class="px-[10px] whitespace-nowrap"
-        >
-          <input
-            id="tailwind"
-            name="tailwind"
-            type="checkbox"
-            value="tailwind"
-          />
-          <label
-            for="tailwind"
+            <input
+              id="MaterialUI"
+              name="MaterialUI"
+              type="checkbox"
+              value="MaterialUI"
+            />
+            <label
+              for="MaterialUI"
+            >
+              MaterialUI
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
           >
-            tailwind
-          </label>
-        </span>
-        <span
-          class="px-[10px] whitespace-nowrap"
-        >
-          <input
-            id="Bootstrap"
-            name="Bootstrap"
-            type="checkbox"
-            value="Bootstrap"
-          />
-          <label
-            for="Bootstrap"
+            <input
+              id="tailwind"
+              name="tailwind"
+              type="checkbox"
+              value="tailwind"
+            />
+            <label
+              for="tailwind"
+            >
+              tailwind
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
           >
-            Bootstrap
-          </label>
-        </span>
-        <span
-          class="px-[10px] whitespace-nowrap"
-        >
-          <input
-            id="Vercel"
-            name="Vercel"
-            type="checkbox"
-            value="Vercel"
-          />
-          <label
-            for="Vercel"
+            <input
+              id="Bootstrap"
+              name="Bootstrap"
+              type="checkbox"
+              value="Bootstrap"
+            />
+            <label
+              for="Bootstrap"
+            >
+              Bootstrap
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
           >
-            Vercel
-          </label>
-        </span>
-      </fieldset>
+            <input
+              id="Vercel"
+              name="Vercel"
+              type="checkbox"
+              value="Vercel"
+            />
+            <label
+              for="Vercel"
+            >
+              Vercel
+            </label>
+          </span>
+        </fieldset>
+      </div>
       <div>
         <button
           class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white rounded-xl p-2 w-40 h-auto text-lg"
@@ -323,7 +328,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
   </section>
   <section>
     <table
-      class="border-collapse border border-slate-deep-gray w-[80vw] ml-[10vw] text-center mb-[10vh]"
+      class="border-collapse border border-slate-deep-gray w-[75vw] ml-[12.5vw] text-center mb-[10vh]"
     >
       <thead>
         <tr>

@@ -18,7 +18,7 @@ export default function HistoriesList (){
 
     return(
         <section>
-                <table className="border-collapse border border-slate-deep-gray w-[80vw] ml-[10vw] text-center mb-[10vh]">
+                <table className="border-collapse border border-slate-deep-gray w-[75vw] ml-[12.5vw] text-center mb-[10vh]">
                 <thead>
                     <tr>
                         <th className="border border-slate-deep-gray bg-light-gray" id="open"></th>
