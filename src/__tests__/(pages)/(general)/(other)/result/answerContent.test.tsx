@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { AnswerContent } from "@/app/(pages)/(general)/(other)/result/[id]/answerContent";
 import { useRouter } from "next/navigation";
-import { AppRouterContextProviderMock } from "./app-router-context-provider-mock";
+import { AppRouterContextProviderMock } from "../../../../test_utils/app-router-context-provider-mock";
 
 describe("AnswerContentコンポーネントのテスト", () => {
   const testData = {
