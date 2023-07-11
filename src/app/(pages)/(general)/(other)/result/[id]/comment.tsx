@@ -5,7 +5,7 @@ import Image from "next/image";
 
 type Props = {
   user_id: string;
-  project_id: number;
+  project_id: string;
 };
 
 export const CommentContent = ({ user_id, project_id }: Props) => {
