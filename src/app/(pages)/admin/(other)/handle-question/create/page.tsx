@@ -174,7 +174,12 @@ const CreateQuestionPage = () => {
               key={data.question_id}
               className="flex flex-col w-2/3 my-5 border-b border-black pb-16 border-dashed"
             >
-              <h2 className="text-2xl">Q{data.question_id}.</h2>
+              <h2
+                className="text-2xl"
+                data-testid={`write_${data.question_id}`}
+              >
+                Q{data.question_id}.
+              </h2>
               <textarea
                 name="question"
                 id="question"
@@ -207,7 +212,12 @@ const CreateQuestionPage = () => {
               key={data.question_id}
               className="flex flex-col w-2/3 my-5 border-b border-black pb-16 border-dashed"
             >
-              <h2 className="text-2xl">Q{data.question_id}.</h2>
+              <h2
+                className="text-2xl"
+                data-testid={`select_${data.question_id}`}
+              >
+                Q{data.question_id}.
+              </h2>
               <textarea
                 name="question"
                 id="question"
@@ -269,15 +279,17 @@ const CreateQuestionPage = () => {
             label="記述質問追加"
             className="m-10"
             onClick={addWriteQuestion}
+            data-testid="addWriteButton"
           />
           <WhiteButton
             label="選択質問追加"
             className="m-10"
             onClick={addSelectQuestion}
+            data-testid="addSelectButton"
           />
         </div>
         <div className="flex m-3">
-          <Link href={`/admin/handle-question`}>
+          <Link href={`/admin/handle-question`} data-testid="backList">
             <OrangeButton
               label="< 一覧へ戻る"
               className="m-10 rounded-none py-5 flex items-center justify-center"
