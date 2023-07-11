@@ -47,7 +47,7 @@ const HistoryList = () => {
               <td className="border text-center">{project.project_name}</td>
               <td className="border text-center">{project.project_detail}</td>
               <td className="border text-center px-4">
-                <Link href="/result">
+                <Link href={`result/${project.id}`}>
                   <GrayButton
                     label={"詳細"}
                     className="w-15 rounded py-2 px-4 text-sm"
