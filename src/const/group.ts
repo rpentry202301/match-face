@@ -43,7 +43,7 @@ export const group:Group[] = [
       { user_id: "2", user_name: "テスト二郎" },
       { user_id: "3", user_name: "テスト三郎" },
     ],
-    grouping_description: "空欄でも可",
+    grouping_description: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
   },
 
   {
@@ -53,6 +53,6 @@ export const group:Group[] = [
     group_member: [
       { user_id: "3", user_name: "テスト三郎" },
     ],
-    grouping_description: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    grouping_description: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
   },
 ];
