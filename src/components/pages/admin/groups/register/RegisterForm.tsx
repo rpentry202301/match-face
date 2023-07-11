@@ -1,9 +1,26 @@
+'use client'
+
+import { useState } from "react";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import WhiteButton from "@/components/ui/button/WhiteButton";
 import Link from "next/link";
 import Input from "@/components/ui/Input";
+import TextArea from "@/components/ui/TextArea";
+import UserSelectModal from "../../tasks/register/UserSelectModal";
+
+
+// グループ一覧に遷移する機能作ったほうが良い？
+
 
 const RegisterForm = () => {
+
+  // モーダル表示用
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen)
+  }
+
   return (
     <>
       <div className="flex flex-col items-center justify-center h-screen">
@@ -13,17 +30,37 @@ const RegisterForm = () => {
           <br />
           <label htmlFor="user">▶ユーザーを選択する</label>
           <span>&nbsp;</span>
-          <WhiteButton label="追加" className=" px-3 py-1 text-xs" />
+          {/* <WhiteButton label="追加" className=" px-3 py-1 text-xs" /> */}
+          <UserSelectModal/>
           <Input id="user" />
           <br />
           <label htmlFor="group_description">▶備考</label>
           <Input id="group_description" />
+          {/* テキストエリアにするかも*/}
+          {/* <TextArea id="group_description" cols={1} rows={1} value={''}/> */}
         </form>
         <br />
-        <Link href={"/admin/groups"}>
-          <OrangeButton label="グループを設定する" className="py-19 text-xs" />
-          {/* のちのちonclickでpostします */}
-        </Link>
+        <a href="#modal">
+          <OrangeButton label="グループを設定する" className="py-19 text-xs" onClick={toggleModal} />
+          </a>
+          {isOpen && (
+              <div id='modal' className="hidden target:block">
+              <div className="block w-full h-full bg-black/70 absolute top-0 left-0">
+                <div className="flex flex-col items-center justify-center h-screen">  
+                <div className="bg-white px-2 py-2">
+                <h2 className="font-black px-1 py-3">グループを設定してよろしいですか?</h2>
+                <div className="flex flex-col  items-center justify-center mx-5 my-1">
+                  <Link href={'/admin/groups'}>
+                    {/* 今は遷移にしてますがのちのちポストします */}
+                  <button onClick={toggleModal} className="hover:bg-gray-400 duration-200">設定する</button>
+                  </Link>
+                  <button onClick={toggleModal} className="hover:bg-gray-400 duration-200">キャンセル</button>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+            </div>
+          )}
       </div>
     </>
   );

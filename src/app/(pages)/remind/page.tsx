@@ -1,5 +1,6 @@
 'use client';
 import Input from '@/components/ui/Input';
+import SiteTitle from '@/components/ui/SiteTitle';
 import OrangeButton from '@/components/ui/button/OrangeButton';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -23,16 +24,16 @@ const RemindPage = () => {
     <>
       <form onSubmit={sentRemindEmail}>
         <div className="flex flex-col items-center justify-center h-screen">
-          <h1 className=" text-orange text-2xl font-bold m-6">Match Face</h1>
-          <span className="mb-6">
-            パスワード再設定用のURLを登録のメールアドレスに送信します。
+          <SiteTitle className="m-8" />
+          <span className="mb-7">
+            パスワード再設定用のURLを登録メールアドレスに送信します。
           </span>
 
           <div className="">
             <label htmlFor="email">メールアドレス</label>
             <Input
               id="email"
-              className=" w-72 h-8"
+              className=" w-96 h-10 mt-2"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setEmail(e.target.value)
               }
@@ -43,10 +44,10 @@ const RemindPage = () => {
           </div>
           <OrangeButton
             label="再設定用メール送信"
-            className=" w-52 mt-12"
+            className=" mt-14 mb-4 w-56 rounded-none"
             type="submit"
           />
-          <Link href="/login" className="text-blue mt-4">
+          <Link href="/login" className="text-blue">
             一般ログインへ
           </Link>
         </div>

@@ -1,5 +1,5 @@
 import HistoriesSelect from "@/components/pages/admin/histories/select";
-import HistoryList from "@/components/pages/general/histories/History_List";
+import HistoryList from "@/components/pages/general/histories/HistoryList";
 
 const HistoriesPage = () => {
   return (

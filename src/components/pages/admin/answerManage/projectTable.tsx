@@ -2,6 +2,7 @@
 import ProjectTableData from "@/const/projectTable";
 import WhiteButton from "@/components/ui/button/WhiteButton";
 import { useState } from "react";
+import Link from "next/link";
 
 const ProjectTable = () => {
   const [page, setPage] = useState(0);
@@ -19,7 +20,7 @@ const ProjectTable = () => {
 
   return (
     <>
-      <table className="w-3/4 border-2">
+      <table className="w-4/5 border-2">
         <tbody>
           <tr className="border-2 border-current bg-light-gray">
             <th className="w-1/5 border-2 py-4">最終編集日</th>
@@ -29,23 +30,21 @@ const ProjectTable = () => {
           </tr>
           {pagingData.map((data) => {
             return (
-              <>
-                <tr>
-                  <td className="border-2 py-6 text-center">
-                    {data.edit_date}
-                  </td>
-                  <td className="border-2 text-center">{data.project_name}</td>
-                  <td className="border-2 text-center">
-                    {data.project_detail.slice(0, 20)}
-                  </td>
-                  <td className="border-2">
-                    <div className="flex items-center justify-evenly">
+              <tr key={data.id}>
+                <td className="border-2 py-6 text-center">{data.edit_date}</td>
+                <td className="border-2 text-center">{data.project_name}</td>
+                <td className="border-2 text-center">
+                  {data.project_detail.slice(0, 20)}
+                </td>
+                <td className="border-2">
+                  <div className="flex items-center justify-evenly">
+                    <Link href={`/admin/handle-question/edit/${data.id}`}>
                       <WhiteButton label="編集" className="text-xs py-1 px-5" />
-                      <WhiteButton label="削除" className="text-xs py-1 px-5" />
-                    </div>
-                  </td>
-                </tr>
-              </>
+                    </Link>
+                    <WhiteButton label="削除" className="text-xs py-1 px-5" />
+                  </div>
+                </td>
+              </tr>
             );
           })}
         </tbody>

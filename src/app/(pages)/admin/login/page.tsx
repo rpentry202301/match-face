@@ -1,5 +1,6 @@
 'use client';
 import Input from '@/components/ui/Input';
+import SiteTitle from '@/components/ui/SiteTitle';
 import OrangeButton from '@/components/ui/button/OrangeButton';
 import users from '@/const/login';
 import Link from 'next/link';
@@ -43,8 +44,8 @@ const AdminLoginPage = () => {
     <>
       <form onSubmit={checkLogin}>
         <div className="flex flex-col items-center justify-center h-screen">
-          <div className="flex flex-col items-center m-6">
-            <h1 className=" text-orange text-2xl font-bold">Match Face</h1>
+          <div className="flex flex-col items-center m-3">
+            <SiteTitle className="m-3" />
             <h2>管理者用ログイン</h2>
           </div>
 
@@ -54,7 +55,7 @@ const AdminLoginPage = () => {
             </label>
             <Input
               id="userId"
-              className="w-72 h-8"
+              className="w-96 h-10 mt-2"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setUserId(e.target.value)
               }
@@ -69,7 +70,7 @@ const AdminLoginPage = () => {
             </label>
             <Input
               id="password"
-              className="w-72 h-8"
+              className="w-96 h-10 mt-2"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setPassword(e.target.value)
               }
@@ -79,7 +80,11 @@ const AdminLoginPage = () => {
             )}
           </div>
 
-          <OrangeButton label="ログイン" className="m-4" type="submit" />
+          <OrangeButton
+            label="ログイン"
+            className="mt-10 mb-4 w-48 rounded-none"
+            type="submit"
+          />
           <Link href="/remind" className=" text-blue">
             パスワードを忘れた
           </Link>

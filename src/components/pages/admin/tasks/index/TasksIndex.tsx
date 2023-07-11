@@ -1,6 +1,7 @@
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import SearchByJobs from "./parts/SearchByJobs";
 import TaskList from "./parts/TaskList";
+import Link from "next/link";
 
 const TasksIndex = () => {
   return (
@@ -9,7 +10,9 @@ const TasksIndex = () => {
         <SearchByJobs />
       </div>
       <div className="flex justify-center mb-8">
-        <OrangeButton label="新規追加" />
+        <Link href={"/admin/tasks/register"}>
+          <OrangeButton label="新規追加" />
+        </Link>
       </div>
       <div className="flex justify-center">
         <TaskList />
