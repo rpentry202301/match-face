@@ -1,15 +1,16 @@
-import TasksIndex from "@/components/pages/admin/tasks/index/TasksIndex";
+import TaskList from "@/components/pages/admin/tasks/index/parts/TaskList";
 import { render } from "@testing-library/react";
 
-describe("TaskIndex.tsx", () => {
+describe("TaskList.tsx", () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
   afterAll(() => {
     jest.clearAllMocks();
   });
+
   it("レンダリング時", () => {
-    const { container } = render(<TasksIndex />);
+    const { container } = render(<TaskList />);
     expect(container).toMatchSnapshot();
   });
 });
