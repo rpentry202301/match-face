@@ -1,5 +1,6 @@
 'use client';
 import Input from '@/components/ui/Input';
+import SiteTitle from '@/components/ui/SiteTitle';
 import OrangeButton from '@/components/ui/button/OrangeButton';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
@@ -36,15 +37,14 @@ const ChangePasswordPage = () => {
       className="flex flex-col items-center justify-center h-screen"
       onSubmit={handleSubmit}
     >
-      <h1 className=" text-orange text-2xl font-bold m-4">Match Face</h1>
-
+      <SiteTitle className="m-8" />
       <div className="mt-2 mb-2">
         <label htmlFor="newPassword" className="">
           新しいパスワード
         </label>
         <Input
           id="newPassword"
-          className="w-72 h-8"
+          className="w-96 h-10 mt-2"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setPassword(e.target.value)
           }
@@ -59,7 +59,7 @@ const ChangePasswordPage = () => {
         </label>
         <Input
           id="confirmPassword"
-          className="w-72 h-8"
+          className="w-96 h-10 mt-2"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setConfirmPassword(e.target.value)
           }
@@ -68,7 +68,11 @@ const ChangePasswordPage = () => {
           <p className="text-red">※確認用パスワードを入力してください</p>
         )}
       </div>
-      <OrangeButton label="登録" className="m-12" type="submit" />
+      <OrangeButton
+        label="登録"
+        className="mt-10 mb-4 w-48 rounded-none"
+        type="submit"
+      />
     </form>
   );
 };
