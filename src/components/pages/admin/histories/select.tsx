@@ -36,7 +36,7 @@ const HistoriesSelect = (props: Style) => {
           handleSubmit(e, formData);
         }}
       >
-        <div className="mb-[2vh]">
+        <div className="mb-[3vh]">
           <label htmlFor="month">回答月：</label>
           <select
             data-testid="month"
@@ -58,7 +58,7 @@ const HistoriesSelect = (props: Style) => {
         {props.className ? (
           ""
         ) : (
-          <div className="mb-[2vh]">
+          <div className="mb-[3vh]">
             {departments.map((department) => (
               <span key={department}>
                 {department !== formData.department && (
@@ -95,7 +95,7 @@ const HistoriesSelect = (props: Style) => {
             ))}
           </div>
         )}
-        <div className="flex justify-center mb-[2vh] max-w-[55vw] ml-[10vw]">
+        <div className="flex justify-center mb-[3vh] max-w-[55vw] ml-[10vw]">
           <legend className="w-[215px] h-10 leading-10">使用技術：</legend>
           <fieldset id="skill" name="skill">
             {skills.map((skill) => (
@@ -112,7 +112,11 @@ const HistoriesSelect = (props: Style) => {
             ))}
           </fieldset>
         </div>
-        <OrangeButton label="絞り込み" type="submit" />
+        <OrangeButton
+          label="絞り込み"
+          type="submit"
+          className="text-sm py-1 rounded"
+        />
       </form>
     </section>
   );
