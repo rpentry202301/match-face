@@ -7,6 +7,7 @@ import WhiteButton from "@/components/ui/button/WhiteButton";
 import Link from "next/link";
 import type { ChangeEvent } from "react";
 import type { Question } from "@/const/projectTable";
+import { queries } from "@testing-library/react";
 
 const EditQuestionPage = () => {
   const data = answerEditData[0];
@@ -112,7 +113,7 @@ const EditQuestionPage = () => {
           return (
             <div
               key={data.question_id}
-              className="flex flex-col w-2/3 my-5 border-b border-black pb-16 border-dashed"
+              className="flex flex-col w-4/5 my-5 border-b border-black pb-16 border-dashed"
             >
               <h2>Q{data.question_id}.</h2>
               <textarea
