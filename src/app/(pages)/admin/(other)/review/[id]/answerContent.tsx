@@ -12,7 +12,7 @@ import { useState } from "react";
 
 type Props = {
   user_id: string;
-  project_id: number;
+  project_id: string;
   admin_id: string;
 };
 
@@ -29,7 +29,7 @@ export const AnswerContent = ({ user_id, project_id, admin_id }: Props) => {
         <p>回答日時：{currentAnswer[0].answer_date.toLocaleDateString()}</p>
       </div>
       <hr className="border border-black" />
-      <h2 className="text-xl my-2">{currentProject[0].name}</h2>
+      <h2 className="text-xl my-2">案件名：{currentProject[0].name}</h2>
       <p className="text-lg">{currentProject[0].project_detail}</p>
       <AnswerList user_id={user_id} project_id={project_id} />
       <CommentContent
@@ -47,11 +47,12 @@ export const AnswerContent = ({ user_id, project_id, admin_id }: Props) => {
         />
         <OrangeButton
           label="コメントを送信する"
-          className="w-50"
+          className="w-50 border rounded-none"
           onClick={() => setIsOpen(true)}
         />
         <GrayButton
-          label="回答履歴一覧へ"
+          className="border rounded-none w-50"
+          label="回答履歴一覧へ戻る"
           onClick={() => router.push("/admin/histories")}
         />
       </div>
