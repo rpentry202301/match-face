@@ -1,8 +1,8 @@
-import { ModelAnswer } from "@/const/review";
+import { ModelAnswer } from "@/const/result";
 
 type Props = {
-  project_id: number;
-  question_id: number;
+  project_id: string;
+  question_id: string;
 };
 
 const ModelAnswerContent = ({ project_id, question_id }: Props) => {
