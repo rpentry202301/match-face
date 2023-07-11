@@ -1,0 +1,543 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`質問・回答例一覧画面テスト スナップショット 1`] = `
+<div>
+  <div
+    class="flex flex-col items-center my-10"
+  >
+    <div
+      class="border-2 flex flex-col items-center w-5/12 max-w-5/12"
+    >
+      <div
+        class="mt-7 flex items-center w-4/5 "
+      >
+        <div
+          class=" w-4/5"
+        >
+          <div>
+            <input
+              class="border w-full pl-1 border-deep-gray"
+              id="search"
+            />
+          </div>
+        </div>
+        <div
+          class=" w-1/5 flex justify-end"
+        >
+          <button
+            class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+          >
+            検索
+          </button>
+        </div>
+      </div>
+      <div
+        class="mt-7 flex w-4/5 justify-between"
+      >
+        <button
+          class="bg-white hover:bg-gray-100 rounded-full border shadow-md text-xs py-1 px-5"
+        >
+          Java
+        </button>
+        <button
+          class="bg-white hover:bg-gray-100 rounded-full border shadow-md text-xs py-1 px-5"
+        >
+          PHP
+        </button>
+        <button
+          class="bg-white hover:bg-gray-100 rounded-full border shadow-md text-xs py-1 px-5"
+        >
+          FR
+        </button>
+        <button
+          class="bg-white hover:bg-gray-100 rounded-full border shadow-md text-xs py-1 px-5"
+        >
+          CL
+        </button>
+        <button
+          class="bg-white hover:bg-gray-100 rounded-full border shadow-md text-xs py-1 px-5"
+        >
+          ML
+        </button>
+        <button
+          class="bg-white hover:bg-gray-100 rounded-full border shadow-md text-xs py-1 px-5"
+        >
+          QA
+        </button>
+      </div>
+      <div>
+        <button
+          class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white p-2 h-auto rounded-none text-xs py-1 px-5 w-auto my-7 active:rounded-none active:text-xs active:py-1 active:px-5 active:w-auto active:my-7"
+        >
+          絞り込み
+        </button>
+      </div>
+    </div>
+    <a
+      data-testid="createButton"
+      href="/admin/handle-question/create"
+      id="createButton"
+    >
+      <div>
+        <button
+          class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white rounded-xl p-2 w-40 h-auto text-lg my-10 active:my-10"
+        >
+          新規追加
+        </button>
+      </div>
+    </a>
+    <table
+      class="w-4/5 border-2"
+    >
+      <tbody>
+        <tr
+          class="border-2 border-current bg-light-gray"
+        >
+          <th
+            class="w-1/5 border-2 py-4"
+          >
+            最終編集日
+          </th>
+          <th
+            class="w-1/5 border-2"
+          >
+            案件名
+          </th>
+          <th
+            class="w-2/5 border-2"
+          >
+            案件概要
+          </th>
+          <th
+            class="w-1/5 border-2"
+          />
+        </tr>
+        <tr>
+          <td
+            class="border-2 py-6 text-center"
+          >
+            2023-7-6
+          </td>
+          <td
+            class="border-2 text-center"
+          >
+            test1
+          </td>
+          <td
+            class="border-2 text-center"
+          >
+            案件詳細が表示案件詳細が表示案件詳細が表
+          </td>
+          <td
+            class="border-2"
+          >
+            <div
+              class="flex items-center justify-evenly"
+            >
+              <a
+                data-testid="editButton_1"
+                href="/admin/handle-question/edit/1"
+              >
+                <button
+                  class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+                >
+                  編集
+                </button>
+              </a>
+              <button
+                class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+              >
+                削除
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-2 py-6 text-center"
+          >
+            2023-7-6
+          </td>
+          <td
+            class="border-2 text-center"
+          >
+            test2
+          </td>
+          <td
+            class="border-2 text-center"
+          >
+            案件詳細が表示案件詳細が表示案件詳細が表
+          </td>
+          <td
+            class="border-2"
+          >
+            <div
+              class="flex items-center justify-evenly"
+            >
+              <a
+                data-testid="editButton_2"
+                href="/admin/handle-question/edit/2"
+              >
+                <button
+                  class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+                >
+                  編集
+                </button>
+              </a>
+              <button
+                class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+              >
+                削除
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-2 py-6 text-center"
+          >
+            2023-7-6
+          </td>
+          <td
+            class="border-2 text-center"
+          >
+            test3
+          </td>
+          <td
+            class="border-2 text-center"
+          >
+            案件詳細が表示案件詳細が表示案件詳細が表
+          </td>
+          <td
+            class="border-2"
+          >
+            <div
+              class="flex items-center justify-evenly"
+            >
+              <a
+                data-testid="editButton_3"
+                href="/admin/handle-question/edit/3"
+              >
+                <button
+                  class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+                >
+                  編集
+                </button>
+              </a>
+              <button
+                class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+              >
+                削除
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-2 py-6 text-center"
+          >
+            2023-7-6
+          </td>
+          <td
+            class="border-2 text-center"
+          >
+            test4
+          </td>
+          <td
+            class="border-2 text-center"
+          >
+            案件詳細が表示案件詳細が表示案件詳細が表
+          </td>
+          <td
+            class="border-2"
+          >
+            <div
+              class="flex items-center justify-evenly"
+            >
+              <a
+                data-testid="editButton_4"
+                href="/admin/handle-question/edit/4"
+              >
+                <button
+                  class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+                >
+                  編集
+                </button>
+              </a>
+              <button
+                class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+              >
+                削除
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-2 py-6 text-center"
+          >
+            2023-7-6
+          </td>
+          <td
+            class="border-2 text-center"
+          >
+            test5
+          </td>
+          <td
+            class="border-2 text-center"
+          >
+            案件詳細が表示案件詳細が表示案件詳細が表
+          </td>
+          <td
+            class="border-2"
+          >
+            <div
+              class="flex items-center justify-evenly"
+            >
+              <a
+                data-testid="editButton_5"
+                href="/admin/handle-question/edit/5"
+              >
+                <button
+                  class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+                >
+                  編集
+                </button>
+              </a>
+              <button
+                class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+              >
+                削除
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-2 py-6 text-center"
+          >
+            2023-7-6
+          </td>
+          <td
+            class="border-2 text-center"
+          >
+            test6
+          </td>
+          <td
+            class="border-2 text-center"
+          >
+            案件詳細が表示案件詳細が表示案件詳細が表
+          </td>
+          <td
+            class="border-2"
+          >
+            <div
+              class="flex items-center justify-evenly"
+            >
+              <a
+                data-testid="editButton_6"
+                href="/admin/handle-question/edit/6"
+              >
+                <button
+                  class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+                >
+                  編集
+                </button>
+              </a>
+              <button
+                class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+              >
+                削除
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-2 py-6 text-center"
+          >
+            2023-7-6
+          </td>
+          <td
+            class="border-2 text-center"
+          >
+            test7
+          </td>
+          <td
+            class="border-2 text-center"
+          >
+            案件詳細が表示案件詳細が表示案件詳細が表
+          </td>
+          <td
+            class="border-2"
+          >
+            <div
+              class="flex items-center justify-evenly"
+            >
+              <a
+                data-testid="editButton_7"
+                href="/admin/handle-question/edit/7"
+              >
+                <button
+                  class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+                >
+                  編集
+                </button>
+              </a>
+              <button
+                class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+              >
+                削除
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-2 py-6 text-center"
+          >
+            2023-7-6
+          </td>
+          <td
+            class="border-2 text-center"
+          >
+            test8
+          </td>
+          <td
+            class="border-2 text-center"
+          >
+            案件詳細が表示案件詳細が表示案件詳細が表
+          </td>
+          <td
+            class="border-2"
+          >
+            <div
+              class="flex items-center justify-evenly"
+            >
+              <a
+                data-testid="editButton_8"
+                href="/admin/handle-question/edit/8"
+              >
+                <button
+                  class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+                >
+                  編集
+                </button>
+              </a>
+              <button
+                class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+              >
+                削除
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-2 py-6 text-center"
+          >
+            2023-7-6
+          </td>
+          <td
+            class="border-2 text-center"
+          >
+            test9
+          </td>
+          <td
+            class="border-2 text-center"
+          >
+            案件詳細が表示案件詳細が表示案件詳細が表
+          </td>
+          <td
+            class="border-2"
+          >
+            <div
+              class="flex items-center justify-evenly"
+            >
+              <a
+                data-testid="editButton_9"
+                href="/admin/handle-question/edit/9"
+              >
+                <button
+                  class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+                >
+                  編集
+                </button>
+              </a>
+              <button
+                class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+              >
+                削除
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-2 py-6 text-center"
+          >
+            2023-7-6
+          </td>
+          <td
+            class="border-2 text-center"
+          >
+            test10
+          </td>
+          <td
+            class="border-2 text-center"
+          >
+            案件詳細が表示案件詳細が表示案件詳細が表
+          </td>
+          <td
+            class="border-2"
+          >
+            <div
+              class="flex items-center justify-evenly"
+            >
+              <a
+                data-testid="editButton_10"
+                href="/admin/handle-question/edit/10"
+              >
+                <button
+                  class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+                >
+                  編集
+                </button>
+              </a>
+              <button
+                class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+              >
+                削除
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div
+      class="w-5/12 max-w-5/12 flex justify-center my-7"
+    >
+      <ul
+        class="flex"
+      >
+        <li>
+          <button
+            class="my-2 mx-4 py-1 px-2 bg-deep-gray rounded-full pointer-events-none"
+            type="button"
+          >
+            1
+          </button>
+        </li>
+        <li>
+          <button
+            class="my-2 mx-4 py-1 px-3 rounded-full"
+            type="button"
+          >
+            2
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

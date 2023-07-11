@@ -11,7 +11,7 @@ const TasksIndex = () => {
       </div>
       <div className="flex justify-center mb-8">
         <Link href={"/admin/tasks/register"}>
-          <OrangeButton label="新規追加" />
+          <OrangeButton label="新規タスク作成" />
         </Link>
       </div>
       <div className="flex justify-center">
