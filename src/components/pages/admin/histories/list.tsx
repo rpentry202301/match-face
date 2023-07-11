@@ -18,7 +18,7 @@ export default function HistoriesList (){
 
     return(
         <section>
-                <table className="border-collapse border border-slate-deep-gray w-[80vw] ml-[10vw] text-center mb-[10vh]">
+                <table className="border-collapse border border-slate-deep-gray w-[75vw] ml-[12.5vw] text-center mb-[10vh]">
                 <thead>
                     <tr>
                         <th className="border border-slate-deep-gray bg-light-gray" id="open"></th>
@@ -31,7 +31,7 @@ export default function HistoriesList (){
                 <tbody  key={project.id}>
                     {((open.find((state)=>state.id===project.id))!.status===false)&&(
                         <tr>
-                        <td className="border border-slate-deep-gray" id="open"><button type="button" className="text-deep-gray" onClick={()=>handleClick(project.id)}>▶︎</button></td>
+                        <td className="border border-slate-deep-gray" id="open"><button data-testid = {`open_${project.id}`} id="open_button" name="open_button" type="button" className="text-deep-gray" onClick={()=>handleClick(project.id)}>▶︎</button></td>
                         <td className="border border-slate-deep-gray" id="answer_deadline">{project.answer_deadline}</td>
                         <td className="border border-slate-deep-gray" id="project_name">{project.project_name}</td>
                         <td className="border border-slate-deep-gray" id="project_detail">{project.project_detail}</td>
@@ -41,7 +41,7 @@ export default function HistoriesList (){
                     {((open.find((state)=>state.id===project.id))!.status===true)&&(
                         <>
                         <tr>
-                        <td className="border border-slate-deep-gray" id="open"><button type="button" className="text-deep-gray" onClick={()=>handleClick(project.id)}>▼</button></td>
+                        <td className="border border-slate-deep-gray" id="open"><button data-testid = {`close_${project.id}`} id="close_button" name="close_button" type="button" className="text-deep-gray" onClick={()=>handleClick(project.id)}>▼</button></td>
                         <td className="border border-slate-deep-gray" id="answer_deadline">{project.answer_deadline}</td>
                         <td className="border border-slate-deep-gray" id="project_name">{project.project_name}</td>
                         <td className="border border-slate-deep-gray" id="project_detail">{project.project_detail}</td>

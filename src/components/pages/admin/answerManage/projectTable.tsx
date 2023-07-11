@@ -20,7 +20,7 @@ const ProjectTable = () => {
 
   return (
     <>
-      <table className="w-3/4 border-2">
+      <table className="w-4/5 border-2">
         <tbody>
           <tr className="border-2 border-current bg-light-gray">
             <th className="w-1/5 border-2 py-4">最終編集日</th>

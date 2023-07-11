@@ -1,0 +1,542 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`管理者/履歴一覧画面のテスト スナップショットテスト レンダリング時 1`] = `
+<div>
+  <section
+    class="w-[75vw] ml-[12.5vw] border-2 text-center my-[5vh] py-[5vh]"
+  >
+    <form
+      action="submit"
+      data-testid="form"
+    >
+      <div
+        class="mb-[2vh]"
+      >
+        <label
+          for="month"
+        >
+          回答月：
+        </label>
+        <select
+          class="border-2"
+          data-testid="month"
+          id="month"
+          name="month"
+        >
+          <option
+            value=""
+          >
+            --
+          </option>
+          <option
+            value="2023-07"
+          >
+            2023-07
+          </option>
+          <option
+            value="2023-08"
+          >
+            2023-08
+          </option>
+        </select>
+      </div>
+      <div
+        class="mb-[2vh]"
+      >
+        <span>
+          <button
+            class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw]"
+            value="Java"
+          >
+            Java
+          </button>
+        </span>
+        <span>
+          <button
+            class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw]"
+            value="PHP"
+          >
+            PHP
+          </button>
+        </span>
+        <span>
+          <button
+            class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw]"
+            value="FR"
+          >
+            FR
+          </button>
+        </span>
+        <span>
+          <button
+            class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw]"
+            value="CL"
+          >
+            CL
+          </button>
+        </span>
+        <span>
+          <button
+            class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw]"
+            value="ML"
+          >
+            ML
+          </button>
+        </span>
+        <span>
+          <button
+            class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw]"
+            value="QA"
+          >
+            QA
+          </button>
+        </span>
+      </div>
+      <div
+        class="flex justify-center mb-[2vh] max-w-[55vw] ml-[10vw]"
+      >
+        <legend
+          class="w-[215px] h-10 leading-10"
+        >
+          使用技術：
+        </legend>
+        <fieldset
+          id="skill"
+          name="skill"
+        >
+          <span
+            class="px-[10px] whitespace-nowrap"
+          >
+            <input
+              id="JavaScript"
+              name="JavaScript"
+              type="checkbox"
+              value="JavaScript"
+            />
+            <label
+              for="JavaScript"
+            >
+              JavaScript
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
+          >
+            <input
+              id="TypeScript"
+              name="TypeScript"
+              type="checkbox"
+              value="TypeScript"
+            />
+            <label
+              for="TypeScript"
+            >
+              TypeScript
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
+          >
+            <input
+              id="React"
+              name="React"
+              type="checkbox"
+              value="React"
+            />
+            <label
+              for="React"
+            >
+              React
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
+          >
+            <input
+              id="Next.js"
+              name="Next.js"
+              type="checkbox"
+              value="Next.js"
+            />
+            <label
+              for="Next.js"
+            >
+              Next.js
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
+          >
+            <input
+              id="Vue.js"
+              name="Vue.js"
+              type="checkbox"
+              value="Vue.js"
+            />
+            <label
+              for="Vue.js"
+            >
+              Vue.js
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
+          >
+            <input
+              id="Angular"
+              name="Angular"
+              type="checkbox"
+              value="Angular"
+            />
+            <label
+              for="Angular"
+            >
+              Angular
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
+          >
+            <input
+              id="Nuxt.js"
+              name="Nuxt.js"
+              type="checkbox"
+              value="Nuxt.js"
+            />
+            <label
+              for="Nuxt.js"
+            >
+              Nuxt.js
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
+          >
+            <input
+              id="jQuery"
+              name="jQuery"
+              type="checkbox"
+              value="jQuery"
+            />
+            <label
+              for="jQuery"
+            >
+              jQuery
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
+          >
+            <input
+              id="Redux"
+              name="Redux"
+              type="checkbox"
+              value="Redux"
+            />
+            <label
+              for="Redux"
+            >
+              Redux
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
+          >
+            <input
+              id="vuex"
+              name="vuex"
+              type="checkbox"
+              value="vuex"
+            />
+            <label
+              for="vuex"
+            >
+              vuex
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
+          >
+            <input
+              id="MaterialUI"
+              name="MaterialUI"
+              type="checkbox"
+              value="MaterialUI"
+            />
+            <label
+              for="MaterialUI"
+            >
+              MaterialUI
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
+          >
+            <input
+              id="tailwind"
+              name="tailwind"
+              type="checkbox"
+              value="tailwind"
+            />
+            <label
+              for="tailwind"
+            >
+              tailwind
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
+          >
+            <input
+              id="Bootstrap"
+              name="Bootstrap"
+              type="checkbox"
+              value="Bootstrap"
+            />
+            <label
+              for="Bootstrap"
+            >
+              Bootstrap
+            </label>
+          </span>
+          <span
+            class="px-[10px] whitespace-nowrap"
+          >
+            <input
+              id="Vercel"
+              name="Vercel"
+              type="checkbox"
+              value="Vercel"
+            />
+            <label
+              for="Vercel"
+            >
+              Vercel
+            </label>
+          </span>
+        </fieldset>
+      </div>
+      <div>
+        <button
+          class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white rounded-xl p-2 w-40 h-auto text-lg"
+          type="submit"
+        >
+          絞り込み
+        </button>
+      </div>
+    </form>
+  </section>
+  <section>
+    <table
+      class="border-collapse border border-slate-deep-gray w-[75vw] ml-[12.5vw] text-center mb-[10vh]"
+    >
+      <thead>
+        <tr>
+          <th
+            class="border border-slate-deep-gray bg-light-gray"
+            id="open"
+          />
+          <th
+            class="border border-slate-deep-gray bg-light-gray"
+            id="answer_deadline"
+          >
+            回答期限
+          </th>
+          <th
+            class="border border-slate-deep-gray bg-light-gray"
+            id="project_name"
+          >
+            案件名
+          </th>
+          <th
+            class="border border-slate-deep-gray bg-light-gray"
+            id="project_detail"
+          >
+            案件概要
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td
+            class="border border-slate-deep-gray"
+            id="open"
+          >
+            <button
+              class="text-deep-gray"
+              data-testid="open_1"
+              id="open_button"
+              name="open_button"
+              type="button"
+            >
+              ▶︎
+            </button>
+          </td>
+          <td
+            class="border border-slate-deep-gray"
+            id="answer_deadline"
+          >
+            2023-07
+          </td>
+          <td
+            class="border border-slate-deep-gray"
+            id="project_name"
+          >
+            案件A
+          </td>
+          <td
+            class="border border-slate-deep-gray"
+            id="project_detail"
+          >
+            案件Aの説明
+          </td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td
+            class="border border-slate-deep-gray"
+            id="open"
+          >
+            <button
+              class="text-deep-gray"
+              data-testid="open_2"
+              id="open_button"
+              name="open_button"
+              type="button"
+            >
+              ▶︎
+            </button>
+          </td>
+          <td
+            class="border border-slate-deep-gray"
+            id="answer_deadline"
+          >
+            2023-07
+          </td>
+          <td
+            class="border border-slate-deep-gray"
+            id="project_name"
+          >
+            案件B
+          </td>
+          <td
+            class="border border-slate-deep-gray"
+            id="project_detail"
+          >
+            案件Bの説明
+          </td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td
+            class="border border-slate-deep-gray"
+            id="open"
+          >
+            <button
+              class="text-deep-gray"
+              data-testid="open_3"
+              id="open_button"
+              name="open_button"
+              type="button"
+            >
+              ▶︎
+            </button>
+          </td>
+          <td
+            class="border border-slate-deep-gray"
+            id="answer_deadline"
+          >
+            2023-07
+          </td>
+          <td
+            class="border border-slate-deep-gray"
+            id="project_name"
+          >
+            案件C
+          </td>
+          <td
+            class="border border-slate-deep-gray"
+            id="project_detail"
+          >
+            案件Cの説明
+          </td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td
+            class="border border-slate-deep-gray"
+            id="open"
+          >
+            <button
+              class="text-deep-gray"
+              data-testid="open_4"
+              id="open_button"
+              name="open_button"
+              type="button"
+            >
+              ▶︎
+            </button>
+          </td>
+          <td
+            class="border border-slate-deep-gray"
+            id="answer_deadline"
+          >
+            2023-08
+          </td>
+          <td
+            class="border border-slate-deep-gray"
+            id="project_name"
+          >
+            案件D
+          </td>
+          <td
+            class="border border-slate-deep-gray"
+            id="project_detail"
+          >
+            案件Dの説明
+          </td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td
+            class="border border-slate-deep-gray"
+            id="open"
+          >
+            <button
+              class="text-deep-gray"
+              data-testid="open_5"
+              id="open_button"
+              name="open_button"
+              type="button"
+            >
+              ▶︎
+            </button>
+          </td>
+          <td
+            class="border border-slate-deep-gray"
+            id="answer_deadline"
+          >
+            2023-08
+          </td>
+          <td
+            class="border border-slate-deep-gray"
+            id="project_name"
+          >
+            案件E
+          </td>
+          <td
+            class="border border-slate-deep-gray"
+            id="project_detail"
+          >
+            案件Eの説明
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+`;
