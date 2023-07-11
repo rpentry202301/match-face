@@ -33,10 +33,15 @@ export const ProjectContent = ({ id }: { id: string }) => {
           secondLabel="キャンセル"
         />
         <GrayButton
-          label="下書き保存する"
+          className="border rounded-none"
+          label="下書きを保存する"
           onClick={() => setIsDraftOpen(true)}
         />
-        <OrangeButton label="回答を送信する" onClick={() => setIsOpen(true)} />
+        <OrangeButton
+          className="border rounded-none"
+          label="回答を送信する"
+          onClick={() => setIsOpen(true)}
+        />
       </div>
     </div>
   );

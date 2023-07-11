@@ -47,11 +47,12 @@ export const AnswerContent = ({ user_id, project_id, admin_id }: Props) => {
         />
         <OrangeButton
           label="コメントを送信する"
-          className="w-50"
+          className="w-50 border rounded-none"
           onClick={() => setIsOpen(true)}
         />
         <GrayButton
-          label="回答履歴一覧へ"
+          className="border rounded-none"
+          label="回答履歴一覧へ戻る"
           onClick={() => router.push("/admin/histories")}
         />
       </div>

@@ -19,10 +19,6 @@ export const AnswerContent = ({ user_id, project_id }: Props) => {
     (answer) => answer.project_id === project_id
   );
 
-  console.log("user", user_id);
-  console.log("project", project_id);
-  console.log(currentProject);
-
   return (
     <div className="w-1/2 py-5">
       <div className="flex justify-between items-center my-3">
@@ -36,10 +32,12 @@ export const AnswerContent = ({ user_id, project_id }: Props) => {
       <CommentContent user_id={user_id} project_id={project_id} />
       <div className="flex justify-around my-20">
         <OrangeButton
+          className="border rounded-none"
           label="質問一覧へ"
           onClick={() => router.push("/questions")}
         />
         <OrangeButton
+          className="border rounded-none"
           label="回答履歴一覧へ"
           onClick={() => router.push("/histories")}
         />
