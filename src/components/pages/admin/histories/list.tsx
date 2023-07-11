@@ -2,8 +2,11 @@
 import { useState } from "react"
 import { projects } from "@/const/admin_histories"
 import {HistoriesUserListHead,HistoriesUserListBody} from "./user_list"
+
 export default function HistoriesList (){
     const [open,setOpen] = useState<{id:number,status:boolean}[]>(projects.map((project)=>({id:project.id,status:false})))
+
+    
 
     // ユーザーのアコーディオン開閉
     function handleClick(id:number){

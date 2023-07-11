@@ -4,7 +4,6 @@ import HistoriesPage from '@/app/(pages)/admin/(other)/histories/page'
 import React from 'react'
 import "@testing-library/jest-dom"
 import {AppRouterContextProviderMock} from './app-router-context-provider-mock'
-import { useRouter } from 'next/router'
 
 describe('管理者/履歴一覧画面のテスト',() => {
     const user = userEvent.setup()
@@ -36,7 +35,7 @@ describe('管理者/履歴一覧画面のテスト',() => {
             expect(detailButton).toBeTruthy()
             await user.click(detailButton)
             expect(push).toBeCalled()
-            expect(push).toBeCalledWith('/admin/review')
+            expect(push).toBeCalledWith('/admin/review/1')
         })
     })
     describe('絞り込みテスト',()=>{

@@ -43,19 +43,19 @@ const HistoriesSelect = (props: Style) => {
                     {departments.map((department)=>(
                         <span key={department}>
                         {department!==formData.department&&
-                            <WhiteButton label={department} key={department} className="mx-[10px] w-[8vw]" value={department} 
+                            <WhiteButton label={department} key={department} className="mx-[10px] w-[8vw] max-sm:w-[15vw] max-sm:mb-[8px]" value={department} 
                                     onClick={(e)=>
                                         {e.preventDefault()
                                         setFormData({...formData,department:e.currentTarget.value})}}/>}
                         {department===formData.department&&
-                            <WhiteButton label={department} key={department} value={""} className="bg-deep-gray mx-[10px] w-[8vw] translate-y-0.5"
+                            <WhiteButton label={department} key={department} value={""} className="bg-deep-gray mx-[10px] w-[8vw] translate-y-0.5 max-sm:w-[15vw] max-sm:mb-[8px]"
                                     onClick={(e)=>
                                         {e.preventDefault()
                                         setFormData({...formData,department:e.currentTarget.value})}}/>}
                         </span>
                     ))}
                 </div>
-                <div className="flex justify-center mb-[2vh] max-w-[55vw] ml-[10vw]">
+                <div className="md:flex justify-center mb-[2vh] max-w-[55vw] ml-[10vw]">
                 <legend className="w-[215px] h-10 leading-10">使用技術：</legend>
                 <fieldset id="skill" name="skill">
                         {skills.map((skill)=>(
