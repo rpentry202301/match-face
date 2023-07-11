@@ -7,6 +7,7 @@ import WhiteButton from "@/components/ui/button/WhiteButton";
 import Link from "next/link";
 import type { ChangeEvent } from "react";
 import type { Question } from "@/const/projectTable";
+import { queries } from "@testing-library/react";
 
 const EditQuestionPage = () => {
   const data = answerEditData[0];
@@ -95,14 +96,14 @@ const EditQuestionPage = () => {
     setEditData(updatedData);
   };
   return (
-    <div className="flex flex-col items-center my-20 w-3/4 mx-auto h-auto">
+    <div className="flex flex-col items-center my-20 w-4/5 mx-auto h-auto">
       <div className="w-2/3">
         <div className="flex items-end justify-between border-b-2 border-black pb-3">
           <h1 className="text-3xl">質問・回答例の編集</h1>
           <p>登録日:{data.edit_date}</p>
         </div>
         <div className="my-8">
-          <h2 className="text-2xl">案件名:{data.project_name}</h2>
+          <h2 className="text-2xl">案件名：{data.project_name}</h2>
           <p className="border p-3 mt-2">{data.project_detail}</p>
         </div>
       </div>
@@ -114,7 +115,7 @@ const EditQuestionPage = () => {
               key={data.question_id}
               className="flex flex-col w-2/3 my-5 border-b border-black pb-16 border-dashed"
             >
-              <h2>Q{data.question_id}.</h2>
+              <h2 className="text-2xl">Q{data.question_id}.</h2>
               <textarea
                 name="question"
                 id="question"
@@ -123,7 +124,7 @@ const EditQuestionPage = () => {
                 rows={5}
                 onChange={(e) => handleQuestionChange(e, index)}
               ></textarea>
-              <label htmlFor="answer_ex" className="mt-3">
+              <label htmlFor="answer_ex" className="my-3 text-2xl">
                 回答例
               </label>
               <textarea
@@ -147,7 +148,7 @@ const EditQuestionPage = () => {
               key={data.question_id}
               className="flex flex-col w-2/3 my-5 border-b border-black pb-16 border-dashed"
             >
-              <h2>Q{data.question_id}.</h2>
+              <h2 className="text-2xl">Q{data.question_id}.</h2>
               <textarea
                 name="question"
                 id="question"
@@ -203,30 +204,32 @@ const EditQuestionPage = () => {
           );
         }
       })}
-      <div className="flex m-3">
-        <OrangeButton
-          label="記述質問追加"
-          className="m-10"
-          onClick={addWriteQuestion}
-        />
-        <OrangeButton
-          label="選択質問追加"
-          className="m-10"
-          onClick={addSelectQuestion}
-        />
-      </div>
-      <div className="flex m-3">
-        <Link href={`/admin/handle-question`}>
-          <OrangeButton
-            label="< 一覧へ戻る"
-            className="m-10 rounded-none py-5 flex items-center justify-center"
+      <div className="flex flex-col">
+        <div className="flex justify-around m-3">
+          <WhiteButton
+            label="記述質問追加"
+            className="m-10"
+            onClick={addWriteQuestion}
           />
-        </Link>
-        <OrangeButton
-          label="保存する"
-          className="m-10 rounded-none py-5 flex items-center justify-center"
-          onClick={sendData}
-        />
+          <WhiteButton
+            label="選択質問追加"
+            className="m-10"
+            onClick={addSelectQuestion}
+          />
+        </div>
+        <div className="flex m-3">
+          <Link href={`/admin/handle-question`}>
+            <OrangeButton
+              label="< 一覧へ戻る"
+              className="m-10 rounded-none py-5 flex items-center justify-center"
+            />
+          </Link>
+          <OrangeButton
+            label="保存する"
+            className="m-10 rounded-none py-5 flex items-center justify-center"
+            onClick={sendData}
+          />
+        </div>
       </div>
     </div>
   );

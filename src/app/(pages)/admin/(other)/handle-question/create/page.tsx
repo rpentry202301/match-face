@@ -117,7 +117,7 @@ const CreateQuestionPage = () => {
     setEditData(updatedData);
   };
   return (
-    <div className="flex flex-col items-center my-20 w-3/4 mx-auto h-auto">
+    <div className="flex flex-col items-center my-20 w-4/5 mx-auto h-auto">
       <div className="w-2/3">
         <div className="flex items-end justify-between border-b-2 border-black pb-3">
           <h1 className="text-3xl">質問・回答例の作成</h1>
@@ -154,7 +154,7 @@ const CreateQuestionPage = () => {
               onChange={(e) => setProjectName(e.target.value)}
             />
           </div>
-          <label htmlFor="project_detail" className="mt-3">
+          <label htmlFor="project_detail" className="my-3 text-2xl">
             案件詳細
           </label>
           <textarea
@@ -174,7 +174,7 @@ const CreateQuestionPage = () => {
               key={data.question_id}
               className="flex flex-col w-2/3 my-5 border-b border-black pb-16 border-dashed"
             >
-              <h2>Q{data.question_id}.</h2>
+              <h2 className="text-2xl">Q{data.question_id}.</h2>
               <textarea
                 name="question"
                 id="question"
@@ -183,7 +183,7 @@ const CreateQuestionPage = () => {
                 rows={5}
                 onChange={(e) => handleQuestionChange(e, index)}
               ></textarea>
-              <label htmlFor="answer_ex" className="mt-3">
+              <label htmlFor="answer_ex" className="my-3 text-2xl">
                 回答例
               </label>
               <textarea
@@ -207,7 +207,7 @@ const CreateQuestionPage = () => {
               key={data.question_id}
               className="flex flex-col w-2/3 my-5 border-b border-black pb-16 border-dashed"
             >
-              <h2>Q{data.question_id}.</h2>
+              <h2 className="text-2xl">Q{data.question_id}.</h2>
               <textarea
                 name="question"
                 id="question"
@@ -263,30 +263,32 @@ const CreateQuestionPage = () => {
           );
         }
       })}
-      <div className="flex m-3">
-        <OrangeButton
-          label="記述質問追加"
-          className="m-10"
-          onClick={addWriteQuestion}
-        />
-        <OrangeButton
-          label="選択質問追加"
-          className="m-10"
-          onClick={addSelectQuestion}
-        />
-      </div>
-      <div className="flex m-3">
-        <Link href={`/admin/handle-question`}>
-          <OrangeButton
-            label="< 一覧へ戻る"
-            className="m-10 rounded-none py-5 flex items-center justify-center"
+      <div className="flex flex-col">
+        <div className="flex justify-around m-3">
+          <WhiteButton
+            label="記述質問追加"
+            className="m-10"
+            onClick={addWriteQuestion}
           />
-        </Link>
-        <OrangeButton
-          label="保存する"
-          className="m-10 rounded-none py-5 flex items-center justify-center"
-          onClick={sendData}
-        />
+          <WhiteButton
+            label="選択質問追加"
+            className="m-10"
+            onClick={addSelectQuestion}
+          />
+        </div>
+        <div className="flex m-3">
+          <Link href={`/admin/handle-question`}>
+            <OrangeButton
+              label="< 一覧へ戻る"
+              className="m-10 rounded-none py-5 flex items-center justify-center"
+            />
+          </Link>
+          <OrangeButton
+            label="保存する"
+            className="m-10 rounded-none py-5 flex items-center justify-center"
+            onClick={sendData}
+          />
+        </div>
       </div>
     </div>
   );
