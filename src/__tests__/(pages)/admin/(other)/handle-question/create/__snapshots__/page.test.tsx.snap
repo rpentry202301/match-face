@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`質問・回答例作成画面テスト スナップショット 1`] = `
+<div>
+  <div
+    class="flex flex-col items-center my-20 w-4/5 mx-auto h-auto"
+  >
+    <div
+      class="w-2/3"
+    >
+      <div
+        class="flex items-end justify-between border-b-2 border-black pb-3"
+      >
+        <h1
+          class="text-3xl"
+        >
+          質問・回答例の作成
+        </h1>
+      </div>
+      <div
+        class="my-8"
+      >
+        <div
+          class="flex items-center"
+        >
+          <h2
+            class="text-2xl"
+          >
+            部署選択：
+          </h2>
+          <select
+            class="border-deep-gray"
+            id="department"
+            name="department"
+          >
+            <option
+              class="border-deep-gray"
+              selected=""
+              value="Java"
+            >
+              Java
+            </option>
+            <option
+              class="border-deep-gray"
+              value="PHP"
+            >
+              PHP
+            </option>
+            <option
+              class="border-deep-gray"
+              value="FR"
+            >
+              FR
+            </option>
+            <option
+              class="border-deep-gray"
+              value="CL"
+            >
+              CL
+            </option>
+            <option
+              class="border-deep-gray"
+              value="ML"
+            >
+              ML
+            </option>
+            <option
+              class="border-deep-gray"
+              value="QA"
+            >
+              QA
+            </option>
+          </select>
+        </div>
+        <div
+          class="flex items-center my-5"
+        >
+          <h2
+            class="text-2xl"
+          >
+            案件名：
+          </h2>
+          <div>
+            <input
+              class="border border-deep-gray pl-1 w-96"
+              id="project_name"
+              name="project_name"
+            />
+          </div>
+        </div>
+        <label
+          class="my-3 text-2xl"
+          for="project_detail"
+        >
+          案件詳細
+        </label>
+        <textarea
+          class="border-deep-gray border p-1 w-full"
+          id="project_detail"
+          name="project_detail"
+          rows="5"
+        />
+      </div>
+    </div>
+    <div
+      class="flex flex-col"
+    >
+      <div
+        class="flex justify-around m-3"
+      >
+        <button
+          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md m-10"
+          data-testid="addWriteButton"
+        >
+          記述質問追加
+        </button>
+        <button
+          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md m-10"
+          data-testid="addSelectButton"
+        >
+          選択質問追加
+        </button>
+      </div>
+      <div
+        class="flex m-3"
+      >
+        <a
+          data-testid="backList"
+          href="/admin/handle-question"
+        >
+          <div>
+            <button
+              class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white p-2 w-40 h-auto text-lg m-10 rounded-none py-5 flex items-center justify-center"
+            >
+              &lt; 一覧へ戻る
+            </button>
+          </div>
+        </a>
+        <div>
+          <button
+            class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white p-2 w-40 h-auto text-lg m-10 rounded-none py-5 flex items-center justify-center"
+          >
+            保存する
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

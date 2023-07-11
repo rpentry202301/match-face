@@ -24,13 +24,13 @@ const RegisterForm = () => {
   return (
     <>
       <div className="flex flex-col items-center justify-center h-screen">
-        <form>
+        <div className="border-2 px-80 py-16">
+        <form >
           <label htmlFor="group_name">▶グループ名を設定する</label>
-          <Input id="group_name" />
+          <Input id="group_name"/>
           <br />
           <label htmlFor="user">▶ユーザーを選択する</label>
           <span>&nbsp;</span>
-          {/* <WhiteButton label="追加" className=" px-3 py-1 text-xs" /> */}
           <UserSelectModal/>
           <Input id="user" />
           <br />
@@ -61,6 +61,7 @@ const RegisterForm = () => {
                 </div>
             </div>
           )}
+      </div>
       </div>
     </>
   );
