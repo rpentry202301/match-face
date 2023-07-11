@@ -33,16 +33,20 @@ const QuestionsPage = () => {
               <td className="border text-center p-3">
                 {project.answer_deadline}
               </td>
-              <td className="border text-center">{project.project_name}</td>
-              <td className="border text-center">{project.project_detail}</td>
-              <td className="border text-center">
+              <td className="border text-center px-4">
+                {project.project_name}
+              </td>
+              <td className="border text-center px-4">
+                {project.project_detail}
+              </td>
+              <td className="border text-center px-4">
                 {
                   (toLink = project.answer_status ? (
-                    <Link href="/result">
+                    <Link href={`result/${project.id}`}>
                       <AnswerButton answered={project.answer_status} />
                     </Link>
                   ) : (
-                    <Link href="/testing">
+                    <Link href={`testing/${project.id}`}>
                       <AnswerButton answered={project.answer_status} />
                     </Link>
                   ))

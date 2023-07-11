@@ -20,7 +20,7 @@ const HistoryList = () => {
   const projectData: ProjectData = data;
   return (
     <div>
-      <table className="table-auto border border-collapse my-20">
+      <table className="table-auto border border-collapse my-20 w-[80vw]">
         <thead>
           <tr>
             <th className="border p-4 bg-neutral-300">コメント</th>
@@ -37,20 +37,24 @@ const HistoryList = () => {
                 {project.comment_status ? (
                   <OrangeButton
                     label={"新着"}
-                    className="w-15 rounded py-2 px-4 text-white text-sm"
+                    className="w-15 rounded py-1 px-2 text-xs text-white"
                   />
                 ) : (
                   ""
                 )}
               </td>
               <td className="border text-center p-3">{project.answer_date}</td>
-              <td className="border text-center">{project.project_name}</td>
-              <td className="border text-center">{project.project_detail}</td>
+              <td className="border text-center px-4">
+                {project.project_name}
+              </td>
+              <td className="border text-center px-4">
+                {project.project_detail}
+              </td>
               <td className="border text-center px-4">
                 <Link href={`result/${project.id}`}>
                   <GrayButton
                     label={"詳細"}
-                    className="w-15 rounded py-2 px-4 text-sm"
+                    className="w-15 rounded py-1 px-2 text-xs"
                     value={project.id}
                   />
                 </Link>

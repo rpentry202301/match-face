@@ -4,7 +4,7 @@ import HistoryList from "@/components/pages/general/histories/HistoryList";
 const HistoriesPage = () => {
   return (
     <div className="flex flex-col items-center h-screen ">
-      <HistoriesSelect className="ml-[0vw]" />
+      <HistoriesSelect className="ml-[0vw] w-[70vw]" />
       <HistoryList />
     </div>
   );
