@@ -55,8 +55,8 @@ const HistoriesSelect = (props: Style) => {
                         </span>
                     ))}
                 </div>
-                <div className="md:flex justify-center mb-[2vh] max-w-[55vw] ml-[10vw]">
-                <legend className="w-[215px] h-10 leading-10">使用技術：</legend>
+                <div className="lg:flex justify-center mb-[2vh] max-w-[55vw] ml-[10vw]">
+                <legend className="lg:w-[215px] lg:h-10 lg:leading-10">使用技術：</legend>
                 <fieldset id="skill" name="skill">
                         {skills.map((skill)=>(
                             <span  key={skill.id} className="px-[10px] whitespace-nowrap">

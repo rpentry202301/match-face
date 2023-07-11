@@ -11,6 +11,10 @@ describe('管理者/履歴一覧画面のテスト',() => {
     beforeEach(()=>{
         render(<AppRouterContextProviderMock router={{ push }}><HistoriesPage /></AppRouterContextProviderMock>);
     })
+    const mock_answered_user = [
+        {id:1,project_id:1,answer_status:true,user_name:"田中太郎"},
+        {id:2,project_id:1,answer_status:false,user_name:"山田次郎"},
+    ]
 
     describe('スナップショットテスト',() => {
         it('レンダリング時',async() => {
@@ -36,6 +40,9 @@ describe('管理者/履歴一覧画面のテスト',() => {
             await user.click(detailButton)
             expect(push).toBeCalled()
             expect(push).toBeCalledWith('/admin/review/1')
+        })
+        it('状態に合わせて表示が変わる',async()=>{
+            // fetchでやる
         })
     })
     describe('絞り込みテスト',()=>{
