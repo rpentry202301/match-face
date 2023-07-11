@@ -3,12 +3,16 @@ import userEvent from '@testing-library/user-event'
 import HistoriesPage from '@/app/(pages)/admin/(other)/histories/page'
 import React from 'react'
 import "@testing-library/jest-dom"
+import {AppRouterContextProviderMock} from './app-router-context-provider-mock'
+import { useRouter } from 'next/router'
 
 describe('管理者/履歴一覧画面のテスト',() => {
     const user = userEvent.setup()
+    const push = jest.fn()
     beforeEach(()=>{
-        render(<HistoriesPage />);
+        render(<AppRouterContextProviderMock router={{ push }}><HistoriesPage /></AppRouterContextProviderMock>);
     })
+
     describe('スナップショットテスト',() => {
         it('レンダリング時',async() => {
             const view = render(<HistoriesPage/>)
@@ -24,6 +28,15 @@ describe('管理者/履歴一覧画面のテスト',() => {
             expect(closeButton).toBeInTheDocument();
             expect(userList).toBeInTheDocument();
             expect(openButton).not.toBeInTheDocument();
+        })
+        it('詳細ボタンを押すとページ遷移する',async()=>{
+            const openButton = screen.getByTestId('open_1')
+            await (user.click(openButton))
+            const detailButton = screen.getByTestId('detail_1')
+            expect(detailButton).toBeTruthy()
+            await user.click(detailButton)
+            expect(push).toBeCalled()
+            expect(push).toBeCalledWith('/admin/review')
         })
     })
     describe('絞り込みテスト',()=>{
