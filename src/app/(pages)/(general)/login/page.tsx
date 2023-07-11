@@ -52,7 +52,7 @@ const LoginPage = () => {
             </label>
             <Input
               id="userId"
-              className=" w-96 h-8 mt-2"
+              className=" w-96 h-10 mt-2"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setUserId(e.target.value)
               }
@@ -70,7 +70,7 @@ const LoginPage = () => {
             </label>
             <Input
               id="password"
-              className="w-96 h-8 mt-2"
+              className="w-96 h-10 mt-2"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setPassword(e.target.value)
               }
