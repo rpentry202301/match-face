@@ -22,14 +22,52 @@ describe("SelectDeadline.tsx", () => {
       render(<SelectDeadline />);
     });
     it("「年」セレクトボックス選択", async () => {
-      const beforeSelectYear = screen.getByRole("option", {
+      const beforeSelect = screen.getByRole("option", {
         name: "2023",
       }) as HTMLOptionElement;
-      expect(beforeSelectYear.selected).toBe(true);
+      expect(beforeSelect.selected).toBe(true);
       await user.selectOptions(screen.getByTestId("year"), "2024");
-      const selectYear = screen.getByRole("option", {name: "2024"}) as HTMLOptionElement;
-      expect(selectYear.selected).toBe(true);
-      expect(beforeSelectYear.selected).toBe(false)
+      const afterSelect = screen.getByRole("option", {
+        name: "2024",
+      }) as HTMLOptionElement;
+      expect(afterSelect.selected).toBe(true);
+      expect(beforeSelect.selected).toBe(false);
+    });
+    it("「月」セレクトボックス選択", async () => {
+      const beforeSelect = screen.getByRole("option", {
+        name: "1",
+      }) as HTMLOptionElement;
+      expect(beforeSelect.selected).toBe(true);
+      await user.selectOptions(screen.getByTestId("month"), "12");
+      const afterSelect = screen.getByRole("option", {
+        name: "12",
+      }) as HTMLOptionElement;
+      expect(afterSelect.selected).toBe(true);
+      expect(beforeSelect.selected).toBe(false);
+    });
+    it("「日」セレクトボックス選択", async () => {
+      const beforeSelect = screen.getByRole("option", {
+        name: "1",
+      }) as HTMLOptionElement;
+      expect(beforeSelect.selected).toBe(true);
+      await user.selectOptions(screen.getByTestId("day"), "25");
+      const afterSelect = screen.getByRole("option", {
+        name: "25",
+      }) as HTMLOptionElement;
+      expect(afterSelect.selected).toBe(true);
+      expect(beforeSelect.selected).toBe(false);
+    });
+    it("「時間」セレクトボックス選択", async () => {
+      const beforeSelect = screen.getByRole("option", {
+        name: "0",
+      }) as HTMLOptionElement;
+      expect(beforeSelect.selected).toBe(true);
+      await user.selectOptions(screen.getByTestId("time"), "23");
+      const afterSelect = screen.getByRole("option", {
+        name: "23",
+      }) as HTMLOptionElement;
+      expect(afterSelect.selected).toBe(true);
+      expect(beforeSelect.selected).toBe(false);
     });
   });
 });
