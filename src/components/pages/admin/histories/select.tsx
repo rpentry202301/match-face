@@ -3,7 +3,7 @@ import OrangeButton from "@/components/ui/button/OrangeButton";
 import WhiteButton from "@/components/ui/button/WhiteButton"
 import { skills,departments,projects } from "@/const/admin_histories";
 import { twMerge } from "tailwind-merge";
-import { Dispatch, FormEvent, SetStateAction, SyntheticEvent } from "react";
+import { Dispatch, FormEvent, SetStateAction } from "react";
 import { useState } from "react";
 
 type Style = {
@@ -13,7 +13,7 @@ type Style = {
 const HistoriesSelect = (props: Style) => {
     const [formData,setFormData] = useState<{month:string,department:string,skills:string[]}>({month:"",department:"",skills:[]})
     const style = twMerge(
-        "w-[80vw] ml-[10vw] border-2 text-center my-[5vh] py-[5vh]",
+        "w-[75vw] ml-[12.5vw] border-2 text-center my-[5vh] py-[5vh]",
         props.className
         );
 
@@ -48,15 +48,16 @@ const HistoriesSelect = (props: Style) => {
                                         {e.preventDefault()
                                         setFormData({...formData,department:e.currentTarget.value})}}/>}
                         {department===formData.department&&
-                            <WhiteButton label={department} key={department} value={""} className="bg-deep-gray mx-[10px] w-[8vw]"
+                            <WhiteButton label={department} key={department} value={""} className="bg-deep-gray mx-[10px] w-[8vw] translate-y-0.5"
                                     onClick={(e)=>
                                         {e.preventDefault()
                                         setFormData({...formData,department:e.currentTarget.value})}}/>}
                         </span>
                     ))}
                 </div>
-                <fieldset id="skill" name="skill" className="mb-[2vh] max-w-[50vw] ml-[15vw]">
-                    <legend>使用技術：</legend>
+                <div className="flex justify-center mb-[2vh] max-w-[55vw] ml-[10vw]">
+                <legend className="w-[215px] h-10 leading-10">使用技術：</legend>
+                <fieldset id="skill" name="skill">
                         {skills.map((skill)=>(
                             <span  key={skill.id} className="px-[10px] whitespace-nowrap">
                             <input type="checkbox" id={skill.skill} name={skill.skill} value={skill.skill}
@@ -65,6 +66,7 @@ const HistoriesSelect = (props: Style) => {
                             </span>
                         ))}
                 </fieldset>
+                </div>
                 <OrangeButton label="絞り込み" type="submit" />
             </form>
         </section>

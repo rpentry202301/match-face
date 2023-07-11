@@ -4,8 +4,8 @@ import Menu from "@/components/ui/Menu";
 
 const AdminMenu = () => {
   return (
-    <div className="flex justify-center items-center">
-      <div className=" flex flex-wrap justify-start w-full">
+    <div className="flex justify-center items-center min-h-screen">
+      <div className=" flex flex-wrap justify-center items-center w-full">
         {dataArray.map((data: any, index: number) => (
           <div key={index} className=" mx-10 my-10">
             <Menu
@@ -17,6 +17,8 @@ const AdminMenu = () => {
             />
           </div>
         ))}
+        {/* 均等に配置するために空のdiv要素を追加↓ */}
+        <div className=" w-[384px] h-[160px] mx-10 my-10"></div>
       </div>
     </div>
   );
