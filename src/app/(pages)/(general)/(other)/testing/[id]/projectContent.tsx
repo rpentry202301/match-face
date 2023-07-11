@@ -33,7 +33,7 @@ export const ProjectContent = ({ id }: { id: string }) => {
           secondLabel="キャンセル"
         />
         <GrayButton
-          className="border rounded-none"
+          className="border rounded-none w-50"
           label="下書きを保存する"
           onClick={() => setIsDraftOpen(true)}
         />
