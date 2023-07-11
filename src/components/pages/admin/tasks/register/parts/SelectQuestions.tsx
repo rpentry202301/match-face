@@ -1,12 +1,15 @@
 import Input from "@/components/ui/Input";
 import WhiteButton from "@/components/ui/button/WhiteButton";
+import QuestionSelectModal from "../QuestionSelectModal ";
 
 const SelectQuestions = () => {
   return (
     <div className="mb-5">
       <div className="flex items-center mb-2">
         <p className="text-base w-40">▶質問を選択する</p>
-        <WhiteButton label="追加" className="text-xs ml-10" />
+        <div className="text-xs ml-10">
+          <QuestionSelectModal />
+        </div>
       </div>
       <div>
         <Input
