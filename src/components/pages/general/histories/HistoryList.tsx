@@ -18,6 +18,11 @@ const HistoryList = () => {
   // if (!response.ok) throw new Error('Failed to fetch data');
   // const projectData: ProjectData = await response.json();
   const projectData: ProjectData = data;
+
+  const truncateString = (str: string, num: number) => {
+    return str.length <= num ? str : str.slice(0, num) + "...";
+  };
+
   return (
     <div>
       <table className="table-auto border border-collapse my-20 w-[80vw]">
@@ -47,8 +52,9 @@ const HistoryList = () => {
               <td className="border text-center px-4">
                 {project.project_name}
               </td>
-              <td className="border text-center px-4">
-                {project.project_detail}
+
+              <td className="border text-center px-4 ">
+                {truncateString(project.project_detail, 30)}
               </td>
               <td className="border text-center px-4">
                 <Link href={`result/${project.id}`}>

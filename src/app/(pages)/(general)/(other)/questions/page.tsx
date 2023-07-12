@@ -15,7 +15,9 @@ const QuestionsPage = () => {
   // if (!response.ok) throw new Error('Failed to fetch data');
   // const projectData: ProjectData = await response.json();
   const projectData: ProjectData = data;
-  let toLink;
+  const truncateString = (str: string, num: number) => {
+    return str.length <= num ? str : str.slice(0, num) + "...";
+  };
   return (
     <div className="flex flex-col items-center h-screen ">
       <table className="table-auto border border-collapse my-20 w-3/4">
@@ -37,20 +39,18 @@ const QuestionsPage = () => {
                 {project.project_name}
               </td>
               <td className="border text-center px-4">
-                {project.project_detail}
+                {truncateString(project.project_detail, 30)}
               </td>
-              <td className="border text-center px-4">
-                {
-                  (toLink = project.answer_status ? (
-                    <Link href={`result/${project.id}`}>
-                      <AnswerButton answered={project.answer_status} />
-                    </Link>
-                  ) : (
-                    <Link href={`testing/${project.id}`}>
-                      <AnswerButton answered={project.answer_status} />
-                    </Link>
-                  ))
-                }
+              <td className="border text-center px-4 ">
+                {project.answer_status ? (
+                  <Link href={`result/${project.id}`}>
+                    <AnswerButton answered={project.answer_status} />
+                  </Link>
+                ) : (
+                  <Link href={`testing/${project.id}`}>
+                    <AnswerButton answered={project.answer_status} />
+                  </Link>
+                )}
               </td>
             </tr>
           ))}
