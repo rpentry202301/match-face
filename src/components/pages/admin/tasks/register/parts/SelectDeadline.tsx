@@ -22,6 +22,7 @@ const SelectDeadline = () => {
           <div className="flex items-center">
             <SelectBox
               id="year"
+              data-testid="year"
               name="year"
               className="w-20 h-6 text-sm"
               optionVal={getThis_NextYear()}
@@ -35,6 +36,7 @@ const SelectDeadline = () => {
           <div className="flex items-center ml-4">
             <SelectBox
               id="month"
+              data-testid="month"
               name="month"
               className="w-20 h-6 text-sm"
               optionVal={monthArr}
@@ -49,6 +51,7 @@ const SelectDeadline = () => {
             <SelectBox
               id="day"
               name="day"
+              data-testid="day"
               className="w-20 h-6 text-sm"
               optionVal={getDayArrInMonth(date.year, date.month)}
               value={date.day}
@@ -61,6 +64,7 @@ const SelectDeadline = () => {
           <div className="flex items-center ml-4">
             <SelectBox
               id="time"
+              data-testid="time"
               name="time"
               className="w-20 h-6 text-sm"
               optionVal={timeArr()}

@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`管理者/グループ設定画面のテスト スナップショットテスト レンダリング時 1`] = `
+<div>
+  <div
+    class="flex flex-col items-center justify-center h-screen"
+  >
+    <div
+      class="border-2 px-80 py-16"
+    >
+      <form>
+        <label
+          for="group_name"
+        >
+          ▶グループ名を設定する
+        </label>
+        <div>
+          <input
+            class="border border-black"
+            id="group_name"
+          />
+        </div>
+        <br />
+        <label
+          for="user"
+        >
+          ▶ユーザーを選択する
+        </label>
+        <span>
+           
+        </span>
+        <button
+          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md text-xs"
+        >
+          追加
+        </button>
+        <div>
+          <input
+            class="border border-black"
+            id="user"
+          />
+        </div>
+        <br />
+        <label
+          for="group_description"
+        >
+          ▶備考
+        </label>
+        <div>
+          <input
+            class="border border-black"
+            id="group_description"
+          />
+        </div>
+      </form>
+      <br />
+      <a
+        href="#modal"
+      >
+        <div>
+          <button
+            class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white rounded-xl p-2 w-40 h-auto py-19 text-xs"
+            data-testid="registerConfirm"
+          >
+            グループを設定する
+          </button>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+`;
