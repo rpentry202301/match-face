@@ -38,7 +38,10 @@ const QuestionsPage = () => {
               <td className="border text-center">
                 {project.answer_status ? (
                   <Link href="/result">
-                    <AnswerButton answered={project.answer_status} />
+                    <AnswerButton
+                      id={`button-true-${project.id}`}
+                      answered={project.answer_status}
+                    />
                   </Link>
                 ) : (
                   <Link href="/testing">

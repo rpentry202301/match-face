@@ -26,3 +26,19 @@ describe("テーブル", () => {
     expect(element).toBeInTheDocument();
   });
 });
+describe("ボタン", () => {
+  const testData = {
+    id: "1",
+    project_name: "ポムポムプリン",
+    project_detail:
+      "日本のサンリオによるゴールデン・レトリバーの男のコをモチーフにしたキャラクター。",
+    answer_deadline: "2023/9/15",
+    answer_status: true,
+  };
+  it("true時のボタンの色が緑である", () => {
+    render(<QuestionsPage />);
+    const element = document.getElementById(`button-true-${testData.id}`);
+    console.log(element);
+    expect(element).toHaveClass("bg-green");
+  });
+});
