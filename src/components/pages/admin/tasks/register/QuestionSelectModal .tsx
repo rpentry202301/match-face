@@ -25,10 +25,10 @@ const QuestionSelectModal = () => {
             <div className="text-base">
               <h2>▶️質問を選択する</h2>
             </div>
-            <div className="flex flex-col item-center justify-center p-5 border-2 w-full">
+            <div className="flex flex-col item-center justify-center px-12 py-5 border-2 w-full">
               <div className="flex flex-col items-center gap-5">
-                <div className="flex flex-col items-start gap-5">
-                  <div className="flex pl-20 items-start justify-center gap-2 w-fit">
+                <div className="flex flex-col items-center gap-5">
+                  <div className="flex items-start justify-center gap-2 w-fit">
                     <input
                       id="search"
                       type="text"
@@ -38,7 +38,7 @@ const QuestionSelectModal = () => {
                     />
                     <WhiteButton label="検索" className="text-xs ml-4 w-16" />
                   </div>
-                  <div className="flex pl-20 items-start gap-4 flex-wrap">
+                  <div className="flex items-start gap-4 flex-wrap">
                     {departments.map((element) => (
                       <WhiteCheckButton
                         key={`teck_${element.id}`}
