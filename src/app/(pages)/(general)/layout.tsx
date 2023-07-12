@@ -5,7 +5,7 @@ export const metadata = {
   }
 };
 
-export default function RootLayout({
+export default function GeneralLayout({
   children,
 }: {
   children: React.ReactNode;
