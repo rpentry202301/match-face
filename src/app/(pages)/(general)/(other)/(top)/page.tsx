@@ -1,5 +1,15 @@
 import Menu from '@/components/ui/Menu';
 import Notification from '@/components/pages/general/top/Notification';
+import { MenuContentsArray } from '@/const/top';
+
+type MenuContent = {
+  id: number;
+  url: string;
+  title: string;
+  description: string;
+  imgUrl: string;
+  imgAlt: string;
+};
 
 const Home = async () => {
   return (
@@ -15,23 +25,18 @@ const Home = async () => {
         />
       </div>
 
-      <div className="flex flex-wrap justify-center">
-        <Menu
-          url="/questions"
-          title="回答する"
-          description="質問に答えて顔合わせの準備をします。"
-          imgUrl="/icon/document_icon.png"
-          imgAlt="回答一覧画面アイコン"
-          className=" mr-20"
-        />
-        <Menu
-          url="/histories"
-          title="回答履歴"
-          description="自身の回答をここから確認してください。"
-          imgUrl="/icon/history_icon.png"
-          imgAlt="回答履歴画面アイコン"
-          className=" ml-20"
-        />
+      <div className="grid grid-cols-2 gap-20 w-3/5 place-items-center mx-auto">
+        {MenuContentsArray.map((menuContent: MenuContent) => (
+          <div key={menuContent.id} className="">
+            <Menu
+              url={menuContent.url}
+              title={menuContent.title}
+              description={menuContent.description}
+              imgUrl={menuContent.imgUrl}
+              imgAlt={menuContent.imgAlt}
+            />
+          </div>
+        ))}
       </div>
     </main>
   );
