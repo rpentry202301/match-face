@@ -12,7 +12,7 @@ export const data: Data = [
     project_name: "ポムポムプリン",
     project_detail:
       "日本のサンリオによるゴールデン・レトリバーの男のコをモチーフにしたキャラクター。",
-    answer_deadline: "2023/9/16",
+    answer_deadline: "2023/9/15",
     answer_status: true,
   },
   {
