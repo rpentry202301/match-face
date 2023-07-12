@@ -40,10 +40,9 @@ const HistoryList = () => {
             <tr key={project.id}>
               <td className="border text-center p-3">
                 {project.comment_status ? (
-                  <OrangeButton
-                    label={"新着"}
-                    className="w-15 rounded py-1 px-2 text-xs text-white"
-                  />
+                  <span className=" bg-orange text-white p-2 w-40 h-auto w-15 rounded py-1 px-2 text-xs">
+                    新着
+                  </span>
                 ) : (
                   ""
                 )}
