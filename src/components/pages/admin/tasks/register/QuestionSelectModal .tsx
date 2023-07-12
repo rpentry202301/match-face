@@ -7,7 +7,7 @@ import OrangeButton from "@/components/ui/button/OrangeButton"
 import { skills } from "@/const/admin_histories"
 import { departments } from "@/const/tasks"
 import CheckBox from "@/components/ui/checkbox/CheckBox"
-import QuestionList from "./QuestionList"
+import QuestionList from "./parts/QuestionList"
 
 // 実際にレンダリングされるモーダルは以下に記述
 const QuestionSelectModal = () => {

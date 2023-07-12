@@ -7,7 +7,7 @@ import OrangeButton from "@/components/ui/button/OrangeButton"
 import SelectBox from "@/components/ui/selectbox/SelectBox"
 import { group as groupConst } from "@/const/group"
 import { departments } from "@/const/tasks"
-import UserList from "./UserList"
+import UserList from "./parts/UserList"
 
 const state = ['研修中', '待機中', 'アサイン中']
 const groupValues = groupConst.map((group) => group.group_name)
