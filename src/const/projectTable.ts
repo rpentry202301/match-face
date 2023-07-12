@@ -1,9 +1,10 @@
 export type Question = {
   question_id: number;
   question: string;
-  answer_example?: string;
-  answer?: string;
-  choices?: string[];
+  answer_example: string;
+  answer: string;
+  choices: string[];
+  select : boolean
 };
 
 export type AnswerEditData = {
