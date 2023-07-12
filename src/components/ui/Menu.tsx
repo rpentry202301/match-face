@@ -24,7 +24,6 @@ export default function Menu({
     'flex p-5 w-96 h-40 shadow-lg hover:bg-gray-100 flex-col active:bg-gray-200',
     props.className
   );
-  console.log('className', props);
   return (
     <Link href={url}>
       <button {...props} className={className}>
