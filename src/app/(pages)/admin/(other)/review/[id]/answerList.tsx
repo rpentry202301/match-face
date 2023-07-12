@@ -4,7 +4,7 @@ import { User } from "@/const/review";
 import ModelAnswerContent from "./modelAnswer";
 
 type Props = {
-  project_id: number;
+  project_id: string;
   user_id: string;
 };
 

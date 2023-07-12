@@ -3,7 +3,7 @@ import { Answer } from "@/const/result";
 import ModelAnswerContent from "./modelAnswer";
 
 type Props = {
-  project_id: number;
+  project_id: string;
 };
 
 export const AnswerList = ({ project_id }: Props) => {

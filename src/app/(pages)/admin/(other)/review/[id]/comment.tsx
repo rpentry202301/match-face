@@ -6,7 +6,7 @@ import { useState } from "react";
 type Props = {
   user_id: string;
   admin_id: string;
-  project_id: number;
+  project_id: string;
 };
 
 export const CommentContent = ({ user_id, admin_id, project_id }: Props) => {
