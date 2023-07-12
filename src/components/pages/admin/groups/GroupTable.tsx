@@ -32,7 +32,7 @@ const GroupTable = () => {
   return (
     <>
       {isOpen && (
-        <div id="modal" className="hidden target:block">
+        <div>
           <div className="block w-full h-full bg-black/30 absolute top-0 left-0" onClick={() => toggleModal(group)}>
             <div className="flex flex-col items-center justify-center h-screen">
             <div className="bg-orange  h-9 w-3/5"><h1>&nbsp;</h1></div>
@@ -107,11 +107,10 @@ const GroupTable = () => {
               <tr key={group.id}>
                 <td className="border px-4 py-2">{group.grouping_date}</td>
                 <td className="border px-4 py-2">
-                  <a href="#modal">
+                
                     <button onClick={() => toggleModal(group)} className="hover:bg-amber-200 duration-200" data-testid = {`group_${group.id}`}>
                       {group.group_name}
                     </button>
-                  </a>
                 </td>
                 <td className="border px-4 py-2">
                   {group.group_member.length}

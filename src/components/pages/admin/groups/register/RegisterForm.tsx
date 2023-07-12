@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import OrangeButton from "@/components/ui/button/OrangeButton";
-import WhiteButton from "@/components/ui/button/WhiteButton";
 import Link from "next/link";
 import Input from "@/components/ui/Input";
 import TextArea from "@/components/ui/TextArea";
@@ -40,11 +39,9 @@ const RegisterForm = () => {
           {/* <TextArea id="group_description" cols={1} rows={1} value={''}/> */}
         </form>
         <br />
-        <a href="#modal">
           <OrangeButton label="グループを設定する" className="py-19 text-xs" onClick={toggleModal} data-testid='registerConfirm' />
-          </a>
           {isOpen && (
-              <div id='modal' className="hidden target:block">
+              <div>
               <div className="block w-full h-full bg-black/70 absolute top-0 left-0">
                 <div className="flex flex-col items-center justify-center h-screen">  
                 <div className="bg-white px-2 py-2">
