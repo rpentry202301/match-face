@@ -37,7 +37,7 @@ const GroupTable = () => {
             <div className="flex flex-col items-center justify-center h-screen">
             <div className="bg-orange  h-9 w-3/5"><h1>&nbsp;</h1></div>
               <div className="bg-white px-7 pt-7 w-3/5 h-4/5">
-                <table className="border-collapse flex flex-col  items-center justify-center h-4/5">
+                <table className="border-collapse flex flex-col  items-center justify-center h-4/5" data-testid='modalTable'>
                   <tbody>
                     <tr>
                       <th className="border px-4 py-2 bg-gray-100">作成日</th>
@@ -87,14 +87,6 @@ const GroupTable = () => {
                     </tr>
                   </tbody>
                 </table>
-                  {/* <div className="flex flex-col  items-center justify-center mx-5 my-1 pt-2">
-                    <button
-                      onClick={() => toggleModal(group)}
-                      className="hover:bg-gray-400 duration-200 px-5 py-1"
-                    >
-                      閉じる
-                    </button>
-                  </div> */}
               </div>
             </div>
           </div>
@@ -116,7 +108,7 @@ const GroupTable = () => {
                 <td className="border px-4 py-2">{group.grouping_date}</td>
                 <td className="border px-4 py-2">
                   <a href="#modal">
-                    <button onClick={() => toggleModal(group)} className="hover:bg-amber-200 duration-200">
+                    <button onClick={() => toggleModal(group)} className="hover:bg-amber-200 duration-200" data-testid = {`group_${group.id}`}>
                       {group.group_name}
                     </button>
                   </a>
@@ -130,8 +122,8 @@ const GroupTable = () => {
         </table>
         <br />
         {!isOpen && (
-          <Link href={"/admin/groups/register"}>
-            <OrangeButton label="新規グループ作成" />
+          <Link href={"/admin/groups/register"} data-testid='register'>
+            <OrangeButton label="新規グループ作成"/>
           </Link>
         )}
       </div>
