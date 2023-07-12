@@ -20,16 +20,19 @@ export const AnswerList = ({ project_id }: Props) => {
       {currentQuestion.map((question, index) => (
         <div key={index} className="py-5">
           <h3 className="text-xl">
-            Q{index + 1}：{question.name}
+            Q{index + 1}:{question.name}
           </h3>
-          <p className="mt-2 mb-4">{question.content}</p>
+          <p id={`content-${index + 1}`} className="mt-2 mb-4">
+            {question.content}
+          </p>
           {question.type === "writing" ? (
-            <>
-              <div className="border border-gray p-3 mt-2 rounded-md shadow-md">
-                <h3 className="mb-2 text-xl">あなたの回答</h3>
-                {currentAnswer[index].content}
-              </div>
-            </>
+            <div
+              id={`answer-${index + 1}`}
+              className="border border-gray p-3 mt-2 rounded-md shadow-md"
+            >
+              <h3 className="mb-2 text-xl">あなたの回答</h3>
+              {currentAnswer[index].content}
+            </div>
           ) : (
             <>
               <ul>
@@ -37,7 +40,10 @@ export const AnswerList = ({ project_id }: Props) => {
                   <li key={index}>・{choice}</li>
                 ))}
               </ul>
-              <div className="border border-gray p-3 mt-5 rounded-md shadow-md">
+              <div
+                id={`answer-${index + 1}`}
+                className="border border-gray p-3 mt-5 rounded-md shadow-md"
+              >
                 <h3 className="mb-2 text-xl">あなたの回答</h3>
                 {currentAnswer[index].content}
               </div>
