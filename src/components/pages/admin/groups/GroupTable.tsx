@@ -32,88 +32,65 @@ const GroupTable = () => {
   return (
     <>
       {isOpen && (
-        <div id="modal" className="hidden target:block">
+        <div>
           <div className="block w-full h-full bg-black/30 absolute top-0 left-0" onClick={() => toggleModal(group)}>
             <div className="flex flex-col items-center justify-center h-screen">
             <div className="bg-orange  h-9 w-3/5"><h1>&nbsp;</h1></div>
               <div className="bg-white px-7 pt-7 w-3/5 h-4/5">
-                <table className="border-collapse flex flex-col  items-center justify-center h-4/5" data-testid='modalTable'>
-                  <tbody>
+                <div style={{paddingTop:'7%'}}>
+                <table className="border-collapse items-center justify-center w-full table-fixed" data-testid='modalTable'>
+                  <tbody> 
                     <tr>
-                      <th className="border px-4 py-2 bg-gray-100">作成日</th>
-                      <td className="border px-4 py-2">
+                      <th className="border px-4 py-2 bg-gray-100 w-1/4">作成日</th>
+                      <td className="border px-4 py-2 w-3/4">
                         {selectedGroupingDate}
                       </td>
                     </tr>
                     <tr>
-                      <th className="border px-4 py-2 bg-gray-100">グループ名</th>
-                      <td className="border px-4 py-2">{selectedGroupName}</td>
-                    </tr>
+                      <th className="border px-4 py-2 bg-gray-100 w-1/4">グループ名</th>
+                      <td className="border px-4 py-2 w-3/4">{selectedGroupName}</td>
+                    </tr> 
                     <tr>
-                      <th className="border px-4 py-2 bg-gray-100">メンバー</th>
-                      <td className="border px-4 py-2">
-                        {selectedGroupMember.length <= 60 ?(
-                          selectedGroupMember
-                        ):(
-                          <div>
-                            {selectedGroupMember.match(/.{1,60}/g)?.map((line,
-                              index)=>(
-                                <React.Fragment key={index}>
-                                  {line}
-                                  <br />
-                                </React.Fragment>
-                              ))}
-                          </div>
-                        )}
+                      <th className="border px-4 py-2 bg-gray-100 w-1/4">メンバー</th>
+                      <td className="border px-4 py-2 w-3/4 break-words whitespace-pre-wrap">
+                        {selectedGroupMember}
                       </td>
                     </tr>
                     <tr>
-                      <th className="border px-4 py-2 bg-gray-100 break-words">備考</th>
-                      <td className="border px-4 py-2">
-                        {selectedGroupDescription.length <= 60 ?(
-                          selectedGroupDescription
-                        ):(
-                          <div>
-                            {selectedGroupDescription.match(/.{1,60}/g)?.map((line,
-                              index)=>(
-                                <React.Fragment key={index}>
-                                  {line}
-                                  <br />
-                                </React.Fragment>
-                              ))}
-                          </div>
-                        )}
+                      <th className="border px-4 py-2 bg-gray-100 break-words w-1/4 ">備考</th>
+                      <td className="border px-4 py-2 w-3/4 break-words whitespace-pre-wrap">
+                        {selectedGroupDescription}
                       </td> 
                     </tr>
                   </tbody>
                 </table>
+                </div>
               </div>
             </div>
           </div>
         </div>
       )}
 
-      <div className="flex flex-col items-center justify-center h-screen">
+      <div className="flex flex-col items-center justify-center h-screen table-fixed">
         <table>
           <thead>
             <tr>
-              <th className="border px-4 py-2 bg-gray-100">作成日</th>
-              <th className="border px-4 py-2 bg-gray-100">グループ名</th>
-              <th className="border px-4 py-2 bg-gray-100">人数</th>
+              <th className="border px-4 py-2 bg-gray-100 w-1/5">作成日</th>
+              <th className="border px-4 py-2 bg-gray-100 w-1/4">グループ名</th>
+              <th className="border px-4 py-2 bg-gray-100" style={{width:"7%"}}>人数</th>
             </tr>
           </thead>
           <tbody>
             {data.map((group) => (
               <tr key={group.id}>
-                <td className="border px-4 py-2">{group.grouping_date}</td>
-                <td className="border px-4 py-2">
-                  <a href="#modal">
+                <td className="border px-4 py-2 " style={{textAlign:'center'}}>{group.grouping_date}</td>
+                <td className="border px-4 py-2" style={{textAlign:'center'}}>
+                
                     <button onClick={() => toggleModal(group)} className="hover:bg-amber-200 duration-200" data-testid = {`group_${group.id}`}>
                       {group.group_name}
                     </button>
-                  </a>
                 </td>
-                <td className="border px-4 py-2">
+                <td className="border px-4 py-2" style={{textAlign:'center'}}>
                   {group.group_member.length}
                 </td>
               </tr>
