@@ -24,13 +24,13 @@ const RegisterForm = () => {
   return (
     <>
       <div className="flex flex-col items-center justify-center h-screen">
-        <form>
+        <div className="border-2 px-80 py-16">
+        <form >
           <label htmlFor="group_name">▶グループ名を設定する</label>
-          <Input id="group_name" />
+          <Input id="group_name"/>
           <br />
           <label htmlFor="user">▶ユーザーを選択する</label>
           <span>&nbsp;</span>
-          {/* <WhiteButton label="追加" className=" px-3 py-1 text-xs" /> */}
           <UserSelectModal/>
           <Input id="user" />
           <br />
@@ -41,7 +41,7 @@ const RegisterForm = () => {
         </form>
         <br />
         <a href="#modal">
-          <OrangeButton label="グループを設定する" className="py-19 text-xs" onClick={toggleModal} />
+          <OrangeButton label="グループを設定する" className="py-19 text-xs" onClick={toggleModal} data-testid='registerConfirm' />
           </a>
           {isOpen && (
               <div id='modal' className="hidden target:block">
@@ -52,7 +52,7 @@ const RegisterForm = () => {
                 <div className="flex flex-col  items-center justify-center mx-5 my-1">
                   <Link href={'/admin/groups'}>
                     {/* 今は遷移にしてますがのちのちポストします */}
-                  <button onClick={toggleModal} className="hover:bg-gray-400 duration-200">設定する</button>
+                  <button onClick={toggleModal} className="hover:bg-gray-400 duration-200" data-testid='registerTrue'>設定する</button>
                   </Link>
                   <button onClick={toggleModal} className="hover:bg-gray-400 duration-200">キャンセル</button>
                   </div>
@@ -61,6 +61,7 @@ const RegisterForm = () => {
                 </div>
             </div>
           )}
+      </div>
       </div>
     </>
   );

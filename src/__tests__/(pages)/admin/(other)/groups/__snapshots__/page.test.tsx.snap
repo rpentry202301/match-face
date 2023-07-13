@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`管理者/グループ一覧画面のテスト スナップショットテスト レンダリング時 1`] = `
+<div>
+  <div
+    class="flex flex-col items-center justify-center h-screen"
+  >
+    <table>
+      <thead>
+        <tr>
+          <th
+            class="border px-4 py-2 bg-gray-100"
+          >
+            作成日
+          </th>
+          <th
+            class="border px-4 py-2 bg-gray-100"
+          >
+            グループ名
+          </th>
+          <th
+            class="border px-4 py-2 bg-gray-100"
+          >
+            人数
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td
+            class="border px-4 py-2"
+          >
+            2023-07-01
+          </td>
+          <td
+            class="border px-4 py-2"
+          >
+            <a
+              href="#modal"
+            >
+              <button
+                class="hover:bg-amber-200 duration-200"
+                data-testid="group_1"
+              >
+                2023年7月入社
+              </button>
+            </a>
+          </td>
+          <td
+            class="border px-4 py-2"
+          >
+            3
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border px-4 py-2"
+          >
+            2023-07-02
+          </td>
+          <td
+            class="border px-4 py-2"
+          >
+            <a
+              href="#modal"
+            >
+              <button
+                class="hover:bg-amber-200 duration-200"
+                data-testid="group_2"
+              >
+                2023年7月入社フロント
+              </button>
+            </a>
+          </td>
+          <td
+            class="border px-4 py-2"
+          >
+            1
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border px-4 py-2"
+          >
+            2023-07-06
+          </td>
+          <td
+            class="border px-4 py-2"
+          >
+            <a
+              href="#modal"
+            >
+              <button
+                class="hover:bg-amber-200 duration-200"
+                data-testid="group_3"
+              >
+                テストグループその3
+              </button>
+            </a>
+          </td>
+          <td
+            class="border px-4 py-2"
+          >
+            2
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border px-4 py-2"
+          >
+            2023-07-08
+          </td>
+          <td
+            class="border px-4 py-2"
+          >
+            <a
+              href="#modal"
+            >
+              <button
+                class="hover:bg-amber-200 duration-200"
+                data-testid="group_4"
+              >
+                テストグループその4
+              </button>
+            </a>
+          </td>
+          <td
+            class="border px-4 py-2"
+          >
+            1
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <a
+      data-testid="register"
+      href="/admin/groups/register"
+    >
+      <div>
+        <button
+          class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white rounded-xl p-2 w-40 h-auto text-lg"
+        >
+          新規グループ作成
+        </button>
+      </div>
+    </a>
+  </div>
+</div>
+`;

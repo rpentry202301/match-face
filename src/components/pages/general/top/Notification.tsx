@@ -18,7 +18,7 @@ export default function Notification({
   className,
 }: MenuProps) {
   //buttonのclassNameは親コンポーネントでclassNameを指定して上書き可能
-  const mergedClassName = twMerge('p-5 w-1/2 h-auto shadow-lg', className);
+  const mergedClassName = twMerge('p-5 w-3/5 h-auto shadow-lg', className);
   return (
     <>
       <div className={mergedClassName}>

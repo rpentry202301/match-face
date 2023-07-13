@@ -38,7 +38,7 @@ const ProjectTable = () => {
                 </td>
                 <td className="border-2">
                   <div className="flex items-center justify-evenly">
-                    <Link href={`/admin/handle-question/edit/${data.id}`}>
+                    <Link href={`/admin/handle-question/edit/${data.id}`} data-testid={`editButton_${data.id}`}>
                       <WhiteButton label="編集" className="text-xs py-1 px-5" />
                     </Link>
                     <WhiteButton label="削除" className="text-xs py-1 px-5" />
