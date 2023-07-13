@@ -18,8 +18,9 @@ describe("UserSelectModal.tsx", () => {
 
   describe("スナップショットテスト", () => {
     it("モーダルを開いている状態", () => {
-      const { container } = render(<UserSelectModal />);
-      expect(container).toMatchSnapshot();
+      const { baseElement, rerender } = render(<UserSelectModal />);
+      rerender(<UserSelectModal />)
+      expect(baseElement).toMatchSnapshot();
     });
   })
 

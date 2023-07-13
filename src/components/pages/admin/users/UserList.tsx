@@ -36,6 +36,7 @@ const UserList = () => {
               className=" border border-deep-gary"
               onChange={sortOptionChange}
               defaultValue="入社日昇順"
+              value="入社日昇順"
             >
               <option value="入社日昇順">入社日昇順</option>
               <option value="入社日降順">入社日降順</option>
