@@ -26,7 +26,7 @@ export const departments = [
 
 export const projects = [
     {id:1,name:"案件A",detail:"案件Aの説明",enterprise_id:1,department_id:1,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
-    {id:2,name:"案件B",detail:"案件Bの説明",enterprise_id:1,department_id:1,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
+    {id:2,name:"案件B",detail:"案件Bの説明案件Bの説明案件Bの説明案件Bの説明案件Bの説明案件Bの説明案件Bの説明案件Bの説明",enterprise_id:1,department_id:1,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
     {id:3,name:"案件C",detail:"案件Cの説明",enterprise_id:1,department_id:2,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
     {id:4,name:"案件D",detail:"案件Dの説明",enterprise_id:1,department_id:1,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
     {id:5,name:"案件E",detail:"案件Eの説明",enterprise_id:1,department_id:2,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
