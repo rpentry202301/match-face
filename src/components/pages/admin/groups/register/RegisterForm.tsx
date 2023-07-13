@@ -23,15 +23,15 @@ const RegisterForm = () => {
         <div className="border-2  py-5 px-5 ">
           <form>
             <label htmlFor="group_name">▶グループ名を設定する</label>
-            <Input id="group_name" style={{ width: "600px" }} />
+            <Input id="group_name" style={{ width: "600px" }} className="my-3"/>
             <br />
             <label htmlFor="user">▶ユーザーを選択する</label>
             <span>&nbsp;</span>
             <UserSelectModal />
-            <Input id="user" style={{ width: "600px" }} />
+            <Input id="user" style={{ width: "600px" }} className="my-3"/>
             <br />
             <label htmlFor="group_description">▶備考</label>
-            <Input id="group_description" style={{ width: "600px" }} />
+            <Input id="group_description" style={{ width: "600px" }} className="my-3"/>
             {/* テキストエリアにするかも*/}
             {/* <TextArea id="group_description" cols={1} rows={1} value={''}/> */}
           </form>
