@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Logout from "../nav/Logout";
+import MenuTemp from "../nav/template/MenuTemp";
 
 // childrenにはUserIcon.tsxが入る
 // (UserIcon.tsxはServer Componentなので、importして使うとエラーが出る)
@@ -23,9 +24,9 @@ const HumburgerBtn = ({ children }: { children: React.ReactNode }) => {
           <div className="w-8 h-0.5 bg-gray-600 -rotate-45 transition duration-500 ease-out" />
         </button>
         <nav className="text-center fixed bg-light-gray bg-opacity-90 right-0 top-0 w-2/12 flex flex-col justify-start py-6 px-3 ease-out duration-200">
-          <ul className="mt-6">
+          <ul className="mt-6 flex flex-col justify-evenly w-11/12 m-auto">
             {/* 追加する場合は"nav/menu/template/MenuTemp.tsx"を参照 */}
-            <li className="pb-5">
+            <li>
               {/* userIcon.tsxのみSeverComponentなので、Childrenでネスト */}
               {children}
             </li>
