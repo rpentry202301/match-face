@@ -1,0 +1,209 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`adminトップページのテスト スナップショット 1`] = `
+<div>
+  <div
+    class="flex justify-center items-center min-h-screen md:mt-[-40px]"
+  >
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 md:mt-10"
+    >
+      <div
+        class="m-10"
+      >
+        <a
+          href="/admin/handle-question"
+        >
+          <button
+            class="flex p-5 w-96 h-40 shadow-lg hover:bg-gray-100 flex-col active:bg-gray-200"
+            data-testid="menu_1"
+          >
+            <span
+              class="border-b-[1px] border-b-black shadow-md text-2xl text-left w-full font-bold"
+            >
+              質問・回答の追加・編集
+            </span>
+            <div
+              class="flex pt-4 w-full"
+            >
+              <span
+                class="text-left mr-auto"
+              >
+                質問・回答例を追加・編集します。
+              </span>
+              <img
+                alt="アイコン"
+                class="pt-2 pl-2"
+                data-nimg="1"
+                decoding="async"
+                height="70"
+                loading="lazy"
+                src="/_next/image?url=%2Ficon%2Fdocument_icon.png&w=256&q=75"
+                srcset="/_next/image?url=%2Ficon%2Fdocument_icon.png&w=96&q=75 1x, /_next/image?url=%2Ficon%2Fdocument_icon.png&w=256&q=75 2x"
+                style="color: transparent;"
+                width="70"
+              />
+            </div>
+          </button>
+        </a>
+      </div>
+      <div
+        class="m-10"
+      >
+        <a
+          href="/admin/tasks"
+        >
+          <button
+            class="flex p-5 w-96 h-40 shadow-lg hover:bg-gray-100 flex-col active:bg-gray-200"
+            data-testid="menu_2"
+          >
+            <span
+              class="border-b-[1px] border-b-black shadow-md text-2xl text-left w-full font-bold"
+            >
+              タスクの設定
+            </span>
+            <div
+              class="flex pt-4 w-full"
+            >
+              <span
+                class="text-left mr-auto"
+              >
+                タスクの一覧を確認できます。
+              </span>
+              <img
+                alt="pencil_icon"
+                class="pt-2 pl-2"
+                data-nimg="1"
+                decoding="async"
+                height="70"
+                loading="lazy"
+                src="/_next/image?url=%2Ficon%2Fpencil_icon.png&w=256&q=75"
+                srcset="/_next/image?url=%2Ficon%2Fpencil_icon.png&w=96&q=75 1x, /_next/image?url=%2Ficon%2Fpencil_icon.png&w=256&q=75 2x"
+                style="color: transparent;"
+                width="70"
+              />
+            </div>
+          </button>
+        </a>
+      </div>
+      <div
+        class="m-10"
+      >
+        <a
+          href="/admin/histories"
+        >
+          <button
+            class="flex p-5 w-96 h-40 shadow-lg hover:bg-gray-100 flex-col active:bg-gray-200"
+            data-testid="menu_3"
+          >
+            <span
+              class="border-b-[1px] border-b-black shadow-md text-2xl text-left w-full font-bold"
+            >
+              回答の閲覧
+            </span>
+            <div
+              class="flex pt-4 w-full"
+            >
+              <span
+                class="text-left mr-auto"
+              >
+                ユーザーの回答を閲覧できます。
+              </span>
+              <img
+                alt="アイコン"
+                class="pt-2 pl-2"
+                data-nimg="1"
+                decoding="async"
+                height="70"
+                loading="lazy"
+                src="/_next/image?url=%2Ficon%2Fsearch_icon.png&w=256&q=75"
+                srcset="/_next/image?url=%2Ficon%2Fsearch_icon.png&w=96&q=75 1x, /_next/image?url=%2Ficon%2Fsearch_icon.png&w=256&q=75 2x"
+                style="color: transparent;"
+                width="70"
+              />
+            </div>
+          </button>
+        </a>
+      </div>
+      <div
+        class="m-10"
+      >
+        <a
+          href="/admin/users"
+        >
+          <button
+            class="flex p-5 w-96 h-40 shadow-lg hover:bg-gray-100 flex-col active:bg-gray-200"
+            data-testid="menu_4"
+          >
+            <span
+              class="border-b-[1px] border-b-black shadow-md text-2xl text-left w-full font-bold"
+            >
+              ユーザー管理
+            </span>
+            <div
+              class="flex pt-4 w-full"
+            >
+              <span
+                class="text-left mr-auto"
+              >
+                ユーザーの一覧を確認できます。
+              </span>
+              <img
+                alt="アイコン"
+                class="pt-2 pl-2"
+                data-nimg="1"
+                decoding="async"
+                height="70"
+                loading="lazy"
+                src="/_next/image?url=%2Ficon%2Fuser_icon.png&w=256&q=75"
+                srcset="/_next/image?url=%2Ficon%2Fuser_icon.png&w=96&q=75 1x, /_next/image?url=%2Ficon%2Fuser_icon.png&w=256&q=75 2x"
+                style="color: transparent;"
+                width="70"
+              />
+            </div>
+          </button>
+        </a>
+      </div>
+      <div
+        class="m-10"
+      >
+        <a
+          href="/admin/groups"
+        >
+          <button
+            class="flex p-5 w-96 h-40 shadow-lg hover:bg-gray-100 flex-col active:bg-gray-200"
+            data-testid="menu_5"
+          >
+            <span
+              class="border-b-[1px] border-b-black shadow-md text-2xl text-left w-full font-bold"
+            >
+              グループ一覧
+            </span>
+            <div
+              class="flex pt-4 w-full"
+            >
+              <span
+                class="text-left mr-auto"
+              >
+                グループの一覧を確認できます。
+              </span>
+              <img
+                alt="アイコン"
+                class="pt-2 pl-2"
+                data-nimg="1"
+                decoding="async"
+                height="70"
+                loading="lazy"
+                src="/_next/image?url=%2Ficon%2Fgroup_icon.png&w=256&q=75"
+                srcset="/_next/image?url=%2Ficon%2Fgroup_icon.png&w=96&q=75 1x, /_next/image?url=%2Ficon%2Fgroup_icon.png&w=256&q=75 2x"
+                style="color: transparent;"
+                width="70"
+              />
+            </div>
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;

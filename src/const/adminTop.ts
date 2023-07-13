@@ -1,7 +1,6 @@
-import { url } from "inspector";
-
 export const dataArray = [
     {
+      id: 1,
       title: "質問・回答の追加・編集",
       url: "/admin/handle-question",
       description: "質問・回答例を追加・編集します。",
@@ -9,13 +8,15 @@ export const dataArray = [
       imgAlt: "アイコン",
     },
     {
+      id: 2,
       title: "タスクの設定",
-      url: "/admin/tasks/register",
-      description: "ユーザーを選択してタスクを設定します。",
+      url: "/admin/tasks",
+      description: "タスクの一覧を確認できます。",
       imgUrl: "/icon/pencil_icon.png",
       imgAlt: "pencil_icon",
     },
     {
+      id: 3,
       title: "回答の閲覧",
       url: "/admin/histories",
       description: "ユーザーの回答を閲覧できます。",
@@ -23,6 +24,7 @@ export const dataArray = [
       imgAlt: "アイコン",
     },
     {
+      id: 4,
       title: "ユーザー管理",
       url: "/admin/users",
       description: "ユーザーの一覧を確認できます。",
@@ -30,9 +32,10 @@ export const dataArray = [
       imgAlt: "アイコン",
     },
     {
-      title: "グループ設定",
-      url: "/admin/groups/register",
-      description: "複数人のユーザーから成るグループを設定します。",
+      id: 5,
+      title: "グループ一覧",
+      url: "/admin/groups",
+      description: "グループの一覧を確認できます。",
       imgUrl: "/icon/group_icon.png",
       imgAlt: "アイコン",
     },    
