@@ -12,7 +12,7 @@ const ModelAnswerContent = ({ project_id, question_id }: Props) => {
   );
   return (
     <>
-      <div className="my-7 p-3 rounded-md bg-gray-200">
+      <div id="modelAnswer" className="my-7 p-3 rounded-md bg-gray-200">
         <h3 className="text-xl mb-2 ">模範解答</h3>
         {currentModelAnswer[0].content}
       </div>
