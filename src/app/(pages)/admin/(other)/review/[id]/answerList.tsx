@@ -1,7 +1,7 @@
 import { question } from "@/const/testing";
 import { Answer } from "@/const/review";
 import { User } from "@/const/review";
-import ModelAnswerContent from "./modelAnswer";
+import ModelAnswerContent from "@/components/pages/general/result/ModelAnswer";
 
 type Props = {
   project_id: string;
@@ -24,7 +24,7 @@ export const AnswerList = ({ user_id, project_id }: Props) => {
       {currentQuestion.map((question, index) => (
         <div key={index} className="py-5">
           <h3 className="text-xl">
-            Q{index + 1}：{question.name}
+            Q{index + 1}:{question.name}
           </h3>
           <p className="mt-2 mb-4">{question.content}</p>
           {question.type === "writing" ? (
