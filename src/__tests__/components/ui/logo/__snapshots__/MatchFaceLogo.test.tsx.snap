@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ui/logo/MatchFacelogo.tsx スナップショット 1`] = `
+<div>
+  <div>
+    ロゴ
+  </div>
+</div>
+`;
