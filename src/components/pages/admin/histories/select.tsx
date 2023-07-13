@@ -1,7 +1,6 @@
 "use client";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import WhiteButton from "@/components/ui/button/WhiteButton"
-// import { skills,departments,projects } from "@/const/admin_histories";
 import { twMerge } from "tailwind-merge";
 import { Dispatch, FormEvent, SetStateAction } from "react";
 import { useState } from "react";
