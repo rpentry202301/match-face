@@ -18,9 +18,14 @@ const HistoryList = () => {
   // if (!response.ok) throw new Error('Failed to fetch data');
   // const projectData: ProjectData = await response.json();
   const projectData: ProjectData = data;
+
+  const truncateString = (str: string, num: number) => {
+    return str.length <= num ? str : str.slice(0, num) + "...";
+  };
+
   return (
     <div>
-      <table className="table-auto border border-collapse my-20">
+      <table className="table-auto border border-collapse my-20 w-[80vw]">
         <thead>
           <tr>
             <th className="border p-4 bg-neutral-300">コメント</th>
@@ -35,22 +40,26 @@ const HistoryList = () => {
             <tr key={project.id}>
               <td className="border text-center p-3">
                 {project.comment_status ? (
-                  <OrangeButton
-                    label={"新着"}
-                    className="w-15 rounded py-2 px-4 text-white text-sm"
-                  />
+                  <span className=" bg-orange text-white p-2 w-40 h-auto w-15 rounded py-1 px-2 text-xs">
+                    新着
+                  </span>
                 ) : (
                   ""
                 )}
               </td>
               <td className="border text-center p-3">{project.answer_date}</td>
-              <td className="border text-center">{project.project_name}</td>
-              <td className="border text-center">{project.project_detail}</td>
               <td className="border text-center px-4">
-                <Link href="/result">
+                {project.project_name}
+              </td>
+
+              <td className="border text-center px-4 ">
+                {truncateString(project.project_detail, 30)}
+              </td>
+              <td className="border text-center px-4">
+                <Link href={`result/${project.id}`}>
                   <GrayButton
                     label={"詳細"}
-                    className="w-15 rounded py-2 px-4 text-sm"
+                    className="w-15 rounded py-1 px-2 text-xs"
                     value={project.id}
                   />
                 </Link>
