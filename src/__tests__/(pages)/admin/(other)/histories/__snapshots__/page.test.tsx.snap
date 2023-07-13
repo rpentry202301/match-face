@@ -333,23 +333,23 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
       <thead>
         <tr>
           <th
-            class="border border-slate-deep-gray bg-light-gray"
+            class="border border-slate-deep-gray bg-light-gray w-[5vw]"
             id="open"
           />
           <th
-            class="border border-slate-deep-gray bg-light-gray"
+            class="border border-slate-deep-gray bg-light-gray w-[15vw]"
             id="answer_deadline"
           >
             回答期限
           </th>
           <th
-            class="border border-slate-deep-gray bg-light-gray"
+            class="border border-slate-deep-gray bg-light-gray w-[15vw]"
             id="project_name"
           >
             案件名
           </th>
           <th
-            class="border border-slate-deep-gray bg-light-gray"
+            class="border border-slate-deep-gray bg-light-gray w-[40vw]"
             id="project_detail"
           >
             案件概要
@@ -386,6 +386,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
           </td>
           <td
             class="border border-slate-deep-gray"
+            data-testid="project_detail_1"
             id="project_detail"
           >
             案件Aの説明
@@ -422,9 +423,11 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
           </td>
           <td
             class="border border-slate-deep-gray"
+            data-testid="project_detail_2"
             id="project_detail"
           >
-            案件Bの説明
+            案件Bの説明案件Bの説明案件Bの説明案件Bの説明案件Bの説明案件Bの説
+            ...
           </td>
         </tr>
       </tbody>
@@ -458,6 +461,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
           </td>
           <td
             class="border border-slate-deep-gray"
+            data-testid="project_detail_3"
             id="project_detail"
           >
             案件Cの説明
@@ -494,6 +498,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
           </td>
           <td
             class="border border-slate-deep-gray"
+            data-testid="project_detail_4"
             id="project_detail"
           >
             案件Dの説明
@@ -530,6 +535,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
           </td>
           <td
             class="border border-slate-deep-gray"
+            data-testid="project_detail_5"
             id="project_detail"
           >
             案件Eの説明

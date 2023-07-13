@@ -90,20 +90,30 @@ describe('管理者/履歴一覧画面のテスト',() => {
         })
     })
     describe('HistoriesListコンポーネントテスト',()=>{
-        it('回答の状態に合わせて表示が変わる',async()=>{
-            const projectsMock = [{id:1,name:'テスト1',detail:'テスト1の説明',enterprise_id:1,department_id:1,created_user:'テスト花子',created_at:'2023-07-10T16:52:46.053Z',update_user:'テスト花子',update_at:'2023-07-10T16:52:46.053Z'}]
-            const answer_requestsMock=[{id:1,user_id:[1,2],administrator_id:5,project_id:1,request_at:'2023-07-10T16:52:46.053Z',deadline:"2023-07-10T16:52:46.053Z",created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},]
-            const answersMock = [
-                {id:1,context:'テスト回答1',question_id:1,answer_request_id:1,user_id:1,Model_answer_fl:false,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-11T16:52:46.053Z'},
-                {id:2,context:'テスト回答2',question_id:1,answer_request_id:1,user_id:2,Model_answer_fl:false,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
-            ]
-            const usersMock = [
-                {id:1,name:'テスト太郎',password:'test1',email:'test1@example.com',hire_date:'2023-01-01',department_id:1,status_id:1,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
-                {id:2,name:'テスト次郎',password:'test2',email:'test2@example.com',hire_date:'2023-01-01',department_id:1,status_id:1,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
-            ]
+        const projectsMock = [
+            {id:1,name:'テスト1',detail:'テスト1の説明',enterprise_id:1,department_id:1,created_user:'テスト花子',created_at:'2023-07-10T16:52:46.053Z',update_user:'テスト花子',update_at:'2023-07-10T16:52:46.053Z'},
+            {id:2,name:'テスト2',detail:'テスト2の説明(文字数34)テスト2の説明テスト2の説明テスト2の説明',enterprise_id:1,department_id:1,created_user:'テスト花子',created_at:'2023-07-10T16:52:46.053Z',update_user:'テスト花子',update_at:'2023-07-10T16:52:46.053Z'},
+            {id:3,name:'テスト3',detail:'テスト3の説明(文字数35)テスト3の説明テスト3の説明テスト3の説明テ',enterprise_id:1,department_id:1,created_user:'テスト花子',created_at:'2023-07-10T16:52:46.053Z',update_user:'テスト花子',update_at:'2023-07-10T16:52:46.053Z'}
+        ]
+        const answer_requestsMock=[{id:1,user_id:[1,2],administrator_id:5,project_id:1,request_at:'2023-07-10T16:52:46.053Z',deadline:"2023-07-10T16:52:46.053Z",created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},]
+        const answersMock = [
+            {id:1,context:'テスト回答1',question_id:1,answer_request_id:1,user_id:1,Model_answer_fl:false,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-11T16:52:46.053Z'},
+            {id:2,context:'テスト回答2',question_id:1,answer_request_id:1,user_id:2,Model_answer_fl:false,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
+        ]
+        const usersMock = [
+            {id:1,name:'テスト太郎',password:'test1',email:'test1@example.com',hire_date:'2023-01-01',department_id:1,status_id:1,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
+            {id:2,name:'テスト次郎',password:'test2',email:'test2@example.com',hire_date:'2023-01-01',department_id:1,status_id:1,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
+        ]
+        beforeEach(async()=>{
             render(<AppRouterContextProviderMock router={{ push }}><HistoriesList projects={projectsMock} answer_requests={answer_requestsMock} answers={answersMock} users={usersMock}/></AppRouterContextProviderMock>)
             const openButton = screen.getByTestId('open_1')
             await user.click(openButton)
+        })
+        it('説明文の長さに合わせて表示が変わる',async()=>{
+            expect(screen.getByTestId('project_detail_2').textContent).toBe('テスト2の説明(文字数34)テスト2の説明テスト2の説明テスト2の説明')
+            expect(screen.getByTestId('project_detail_3').textContent).toBe('テスト3の説明(文字数35)テスト3の説明テスト3の説明テスト3の説明...')
+        })
+        it('回答の状態に合わせて表示が変わる',async()=>{
             expect(screen.getByTestId('status_1').textContent).toBe('回答済み')
             expect(screen.getByTestId('status_2').textContent).toBe('未回答')
         })
