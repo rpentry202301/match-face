@@ -11,6 +11,9 @@ const answerEditData = [
           "問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１",
         answer_example:
           "問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例",
+        answer: "",
+        choices: [],
+        select: false,
       },
       {
         question_id: 2,
@@ -18,13 +21,18 @@ const answerEditData = [
           "問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２",
         answer_example:
           "問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例問題文２の回答例",
+        answer: "",
+        choices: [],
+        select: false,
       },
       {
         question_id: 3,
         question:
           "問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３",
         answer: "選択肢2",
+        answer_example: "",
         choices: ["選択肢1", "選択肢2", "選択肢3", "選択肢4"],
+        select: true,
       },
     ],
     edit_date: "2023-7-6",

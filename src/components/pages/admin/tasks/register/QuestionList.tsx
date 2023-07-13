@@ -5,7 +5,7 @@ import CheckBox from "@/components/ui/checkbox/CheckBox"
 const QuestionList = () => {
   const tableDefaultClassName = "border-2 border-deep-gray px-4 py-2 text-center"
   return (
-    <div className="my-10 w-11/12 mx-auto">
+    <div className="w-full mx-auto">
       <table className="border-collapse border-2 border-deep-gray text-sm mx-auto w-full">
         <thead className="bg-light-gray">
           <tr>

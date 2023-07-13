@@ -1,3 +1,5 @@
+import { url } from "inspector";
+
 export const dataArray = [
     {
       title: "質問・回答の追加・編集",
@@ -33,5 +35,5 @@ export const dataArray = [
       description: "複数人のユーザーから成るグループを設定します。",
       imgUrl: "/icon/group_icon.png",
       imgAlt: "アイコン",
-    },
+    },    
   ];
