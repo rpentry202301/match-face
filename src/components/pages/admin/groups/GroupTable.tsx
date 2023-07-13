@@ -37,56 +37,28 @@ const GroupTable = () => {
             <div className="flex flex-col items-center justify-center h-screen">
             <div className="bg-orange  h-9 w-3/5"><h1>&nbsp;</h1></div>
               <div className="bg-white px-7 pt-7 w-3/5 h-4/5">
-                <table className="border-collapse flex flex-col  items-center justify-center h-4/5 table-fixed w-full" data-testid='modalTable'>
+                <table className="border-collapse items-center justify-center w-full table-fixed" data-testid='modalTable'>
                   <tbody> 
-                    <colgroup>
-                    <col className="w-1/4" />
-                    <col className="w-1/2" />
-                    </colgroup>
                     <tr>
-                      <th className="border px-4 py-2 bg-gray-100 ">作成日</th>
-                      <td className="border px-4 py-2 ">
+                      <th className="border px-4 py-2 bg-gray-100 w-1/4">作成日</th>
+                      <td className="border px-4 py-2 w-3/4">
                         {selectedGroupingDate}
                       </td>
                     </tr>
                     <tr>
-                      <th className="border px-4 py-2 bg-gray-100 ">グループ名</th>
-                      <td className="border px-4 py-2 ">{selectedGroupName}</td>
+                      <th className="border px-4 py-2 bg-gray-100 w-1/4">グループ名</th>
+                      <td className="border px-4 py-2 w-3/4">{selectedGroupName}</td>
                     </tr> 
                     <tr>
-                      <th className="border px-4 py-2 bg-gray-100 ">メンバー</th>
-                      <td className="border px-4 py-2 ">
-                        {selectedGroupMember.length <= 60 ?(
-                          selectedGroupMember
-                        ):(
-                          <div>
-                            {selectedGroupMember.match(/.{1,60}/g)?.map((line,
-                              index)=>(
-                                <React.Fragment key={index}>
-                                  {line}
-                                  <br />
-                                </React.Fragment>
-                              ))}
-                          </div>
-                        )}
+                      <th className="border px-4 py-2 bg-gray-100 w-1/4">メンバー</th>
+                      <td className="border px-4 py-2 w-3/4 break-words whitespace-pre-wrap">
+                        {selectedGroupMember}
                       </td>
                     </tr>
                     <tr>
-                      <th className="border px-4 py-2 bg-gray-100 break-words ">備考</th>
-                      <td className="border px-4 py-2 ">
-                        {selectedGroupDescription.length <= 60 ?(
-                          selectedGroupDescription
-                        ):(
-                          <div>
-                            {selectedGroupDescription.match(/.{1,60}/g)?.map((line,
-                              index)=>(
-                                <React.Fragment key={index}>
-                                  {line}
-                                  <br />
-                                </React.Fragment>
-                              ))}
-                          </div>
-                        )}
+                      <th className="border px-4 py-2 bg-gray-100 break-words w-1/4 ">備考</th>
+                      <td className="border px-4 py-2 w-3/4 break-words whitespace-pre-wrap">
+                        {selectedGroupDescription}
                       </td> 
                     </tr>
                   </tbody>
