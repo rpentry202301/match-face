@@ -1,9 +1,9 @@
 'use client'
 import { useState } from "react"
 import {HistoriesUserListHead,HistoriesUserListBody} from "./user_list"
-import { Projects,AnswerRequests, Answers, Users } from '@/types/admin/histories/admin_histories'
+import { Projects,AnswerRequests, Answers, Users, AnswerRequestQuestions } from '@/types/admin/histories/admin_histories'
 
-export default function HistoriesList ({projects,answer_requests,answers,users}:{projects:Projects,answer_requests:AnswerRequests,answers:Answers,users:Users}){
+export default function HistoriesList ({projects,answer_requests,answers,users,answer_request_questions}:{projects:Projects,answer_requests:AnswerRequests,answers:Answers,users:Users,answer_request_questions:AnswerRequestQuestions}){
     const [open,setOpen] = useState<{id:number,status:boolean}[]>(projects.map((project)=>({id:project.id,status:false})))
 
     // ユーザーのアコーディオン開閉
@@ -62,7 +62,7 @@ export default function HistoriesList ({projects,answer_requests,answers,users}:
                         <tr>
                             <HistoriesUserListHead />
                         </tr>
-                        <HistoriesUserListBody id={project.id} answers={answers} users={users}/>
+                        <HistoriesUserListBody id={project.id} answers={answers} users={users} answer_request_questions={answer_request_questions}/>
                         </>
                     )}
                 </tbody>
