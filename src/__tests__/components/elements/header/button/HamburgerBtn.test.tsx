@@ -1,10 +1,12 @@
 import HamburgerBtn from "@/components/elements/header/button/HamburgerBtn";
 import UserIcon from "@/components/elements/header/nav/UserIcon";
 import { fireEvent, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 // Todo: UserIcon.tsxの非同期通信のmock
 
 describe("HamburgerBtn.tsx", () => {
+  const user = userEvent.setup();
   beforeAll(() => {
     jest.clearAllMocks();
   });
@@ -13,18 +15,13 @@ describe("HamburgerBtn.tsx", () => {
   });
 
   // デフォルト時のスナップショットは関連テストで行うため、
-  //　ナビゲーションウィンドウが開いた際のテストのみ実行
+  // ナビゲーションウィンドウ展開時のテストのみ実行
   describe("スナップショットテスト", () => {
-    beforeAll(async () => {
-      render(<HamburgerBtn>{await UserIcon()}</HamburgerBtn>);
-      fireEvent.click(screen.getByRole("button"));
-    });
-    it("ナビゲーションウィンドウ展開時", async () => {
-      // UserIcon.tsxのモック
-      const { baseElement } = render(
+    it("デフォルト(ナビゲーションウィンドウ非展開時)", async () => {
+      const { container } = render(
         <HamburgerBtn>{await UserIcon()}</HamburgerBtn>
       );
-      expect(baseElement).toMatchSnapshot();
+      expect(container).toMatchSnapshot();
     });
   });
 });
