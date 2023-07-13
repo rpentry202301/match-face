@@ -21,8 +21,8 @@ export const getDayArrInMonth = (
 ) => {
   // エラーチェック
   if (Number.isNaN(Number(year)) || Number.isNaN(Number(month))) {
-    console.error(
-      'Error occured in function "getDayArrInMonth": 年、月の値が不正です。'
+    console.log(
+      'Error occured in function "getDayArrInMonth": 年または月の引数の値が不正です。'
     );
     return ["error"];
   }
