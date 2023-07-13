@@ -112,6 +112,8 @@ const UserSelectModal = () => {
                 value={group}
                 onChange={(e) => setGroup(e.target.value)}
                 className="w-10/12 text-xs p-1"
+                id="group"
+                data-testid="select-group"
               />
             </div>
           </div>

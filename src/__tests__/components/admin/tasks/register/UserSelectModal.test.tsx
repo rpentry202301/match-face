@@ -53,6 +53,20 @@ describe("UserSelectModal.tsx", () => {
       const afterSelect = screen.getByTestId("month:1") as HTMLOptionElement;
       expect(afterSelect.selected).toBe(true);
     })
+
+    // Todo: ユーザーグループは本来fetchで持ってくる情報のため、mock作成の必要あり
+    // 今回は仮作成
+    it("ユーザーグループの選択テスト", async () => {
+      render(<UserSelectModal />);
+      const nowGroup = "2023年7月入社";
+      const beforeSelect = screen.getByTestId(`group:${nowGroup}`) as HTMLOptionElement;
+      expect(beforeSelect.selected).toBe(true);
+      // 別のグループを選択
+      const newGroup = "2023年7月入社フロント";
+      await user.selectOptions(screen.getByTestId("select-group"), newGroup);
+      const afterSelect = screen.getByTestId(`group:${newGroup}`) as HTMLOptionElement;
+      expect(afterSelect.selected).toBe(true);
+    })
   });
   
 });
