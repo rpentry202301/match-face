@@ -75,15 +75,22 @@ const HistoriesSelect = ({className,projects,answer_requests,departments,skills}
 export default HistoriesSelect;
 
 export function setSkill(
-    e:any,
-    formData:{month:string,department:string,skills:string[]},setFormData:Dispatch<SetStateAction<{ month: string; department: string; skills: string[] }>>
-    ){
-    const selectSkills = []
-    // 選択済みの項目は選択解除、未選択の項目は選択済みにする
-    formData.skills.includes(e.currentTarget.value)?
-        selectSkills.push(...(formData.skills.filter((skill:string)=>skill!==e.currentTarget.value)))
-        :selectSkills.push(...formData.skills,e.currentTarget.value)
-    setFormData({...formData,skills:selectSkills})
+  e: any,
+  formData: { month: string; department: string; skills: string[] },
+  setFormData: Dispatch<
+    SetStateAction<{ month: string; department: string; skills: string[] }>
+  >
+) {
+  const selectSkills = [];
+  // 選択済みの項目は選択解除、未選択の項目は選択済みにする
+  formData.skills.includes(e.currentTarget.value)
+    ? selectSkills.push(
+        ...formData.skills.filter(
+          (skill: string) => skill !== e.currentTarget.value
+        )
+      )
+    : selectSkills.push(...formData.skills, e.currentTarget.value);
+  setFormData({ ...formData, skills: selectSkills });
 }
 
 export function handleSubmit(e:FormEvent<HTMLFormElement>,formData:{month:string,department:string,skills:string[]}){

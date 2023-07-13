@@ -24,6 +24,9 @@ const CreateQuestionPage = () => {
           "問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１",
         answer_example:
           "問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例",
+        answer: "",
+        choices: [],
+        select: false,
       },
     ]);
     setNewId(newID + 1);
@@ -36,8 +39,10 @@ const CreateQuestionPage = () => {
         question_id: newID,
         question:
           "問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３",
+        answer_example: "",
         answer: "選択肢2",
         choices: ["選択肢1", "選択肢2", "選択肢3", "選択肢4"],
+        select: true,
       },
     ]);
     setNewId(newID + 1);
@@ -168,7 +173,7 @@ const CreateQuestionPage = () => {
       </div>
       {/* <QuestionList questions={questions} /> */}
       {editData.map((data, index) => {
-        if (data.answer_example) {
+        if (data.select === false) {
           return (
             <div
               key={data.question_id}
@@ -178,7 +183,7 @@ const CreateQuestionPage = () => {
                 className="text-2xl"
                 data-testid={`write_${data.question_id}`}
               >
-                Q{data.question_id}.
+                Q{index + 1}.
               </h2>
               <textarea
                 name="question"
@@ -206,7 +211,7 @@ const CreateQuestionPage = () => {
               />
             </div>
           );
-        } else if (data.answer) {
+        } else if (data.select === true) {
           return (
             <div
               key={data.question_id}
@@ -216,7 +221,7 @@ const CreateQuestionPage = () => {
                 className="text-2xl"
                 data-testid={`select_${data.question_id}`}
               >
-                Q{data.question_id}.
+                Q{index + 1}.
               </h2>
               <textarea
                 name="question"
