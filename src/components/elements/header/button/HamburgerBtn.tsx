@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Logout from "../nav/Logout";
-import MenuTemp from "../nav/template/MenuTemp";
 
 // childrenにはUserIcon.tsxが入る
 // (UserIcon.tsxはServer Componentなので、importして使うとエラーが出る)

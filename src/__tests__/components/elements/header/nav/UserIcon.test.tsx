@@ -1,6 +1,7 @@
 import UserIcon from "@/components/elements/header/nav/UserIcon";
 import { render } from "@testing-library/react";
 
+// Todo: 非同期通信のモック
 describe("UserIcon.tsx", () => {
   beforeEach(() => {
     jest.clearAllMocks();
