@@ -15,31 +15,22 @@ describe("AnswerContentコンポーネントのテスト", () => {
     projectTitle: project[0].name,
     projectContent: project[0].project_detail,
   };
+  const push = jest.fn();
+  render(
+    <AppRouterContextProviderMock router={{ push }}>
+      <AnswerContent
+        user_id={testData.user_id}
+        project_id={testData.project_id}
+      />
+    </AppRouterContextProviderMock>
+  );
 
   test("回答日時が表示される", () => {
-    const push = jest.fn();
-    render(
-      <AppRouterContextProviderMock router={{ push }}>
-        <AnswerContent
-          user_id={testData.user_id}
-          project_id={testData.project_id}
-        />
-      </AppRouterContextProviderMock>
-    );
-    const answerDate = screen.getByText(`回答日時：${testData.answerDate}`);
+    const answerDate = screen.getByText(`回答日時:${testData.answerDate}`);
     expect(answerDate).toBeInTheDocument();
   });
 
   test("案件名・案件概要が表示される", () => {
-    const push = jest.fn();
-    render(
-      <AppRouterContextProviderMock router={{ push }}>
-        <AnswerContent
-          user_id={testData.user_id}
-          project_id={testData.project_id}
-        />
-      </AppRouterContextProviderMock>
-    );
     const projectTitle = screen.getByRole("heading", { level: 2 });
     expect(projectTitle).toHaveTextContent(`案件名：${testData.projectTitle}`);
 
@@ -48,15 +39,6 @@ describe("AnswerContentコンポーネントのテスト", () => {
   });
 
   test("質問一覧へのボタンが正常に動く", async () => {
-    const push = jest.fn();
-    render(
-      <AppRouterContextProviderMock router={{ push }}>
-        <AnswerContent
-          user_id={testData.user_id}
-          project_id={testData.project_id}
-        />
-      </AppRouterContextProviderMock>
-    );
     const button = screen.getByRole("button", { name: "質問一覧へ" });
     expect(button).toBeInTheDocument();
 
@@ -66,15 +48,6 @@ describe("AnswerContentコンポーネントのテスト", () => {
   });
 
   test("回答履歴一覧へのボタンが正常に動く", async () => {
-    const push = jest.fn();
-    render(
-      <AppRouterContextProviderMock router={{ push }}>
-        <AnswerContent
-          user_id={testData.user_id}
-          project_id={testData.project_id}
-        />
-      </AppRouterContextProviderMock>
-    );
     const button = screen.getByRole("button", { name: "回答履歴一覧へ" });
     expect(button).toBeInTheDocument();
 

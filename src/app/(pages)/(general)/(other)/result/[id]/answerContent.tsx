@@ -24,7 +24,7 @@ export const AnswerContent = ({ user_id, project_id }: Props) => {
       <div className="flex justify-between items-center my-3">
         <h1 className="text-2xl">回答の確認</h1>
         {/*現状のデータでは4以降の解答データを呼び出そうとするとエラーになります */}
-        <p>回答日時：{currentAnswer[0].answer_date.toLocaleDateString()}</p>
+        <p>回答日時:{currentAnswer[0].answer_date.toLocaleDateString()}</p>
       </div>
       <hr className="border border-black" />
       <h2 className="text-xl my-2">案件名：{currentProject[0].name}</h2>
