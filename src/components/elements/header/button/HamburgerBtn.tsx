@@ -7,7 +7,7 @@ import MenuTemp from "../nav/template/MenuTemp";
 // childrenにはUserIcon.tsxが入る
 // (UserIcon.tsxはServer Componentなので、importして使うとエラーが出る)
 // 将来的にネストするServerComponentを増やす場合は、コードの書き方を変える必要あり
-const HumburgerBtn = ({ children }: { children: React.ReactNode }) => {
+const HamburgerBtn = ({ children }: { children: React.ReactNode }) => {
   const [opened, setOpened] = useState<boolean>(false);
 
   // モーダルウィンドウ表示
@@ -16,7 +16,7 @@ const HumburgerBtn = ({ children }: { children: React.ReactNode }) => {
       <>
         <button
           type="button"
-          className="z-10 space-y-2 fixed right-2.5 top-2.5"
+          className="z-10 space-y-2 fixed right-2.5 top-0 h-9"
           onClick={() => setOpened(false)}
         >
           <div className="w-8 h-0.5 bg-gray-600 translate-y-2.5 rotate-45 transition duration-500 ease-out" />
@@ -64,4 +64,4 @@ const HumburgerBtn = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default HumburgerBtn;
+export default HamburgerBtn;
