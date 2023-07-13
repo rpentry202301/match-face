@@ -9,13 +9,15 @@ export const QuestionList = ({ id }: { id: string }) => {
       {currentQuestion.map((question, index) => (
         <div key={index} className="py-5">
           <h2>
-            Q{index + 1}：{question.name}
+            Q{index + 1}:{question.name}
           </h2>
-          <p className="mt-2 mb-4">{question.content}</p>
+          <p id={`question-content-${index}`} className="mt-2 mb-4">
+            {question.content}
+          </p>
           {question.type === "writing" ? (
             <>
               <label htmlFor={question.name}>
-                <p>回答記入欄</p>
+                <p id={`answer-title-${index}`}>解答記入欄</p>
               </label>
               <textarea
                 className="border border-black mt-1 w-full"
@@ -30,12 +32,14 @@ export const QuestionList = ({ id }: { id: string }) => {
               {question.choices?.map((choice, index) => (
                 <div key={index}>
                   <input
-                    id={`choice${index}`}
+                    id={`choice-${index}`}
                     type="radio"
                     value={choice}
                     name={question.name}
                   />
-                  <label htmlFor={`choice${index}`}>{choice}</label>
+                  <label id={`label-${index}`} htmlFor={`choice${index}`}>
+                    {choice}
+                  </label>
                 </div>
               ))}
             </>
