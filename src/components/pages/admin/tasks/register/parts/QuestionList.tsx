@@ -15,9 +15,8 @@ const QuestionList = () => {
             <th className={`${tableDefaultClassName}`}>質問内容</th>
           </tr>
         </thead>
-        <tbody>
           {questionData.map((projects) => (
-            <>
+            <tbody key={`pjId_${projects.id}`}>
               {projects.questions.map((questions) => (
                 <tr key={`userId_${questions.question_id}`}>
                   <td className={`${tableDefaultClassName}`}>
@@ -28,9 +27,8 @@ const QuestionList = () => {
                   <td className={`${tableDefaultClassName}`}>{questions.question}</td>
                 </tr>
               ))}
-            </>
+            </tbody>
           ))}
-        </tbody>
       </table>
     </div>
   )
