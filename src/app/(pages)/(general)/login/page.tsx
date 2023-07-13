@@ -9,8 +9,8 @@ import SiteTitle from '@/components/ui/SiteTitle';
 
 const LoginPage = () => {
   const router = useRouter();
-  const [userId, setUserId] = useState<string>();
-  const [password, setPassword] = useState<string>();
+  const [userId, setUserId] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   // const [userIdError, setUserIdError] = useState<boolean>(false);
   const [userIdBlankError, setUserIdBlankError] = useState<boolean>(false);
   // const [passwordError, setPasswordError] = useState<boolean>(false);
@@ -41,6 +41,7 @@ const LoginPage = () => {
   };
   // console.log('typeof userId', typeof userId);
   // console.log('passWord', typeof password);
+
   return (
     <>
       <form onSubmit={checkLogin}>
@@ -49,14 +50,15 @@ const LoginPage = () => {
           <div className="mt-2 mb-2">
             <label htmlFor="userId" className="">
               ユーザーID
+              <Input
+                id="userId"
+                className=" w-96 h-10 mt-2"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setUserId(e.target.value)
+                }
+                value={userId}
+              />
             </label>
-            <Input
-              id="userId"
-              className=" w-96 h-10 mt-2"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setUserId(e.target.value)
-              }
-            />
             {/* {userIdError && (
               <p className="text-red">※ユーザーIDに誤りがあります</p>
             )} */}
@@ -67,14 +69,15 @@ const LoginPage = () => {
           <div>
             <label htmlFor="password" className="">
               パスワード
+              <Input
+                id="password"
+                className="w-96 h-10 mt-2"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setPassword(e.target.value)
+                }
+                value={password}
+              />
             </label>
-            <Input
-              id="password"
-              className="w-96 h-10 mt-2"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setPassword(e.target.value)
-              }
-            />
             {/* {passwordError && (
               <p className="text-red">※パスワードに誤りがあります。</p>
             )} */}

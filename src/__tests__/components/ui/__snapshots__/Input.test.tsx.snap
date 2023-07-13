@@ -1,16 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Input スナップショット 1`] = `
-<div>
-  <div>
-    <input
-      class="border border-black"
-      id=""
-    />
-  </div>
-</div>
-`;
-
 exports[`Input.test.tsx スナップショット 1`] = `
 <div>
   <div>
