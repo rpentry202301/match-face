@@ -10,8 +10,8 @@ export const dataArray = [
     {
       id: 2,
       title: "タスクの設定",
-      url: "/admin/tasks/register",
-      description: "ユーザーを選択してタスクを設定します。",
+      url: "/admin/tasks",
+      description: "タスクの一覧を確認できます。",
       imgUrl: "/icon/pencil_icon.png",
       imgAlt: "pencil_icon",
     },

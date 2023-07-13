@@ -3,7 +3,6 @@ import UsersPage from "@/app/(pages)/admin/(other)/users/page";
 import React from "react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
-import UserList from "@/components/pages/admin/tasks/register/UserList";
 
 describe("ユーザー管理画面のテスト", () => {
   beforeEach(() => {

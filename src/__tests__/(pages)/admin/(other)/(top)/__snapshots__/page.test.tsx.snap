@@ -51,7 +51,7 @@ exports[`adminトップページのテスト スナップショット 1`] = `
         class="m-10"
       >
         <a
-          href="/admin/tasks/register"
+          href="/admin/tasks"
         >
           <button
             class="flex p-5 w-96 h-40 shadow-lg hover:bg-gray-100 flex-col active:bg-gray-200"
@@ -68,7 +68,7 @@ exports[`adminトップページのテスト スナップショット 1`] = `
               <span
                 class="text-left mr-auto"
               >
-                ユーザーを選択してタスクを設定します。
+                タスクの一覧を確認できます。
               </span>
               <img
                 alt="pencil_icon"
@@ -168,7 +168,7 @@ exports[`adminトップページのテスト スナップショット 1`] = `
         class="m-10"
       >
         <a
-          href="/admin/groups/register"
+          href="/admin/groups"
         >
           <button
             class="flex p-5 w-96 h-40 shadow-lg hover:bg-gray-100 flex-col active:bg-gray-200"
@@ -177,7 +177,7 @@ exports[`adminトップページのテスト スナップショット 1`] = `
             <span
               class="border-b-[1px] border-b-black shadow-md text-2xl text-left w-full font-bold"
             >
-              グループ設定
+              グループ一覧
             </span>
             <div
               class="flex pt-4 w-full"
@@ -185,7 +185,7 @@ exports[`adminトップページのテスト スナップショット 1`] = `
               <span
                 class="text-left mr-auto"
               >
-                複数人のユーザーから成るグループを設定します。
+                グループの一覧を確認できます。
               </span>
               <img
                 alt="アイコン"

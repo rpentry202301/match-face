@@ -255,7 +255,6 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
             name="userList"
           >
             <option
-              selected=""
               value="入社日昇順"
             >
               入社日昇順

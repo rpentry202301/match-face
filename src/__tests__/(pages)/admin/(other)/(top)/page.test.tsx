@@ -1,5 +1,5 @@
 import userEvent from "@testing-library/user-event";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import AdminHome from "@/app/(pages)/admin/(other)/(top)/page";
 import React from "react";
 import "@testing-library/jest-dom";
