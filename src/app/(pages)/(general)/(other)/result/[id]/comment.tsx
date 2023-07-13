@@ -26,9 +26,12 @@ export const CommentContent = ({ user_id, project_id }: Props) => {
             alt="コメントしたユーザーのアイコン"
             width={70}
             height={70}
+            priority
           />
         </div>
-        <div className="w-5/6">{currentComment[0].content}</div>
+        <div id="comment" className="w-5/6">
+          {currentComment[0].content}
+        </div>
       </div>
     </>
   );

@@ -7,7 +7,6 @@ import WhiteButton from "@/components/ui/button/WhiteButton";
 import Link from "next/link";
 import type { ChangeEvent } from "react";
 import type { Question } from "@/const/projectTable";
-import { queries } from "@testing-library/react";
 
 const EditQuestionPage = () => {
   const data = answerEditData[0];
@@ -25,6 +24,9 @@ const EditQuestionPage = () => {
           "問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１",
         answer_example:
           "問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例",
+        answer: "",
+        choices: [],
+        select: false,
       },
     ]);
     setNewId(newID + 1);
@@ -37,8 +39,10 @@ const EditQuestionPage = () => {
         question_id: newID,
         question:
           "問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３",
+        answer_example: "",
         answer: "選択肢2",
         choices: ["選択肢1", "選択肢2", "選択肢3", "選択肢4"],
+        select: true,
       },
     ]);
     setNewId(newID + 1);
@@ -79,8 +83,8 @@ const EditQuestionPage = () => {
   ) => {
     const updatedData = [...editData];
     if (
-      updatedData[questionIndex]?.choices &&
-      updatedData[questionIndex]?.choices !== undefined
+      updatedData[questionIndex]?.choices !== undefined &&
+      updatedData[questionIndex].choices !== undefined
     ) {
       updatedData[questionIndex].choices[choiceIndex] = e.target.value;
       setEditData(updatedData);
@@ -109,7 +113,7 @@ const EditQuestionPage = () => {
       </div>
       {/* <QuestionList questions={questions} /> */}
       {editData.map((data, index) => {
-        if (data.answer_example) {
+        if (data.select === false) {
           return (
             <div
               key={data.question_id}
@@ -119,7 +123,7 @@ const EditQuestionPage = () => {
                 className="text-2xl"
                 data-testid={`write_${data.question_id}`}
               >
-                Q{data.question_id}.
+                Q{index + 1}.
               </h2>
               <textarea
                 name="question"
@@ -147,7 +151,7 @@ const EditQuestionPage = () => {
               />
             </div>
           );
-        } else if (data.answer) {
+        } else if (data.select === true) {
           return (
             <div
               key={data.question_id}
@@ -157,7 +161,7 @@ const EditQuestionPage = () => {
                 className="text-2xl"
                 data-testid={`select_${data.question_id}`}
               >
-                Q{data.question_id}.
+                Q{index + 1}.
               </h2>
               <textarea
                 name="question"

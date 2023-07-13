@@ -11,7 +11,7 @@ const SelectUsers = () => {
         </div>
       </div>
       <div>
-        {/* Todo: 選択したユーザーを追加 */}
+        {/* Todo: 別コンポーネントに<Input/>を渡す("use clent"使用のため) */}
         <Input
           id="search"
           className="border-2 border-light-gray text-xs p-1 w-full"
