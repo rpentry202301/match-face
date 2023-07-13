@@ -7,6 +7,11 @@ const testData = {
 };
 
 describe("testingページのテスト", () => {
+  test("/questonsへのリンクが正しく設定されているか", () => {
+    render(<TestPage params={{ id: testData.id }} />);
+    const link = document.querySelector("#link-to-questions");
+    expect(link?.getAttribute("href")).toEqual("/questions");
+  });
   test("スナップショットテスト", () => {
     const { container } = render(<TestPage params={{ id: testData.id }} />);
     expect(container).toMatchSnapshot();
