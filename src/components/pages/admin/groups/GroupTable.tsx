@@ -37,6 +37,7 @@ const GroupTable = () => {
             <div className="flex flex-col items-center justify-center h-screen">
             <div className="bg-orange  h-9 w-3/5"><h1>&nbsp;</h1></div>
               <div className="bg-white px-7 pt-7 w-3/5 h-4/5">
+                <div style={{paddingTop:'7%'}}>
                 <table className="border-collapse items-center justify-center w-full table-fixed" data-testid='modalTable'>
                   <tbody> 
                     <tr>
@@ -63,6 +64,7 @@ const GroupTable = () => {
                     </tr>
                   </tbody>
                 </table>
+                </div>
               </div>
             </div>
           </div>
