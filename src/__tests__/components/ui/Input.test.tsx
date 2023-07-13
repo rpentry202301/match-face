@@ -1,11 +1,10 @@
 import Input from '@/components/ui/Input';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 
-describe('Input', () => {
-  render(<Input id="" />);
-  test('renders Input Component', () => {
-    const textBox = screen.getByRole('textbox');
-    screen.debug();
-    fireEvent.change(textBox);
+describe('Input.test.tsx', () => {
+  test('スナップショット', () => {
+    const { container } = render(<Input id="" />);
+    console.log('render(<Input id="" />)', render(<Input id="" />));
+    expect(container).toMatchSnapshot();
   });
 });
