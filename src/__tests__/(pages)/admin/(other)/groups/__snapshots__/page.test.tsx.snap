@@ -35,16 +35,12 @@ exports[`管理者/グループ一覧画面のテスト スナップショット
           <td
             class="border px-4 py-2"
           >
-            <a
-              href="#modal"
+            <button
+              class="hover:bg-amber-200 duration-200"
+              data-testid="group_1"
             >
-              <button
-                class="hover:bg-amber-200 duration-200"
-                data-testid="group_1"
-              >
-                2023年7月入社
-              </button>
-            </a>
+              2023年7月入社
+            </button>
           </td>
           <td
             class="border px-4 py-2"
@@ -61,16 +57,12 @@ exports[`管理者/グループ一覧画面のテスト スナップショット
           <td
             class="border px-4 py-2"
           >
-            <a
-              href="#modal"
+            <button
+              class="hover:bg-amber-200 duration-200"
+              data-testid="group_2"
             >
-              <button
-                class="hover:bg-amber-200 duration-200"
-                data-testid="group_2"
-              >
-                2023年7月入社フロント
-              </button>
-            </a>
+              2023年7月入社フロント
+            </button>
           </td>
           <td
             class="border px-4 py-2"
@@ -87,16 +79,12 @@ exports[`管理者/グループ一覧画面のテスト スナップショット
           <td
             class="border px-4 py-2"
           >
-            <a
-              href="#modal"
+            <button
+              class="hover:bg-amber-200 duration-200"
+              data-testid="group_3"
             >
-              <button
-                class="hover:bg-amber-200 duration-200"
-                data-testid="group_3"
-              >
-                テストグループその3
-              </button>
-            </a>
+              テストグループその3
+            </button>
           </td>
           <td
             class="border px-4 py-2"
@@ -113,16 +101,12 @@ exports[`管理者/グループ一覧画面のテスト スナップショット
           <td
             class="border px-4 py-2"
           >
-            <a
-              href="#modal"
+            <button
+              class="hover:bg-amber-200 duration-200"
+              data-testid="group_4"
             >
-              <button
-                class="hover:bg-amber-200 duration-200"
-                data-testid="group_4"
-              >
-                テストグループその4
-              </button>
-            </a>
+              テストグループその4
+            </button>
           </td>
           <td
             class="border px-4 py-2"
