@@ -22,7 +22,10 @@ const HamburgerBtn = ({ children }: { children: React.ReactNode }) => {
           <div className="opacity-0 transition duration-500 ease-out" />
           <div className="w-8 h-0.5 bg-gray-600 -rotate-45 transition duration-500 ease-out" />
         </button>
-        <nav className="text-center fixed bg-light-gray bg-opacity-90 right-0 top-0 w-2/12 flex flex-col justify-start py-6 px-3 ease-out duration-200">
+        <nav
+          className="text-center fixed bg-light-gray bg-opacity-90 right-0 top-0 w-2/12 flex flex-col justify-start py-6 px-3 ease-out duration-200"
+          data-testid="header_nav"
+        >
           <ul className="mt-6 flex flex-col justify-evenly w-11/12 m-auto">
             {/* 追加する場合は"nav/menu/template/MenuTemp.tsx"を参照 */}
             <li>
@@ -49,11 +52,9 @@ const HamburgerBtn = ({ children }: { children: React.ReactNode }) => {
         <div className="w-8 h-0.5 bg-gray-600 transition duration-500 ease-out" />
         <div className="w-8 h-0.5 bg-gray-600 transition duration-500 ease-out" />
       </button>
-      <nav className="fixed right-[-100%]">
+      <nav className="fixed right-[-100%]" data-testid="header_nav">
         <ul className="mt-6 w-4/5">
-          <li className="pb-5">
-            {children}
-          </li>
+          <li className="pb-5">{children}</li>
           <li>
             <Logout />
           </li>

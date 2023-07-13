@@ -18,6 +18,7 @@ exports[`HamburgerBtn.tsx スナップショットテスト デフォルト(ナ�
   </button>
   <nav
     class="fixed right-[-100%]"
+    data-testid="header_nav"
   >
     <ul
       class="mt-6 w-4/5"
