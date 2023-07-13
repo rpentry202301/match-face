@@ -36,6 +36,8 @@ const UserSelectModal = () => {
     .map((num, index) => `${num + index}`)
   monthArr.unshift("")
 
+  // Todo: コンポーネントを分割したい（１つのコンポーネントに複数のfetchがあり、テストが書きづらい）
+
   return (
     <Modal buttonText="追加" isOpened={isOpened} open={open} close={close}>
       <div>
@@ -50,6 +52,7 @@ const UserSelectModal = () => {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="border-light-gray border-2 text-xs p-1 w-10/12"
+              data-testid="search-box"
             />
             <WhiteButton label="検索" className="text-xs ml-4 w-16" />
           </div>
@@ -59,6 +62,8 @@ const UserSelectModal = () => {
               value={year}
               onChange={(e) => setYear(e.target.value)}
               className="text-xs p-1"
+              id="year"
+              data-testid="select-year"
             />
             <span className="text-xs">年</span>
             <SelectBox
@@ -66,6 +71,8 @@ const UserSelectModal = () => {
               value={month}
               onChange={(e) => setMonth(e.target.value)}
               className="text-xs p-1"
+              id="month"
+              data-testid="select-month"
             />
             <span className="text-xs">月入社</span>
           </div>

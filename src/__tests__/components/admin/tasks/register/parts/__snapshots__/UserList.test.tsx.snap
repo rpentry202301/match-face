@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserList.tsx UserListのスナップショット 1`] = `
+<div>
+  <div
+    class="my-10"
+  >
+    <table
+      class="w-10/12 border-collapse border-2 border-deep-gray text-sm mx-auto"
+    >
+      <thead
+        class="bg-light-gray"
+      >
+        <tr>
+          <th
+            class="border-2 border-deep-gray px-4 py-2 text-center w-1/12"
+          />
+          <th
+            class="border-2 border-deep-gray px-4 py-2 text-center w-3/12"
+          >
+            入社日
+          </th>
+          <th
+            class="border-2 border-deep-gray px-4 py-2 text-center w-20"
+          >
+            職種
+          </th>
+          <th
+            class="border-2 border-deep-gray px-4 py-2 text-center w-20"
+          >
+            状態
+          </th>
+          <th
+            class="border-2 border-deep-gray px-4 py-2 text-center w-fit"
+          >
+            氏名
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td
+            class="border-2 border-deep-gray px-4 py-2 text-center"
+          >
+            <input
+              class="w-4 h-4 accent-orange"
+              type="checkbox"
+            />
+          </td>
+          <td
+            class="border-2 border-deep-gray px-4 py-2 text-center"
+          >
+            2023-07-01
+          </td>
+          <td
+            class="border-2 border-deep-gray px-4 py-2 text-center"
+          >
+            Java
+          </td>
+          <td
+            class="border-2 border-deep-gray px-4 py-2 text-center"
+          >
+            待機中
+          </td>
+          <td
+            class="border-2 border-deep-gray px-4 py-2 text-center"
+          >
+            田中太郎
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-2 border-deep-gray px-4 py-2 text-center"
+          >
+            <input
+              class="w-4 h-4 accent-orange"
+              type="checkbox"
+            />
+          </td>
+          <td
+            class="border-2 border-deep-gray px-4 py-2 text-center"
+          >
+            2023-07-01
+          </td>
+          <td
+            class="border-2 border-deep-gray px-4 py-2 text-center"
+          >
+            Java
+          </td>
+          <td
+            class="border-2 border-deep-gray px-4 py-2 text-center"
+          >
+            待機中
+          </td>
+          <td
+            class="border-2 border-deep-gray px-4 py-2 text-center"
+          >
+            鈴木二郎
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-2 border-deep-gray px-4 py-2 text-center"
+          >
+            <input
+              class="w-4 h-4 accent-orange"
+              type="checkbox"
+            />
+          </td>
+          <td
+            class="border-2 border-deep-gray px-4 py-2 text-center"
+          >
+            2023-07-01
+          </td>
+          <td
+            class="border-2 border-deep-gray px-4 py-2 text-center"
+          >
+            Java
+          </td>
+          <td
+            class="border-2 border-deep-gray px-4 py-2 text-center"
+          >
+            待機中
+          </td>
+          <td
+            class="border-2 border-deep-gray px-4 py-2 text-center"
+          >
+            伊藤三郎
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
