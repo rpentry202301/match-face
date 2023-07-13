@@ -183,7 +183,7 @@ const CreateQuestionPage = () => {
                 className="text-2xl"
                 data-testid={`write_${data.question_id}`}
               >
-                Q{data.question_id}.
+                Q{index + 1}.
               </h2>
               <textarea
                 name="question"
@@ -221,7 +221,7 @@ const CreateQuestionPage = () => {
                 className="text-2xl"
                 data-testid={`select_${data.question_id}`}
               >
-                Q{data.question_id}.
+                Q{index + 1}.
               </h2>
               <textarea
                 name="question"
