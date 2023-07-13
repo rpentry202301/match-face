@@ -26,6 +26,7 @@ const HumburgerBtn = ({ children }: { children: React.ReactNode }) => {
           <ul className="mt-6">
             {/* 追加する場合は"nav/menu/template/MenuTemp.tsx"を参照 */}
             <li className="pb-5">
+              {/* userIcon.tsxのみSeverComponentなので、Childrenでネスト */}
               {children}
             </li>
             <li>
