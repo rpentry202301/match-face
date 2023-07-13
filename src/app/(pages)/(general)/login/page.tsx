@@ -7,18 +7,25 @@ import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import SiteTitle from '@/components/ui/SiteTitle';
 
-const LoginPage = () => {
+const get = async () => {
+  const response = await fetch('http://localhost:3000/api');
+  const data = await response.json();
+  return {
+    props: { data },
+  };
+};
+
+// ダミーデータ
+const correctUser = users[0];
+
+const LoginPage = (props: any) => {
   const router = useRouter();
-  const [userId, setUserId] = useState<string>('');
+  const [userId, setUserId] = useState<number>();
   const [password, setPassword] = useState<string>('');
   // const [userIdError, setUserIdError] = useState<boolean>(false);
   const [userIdBlankError, setUserIdBlankError] = useState<boolean>(false);
   // const [passwordError, setPasswordError] = useState<boolean>(false);
   const [passwordBlankError, setPasswordBlankError] = useState<boolean>(false);
-
-  // ダミーデータ
-  const correctUser = users[0];
-  // console.log('crrectUser', correctUser);
 
   // todo:（仮）ログイン認証チェック(入力欄がブランクの時のみエラー感知)
   const checkLogin = (event: FormEvent) => {
@@ -32,10 +39,7 @@ const LoginPage = () => {
     } else if (userId && !password) {
       setUserIdBlankError(false);
       setPasswordBlankError(true);
-    } else if (
-      userId === correctUser.user_id &&
-      password === correctUser.password
-    ) {
+    } else if (userId === correctUser.id && password === correctUser.password) {
       router.push('/');
     }
   };
@@ -54,7 +58,7 @@ const LoginPage = () => {
                 id="userId"
                 className=" w-96 h-10 mt-2"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  setUserId(e.target.value)
+                  setUserId(Number(e.target.value))
                 }
                 value={userId}
               />
