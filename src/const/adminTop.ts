@@ -9,7 +9,7 @@ export const dataArray = [
     },
     {
       id: 2,
-      title: "タスクの設定",
+      title: "タスクの一覧",
       url: "/admin/tasks",
       description: "タスクの一覧を確認できます。",
       imgUrl: "/icon/pencil_icon.png",
