@@ -33,7 +33,7 @@ export function HistoriesUserListBody({id,answers,users}:{id:number,answers:Answ
                 <tr key={user_answer.id}> 
                 <td></td>
                 <td className="border border-slate-deep-gray" id="detail"><GrayButton data-testid={`detail_${user_answer.id}`} label="詳細" className="w-20 h-[23px] pt-[4px] text-sm" onClick={(e)=>handleClick(e,user_answer.id)}/></td>
-                <td className="border border-slate-deep-gray" id="answer_status">{user_answer.answer_status?"回答済み":"未回答"}</td>
+                <td className="border border-slate-deep-gray" id="answer_status" data-testid={`status_${user_answer.id}`}>{user_answer.answer_status?"回答済み":"未回答"}</td>
                 {users.map((user)=>(
                     user.id===user_answer.user_id&&
                     <td className="border border-slate-deep-gray" id="user_name" key={user_answer.id}>{user.name}</td>
