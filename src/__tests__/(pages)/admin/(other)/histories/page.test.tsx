@@ -11,10 +11,6 @@ describe('管理者/履歴一覧画面のテスト',() => {
     beforeEach(()=>{
         render(<AppRouterContextProviderMock router={{ push }}><HistoriesPage /></AppRouterContextProviderMock>);
     })
-    const mock_answered_user = [
-        {id:1,project_id:1,answer_status:true,user_name:"田中太郎"},
-        {id:2,project_id:1,answer_status:false,user_name:"山田次郎"},
-    ]
 
     describe('スナップショットテスト',() => {
         it('レンダリング時',async() => {
