@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`elements/header/nav/template/MenuTemp.tsx スナップショット 1`] = `
+<div>
+  <a
+    class="group block border-b-2 border-gray-400 border-opacity-0 p-0.5 w-4/5 m-auto hover:border-opacity-50 duration-200 ease-out"
+    href="hoge"
+  >
+    <div
+      class="flex items-center group-hover:opacity-50 duration-200 ease-out"
+    >
+      <div
+        class="rounded-full h-10 w-10 flex items-center justify-center bg-deep-gray bg-opacity-0 mr-2"
+      >
+        <div
+          class="relative w-8 h-8 flex justify-center"
+        >
+          <img
+            alt="テンプレート"
+            data-nimg="fill"
+            decoding="async"
+            loading="lazy"
+            sizes="(max-width: 600px) 10vw, (max-width: 1200px) 30vw, 60px"
+            src="/_next/image?url=%2Fhoge&w=3840&q=75"
+            srcset="/_next/image?url=%2Fhoge&w=64&q=75 64w, /_next/image?url=%2Fhoge&w=96&q=75 96w, /_next/image?url=%2Fhoge&w=128&q=75 128w, /_next/image?url=%2Fhoge&w=256&q=75 256w, /_next/image?url=%2Fhoge&w=384&q=75 384w, /_next/image?url=%2Fhoge&w=640&q=75 640w, /_next/image?url=%2Fhoge&w=750&q=75 750w, /_next/image?url=%2Fhoge&w=828&q=75 828w, /_next/image?url=%2Fhoge&w=1080&q=75 1080w, /_next/image?url=%2Fhoge&w=1200&q=75 1200w, /_next/image?url=%2Fhoge&w=1920&q=75 1920w, /_next/image?url=%2Fhoge&w=2048&q=75 2048w, /_next/image?url=%2Fhoge&w=3840&q=75 3840w"
+            style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
+          />
+        </div>
+      </div>
+      <p
+        class="text-sm"
+      >
+        テンプレート
+      </p>
+    </div>
+  </a>
+</div>
+`;
