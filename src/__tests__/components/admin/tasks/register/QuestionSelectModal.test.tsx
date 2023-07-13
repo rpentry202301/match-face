@@ -9,7 +9,7 @@ const open = () => {
   fireEvent.click(screen.getByRole("button"));
 }
 
-describe("UserSelectModal.tsx", () => {
+describe("QuestionSelectModal.tsx", () => {
   beforeEach(() => {
     jest.clearAllMocks();
     open();
@@ -17,8 +17,8 @@ describe("UserSelectModal.tsx", () => {
 
   describe("スナップショットテスト", () => {
     it("モーダルを開いている状態", () => {
-      const { container } = render(<QuestionSelectModal />);
-      expect(container).toMatchSnapshot();
+      const { baseElement } = render(<QuestionSelectModal />);
+      expect(baseElement).toMatchSnapshot();
     });
   })
 
