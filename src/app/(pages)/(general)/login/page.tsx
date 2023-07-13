@@ -7,20 +7,22 @@ import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import SiteTitle from '@/components/ui/SiteTitle';
 
-const get = async () => {
-  const response = await fetch('http://localhost:3000/api');
-  const data = await response.json();
-  return {
-    props: { data },
-  };
-};
+// データ取得（仮）
+// const get = async () => {
+//   const response = await fetch('http://localhost:3000/api');
+//   const data = await response.json();
+//   return {
+//     props: { data },
+//   };
+// };
 
 // ダミーデータ
 const correctUser = users[0];
 
-const LoginPage = (props: any) => {
+const LoginPage = () => {
   const router = useRouter();
-  const [userId, setUserId] = useState<number>();
+  // todo: usetIdの初期値を
+  const [userId, setUserId] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   // const [userIdError, setUserIdError] = useState<boolean>(false);
   const [userIdBlankError, setUserIdBlankError] = useState<boolean>(false);
@@ -39,7 +41,10 @@ const LoginPage = (props: any) => {
     } else if (userId && !password) {
       setUserIdBlankError(false);
       setPasswordBlankError(true);
-    } else if (userId === correctUser.id && password === correctUser.password) {
+    } else if (
+      Number(userId) === correctUser.id &&
+      password === correctUser.password
+    ) {
       router.push('/');
     }
   };
@@ -58,7 +63,7 @@ const LoginPage = (props: any) => {
                 id="userId"
                 className=" w-96 h-10 mt-2"
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  setUserId(Number(e.target.value))
+                  setUserId(e.target.value)
                 }
                 value={userId}
               />
