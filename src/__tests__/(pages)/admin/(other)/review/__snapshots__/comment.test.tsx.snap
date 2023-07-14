@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommentContentコンポーネントのテスト スナップショットテスト 1`] = `
+<div>
+  <label
+    for="comment"
+  >
+    <h3
+      class="text-xl mb-3"
+    >
+      ▶︎コメントを入力する
+    </h3>
+  </label>
+  <div
+    class=" flex justify-between "
+  >
+    <div
+      class="w-1/6 flex justify-center items-center"
+    >
+      <img
+        alt="コメントしたユーザーのアイコン"
+        data-nimg="1"
+        decoding="async"
+        height="70"
+        loading="lazy"
+        src="/_next/image?url=%2Ficon%2Fhuman_icon.png&w=256&q=75"
+        srcset="/_next/image?url=%2Ficon%2Fhuman_icon.png&w=96&q=75 1x, /_next/image?url=%2Ficon%2Fhuman_icon.png&w=256&q=75 2x"
+        style="color: transparent;"
+        width="70"
+      />
+    </div>
+    <textarea
+      class="border border-black w-full p-3"
+      cols="50"
+      id="comment"
+      rows="6"
+    />
+  </div>
+</div>
+`;

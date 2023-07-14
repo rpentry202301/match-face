@@ -1,4 +1,4 @@
-import ModelAnswerContent from "@/app/(pages)/(general)/(other)/result/[id]/modelAnswer";
+import ModelAnswerContent from "@/components/pages/general/result/ModelAnswer";
 import { render, screen } from "@testing-library/react";
 import { ModelAnswer } from "@/const/result";
 import "@testing-library/jest-dom";

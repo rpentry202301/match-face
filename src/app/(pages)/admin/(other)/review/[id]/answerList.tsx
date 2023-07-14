@@ -26,11 +26,16 @@ export const AnswerList = ({ user_id, project_id }: Props) => {
           <h3 className="text-xl">
             Q{index + 1}:{question.name}
           </h3>
-          <p className="mt-2 mb-4">{question.content}</p>
+          <p id={`content-${index + 1}`} className="mt-2 mb-4">
+            {question.content}
+          </p>
           {question.type === "writing" ? (
             <>
-              <div className="border border-gray p-3 mt-2 rounded-md shadow-md">
-                <h3 className="mb-2 text-xl">{answerUser[0].name}の回答</h3>
+              <div
+                id={`answer-${index}`}
+                className="border border-gray p-3 mt-2 rounded-md shadow-md"
+              >
+                <h3 className="mb-2 text-xl">{answerUser[0].name}の解答</h3>
                 {currentAnswer[index].content}
               </div>
             </>
@@ -41,8 +46,11 @@ export const AnswerList = ({ user_id, project_id }: Props) => {
                   <li key={index}>・{choice}</li>
                 ))}
               </ul>
-              <div className="border border-gray p-3 mt-5 rounded-md shadow-md">
-                <h3 className="mb-2 text-xl">{answerUser[0].name}の回答</h3>
+              <div
+                id={`answer-${index}`}
+                className="border border-gray p-3 mt-5 rounded-md shadow-md"
+              >
+                <h3 className="mb-2 text-xl">{answerUser[0].name}の解答</h3>
                 {currentAnswer[index].content}
               </div>
             </>

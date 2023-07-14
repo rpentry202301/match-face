@@ -58,7 +58,7 @@ describe("AnswerContentコンポーネントのテスト", () => {
   test("スナップショットテスト", () => {
     const push = jest.fn();
 
-    const contents = render(
+    const { container } = render(
       <AppRouterContextProviderMock router={{ push }}>
         <AnswerContent
           user_id={testData.user_id}
@@ -66,6 +66,6 @@ describe("AnswerContentコンポーネントのテスト", () => {
         />
       </AppRouterContextProviderMock>
     );
-    expect(contents).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

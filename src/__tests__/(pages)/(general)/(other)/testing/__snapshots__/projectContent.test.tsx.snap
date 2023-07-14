@@ -23,19 +23,22 @@ exports[`ProjectContentコンポーネントのテスト スナップショッ�
       <h2>
         Q
         1
-        ：
+        :
         質問のタイトルが入ります
       </h2>
       <p
         class="mt-2 mb-4"
+        id="question-content-0"
       >
         テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
       </p>
       <label
         for="質問のタイトルが入ります"
       >
-        <p>
-          回答記入欄
+        <p
+          id="answer-title-0"
+        >
+          解答記入欄
         </p>
       </label>
       <textarea
@@ -52,62 +55,67 @@ exports[`ProjectContentコンポーネントのテスト スナップショッ�
       <h2>
         Q
         2
-        ：
+        :
         質問のタイトルが入ります
       </h2>
       <p
         class="mt-2 mb-4"
+        id="question-content-1"
       >
         テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
       </p>
       <div>
         <input
-          id="choice0"
+          id="choice-0"
           name="質問のタイトルが入ります"
           type="radio"
           value="選択肢A"
         />
         <label
           for="choice0"
+          id="label-0"
         >
           選択肢A
         </label>
       </div>
       <div>
         <input
-          id="choice1"
+          id="choice-1"
           name="質問のタイトルが入ります"
           type="radio"
           value="選択肢B"
         />
         <label
           for="choice1"
+          id="label-1"
         >
           選択肢B
         </label>
       </div>
       <div>
         <input
-          id="choice2"
+          id="choice-2"
           name="質問のタイトルが入ります"
           type="radio"
           value="選択肢C"
         />
         <label
           for="choice2"
+          id="label-2"
         >
           選択肢C
         </label>
       </div>
       <div>
         <input
-          id="choice3"
+          id="choice-3"
           name="質問のタイトルが入ります"
           type="radio"
           value="選択肢D"
         />
         <label
           for="choice3"
+          id="label-3"
         >
           選択肢D
         </label>
@@ -119,19 +127,22 @@ exports[`ProjectContentコンポーネントのテスト スナップショッ�
       <h2>
         Q
         3
-        ：
+        :
         質問のタイトルが入ります
       </h2>
       <p
         class="mt-2 mb-4"
+        id="question-content-2"
       >
         テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
       </p>
       <label
         for="質問のタイトルが入ります"
       >
-        <p>
-          回答記入欄
+        <p
+          id="answer-title-2"
+        >
+          解答記入欄
         </p>
       </label>
       <textarea
