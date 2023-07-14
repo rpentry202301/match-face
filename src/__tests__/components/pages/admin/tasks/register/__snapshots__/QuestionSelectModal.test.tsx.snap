@@ -99,7 +99,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         class="flex"
                       >
                         <input
-                          class="w-4 h-4 accent-orange"
+                          class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_1"
                           type="checkbox"
                         />
@@ -114,7 +114,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         class="flex"
                       >
                         <input
-                          class="w-4 h-4 accent-orange"
+                          class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_2"
                           type="checkbox"
                         />
@@ -129,7 +129,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         class="flex"
                       >
                         <input
-                          class="w-4 h-4 accent-orange"
+                          class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_3"
                           type="checkbox"
                         />
@@ -144,7 +144,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         class="flex"
                       >
                         <input
-                          class="w-4 h-4 accent-orange"
+                          class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_4"
                           type="checkbox"
                         />
@@ -159,7 +159,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         class="flex"
                       >
                         <input
-                          class="w-4 h-4 accent-orange"
+                          class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_5"
                           type="checkbox"
                         />
@@ -174,7 +174,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         class="flex"
                       >
                         <input
-                          class="w-4 h-4 accent-orange"
+                          class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_6"
                           type="checkbox"
                         />
@@ -189,7 +189,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         class="flex"
                       >
                         <input
-                          class="w-4 h-4 accent-orange"
+                          class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_7"
                           type="checkbox"
                         />
@@ -204,7 +204,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         class="flex"
                       >
                         <input
-                          class="w-4 h-4 accent-orange"
+                          class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_8"
                           type="checkbox"
                         />
@@ -219,7 +219,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         class="flex"
                       >
                         <input
-                          class="w-4 h-4 accent-orange"
+                          class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_9"
                           type="checkbox"
                         />
@@ -234,7 +234,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         class="flex"
                       >
                         <input
-                          class="w-4 h-4 accent-orange"
+                          class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_10"
                           type="checkbox"
                         />
@@ -249,7 +249,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         class="flex"
                       >
                         <input
-                          class="w-4 h-4 accent-orange"
+                          class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_11"
                           type="checkbox"
                         />
@@ -264,7 +264,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         class="flex"
                       >
                         <input
-                          class="w-4 h-4 accent-orange"
+                          class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_12"
                           type="checkbox"
                         />
@@ -279,7 +279,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         class="flex"
                       >
                         <input
-                          class="w-4 h-4 accent-orange"
+                          class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_13"
                           type="checkbox"
                         />
@@ -294,7 +294,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         class="flex"
                       >
                         <input
-                          class="w-4 h-4 accent-orange"
+                          class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_14"
                           type="checkbox"
                         />
@@ -355,7 +355,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                   class="border-2 border-deep-gray px-4 py-2 text-center"
                 >
                   <input
-                    class="w-4 h-4 accent-orange"
+                    class="w-4 h-4 accent-orange cursor-pointer"
                     type="checkbox"
                   />
                 </td>
@@ -380,7 +380,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                   class="border-2 border-deep-gray px-4 py-2 text-center"
                 >
                   <input
-                    class="w-4 h-4 accent-orange"
+                    class="w-4 h-4 accent-orange cursor-pointer"
                     type="checkbox"
                   />
                 </td>
@@ -405,7 +405,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                   class="border-2 border-deep-gray px-4 py-2 text-center"
                 >
                   <input
-                    class="w-4 h-4 accent-orange"
+                    class="w-4 h-4 accent-orange cursor-pointer"
                     type="checkbox"
                   />
                 </td>

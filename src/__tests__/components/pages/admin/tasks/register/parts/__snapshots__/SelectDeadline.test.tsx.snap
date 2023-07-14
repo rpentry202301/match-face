@@ -20,7 +20,7 @@ exports[`SelectDeadline.tsx スナップショットテスト レンダリング
           class="flex items-center"
         >
           <select
-            class="border-2 border-light-gray w-20 h-6 text-sm"
+            class="border-2 border-light-gray cursor-pointer w-20 h-6 text-sm"
             data-testid="year"
             id="year"
             name="year"
@@ -48,7 +48,7 @@ exports[`SelectDeadline.tsx スナップショットテスト レンダリング
           class="flex items-center ml-4"
         >
           <select
-            class="border-2 border-light-gray w-20 h-6 text-sm"
+            class="border-2 border-light-gray cursor-pointer w-20 h-6 text-sm"
             data-testid="month"
             id="month"
             name="month"
@@ -136,7 +136,7 @@ exports[`SelectDeadline.tsx スナップショットテスト レンダリング
           class="flex items-center ml-4"
         >
           <select
-            class="border-2 border-light-gray w-20 h-6 text-sm"
+            class="border-2 border-light-gray cursor-pointer w-20 h-6 text-sm"
             data-testid="day"
             id="day"
             name="day"
@@ -338,7 +338,7 @@ exports[`SelectDeadline.tsx スナップショットテスト レンダリング
           class="flex items-center ml-4"
         >
           <select
-            class="border-2 border-light-gray w-20 h-6 text-sm"
+            class="border-2 border-light-gray cursor-pointer w-20 h-6 text-sm"
             data-testid="time"
             id="time"
             name="time"
