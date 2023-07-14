@@ -14,17 +14,6 @@ type User = {
 
 const user = userEvent.setup();
 describe('LoginPageのテスト', () => {
-  //   test('スナップショット', () => {
-  //     const push = jest.fn();
-
-  //     const { container } = render(
-  //       <AppRouterContextProviderMock router={{ push }}>
-  //         <LoginPage />
-  //       </AppRouterContextProviderMock>
-  //     );
-  //     expect(container).toMatchSnapshot();
-  //   });
-
   test('ログインに成功するか確認', async () => {
     const push = jest.fn();
 
@@ -82,4 +71,15 @@ describe('LoginPageのテスト', () => {
     screen.debug(adminLoginLink);
     expect(adminLoginLink).toHaveAttribute('href', '/admin/login');
   });
+
+  //   test('スナップショット', () => {
+  //     const push = jest.fn();
+
+  //     const { container } = render(
+  //       <AppRouterContextProviderMock router={{ push }}>
+  //         <LoginPage />
+  //       </AppRouterContextProviderMock>
+  //     );
+  //     expect(container).toMatchSnapshot();
+  //   });
 });
