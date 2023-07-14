@@ -1,14 +1,15 @@
 import MenuTemp from "@/components/elements/header/nav/template/MenuTemp";
-import { render } from "@testing-library/react";
+import { cleanup, render } from "@testing-library/react";
 
 describe("MenuTemp.tsx", () => {
-  beforeEach(() => {
+  beforeAll(() => {
     jest.clearAllMocks();
+    cleanup();
   });
   afterAll(() => {
     jest.clearAllMocks();
+    cleanup();
   });
-
   it("スナップショット", () => {
     const { container } = render(
       <MenuTemp text="テンプレート" href="hoge" src="/hoge" alt="テンプレート" />

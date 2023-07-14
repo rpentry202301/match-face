@@ -1,13 +1,15 @@
 import UserIcon from "@/components/elements/header/nav/UserIcon";
-import { render } from "@testing-library/react";
+import { cleanup, render } from "@testing-library/react";
 
 // Todo: 非同期通信のモック
 describe("UserIcon.tsx", () => {
-  beforeEach(() => {
+  beforeAll(() => {
     jest.clearAllMocks();
+    cleanup();
   });
   afterAll(() => {
     jest.clearAllMocks();
+    cleanup();
   });
   it("スナップショットテスト", async() => {
     // Note: 非同期通信を行うServerComponentのテストはこう書く

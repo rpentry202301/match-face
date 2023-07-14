@@ -1,12 +1,14 @@
-import { render } from "@testing-library/react";
+import { cleanup, render } from "@testing-library/react";
 import Logout from "../../../../../components/elements/header/nav/Logout";
 
 describe("Logout.tsx", () => {
-  beforeEach(() => {
+  beforeAll(() => {
     jest.clearAllMocks();
+    cleanup();
   });
   afterAll(() => {
     jest.clearAllMocks();
+    cleanup();
   });
   it("スナップショットテスト", () => {
     const { container } = render(<Logout />);
