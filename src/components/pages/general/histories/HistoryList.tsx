@@ -52,7 +52,10 @@ const HistoryList = () => {
                 {project.project_name}
               </td>
 
-              <td className="border text-center px-4 ">
+              <td
+                className="border text-center px-4 "
+                data-test={`projectDetail${project.id}`}
+              >
                 {truncateString(project.project_detail, 30)}
               </td>
               <td className="border text-center px-4">
