@@ -78,7 +78,7 @@ const UserSelectModal = () => {
   }
 
   return (
-    <Modal buttonText="追加" canCloseByClickingBackground={false} isOpened={isOpened} open={open} close={close}>
+    <Modal buttonText="追加" isOpened={isOpened} open={open} close={close}>
       <div>
         <h2 className="text-base ml-3">▶️ユーザーを選択する</h2>
       </div>
