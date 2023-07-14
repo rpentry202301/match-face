@@ -43,7 +43,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             class="flex items-center gap-1"
           >
             <select
-              class="border-2 border-light-gray text-xs p-1"
+              class="border-2 border-light-gray cursor-pointer text-xs p-1"
               data-testid="select-year"
               id="year"
               name="year"
@@ -203,7 +203,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
               年
             </span>
             <select
-              class="border-2 border-light-gray text-xs p-1"
+              class="border-2 border-light-gray cursor-pointer text-xs p-1"
               data-testid="select-month"
               id="month"
               name="month"
@@ -296,14 +296,14 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
           >
             <div>
               <input
-                class="peer sr-only"
+                class="peer hidden"
                 id="dep_1"
                 name="department"
                 type="checkbox"
                 value="Java"
               />
               <label
-                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-md cursor-pointertext-xs px-1 w-16 peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs px-1 w-16 cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
                 for="dep_1"
               >
                 Java
@@ -311,14 +311,14 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             </div>
             <div>
               <input
-                class="peer sr-only"
+                class="peer hidden"
                 id="dep_2"
                 name="department"
                 type="checkbox"
                 value="PHP"
               />
               <label
-                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-md cursor-pointertext-xs px-1 w-16 peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs px-1 w-16 cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
                 for="dep_2"
               >
                 PHP
@@ -326,14 +326,14 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             </div>
             <div>
               <input
-                class="peer sr-only"
+                class="peer hidden"
                 id="dep_3"
                 name="department"
                 type="checkbox"
                 value="FR"
               />
               <label
-                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-md cursor-pointertext-xs px-1 w-16 peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs px-1 w-16 cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
                 for="dep_3"
               >
                 FR
@@ -341,14 +341,14 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             </div>
             <div>
               <input
-                class="peer sr-only"
+                class="peer hidden"
                 id="dep_4"
                 name="department"
                 type="checkbox"
                 value="CL"
               />
               <label
-                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-md cursor-pointertext-xs px-1 w-16 peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs px-1 w-16 cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
                 for="dep_4"
               >
                 CL
@@ -356,14 +356,14 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             </div>
             <div>
               <input
-                class="peer sr-only"
+                class="peer hidden"
                 id="dep_5"
                 name="department"
                 type="checkbox"
                 value="ML"
               />
               <label
-                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-md cursor-pointertext-xs px-1 w-16 peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs px-1 w-16 cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
                 for="dep_5"
               >
                 ML
@@ -371,14 +371,14 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             </div>
             <div>
               <input
-                class="peer sr-only"
+                class="peer hidden"
                 id="dep_6"
                 name="department"
                 type="checkbox"
                 value="QA"
               />
               <label
-                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-md cursor-pointertext-xs px-1 w-16 peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs px-1 w-16 cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
                 for="dep_6"
               >
                 QA
@@ -390,14 +390,14 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
           >
             <div>
               <input
-                class="peer sr-only"
+                class="peer hidden"
                 id="研修中"
                 name="state"
                 type="checkbox"
                 value="研修中"
               />
               <label
-                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-md cursor-pointertext-xs w-16 px-1 whitespace-nowrap peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs w-16 px-1 whitespace-nowrap cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
                 for="研修中"
               >
                 研修中
@@ -405,14 +405,14 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             </div>
             <div>
               <input
-                class="peer sr-only"
+                class="peer hidden"
                 id="待機中"
                 name="state"
                 type="checkbox"
                 value="待機中"
               />
               <label
-                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-md cursor-pointertext-xs w-16 px-1 whitespace-nowrap peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs w-16 px-1 whitespace-nowrap cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
                 for="待機中"
               >
                 待機中
@@ -420,14 +420,14 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             </div>
             <div>
               <input
-                class="peer sr-only"
+                class="peer hidden"
                 id="アサイン中"
                 name="state"
                 type="checkbox"
                 value="アサイン中"
               />
               <label
-                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-md cursor-pointertext-xs px-1 w-24 peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs px-1 w-24 cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
                 for="アサイン中"
               >
                 アサイン中
@@ -444,7 +444,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             </div>
             <div>
               <select
-                class="border-2 border-light-gray w-10/12 text-xs p-1"
+                class="border-2 border-light-gray cursor-pointer w-10/12 text-xs p-1"
                 data-testid="select-group"
                 id="group"
                 name="group"
@@ -531,7 +531,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
                 class="border-2 border-deep-gray px-4 py-2 text-center"
               >
                 <input
-                  class="w-4 h-4 accent-orange"
+                  class="w-4 h-4 accent-orange cursor-pointer"
                   type="checkbox"
                 />
               </td>
@@ -561,7 +561,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
                 class="border-2 border-deep-gray px-4 py-2 text-center"
               >
                 <input
-                  class="w-4 h-4 accent-orange"
+                  class="w-4 h-4 accent-orange cursor-pointer"
                   type="checkbox"
                 />
               </td>
@@ -591,7 +591,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
                 class="border-2 border-deep-gray px-4 py-2 text-center"
               >
                 <input
-                  class="w-4 h-4 accent-orange"
+                  class="w-4 h-4 accent-orange cursor-pointer"
                   type="checkbox"
                 />
               </td>
