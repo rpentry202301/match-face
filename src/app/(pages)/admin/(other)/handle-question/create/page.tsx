@@ -83,7 +83,6 @@ const CreateQuestionPage = () => {
     if (errMsg !== "") {
       return;
     }
-    console.log(editData);
     const getDate = () => {
       const date = new Date();
       const year = date.getFullYear();
@@ -109,7 +108,7 @@ const CreateQuestionPage = () => {
     if (errMsg !== "") {
       return;
     }
-    console.log(sendJSON);
+    // console.log(sendJSON);
   };
 
   const handleQuestionChange = (
