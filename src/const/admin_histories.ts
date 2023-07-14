@@ -26,7 +26,7 @@ export const departments = [
 
 export const projects = [
     {id:1,name:"案件A",detail:"案件Aの説明",enterprise_id:1,department_id:1,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
-    {id:2,name:"案件B",detail:"案件Bの説明",enterprise_id:1,department_id:1,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
+    {id:2,name:"案件B",detail:"案件Bの説明案件Bの説明案件Bの説明案件Bの説明案件Bの説明案件Bの説明案件Bの説明案件Bの説明",enterprise_id:1,department_id:1,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
     {id:3,name:"案件C",detail:"案件Cの説明",enterprise_id:1,department_id:2,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
     {id:4,name:"案件D",detail:"案件Dの説明",enterprise_id:1,department_id:1,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
     {id:5,name:"案件E",detail:"案件Eの説明",enterprise_id:1,department_id:2,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
@@ -66,4 +66,16 @@ export const users = [
     {id:3,name:'佐藤三郎',password:'sato',email:'sato@example.com',hire_date:'2023-01-01',department_id:2,status_id:1,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
     {id:4,name:'鈴木四郎',password:'suzuki',email:'suzuki@example.com',hire_date:'2023-01-01',department_id:1,status_id:1,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
     {id:5,name:'高橋五郎',password:'takahashi',email:'takahashi@example.com',hire_date:'2023-01-01',department_id:1,status_id:1,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'}
+]
+
+export const answer_request_questions = [
+    {id:1,question_id:1,answer_request_id:1,is_answered:false,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
+    {id:2,question_id:1,answer_request_id:1,is_answered:true,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
+    {id:3,question_id:2,answer_request_id:2,is_answered:false,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
+    {id:4,question_id:2,answer_request_id:2,is_answered:true,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
+    {id:5,question_id:3,answer_request_id:3,is_answered:false,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
+    {id:6,question_id:4,answer_request_id:4,is_answered:false,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
+    {id:7,question_id:4,answer_request_id:4,is_answered:false,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
+    {id:8,question_id:4,answer_request_id:4,is_answered:true,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
+    {id:9,question_id:5,answer_request_id:5,is_answered:true,created_user:'rakus',created_at:'2023-07-10T16:52:46.053Z',update_user:'rakus',update_at:'2023-07-10T16:52:46.053Z'},
 ]

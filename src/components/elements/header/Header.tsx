@@ -1,5 +1,5 @@
 import MatchFaceLogo from "@/components/ui/logo/MatchFaceLogo";
-import HumburgerBtn from "./button/HumburgerBtn";
+import HamburgerBtn from "./button/HamburgerBtn";
 import UserIcon from "./nav/UserIcon";
 
 const Header = () => {
@@ -7,9 +7,9 @@ const Header = () => {
     <div className="flex justify-between py-2 px-3 h-full">
       <MatchFaceLogo />
       {/* UserIconはServerComponentなので、childrenでネストする */}
-      <HumburgerBtn>
+      <HamburgerBtn>
         <UserIcon />
-      </HumburgerBtn>
+      </HamburgerBtn>
     </div>
   );
 };
