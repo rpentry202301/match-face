@@ -7,6 +7,7 @@ import Link from "next/link";
 
 const data = group;
 
+// あとでasync足す
 const GroupTable = () => {
   // モーダル表示用
   const [isOpen, setIsOpen] = useState(false);
@@ -29,8 +30,14 @@ const GroupTable = () => {
     setIsOpen(!isOpen);
   };
 
+  // 非同期処理あとで実装
+  // const url = 'sample'
+  // const response = await fetch(url)
+  // const data = await response.json()
+
   return (
     <>
+    {/* モーダル内テーブル */}
       {isOpen && (
         <div>
           <div className="block w-full h-full bg-black/30 absolute top-0 left-0" onClick={() => toggleModal(group)}>
@@ -71,6 +78,7 @@ const GroupTable = () => {
         </div>
       )}
 
+{/* 通常表示テーブル */}
       <div className="flex flex-col items-center justify-center h-screen table-fixed">
         <table>
           <thead>
