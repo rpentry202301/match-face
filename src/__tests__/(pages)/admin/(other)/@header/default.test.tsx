@@ -1,6 +1,6 @@
 import { cleanup, render } from "@testing-library/react";
 import UserIcon from "@/components/elements/header/nav/UserIcon";
-import GeneralHeaderPage from "@/app/(pages)/(general)/(other)/@header/default";
+import AdminHeaderPage from "@/app/(pages)/admin/(other)/@header/default";
 
 // ServerComponentがJestでエラーを吐くので、UserIcon.tsxをモック
 jest.mock("@/components/elements/header/nav/UserIcon", () => {
@@ -20,7 +20,7 @@ describe("Header.tsx", () => {
     cleanup();
   });
   it("スナップショットテスト", () => {
-    const { container } = render(<GeneralHeaderPage />);
+    const { container } = render(<AdminHeaderPage />);
     expect(container).toMatchSnapshot();
   });
 });
