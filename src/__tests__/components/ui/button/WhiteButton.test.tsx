@@ -21,21 +21,20 @@ describe("WhiteButton.tsx", () => {
     afterEach(() => {
       cleanup();
     });
-    it("props.label", () => {
+    it("props.labelの通りにラベルがつく", () => {
       render(<WhiteButton label="testing" />);
       const LabeledBtn = screen.getByRole("button", { name: "testing" });
       expect(LabeledBtn).toBeInTheDocument();
     });
-    it("props.error", () => {
+    it("props.error = true の場合、borderと文字が赤くなる", () => {
       // クラスに"border-red-600" "text-red-600"があるかテスト
       render(<WhiteButton label="テスト" error={true} />);
       const ErrorBtn = screen.getByRole("button");
       expect(ErrorBtn).toHaveClass("border-red-600");
       expect(ErrorBtn).toHaveClass("text-red-600");
     });
-    it("その他のComponentProps", () => {
-        // Reactコンポーネントが標準搭載しているpropsが渡せるか
-        // propsにclassNameを渡してテスト(twMergeもついでにテスト)
+    it("twMergeが正常に動作している", () => {
+        // Reactコンポーネントのデフォルトのpropsが渡せるかもついでにテスト
         render(<WhiteButton label="テスト" className="test-class" />);
         const ErrorBtn = screen.getByRole("button");
         expect(ErrorBtn).toHaveClass("test-class");

@@ -24,13 +24,14 @@ describe("WhiteCheckButton.tsx", () => {
     afterEach(() => {
       cleanup();
     });
-    it("props.labelの通りに<button>にラベルがつく", () => {
+    it("props.labelの通りにラベルがつく", () => {
       const labelTxt = "testing";
       render(<WhiteCheckButton label={labelTxt} />);
       const labeledBtn = screen.getByRole("button", { name: labelTxt });
       expect(labeledBtn).toBeInTheDocument();
     });
     it("twMergeが正常に動作している", () => {
+      // Reactコンポーネントのデフォルトのpropsが渡せるかもついでにテスト
       const addClass = "test-class";
       render(<WhiteCheckButton label="テスト" className={addClass} />);
       const Btn = screen.getByRole("button");
