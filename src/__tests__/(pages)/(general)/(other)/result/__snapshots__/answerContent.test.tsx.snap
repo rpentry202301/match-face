@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AnswerContentコンポーネントのテスト スナップショットテスト 1`] = `
+exports[`スナップショットテスト 1`] = `
 <div>
   <div
     class="w-1/2 py-5"
