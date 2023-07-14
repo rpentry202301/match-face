@@ -7,7 +7,7 @@ import OrangeButton from "@/components/ui/button/OrangeButton"
 import { skills } from "@/const/admin_histories"
 import { departments } from "@/const/tasks"
 import CheckBox from "@/components/ui/checkbox/CheckBox"
-import QuestionList from "./QuestionList"
+import QuestionList from "./parts/QuestionList"
 
 // 実際にレンダリングされるモーダルは以下に記述
 const QuestionSelectModal = () => {
@@ -35,6 +35,7 @@ const QuestionSelectModal = () => {
                       value={search}
                       onChange={(e) => setSearch(e.target.value)}
                       className="border-light-gray border-2 text-xs p-2 lg:w-96 sm:w-80 w-72"
+                      data-testid="search-box"
                     />
                     <WhiteButton label="検索" className="text-xs ml-4 w-16" />
                   </div>

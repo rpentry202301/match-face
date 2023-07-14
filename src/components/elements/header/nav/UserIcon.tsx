@@ -4,8 +4,8 @@ import Image from "next/image";
 // ToDo: ①ユーザーアイコン ②ユーザー名 のfetch
 const UserIcon = async () => {
   return (
-    <div className="flex justify-evenly items-center block border-b-2 border-gray-400 border-opacity-0 p-0.5 w-4/5 m-auto">
-      <div className="rounded-full h-10 w-10 flex items-center justify-center bg-deep-gray">
+    <div className="flex items-center block border-b-2 border-gray-400 border-opacity-0 p-0.5 w-4/5 m-auto">
+      <div className="rounded-full h-10 w-10 flex items-center justify-center bg-deep-gray mr-2">
         <div className="relative w-8 h-8 flex justify-center">
           <Image
             fill

@@ -50,6 +50,7 @@ exports[`質問・回答例編集画面テスト スナップショット 1`] = 
       </h2>
       <textarea
         class="border-deep-gray border  p-1 mt-2"
+        data-testid="question_1"
         id="question"
         name="question"
         rows="5"
@@ -64,6 +65,7 @@ exports[`質問・回答例編集画面テスト スナップショット 1`] = 
       </label>
       <textarea
         class="border-deep-gray border p-1"
+        data-testid="answer_ex_1"
         id="answer_ex"
         name="answer_ex"
         rows="5"
@@ -89,6 +91,7 @@ exports[`質問・回答例編集画面テスト スナップショット 1`] = 
       </h2>
       <textarea
         class="border-deep-gray border  p-1 mt-2"
+        data-testid="question_2"
         id="question"
         name="question"
         rows="5"
@@ -103,6 +106,7 @@ exports[`質問・回答例編集画面テスト スナップショット 1`] = 
       </label>
       <textarea
         class="border-deep-gray border p-1"
+        data-testid="answer_ex_2"
         id="answer_ex"
         name="answer_ex"
         rows="5"
@@ -128,6 +132,7 @@ exports[`質問・回答例編集画面テスト スナップショット 1`] = 
       </h2>
       <textarea
         class="border-deep-gray border p-1 mt-2"
+        data-testid="question_3"
         id="question"
         name="question"
         rows="5"
@@ -138,16 +143,17 @@ exports[`質問・回答例編集画面テスト スナップショット 1`] = 
         class="flex mt-5"
       >
         <label
-          for="select2"
+          for="select0"
         >
           選択肢
-          3
+          1
           :
         </label>
         <div>
           <input
             class="border border-deep-gray pl-1"
-            id="select2"
+            data-testid="choice_1"
+            id="select0"
             value="選択肢1"
           />
         </div>
@@ -156,16 +162,17 @@ exports[`質問・回答例編集画面テスト スナップショット 1`] = 
         class="flex mt-5"
       >
         <label
-          for="select2"
+          for="select1"
         >
           選択肢
-          3
+          2
           :
         </label>
         <div>
           <input
             class="border border-deep-gray pl-1"
-            id="select2"
+            data-testid="choice_2"
+            id="select1"
             value="選択肢2"
           />
         </div>
@@ -183,6 +190,7 @@ exports[`質問・回答例編集画面テスト スナップショット 1`] = 
         <div>
           <input
             class="border border-deep-gray pl-1"
+            data-testid="choice_3"
             id="select2"
             value="選択肢3"
           />
@@ -192,16 +200,17 @@ exports[`質問・回答例編集画面テスト スナップショット 1`] = 
         class="flex mt-5"
       >
         <label
-          for="select2"
+          for="select3"
         >
           選択肢
-          3
+          4
           :
         </label>
         <div>
           <input
             class="border border-deep-gray pl-1"
-            id="select2"
+            data-testid="choice_4"
+            id="select3"
             value="選択肢4"
           />
         </div>
@@ -219,6 +228,11 @@ exports[`質問・回答例編集画面テスト スナップショット 1`] = 
           id="answer"
           name="answer"
         >
+          <option
+            value=""
+          >
+            選択してください
+          </option>
           <option
             class="border-deep-gray"
             value="選択肢1"
@@ -271,6 +285,10 @@ exports[`質問・回答例編集画面テスト スナップショット 1`] = 
           選択質問追加
         </button>
       </div>
+      <p
+        class="text-center text-red"
+        data-testid="errMsg"
+      />
       <div
         class="flex m-3"
       >
@@ -289,6 +307,7 @@ exports[`質問・回答例編集画面テスト スナップショット 1`] = 
         <div>
           <button
             class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white p-2 w-40 h-auto text-lg m-10 rounded-none py-5 flex items-center justify-center"
+            data-testid="sendButton"
           >
             保存する
           </button>

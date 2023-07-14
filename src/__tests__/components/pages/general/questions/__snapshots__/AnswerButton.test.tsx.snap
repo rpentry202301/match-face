@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AnswerButtonのスナップショット 1`] = `
+<div>
+  <button
+    class="text-black rounded w-auto px-2 h-6 text-xs bg-red hover:brightness-90"
+  >
+    回答する
+  </button>
+</div>
+`;

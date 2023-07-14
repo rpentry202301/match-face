@@ -1,0 +1,319 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TaskIndex.tsx レンダリング時 1`] = `
+<div>
+  <main>
+    <div
+      class="mb-8"
+    >
+      <div
+        class="flex flex-col items-center border-2 rounded-md w-3/6 mx-auto mt-6 p-3"
+      >
+        <div
+          class="flex items-center mb-4"
+        >
+          <div>
+            <input
+              class="border border-light-gray text-xs p-1 w-96"
+              id="search"
+            />
+          </div>
+          <button
+            class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md text-xs ml-2"
+          >
+            検索
+          </button>
+        </div>
+        <div
+          class="flex items-center mb-4"
+        >
+          <div
+            class="mx-3"
+          >
+            <button
+              class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
+            >
+              Java
+            </button>
+          </div>
+          <div
+            class="mx-3"
+          >
+            <button
+              class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
+            >
+              PHP
+            </button>
+          </div>
+          <div
+            class="mx-3"
+          >
+            <button
+              class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
+            >
+              FR
+            </button>
+          </div>
+          <div
+            class="mx-3"
+          >
+            <button
+              class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
+            >
+              CL
+            </button>
+          </div>
+          <div
+            class="mx-3"
+          >
+            <button
+              class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
+            >
+              ML
+            </button>
+          </div>
+          <div
+            class="mx-3"
+          >
+            <button
+              class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
+            >
+              QA
+            </button>
+          </div>
+        </div>
+        <div>
+          <div>
+            <button
+              class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white rounded-xl p-2 h-auto w-28 text-sm"
+            >
+              絞り込み
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex justify-center mb-8"
+    >
+      <a
+        data-testid="link_task_register"
+        href="/admin/tasks/register"
+      >
+        <div>
+          <button
+            class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white rounded-xl p-2 w-40 h-auto text-lg"
+          >
+            新規タスク作成
+          </button>
+        </div>
+      </a>
+    </div>
+    <div
+      class="flex justify-center"
+    >
+      <div>
+        <table
+          class="border-collapse border-2 border-deep-gray text-sm"
+        >
+          <thead
+            class="bg-light-gray"
+          >
+            <tr>
+              <th
+                class="border-2 border-deep-gray p-2 text-center w-72"
+              >
+                案件名
+              </th>
+              <th
+                class="border-2 border-deep-gray p-2 text-center w-16"
+              >
+                質問数
+              </th>
+              <th
+                class="border-2 border-deep-gray p-2 text-center w-16"
+              >
+                職種
+              </th>
+              <th
+                class="border-2 border-deep-gray p-2 text-center w-72"
+              >
+                回答ユーザー
+              </th>
+              <th
+                class="border-2 border-deep-gray p-2 text-center w-28"
+              >
+                期日
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                hoge
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                3
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                Java
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                佐藤太郎、鈴木次郎、伊藤三郎
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                2100-01-01
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                foo
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                3
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                PHP
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                佐藤太郎、鈴木次郎、伊藤三郎...
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                2100-01-01
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                bar
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                3
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                FR
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                佐藤太郎、鈴木次郎、伊藤三郎
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                2100-01-01
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                hogehoge
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                3
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                CL
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                佐藤太郎、鈴木次郎、伊藤三郎
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                2100-01-01
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                foofoo
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                3
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                ML
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                佐藤太郎、鈴木次郎、伊藤三郎...
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                2100-01-01
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                barbar
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                3
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                QA
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                佐藤太郎、鈴木次郎、伊藤三郎
+              </td>
+              <td
+                class="border-2 border-deep-gray p-2 text-center"
+              >
+                2100-01-01
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+`;

@@ -7,18 +7,27 @@ import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import SiteTitle from '@/components/ui/SiteTitle';
 
+// データ取得（仮）
+// const get = async () => {
+//   const response = await fetch('http://localhost:3000/api');
+//   const data = await response.json();
+//   return {
+//     props: { data },
+//   };
+// };
+
+// ダミーデータ
+const correctUser = users[0];
+
 const LoginPage = () => {
   const router = useRouter();
-  const [userId, setUserId] = useState<string>();
-  const [password, setPassword] = useState<string>();
+  // todo: usetIdの初期値を
+  const [userId, setUserId] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   // const [userIdError, setUserIdError] = useState<boolean>(false);
   const [userIdBlankError, setUserIdBlankError] = useState<boolean>(false);
   // const [passwordError, setPasswordError] = useState<boolean>(false);
   const [passwordBlankError, setPasswordBlankError] = useState<boolean>(false);
-
-  // ダミーデータ
-  const correctUser = users[0];
-  // console.log('crrectUser', correctUser);
 
   // todo:（仮）ログイン認証チェック(入力欄がブランクの時のみエラー感知)
   const checkLogin = (event: FormEvent) => {
@@ -33,7 +42,7 @@ const LoginPage = () => {
       setUserIdBlankError(false);
       setPasswordBlankError(true);
     } else if (
-      userId === correctUser.user_id &&
+      Number(userId) === correctUser.id &&
       password === correctUser.password
     ) {
       router.push('/');
@@ -41,6 +50,7 @@ const LoginPage = () => {
   };
   // console.log('typeof userId', typeof userId);
   // console.log('passWord', typeof password);
+
   return (
     <>
       <form onSubmit={checkLogin}>
@@ -49,14 +59,15 @@ const LoginPage = () => {
           <div className="mt-2 mb-2">
             <label htmlFor="userId" className="">
               ユーザーID
+              <Input
+                id="userId"
+                className=" w-96 h-10 mt-2"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setUserId(e.target.value)
+                }
+                value={userId}
+              />
             </label>
-            <Input
-              id="userId"
-              className=" w-96 h-10 mt-2"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setUserId(e.target.value)
-              }
-            />
             {/* {userIdError && (
               <p className="text-red">※ユーザーIDに誤りがあります</p>
             )} */}
@@ -67,14 +78,15 @@ const LoginPage = () => {
           <div>
             <label htmlFor="password" className="">
               パスワード
+              <Input
+                id="password"
+                className="w-96 h-10 mt-2"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setPassword(e.target.value)
+                }
+                value={password}
+              />
             </label>
-            <Input
-              id="password"
-              className="w-96 h-10 mt-2"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setPassword(e.target.value)
-              }
-            />
             {/* {passwordError && (
               <p className="text-red">※パスワードに誤りがあります。</p>
             )} */}

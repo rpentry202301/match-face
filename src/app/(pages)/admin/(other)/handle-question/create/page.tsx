@@ -11,9 +11,10 @@ import type { Question } from "@/const/projectTable";
 const CreateQuestionPage = () => {
   const [projectName, setProjectName] = useState("");
   const [projectDetail, setProjectDetail] = useState("");
-  const [projectDepartment, setDepartment] = useState("");
+  const [projectDepartment, setDepartment] = useState("Java");
   const [editData, setEditData] = useState<Question[]>([]);
   const [newID, setNewId] = useState<number>(1);
+  const [errMsg, setErrMsg] = useState("");
 
   const addWriteQuestion = () => {
     setEditData([
@@ -21,9 +22,9 @@ const CreateQuestionPage = () => {
       {
         question_id: newID,
         question:
-          "問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１",
+          "",
         answer_example:
-          "問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例",
+          "",
         answer: "",
         choices: [],
         select: false,
@@ -38,10 +39,10 @@ const CreateQuestionPage = () => {
       {
         question_id: newID,
         question:
-          "問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３",
+          "",
         answer_example: "",
-        answer: "選択肢2",
-        choices: ["選択肢1", "選択肢2", "選択肢3", "選択肢4"],
+        answer: "",
+        choices: ["", "", "", ""],
         select: true,
       },
     ]);
@@ -55,6 +56,33 @@ const CreateQuestionPage = () => {
   };
 
   const sendData = () => {
+    if (projectName === "" || projectDetail === "") {
+      setErrMsg("未入力の項目があります");
+      return;
+    }else if(editData.length === 0){
+      setErrMsg("質問が設定されていません");
+      return;
+    }
+    editData.map((data) => {
+      if (data.select === false) {
+        if (data.answer_example === "" || data.question === "") {
+          setErrMsg("未入力の項目があります");
+          return;
+        }
+      } else {
+        if (
+          data.answer === "" ||
+          data.choices.includes("") ||
+          data.question === ""
+        ) {
+          setErrMsg("未入力の項目があります");
+          return;
+        }
+      }
+    });
+    if (errMsg !== "") {
+      return;
+    }
     const getDate = () => {
       const date = new Date();
       const year = date.getFullYear();
@@ -77,7 +105,10 @@ const CreateQuestionPage = () => {
       edit_date: getDate(),
       department: projectDepartment,
     };
-    console.log(sendJSON);
+    if (errMsg !== "") {
+      return;
+    }
+    // console.log(sendJSON);
   };
 
   const handleQuestionChange = (
@@ -157,6 +188,7 @@ const CreateQuestionPage = () => {
               id="project_name"
               className="border-deep-gray pl-1 w-96"
               onChange={(e) => setProjectName(e.target.value)}
+              data-testid="projectName"
             />
           </div>
           <label htmlFor="project_detail" className="my-3 text-2xl">
@@ -168,6 +200,7 @@ const CreateQuestionPage = () => {
             className="border-deep-gray border p-1 w-full"
             rows={5}
             onChange={(e) => setProjectDetail(e.target.value)}
+            data-testid="projectDetail"
           ></textarea>
         </div>
       </div>
@@ -183,7 +216,7 @@ const CreateQuestionPage = () => {
                 className="text-2xl"
                 data-testid={`write_${data.question_id}`}
               >
-                Q{data.question_id}.
+                Q{index + 1}.
               </h2>
               <textarea
                 name="question"
@@ -221,7 +254,7 @@ const CreateQuestionPage = () => {
                 className="text-2xl"
                 data-testid={`select_${data.question_id}`}
               >
-                Q{data.question_id}.
+                Q{index + 1}.
               </h2>
               <textarea
                 name="question"
@@ -234,11 +267,11 @@ const CreateQuestionPage = () => {
               {data.choices?.map((select, choiceIndex) => {
                 return (
                   <div key={choiceIndex} className="flex mt-5">
-                    <label htmlFor={`select${index}`}>選択肢{index + 1}:</label>
+                    <label htmlFor={`select${choiceIndex}`}>選択肢{choiceIndex + 1}:</label>
                     <Input
-                      id={`select${index}`}
+                      id={`select${choiceIndex}`}
                       value={select}
-                      key={index}
+                      key={choiceIndex}
                       className="border-deep-gray pl-1"
                       onChange={(e) =>
                         handleChoiceChange(e, index, choiceIndex)
@@ -256,6 +289,7 @@ const CreateQuestionPage = () => {
                   defaultValue={data.answer}
                   onChange={(e) => handleAnswerChange(e, index)}
                 >
+                  <option value="">--</option>
                   {data.choices?.map((select, index) => {
                     return (
                       <option
@@ -293,6 +327,7 @@ const CreateQuestionPage = () => {
             data-testid="addSelectButton"
           />
         </div>
+        <p className="text-center text-red" data-testid="errMsg">{errMsg}</p>
         <div className="flex m-3">
           <Link href={`/admin/handle-question`} data-testid="backList">
             <OrangeButton
@@ -304,6 +339,7 @@ const CreateQuestionPage = () => {
             label="保存する"
             className="m-10 rounded-none py-5 flex items-center justify-center"
             onClick={sendData}
+            data-testid="sendButton"
           />
         </div>
       </div>
