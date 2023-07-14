@@ -7,18 +7,17 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 
+// ダミーデータ
+const adminCorrectUser = users[2];
+
 const AdminLoginPage = () => {
   const router = useRouter();
-  const [userId, setUserId] = useState<string>();
-  const [password, setPassword] = useState<string>();
+  const [userId, setUserId] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   // const [userIdError, setUserIdError] = useState<boolean>(false);
   const [userIdBlankError, setUserIdBlankError] = useState<boolean>(false);
   // const [passwordError, setPasswordError] = useState<boolean>(false);
   const [passwordBlankError, setPasswordBlankError] = useState<boolean>(false);
-
-  // ダミーデータ
-  const adminCorrectUser = users[2];
-  // console.log('adminCorrectUser', adminCorrectUser);
 
   // todo:（仮）ログイン認証チェック(入力欄がブランクの時のみエラー感知)
   const checkLogin = (event: FormEvent) => {
@@ -33,7 +32,7 @@ const AdminLoginPage = () => {
       setUserIdBlankError(false);
       setPasswordBlankError(true);
     } else if (
-      userId === adminCorrectUser.user_id &&
+      Number(userId) === adminCorrectUser.id &&
       password === adminCorrectUser.password
     ) {
       router.push('/admin');
