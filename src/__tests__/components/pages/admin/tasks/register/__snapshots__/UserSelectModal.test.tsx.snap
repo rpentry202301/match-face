@@ -16,7 +16,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
           ▶️ユーザーを選択する
         </h2>
       </div>
-      <div
+      <form
         class="flex flex-col justify-center items-center border-2 w-10/12 px-10 py-5 mt-3 mx-auto"
       >
         <div
@@ -29,6 +29,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
               class="border-light-gray border-2 text-xs p-1 w-10/12"
               data-testid="search-box"
               id="search"
+              name="search"
               type="text"
               value=""
             />
@@ -42,9 +43,10 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             class="flex items-center gap-1"
           >
             <select
-              class="border-2 border-light-gray text-xs p-1"
+              class="border-2 border-light-gray cursor-pointer text-xs p-1"
               data-testid="select-year"
               id="year"
+              name="year"
             >
               <option
                 data-testid="year:"
@@ -201,9 +203,10 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
               年
             </span>
             <select
-              class="border-2 border-light-gray text-xs p-1"
+              class="border-2 border-light-gray cursor-pointer text-xs p-1"
               data-testid="select-month"
               id="month"
+              name="month"
             >
               <option
                 data-testid="month:"
@@ -291,55 +294,145 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
           <div
             class="flex gap-4 flex-wrap"
           >
-            <button
-              class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
-            >
-              Java
-            </button>
-            <button
-              class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
-            >
-              PHP
-            </button>
-            <button
-              class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
-            >
-              FR
-            </button>
-            <button
-              class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
-            >
-              CL
-            </button>
-            <button
-              class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
-            >
-              ML
-            </button>
-            <button
-              class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
-            >
-              QA
-            </button>
+            <div>
+              <input
+                class="peer hidden"
+                id="dep_1"
+                name="department"
+                type="checkbox"
+                value="Java"
+              />
+              <label
+                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs px-1 w-16 cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                for="dep_1"
+              >
+                Java
+              </label>
+            </div>
+            <div>
+              <input
+                class="peer hidden"
+                id="dep_2"
+                name="department"
+                type="checkbox"
+                value="PHP"
+              />
+              <label
+                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs px-1 w-16 cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                for="dep_2"
+              >
+                PHP
+              </label>
+            </div>
+            <div>
+              <input
+                class="peer hidden"
+                id="dep_3"
+                name="department"
+                type="checkbox"
+                value="FR"
+              />
+              <label
+                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs px-1 w-16 cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                for="dep_3"
+              >
+                FR
+              </label>
+            </div>
+            <div>
+              <input
+                class="peer hidden"
+                id="dep_4"
+                name="department"
+                type="checkbox"
+                value="CL"
+              />
+              <label
+                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs px-1 w-16 cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                for="dep_4"
+              >
+                CL
+              </label>
+            </div>
+            <div>
+              <input
+                class="peer hidden"
+                id="dep_5"
+                name="department"
+                type="checkbox"
+                value="ML"
+              />
+              <label
+                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs px-1 w-16 cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                for="dep_5"
+              >
+                ML
+              </label>
+            </div>
+            <div>
+              <input
+                class="peer hidden"
+                id="dep_6"
+                name="department"
+                type="checkbox"
+                value="QA"
+              />
+              <label
+                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs px-1 w-16 cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                for="dep_6"
+              >
+                QA
+              </label>
+            </div>
           </div>
           <div
             class="flex gap-4"
           >
-            <button
-              class="bg-white hover:bg-gray-100 py-2 rounded-full border shadow-md text-xs w-16 px-1 whitespace-nowrap"
-            >
-              研修中
-            </button>
-            <button
-              class="bg-white hover:bg-gray-100 py-2 rounded-full border shadow-md text-xs w-16 px-1 whitespace-nowrap"
-            >
-              待機中
-            </button>
-            <button
-              class="bg-white hover:bg-gray-100 py-2 rounded-full border shadow-md text-xs px-1 w-24"
-            >
-              アサイン中
-            </button>
+            <div>
+              <input
+                class="peer hidden"
+                id="研修中"
+                name="state"
+                type="checkbox"
+                value="研修中"
+              />
+              <label
+                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs w-16 px-1 whitespace-nowrap cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                for="研修中"
+              >
+                研修中
+              </label>
+            </div>
+            <div>
+              <input
+                class="peer hidden"
+                id="待機中"
+                name="state"
+                type="checkbox"
+                value="待機中"
+              />
+              <label
+                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs w-16 px-1 whitespace-nowrap cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                for="待機中"
+              >
+                待機中
+              </label>
+            </div>
+            <div>
+              <input
+                class="peer hidden"
+                id="アサイン中"
+                name="state"
+                type="checkbox"
+                value="アサイン中"
+              />
+              <label
+                class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs px-1 w-24 cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                for="アサイン中"
+              >
+                アサイン中
+              </label>
+            </div>
           </div>
           <div
             class="flex flex-col gap-2"
@@ -351,9 +444,10 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             </div>
             <div>
               <select
-                class="border-2 border-light-gray w-10/12 text-xs p-1"
+                class="border-2 border-light-gray cursor-pointer w-10/12 text-xs p-1"
                 data-testid="select-group"
                 id="group"
+                name="group"
               >
                 <option
                   data-testid="group:2023年7月入社"
@@ -389,12 +483,13 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
           <div>
             <button
               class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white rounded-xl p-2 w-40 h-auto text-xs"
+              type="submit"
             >
               絞り込み
             </button>
           </div>
         </div>
-      </div>
+      </form>
       <div
         class="my-10"
       >
@@ -436,7 +531,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
                 class="border-2 border-deep-gray px-4 py-2 text-center"
               >
                 <input
-                  class="w-4 h-4 accent-orange"
+                  class="w-4 h-4 accent-orange cursor-pointer"
                   type="checkbox"
                 />
               </td>
@@ -466,7 +561,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
                 class="border-2 border-deep-gray px-4 py-2 text-center"
               >
                 <input
-                  class="w-4 h-4 accent-orange"
+                  class="w-4 h-4 accent-orange cursor-pointer"
                   type="checkbox"
                 />
               </td>
@@ -496,7 +591,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
                 class="border-2 border-deep-gray px-4 py-2 text-center"
               >
                 <input
-                  class="w-4 h-4 accent-orange"
+                  class="w-4 h-4 accent-orange cursor-pointer"
                   type="checkbox"
                 />
               </td>

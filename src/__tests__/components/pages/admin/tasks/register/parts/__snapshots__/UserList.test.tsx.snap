@@ -43,7 +43,7 @@ exports[`UserList.tsx UserListのスナップショット 1`] = `
             class="border-2 border-deep-gray px-4 py-2 text-center"
           >
             <input
-              class="w-4 h-4 accent-orange"
+              class="w-4 h-4 accent-orange cursor-pointer"
               type="checkbox"
             />
           </td>
@@ -73,7 +73,7 @@ exports[`UserList.tsx UserListのスナップショット 1`] = `
             class="border-2 border-deep-gray px-4 py-2 text-center"
           >
             <input
-              class="w-4 h-4 accent-orange"
+              class="w-4 h-4 accent-orange cursor-pointer"
               type="checkbox"
             />
           </td>
@@ -103,7 +103,7 @@ exports[`UserList.tsx UserListのスナップショット 1`] = `
             class="border-2 border-deep-gray px-4 py-2 text-center"
           >
             <input
-              class="w-4 h-4 accent-orange"
+              class="w-4 h-4 accent-orange cursor-pointer"
               type="checkbox"
             />
           </td>

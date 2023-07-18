@@ -73,7 +73,7 @@ const EditQuestionPage = () => {
     if (errMsg !== "") {
       return;
     }
-    console.log(editData);
+    // console.log(editData);
   };
 
   const handleQuestionChange = (
