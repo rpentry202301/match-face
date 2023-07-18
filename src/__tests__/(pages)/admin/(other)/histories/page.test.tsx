@@ -13,13 +13,23 @@ describe('管理者/履歴一覧画面のテスト',() => {
 
     describe('スナップショットテスト',() => {
         it('レンダリング時',async() => {
-            const view = render(<HistoriesProvider><HistoriesPage/></HistoriesProvider>)
+            const view = render(
+                <HistoriesProvider>
+                    <HistoriesPage/>
+                </HistoriesProvider>
+            )
             expect(view.container).toMatchSnapshot()
         })
     })
     describe('リストテスト',()=>{
         beforeEach(()=>{
-            render(<HistoriesProvider><AppRouterContextProviderMock router={{ push }}><HistoriesPage /></AppRouterContextProviderMock></HistoriesProvider>);
+            render(
+                <HistoriesProvider>
+                    <AppRouterContextProviderMock router={{ push }}>
+                        <HistoriesPage />
+                    </AppRouterContextProviderMock>
+                </HistoriesProvider>
+            );
         })
         it('オープンボタンを押すとクローズボタンとユーザーリストが表示される',async()=>{
             const openButton = screen.getByTestId('open_1');
@@ -42,7 +52,13 @@ describe('管理者/履歴一覧画面のテスト',() => {
     })
     describe('絞り込みテスト',()=>{
         beforeEach(()=>{
-            render(<HistoriesProvider><AppRouterContextProviderMock router={{ push }}><HistoriesPage /></AppRouterContextProviderMock></HistoriesProvider>);
+            render(
+                <HistoriesProvider>
+                    <AppRouterContextProviderMock router={{ push }}>
+                        <HistoriesPage />
+                    </AppRouterContextProviderMock>
+                </HistoriesProvider>
+            );
         })
         it('回答月の選択',async()=>{
             const beforeSelectMonth = screen.getByRole("option",{name:"--"}) as HTMLOptionElement
@@ -110,7 +126,11 @@ describe('管理者/履歴一覧画面のテスト',() => {
                 {id:2,question_id:1,answer_request_id:1,is_answered:false,created_user:'テスト花子',created_at:'2023-07-10T16:52:46.053Z',update_user:'テスト花子',update_at:'2023-07-10T16:52:46.053Z'},
         ]
         beforeEach(async()=>{
-            render(<AppRouterContextProviderMock router={{ push }}><HistoriesList projects={projectsMock} answer_requests={answer_requestsMock} answers={answersMock} users={usersMock} answer_request_questions={answer_request_questionsMock}/></AppRouterContextProviderMock>)
+            render(
+                <AppRouterContextProviderMock router={{ push }}>
+                    <HistoriesList projects={projectsMock} answer_requests={answer_requestsMock} answers={answersMock} users={usersMock} answer_request_questions={answer_request_questionsMock}/>
+                </AppRouterContextProviderMock>
+            )
             const openButton = screen.getByTestId('open_1')
             await user.click(openButton)
         })
