@@ -3,8 +3,9 @@ import userEvent from '@testing-library/user-event'
 import HistoriesPage from '@/app/(pages)/admin/(other)/histories/page'
 import React from 'react'
 import "@testing-library/jest-dom"
-import {AppRouterContextProviderMock} from './app-router-context-provider-mock'
+import { AppRouterContextProviderMock } from '@/__tests__/test_utils/app-router-context-provider-mock'
 import HistoriesList from '@/components/pages/admin/histories/list'
+import { HistoriesProvider } from '@/hooks/store/context/historiesContext'
 
 describe('管理者/履歴一覧画面のテスト',() => {
     const user = userEvent.setup()
@@ -12,13 +13,13 @@ describe('管理者/履歴一覧画面のテスト',() => {
 
     describe('スナップショットテスト',() => {
         it('レンダリング時',async() => {
-            const view = render(<HistoriesPage/>)
+            const view = render(<HistoriesProvider><HistoriesPage/></HistoriesProvider>)
             expect(view.container).toMatchSnapshot()
         })
     })
     describe('リストテスト',()=>{
         beforeEach(()=>{
-            render(<AppRouterContextProviderMock router={{ push }}><HistoriesPage /></AppRouterContextProviderMock>);
+            render(<HistoriesProvider><AppRouterContextProviderMock router={{ push }}><HistoriesPage /></AppRouterContextProviderMock></HistoriesProvider>);
         })
         it('オープンボタンを押すとクローズボタンとユーザーリストが表示される',async()=>{
             const openButton = screen.getByTestId('open_1');
@@ -41,7 +42,7 @@ describe('管理者/履歴一覧画面のテスト',() => {
     })
     describe('絞り込みテスト',()=>{
         beforeEach(()=>{
-            render(<AppRouterContextProviderMock router={{ push }}><HistoriesPage /></AppRouterContextProviderMock>);
+            render(<HistoriesProvider><AppRouterContextProviderMock router={{ push }}><HistoriesPage /></AppRouterContextProviderMock></HistoriesProvider>);
         })
         it('回答月の選択',async()=>{
             const beforeSelectMonth = screen.getByRole("option",{name:"--"}) as HTMLOptionElement
