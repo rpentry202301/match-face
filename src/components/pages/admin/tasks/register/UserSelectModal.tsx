@@ -8,6 +8,7 @@ import SelectBox from "@/components/ui/selectbox/SelectBox"
 import { group as groupConst } from "@/const/group"
 import { departments } from "@/const/tasks"
 import UserList from "./parts/UserList"
+import { useUserSelect } from "@/hooks/store/context/UserSelectContext"
 
 const state = ['研修中', '待機中', 'アサイン中']
 const groupValues = groupConst.map((group) => group.group_name)
@@ -38,8 +39,13 @@ const UserSelectModal = () => {
     state: initState,
     group: "",
   })
+  const [ userSelect, userSelectDispatch ] = useUserSelect()
+  const [ checkedValues, setCheckedValue ] = useState<string[]>(userSelect)
   
-  const open = () => setIsOpened(true)
+  const open = () => {
+    setCheckedValue(userSelect)
+    setIsOpened(true)
+  }
   const close = () => setIsOpened(false)
 
   // 2000年からの配列を作成
@@ -75,6 +81,21 @@ const UserSelectModal = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     console.log(formData)
+  }
+
+  const handleChangeUserList = (e: ChangeEvent<HTMLInputElement>) => {
+    if (checkedValues.includes(e.target.value)) {
+      setCheckedValue(
+        checkedValues.filter((value) => value !== e.target.value)
+      )
+    } else {
+      setCheckedValue([...checkedValues, e.target.value])
+    }
+  }
+
+  const handleClose = () => {
+    userSelectDispatch({type: "select", payload: checkedValues})
+    close()
   }
 
   return (
@@ -125,6 +146,7 @@ const UserSelectModal = () => {
                 id={`dep_${element.id}`}
                 label={element.name}
                 value={element.name}
+                checked={formData.department.filter((data) => data.label === element.name)[0].checked}
                 name="department"
                 className="text-xs px-1 w-16"
                 onChange={(e) => handleChangeCheckBox(e, "department")}
@@ -140,6 +162,7 @@ const UserSelectModal = () => {
                   id={element}
                   label={element}
                   value={element}
+                  checked={formData.state.filter((data) => data.label === element)[0].checked}
                   name="state"
                   className="text-xs w-16 px-1 whitespace-nowrap"
                   onChange={(e) => handleChangeCheckBox(e, "state")}
@@ -178,10 +201,10 @@ const UserSelectModal = () => {
         </div>
       </form>
 
-      <UserList />
+      <UserList checkedValues={checkedValues} onChange={handleChangeUserList} />
 
       <div className="mx-auto mt-8 w-fit">
-        <OrangeButton label="選択完了" className="text-xs" onClick={close}/>
+        <OrangeButton label="選択完了" className="text-xs" onClick={handleClose}/>
       </div>
     </Modal>
   )
