@@ -14,7 +14,7 @@ const UserSelectContext = createContext<
   [string[], Dispatch<UserSelectReducerAction>] | undefined
 >(undefined);
 
-export const CounterProvider = ({ children }: { children: ReactNode }) => {
+export const UserSelectProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer<Reducer<string[], UserSelectReducerAction>>(
     userSelectReducer,
     []
