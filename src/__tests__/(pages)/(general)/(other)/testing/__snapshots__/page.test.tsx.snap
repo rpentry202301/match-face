@@ -1,0 +1,190 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testingページのテスト スナップショットテスト 1`] = `
+<div>
+  <a
+    href="/questions"
+    id="link-to-questions"
+  >
+    <p
+      class="m-5"
+    >
+      ◀︎ 質問一覧に戻る
+    </p>
+  </a>
+  <div
+    class="my-7 flex flex-col items-center"
+  >
+    <div
+      class="w-1/2 py-5"
+    >
+      <h1
+        class="text-xl my-2"
+      >
+        案件名:
+        案件のタイトルが入ります
+      </h1>
+      <p
+        class="text-lg"
+        id="project_detail"
+      >
+        案件の詳細内容が入ります。テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+      </p>
+      <div
+        class="py-5"
+      >
+        <h2>
+          Q
+          1
+          :
+          質問のタイトルが入ります
+        </h2>
+        <p
+          class="mt-2 mb-4"
+          id="question-content-0"
+        >
+          テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+        </p>
+        <label
+          for="質問のタイトルが入ります"
+        >
+          <p
+            id="answer-title-0"
+          >
+            解答記入欄
+          </p>
+        </label>
+        <textarea
+          class="border border-black mt-1 w-full"
+          cols="50"
+          id="質問のタイトルが入ります"
+          name="質問のタイトルが入ります"
+          rows="6"
+        />
+      </div>
+      <div
+        class="py-5"
+      >
+        <h2>
+          Q
+          2
+          :
+          質問のタイトルが入ります
+        </h2>
+        <p
+          class="mt-2 mb-4"
+          id="question-content-1"
+        >
+          テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+        </p>
+        <div>
+          <input
+            id="choice-0"
+            name="質問のタイトルが入ります"
+            type="radio"
+            value="選択肢A"
+          />
+          <label
+            for="choice0"
+            id="label-0"
+          >
+            選択肢A
+          </label>
+        </div>
+        <div>
+          <input
+            id="choice-1"
+            name="質問のタイトルが入ります"
+            type="radio"
+            value="選択肢B"
+          />
+          <label
+            for="choice1"
+            id="label-1"
+          >
+            選択肢B
+          </label>
+        </div>
+        <div>
+          <input
+            id="choice-2"
+            name="質問のタイトルが入ります"
+            type="radio"
+            value="選択肢C"
+          />
+          <label
+            for="choice2"
+            id="label-2"
+          >
+            選択肢C
+          </label>
+        </div>
+        <div>
+          <input
+            id="choice-3"
+            name="質問のタイトルが入ります"
+            type="radio"
+            value="選択肢D"
+          />
+          <label
+            for="choice3"
+            id="label-3"
+          >
+            選択肢D
+          </label>
+        </div>
+      </div>
+      <div
+        class="py-5"
+      >
+        <h2>
+          Q
+          3
+          :
+          質問のタイトルが入ります
+        </h2>
+        <p
+          class="mt-2 mb-4"
+          id="question-content-2"
+        >
+          テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+        </p>
+        <label
+          for="質問のタイトルが入ります"
+        >
+          <p
+            id="answer-title-2"
+          >
+            解答記入欄
+          </p>
+        </label>
+        <textarea
+          class="border border-black mt-1 w-full"
+          cols="50"
+          id="質問のタイトルが入ります"
+          name="質問のタイトルが入ります"
+          rows="6"
+        />
+      </div>
+      <div
+        class="flex justify-around my-20"
+      >
+        <div>
+          <button
+            class="bg-neutral-300 drop-shadow-lg hover:brightness-95 active:drop-shadow-none active:shadow-inner active:mt-0.5 text-black p-2 h-auto text-lg border rounded-none w-50"
+          >
+            下書きを保存する
+          </button>
+        </div>
+        <div>
+          <button
+            class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white p-2 w-40 h-auto text-lg border rounded-none"
+          >
+            回答を送信する
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

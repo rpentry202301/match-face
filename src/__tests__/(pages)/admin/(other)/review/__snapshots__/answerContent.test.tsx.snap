@@ -24,7 +24,7 @@ exports[`スナップショットテスト 1`] = `
     <h2
       class="text-xl my-2"
     >
-      案件名：
+      案件名:
       案件のタイトルが入ります
     </h2>
     <p
@@ -51,12 +51,13 @@ exports[`スナップショットテスト 1`] = `
       </p>
       <div
         class="border border-gray p-3 mt-2 rounded-md shadow-md"
-        id="answer-1"
+        id="answer-0"
       >
         <h3
           class="mb-2 text-xl"
         >
-          あなたの回答
+          ラクス花子
+          の解答
         </h3>
         回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。
       </div>
@@ -109,12 +110,13 @@ exports[`スナップショットテスト 1`] = `
       </ul>
       <div
         class="border border-gray p-3 mt-5 rounded-md shadow-md"
-        id="answer-2"
+        id="answer-1"
       >
         <h3
           class="mb-2 text-xl"
         >
-          あなたの回答
+          ラクス花子
+          の解答
         </h3>
         選択肢A
       </div>
@@ -149,12 +151,13 @@ exports[`スナップショットテスト 1`] = `
       </p>
       <div
         class="border border-gray p-3 mt-2 rounded-md shadow-md"
-        id="answer-3"
+        id="answer-2"
       >
         <h3
           class="mb-2 text-xl"
         >
-          あなたの回答
+          ラクス花子
+          の解答
         </h3>
         回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。
       </div>
@@ -170,14 +173,17 @@ exports[`スナップショットテスト 1`] = `
         模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。
       </div>
     </div>
-    <h3
-      class="text-xl mb-3"
+    <label
+      for="comment"
     >
-      管理者太郎
-      からのコメント
-    </h3>
+      <h3
+        class="text-xl mb-3"
+      >
+        ▶︎コメントを入力する
+      </h3>
+    </label>
     <div
-      class="border border-black rounded-md p-3 flex justify-between "
+      class=" flex justify-between "
     >
       <div
         class="w-1/6 flex justify-center items-center"
@@ -186,36 +192,36 @@ exports[`スナップショットテスト 1`] = `
           alt="コメントしたユーザーのアイコン"
           data-nimg="1"
           decoding="async"
-          fetchpriority="high"
           height="70"
+          loading="lazy"
           src="/_next/image?url=%2Ficon%2Fhuman_icon.png&w=256&q=75"
           srcset="/_next/image?url=%2Ficon%2Fhuman_icon.png&w=96&q=75 1x, /_next/image?url=%2Ficon%2Fhuman_icon.png&w=256&q=75 2x"
           style="color: transparent;"
           width="70"
         />
       </div>
-      <div
-        class="w-5/6"
+      <textarea
+        class="border border-black w-full p-3"
+        cols="50"
         id="comment"
-      >
-        コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。
-      </div>
+        rows="6"
+      />
     </div>
     <div
       class="flex justify-around my-20"
     >
       <div>
         <button
-          class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white p-2 w-40 h-auto text-lg border rounded-none"
+          class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white p-2 h-auto text-lg w-50 border rounded-none"
         >
-          質問一覧へ
+          コメントを送信する
         </button>
       </div>
       <div>
         <button
-          class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white p-2 w-40 h-auto text-lg border rounded-none"
+          class="bg-neutral-300 drop-shadow-lg hover:brightness-95 active:drop-shadow-none active:shadow-inner active:mt-0.5 text-black p-2 h-auto text-lg border rounded-none w-50"
         >
-          回答履歴一覧へ
+          回答履歴一覧へ戻る
         </button>
       </div>
     </div>

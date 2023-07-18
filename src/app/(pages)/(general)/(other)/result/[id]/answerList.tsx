@@ -1,6 +1,6 @@
 import { question } from "@/const/testing";
 import { Answer } from "@/const/result";
-import ModelAnswerContent from "./modelAnswer";
+import ModelAnswerContent from "@/components/pages/general/result/ModelAnswer";
 
 type Props = {
   project_id: string;
