@@ -1,6 +1,6 @@
 import HistoriesList from '@/components/pages/admin/histories/list';
 import HistoriesSelect from '@/components/pages/admin/histories/select'
-import {skills,departments,projects,project_skills,answer_requests,answers,users,answer_request_questions} from '@/const/admin_histories'
+import {skills,departments,projects,answer_requests,answers,users,answer_request_questions} from '@/const/admin_histories'
 const HistoriesPage = () => {
   return (
     <>
