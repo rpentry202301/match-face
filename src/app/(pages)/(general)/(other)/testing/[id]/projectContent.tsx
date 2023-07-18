@@ -8,7 +8,7 @@ import ConfirmationModal from "@/components/ui/ConfirmationModal";
 import { useState } from "react";
 
 export const ProjectContent = ({ id }: { id: number }) => {
-  const currentProject = project.filter((project) => project.id === id);
+  const currentProject = project.filter((project) => project.id === Number(id));
   const [isDraftOpen, setIsDraftOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 

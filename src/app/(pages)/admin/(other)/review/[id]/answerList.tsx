@@ -10,11 +10,11 @@ type Props = {
 
 export const AnswerList = ({ user_id, project_id }: Props) => {
   const currentQuestion = question.filter(
-    (question) => question.project_id === project_id
+    (question) => question.project_id === Number(project_id)
   );
 
   const currentAnswer = Answer.filter(
-    (answer) => answer.project_id === project_id
+    (answer) => answer.project_id === Number(project_id)
   );
 
   const answerUser = User.filter((user) => user.id === user_id);
