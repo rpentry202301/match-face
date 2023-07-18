@@ -3,102 +3,117 @@ import Input from '@/components/ui/Input';
 import OrangeButton from '@/components/ui/button/OrangeButton';
 import Link from 'next/link';
 import users from '@/const/login';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, forwardRef, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import SiteTitle from '@/components/ui/SiteTitle';
+import { useForm, SubmitHandler } from 'react-hook-form';
 
-// データ取得（仮）
-// const get = async () => {
-//   const response = await fetch('http://localhost:3000/api');
-//   const data = await response.json();
-//   return {
-//     props: { data },
-//   };
-// };
-
-// ダミーデータ
-const correctUser = users[0];
+type LoginForm = {
+  userId: string;
+  password: string;
+};
 
 const LoginPage = () => {
   const router = useRouter();
-  // todo: usetIdの初期値を
-  const [userId, setUserId] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  // const [userIdError, setUserIdError] = useState<boolean>(false);
-  const [userIdBlankError, setUserIdBlankError] = useState<boolean>(false);
-  // const [passwordError, setPasswordError] = useState<boolean>(false);
-  const [passwordBlankError, setPasswordBlankError] = useState<boolean>(false);
 
-  // todo:（仮）ログイン認証チェック(入力欄がブランクの時のみエラー感知)
-  const checkLogin = (event: FormEvent) => {
-    event.preventDefault();
-    if (!userId && !password) {
-      setUserIdBlankError(true);
-      setPasswordBlankError(true);
-    } else if (!userId && password) {
-      setUserIdBlankError(true);
-      setPasswordBlankError(false);
-    } else if (userId && !password) {
-      setUserIdBlankError(false);
-      setPasswordBlankError(true);
-    } else if (
-      Number(userId) === correctUser.id &&
-      password === correctUser.password
-    ) {
+  // ダミーデータ
+  const userData = users;
+  const correctUser = users[0];
+
+  // フックフォーム
+  const {
+    register,
+    getValues,
+    handleSubmit,
+    reset,
+    formState: { errors, isValid },
+  } = useForm<LoginForm>({
+    criteriaMode: 'all',
+    reValidateMode: 'onSubmit',
+  });
+
+  const onSubmit: SubmitHandler<LoginForm> = (data) => {
+    const userId = correctUser.id;
+    const password = correctUser.password;
+    if (data.userId === `${userId}` && data.password === password) {
       router.push('/');
     }
+    console.log('data', data);
   };
-  // console.log('typeof userId', typeof userId);
-  // console.log('passWord', typeof password);
+
+  // 内容確認用(削除要)
+  const check = () => {
+    console.log('errors', errors);
+    console.log('getValues("password")', getValues('password'));
+  };
+  //
 
   return (
     <>
-      <form onSubmit={checkLogin}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col items-center justify-center h-screen">
           <SiteTitle className="m-6" />
           <div className="mt-2 mb-2">
             <label htmlFor="userId" className="">
               ユーザーID
-              <Input
-                id="userId"
-                className=" w-96 h-10 mt-2"
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  setUserId(e.target.value)
-                }
-                value={userId}
-              />
+              <div>
+                <input
+                  id="userId"
+                  type="text"
+                  className=" w-96 h-10 mt-2 border border-black"
+                  {...register('userId', {
+                    required: {
+                      value: true,
+                      message: '※ユーザーIDを入力してください。',
+                    },
+                    pattern: {
+                      value: /^[0-9]+$/,
+                      message: '※半角数字で入力してください。',
+                    },
+                    validate: {
+                      checkPassword: (value) =>
+                        value !== correctUser.password
+                          ? '※ユーザーIDが違います。'
+                          : undefined,
+                    },
+                  })}
+                />
+              </div>
             </label>
-            {/* {userIdError && (
-              <p className="text-red">※ユーザーIDに誤りがあります</p>
-            )} */}
-            {userIdBlankError && (
-              <p className="text-red">※ユーザーIDを入力してください</p>
-            )}
+            {errors.userId && <p>{errors.userId.message}</p>}
           </div>
           <div>
             <label htmlFor="password" className="">
               パスワード
-              <Input
-                id="password"
-                className="w-96 h-10 mt-2"
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  setPassword(e.target.value)
-                }
-                value={password}
-              />
+              <div>
+                <input
+                  id="password"
+                  type="password"
+                  className="w-96 h-10 mt-2 border border-black"
+                  {...register('password', {
+                    required: {
+                      value: true,
+                      message: '※パスワードを入力してください。',
+                    },
+                    validate: {
+                      checkPassword: (value) =>
+                        value !== correctUser.password
+                          ? '※パスワードが違います。'
+                          : undefined,
+                    },
+                  })}
+                />
+              </div>
             </label>
-            {/* {passwordError && (
-              <p className="text-red">※パスワードに誤りがあります。</p>
-            )} */}
-            {passwordBlankError && (
-              <p className="text-red">※パスワードを入力してください</p>
-            )}
+            {errors.password && <p>{errors.password.message}</p>}
           </div>
-
           <OrangeButton
             label="ログイン"
             className="mt-10 mb-4 w-48 rounded-none"
             type="submit"
+            // エラー確認用（削除要）
+            onClick={check}
+            //
           />
           <Link href="/remind" className=" text-blue">
             パスワードを忘れた
