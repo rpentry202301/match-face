@@ -8,8 +8,8 @@ import { Answer } from "@/const/result";
 import { useRouter } from "next/navigation";
 
 type Props = {
-  user_id: string;
-  project_id: string;
+  user_id: number;
+  project_id: number;
 };
 
 export const AnswerContent = ({ user_id, project_id }: Props) => {

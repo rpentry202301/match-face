@@ -4,8 +4,8 @@ import { User } from "@/const/review";
 import ModelAnswerContent from "@/components/pages/general/result/ModelAnswer";
 
 type Props = {
-  project_id: string;
-  user_id: string;
+  project_id: number;
+  user_id: number;
 };
 
 export const AnswerList = ({ user_id, project_id }: Props) => {

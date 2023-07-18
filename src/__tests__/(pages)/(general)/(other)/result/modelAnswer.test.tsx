@@ -4,8 +4,8 @@ import { ModelAnswer } from "@/const/result";
 import "@testing-library/jest-dom";
 
 const testData = {
-  project_id: "1",
-  question_id: "1",
+  project_id: 1,
+  question_id: 1,
   modelAnswerContent: ModelAnswer[0].content,
 };
 

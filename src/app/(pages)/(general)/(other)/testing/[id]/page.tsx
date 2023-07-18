@@ -1,6 +1,6 @@
 import { ProjectContent } from "./projectContent";
 
-const TestPage = ({ params }: { params: { id: string } }) => {
+const TestPage = ({ params }: { params: { id: number } }) => {
   return (
     <>
       <a id="link-to-questions" href="/questions">
