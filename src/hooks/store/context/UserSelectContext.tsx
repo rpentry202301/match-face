@@ -29,6 +29,6 @@ export const UserSelectProvider = ({ children }: { children: ReactNode }) => {
 export const useUserSelect = () => {
   const context = useContext(UserSelectContext);
   if (context === undefined)
-    throw new Error("Function 'useCounter' must be used in Provider.");
+    throw new Error("Function 'useUserSelect' must be used in Provider.");
   return context;
 };
