@@ -1,47 +1,48 @@
 'use client';
-import Input from '@/components/ui/Input';
 import SiteTitle from '@/components/ui/SiteTitle';
 import OrangeButton from '@/components/ui/button/OrangeButton';
 import users from '@/const/login';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { FormEvent, useState } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+
+// データの型はnumberだが、都合上stringに設定
+type LoginForm = {
+  userId: string;
+  password: string;
+};
 
 // ダミーデータ
+const userData = users;
 const adminCorrectUser = users[2];
 
 const AdminLoginPage = () => {
+  // ルーター
   const router = useRouter();
-  const [userId, setUserId] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  // const [userIdError, setUserIdError] = useState<boolean>(false);
-  const [userIdBlankError, setUserIdBlankError] = useState<boolean>(false);
-  // const [passwordError, setPasswordError] = useState<boolean>(false);
-  const [passwordBlankError, setPasswordBlankError] = useState<boolean>(false);
 
-  // todo:（仮）ログイン認証チェック(入力欄がブランクの時のみエラー感知)
-  const checkLogin = (event: FormEvent) => {
-    event.preventDefault();
-    if (!userId && !password) {
-      setUserIdBlankError(true);
-      setPasswordBlankError(true);
-    } else if (!userId && password) {
-      setUserIdBlankError(true);
-      setPasswordBlankError(false);
-    } else if (userId && !password) {
-      setUserIdBlankError(false);
-      setPasswordBlankError(true);
-    } else if (
-      Number(userId) === adminCorrectUser.id &&
-      password === adminCorrectUser.password
-    ) {
+  // フックフォーム
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm<LoginForm>({
+    criteriaMode: 'all',
+    reValidateMode: 'onSubmit',
+  });
+
+  const onSubmit: SubmitHandler<LoginForm> = (data) => {
+    // 仮データで設定
+    const userId = adminCorrectUser.id;
+    const password = adminCorrectUser.password;
+    if (data.userId === `${userId}` && data.password === password) {
       router.push('/admin');
     }
+    // console.log('data', data);
   };
 
   return (
     <>
-      <form onSubmit={checkLogin}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col items-center justify-center h-screen">
           <div className="flex flex-col items-center m-3">
             <SiteTitle className="m-3" />
@@ -51,32 +52,62 @@ const AdminLoginPage = () => {
           <div className="mt-2 mb-2">
             <label htmlFor="userId" className="">
               ユーザーID
+              <div>
+                <input
+                  id="userId"
+                  type="text"
+                  className="w-96 h-10 mt-2 border border-black"
+                  {...register('userId', {
+                    required: {
+                      value: true,
+                      message: '※ユーザーIDを入力してください。',
+                    },
+                    pattern: {
+                      value: /^[0-9]+$/,
+                      message: '※半角数字で入力してください。',
+                    },
+                    validate: {
+                      checkUserId: (value) =>
+                        Number(value) !== adminCorrectUser.id
+                          ? '※正しいユーザーIDを入力してください。'
+                          : undefined,
+                    },
+                  })}
+                />
+              </div>
             </label>
-            <Input
-              id="userId"
-              className="w-96 h-10 mt-2"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setUserId(e.target.value)
-              }
-            />
-            {userIdBlankError && (
-              <p className="text-red">※ユーザーIDを入力してください</p>
-            )}
+            {errors.userId && <p>{errors.userId.message}</p>}
           </div>
           <div>
             <label htmlFor="password" className="">
               パスワード
+              <div>
+                <input
+                  id="password"
+                  type="password"
+                  className="w-96 h-10 mt-2 border border-black"
+                  {...register('password', {
+                    required: {
+                      value: true,
+                      message: '※パスワードを入力してください。',
+                    },
+                    validate: {
+                      checkPassword: (value) =>
+                        value !== adminCorrectUser.password
+                          ? '※正しいパスワードを入力してください。'
+                          : undefined,
+                    },
+                    // pattern: {
+                    //   value:
+                    //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[._\/#&%=\\~\-+*@()<>\\[\\]{}])[a-zA-Z\d._\/#&%=\\~\-+*@()<>\\[\\]{}]{8,}$/,
+
+                    //   message: '※正しいパスワードを入力してください。',
+                    // },
+                  })}
+                />
+              </div>
             </label>
-            <Input
-              id="password"
-              className="w-96 h-10 mt-2"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setPassword(e.target.value)
-              }
-            />
-            {passwordBlankError && (
-              <p className="text-red">※パスワードを入力してください</p>
-            )}
+            {errors.password && <p>{errors.password.message}</p>}
           </div>
 
           <OrangeButton

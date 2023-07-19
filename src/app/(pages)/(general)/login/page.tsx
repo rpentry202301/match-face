@@ -1,13 +1,12 @@
 'use client';
-import Input from '@/components/ui/Input';
 import OrangeButton from '@/components/ui/button/OrangeButton';
 import Link from 'next/link';
 import users from '@/const/login';
-import { FormEvent, useState, forwardRef, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import SiteTitle from '@/components/ui/SiteTitle';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
+// データの型はnumberだが、都合上stringに設定
 type LoginForm = {
   userId: string;
   password: string;
@@ -23,9 +22,7 @@ const LoginPage = () => {
   // フックフォーム
   const {
     register,
-    getValues,
     handleSubmit,
-    reset,
     formState: { errors, isValid },
   } = useForm<LoginForm>({
     criteriaMode: 'all',
@@ -33,19 +30,19 @@ const LoginPage = () => {
   });
 
   const onSubmit: SubmitHandler<LoginForm> = (data) => {
+    // 仮データで設定
     const userId = correctUser.id;
     const password = correctUser.password;
-    if (data.userId === `${userId}` && data.password === password) {
+    if (isValid && data.userId === `${userId}` && data.password === password) {
       router.push('/');
     }
-    console.log('data', data);
+    // console.log('data', data);
   };
 
   // 内容確認用(削除要)
-  const check = () => {
-    console.log('errors', errors);
-    console.log('getValues("password")', getValues('password'));
-  };
+  // const check = () => {
+  //   console.log('errors', errors);
+  // };
   //
 
   return (
@@ -71,9 +68,9 @@ const LoginPage = () => {
                       message: '※半角数字で入力してください。',
                     },
                     validate: {
-                      checkPassword: (value) =>
-                        value !== correctUser.password
-                          ? '※ユーザーIDが違います。'
+                      checkUserId: (value) =>
+                        Number(value) !== correctUser.id
+                          ? '※正しいユーザーIDを入力してください。'
                           : undefined,
                     },
                   })}
@@ -98,9 +95,15 @@ const LoginPage = () => {
                     validate: {
                       checkPassword: (value) =>
                         value !== correctUser.password
-                          ? '※パスワードが違います。'
+                          ? '※正しいパスワードを入力してください。'
                           : undefined,
                     },
+                    // pattern: {
+                    //   value:
+                    //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[._\/#&%=\\~\-+*@()<>\\[\\]{}])[a-zA-Z\d._\/#&%=\\~\-+*@()<>\\[\\]{}]{8,}$/,
+
+                    //   message: '※正しいパスワードを入力してください。',
+                    // },
                   })}
                 />
               </div>
@@ -112,7 +115,7 @@ const LoginPage = () => {
             className="mt-10 mb-4 w-48 rounded-none"
             type="submit"
             // エラー確認用（削除要）
-            onClick={check}
+            // onClick={check}
             //
           />
           <Link href="/remind" className=" text-blue">
