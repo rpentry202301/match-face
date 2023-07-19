@@ -76,7 +76,9 @@ const AdminLoginPage = () => {
                 />
               </div>
             </label>
-            {errors.userId && <p>{errors.userId.message}</p>}
+            {errors.userId && (
+              <p className="text-red">{errors.userId.message}</p>
+            )}
           </div>
           <div>
             <label htmlFor="password" className="">
@@ -107,7 +109,9 @@ const AdminLoginPage = () => {
                 />
               </div>
             </label>
-            {errors.password && <p>{errors.password.message}</p>}
+            {errors.password && (
+              <p className="text-red ">{errors.password.message}</p>
+            )}
           </div>
 
           <OrangeButton
