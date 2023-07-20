@@ -143,4 +143,5 @@ describe('管理者/履歴一覧画面のテスト',() => {
             expect(screen.getByTestId('status_2').textContent).toBe('未回答')
         })
     })
+    
 })

@@ -3,6 +3,7 @@ import HistoriesList from '@/components/pages/admin/histories/list';
 import HistoriesSelect from '@/components/pages/admin/histories/select'
 import { useAnswerRequests, useDepartments, useProjects, useSkills, useAnswers, useUsers, useAnswerRequestQuestions } from '@/hooks/store/context/historiesContext';
 const HistoriesPage = () => {
+  // データがないときのテスト用にpropsとして受け渡しているが、実際には各ページで定義
   const skills = useSkills()
   const departments = useDepartments()
   const projects = useProjects()

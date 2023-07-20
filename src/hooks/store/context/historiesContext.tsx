@@ -12,6 +12,14 @@ export const UsersContext = createContext<Users|undefined>(undefined)
 export const AnswerRequestQuestionsContext = createContext<AnswerRequestQuestions|undefined>(undefined)
 
 // constからのimport(valueの値)をfetchで取得したデータに変える
+// const skills = fetch('')
+// const departments = fetch('')
+// const projects = fetch('')
+// const answer_requests = fetch('')
+// const answers = fetch('')
+// const users = fetch('')
+// const answer_request_questions = fetch('')
+
 export function HistoriesProvider({children}:{children:JSX.Element}) {
     return (
         <SkillsContext.Provider value = {skills}>
