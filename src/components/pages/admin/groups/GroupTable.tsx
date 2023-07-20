@@ -48,17 +48,17 @@ const GroupTable = () => {
                 <table className="border-collapse items-center justify-center w-full table-fixed" data-testid='modalTable'>
                   <tbody> 
                     <tr>
-                      <th className="border px-4 py-2 bg-gray-100 w-1/4">作成日</th>
+                      <th className="border px-4 py-2 bg-light-gray w-1/4">作成日</th>
                       <td className="border px-4 py-2 w-3/4">
                         {selectedGroupingDate}
                       </td>
                     </tr>
                     <tr>
-                      <th className="border px-4 py-2 bg-gray-100 w-1/4">グループ名</th>
+                      <th className="border px-4 py-2 bg-light-gray w-1/4">グループ名</th>
                       <td className="border px-4 py-2 w-3/4">{selectedGroupName}</td>
                     </tr> 
                     <tr>
-                      <th className="border px-4 py-2 bg-gray-100 w-1/4">メンバー</th>
+                      <th className="border px-4 py-2 bg-light-gray w-1/4">メンバー</th>
                       <td className="border px-4 py-2 w-3/4 break-words whitespace-pre-wrap">
                         {selectedGroupMember}
                       </td>
@@ -83,9 +83,9 @@ const GroupTable = () => {
         <table>
           <thead>
             <tr>
-              <th className="border px-4 py-2 bg-gray-100 w-1/5">作成日</th>
-              <th className="border px-4 py-2 bg-gray-100 w-1/4">グループ名</th>
-              <th className="border px-4 py-2 bg-gray-100" style={{width:"7%"}}>人数</th>
+              <th className="border px-4 py-2 bg-light-gray w-1/5">作成日</th>
+              <th className="border px-4 py-2 bg-light-gray w-1/4">グループ名</th>
+              <th className="border px-4 py-2 bg-light-gray" style={{width:"7%"}}>人数</th>
             </tr>
           </thead>
           <tbody>
