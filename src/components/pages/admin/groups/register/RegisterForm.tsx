@@ -6,6 +6,7 @@ import Link from "next/link";
 import Input from "@/components/ui/Input";
 import TextArea from "@/components/ui/TextArea";
 import UserSelectModal from "../../tasks/register/UserSelectModal";
+import UserInput from "./UserInput";
 
 // グループ一覧に遷移する機能作ったほうが良い？
 
@@ -28,7 +29,8 @@ const RegisterForm = () => {
             <label htmlFor="user">▶ユーザーを選択する</label>
             <span>&nbsp;</span>
             <UserSelectModal/>
-            <Input id="user" style={{ width: "600px" }} className="my-3 px-2 py-1 border-2 border-gray-300"/>
+            {/* <Input id="user" style={{ width: "600px" }} className="my-3 px-2 py-1 border-2 border-gray-300"/> */}
+            <UserInput />
             <br />
             <label htmlFor="group_description">▶備考</label>
             <Input id="group_description" style={{ width: "600px" }} className="my-3 px-2 py-1 border-2 border-gray-300"/>
