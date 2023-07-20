@@ -8,15 +8,17 @@ import { Answer } from "@/const/result";
 import { useRouter } from "next/navigation";
 
 type Props = {
-  user_id: string;
-  project_id: string;
+  user_id: number;
+  project_id: number;
 };
 
 export const AnswerContent = ({ user_id, project_id }: Props) => {
   const router = useRouter();
-  const currentProject = project.filter((project) => project.id === project_id);
+  const currentProject = project.filter(
+    (project) => project.id === Number(project_id)
+  );
   const currentAnswer = Answer.filter(
-    (answer) => answer.project_id === project_id
+    (answer) => answer.project_id === Number(project_id)
   );
 
   return (

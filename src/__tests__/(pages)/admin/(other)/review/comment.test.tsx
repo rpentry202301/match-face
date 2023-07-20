@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 const testData = {
-  admin_id: "adminuser",
+  admin_id: 9999,
   img_url: "%2Ficon%2Fhuman_icon.png",
 };
 

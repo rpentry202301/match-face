@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 type Props = {
-  admin_id: string;
+  admin_id: number;
 };
 
 export const CommentContent = ({ admin_id }: Props) => {
