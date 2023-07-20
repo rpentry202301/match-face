@@ -3,15 +3,26 @@ import userEvent from '@testing-library/user-event'
 import GroupsRegisterPage from '@/app/(pages)/admin/(other)/groups/register/page'
 import React from 'react'
 import "@testing-library/jest-dom"
+import { UserSelectProvider } from '@/hooks/store/context/UserSelectContext'
+
+// useContextをモーダルで使用しているため、Providerを追加しています
 
 describe('管理者/グループ設定画面のテスト',()=>{
     const user = userEvent.setup()
     beforeEach(()=>{
-        render(<GroupsRegisterPage/>)
+        render(
+            <UserSelectProvider>
+                <GroupsRegisterPage/>
+            </UserSelectProvider>
+        )
     })
     describe('スナップショットテスト',()=>{
         it('レンダリング時',async()=>{
-            const view = render(<GroupsRegisterPage/>)
+            const view = render(
+                <UserSelectProvider>
+                    <GroupsRegisterPage/>
+                </UserSelectProvider>
+            )
             expect(view.container).toMatchSnapshot()
         })
     })

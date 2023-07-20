@@ -1,4 +1,5 @@
 import UserSelectModal from "@/components/pages/admin/tasks/register/UserSelectModal";
+import { UserSelectProvider } from "@/hooks/store/context/UserSelectContext";
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
@@ -6,7 +7,7 @@ import userEvent from "@testing-library/user-event";
 
 // モーダル展開用関数
 const open = () => {
-  render(<UserSelectModal />);
+  render(<UserSelectProvider><UserSelectModal /></UserSelectProvider>);
   fireEvent.click(screen.getByRole("button"));
 }
 
@@ -18,8 +19,8 @@ describe("UserSelectModal.tsx", () => {
 
   describe("スナップショットテスト", () => {
     it("モーダルを開いている状態", () => {
-      const { baseElement, rerender } = render(<UserSelectModal />);
-      rerender(<UserSelectModal />)
+      const { baseElement, rerender } = render(<UserSelectProvider><UserSelectModal /></UserSelectProvider>);
+      rerender(<UserSelectProvider><UserSelectModal /></UserSelectProvider>)
       expect(baseElement).toMatchSnapshot();
     });
   })
@@ -27,14 +28,14 @@ describe("UserSelectModal.tsx", () => {
   describe("入力テスト", () => {
     const user = userEvent.setup()
     it("検索ボックスの入力テスト", async () => {
-      render(<UserSelectModal />);
+      render(<UserSelectProvider><UserSelectModal /></UserSelectProvider>);
       const input = screen.getByTestId("search-box") as HTMLInputElement;
       fireEvent.change(input, { target: { value: "田中太郎" } });
       expect(input.value).toBe("田中太郎");
     });
   
     it("入社年の選択テスト", async () => {
-      render(<UserSelectModal />);
+      render(<UserSelectProvider><UserSelectModal /></UserSelectProvider>);
       // デフォルト選択が空文字かどうか
       const beforeSelect = screen.getByTestId("year:") as HTMLOptionElement;
       expect(beforeSelect.selected).toBe(true);
@@ -46,7 +47,7 @@ describe("UserSelectModal.tsx", () => {
     });
 
     it("入社月の選択テスト", async () => {
-      render(<UserSelectModal />);
+      render(<UserSelectProvider><UserSelectModal /></UserSelectProvider>);
       const beforeSelect = screen.getByTestId("month:") as HTMLOptionElement;
       expect(beforeSelect.selected).toBe(true);
       // 1月を選択してテスト
@@ -58,7 +59,7 @@ describe("UserSelectModal.tsx", () => {
     // Todo: ユーザーグループは本来fetchで持ってくる情報のため、mock作成の必要あり
     // 今回は仮作成
     it("ユーザーグループの選択テスト", async () => {
-      render(<UserSelectModal />);
+      render(<UserSelectProvider><UserSelectModal /></UserSelectProvider>);
       const nowGroup = "2023年7月入社";
       const beforeSelect = screen.getByTestId(`group:${nowGroup}`) as HTMLOptionElement;
       expect(beforeSelect.selected).toBe(true);
