@@ -34,6 +34,11 @@ const RemindPage = () => {
       router.push('/login');
     }
   };
+
+  const check = () => {
+    console.log('errors', errors);
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col items-center justify-center h-screen">
@@ -71,6 +76,7 @@ const RemindPage = () => {
           label="再設定用メール送信"
           className=" mt-14 mb-4 w-56 rounded-none"
           type="submit"
+          onClick={check}
         />
         <Link href="/login" className="text-blue">
           一般ログインへ
