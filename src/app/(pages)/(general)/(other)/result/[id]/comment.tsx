@@ -4,8 +4,8 @@ import { User } from "@/const/result";
 import Image from "next/image";
 
 type Props = {
-  user_id: string;
-  project_id: string;
+  user_id: number;
+  project_id: number;
 };
 
 export const CommentContent = ({ user_id, project_id }: Props) => {

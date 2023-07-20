@@ -1,5 +1,6 @@
 import Input from "@/components/ui/Input";
 import UserSelectModal from "../UserSelectModal";
+import UserInput from "./UserInput ";
 
 const SelectUsers = () => {
   return (
@@ -12,11 +13,12 @@ const SelectUsers = () => {
       </div>
       <div>
         {/* Todo: 別コンポーネントに<Input/>を渡す("use clent"使用のため) */}
-        <Input
+        {/* <Input
           id="search"
           className="border-2 border-light-gray text-xs p-1 w-full"
           readOnly
-        />
+        /> */}
+        <UserInput />
       </div>
     </div>
   );

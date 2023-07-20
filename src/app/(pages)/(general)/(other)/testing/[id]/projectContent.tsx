@@ -7,8 +7,8 @@ import GrayButton from "@/components/ui/button/GrayButton";
 import ConfirmationModal from "@/components/ui/ConfirmationModal";
 import { useState } from "react";
 
-export const ProjectContent = ({ id }: { id: string }) => {
-  const currentProject = project.filter((project) => project.id === id);
+export const ProjectContent = ({ id }: { id: number }) => {
+  const currentProject = project.filter((project) => project.id === Number(id));
   const [isDraftOpen, setIsDraftOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 

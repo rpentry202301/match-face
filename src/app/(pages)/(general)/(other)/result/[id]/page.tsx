@@ -1,7 +1,7 @@
 import { AnswerContent } from "./answerContent";
 
-const ResultPage = ({ params }: { params: { id: string } }) => {
-  const user_id = "user1";
+const ResultPage = ({ params }: { params: { id: number } }) => {
+  const user_id = 1;
 
   return (
     <div className="flex flex-col items-center">
