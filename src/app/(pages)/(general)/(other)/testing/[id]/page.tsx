@@ -1,4 +1,4 @@
-import { ProjectContent } from "./projectContent";
+import { ProjectContent } from './projectContent';
 
 const TestPage = ({ params }: { params: { id: number } }) => {
   return (
