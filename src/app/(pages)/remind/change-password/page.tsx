@@ -56,6 +56,8 @@ const ChangePasswordPage = () => {
           <div>
             <input
               id="newPassword"
+              // 入力したパスワード確認用にコメントアウト
+              // todo: コメントアウト外す
               // type="password"
               className="w-96 h-10 mt-2 border border-black"
               {...register('newPassword', {
@@ -83,6 +85,8 @@ const ChangePasswordPage = () => {
           <div>
             <input
               id="confirmPassword"
+              // 入力したパスワード確認用にコメントアウト
+              // todo: コメントアウト外す
               // type="password"
               className="w-96 h-10 mt-2 border border-black"
               {...register('confirmPassword', {
