@@ -1,8 +1,8 @@
 import { AnswerContent } from "./answerContent";
 
-const ReviewPage = ({ params }: { params: { id: string } }) => {
-  const user_id = "user1";
-  const admin_id = "adminuser";
+const ReviewPage = ({ params }: { params: { id: number } }) => {
+  const user_id = 1;
+  const admin_id = 9999;
 
   return (
     <div className="flex flex-col items-center">

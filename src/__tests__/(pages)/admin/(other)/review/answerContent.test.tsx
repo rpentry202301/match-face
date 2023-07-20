@@ -5,13 +5,11 @@ import { AppRouterContextProviderMock } from "@/__tests__/test_utils/app-router-
 import "@testing-library/jest-dom";
 import { Answer } from "@/const/review";
 import { project } from "@/const/testing";
-import answerEditData from "@/const/answerEdit";
-import { title } from "process";
 
 const testData = {
-  user_id: "user1",
-  project_id: "1",
-  admin_id: "adminuser",
+  user_id: 1,
+  project_id: 1,
+  admin_id: 9999,
 };
 
 const user = userEvent.setup();

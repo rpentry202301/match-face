@@ -11,17 +11,19 @@ import ConfirmationModal from "@/components/ui/ConfirmationModal";
 import { useState } from "react";
 
 type Props = {
-  user_id: string;
-  project_id: string;
-  admin_id: string;
+  user_id: number;
+  project_id: number;
+  admin_id: number;
 };
 
 export const AnswerContent = ({ user_id, project_id, admin_id }: Props) => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-  const currentProject = project.filter((project) => project.id === project_id);
+  const currentProject = project.filter(
+    (project) => project.id === Number(project_id)
+  );
   const currentAnswer = Answer.filter(
-    (answer) => answer.project_id === project_id
+    (answer) => answer.project_id === Number(project_id)
   );
 
   return (
@@ -35,11 +37,7 @@ export const AnswerContent = ({ user_id, project_id, admin_id }: Props) => {
       <h2 className="text-xl my-2">案件名:{currentProject[0].name}</h2>
       <p className="text-lg">{currentProject[0].project_detail}</p>
       <AnswerList user_id={user_id} project_id={project_id} />
-      <CommentContent
-        user_id={user_id}
-        project_id={project_id}
-        admin_id={admin_id}
-      />
+      <CommentContent admin_id={admin_id} />
       <div className="flex justify-around my-20">
         <ConfirmationModal
           isOpen={isOpen}

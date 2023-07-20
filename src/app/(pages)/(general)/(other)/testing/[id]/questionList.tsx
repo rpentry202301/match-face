@@ -1,8 +1,8 @@
 import { question } from "@/const/testing";
 
-export const QuestionList = ({ id }: { id: string }) => {
+export const QuestionList = ({ id }: { id: number }) => {
   const currentQuestion = question.filter(
-    (question) => question.project_id === id
+    (question) => question.project_id === Number(id)
   );
   return (
     <>
