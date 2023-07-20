@@ -24,7 +24,7 @@ const RemindPage = () => {
     formState: { errors, isValid },
   } = useForm<RemindEmail>({
     criteriaMode: 'all',
-    reValidateMode: 'onSubmit',
+    reValidateMode: 'onChange',
   });
 
   const onSubmit = (data: RemindEmail) => {

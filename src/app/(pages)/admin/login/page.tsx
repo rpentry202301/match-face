@@ -26,10 +26,8 @@ const AdminLoginPage = () => {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm<LoginForm>({
-    // 複数のエラーを保存する設定
     criteriaMode: 'all',
-    // onSubmit時のみバリデーションを実行
-    reValidateMode: 'onSubmit',
+    reValidateMode: 'onChange',
   });
 
   const onSubmit: SubmitHandler<LoginForm> = (data) => {
