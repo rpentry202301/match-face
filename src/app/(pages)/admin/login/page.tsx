@@ -27,7 +27,7 @@ const AdminLoginPage = () => {
     formState: { errors, isValid },
   } = useForm<LoginForm>({
     criteriaMode: 'all',
-    reValidateMode: 'onChange',
+    reValidateMode: 'onSubmit',
   });
 
   const onSubmit: SubmitHandler<LoginForm> = (data) => {

@@ -24,7 +24,7 @@ const ChangePasswordPage = () => {
     formState: { errors, isValid },
   } = useForm<NewPasswords>({
     criteriaMode: 'all',
-    reValidateMode: 'onChange',
+    reValidateMode: 'onSubmit',
   });
 
   const onSubmit = (data: NewPasswords) => {
