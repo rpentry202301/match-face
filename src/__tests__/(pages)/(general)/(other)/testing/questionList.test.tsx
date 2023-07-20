@@ -4,7 +4,7 @@ import { question } from "@/const/testing";
 import "@testing-library/jest-dom";
 
 const testData = {
-  id: "1",
+  id: 1,
 };
 
 const currentQuestion = question.filter(

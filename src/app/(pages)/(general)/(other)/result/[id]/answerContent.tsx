@@ -8,23 +8,25 @@ import { Answer } from "@/const/result";
 import { useRouter } from "next/navigation";
 
 type Props = {
-  user_id: string;
-  project_id: string;
+  user_id: number;
+  project_id: number;
 };
 
 export const AnswerContent = ({ user_id, project_id }: Props) => {
   const router = useRouter();
-  const currentProject = project.filter((project) => project.id === project_id);
+  const currentProject = project.filter(
+    (project) => project.id === Number(project_id)
+  );
   const currentAnswer = Answer.filter(
-    (answer) => answer.project_id === project_id
+    (answer) => answer.project_id === Number(project_id)
   );
 
   return (
     <div className="w-1/2 py-5">
       <div className="flex justify-between items-center my-3">
         <h1 className="text-2xl">回答の確認</h1>
-        {/* Note: 回答日時にエラーが出てるっぽい */}
-        <p>回答日時：{currentAnswer[0].answer_date.toLocaleDateString()}</p>
+        {/*現状のデータでは4以降の解答データを呼び出そうとするとエラーになります */}
+        <p>回答日時:{currentAnswer[0].answer_date.toLocaleDateString()}</p>
       </div>
       <hr className="border border-black" />
       <h2 className="text-xl my-2">案件名：{currentProject[0].name}</h2>

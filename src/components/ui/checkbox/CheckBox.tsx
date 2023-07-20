@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge"
 
 const CheckBox = ({ ...props }: ComponentProps<"input">) => {
   const style = twMerge(
-    "w-4 h-4 accent-orange",
+    "w-4 h-4 accent-orange cursor-pointer",
     props.className
   )
   return (

@@ -25,7 +25,7 @@ const SearchByJobs = () => {
         })}
       </div>
       <div>
-        <OrangeButton label="絞り込み" className="w-28 h-8 text-sm" />
+        <OrangeButton label="絞り込み" className="w-28 text-sm" />
       </div>
     </div>
   );

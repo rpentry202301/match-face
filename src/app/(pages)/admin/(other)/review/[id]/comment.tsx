@@ -4,12 +4,10 @@ import Image from "next/image";
 import { useState } from "react";
 
 type Props = {
-  user_id: string;
-  admin_id: string;
-  project_id: string;
+  admin_id: number;
 };
 
-export const CommentContent = ({ user_id, admin_id, project_id }: Props) => {
+export const CommentContent = ({ admin_id }: Props) => {
   const commentUser = User.filter((user) => user.id === admin_id);
   const [comment, setComment] = useState("");
 

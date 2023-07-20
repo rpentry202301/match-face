@@ -1,6 +1,6 @@
 'use client'
 import GrayButton from "@/components/ui/button/GrayButton"
-import { Answers, ProjectUserAnswer, Users } from "@/types/admin/histories/admin_histories"
+import { AnswerRequestQuestions, Answers, ProjectUserAnswer, Users } from "@/types/admin/histories/admin_histories"
 import { useRouter } from "next/navigation"
 import { SyntheticEvent } from "react"
 export function HistoriesUserListHead(){
@@ -14,13 +14,16 @@ export function HistoriesUserListHead(){
 
     )
 }
-export function HistoriesUserListBody({id,answers,users}:{id:number,answers:Answers,users:Users}){
+export function HistoriesUserListBody({id,answers,users,answer_request_questions}:{id:number,answers:Answers,users:Users,answer_request_questions:AnswerRequestQuestions}){
     const array:ProjectUserAnswer = []
     const project_answer = answers.filter((user)=>user.answer_request_id===id)
     const project_answered_user:ProjectUserAnswer=array.concat(project_answer.map((answer)=>(
-        answer.created_at===answer.update_at?
-        {id:answer.id,answer_status:false,user_id:answer.user_id}:{id:answer.id,answer_status:true,user_id:answer.user_id})))
-    const router = useRouter()
+            answer_request_questions.find((question)=>question.id===answer.id)!.is_answered?
+            {id:answer.id,answer_status:true,user_id:answer.user_id}:{id:answer.id,answer_status:false,user_id:answer.user_id}
+        )))
+
+
+        const router = useRouter()
 
     function handleClick(e:SyntheticEvent,id:number){
         e.preventDefault()

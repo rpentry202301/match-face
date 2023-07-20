@@ -1,26 +1,51 @@
 'use client'
-import { useState, ReactNode } from "react"
+import { useState, ReactNode, ChangeEvent, FormEvent } from "react"
 import { createPortal } from "react-dom"
 import WhiteButton from "@/components/ui/button/WhiteButton"
-import WhiteCheckButton from "@/components/ui/button/WhiteCheckButton"
+import WhiteButtonCheckBox from "@/components/pages/admin/tasks/register/parts/WhiteButtonCheckBox"
 import OrangeButton from "@/components/ui/button/OrangeButton"
 import SelectBox from "@/components/ui/selectbox/SelectBox"
 import { group as groupConst } from "@/const/group"
 import { departments } from "@/const/tasks"
 import UserList from "./parts/UserList"
+import { useUserSelect } from "@/hooks/store/context/UserSelectContext"
 
 const state = ['研修中', '待機中', 'アサイン中']
 const groupValues = groupConst.map((group) => group.group_name)
 
 // 実際にレンダリングされるモーダルは以下に記述
 const UserSelectModal = () => {
-  const [ search, setSearch ] = useState('')
-  const [ year, setYear ] = useState('')
-  const [ month, setMonth ] = useState('')
-  const [ group, setGroup ] = useState('')
   const [ isOpened, setIsOpened ] = useState(false)
+
+  // 状態初期化用にオブジェクトを作成
+  const initDepartments = departments.map((dep) => {
+    return {
+      label: dep.name,
+      checked: false,
+    }
+  })
+  const initState = state.map((state) => {
+    return {
+      label: state,
+      checked: false,
+    }
+  })
+
+  const [ formData, setFormData ] = useState({
+    search: "",
+    year: "",
+    month: "",
+    department: initDepartments,
+    state: initState,
+    group: "",
+  })
+  const [ userSelect, userSelectDispatch ] = useUserSelect()
+  const [ checkedValues, setCheckedValue ] = useState<string[]>(userSelect)
   
-  const open = () => setIsOpened(true)
+  const open = () => {
+    setCheckedValue(userSelect)
+    setIsOpened(true)
+  }
   const close = () => setIsOpened(false)
 
   // 2000年からの配列を作成
@@ -36,21 +61,57 @@ const UserSelectModal = () => {
     .map((num, index) => `${num + index}`)
   monthArr.unshift("")
 
-  // Todo: コンポーネントを分割したい（１つのコンポーネントに複数のfetchがあり、テストが書きづらい）
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  // チェックボックスは型が異なるため別の関数で
+  const handleChangeCheckBox = (e: ChangeEvent<HTMLInputElement>, name: "department" | "state") => {
+    const newData = formData[name];
+    newData.map((data) => {
+      if(data.label === e.target.value) {
+        data.checked = !data.checked
+      }
+      return newData
+    })
+    setFormData({ ...formData, [name]: newData})
+  }
+
+  // Todo: APIができたら実装
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    console.log(formData)
+  }
+
+  const handleChangeUserList = (e: ChangeEvent<HTMLInputElement>) => {
+    if (checkedValues.includes(e.target.value)) {
+      setCheckedValue(
+        checkedValues.filter((value) => value !== e.target.value)
+      )
+    } else {
+      setCheckedValue([...checkedValues, e.target.value])
+    }
+  }
+
+  const handleClose = () => {
+    userSelectDispatch({type: "select", payload: checkedValues})
+    close()
+  }
 
   return (
     <Modal buttonText="追加" isOpened={isOpened} open={open} close={close}>
       <div>
         <h2 className="text-base ml-3">▶️ユーザーを選択する</h2>
       </div>
-      <div className="flex flex-col justify-center items-center border-2 w-10/12 px-10 py-5 mt-3 mx-auto">
+      <form onSubmit={(e) => handleSubmit(e)} className="flex flex-col justify-center items-center border-2 w-10/12 px-10 py-5 mt-3 mx-auto">
         <div className="flex flex-col gap-5 w-fit mx-auto">
           <div className="flex items-center">
             <input
               id="search"
+              name="search"
               type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              value={formData.search}
+              onChange={handleChange}
               className="border-light-gray border-2 text-xs p-1 w-10/12"
               data-testid="search-box"
             />
@@ -59,8 +120,9 @@ const UserSelectModal = () => {
           <div className="flex items-center gap-1">
             <SelectBox
               optionVal={yearArr}
-              value={year}
-              onChange={(e) => setYear(e.target.value)}
+              value={formData.year}
+              name="year"
+              onChange={handleChange}
               className="text-xs p-1"
               id="year"
               data-testid="select-year"
@@ -68,8 +130,9 @@ const UserSelectModal = () => {
             <span className="text-xs">年</span>
             <SelectBox
               optionVal={monthArr}
-              value={month}
-              onChange={(e) => setMonth(e.target.value)}
+              value={formData.month}
+              name="month"
+              onChange={handleChange}
               className="text-xs p-1"
               id="month"
               data-testid="select-month"
@@ -78,10 +141,15 @@ const UserSelectModal = () => {
           </div>
           <div className="flex gap-4 flex-wrap">
             {departments.map((element) => (
-              <WhiteCheckButton
-                key={`teck_${element.id}`}
+              <WhiteButtonCheckBox
+                key={`dep_${element.id}`}
+                id={`dep_${element.id}`}
                 label={element.name}
-                className="text-xs w-16 "
+                value={element.name}
+                checked={formData.department.filter((data) => data.label === element.name)[0].checked}
+                name="department"
+                className="text-xs px-1 w-16"
+                onChange={(e) => handleChangeCheckBox(e, "department")}
               />
             ))}
           </div>
@@ -89,15 +157,24 @@ const UserSelectModal = () => {
             {state.map((element) => {
               return (
                 element.length < 4
-                ? <WhiteCheckButton
+                ? <WhiteButtonCheckBox
                   key={element}
+                  id={element}
                   label={element}
+                  value={element}
+                  checked={formData.state.filter((data) => data.label === element)[0].checked}
+                  name="state"
                   className="text-xs w-16 px-1 whitespace-nowrap"
+                  onChange={(e) => handleChangeCheckBox(e, "state")}
                 />
-                : <WhiteCheckButton
+                : <WhiteButtonCheckBox
                   key={element}
+                  id={element}
                   label={element}
+                  value={element}
+                  name="state"
                   className="text-xs px-1 w-24"
+                  onChange={(e) => handleChangeCheckBox(e, "state")}
                 />
               )
             })}
@@ -109,8 +186,9 @@ const UserSelectModal = () => {
             <div>
               <SelectBox
                 optionVal={groupValues}
-                value={group}
-                onChange={(e) => setGroup(e.target.value)}
+                value={formData.group}
+                name="group"
+                onChange={handleChange}
                 className="w-10/12 text-xs p-1"
                 id="group"
                 data-testid="select-group"
@@ -119,19 +197,20 @@ const UserSelectModal = () => {
           </div>
         </div>
         <div className="mx-auto mt-7">
-          <OrangeButton label="絞り込み" className="text-xs" />
+          <OrangeButton type="submit" label="絞り込み" className="text-xs" />
         </div>
-      </div>
+      </form>
 
-      <UserList />
+      <UserList checkedValues={checkedValues} onChange={handleChangeUserList} />
 
       <div className="mx-auto mt-8 w-fit">
-        <OrangeButton label="選択完了" className="text-xs" onClick={close}/>
+        <OrangeButton label="選択完了" className="text-xs" onClick={handleClose}/>
       </div>
     </Modal>
   )
 }
 
+// Modalは親コンポーネント内ではなく外で定義
 const Modal = ({
   children,
   buttonText,

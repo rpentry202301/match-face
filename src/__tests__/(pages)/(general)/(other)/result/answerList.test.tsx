@@ -5,7 +5,7 @@ import { Answer } from "@/const/result";
 import "@testing-library/jest-dom";
 
 const testData = {
-  project_id: "1",
+  project_id: 1,
 };
 
 const currentQuestion = question.filter(

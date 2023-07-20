@@ -4,8 +4,8 @@ import "@testing-library/jest-dom";
 import { Comment } from "@/const/result";
 
 const testData = {
-  user_id: "user1",
-  project_id: "1",
+  user_id: 1,
+  project_id: 1,
   admin_user: "管理者太郎",
   img_url: "%2Ficon%2Fhuman_icon.png",
   comment: Comment[0],

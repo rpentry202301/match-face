@@ -1,0 +1,452 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuestionSelectModal.tsx スナップショットテスト モーダルを開いている状態 1`] = `
+<body>
+  <div />
+  <div
+    class="fixed top-0 left-0 z-30 flex items-center justify-center w-full h-full"
+  >
+    <div
+      class="relative z-20 w-3/4 max-w-5xl py-7 px-10 bg-white"
+    >
+      <div
+        class="flex flex-col items-center gap-8 w-full mx-auto"
+      >
+        <div
+          class="mx-auto"
+        >
+          <div
+            class="flex flex-col items-start gap-3"
+          >
+            <div
+              class="text-base"
+            >
+              <h2>
+                ▶️質問を選択する
+              </h2>
+            </div>
+            <div
+              class="flex flex-col item-center justify-center px-12 py-5 border-2 w-full"
+            >
+              <div
+                class="flex flex-col items-center gap-5"
+              >
+                <div
+                  class="flex flex-col items-center gap-5"
+                >
+                  <div
+                    class="flex items-start justify-center gap-2 w-fit"
+                  >
+                    <input
+                      class="border-light-gray border-2 text-xs p-2 lg:w-96 sm:w-80 w-72"
+                      data-testid="search-box"
+                      id="search"
+                      type="text"
+                      value=""
+                    />
+                    <button
+                      class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md text-xs ml-4 w-16"
+                    >
+                      検索
+                    </button>
+                  </div>
+                  <div
+                    class="flex items-start gap-4 flex-wrap"
+                  >
+                    <button
+                      class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
+                    >
+                      Java
+                    </button>
+                    <button
+                      class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
+                    >
+                      PHP
+                    </button>
+                    <button
+                      class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
+                    >
+                      FR
+                    </button>
+                    <button
+                      class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
+                    >
+                      CL
+                    </button>
+                    <button
+                      class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
+                    >
+                      ML
+                    </button>
+                    <button
+                      class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
+                    >
+                      QA
+                    </button>
+                  </div>
+                  <div
+                    class="flex mx-auto gap-4"
+                  >
+                    <span
+                      class="text-xs"
+                    >
+                      使用技術：
+                    </span>
+                    <div
+                      class="grid xl:grid-cols-7 lg:grid-cols-6 md:grid-cols-4 grid-cols-3 gap-3"
+                    >
+                      <div
+                        class="flex"
+                      >
+                        <input
+                          class="w-4 h-4 accent-orange cursor-pointer"
+                          id="skill_1"
+                          type="checkbox"
+                        />
+                        <label
+                          class="text-xs ml-1"
+                          for="skill_1"
+                        >
+                          JavaScript
+                        </label>
+                      </div>
+                      <div
+                        class="flex"
+                      >
+                        <input
+                          class="w-4 h-4 accent-orange cursor-pointer"
+                          id="skill_2"
+                          type="checkbox"
+                        />
+                        <label
+                          class="text-xs ml-1"
+                          for="skill_2"
+                        >
+                          TypeScript
+                        </label>
+                      </div>
+                      <div
+                        class="flex"
+                      >
+                        <input
+                          class="w-4 h-4 accent-orange cursor-pointer"
+                          id="skill_3"
+                          type="checkbox"
+                        />
+                        <label
+                          class="text-xs ml-1"
+                          for="skill_3"
+                        >
+                          React
+                        </label>
+                      </div>
+                      <div
+                        class="flex"
+                      >
+                        <input
+                          class="w-4 h-4 accent-orange cursor-pointer"
+                          id="skill_4"
+                          type="checkbox"
+                        />
+                        <label
+                          class="text-xs ml-1"
+                          for="skill_4"
+                        >
+                          Next.js
+                        </label>
+                      </div>
+                      <div
+                        class="flex"
+                      >
+                        <input
+                          class="w-4 h-4 accent-orange cursor-pointer"
+                          id="skill_5"
+                          type="checkbox"
+                        />
+                        <label
+                          class="text-xs ml-1"
+                          for="skill_5"
+                        >
+                          Vue.js
+                        </label>
+                      </div>
+                      <div
+                        class="flex"
+                      >
+                        <input
+                          class="w-4 h-4 accent-orange cursor-pointer"
+                          id="skill_6"
+                          type="checkbox"
+                        />
+                        <label
+                          class="text-xs ml-1"
+                          for="skill_6"
+                        >
+                          Angular
+                        </label>
+                      </div>
+                      <div
+                        class="flex"
+                      >
+                        <input
+                          class="w-4 h-4 accent-orange cursor-pointer"
+                          id="skill_7"
+                          type="checkbox"
+                        />
+                        <label
+                          class="text-xs ml-1"
+                          for="skill_7"
+                        >
+                          Nuxt.js
+                        </label>
+                      </div>
+                      <div
+                        class="flex"
+                      >
+                        <input
+                          class="w-4 h-4 accent-orange cursor-pointer"
+                          id="skill_8"
+                          type="checkbox"
+                        />
+                        <label
+                          class="text-xs ml-1"
+                          for="skill_8"
+                        >
+                          jQuery
+                        </label>
+                      </div>
+                      <div
+                        class="flex"
+                      >
+                        <input
+                          class="w-4 h-4 accent-orange cursor-pointer"
+                          id="skill_9"
+                          type="checkbox"
+                        />
+                        <label
+                          class="text-xs ml-1"
+                          for="skill_9"
+                        >
+                          Redux
+                        </label>
+                      </div>
+                      <div
+                        class="flex"
+                      >
+                        <input
+                          class="w-4 h-4 accent-orange cursor-pointer"
+                          id="skill_10"
+                          type="checkbox"
+                        />
+                        <label
+                          class="text-xs ml-1"
+                          for="skill_10"
+                        >
+                          vuex
+                        </label>
+                      </div>
+                      <div
+                        class="flex"
+                      >
+                        <input
+                          class="w-4 h-4 accent-orange cursor-pointer"
+                          id="skill_11"
+                          type="checkbox"
+                        />
+                        <label
+                          class="text-xs ml-1"
+                          for="skill_11"
+                        >
+                          MaterialUI
+                        </label>
+                      </div>
+                      <div
+                        class="flex"
+                      >
+                        <input
+                          class="w-4 h-4 accent-orange cursor-pointer"
+                          id="skill_12"
+                          type="checkbox"
+                        />
+                        <label
+                          class="text-xs ml-1"
+                          for="skill_12"
+                        >
+                          tailwind
+                        </label>
+                      </div>
+                      <div
+                        class="flex"
+                      >
+                        <input
+                          class="w-4 h-4 accent-orange cursor-pointer"
+                          id="skill_13"
+                          type="checkbox"
+                        />
+                        <label
+                          class="text-xs ml-1"
+                          for="skill_13"
+                        >
+                          Bootstrap
+                        </label>
+                      </div>
+                      <div
+                        class="flex"
+                      >
+                        <input
+                          class="w-4 h-4 accent-orange cursor-pointer"
+                          id="skill_14"
+                          type="checkbox"
+                        />
+                        <label
+                          class="text-xs ml-1"
+                          for="skill_14"
+                        >
+                          Vercel
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <button
+                    class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white rounded-xl p-2 w-40 h-auto text-xs"
+                  >
+                    絞り込み
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="w-full mx-auto"
+        >
+          <table
+            class="border-collapse border-2 border-deep-gray text-sm mx-auto w-full"
+          >
+            <thead
+              class="bg-light-gray"
+            >
+              <tr>
+                <th
+                  class="border-2 border-deep-gray px-4 py-2 text-center w-1/12"
+                />
+                <th
+                  class="border-2 border-deep-gray px-4 py-2 text-center w-2/12"
+                >
+                  最終編集日
+                </th>
+                <th
+                  class="border-2 border-deep-gray px-4 py-2 text-center w-3/12"
+                >
+                  案件名
+                </th>
+                <th
+                  class="border-2 border-deep-gray px-4 py-2 text-center"
+                >
+                  質問内容
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td
+                  class="border-2 border-deep-gray px-4 py-2 text-center"
+                >
+                  <input
+                    class="w-4 h-4 accent-orange cursor-pointer"
+                    type="checkbox"
+                  />
+                </td>
+                <td
+                  class="border-2 border-deep-gray px-4 py-2 text-center"
+                >
+                  2023-7-6
+                </td>
+                <td
+                  class="border-2 border-deep-gray px-4 py-2 text-center"
+                >
+                  test1
+                </td>
+                <td
+                  class="border-2 border-deep-gray px-4 py-2 text-center"
+                >
+                  問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="border-2 border-deep-gray px-4 py-2 text-center"
+                >
+                  <input
+                    class="w-4 h-4 accent-orange cursor-pointer"
+                    type="checkbox"
+                  />
+                </td>
+                <td
+                  class="border-2 border-deep-gray px-4 py-2 text-center"
+                >
+                  2023-7-6
+                </td>
+                <td
+                  class="border-2 border-deep-gray px-4 py-2 text-center"
+                >
+                  test1
+                </td>
+                <td
+                  class="border-2 border-deep-gray px-4 py-2 text-center"
+                >
+                  問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="border-2 border-deep-gray px-4 py-2 text-center"
+                >
+                  <input
+                    class="w-4 h-4 accent-orange cursor-pointer"
+                    type="checkbox"
+                  />
+                </td>
+                <td
+                  class="border-2 border-deep-gray px-4 py-2 text-center"
+                >
+                  2023-7-6
+                </td>
+                <td
+                  class="border-2 border-deep-gray px-4 py-2 text-center"
+                >
+                  test1
+                </td>
+                <td
+                  class="border-2 border-deep-gray px-4 py-2 text-center"
+                >
+                  問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <button
+            class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white rounded-xl p-2 w-40 h-auto text-xs"
+          >
+            選択完了
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      class="absolute top-0 left-0 w-full h-full bg-black opacity-30"
+    />
+  </div>
+  <div>
+    <button
+      class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md text-xs"
+    >
+      追加
+    </button>
+  </div>
+</body>
+`;

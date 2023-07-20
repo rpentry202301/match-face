@@ -1,102 +1,134 @@
 'use client';
-import Input from '@/components/ui/Input';
 import OrangeButton from '@/components/ui/button/OrangeButton';
 import Link from 'next/link';
 import users from '@/const/login';
-import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import SiteTitle from '@/components/ui/SiteTitle';
+import { useForm, SubmitHandler } from 'react-hook-form';
+
+// データの型はnumberだが、都合上stringに設定
+type LoginForm = {
+  userId: string;
+  password: string;
+};
 
 const LoginPage = () => {
   const router = useRouter();
-  const [userId, setUserId] = useState<string>();
-  const [password, setPassword] = useState<string>();
-  // const [userIdError, setUserIdError] = useState<boolean>(false);
-  const [userIdBlankError, setUserIdBlankError] = useState<boolean>(false);
-  // const [passwordError, setPasswordError] = useState<boolean>(false);
-  const [passwordBlankError, setPasswordBlankError] = useState<boolean>(false);
 
   // ダミーデータ
+  const userData = users;
   const correctUser = users[0];
-  // console.log('crrectUser', correctUser);
 
-  // todo:（仮）ログイン認証チェック(入力欄がブランクの時のみエラー感知)
-  const checkLogin = (event: FormEvent) => {
-    event.preventDefault();
-    if (!userId && !password) {
-      setUserIdBlankError(true);
-      setPasswordBlankError(true);
-    } else if (!userId && password) {
-      setUserIdBlankError(true);
-      setPasswordBlankError(false);
-    } else if (userId && !password) {
-      setUserIdBlankError(false);
-      setPasswordBlankError(true);
-    } else if (
-      userId === correctUser.user_id &&
-      password === correctUser.password
-    ) {
+  // フックフォーム
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm<LoginForm>({
+    // 複数のエラーを保存する設定
+    criteriaMode: 'all',
+    // onSubmit時のみバリデーションをかける設定
+    reValidateMode: 'onSubmit',
+  });
+
+  const onSubmit: SubmitHandler<LoginForm> = (data) => {
+    // 仮データで設定
+    const userId = correctUser.id;
+    const password = correctUser.password;
+    if (isValid && data.userId === `${userId}` && data.password === password) {
       router.push('/');
     }
+    // console.log('data', data);
   };
-  // console.log('typeof userId', typeof userId);
-  // console.log('passWord', typeof password);
-  return (
-    <>
-      <form onSubmit={checkLogin}>
-        <div className="flex flex-col items-center justify-center h-screen">
-          <SiteTitle className="m-6" />
-          <div className="mt-2 mb-2">
-            <label htmlFor="userId" className="">
-              ユーザーID
-            </label>
-            <Input
-              id="userId"
-              className=" w-96 h-10 mt-2"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setUserId(e.target.value)
-              }
-            />
-            {/* {userIdError && (
-              <p className="text-red">※ユーザーIDに誤りがあります</p>
-            )} */}
-            {userIdBlankError && (
-              <p className="text-red">※ユーザーIDを入力してください</p>
-            )}
-          </div>
-          <div>
-            <label htmlFor="password" className="">
-              パスワード
-            </label>
-            <Input
-              id="password"
-              className="w-96 h-10 mt-2"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setPassword(e.target.value)
-              }
-            />
-            {/* {passwordError && (
-              <p className="text-red">※パスワードに誤りがあります。</p>
-            )} */}
-            {passwordBlankError && (
-              <p className="text-red">※パスワードを入力してください</p>
-            )}
-          </div>
 
-          <OrangeButton
-            label="ログイン"
-            className="mt-10 mb-4 w-48 rounded-none"
-            type="submit"
-          />
-          <Link href="/remind" className=" text-blue">
-            パスワードを忘れた
-          </Link>
-          <Link href="/admin/login" className="text-blue pt-16">
-            管理者ログイン
-          </Link>
+  // 内容確認用(削除要)
+  // const check = () => {
+  //   console.log('errors', errors);
+  // };
+  //
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="flex flex-col items-center justify-center h-screen">
+        <SiteTitle className="m-6" />
+        <div className="mt-2 mb-2">
+          <label htmlFor="userId" className="">
+            ユーザーID
+            <div>
+              <input
+                id="userId"
+                type="text"
+                className=" w-96 h-10 mt-2 border border-black"
+                {...register('userId', {
+                  required: {
+                    value: true,
+                    message: '※ユーザーIDを入力してください。',
+                  },
+                  pattern: {
+                    value: /^[0-9]+$/,
+                    message: '※半角数字で入力してください。',
+                  },
+                  validate: {
+                    checkUserId: (value) =>
+                      Number(value) !== correctUser.id
+                        ? '※正しいユーザーIDを入力してください。'
+                        : undefined,
+                  },
+                })}
+              />
+            </div>
+          </label>
+          {errors.userId && <p className="text-red">{errors.userId.message}</p>}
         </div>
-      </form>
-    </>
+        <div>
+          <label htmlFor="password" className="">
+            パスワード
+            <div>
+              <input
+                id="password"
+                type="password"
+                className="w-96 h-10 mt-2 border border-black"
+                {...register('password', {
+                  required: {
+                    value: true,
+                    message: '※パスワードを入力してください。',
+                  },
+                  validate: {
+                    checkPassword: (value) =>
+                      value !== correctUser.password
+                        ? '※正しいパスワードを入力してください。'
+                        : undefined,
+                  },
+                  // pattern: {
+                  //   value:
+                  //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[._\/#&%=\\~\-+*@()<>\\[\\]{}])[a-zA-Z\d._\/#&%=\\~\-+*@()<>\\[\\]{}]{8,}$/,
+
+                  //   message: '※正しいパスワードを入力してください。',
+                  // },
+                })}
+              />
+            </div>
+          </label>
+          {errors.password && (
+            <p className="text-red">{errors.password.message}</p>
+          )}
+        </div>
+        <OrangeButton
+          label="ログイン"
+          className="mt-10 mb-4 w-48 rounded-none"
+          type="submit"
+          // エラー確認用（削除要）
+          // onClick={check}
+          //
+        />
+        <Link href="/remind" className=" text-blue">
+          パスワードを忘れた
+        </Link>
+        <Link href="/admin/login" className="text-blue pt-16">
+          管理者ログイン
+        </Link>
+      </div>
+    </form>
   );
 };
 

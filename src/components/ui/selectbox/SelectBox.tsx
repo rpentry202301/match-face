@@ -1,12 +1,14 @@
 "use client";
 
 import { ComponentProps } from "react";
+import { twMerge } from "tailwind-merge";
 
 const SelectBox = ({ optionVal, ...props }: Props) => {
-  const style = "border-2 border-light-gray" + " " + props.className;
+  const baseStyle = "border-2 border-light-gray cursor-pointer";
+  const mergeStyle = twMerge(baseStyle, props.className);
 
   return (
-    <select {...props} className={style}>
+    <select {...props} className={mergeStyle}>
       {optionVal ? (
         optionVal.map((val, index) => (
           <option key={index} value={val} data-testid={`${props.id}:${val}`}>

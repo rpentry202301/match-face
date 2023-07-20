@@ -1,480 +1,224 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AnswerContentコンポーネントのテスト スナップショットテスト 1`] = `
-{
-  "asFragment": [Function],
-  "baseElement": <body>
-    <div>
-      <div
-        class="w-1/2 py-5"
-      >
-        <div
-          class="flex justify-between items-center my-3"
-        >
-          <h1
-            class="text-2xl"
-          >
-            回答の確認
-          </h1>
-          <p>
-            回答日時：
-            2023/7/6
-          </p>
-        </div>
-        <hr
-          class="border border-black"
-        />
-        <h2
-          class="text-xl my-2"
-        >
-          案件名：
-          案件のタイトルが入ります
-        </h2>
-        <p
-          class="text-lg"
-        >
-          案件の詳細内容が入ります。テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-        </p>
-        <div
-          class="py-5"
-        >
-          <h3
-            class="text-xl"
-          >
-            Q
-            1
-            ：
-            質問のタイトルが入ります
-          </h3>
-          <p
-            class="mt-2 mb-4"
-          >
-            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-          </p>
-          <div
-            class="border border-gray p-3 mt-2 rounded-md shadow-md"
-          >
-            <h3
-              class="mb-2 text-xl"
-            >
-              あなたの回答
-            </h3>
-            回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。
-          </div>
-          <div
-            class="my-7 p-3 rounded-md bg-gray-200"
-          >
-            <h3
-              class="text-xl mb-2 "
-            >
-              模範解答
-            </h3>
-            模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。
-          </div>
-        </div>
-        <div
-          class="py-5"
-        >
-          <h3
-            class="text-xl"
-          >
-            Q
-            2
-            ：
-            質問のタイトルが入ります
-          </h3>
-          <p
-            class="mt-2 mb-4"
-          >
-            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-          </p>
-          <ul>
-            <li>
-              ・
-              選択肢A
-            </li>
-            <li>
-              ・
-              選択肢B
-            </li>
-            <li>
-              ・
-              選択肢C
-            </li>
-            <li>
-              ・
-              選択肢D
-            </li>
-          </ul>
-          <div
-            class="border border-gray p-3 mt-5 rounded-md shadow-md"
-          >
-            <h3
-              class="mb-2 text-xl"
-            >
-              あなたの回答
-            </h3>
-            選択肢A
-          </div>
-          <div
-            class="my-7 p-3 rounded-md bg-gray-200"
-          >
-            <h3
-              class="text-xl mb-2 "
-            >
-              模範解答
-            </h3>
-            模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。
-          </div>
-        </div>
-        <div
-          class="py-5"
-        >
-          <h3
-            class="text-xl"
-          >
-            Q
-            3
-            ：
-            質問のタイトルが入ります
-          </h3>
-          <p
-            class="mt-2 mb-4"
-          >
-            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-          </p>
-          <div
-            class="border border-gray p-3 mt-2 rounded-md shadow-md"
-          >
-            <h3
-              class="mb-2 text-xl"
-            >
-              あなたの回答
-            </h3>
-            回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。
-          </div>
-          <div
-            class="my-7 p-3 rounded-md bg-gray-200"
-          >
-            <h3
-              class="text-xl mb-2 "
-            >
-              模範解答
-            </h3>
-            模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。
-          </div>
-        </div>
-        <h3
-          class="text-xl mb-3"
-        >
-          管理者太郎
-          からのコメント
-        </h3>
-        <div
-          class="border border-black rounded-md p-3 flex justify-between "
-        >
-          <div
-            class="w-1/6 flex justify-center items-center"
-          >
-            <img
-              alt="コメントしたユーザーのアイコン"
-              data-nimg="1"
-              decoding="async"
-              height="70"
-              loading="lazy"
-              src="/_next/image?url=%2Ficon%2Fhuman_icon.png&w=256&q=75"
-              srcset="/_next/image?url=%2Ficon%2Fhuman_icon.png&w=96&q=75 1x, /_next/image?url=%2Ficon%2Fhuman_icon.png&w=256&q=75 2x"
-              style="color: transparent;"
-              width="70"
-            />
-          </div>
-          <div
-            class="w-5/6"
-          >
-            コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。
-          </div>
-        </div>
-        <div
-          class="flex justify-around my-20"
-        >
-          <div>
-            <button
-              class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white p-2 w-40 h-auto text-lg border rounded-none"
-            >
-              質問一覧へ
-            </button>
-          </div>
-          <div>
-            <button
-              class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white p-2 w-40 h-auto text-lg border rounded-none"
-            >
-              回答履歴一覧へ
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>,
-  "container": <div>
+exports[`スナップショットテスト 1`] = `
+<div>
+  <div
+    class="w-1/2 py-5"
+  >
     <div
-      class="w-1/2 py-5"
+      class="flex justify-between items-center my-3"
     >
-      <div
-        class="flex justify-between items-center my-3"
+      <h1
+        class="text-2xl"
       >
-        <h1
-          class="text-2xl"
-        >
-          回答の確認
-        </h1>
-        <p>
-          回答日時：
-          2023/7/6
-        </p>
-      </div>
-      <hr
-        class="border border-black"
-      />
-      <h2
-        class="text-xl my-2"
+        回答の確認
+      </h1>
+      <p>
+        回答日時:
+        2023/7/6
+      </p>
+    </div>
+    <hr
+      class="border border-black"
+    />
+    <h2
+      class="text-xl my-2"
+    >
+      案件名：
+      案件のタイトルが入ります
+    </h2>
+    <p
+      class="text-lg"
+    >
+      案件の詳細内容が入ります。テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+    </p>
+    <div
+      class="py-5"
+    >
+      <h3
+        class="text-xl"
       >
-        案件名：
-        案件のタイトルが入ります
-      </h2>
+        Q
+        1
+        :
+        質問のタイトルが入ります
+      </h3>
       <p
-        class="text-lg"
+        class="mt-2 mb-4"
+        id="content-1"
       >
-        案件の詳細内容が入ります。テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+        テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
       </p>
       <div
-        class="py-5"
+        class="border border-gray p-3 mt-2 rounded-md shadow-md"
+        id="answer-1"
       >
         <h3
-          class="text-xl"
+          class="mb-2 text-xl"
         >
-          Q
-          1
-          ：
-          質問のタイトルが入ります
+          あなたの回答
         </h3>
-        <p
-          class="mt-2 mb-4"
-        >
-          テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-        </p>
-        <div
-          class="border border-gray p-3 mt-2 rounded-md shadow-md"
-        >
-          <h3
-            class="mb-2 text-xl"
-          >
-            あなたの回答
-          </h3>
-          回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。
-        </div>
-        <div
-          class="my-7 p-3 rounded-md bg-gray-200"
-        >
-          <h3
-            class="text-xl mb-2 "
-          >
-            模範解答
-          </h3>
-          模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。
-        </div>
+        回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。
       </div>
       <div
-        class="py-5"
+        class="my-7 p-3 rounded-md bg-gray-200"
+        id="modelAnswer"
       >
         <h3
-          class="text-xl"
+          class="text-xl mb-2 "
         >
-          Q
-          2
-          ：
-          質問のタイトルが入ります
+          模範解答
         </h3>
-        <p
-          class="mt-2 mb-4"
-        >
-          テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-        </p>
-        <ul>
-          <li>
-            ・
-            選択肢A
-          </li>
-          <li>
-            ・
-            選択肢B
-          </li>
-          <li>
-            ・
-            選択肢C
-          </li>
-          <li>
-            ・
-            選択肢D
-          </li>
-        </ul>
-        <div
-          class="border border-gray p-3 mt-5 rounded-md shadow-md"
-        >
-          <h3
-            class="mb-2 text-xl"
-          >
-            あなたの回答
-          </h3>
-          選択肢A
-        </div>
-        <div
-          class="my-7 p-3 rounded-md bg-gray-200"
-        >
-          <h3
-            class="text-xl mb-2 "
-          >
-            模範解答
-          </h3>
-          模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。
-        </div>
-      </div>
-      <div
-        class="py-5"
-      >
-        <h3
-          class="text-xl"
-        >
-          Q
-          3
-          ：
-          質問のタイトルが入ります
-        </h3>
-        <p
-          class="mt-2 mb-4"
-        >
-          テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-        </p>
-        <div
-          class="border border-gray p-3 mt-2 rounded-md shadow-md"
-        >
-          <h3
-            class="mb-2 text-xl"
-          >
-            あなたの回答
-          </h3>
-          回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。
-        </div>
-        <div
-          class="my-7 p-3 rounded-md bg-gray-200"
-        >
-          <h3
-            class="text-xl mb-2 "
-          >
-            模範解答
-          </h3>
-          模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。
-        </div>
-      </div>
-      <h3
-        class="text-xl mb-3"
-      >
-        管理者太郎
-        からのコメント
-      </h3>
-      <div
-        class="border border-black rounded-md p-3 flex justify-between "
-      >
-        <div
-          class="w-1/6 flex justify-center items-center"
-        >
-          <img
-            alt="コメントしたユーザーのアイコン"
-            data-nimg="1"
-            decoding="async"
-            height="70"
-            loading="lazy"
-            src="/_next/image?url=%2Ficon%2Fhuman_icon.png&w=256&q=75"
-            srcset="/_next/image?url=%2Ficon%2Fhuman_icon.png&w=96&q=75 1x, /_next/image?url=%2Ficon%2Fhuman_icon.png&w=256&q=75 2x"
-            style="color: transparent;"
-            width="70"
-          />
-        </div>
-        <div
-          class="w-5/6"
-        >
-          コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。
-        </div>
-      </div>
-      <div
-        class="flex justify-around my-20"
-      >
-        <div>
-          <button
-            class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white p-2 w-40 h-auto text-lg border rounded-none"
-          >
-            質問一覧へ
-          </button>
-        </div>
-        <div>
-          <button
-            class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white p-2 w-40 h-auto text-lg border rounded-none"
-          >
-            回答履歴一覧へ
-          </button>
-        </div>
+        模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。
       </div>
     </div>
-  </div>,
-  "debug": [Function],
-  "findAllByAltText": [Function],
-  "findAllByDisplayValue": [Function],
-  "findAllByLabelText": [Function],
-  "findAllByPlaceholderText": [Function],
-  "findAllByRole": [Function],
-  "findAllByTestId": [Function],
-  "findAllByText": [Function],
-  "findAllByTitle": [Function],
-  "findByAltText": [Function],
-  "findByDisplayValue": [Function],
-  "findByLabelText": [Function],
-  "findByPlaceholderText": [Function],
-  "findByRole": [Function],
-  "findByTestId": [Function],
-  "findByText": [Function],
-  "findByTitle": [Function],
-  "getAllByAltText": [Function],
-  "getAllByDisplayValue": [Function],
-  "getAllByLabelText": [Function],
-  "getAllByPlaceholderText": [Function],
-  "getAllByRole": [Function],
-  "getAllByTestId": [Function],
-  "getAllByText": [Function],
-  "getAllByTitle": [Function],
-  "getByAltText": [Function],
-  "getByDisplayValue": [Function],
-  "getByLabelText": [Function],
-  "getByPlaceholderText": [Function],
-  "getByRole": [Function],
-  "getByTestId": [Function],
-  "getByText": [Function],
-  "getByTitle": [Function],
-  "queryAllByAltText": [Function],
-  "queryAllByDisplayValue": [Function],
-  "queryAllByLabelText": [Function],
-  "queryAllByPlaceholderText": [Function],
-  "queryAllByRole": [Function],
-  "queryAllByTestId": [Function],
-  "queryAllByText": [Function],
-  "queryAllByTitle": [Function],
-  "queryByAltText": [Function],
-  "queryByDisplayValue": [Function],
-  "queryByLabelText": [Function],
-  "queryByPlaceholderText": [Function],
-  "queryByRole": [Function],
-  "queryByTestId": [Function],
-  "queryByText": [Function],
-  "queryByTitle": [Function],
-  "rerender": [Function],
-  "unmount": [Function],
-}
+    <div
+      class="py-5"
+    >
+      <h3
+        class="text-xl"
+      >
+        Q
+        2
+        :
+        質問のタイトルが入ります
+      </h3>
+      <p
+        class="mt-2 mb-4"
+        id="content-2"
+      >
+        テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+      </p>
+      <ul>
+        <li>
+          ・
+          選択肢A
+        </li>
+        <li>
+          ・
+          選択肢B
+        </li>
+        <li>
+          ・
+          選択肢C
+        </li>
+        <li>
+          ・
+          選択肢D
+        </li>
+      </ul>
+      <div
+        class="border border-gray p-3 mt-5 rounded-md shadow-md"
+        id="answer-2"
+      >
+        <h3
+          class="mb-2 text-xl"
+        >
+          あなたの回答
+        </h3>
+        選択肢A
+      </div>
+      <div
+        class="my-7 p-3 rounded-md bg-gray-200"
+        id="modelAnswer"
+      >
+        <h3
+          class="text-xl mb-2 "
+        >
+          模範解答
+        </h3>
+        模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。
+      </div>
+    </div>
+    <div
+      class="py-5"
+    >
+      <h3
+        class="text-xl"
+      >
+        Q
+        3
+        :
+        質問のタイトルが入ります
+      </h3>
+      <p
+        class="mt-2 mb-4"
+        id="content-3"
+      >
+        テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+      </p>
+      <div
+        class="border border-gray p-3 mt-2 rounded-md shadow-md"
+        id="answer-3"
+      >
+        <h3
+          class="mb-2 text-xl"
+        >
+          あなたの回答
+        </h3>
+        回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。
+      </div>
+      <div
+        class="my-7 p-3 rounded-md bg-gray-200"
+        id="modelAnswer"
+      >
+        <h3
+          class="text-xl mb-2 "
+        >
+          模範解答
+        </h3>
+        模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。模範解答が入ります。
+      </div>
+    </div>
+    <h3
+      class="text-xl mb-3"
+    >
+      管理者太郎
+      からのコメント
+    </h3>
+    <div
+      class="border border-black rounded-md p-3 flex justify-between "
+    >
+      <div
+        class="w-1/6 flex justify-center items-center"
+      >
+        <img
+          alt="コメントしたユーザーのアイコン"
+          data-nimg="1"
+          decoding="async"
+          fetchpriority="high"
+          height="70"
+          src="/_next/image?url=%2Ficon%2Fhuman_icon.png&w=256&q=75"
+          srcset="/_next/image?url=%2Ficon%2Fhuman_icon.png&w=96&q=75 1x, /_next/image?url=%2Ficon%2Fhuman_icon.png&w=256&q=75 2x"
+          style="color: transparent;"
+          width="70"
+        />
+      </div>
+      <div
+        class="w-5/6"
+        id="comment"
+      >
+        コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。コメント内容が入ります。
+      </div>
+    </div>
+    <div
+      class="flex justify-around my-20"
+    >
+      <div>
+        <button
+          class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white p-2 w-40 h-auto text-lg border rounded-none"
+        >
+          質問一覧へ
+        </button>
+      </div>
+      <div>
+        <button
+          class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white p-2 w-40 h-auto text-lg border rounded-none"
+        >
+          回答履歴一覧へ
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 `;
