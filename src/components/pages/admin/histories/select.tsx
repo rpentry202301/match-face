@@ -4,11 +4,13 @@ import WhiteButton from "@/components/ui/button/WhiteButton"
 import { twMerge } from "tailwind-merge";
 import { Dispatch, FormEvent, SetStateAction } from "react";
 import { useState } from "react";
-import { AnswerRequests, Departments, Projects, Skills } from "@/types/admin/histories/admin_histories";
+import { AnswerRequests, Departments, Projects, SelectHistoryAction, Skills } from "@/types/admin/histories/admin_histories";
+import { useSelectHistory, useSelectHistoryDispatch } from "@/hooks/store/context/historiesContext";
 
 
 const HistoriesSelect = ({className,projects,answer_requests,departments,skills}:{className:string,projects:Projects,answer_requests:AnswerRequests,departments:Departments,skills:Skills}) => {
     const [formData,setFormData] = useState<{month:string,department:string,skills:string[]}>({month:"",department:"",skills:[]})
+    const dispatch:Dispatch<SelectHistoryAction> = useSelectHistoryDispatch()
     const style = twMerge(
         "w-[75vw] ml-[12.5vw] border-2 text-center my-[5vh] py-[5vh]",
         className
@@ -28,7 +30,7 @@ const HistoriesSelect = ({className,projects,answer_requests,departments,skills}
 
     return (
         <section  className={style}>
-            <form data-testid="form" action="submit" onSubmit={(e)=>{handleSubmit(e,formData)}}>
+            <form data-testid="form" action="submit" onSubmit={(e)=>{handleSubmit(e,formData,dispatch)}}>
                 <div className="mb-[2vh]">
                     <label htmlFor="month">回答月：</label>
                     <select data-testid="month" name="month" id="month" className="border-2" onChange={(e)=>setFormData({...formData,month:e.target.value})}>
@@ -92,8 +94,7 @@ export function setSkill(
   setFormData({ ...formData, skills: selectSkills });
 }
 
-export function handleSubmit(e:FormEvent<HTMLFormElement>,formData:{month:string,department:string,skills:string[]}){
+export function handleSubmit(e:FormEvent<HTMLFormElement>,formData:{month:string,department:string,skills:string[]},dispatch:Dispatch<SelectHistoryAction>){
     e.preventDefault()
-    // 一旦絞り込み条件をformDataに格納
-    console.log(formData)
+    dispatch({type:'select',payload:formData})
 }

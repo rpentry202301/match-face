@@ -12,7 +12,7 @@ export type AppRouterContextProviderMockProps = {
 export const AppRouterContextProviderMock = ({
   router,
   children,
-}: AppRouterContextProviderMockProps): JSX.Element => {
+}: AppRouterContextProviderMockProps): React.ReactElement => {
   const mockedRouter: AppRouterInstance = {
     back: jest.fn(),
     forward: jest.fn(),

@@ -1,3 +1,5 @@
+import { HistoriesProvider, SelectHistoryProvider } from "@/hooks/store/context/historiesContext";
+
 export const metadata = {
   title: "回答履歴",
   description: "一般ユーザー回答履歴ページ",
@@ -6,7 +8,15 @@ export const metadata = {
 export default function HistoriesLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactElement;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <SelectHistoryProvider>
+      <HistoriesProvider>
+        {children}
+      </HistoriesProvider>
+      </SelectHistoryProvider>
+    </>
+  );
 }
