@@ -35,6 +35,7 @@ const QuestionSelectModal = () => {
                       value={search}
                       onChange={(e) => setSearch(e.target.value)}
                       className="border-light-gray border-2 text-xs p-2 lg:w-96 sm:w-80 w-72"
+                      data-testid="search-box"
                     />
                     <WhiteButton label="検索" className="text-xs ml-4 w-16" />
                   </div>

@@ -14,16 +14,15 @@ const EditQuestionPage = () => {
     answerEditData[0].questions
   );
   const [newID, setNewId] = useState<number>(editData.length + 1);
+  const [errMsg, setErrMsg] = useState("");
 
   const addWriteQuestion = () => {
     setEditData([
       ...editData,
       {
         question_id: newID,
-        question:
-          "問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１",
-        answer_example:
-          "問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例問題文１の回答例",
+        question: "",
+        answer_example: "",
         answer: "",
         choices: [],
         select: false,
@@ -37,11 +36,10 @@ const EditQuestionPage = () => {
       ...editData,
       {
         question_id: newID,
-        question:
-          "問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３",
+        question: "",
         answer_example: "",
-        answer: "選択肢2",
-        choices: ["選択肢1", "選択肢2", "選択肢3", "選択肢4"],
+        answer: "",
+        choices: ["", "", "", ""],
         select: true,
       },
     ]);
@@ -55,7 +53,27 @@ const EditQuestionPage = () => {
   };
 
   const sendData = () => {
-    console.log(editData);
+    editData.map((data) => {
+      if (data.select === false) {
+        if (data.answer_example === "" || data.question === "") {
+          setErrMsg("未入力の項目があります");
+          return;
+        }
+      } else {
+        if (
+          data.answer === "" ||
+          data.choices.includes("") ||
+          data.question === ""
+        ) {
+          setErrMsg("未入力の項目があります");
+          return;
+        }
+      }
+    });
+    if (errMsg !== "") {
+      return;
+    }
+    // console.log(editData);
   };
 
   const handleQuestionChange = (
@@ -132,6 +150,7 @@ const EditQuestionPage = () => {
                 className="border-deep-gray border  p-1 mt-2"
                 rows={5}
                 onChange={(e) => handleQuestionChange(e, index)}
+                data-testid={`question_${data.question_id}`}
               ></textarea>
               <label htmlFor="answer_ex" className="my-3 text-2xl">
                 回答例
@@ -143,6 +162,7 @@ const EditQuestionPage = () => {
                 className="border-deep-gray border p-1"
                 rows={5}
                 onChange={(e) => handleAnswerExampleChange(e, index)}
+                data-testid={`answer_ex_${data.question_id}`}
               ></textarea>
               <WhiteButton
                 label="削除"
@@ -170,19 +190,23 @@ const EditQuestionPage = () => {
                 className="border-deep-gray border p-1 mt-2"
                 rows={5}
                 onChange={(e) => handleQuestionChange(e, index)}
+                data-testid={`question_${data.question_id}`}
               ></textarea>
               {data.choices?.map((select, choiceIndex) => {
                 return (
                   <div key={choiceIndex} className="flex mt-5">
-                    <label htmlFor={`select${index}`}>選択肢{index + 1}:</label>
+                    <label htmlFor={`select${choiceIndex}`}>
+                      選択肢{choiceIndex + 1}:
+                    </label>
                     <Input
-                      id={`select${index}`}
+                      id={`select${choiceIndex}`}
                       value={select}
-                      key={index}
+                      key={choiceIndex}
                       className="border-deep-gray pl-1"
                       onChange={(e) =>
                         handleChoiceChange(e, index, choiceIndex)
                       }
+                      data-testid={`choice_${choiceIndex + 1}`}
                     />
                   </div>
                 );
@@ -196,6 +220,7 @@ const EditQuestionPage = () => {
                   defaultValue={data.answer}
                   onChange={(e) => handleAnswerChange(e, index)}
                 >
+                  <option value="">選択してください</option>
                   {data.choices?.map((select, index) => {
                     return (
                       <option
@@ -233,6 +258,9 @@ const EditQuestionPage = () => {
             data-testid="addSelectButton"
           />
         </div>
+        <p className="text-center text-red" data-testid="errMsg">
+          {errMsg}
+        </p>
         <div className="flex m-3">
           <Link href={`/admin/handle-question`} data-testid="backList">
             <OrangeButton
@@ -244,6 +272,7 @@ const EditQuestionPage = () => {
             label="保存する"
             className="m-10 rounded-none py-5 flex items-center justify-center"
             onClick={sendData}
+            data-testid="sendButton"
           />
         </div>
       </div>

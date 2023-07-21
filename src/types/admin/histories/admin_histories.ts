@@ -73,3 +73,14 @@ export type ProjectUserAnswer = {
     answer_status: boolean,
     user_id:number
 }[]
+
+export type AnswerRequestQuestions = {
+    id: number;
+    question_id: number;
+    answer_request_id: number;
+    is_answered: boolean;
+    created_user: string;
+    created_at: string;
+    update_user: string;
+    update_at: string;
+}[]

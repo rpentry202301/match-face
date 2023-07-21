@@ -83,6 +83,7 @@ exports[`質問・回答例作成画面テスト スナップショット 1`] = 
           <div>
             <input
               class="border border-deep-gray pl-1 w-96"
+              data-testid="projectName"
               id="project_name"
               name="project_name"
             />
@@ -96,6 +97,7 @@ exports[`質問・回答例作成画面テスト スナップショット 1`] = 
         </label>
         <textarea
           class="border-deep-gray border p-1 w-full"
+          data-testid="projectDetail"
           id="project_detail"
           name="project_detail"
           rows="5"
@@ -121,6 +123,10 @@ exports[`質問・回答例作成画面テスト スナップショット 1`] = 
           選択質問追加
         </button>
       </div>
+      <p
+        class="text-center text-red"
+        data-testid="errMsg"
+      />
       <div
         class="flex m-3"
       >
@@ -139,6 +145,7 @@ exports[`質問・回答例作成画面テスト スナップショット 1`] = 
         <div>
           <button
             class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white p-2 w-40 h-auto text-lg m-10 rounded-none py-5 flex items-center justify-center"
+            data-testid="sendButton"
           >
             保存する
           </button>

@@ -1,8 +1,15 @@
 'use client'
 import { userTable } from "@/const/userTable"
 import CheckBox from "@/components/ui/checkbox/CheckBox"
+import { ChangeEvent } from "react"
 
-const UserList = () => {
+const UserList = ({
+  checkedValues,
+  onChange
+}: {
+  checkedValues: string[],
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
+}) => {
   const tableDefaultClassName = "border-2 border-deep-gray px-4 py-2 text-center"
   return (
     <div className="my-10">
@@ -20,7 +27,11 @@ const UserList = () => {
           {userTable.map((user) => (
             <tr key={`userId_${user.id}`}>
               <td className={`${tableDefaultClassName}`}>
-                <CheckBox />
+                <CheckBox
+                  value={user.user_name}
+                  onChange={onChange}
+                  checked={checkedValues.includes(user.user_name)}
+                />
               </td>
               <td className={`${tableDefaultClassName}`}>{user.entry_date}</td>
               <td className={`${tableDefaultClassName}`}>{user.department}</td>

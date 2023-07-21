@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input.test.tsx スナップショット 1`] = `
+<div>
+  <div>
+    <input
+      class="border border-black"
+      id=""
+    />
+  </div>
+</div>
+`;
