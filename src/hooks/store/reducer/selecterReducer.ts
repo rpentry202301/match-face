@@ -1,6 +1,6 @@
 import { SelectReducerAction } from "@/types/admin/tasks/register/types";
 
-export const userSelectReducer = (
+export const selecterReducer = (
   state: string[],
   action: SelectReducerAction
 ): string[] => {

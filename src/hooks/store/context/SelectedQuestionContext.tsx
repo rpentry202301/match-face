@@ -7,7 +7,7 @@ import {
   useContext,
   useReducer,
 } from "react";
-import { selectedQuestionReducer } from "../reducer/selectedQuestionReducer";
+import { selecterReducer } from "../reducer/selecterReducer";
 import { SelectReducerAction } from "@/types/admin/tasks/register/types";
 
 const SelectedQuestionContext = createContext<
@@ -16,7 +16,7 @@ const SelectedQuestionContext = createContext<
 
 export const SelectedQuestionProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer<Reducer<string[], SelectReducerAction>>(
-    selectedQuestionReducer,
+    selecterReducer,
     []
   );
   return (
@@ -26,9 +26,9 @@ export const SelectedQuestionProvider = ({ children }: { children: ReactNode }) 
   );
 };
 
-export const useSelectQuestion = () => {
+export const useSelectedQuestion = () => {
   const context = useContext(SelectedQuestionContext);
   if (context === undefined)
-    throw new Error("Function 'useUserSelect' must be used in Provider.");
+    throw new Error("Function 'useSelectedQuestion' must be used in Provider.");
   return context;
 };

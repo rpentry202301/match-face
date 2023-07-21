@@ -7,7 +7,7 @@ import {
   useContext,
   useReducer,
 } from "react";
-import { userSelectReducer } from "../reducer/userSelectReducer";
+import { selecterReducer } from "../reducer/selecterReducer";
 import { SelectReducerAction } from "@/types/admin/tasks/register/types";
 
 const UserSelectContext = createContext<
@@ -16,7 +16,7 @@ const UserSelectContext = createContext<
 
 export const UserSelectProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer<Reducer<string[], SelectReducerAction>>(
-    userSelectReducer,
+    selecterReducer,
     []
   );
   return (

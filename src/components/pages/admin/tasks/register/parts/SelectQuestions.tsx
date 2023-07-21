@@ -1,6 +1,7 @@
 import Input from "@/components/ui/Input";
 import WhiteButton from "@/components/ui/button/WhiteButton";
 import QuestionSelectModal from "../QuestionSelectModal ";
+import QuestionInput from "./QuestionInput";
 
 const SelectQuestions = () => {
   return (
@@ -13,11 +14,12 @@ const SelectQuestions = () => {
       </div>
       <div>
         {/* Todo: 別コンポーネントに<Input/>を渡す("use clent"使用のため) */}
-        <Input
+        {/* <Input
           id="search"
           className="border-2 border-light-gray text-xs p-1 w-full"
           readOnly
-        />
+        /> */}
+        <QuestionInput />
       </div>
     </div>
   );
