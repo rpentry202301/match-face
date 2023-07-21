@@ -27,7 +27,7 @@ const LoginPage = () => {
   } = useForm<LoginForm>({
     // 複数のエラーを保存する設定
     criteriaMode: 'all',
-    // onSubmit時のみバリデーションをかける設定
+    // 2回目以降のバリデーションをかけるタイミングの設定。デフォルトは'onChange'。
     reValidateMode: 'onSubmit',
   });
 

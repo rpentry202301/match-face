@@ -24,7 +24,7 @@ const ChangePasswordPage = () => {
     formState: { errors, isValid },
   } = useForm<NewPasswords>({
     criteriaMode: 'all',
-    reValidateMode: 'onChange',
+    reValidateMode: 'onSubmit',
   });
 
   const onSubmit = (data: NewPasswords) => {
@@ -40,15 +40,18 @@ const ChangePasswordPage = () => {
       className="flex flex-col items-center justify-center h-screen"
     >
       <SiteTitle className="m-8" />
-      <p className="font-semibold underline">
-        英小文字・数字・記号を含む８文字以上で設定して下さい。
-      </p>
-      <p>※半角の英小文字・英大文字・数字・記号が使用できます。</p>
-      <br />
-      <p>
-        使用可能記号&emsp;&#46; &#95; &#47; &#35; &amp; &#37; &#61; &#126; &#45;
-        &#43; &#42; &#64; &#40; &#41; &lt; &gt; &#91; &#93; &#123; &#125;
-      </p>
+      <div className="flex flex-col items-center bg-light-gray p-4">
+        <p className="font-semibold underline">
+          英小文字・数字・記号を１文字以上含む８文字以上で設定して下さい。
+        </p>
+        <p>※半角の英小文字・英大文字・数字・記号が使用できます。</p>
+        <br />
+        <p>
+          使用可能記号&emsp;&#46; &#95; &#47; &#35; &amp; &#37; &#61; &#126;
+          &#45; &#43; &#42; &#64; &#40; &#41; &lt; &gt; &#91; &#93; &#123;
+          &#125;
+        </p>
+      </div>
       <br />
       <div className="mb-2">
         <label htmlFor="newPassword" className="">
