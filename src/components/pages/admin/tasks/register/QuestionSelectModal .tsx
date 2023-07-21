@@ -9,6 +9,7 @@ import { skills } from "@/const/admin_histories"
 import { departments } from "@/const/tasks"
 import CheckBox from "@/components/ui/checkbox/CheckBox"
 import QuestionList from "./parts/QuestionList"
+import { useSelectedQuestion } from "@/hooks/store/context/SelectedQuestionContext"
 
 // 実際にレンダリングされるモーダルは以下に記述
 const QuestionSelectModal = () => {
@@ -36,7 +37,13 @@ const QuestionSelectModal = () => {
     skill: initSkills,
   })
 
-  const open = () => setIsOpened(true)
+  const [ selectedQuestion, selectedQuestionDispatch ] = useSelectedQuestion()
+  const [ checkedValues, setCheckedValue ] = useState<string[]>(selectedQuestion)
+
+  const open = () => {
+    setCheckedValue(selectedQuestion)
+    setIsOpened(true)
+  }
   const close = () => setIsOpened(false)
 
   const handleChangeCheckBox = (e: ChangeEvent<HTMLInputElement>, name: "department" | "skill") => {
@@ -48,6 +55,21 @@ const QuestionSelectModal = () => {
       return newData
     })
     setFormData({ ...formData, [name]: newData})
+  }
+
+  const handleChangeQuestionList = (e: ChangeEvent<HTMLInputElement>) => {
+    if (checkedValues.includes(e.target.value)) {
+      setCheckedValue(
+        checkedValues.filter((value) => value !== e.target.value)
+      )
+    } else {
+      setCheckedValue([...checkedValues, e.target.value])
+    }
+  }
+
+  const handleClose = () => {
+    selectedQuestionDispatch({ type: "select", payload: checkedValues })
+    close()
   }
 
   // Todo: APIができたら実装
@@ -116,9 +138,12 @@ const QuestionSelectModal = () => {
           </div>
         </div>
 
-        <QuestionList />
+        <QuestionList
+          checkedValues={checkedValues}
+          onChange={handleChangeQuestionList}
+        />
 
-        <OrangeButton label="選択完了" className="text-xs" onClick={close}/>
+        <OrangeButton label="選択完了" className="text-xs" onClick={handleClose}/>
       </div>
     </Modal>
   )

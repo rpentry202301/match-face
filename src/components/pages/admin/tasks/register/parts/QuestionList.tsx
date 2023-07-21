@@ -1,8 +1,15 @@
 'use client'
 import questionData from "@/const/answerEdit"
 import CheckBox from "@/components/ui/checkbox/CheckBox"
+import { ChangeEvent } from "react"
 
-const QuestionList = () => {
+const QuestionList = ({
+  checkedValues,
+  onChange
+}: {
+  checkedValues: string[],
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void
+}) => {
   const tableDefaultClassName = "border-2 border-deep-gray px-4 py-2 text-center"
   return (
     <div className="w-full mx-auto">
@@ -20,7 +27,11 @@ const QuestionList = () => {
               {projects.questions.map((questions) => (
                 <tr key={`userId_${questions.question_id}`}>
                   <td className={`${tableDefaultClassName}`}>
-                    <CheckBox />
+                    <CheckBox
+                      value={questions.question}
+                      onChange={onChange}
+                      checked={checkedValues.includes(questions.question)}
+                    />
                   </td>
                   <td className={`${tableDefaultClassName}`}>{projects.edit_date}</td>
                   <td className={`${tableDefaultClassName}`}>{projects.project_name}</td>
