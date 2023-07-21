@@ -1,3 +1,8 @@
+export type SelectHistoryAction = {
+    type:'select',
+    payload:{month:string,department:string,skills:string[]}
+}
+
 export type Projects = {
     id:number,
     name:string,

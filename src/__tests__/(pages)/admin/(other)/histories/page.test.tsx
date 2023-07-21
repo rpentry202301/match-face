@@ -5,7 +5,7 @@ import React from 'react'
 import "@testing-library/jest-dom"
 import { AppRouterContextProviderMock } from '@/__tests__/test_utils/app-router-context-provider-mock'
 import HistoriesList from '@/components/pages/admin/histories/list'
-import { HistoriesProvider } from '@/hooks/store/context/historiesContext'
+import { HistoriesProvider,SelectHistoryProvider } from '@/hooks/store/context/historiesContext'
 
 describe('管理者/履歴一覧画面のテスト',() => {
     const user = userEvent.setup()
@@ -14,9 +14,11 @@ describe('管理者/履歴一覧画面のテスト',() => {
     describe('スナップショットテスト',() => {
         it('レンダリング時',async() => {
             const view = render(
+                <SelectHistoryProvider>
                 <HistoriesProvider>
                     <HistoriesPage/>
                 </HistoriesProvider>
+                </SelectHistoryProvider>
             )
             expect(view.container).toMatchSnapshot()
         })
@@ -24,11 +26,13 @@ describe('管理者/履歴一覧画面のテスト',() => {
     describe('リストテスト',()=>{
         beforeEach(()=>{
             render(
+                <SelectHistoryProvider>
                 <HistoriesProvider>
                     <AppRouterContextProviderMock router={{ push }}>
                         <HistoriesPage />
                     </AppRouterContextProviderMock>
                 </HistoriesProvider>
+                </SelectHistoryProvider>
             );
         })
         it('オープンボタンを押すとクローズボタンとユーザーリストが表示される',async()=>{
@@ -53,11 +57,13 @@ describe('管理者/履歴一覧画面のテスト',() => {
     describe('絞り込みテスト',()=>{
         beforeEach(()=>{
             render(
+                <SelectHistoryProvider>
                 <HistoriesProvider>
                     <AppRouterContextProviderMock router={{ push }}>
                         <HistoriesPage />
                     </AppRouterContextProviderMock>
                 </HistoriesProvider>
+                </SelectHistoryProvider>
             );
         })
         it('回答月の選択',async()=>{
@@ -103,7 +109,7 @@ describe('管理者/履歴一覧画面のテスト',() => {
             await user.click(form)
             expect(consoleMock).toHaveBeenCalled()
             expect(consoleMock).toHaveBeenCalledTimes(1)
-            expect(consoleMock).toHaveBeenCalledWith({ month: '2023-07', department: 'Java', skills: [ 'TypeScript' ] })
+            expect(consoleMock).toHaveBeenCalledWith("HistoryListコンポーネントfetch用絞り込みデータ",{ month: '2023-07', department: 'Java', skills: [ 'TypeScript' ] })
         })
     })
     describe('HistoriesListコンポーネントテスト',()=>{
@@ -127,9 +133,11 @@ describe('管理者/履歴一覧画面のテスト',() => {
         ]
         beforeEach(async()=>{
             render(
+                <SelectHistoryProvider>
                 <AppRouterContextProviderMock router={{ push }}>
                     <HistoriesList projects={projectsMock} answer_requests={answer_requestsMock} answers={answersMock} users={usersMock} answer_request_questions={answer_request_questionsMock}/>
                 </AppRouterContextProviderMock>
+                </SelectHistoryProvider>
             )
             const openButton = screen.getByTestId('open_1')
             await user.click(openButton)
