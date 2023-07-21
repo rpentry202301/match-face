@@ -1,19 +1,19 @@
 "use client";
 
 import GrayButton from "@/components/ui/button/GrayButton";
-import OrangeButton from "@/components/ui/button/OrangeButton";
-import { projects } from "@/const/histories";
 import Link from "next/link";
 import { memo } from "react";
+import type { Data } from "@/const/histories";
 
 interface HistoryListProps {
   month?: string;
   skill?: number[] | undefined;
+  selectProject?: Data;
 }
 
 const HistoryList: React.FC<HistoryListProps> = memo(
-  // 引数が渡されなかった場合のデフォルト引数
-  ({ month = "", skill = [] }) => {
+  // 引数が渡されなかった場合のデフォルト引数（=[]）
+  ({ selectProject = [] }) => {
     // timestampからyyy/mmの形にする
     // const timestamp = projects[0].answer_update_at;
     // const newDate = new Date(timestamp);
@@ -26,31 +26,6 @@ const HistoryList: React.FC<HistoryListProps> = memo(
       return str.length <= num ? str : str.slice(0, num) + "...";
     };
 
-    let selectProject;
-    if (skill.length > 0 && month) {
-      selectProject = projects.filter(
-        (project) =>
-          project.skill_id.some((skillId) => skill.includes(skillId)) &&
-          project.answer_update_at.slice(0, 7) === month
-      );
-      console.log("monthとskillが一致", selectProject);
-    } else if (skill.length > 0 && !month) {
-      // いずれかのskillが一致したもの、完全一致ではない
-      selectProject = projects.filter((project) =>
-        project.skill_id.some((skillId) => skill.includes(skillId))
-      );
-      console.log("skill絞り込みプロジェクト", selectProject);
-    } else if (month && skill.length == 0) {
-      selectProject = projects.filter(
-        (project) => project.answer_update_at.slice(0, 7) === month
-      );
-      console.log("month絞り込みプロジェクト", selectProject);
-    } else {
-      selectProject = projects.filter((project) => project.id !== 0);
-      console.log("全プロジェクト", selectProject);
-    }
-
-    console.log("子レンダリング");
     return (
       <div>
         <table className="table-auto border border-collapse my-20 w-[80vw]">

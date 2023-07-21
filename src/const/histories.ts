@@ -1,4 +1,4 @@
-type Data = {
+export type Data = {
   id: number;
   comment_created_at: boolean;
   name: string;

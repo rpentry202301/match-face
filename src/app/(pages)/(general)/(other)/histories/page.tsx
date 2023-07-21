@@ -5,11 +5,13 @@ import OrangeButton from "@/components/ui/button/OrangeButton";
 import { skills } from "@/const/histories";
 import React from "react";
 import { useState } from "react";
+import { projects } from "@/const/histories";
+import type { Data } from "@/const/histories";
 
 const HistoriesPage = () => {
   const [month, setMonth] = useState("");
-  const [selectSkills, setSelectSkills] = useState([]);
-  const [isSubmit, setIsSubmit] = useState(false);
+  const [selectSkills, setSelectSkills] = useState<number[]>([]);
+  const [selectProject, setSelectProject] = useState<Data>([]);
 
   const deadlines = [
     { id: 1, value: "2023-07" },
@@ -17,12 +19,12 @@ const HistoriesPage = () => {
     { id: 3, value: "2023-03" },
   ];
 
+  // Month選択
   const handleMonthChange = (e) => {
     setMonth(e.target.value);
-    setIsSubmit(false);
   };
 
-  // 技術チェックボックスが押下された時の挙動
+  // skill選択
   const handleSkillChange = (e) => {
     const skillId = parseInt(e.target.value);
     if (e.target.checked) {
@@ -34,16 +36,37 @@ const HistoriesPage = () => {
         prevSkills.filter((id) => id !== skillId)
       );
     }
-    setIsSubmit(false);
   };
 
-  // Submitボタンが押下された時の処理
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(month, selectSkills);
-    setIsSubmit(true);
+    if (selectSkills.length > 0 && month) {
+      const newSelectProject = projects.filter(
+        (project) =>
+          project.skill_id.some((skillId) => selectSkills.includes(skillId)) &&
+          project.answer_update_at.slice(0, 7) === month
+      );
+      setSelectProject(newSelectProject);
+      console.log("monthとskillが一致", newSelectProject);
+    } else if (selectSkills.length > 0 && !month) {
+      // いずれかのskillが一致した場合。完全一致ではない
+      const newSelectProject = projects.filter((project) =>
+        project.skill_id.some((skillId) => selectSkills.includes(skillId))
+      );
+      setSelectProject(newSelectProject);
+      console.log("skill絞り込みプロジェクト", newSelectProject);
+    } else if (month && selectSkills.length == 0) {
+      const newSelectProject = projects.filter(
+        (project) => project.answer_update_at.slice(0, 7) === month
+      );
+      setSelectProject(newSelectProject);
+      console.log("month絞り込みプロジェクト", newSelectProject);
+    } else {
+      const newSelectProject = projects.filter((project) => project.id !== 0);
+      setSelectProject(newSelectProject);
+      console.log("全プロジェクト", newSelectProject);
+    }
   };
-  console.log("親レンダリング");
 
   return (
     <>
@@ -94,11 +117,11 @@ const HistoriesPage = () => {
         </section>
       </div>
       <div className="flex flex-col items-center h-screen ">
-        {isSubmit ? (
-          <HistoryList month={month} skill={selectSkills} />
-        ) : (
-          <HistoryList />
-        )}
+        <HistoryList
+          month={month}
+          skill={selectSkills}
+          selectProject={selectProject}
+        />
       </div>
     </>
   );
