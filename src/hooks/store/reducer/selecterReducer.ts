@@ -6,10 +6,6 @@ export const selecterReducer = (
 ): string[] => {
   switch (action.type) {
     case "select": {
-      if (action.payload.length === 0) {
-        console.log("payload error");
-        return state;
-      }
       state = action.payload
     }
     // エラー処理
