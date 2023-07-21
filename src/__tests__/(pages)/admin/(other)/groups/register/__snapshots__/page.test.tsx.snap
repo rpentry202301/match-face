@@ -39,7 +39,9 @@ exports[`管理者/グループ設定画面のテスト スナップショット
           <input
             class="my-3 px-2 py-1 border-2 border-gray-300"
             id="user"
+            readonly=""
             style="width: 600px;"
+            value=""
           />
         </div>
         <br />
