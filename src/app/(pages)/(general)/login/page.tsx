@@ -25,7 +25,9 @@ const LoginPage = () => {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm<LoginForm>({
+    // 複数のエラーを保存する設定
     criteriaMode: 'all',
+    // 2回目以降のバリデーションをかけるタイミングの設定。デフォルトは'onChange'。
     reValidateMode: 'onSubmit',
   });
 
@@ -46,91 +48,81 @@ const LoginPage = () => {
   //
 
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-col items-center justify-center h-screen">
-          <SiteTitle className="m-6" />
-          <div className="mt-2 mb-2">
-            <label htmlFor="userId" className="">
-              ユーザーID
-              <div>
-                <input
-                  id="userId"
-                  type="text"
-                  className=" w-96 h-10 mt-2 border border-black"
-                  {...register('userId', {
-                    required: {
-                      value: true,
-                      message: '※ユーザーIDを入力してください。',
-                    },
-                    pattern: {
-                      value: /^[0-9]+$/,
-                      message: '※半角数字で入力してください。',
-                    },
-                    validate: {
-                      checkUserId: (value) =>
-                        Number(value) !== correctUser.id
-                          ? '※正しいユーザーIDを入力してください。'
-                          : undefined,
-                    },
-                  })}
-                />
-              </div>
-            </label>
-            {errors.userId && (
-              <p className="text-red">{errors.userId.message}</p>
-            )}
-          </div>
-          <div>
-            <label htmlFor="password" className="">
-              パスワード
-              <div>
-                <input
-                  id="password"
-                  type="password"
-                  className="w-96 h-10 mt-2 border border-black"
-                  {...register('password', {
-                    required: {
-                      value: true,
-                      message: '※パスワードを入力してください。',
-                    },
-                    validate: {
-                      checkPassword: (value) =>
-                        value !== correctUser.password
-                          ? '※正しいパスワードを入力してください。'
-                          : undefined,
-                    },
-                    // pattern: {
-                    //   value:
-                    //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[._\/#&%=\\~\-+*@()<>\\[\\]{}])[a-zA-Z\d._\/#&%=\\~\-+*@()<>\\[\\]{}]{8,}$/,
-
-                    //   message: '※正しいパスワードを入力してください。',
-                    // },
-                  })}
-                />
-              </div>
-            </label>
-            {errors.password && (
-              <p className="text-red">{errors.password.message}</p>
-            )}
-          </div>
-          <OrangeButton
-            label="ログイン"
-            className="mt-10 mb-4 w-48 rounded-none"
-            type="submit"
-            // エラー確認用（削除要）
-            // onClick={check}
-            //
-          />
-          <Link href="/remind" className=" text-blue">
-            パスワードを忘れた
-          </Link>
-          <Link href="/admin/login" className="text-blue pt-16">
-            管理者ログイン
-          </Link>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="flex flex-col items-center justify-center h-screen">
+        <SiteTitle className="m-6" />
+        <div className="mt-2 mb-2">
+          <label htmlFor="userId" className="">
+            ユーザーID
+            <div>
+              <input
+                id="userId"
+                type="text"
+                className=" w-96 h-10 mt-2 border border-black"
+                {...register('userId', {
+                  required: {
+                    value: true,
+                    message: '※ユーザーIDを入力してください。',
+                  },
+                  pattern: {
+                    value: /^[0-9]+$/,
+                    message: '※半角数字で入力してください。',
+                  },
+                  validate: {
+                    checkUserId: (value) =>
+                      Number(value) !== correctUser.id
+                        ? '※正しいユーザーIDを入力してください。'
+                        : undefined,
+                  },
+                })}
+              />
+            </div>
+          </label>
+          {errors.userId && <p className="text-red">{errors.userId.message}</p>}
         </div>
-      </form>
-    </>
+        <div>
+          <label htmlFor="password" className="">
+            パスワード
+            <div>
+              <input
+                id="password"
+                type="password"
+                className="w-96 h-10 mt-2 border border-black"
+                {...register('password', {
+                  required: {
+                    value: true,
+                    message: '※パスワードを入力してください。',
+                  },
+                  validate: {
+                    checkPassword: (value) =>
+                      value !== correctUser.password
+                        ? '※正しいパスワードを入力してください。'
+                        : undefined,
+                  },
+                })}
+              />
+            </div>
+          </label>
+          {errors.password && (
+            <p className="text-red">{errors.password.message}</p>
+          )}
+        </div>
+        <OrangeButton
+          label="ログイン"
+          className="mt-10 mb-4 w-48 rounded-none"
+          type="submit"
+          // エラー確認用（削除要）
+          // onClick={check}
+          //
+        />
+        <Link href="/remind" className=" text-blue">
+          パスワードを忘れた
+        </Link>
+        <Link href="/admin/login" className="text-blue pt-16">
+          管理者ログイン
+        </Link>
+      </div>
+    </form>
   );
 };
 
