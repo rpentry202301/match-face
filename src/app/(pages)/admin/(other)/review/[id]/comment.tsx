@@ -19,7 +19,7 @@ export const CommentContent = ({ admin_id }: Props) => {
   const [error, setError] = useState(false);
 
   function checkLength() {
-    if (comment.length > 10) {
+    if (comment.length > 300) {
       setError(true);
     } else {
       setError(false);
