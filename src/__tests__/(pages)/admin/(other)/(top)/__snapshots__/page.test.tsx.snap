@@ -60,7 +60,7 @@ exports[`adminトップページのテスト スナップショット 1`] = `
             <span
               class="border-b-[1px] border-b-black shadow-md text-2xl text-left w-full font-bold"
             >
-              タスクの設定
+              タスクの一覧
             </span>
             <div
               class="flex pt-4 w-full"

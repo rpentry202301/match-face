@@ -1,4 +1,5 @@
 import SelectQuestions from "@/components/pages/admin/tasks/register/parts/SelectQuestions";
+import { SelectedQuestionProvider } from "@/hooks/store/context/SelectedQuestionContext";
 import { render } from "@testing-library/react";
 
 describe("SelectQuestions.tsx", () => {
@@ -10,7 +11,11 @@ describe("SelectQuestions.tsx", () => {
   });
 
   it("レンダリング時", () => {
-    const {container} = render(<SelectQuestions />);
+    const {container} = render(
+      <SelectedQuestionProvider>
+        <SelectQuestions />
+      </SelectedQuestionProvider>
+    );
     expect(container).toMatchSnapshot();
   });
 });
