@@ -1,16 +1,12 @@
 'use client'
 import HistoriesList from '@/components/pages/admin/histories/list';
 import HistoriesSelect from '@/components/pages/admin/histories/select'
-import { useAnswerRequests, useDepartments, useProjects, useSkills, useAnswers, useUsers, useAnswerRequestQuestions } from '@/hooks/store/context/historiesContext';
+import { projects, answer_requests, answers, users, answer_request_questions } from '@/const/admin_histories';
+import { useDepartments, useSkills } from '@/hooks/store/context/historiesContext';
 const HistoriesPage = () => {
   // データがないときのテスト用にpropsとして受け渡しているが、実際には各ページで定義
   const skills = useSkills()
   const departments = useDepartments()
-  const projects = useProjects()
-  const answer_requests = useAnswerRequests()
-  const answers = useAnswers()
-  const users = useUsers()
-  const answer_request_questions = useAnswerRequestQuestions()
 
   return (
     <>
