@@ -10,7 +10,7 @@ export const DepartmentsContext = createContext<Departments|undefined>(undefined
 // const skills = fetch('')
 // const departments = fetch('')
 
-export function HistoriesProvider({children}:{children:JSX.Element}) {
+export function HistoriesProvider({children}:{children:React.ReactElement}) {
     return (
         <SkillsContext.Provider value = {skills}>
         <DepartmentsContext.Provider value = {departments}>

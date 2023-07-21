@@ -7,7 +7,7 @@ export const metadata = {
 export default function HistoriesLayout({
   children,
 }: {
-  children: JSX.Element;
+  children: React.ReactElement;
 }) {
   return (
     <>
