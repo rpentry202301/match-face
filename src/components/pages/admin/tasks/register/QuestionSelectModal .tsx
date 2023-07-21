@@ -1,8 +1,9 @@
 'use client'
-import { useState, ReactNode } from "react"
+import { useState, ReactNode, ChangeEvent, FormEvent } from "react"
 import { createPortal } from "react-dom"
 import WhiteButton from "@/components/ui/button/WhiteButton"
-import WhiteCheckButton from "@/components/ui/button/WhiteCheckButton"
+import WhiteButtonCheckBox from "./parts/WhiteButtonCheckBox"
+// import WhiteCheckButton from "@/components/ui/button/WhiteCheckButton"
 import OrangeButton from "@/components/ui/button/OrangeButton"
 import { skills } from "@/const/admin_histories"
 import { departments } from "@/const/tasks"
@@ -14,8 +15,46 @@ const QuestionSelectModal = () => {
   const [ search, setSearch ] = useState('')
   const [ isOpened, setIsOpened ] = useState(false)
   
+  // 状態初期化用にオブジェクトを作成
+  const initDepartments = departments.map((dep) => {
+    return {
+      label: dep.name,
+      checked: false,
+    }
+  })
+
+  const initSkills = skills.map((skill) => {
+    return {
+      label: skill.skill,
+      checked: false,
+    }
+  })
+
+  const [ formData, setFormData ] = useState({
+    search: "",
+    department: initDepartments,
+    skill: initSkills,
+  })
+
   const open = () => setIsOpened(true)
   const close = () => setIsOpened(false)
+
+  const handleChangeCheckBox = (e: ChangeEvent<HTMLInputElement>, name: "department" | "skill") => {
+    const newData = formData[name];
+    newData.map((data) => {
+      if(data.label === e.target.value) {
+        data.checked = !data.checked
+      }
+      return newData
+    })
+    setFormData({ ...formData, [name]: newData})
+  }
+
+  // Todo: APIができたら実装
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    console.log(formData)
+  }
 
   return (
     <Modal buttonText="追加" isOpened={isOpened} open={open} close={close}>
@@ -25,7 +64,7 @@ const QuestionSelectModal = () => {
             <div className="text-base">
               <h2>▶️質問を選択する</h2>
             </div>
-            <div className="flex flex-col item-center justify-center px-12 py-5 border-2 w-full">
+            <form onSubmit={handleSubmit} className="flex flex-col item-center justify-center px-12 py-5 border-2 w-full">
               <div className="flex flex-col items-center gap-5">
                 <div className="flex flex-col items-center gap-5">
                   <div className="flex items-start justify-center gap-2 w-fit">
@@ -41,10 +80,15 @@ const QuestionSelectModal = () => {
                   </div>
                   <div className="flex items-start gap-4 flex-wrap">
                     {departments.map((element) => (
-                      <WhiteCheckButton
+                      <WhiteButtonCheckBox
                         key={`teck_${element.id}`}
+                        id={`teck_${element.id}`}
                         label={element.name}
+                        value={element.name}
+                        checked={formData.department.filter((data) => data.label === element.name)[0].checked}
+                        name="department"
                         className="text-xs w-16"
+                        onChange={(e) => handleChangeCheckBox(e, "department")}
                       />
                     ))}
                   </div>
@@ -53,16 +97,22 @@ const QuestionSelectModal = () => {
                     <div className="grid xl:grid-cols-7 lg:grid-cols-6 md:grid-cols-4 grid-cols-3 gap-3">
                       {skills.map((skill) => (
                         <div key={`skill_${skill.id}`} className="flex">
-                          <CheckBox id={`skill_${skill.id}`} />
+                          <CheckBox
+                            id={`skill_${skill.id}`}
+                            value={skill.skill}
+                            checked={formData.skill.filter((data) => data.label === skill.skill)[0].checked}
+                            name="skill"
+                            onChange={(e) => handleChangeCheckBox(e, "skill")}
+                          />
                           <label htmlFor={`skill_${skill.id}`} className="text-xs ml-1">{skill.skill}</label>
                         </div>
                       ))}
                     </div>
                   </div>
                 </div>
-                <OrangeButton label="絞り込み" className="text-xs" onClick={close}/>
+                <OrangeButton type="submit" label="絞り込み" className="text-xs" />
               </div>
-            </div>
+            </form>
           </div>
         </div>
 
