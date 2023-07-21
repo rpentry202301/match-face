@@ -6,8 +6,8 @@ import { User } from "@/const/review";
 import "@testing-library/jest-dom";
 
 const testData = {
-  project_id: "1",
-  user_id: "user1",
+  project_id: 1,
+  user_id: 1,
 };
 
 const currentQuestion = question.filter(

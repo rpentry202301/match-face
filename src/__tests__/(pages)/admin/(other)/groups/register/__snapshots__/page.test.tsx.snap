@@ -6,7 +6,7 @@ exports[`管理者/グループ設定画面のテスト スナップショット
     class="flex flex-col items-center justify-center h-screen"
   >
     <div
-      class="border-2 px-80 py-16"
+      class="border-2  py-12 px-12 "
     >
       <form>
         <label
@@ -16,8 +16,9 @@ exports[`管理者/グループ設定画面のテスト スナップショット
         </label>
         <div>
           <input
-            class="border border-black"
+            class="my-3 px-2 py-1 border-2 border-gray-300"
             id="group_name"
+            style="width: 600px;"
           />
         </div>
         <br />
@@ -36,8 +37,11 @@ exports[`管理者/グループ設定画面のテスト スナップショット
         </button>
         <div>
           <input
-            class="border border-black"
+            class="my-3 px-2 py-1 border-2 border-gray-300"
             id="user"
+            readonly=""
+            style="width: 600px;"
+            value=""
           />
         </div>
         <br />
@@ -48,14 +52,15 @@ exports[`管理者/グループ設定画面のテスト スナップショット
         </label>
         <div>
           <input
-            class="border border-black"
+            class="my-3 px-2 py-1 border-2 border-gray-300"
             id="group_description"
+            style="width: 600px;"
           />
         </div>
       </form>
       <br />
-      <a
-        href="#modal"
+      <div
+        class="flex flex-col items-center justify-center"
       >
         <div>
           <button
@@ -65,7 +70,7 @@ exports[`管理者/グループ設定画面のテスト スナップショット
             グループを設定する
           </button>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </div>

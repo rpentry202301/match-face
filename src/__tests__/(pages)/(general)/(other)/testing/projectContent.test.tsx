@@ -7,7 +7,7 @@ import "@testing-library/jest-dom";
 const user = userEvent.setup();
 
 const testData = {
-  id: "1",
+  id: 1,
 };
 const currentProject = project.filter((project) => project.id === testData.id);
 

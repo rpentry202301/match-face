@@ -2,6 +2,11 @@
 import { useState } from "react";
 import { entry_data } from "@/const/userList";
 
+const selectOptions = [
+  { id: 1, option: "入社日昇順" },
+  { id: 2, option: "入社日降順" },
+];
+
 const UserList = () => {
   const [sortedData, setSortedData] = useState(entry_data);
 
@@ -29,39 +34,45 @@ const UserList = () => {
       <div className="flex flex-col justify-center w-max">
         <div className="flex justify-end">
           <div>
-            <label htmlFor="sortData">ソート：</label>
+            <label htmlFor="sortOption">ソート：</label>
             <select
-              name="userList"
-              id="userList"
+              name="sortOption"
+              id="sortOption"
               className=" border border-deep-gary"
               onChange={sortOptionChange}
               defaultValue="入社日昇順"
-              value="入社日昇順"
+              data-testid="selectedOption"
             >
-              <option value="入社日昇順">入社日昇順</option>
-              <option value="入社日降順">入社日降順</option>
+              {/* <option>選択する</option> */}
+              {selectOptions.map((option) => (
+                <option key={option.id} value={option.option}>
+                  {option.option}
+                </option>
+              ))}
             </select>
           </div>
         </div>
         <table className=" w-[720px] my-1">
           <thead>
-            <tr className="border bg-deep-gray">
+            <tr className="border bg-light-gray">
               <th className=" border py-3">入社日</th>
               <th className=" border">所属</th>
               <th className=" border">状態</th>
               <th className=" border">氏名</th>
             </tr>
           </thead>
-          {sortedData.map((data: any, index: number) => (
-            <tbody key={index}>
-              <tr className="border text-center">
-                <td className=" border py-3">{data.entry_date}</td>
+          <tbody>
+            {sortedData.map((data: any) => (
+              <tr className="border text-center" key={data.id}>
+                <td className=" border py-3" data-testid="entry_date">
+                  {data.entry_date}
+                </td>
                 <td className=" border">{data.department}</td>
                 <td className=" border">{data.user_status}</td>
                 <td className=" border">{data.user_name}</td>
               </tr>
-            </tbody>
-          ))}
+            ))}
+          </tbody>
         </table>
       </div>
     </div>

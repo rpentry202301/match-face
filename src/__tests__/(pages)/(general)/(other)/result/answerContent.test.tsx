@@ -8,8 +8,8 @@ import { project } from "@/const/testing";
 const user = userEvent.setup();
 
 const testData = {
-  user_id: "user1",
-  project_id: "1",
+  user_id: 1,
+  project_id: 1,
   answerDate: "2023/7/6",
   projectTitle: project[0].name,
   projectContent: project[0].project_detail,
