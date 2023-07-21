@@ -14,11 +14,9 @@ type Props = {
 
 export const AnswerContent = ({ user_id, project_id }: Props) => {
   const router = useRouter();
-  const currentProject = project.filter(
-    (project) => project.id === Number(project_id)
-  );
+  const currentProject = project.filter((project) => project.id === project_id);
   const currentAnswer = Answer.filter(
-    (answer) => answer.project_id === Number(project_id)
+    (answer) => answer.project_id === project_id
   );
 
   return (

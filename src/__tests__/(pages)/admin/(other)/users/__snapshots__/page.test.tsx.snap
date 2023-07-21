@@ -97,6 +97,7 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
             2022
           </option>
           <option
+            selected=""
             value="2023"
           >
             2023
@@ -143,6 +144,7 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
             06
           </option>
           <option
+            selected=""
             value="7"
           >
             07
@@ -245,16 +247,18 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
       >
         <div>
           <label
-            for="sortData"
+            for="sortOption"
           >
             ソート：
           </label>
           <select
             class=" border border-deep-gary"
-            id="userList"
-            name="userList"
+            data-testid="selectedOption"
+            id="sortOption"
+            name="sortOption"
           >
             <option
+              selected=""
               value="入社日昇順"
             >
               入社日昇順
@@ -302,6 +306,7 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
           >
             <td
               class=" border py-3"
+              data-testid="entry_date"
             >
               2023-06-23
             </td>
@@ -321,13 +326,12 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
               田中太郎
             </td>
           </tr>
-        </tbody>
-        <tbody>
           <tr
             class="border text-center"
           >
             <td
               class=" border py-3"
+              data-testid="entry_date"
             >
               2023-06-24
             </td>
@@ -347,13 +351,12 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
               山田花子
             </td>
           </tr>
-        </tbody>
-        <tbody>
           <tr
             class="border text-center"
           >
             <td
               class=" border py-3"
+              data-testid="entry_date"
             >
               2023-06-25
             </td>
@@ -373,13 +376,12 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
               高橋和夫
             </td>
           </tr>
-        </tbody>
-        <tbody>
           <tr
             class="border text-center"
           >
             <td
               class=" border py-3"
+              data-testid="entry_date"
             >
               2023-06-26
             </td>
@@ -399,13 +401,12 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
               佐藤ゆき
             </td>
           </tr>
-        </tbody>
-        <tbody>
           <tr
             class="border text-center"
           >
             <td
               class=" border py-3"
+              data-testid="entry_date"
             >
               2023-06-27
             </td>
@@ -425,13 +426,12 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
               鈴木康子
             </td>
           </tr>
-        </tbody>
-        <tbody>
           <tr
             class="border text-center"
           >
             <td
               class=" border py-3"
+              data-testid="entry_date"
             >
               2023-06-28
             </td>
@@ -451,13 +451,12 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
               山本亮
             </td>
           </tr>
-        </tbody>
-        <tbody>
           <tr
             class="border text-center"
           >
             <td
               class=" border py-3"
+              data-testid="entry_date"
             >
               2023-06-29
             </td>
@@ -477,13 +476,12 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
               相田三雄
             </td>
           </tr>
-        </tbody>
-        <tbody>
           <tr
             class="border text-center"
           >
             <td
               class=" border py-3"
+              data-testid="entry_date"
             >
               2023-06-30
             </td>

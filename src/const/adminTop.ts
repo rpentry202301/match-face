@@ -5,7 +5,7 @@ export const dataArray = [
       url: "/admin/handle-question",
       description: "質問・回答例を追加・編集します。",
       imgUrl: "/icon/document_icon.png",
-      imgAlt: "アイコン",
+      imgAlt: "document_icon",
     },
     {
       id: 2,
@@ -21,7 +21,7 @@ export const dataArray = [
       url: "/admin/histories",
       description: "ユーザーの回答を閲覧できます。",
       imgUrl: "/icon/search_icon.png",
-      imgAlt: "アイコン",
+      imgAlt: "search_icon",
     },
     {
       id: 4,
@@ -29,7 +29,7 @@ export const dataArray = [
       url: "/admin/users",
       description: "ユーザーの一覧を確認できます。",
       imgUrl: "/icon/user_icon.png",
-      imgAlt: "アイコン",
+      imgAlt: "user_icon",
     },
     {
       id: 5,
@@ -37,6 +37,6 @@ export const dataArray = [
       url: "/admin/groups",
       description: "グループの一覧を確認できます。",
       imgUrl: "/icon/group_icon.png",
-      imgAlt: "アイコン",
+      imgAlt: "group_icon",
     },    
   ];
