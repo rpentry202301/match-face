@@ -35,15 +35,15 @@ exports[`スナップショット スナップショット 1`] = `
           for="password"
         >
           パスワード
-          <div>
-            <input
-              class="w-96 h-10 mt-2 border border-black"
-              id="password"
-              name="password"
-              type="password"
-            />
-          </div>
         </label>
+        <div>
+          <input
+            class="w-96 h-10 mt-2 border border-black"
+            id="password"
+            name="password"
+            type="password"
+          />
+        </div>
       </div>
       <div>
         <button

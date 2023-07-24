@@ -1,7 +1,7 @@
 'use client';
 import OrangeButton from '@/components/ui/button/OrangeButton';
 import Link from 'next/link';
-import users from '@/const/login';
+import { users } from '@/const/login';
 import { useRouter } from 'next/navigation';
 import SiteTitle from '@/components/ui/SiteTitle';
 import { useForm, SubmitHandler } from 'react-hook-form';

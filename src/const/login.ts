@@ -12,9 +12,9 @@ type User = {
   update_at: string;
 };
 
-type Users = User[];
+export type Users = User[];
 
-const users: Users = [
+export const users: Users = [
   {
     id: 1111,
     name: 'ラクス太郎',
@@ -56,4 +56,18 @@ const users: Users = [
   },
 ];
 
-export default users;
+export const dummyUser: Users = [
+  {
+    id: 999999,
+    name: 'incorrect',
+    password: 'incorrectPass#1',
+    email: 'incorrect@example.com',
+    hire_date: '9999-99-99',
+    department_id: 999999,
+    status_id: 999999,
+    created_user: 'incorrectUser',
+    created_at: '9999-99-99',
+    update_user: 'incorrectUser',
+    update_at: '9999-99-99',
+  },
+];
