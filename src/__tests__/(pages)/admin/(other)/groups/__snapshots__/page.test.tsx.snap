@@ -3,23 +3,24 @@
 exports[`管理者/グループ一覧画面のテスト スナップショットテスト レンダリング時 1`] = `
 <div>
   <div
-    class="flex flex-col items-center justify-center h-screen"
+    class="flex flex-col items-center justify-center h-screen table-fixed"
   >
     <table>
       <thead>
         <tr>
           <th
-            class="border px-4 py-2 bg-gray-100"
+            class="border px-4 py-2 bg-light-gray w-1/5"
           >
             作成日
           </th>
           <th
-            class="border px-4 py-2 bg-gray-100"
+            class="border px-4 py-2 bg-light-gray w-1/4"
           >
             グループ名
           </th>
           <th
-            class="border px-4 py-2 bg-gray-100"
+            class="border px-4 py-2 bg-light-gray"
+            style="width: 7%;"
           >
             人数
           </th>
@@ -28,12 +29,14 @@ exports[`管理者/グループ一覧画面のテスト スナップショット
       <tbody>
         <tr>
           <td
-            class="border px-4 py-2"
+            class="border px-4 py-2 "
+            style="text-align: center;"
           >
             2023-07-01
           </td>
           <td
             class="border px-4 py-2"
+            style="text-align: center;"
           >
             <button
               class="hover:bg-amber-200 duration-200"
@@ -44,18 +47,21 @@ exports[`管理者/グループ一覧画面のテスト スナップショット
           </td>
           <td
             class="border px-4 py-2"
+            style="text-align: center;"
           >
             3
           </td>
         </tr>
         <tr>
           <td
-            class="border px-4 py-2"
+            class="border px-4 py-2 "
+            style="text-align: center;"
           >
             2023-07-02
           </td>
           <td
             class="border px-4 py-2"
+            style="text-align: center;"
           >
             <button
               class="hover:bg-amber-200 duration-200"
@@ -66,18 +72,21 @@ exports[`管理者/グループ一覧画面のテスト スナップショット
           </td>
           <td
             class="border px-4 py-2"
+            style="text-align: center;"
           >
             1
           </td>
         </tr>
         <tr>
           <td
-            class="border px-4 py-2"
+            class="border px-4 py-2 "
+            style="text-align: center;"
           >
             2023-07-06
           </td>
           <td
             class="border px-4 py-2"
+            style="text-align: center;"
           >
             <button
               class="hover:bg-amber-200 duration-200"
@@ -88,18 +97,21 @@ exports[`管理者/グループ一覧画面のテスト スナップショット
           </td>
           <td
             class="border px-4 py-2"
+            style="text-align: center;"
           >
             2
           </td>
         </tr>
         <tr>
           <td
-            class="border px-4 py-2"
+            class="border px-4 py-2 "
+            style="text-align: center;"
           >
             2023-07-08
           </td>
           <td
             class="border px-4 py-2"
+            style="text-align: center;"
           >
             <button
               class="hover:bg-amber-200 duration-200"
@@ -110,6 +122,7 @@ exports[`管理者/グループ一覧画面のテスト スナップショット
           </td>
           <td
             class="border px-4 py-2"
+            style="text-align: center;"
           >
             1
           </td>

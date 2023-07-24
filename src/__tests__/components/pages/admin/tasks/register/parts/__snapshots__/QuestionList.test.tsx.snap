@@ -38,8 +38,10 @@ exports[`Question.tsx QuestionListのスナップショット 1`] = `
             class="border-2 border-deep-gray px-4 py-2 text-center"
           >
             <input
+              checked=""
               class="w-4 h-4 accent-orange cursor-pointer"
               type="checkbox"
+              value="問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１"
             />
           </td>
           <td
@@ -65,6 +67,7 @@ exports[`Question.tsx QuestionListのスナップショット 1`] = `
             <input
               class="w-4 h-4 accent-orange cursor-pointer"
               type="checkbox"
+              value="問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２"
             />
           </td>
           <td
@@ -90,6 +93,7 @@ exports[`Question.tsx QuestionListのスナップショット 1`] = `
             <input
               class="w-4 h-4 accent-orange cursor-pointer"
               type="checkbox"
+              value="問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３"
             />
           </td>
           <td
