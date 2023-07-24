@@ -1,4 +1,4 @@
-import { HistoriesProvider, SelectHistoryProvider } from "@/hooks/store/context/historiesContext";
+import { SelectHistoryProvider } from "@/hooks/store/context/historiesContext";
 
 export const metadata = {
   title: "回答履歴",
@@ -13,9 +13,7 @@ export default function HistoriesLayout({
   return (
     <>
       <SelectHistoryProvider>
-      <HistoriesProvider>
         {children}
-      </HistoriesProvider>
       </SelectHistoryProvider>
     </>
   );
