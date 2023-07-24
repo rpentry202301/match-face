@@ -1,14 +1,55 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import UsersPage from "@/app/(pages)/admin/(other)/users/page";
+import userEvent from "@testing-library/user-event";
 import React from "react";
 import "@testing-library/jest-dom";
 
+const user = userEvent.setup();
 describe("ユーザー管理画面のテスト", () => {
   it("スナップショット", async () => {
     const { container } = render(<UsersPage />);
     expect(container).toMatchSnapshot();
   });
 
+  // SearchUserコンポーネントのテスト
+  it("input欄が表示されている", () => {
+    render(<UsersPage />);
+    const input = screen.getByTestId("input");
+    expect(input).toBeInTheDocument();
+  });
+  it("検索ボタンが表示されている", () => {
+    render(<UsersPage />);
+    const serachButton = screen.getByTestId("searchButton");
+    expect(serachButton).toBeInTheDocument();
+  });
+
+  it("年月の値を変更する", () => {
+    render(<UsersPage />);
+    const year = screen.getByTestId<HTMLSelectElement>("year");
+    const month = screen.getByTestId<HTMLSelectElement>("month");
+    fireEvent.change(year, { target: { value: 2020 } });
+    expect(year.value).toBe("2020");
+    fireEvent.change(month, { target: { value: 10 } });
+    expect(month.value).toBe("10");
+  });
+
+  it("職種ボタンをクリックするとbg-grayが適用される", () => {
+    render(<UsersPage />);
+    const departmentButton = screen.getByTestId("department_1");
+    expect(departmentButton).toBeInTheDocument();
+    user.click(departmentButton);
+    expect(departmentButton).toHaveClass("active:bg-gray-200");
+  });
+  
+  it("statusボタンをクリックするとbg-grayが適用される", () => {
+    render(<UsersPage />);
+    const statusButton = screen.getByTestId("status_1")
+    expect(statusButton).toBeInTheDocument()
+    user.click(statusButton);
+    expect(statusButton).toHaveClass("active:bg-gray-200");
+  });
+
+  // UserListコンポーネントのテスト
   it("初期値に「入社日昇順」が設定されていることを確認", async () => {
     render(<UsersPage />);
     const selectElement = screen.getByRole<HTMLSelectElement>("option", {
