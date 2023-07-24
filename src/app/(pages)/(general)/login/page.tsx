@@ -44,6 +44,7 @@ const LoginPage = () => {
   // 内容確認用(削除要)
   // const check = () => {
   //   console.log('errors', errors);
+  //   console.log('errors.type', errors.userId?.type);
   // };
   //
 
