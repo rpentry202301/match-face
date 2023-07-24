@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 import { Dispatch, FormEvent, SetStateAction } from "react";
 import { useState } from "react";
 import { AnswerRequests, Departments, Projects, SelectHistoryAction, Skills } from "@/types/admin/histories/admin_histories";
-import { useSelectHistory, useSelectHistoryDispatch } from "@/hooks/store/context/historiesContext";
+import { useSelectHistoryDispatch } from "@/hooks/store/context/historiesContext";
 
 
 const HistoriesSelect = ({className,projects,answer_requests,departments,skills}:{className:string,projects:Projects,answer_requests:AnswerRequests,departments:Departments,skills:Skills}) => {
@@ -76,7 +76,7 @@ const HistoriesSelect = ({className,projects,answer_requests,departments,skills}
 export default HistoriesSelect;
 
 export function setSkill(
-  e: any,
+  e: FormEvent<HTMLInputElement>,
   formData: { month: string; department: string; skills: string[] },
   setFormData: Dispatch<
     SetStateAction<{ month: string; department: string; skills: string[] }>
