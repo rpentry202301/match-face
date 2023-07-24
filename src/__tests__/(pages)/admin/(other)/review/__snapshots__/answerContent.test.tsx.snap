@@ -62,7 +62,7 @@ exports[`スナップショットテスト 1`] = `
         回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。
       </div>
       <div
-        class="my-7 p-3 rounded-md bg-gray-200"
+        class="my-7 p-3 rounded-md bg-light-gray"
         id="modelAnswer"
       >
         <h3
@@ -121,7 +121,7 @@ exports[`スナップショットテスト 1`] = `
         選択肢A
       </div>
       <div
-        class="my-7 p-3 rounded-md bg-gray-200"
+        class="my-7 p-3 rounded-md bg-light-gray"
         id="modelAnswer"
       >
         <h3
@@ -162,7 +162,7 @@ exports[`スナップショットテスト 1`] = `
         回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。
       </div>
       <div
-        class="my-7 p-3 rounded-md bg-gray-200"
+        class="my-7 p-3 rounded-md bg-light-gray"
         id="modelAnswer"
       >
         <h3
@@ -183,7 +183,7 @@ exports[`スナップショットテスト 1`] = `
       </h3>
     </label>
     <div
-      class=" flex justify-between "
+      class=" flex justify-between flex-wrap "
     >
       <div
         class="w-1/6 flex justify-center items-center"
@@ -200,12 +200,17 @@ exports[`スナップショットテスト 1`] = `
           width="70"
         />
       </div>
-      <textarea
-        class="border border-black w-full p-3"
-        cols="50"
-        id="comment"
-        rows="6"
-      />
+      <div
+        class="w-5/6"
+      >
+        <textarea
+          class="border border-black w-full p-3"
+          cols="50"
+          id="comment"
+          placeholder="コメントを入力してください"
+          rows="6"
+        />
+      </div>
     </div>
     <div
       class="flex justify-around my-20"
