@@ -1,5 +1,5 @@
 import LoginPage from '@/app/(pages)/(general)/login/page';
-import { render, screen } from '@testing-library/react';
+import { findByText, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { AppRouterContextProviderMock } from '@/__tests__/test_utils/app-router-context-provider-mock';
@@ -13,16 +13,18 @@ type User = {
 
 const push = jest.fn();
 const user = userEvent.setup();
-test('スナップショットテスト', () => {
-  const { container } = render(
-    <AppRouterContextProviderMock router={{ push }}>
-      <LoginPage />
-    </AppRouterContextProviderMock>
-  );
-  expect(container).toMatchSnapshot();
+describe('スナップショット', () => {
+  test('スナップショット', () => {
+    const { container } = render(
+      <AppRouterContextProviderMock router={{ push }}>
+        <LoginPage />
+      </AppRouterContextProviderMock>
+    );
+    expect(container).toMatchSnapshot();
+  });
 });
 
-describe('ページ全体のテスト', () => {
+describe('ページがレンダリングされた時', () => {
   beforeEach(() => {
     render(
       <AppRouterContextProviderMock router={{ push }}>
@@ -31,7 +33,29 @@ describe('ページ全体のテスト', () => {
     );
   });
 
-  test('正しいユーザーIDとパスワードを入力した際、ログインに成功する。', async () => {
+  test('"パスワードを忘れた"のリンクのurlが"/remind"であること', () => {
+    //"パスワードを忘れた"のリンク
+    const remindLink = screen.getByRole('link', { name: 'パスワードを忘れた' });
+    expect(remindLink).toHaveAttribute('href', '/remind');
+  });
+
+  test('"管理者ログイン"のリンクのurlが"/admin/login"であること', () => {
+    // "管理者ログイン"のリンク
+    const adminLoginLink = screen.getByRole('link', { name: '管理者ログイン' });
+    expect(adminLoginLink).toHaveAttribute('href', '/admin/login');
+  });
+});
+
+describe('OrangeButtonがクリックされた時', () => {
+  beforeEach(() => {
+    render(
+      <AppRouterContextProviderMock router={{ push }}>
+        <LoginPage />
+      </AppRouterContextProviderMock>
+    );
+  });
+
+  test('登録済みユーザーIDと登録済みパスワードを入力した際、ログインに成功しトップ画面に遷移すること', async () => {
     // 登録済みユーザーIDを入力;
     const userIdInput = screen.getByLabelText('ユーザーID');
     await userEvent.type(userIdInput, `${users[0].id}`);
@@ -49,29 +73,36 @@ describe('ページ全体のテスト', () => {
     expect(push).toHaveBeenCalledWith('/');
   });
 
-  test('"パスワードを忘れた"のリンクのurlが"/remindになっている', () => {
-    const push = jest.fn();
+  test('ユーザーIDが未入力の際、"※ユーザーIDを入力してください。"と表示されること', async () => {
+    // 登録済みパスワードを入力
+    const passwordInput = screen.getByLabelText('パスワード');
+    await userEvent.type(passwordInput, `${users[0].password}`);
 
-    render(
-      <AppRouterContextProviderMock router={{ push }}>
-        <LoginPage />
-      </AppRouterContextProviderMock>
-    );
-    //"パスワードを忘れた"のリンク
-    const remindLink = screen.getByRole('link', { name: 'パスワードを忘れた' });
-    expect(remindLink).toHaveAttribute('href', '/remind');
-  });
+    // ボタンを確認
+    const loginButton = screen.getByRole('button', { name: 'ログイン' });
+    expect(loginButton).toBeInTheDocument();
 
-  test('"管理者ログイン"のリンクのurlが"/admin/loginになっている', () => {
-    const push = jest.fn();
+    // ボタンをクリック
+    await user.click(loginButton);
 
-    render(
-      <AppRouterContextProviderMock router={{ push }}>
-        <LoginPage />
-      </AppRouterContextProviderMock>
-    );
-    // "管理者ログイン"のリンク
-    const adminLoginLink = screen.getByRole('link', { name: '管理者ログイン' });
-    expect(adminLoginLink).toHaveAttribute('href', '/admin/login');
-  });
+    // エラーメッセージが表示される
+    expect(
+      await screen.findByText('※ユーザーIDを入力してください。')
+    ).toBeInTheDocument();
+  }),
+    test('ユーザーIDに半角数字以外が入力されている際、"※半角数字で入力してください。"と表示されること', async () => {
+      //
+    });
+
+  test.todo(
+    '登録されていないユーザーIDが入力されている際、"※正しいユーザーIDを入力してください。"と表示されること'
+  );
+
+  test.todo(
+    'パスワードが未入力の際、"※パスワードを入力してください。"と表示されること'
+  );
+
+  test.todo(
+    '間違ったパスワードが入力されている際、"※正しいパスワードを入力してください。"と表示されること。'
+  );
 });

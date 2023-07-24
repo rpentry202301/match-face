@@ -83,26 +83,26 @@ const LoginPage = () => {
         <div>
           <label htmlFor="password" className="">
             パスワード
-            <div>
-              <input
-                id="password"
-                type="password"
-                className="w-96 h-10 mt-2 border border-black"
-                {...register('password', {
-                  required: {
-                    value: true,
-                    message: '※パスワードを入力してください。',
-                  },
-                  validate: {
-                    checkPassword: (value) =>
-                      value !== correctUser.password
-                        ? '※正しいパスワードを入力してください。'
-                        : undefined,
-                  },
-                })}
-              />
-            </div>
           </label>
+          <div>
+            <input
+              id="password"
+              type="password"
+              className="w-96 h-10 mt-2 border border-black"
+              {...register('password', {
+                required: {
+                  value: true,
+                  message: '※パスワードを入力してください。',
+                },
+                validate: {
+                  checkPassword: (value) =>
+                    value !== correctUser.password
+                      ? '※正しいパスワードを入力してください。'
+                      : undefined,
+                },
+              })}
+            />
+          </div>
           {errors.password && (
             <p className="text-red">{errors.password.message}</p>
           )}
