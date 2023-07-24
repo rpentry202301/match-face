@@ -13,12 +13,15 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
       >
         <div>
           <input
-            class="border w-[516px] mx-5 border-deep-gray"
+            class="border w-[530px] mx-5 border-deep-gray"
+            data-testid="input"
             id="1"
+            value=""
           />
         </div>
         <button
           class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-20 py-0.5"
+          data-testid="searchButton"
         >
           検索
         </button>
@@ -28,9 +31,16 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
       >
         <select
           class="border"
+          data-testid="year"
           id="year"
           name="year"
         >
+          <option
+            selected=""
+            value="--"
+          >
+            --
+          </option>
           <option
             value="2010"
           >
@@ -109,9 +119,16 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
         </label>
         <select
           class="border"
+          data-testid="month"
           id="month"
           name="month"
         >
+          <option
+            selected=""
+            value="--"
+          >
+            --
+          </option>
           <option
             value="1"
           >
@@ -176,61 +193,97 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
         <label
           for="month"
         >
-           月
+           月入社
         </label>
       </div>
       <div
-        class="my-5"
+        class=" flex my-5"
       >
-        <button
-          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-20 mx-5 py-0.5"
-        >
-          Java
-        </button>
-        <button
-          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-20 mx-5 py-0.5"
-        >
-          PHP
-        </button>
-        <button
-          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-20 mx-5 py-0.5"
-        >
-          FR
-        </button>
-        <button
-          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-20 mx-5 py-0.5"
-        >
-          CL
-        </button>
-        <button
-          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-20 mx-5 py-0.5"
-        >
-          ML
-        </button>
-        <button
-          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-20 mx-5 py-0.5"
-        >
-          QA
-        </button>
+        <div>
+          <button
+            class="active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 w-20 mx-5 py-0.5 bg-white hover:bg-gray-100 rounded-full border shadow-md"
+            data-testid="department_1"
+            value="Java"
+          >
+            Java
+          </button>
+        </div>
+        <div>
+          <button
+            class="active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 w-20 mx-5 py-0.5 bg-white hover:bg-gray-100 rounded-full border shadow-md"
+            data-testid="department_2"
+            value="PHP"
+          >
+            PHP
+          </button>
+        </div>
+        <div>
+          <button
+            class="active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 w-20 mx-5 py-0.5 bg-white hover:bg-gray-100 rounded-full border shadow-md"
+            data-testid="department_3"
+            value="FR"
+          >
+            FR
+          </button>
+        </div>
+        <div>
+          <button
+            class="active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 w-20 mx-5 py-0.5 bg-white hover:bg-gray-100 rounded-full border shadow-md"
+            data-testid="department_4"
+            value="CL"
+          >
+            CL
+          </button>
+        </div>
+        <div>
+          <button
+            class="active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 w-20 mx-5 py-0.5 bg-white hover:bg-gray-100 rounded-full border shadow-md"
+            data-testid="department_5"
+            value="ML"
+          >
+            ML
+          </button>
+        </div>
+        <div>
+          <button
+            class="active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 w-20 mx-5 py-0.5 bg-white hover:bg-gray-100 rounded-full border shadow-md"
+            data-testid="department_6"
+            value="QA"
+          >
+            QA
+          </button>
+        </div>
       </div>
       <div
-        class="mx-5 my-5"
+        class=" flex my-5"
       >
-        <button
-          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-32 mr-5 py-0.5"
-        >
-          研修中
-        </button>
-        <button
-          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-32 mr-5 py-0.5"
-        >
-          待機中
-        </button>
-        <button
-          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-32 mr-5 py-0.5"
-        >
-          アサイン中
-        </button>
+        <div>
+          <button
+            class="active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 w-32 mx-5 py-0.5 bg-white hover:bg-gray-100 rounded-full border shadow-md"
+            data-testid="status_1"
+            value="研修中"
+          >
+            研修中
+          </button>
+        </div>
+        <div>
+          <button
+            class="active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 w-32 mx-5 py-0.5 bg-white hover:bg-gray-100 rounded-full border shadow-md"
+            data-testid="status_2"
+            value="待機中"
+          >
+            待機中
+          </button>
+        </div>
+        <div>
+          <button
+            class="active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 w-32 mx-5 py-0.5 bg-white hover:bg-gray-100 rounded-full border shadow-md"
+            data-testid="status_3"
+            value="アサイン中"
+          >
+            アサイン中
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -245,16 +298,18 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
       >
         <div>
           <label
-            for="sortData"
+            for="sortOption"
           >
             ソート：
           </label>
           <select
             class=" border border-deep-gary"
-            id="userList"
-            name="userList"
+            data-testid="selectedOption"
+            id="sortOption"
+            name="sortOption"
           >
             <option
+              selected=""
               value="入社日昇順"
             >
               入社日昇順
@@ -272,7 +327,7 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
       >
         <thead>
           <tr
-            class="border bg-deep-gray"
+            class="border bg-light-gray"
           >
             <th
               class=" border py-3"
@@ -302,6 +357,7 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
           >
             <td
               class=" border py-3"
+              data-testid="entry_date"
             >
               2023-06-23
             </td>
@@ -321,13 +377,12 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
               田中太郎
             </td>
           </tr>
-        </tbody>
-        <tbody>
           <tr
             class="border text-center"
           >
             <td
               class=" border py-3"
+              data-testid="entry_date"
             >
               2023-06-24
             </td>
@@ -347,13 +402,12 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
               山田花子
             </td>
           </tr>
-        </tbody>
-        <tbody>
           <tr
             class="border text-center"
           >
             <td
               class=" border py-3"
+              data-testid="entry_date"
             >
               2023-06-25
             </td>
@@ -373,13 +427,12 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
               高橋和夫
             </td>
           </tr>
-        </tbody>
-        <tbody>
           <tr
             class="border text-center"
           >
             <td
               class=" border py-3"
+              data-testid="entry_date"
             >
               2023-06-26
             </td>
@@ -399,13 +452,12 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
               佐藤ゆき
             </td>
           </tr>
-        </tbody>
-        <tbody>
           <tr
             class="border text-center"
           >
             <td
               class=" border py-3"
+              data-testid="entry_date"
             >
               2023-06-27
             </td>
@@ -425,13 +477,12 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
               鈴木康子
             </td>
           </tr>
-        </tbody>
-        <tbody>
           <tr
             class="border text-center"
           >
             <td
               class=" border py-3"
+              data-testid="entry_date"
             >
               2023-06-28
             </td>
@@ -451,13 +502,12 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
               山本亮
             </td>
           </tr>
-        </tbody>
-        <tbody>
           <tr
             class="border text-center"
           >
             <td
               class=" border py-3"
+              data-testid="entry_date"
             >
               2023-06-29
             </td>
@@ -477,13 +527,12 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
               相田三雄
             </td>
           </tr>
-        </tbody>
-        <tbody>
           <tr
             class="border text-center"
           >
             <td
               class=" border py-3"
+              data-testid="entry_date"
             >
               2023-06-30
             </td>

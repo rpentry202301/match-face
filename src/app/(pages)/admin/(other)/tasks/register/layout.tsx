@@ -1,4 +1,5 @@
 import { UserSelectProvider } from "@/hooks/store/context/UserSelectContext";
+import { SelectedQuestionProvider } from "@/hooks/store/context/SelectedQuestionContext";
 
 export const metadata = {
   title: "タスク設定",
@@ -10,5 +11,11 @@ export default function TaskRegisterLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <UserSelectProvider>{children}</UserSelectProvider>
+  return (
+    <SelectedQuestionProvider>
+      <UserSelectProvider>
+        {children}
+      </UserSelectProvider>
+    </SelectedQuestionProvider>
+  )
 }

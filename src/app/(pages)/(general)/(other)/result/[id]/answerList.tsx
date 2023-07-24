@@ -50,7 +50,7 @@ export const AnswerList = ({ project_id }: Props) => {
             </>
           )}
           <ModelAnswerContent
-            project_id={project_id}
+            project_id={Number(project_id)}
             question_id={question.id}
           />
         </div>
