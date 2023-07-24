@@ -6,7 +6,7 @@ exports[`ModelAnswerContentコンポーネントのテスト スナップショ�
   "baseElement": <body>
     <div>
       <div
-        class="my-7 p-3 rounded-md bg-gray-200"
+        class="my-7 p-3 rounded-md bg-light-gray"
         id="modelAnswer"
       >
         <h3
@@ -20,7 +20,7 @@ exports[`ModelAnswerContentコンポーネントのテスト スナップショ�
   </body>,
   "container": <div>
     <div
-      class="my-7 p-3 rounded-md bg-gray-200"
+      class="my-7 p-3 rounded-md bg-light-gray"
       id="modelAnswer"
     >
       <h3

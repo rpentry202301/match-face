@@ -1,3 +1,5 @@
+import { SelectProvider } from "@/hooks/store/context/HandleQuestionContext";
+
 export const metadata = {
   title: {
     default: "質問・解答の追加/編集",
@@ -12,5 +14,5 @@ export default function HandleQuestionLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return <SelectProvider>{children}</SelectProvider>;
 }

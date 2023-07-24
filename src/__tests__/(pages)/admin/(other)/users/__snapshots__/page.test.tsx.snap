@@ -15,6 +15,7 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
           <input
             class="border w-[516px] mx-5 border-deep-gray"
             id="1"
+            value=""
           />
         </div>
         <button
@@ -185,32 +186,32 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
         class="my-5"
       >
         <button
-          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-20 mx-5 py-0.5"
+          class="bg-white hover:bg-gray-100 px-4 rounded-full border shadow-md w-20 mx-5 py-0.5"
         >
           Java
         </button>
         <button
-          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-20 mx-5 py-0.5"
+          class="bg-white hover:bg-gray-100 px-4 rounded-full border shadow-md w-20 mx-5 py-0.5"
         >
           PHP
         </button>
         <button
-          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-20 mx-5 py-0.5"
+          class="bg-white hover:bg-gray-100 px-4 rounded-full border shadow-md w-20 mx-5 py-0.5"
         >
           FR
         </button>
         <button
-          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-20 mx-5 py-0.5"
+          class="bg-white hover:bg-gray-100 px-4 rounded-full border shadow-md w-20 mx-5 py-0.5"
         >
           CL
         </button>
         <button
-          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-20 mx-5 py-0.5"
+          class="bg-white hover:bg-gray-100 px-4 rounded-full border shadow-md w-20 mx-5 py-0.5"
         >
           ML
         </button>
         <button
-          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-20 mx-5 py-0.5"
+          class="bg-white hover:bg-gray-100 px-4 rounded-full border shadow-md w-20 mx-5 py-0.5"
         >
           QA
         </button>
@@ -219,17 +220,20 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
         class="mx-5 my-5"
       >
         <button
-          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-32 mr-5 py-0.5"
+          class="active:bg-gray-200 active:translate-y-0.5 active:shadow-sm bg-white hover:bg-gray-100 px-4 rounded-full border shadow-md w-32 mr-5 py-0.5"
+          value="研修中"
         >
           研修中
         </button>
         <button
-          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-32 mr-5 py-0.5"
+          class="active:bg-gray-200 active:translate-y-0.5 active:shadow-sm bg-white hover:bg-gray-100 px-4 rounded-full border shadow-md w-32 mr-5 py-0.5"
+          value="待機中"
         >
           待機中
         </button>
         <button
-          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 rounded-full border shadow-md w-32 mr-5 py-0.5"
+          class="active:bg-gray-200 active:translate-y-0.5 active:shadow-sm bg-white hover:bg-gray-100 px-4 rounded-full border shadow-md w-32 mr-5 py-0.5"
+          value="アサイン中"
         >
           アサイン中
         </button>
@@ -276,7 +280,7 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
       >
         <thead>
           <tr
-            class="border bg-deep-gray"
+            class="border bg-light-gray"
           >
             <th
               class=" border py-3"
