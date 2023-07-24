@@ -57,6 +57,21 @@ const SearchUser = () => {
     setName(e.target.value);
   };
 
+  const handleDepartmentClick = (department: string) => {
+    if (isClicked.department === department) {
+      setIsClicked({ ...isClicked, department: "" });
+    } else {
+      setIsClicked({ ...isClicked, department });
+    }
+  };
+  const handleStatusClick = (status: string) => {
+    if (isClicked.status === status) {
+      setIsClicked({ ...isClicked, status: "" });
+    } else {
+      setIsClicked({ ...isClicked, status });
+    }
+  };
+
   return (
     <div className="flex justify-center">
       <div className="border border-deep-gray w-max my-10">
@@ -79,7 +94,7 @@ const SearchUser = () => {
             name="year"
             id="year"
             className="border"
-            defaultValue={currentYear}
+            defaultValue="--"
             onChange={(e) =>
               setIsSelected({
                 ...isSelected,
@@ -88,6 +103,7 @@ const SearchUser = () => {
             }
             data-testid="year"
           >
+            <option value="--">--</option>
             {yearArray.map((year: number) => (
               <option key={year} value={year}>
                 {year}
@@ -99,7 +115,7 @@ const SearchUser = () => {
             name="month"
             id="month"
             className="border"
-            defaultValue={currentMonth}
+            defaultValue="--"
             onChange={(e) =>
               setIsSelected({
                 ...isSelected,
@@ -108,13 +124,14 @@ const SearchUser = () => {
             }
             data-testid="month"
           >
+            <option value="--">--</option>
             {monthArray.map((month: number) => (
               <option key={month} value={month}>
                 {month < 10 ? `0${month}` : month}
               </option>
             ))}
           </select>
-          <label htmlFor="month">&nbsp;月</label>
+          <label htmlFor="month">&nbsp;月入社</label>
         </div>
         <div className=" flex my-5">
           {department.map((department, id) => (
@@ -124,12 +141,7 @@ const SearchUser = () => {
                   label={department.department}
                   className={`w-20 mx-5 py-0.5 ${notClickedStyle}`}
                   value={department.department}
-                  onClick={(e) =>
-                    setIsClicked({
-                      ...isClicked,
-                      department: e.currentTarget.value,
-                    })
-                  }
+                  onClick={() => handleDepartmentClick(department.department)}
                   data-testid={`department_${department.id}`}
                 />
               ) : (
@@ -137,12 +149,7 @@ const SearchUser = () => {
                   label={department.department}
                   className={`w-20 mx-5 py-0.5 ${clickedStyle}`}
                   value={department.department}
-                  onClick={(e) =>
-                    setIsClicked({
-                      ...isClicked,
-                      department: e.currentTarget.value,
-                    })
-                  }
+                  onClick={() => handleDepartmentClick(department.department)}
                 />
               )}
             </div>
@@ -156,12 +163,7 @@ const SearchUser = () => {
                   label={status.status}
                   className={`w-32 mx-5 py-0.5 ${notClickedStyle}`}
                   value={status.status}
-                  onClick={(e) =>
-                    setIsClicked({
-                      ...isClicked,
-                      status: e.currentTarget.value,
-                    })
-                  }
+                  onClick={() => handleStatusClick(status.status)}
                   data-testid={`status_${status.id}`}
                 />
               ) : (
@@ -169,12 +171,7 @@ const SearchUser = () => {
                   label={status.status}
                   className={`w-32 mx-5 py-0.5 ${clickedStyle}`}
                   value={status.status}
-                  onClick={(e) =>
-                    setIsClicked({
-                      ...isClicked,
-                      status: e.currentTarget.value,
-                    })
-                  }
+                  onClick={() => handleStatusClick(status.status)}
                 />
               )}
             </div>
