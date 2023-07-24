@@ -15,8 +15,8 @@ const HistoriesPage = () => {
 
   const deadlines = [
     { id: 1, value: "2023-07" },
-    { id: 2, value: "2023-07" },
-    { id: 3, value: "2023-03" },
+    { id: 2, value: "2023-10" },
+    { id: 3, value: "2023-12" },
   ];
 
   // Month選択
@@ -47,24 +47,24 @@ const HistoriesPage = () => {
           project.answer_update_at.slice(0, 7) === month
       );
       setSelectProject(newSelectProject);
-      console.log("monthとskillが一致", newSelectProject);
+      // console.log("monthとskillが一致", newSelectProject);
     } else if (selectSkills.length > 0 && !month) {
       // いずれかのskillが一致した場合。完全一致ではない
       const newSelectProject = projects.filter((project) =>
         project.skill_id.some((skillId) => selectSkills.includes(skillId))
       );
       setSelectProject(newSelectProject);
-      console.log("skill絞り込みプロジェクト", newSelectProject);
+      // console.log("skill絞り込みプロジェクト", newSelectProject);
     } else if (month && selectSkills.length == 0) {
       const newSelectProject = projects.filter(
         (project) => project.answer_update_at.slice(0, 7) === month
       );
       setSelectProject(newSelectProject);
-      console.log("month絞り込みプロジェクト", newSelectProject);
+      // console.log("month絞り込みプロジェクト", newSelectProject);
     } else {
       const newSelectProject = projects.filter((project) => project.id !== 0);
       setSelectProject(newSelectProject);
-      console.log("全プロジェクト", newSelectProject);
+      // console.log("全プロジェクト", newSelectProject);
     }
   };
 
