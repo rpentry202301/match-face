@@ -172,6 +172,7 @@ const UserSelectModal = () => {
                   id={element}
                   label={element}
                   value={element}
+                  checked={formData.state.filter((data) => data.label === element)[0].checked}
                   name="state"
                   className="text-xs px-1 w-24"
                   onChange={(e) => handleChangeCheckBox(e, "state")}

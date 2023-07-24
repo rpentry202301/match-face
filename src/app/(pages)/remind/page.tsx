@@ -35,9 +35,10 @@ const RemindPage = () => {
     }
   };
 
-  const check = () => {
-    console.log('errors', errors);
-  };
+  // 確認用（削除要）
+  // const check = () => {
+  //   console.log('errors', errors);
+  // };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -76,7 +77,8 @@ const RemindPage = () => {
           label="再設定用メール送信"
           className=" mt-14 mb-4 w-56 rounded-none"
           type="submit"
-          onClick={check}
+          // 確認用（削除要）
+          // onClick={check}
         />
         <Link href="/login" className="text-blue">
           一般ログインへ

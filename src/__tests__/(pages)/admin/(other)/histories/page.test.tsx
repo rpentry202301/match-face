@@ -3,8 +3,9 @@ import userEvent from '@testing-library/user-event'
 import HistoriesPage from '@/app/(pages)/admin/(other)/histories/page'
 import React from 'react'
 import "@testing-library/jest-dom"
-import {AppRouterContextProviderMock} from './app-router-context-provider-mock'
+import { AppRouterContextProviderMock } from '@/__tests__/test_utils/app-router-context-provider-mock'
 import HistoriesList from '@/components/pages/admin/histories/list'
+import { HistoriesProvider,SelectHistoryProvider } from '@/hooks/store/context/historiesContext'
 
 describe('管理者/履歴一覧画面のテスト',() => {
     const user = userEvent.setup()
@@ -12,13 +13,27 @@ describe('管理者/履歴一覧画面のテスト',() => {
 
     describe('スナップショットテスト',() => {
         it('レンダリング時',async() => {
-            const view = render(<HistoriesPage/>)
+            const view = render(
+                <SelectHistoryProvider>
+                <HistoriesProvider>
+                    <HistoriesPage/>
+                </HistoriesProvider>
+                </SelectHistoryProvider>
+            )
             expect(view.container).toMatchSnapshot()
         })
     })
     describe('リストテスト',()=>{
         beforeEach(()=>{
-            render(<AppRouterContextProviderMock router={{ push }}><HistoriesPage /></AppRouterContextProviderMock>);
+            render(
+                <SelectHistoryProvider>
+                <HistoriesProvider>
+                    <AppRouterContextProviderMock router={{ push }}>
+                        <HistoriesPage />
+                    </AppRouterContextProviderMock>
+                </HistoriesProvider>
+                </SelectHistoryProvider>
+            );
         })
         it('オープンボタンを押すとクローズボタンとユーザーリストが表示される',async()=>{
             const openButton = screen.getByTestId('open_1');
@@ -41,7 +56,15 @@ describe('管理者/履歴一覧画面のテスト',() => {
     })
     describe('絞り込みテスト',()=>{
         beforeEach(()=>{
-            render(<AppRouterContextProviderMock router={{ push }}><HistoriesPage /></AppRouterContextProviderMock>);
+            render(
+                <SelectHistoryProvider>
+                <HistoriesProvider>
+                    <AppRouterContextProviderMock router={{ push }}>
+                        <HistoriesPage />
+                    </AppRouterContextProviderMock>
+                </HistoriesProvider>
+                </SelectHistoryProvider>
+            );
         })
         it('回答月の選択',async()=>{
             const beforeSelectMonth = screen.getByRole("option",{name:"--"}) as HTMLOptionElement
@@ -86,7 +109,7 @@ describe('管理者/履歴一覧画面のテスト',() => {
             await user.click(form)
             expect(consoleMock).toHaveBeenCalled()
             expect(consoleMock).toHaveBeenCalledTimes(1)
-            expect(consoleMock).toHaveBeenCalledWith({ month: '2023-07', department: 'Java', skills: [ 'TypeScript' ] })
+            expect(consoleMock).toHaveBeenCalledWith("HistoryListコンポーネントfetch用絞り込みデータ",{ month: '2023-07', department: 'Java', skills: [ 'TypeScript' ] })
         })
     })
     describe('HistoriesListコンポーネントテスト',()=>{
@@ -109,7 +132,13 @@ describe('管理者/履歴一覧画面のテスト',() => {
                 {id:2,question_id:1,answer_request_id:1,is_answered:false,created_user:'テスト花子',created_at:'2023-07-10T16:52:46.053Z',update_user:'テスト花子',update_at:'2023-07-10T16:52:46.053Z'},
         ]
         beforeEach(async()=>{
-            render(<AppRouterContextProviderMock router={{ push }}><HistoriesList projects={projectsMock} answer_requests={answer_requestsMock} answers={answersMock} users={usersMock} answer_request_questions={answer_request_questionsMock}/></AppRouterContextProviderMock>)
+            render(
+                <SelectHistoryProvider>
+                <AppRouterContextProviderMock router={{ push }}>
+                    <HistoriesList projects={projectsMock} answer_requests={answer_requestsMock} answers={answersMock} users={usersMock} answer_request_questions={answer_request_questionsMock}/>
+                </AppRouterContextProviderMock>
+                </SelectHistoryProvider>
+            )
             const openButton = screen.getByTestId('open_1')
             await user.click(openButton)
         })
@@ -122,4 +151,5 @@ describe('管理者/履歴一覧画面のテスト',() => {
             expect(screen.getByTestId('status_2').textContent).toBe('未回答')
         })
     })
+    
 })

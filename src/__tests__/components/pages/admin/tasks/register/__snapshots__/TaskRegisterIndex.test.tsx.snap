@@ -66,6 +66,7 @@ exports[`TaskRegisterIndex.tsx レンダリング時 1`] = `
                 class="border-2 border-light-gray text-xs p-1 w-full"
                 id="search"
                 readonly=""
+                value=""
               />
             </div>
           </div>

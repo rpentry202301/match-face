@@ -1,4 +1,4 @@
-export type UserSelectReducerAction = {
+export type SelectReducerAction = {
   type: "select",
   payload: string[]
 };

@@ -27,7 +27,7 @@ const LoginPage = () => {
   } = useForm<LoginForm>({
     // 複数のエラーを保存する設定
     criteriaMode: 'all',
-    // onSubmit時のみバリデーションをかける設定
+    // 2回目以降のバリデーションをかけるタイミングの設定。デフォルトは'onChange'。
     reValidateMode: 'onSubmit',
   });
 
@@ -99,12 +99,6 @@ const LoginPage = () => {
                         ? '※正しいパスワードを入力してください。'
                         : undefined,
                   },
-                  // pattern: {
-                  //   value:
-                  //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[._\/#&%=\\~\-+*@()<>\\[\\]{}])[a-zA-Z\d._\/#&%=\\~\-+*@()<>\\[\\]{}]{8,}$/,
-
-                  //   message: '※正しいパスワードを入力してください。',
-                  // },
                 })}
               />
             </div>

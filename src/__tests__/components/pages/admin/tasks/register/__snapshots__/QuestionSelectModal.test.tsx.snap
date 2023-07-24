@@ -25,7 +25,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                 ▶️質問を選択する
               </h2>
             </div>
-            <div
+            <form
               class="flex flex-col item-center justify-center px-12 py-5 border-2 w-full"
             >
               <div
@@ -53,36 +53,96 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                   <div
                     class="flex items-start gap-4 flex-wrap"
                   >
-                    <button
-                      class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
-                    >
-                      Java
-                    </button>
-                    <button
-                      class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
-                    >
-                      PHP
-                    </button>
-                    <button
-                      class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
-                    >
-                      FR
-                    </button>
-                    <button
-                      class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
-                    >
-                      CL
-                    </button>
-                    <button
-                      class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
-                    >
-                      ML
-                    </button>
-                    <button
-                      class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
-                    >
-                      QA
-                    </button>
+                    <div>
+                      <input
+                        class="peer hidden"
+                        id="teck_1"
+                        name="department"
+                        type="checkbox"
+                        value="Java"
+                      />
+                      <label
+                        class="text-xs inline-flex items-center justify-center py-2 px-4 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs w-16 cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                        for="teck_1"
+                      >
+                        Java
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        class="peer hidden"
+                        id="teck_2"
+                        name="department"
+                        type="checkbox"
+                        value="PHP"
+                      />
+                      <label
+                        class="text-xs inline-flex items-center justify-center py-2 px-4 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs w-16 cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                        for="teck_2"
+                      >
+                        PHP
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        class="peer hidden"
+                        id="teck_3"
+                        name="department"
+                        type="checkbox"
+                        value="FR"
+                      />
+                      <label
+                        class="text-xs inline-flex items-center justify-center py-2 px-4 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs w-16 cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                        for="teck_3"
+                      >
+                        FR
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        class="peer hidden"
+                        id="teck_4"
+                        name="department"
+                        type="checkbox"
+                        value="CL"
+                      />
+                      <label
+                        class="text-xs inline-flex items-center justify-center py-2 px-4 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs w-16 cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                        for="teck_4"
+                      >
+                        CL
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        class="peer hidden"
+                        id="teck_5"
+                        name="department"
+                        type="checkbox"
+                        value="ML"
+                      />
+                      <label
+                        class="text-xs inline-flex items-center justify-center py-2 px-4 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs w-16 cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                        for="teck_5"
+                      >
+                        ML
+                      </label>
+                    </div>
+                    <div>
+                      <input
+                        class="peer hidden"
+                        id="teck_6"
+                        name="department"
+                        type="checkbox"
+                        value="QA"
+                      />
+                      <label
+                        class="text-xs inline-flex items-center justify-center py-2 px-4 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs w-16 cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
+                        for="teck_6"
+                      >
+                        QA
+                      </label>
+                    </div>
                   </div>
                   <div
                     class="flex mx-auto gap-4"
@@ -101,7 +161,9 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         <input
                           class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_1"
+                          name="skill"
                           type="checkbox"
+                          value="JavaScript"
                         />
                         <label
                           class="text-xs ml-1"
@@ -116,7 +178,9 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         <input
                           class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_2"
+                          name="skill"
                           type="checkbox"
+                          value="TypeScript"
                         />
                         <label
                           class="text-xs ml-1"
@@ -131,7 +195,9 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         <input
                           class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_3"
+                          name="skill"
                           type="checkbox"
+                          value="React"
                         />
                         <label
                           class="text-xs ml-1"
@@ -146,7 +212,9 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         <input
                           class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_4"
+                          name="skill"
                           type="checkbox"
+                          value="Next.js"
                         />
                         <label
                           class="text-xs ml-1"
@@ -161,7 +229,9 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         <input
                           class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_5"
+                          name="skill"
                           type="checkbox"
+                          value="Vue.js"
                         />
                         <label
                           class="text-xs ml-1"
@@ -176,7 +246,9 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         <input
                           class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_6"
+                          name="skill"
                           type="checkbox"
+                          value="Angular"
                         />
                         <label
                           class="text-xs ml-1"
@@ -191,7 +263,9 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         <input
                           class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_7"
+                          name="skill"
                           type="checkbox"
+                          value="Nuxt.js"
                         />
                         <label
                           class="text-xs ml-1"
@@ -206,7 +280,9 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         <input
                           class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_8"
+                          name="skill"
                           type="checkbox"
+                          value="jQuery"
                         />
                         <label
                           class="text-xs ml-1"
@@ -221,7 +297,9 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         <input
                           class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_9"
+                          name="skill"
                           type="checkbox"
+                          value="Redux"
                         />
                         <label
                           class="text-xs ml-1"
@@ -236,7 +314,9 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         <input
                           class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_10"
+                          name="skill"
                           type="checkbox"
+                          value="vuex"
                         />
                         <label
                           class="text-xs ml-1"
@@ -251,7 +331,9 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         <input
                           class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_11"
+                          name="skill"
                           type="checkbox"
+                          value="MaterialUI"
                         />
                         <label
                           class="text-xs ml-1"
@@ -266,7 +348,9 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         <input
                           class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_12"
+                          name="skill"
                           type="checkbox"
+                          value="tailwind"
                         />
                         <label
                           class="text-xs ml-1"
@@ -281,7 +365,9 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         <input
                           class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_13"
+                          name="skill"
                           type="checkbox"
+                          value="Bootstrap"
                         />
                         <label
                           class="text-xs ml-1"
@@ -296,7 +382,9 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                         <input
                           class="w-4 h-4 accent-orange cursor-pointer"
                           id="skill_14"
+                          name="skill"
                           type="checkbox"
+                          value="Vercel"
                         />
                         <label
                           class="text-xs ml-1"
@@ -311,12 +399,13 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                 <div>
                   <button
                     class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white rounded-xl p-2 w-40 h-auto text-xs"
+                    type="submit"
                   >
                     絞り込み
                   </button>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
         <div
@@ -357,6 +446,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                   <input
                     class="w-4 h-4 accent-orange cursor-pointer"
                     type="checkbox"
+                    value="問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１"
                   />
                 </td>
                 <td
@@ -382,6 +472,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                   <input
                     class="w-4 h-4 accent-orange cursor-pointer"
                     type="checkbox"
+                    value="問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２"
                   />
                 </td>
                 <td
@@ -407,6 +498,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                   <input
                     class="w-4 h-4 accent-orange cursor-pointer"
                     type="checkbox"
+                    value="問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３"
                   />
                 </td>
                 <td

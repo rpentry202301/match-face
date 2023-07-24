@@ -10,7 +10,13 @@ describe("Question.tsx", () => {
   });
 
   it("QuestionListのスナップショット", () => {
-    const { container } = render(<QuestionList />);
+    const { container } = render(
+      <QuestionList
+        checkedValues={["問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１"]}
+        onChange={jest.fn()}
+      />
+    
+    );
     expect(container).toMatchSnapshot();
   });
 })
