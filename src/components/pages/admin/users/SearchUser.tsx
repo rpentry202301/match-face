@@ -4,7 +4,6 @@ import WhiteButton from "@/components/ui/button/WhiteButton";
 import { department } from "@/const/userList";
 import { entry_status } from "@/const/userList";
 import { useState } from "react";
-import WhiteCheckButton from "@/components/ui/button/WhiteCheckButton";
 
 const currentYear = new Date().getFullYear();
 // console.log(currentYear);
@@ -34,17 +33,43 @@ const setMonth = () => {
 setMonth();
 
 const SearchUser = () => {
-  const [clicked, setClicked] = useState(false);
   const [name, setName] = useState("");
-  const [disabled, setDisabled] = useState(false);
-  console.log(clicked);
+  const [isSelected, setIsSelected] = useState({
+    year: currentYear,
+    month: currentMonth,
+  });
+  // console.log(isSelected)
+  const [isClicked, setIsClicked] = useState({
+    department: "",
+    status: "",
+  });
 
-  const baseStyle = clicked
-    ? "bg-gray-200 translate-y-0.5 shadow-sm px-4 rounded-full border w-32 mr-5 py-0.5"
-    : "bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md w-32 mr-5 py-0.5";
+  // console.log(isClicked);
+  // console.log(isSelected);
+
+  const clickedStyle =
+    "bg-gray-200 translate-y-0.5 shadow-sm px-4 rounded-full border ";
+
+  const notClickedStyle =
+    "bg-white hover:bg-gray-100 rounded-full border shadow-md ";
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
+  };
+
+  const handleDepartmentClick = (department: string) => {
+    if (isClicked.department === department) {
+      setIsClicked({ ...isClicked, department: "" });
+    } else {
+      setIsClicked({ ...isClicked, department });
+    }
+  };
+  const handleStatusClick = (status: string) => {
+    if (isClicked.status === status) {
+      setIsClicked({ ...isClicked, status: "" });
+    } else {
+      setIsClicked({ ...isClicked, status });
+    }
   };
 
   return (
@@ -53,19 +78,32 @@ const SearchUser = () => {
         <div className="flex items-center my-5">
           <Input
             id="1"
-            className=" w-[516px] mx-5 border-deep-gray"
+            className=" w-[530px] mx-5 border-deep-gray"
             value={name}
             onChange={handleInputChange}
+            data-testid="input"
           />
-          <WhiteButton label="検索" className="w-20 py-0.5" />
+          <WhiteButton
+            label="検索"
+            className="w-20 py-0.5"
+            data-testid="searchButton"
+          />
         </div>
         <div className=" w-4/5 mx-5">
           <select
             name="year"
             id="year"
             className="border"
-            defaultValue={currentYear}
+            defaultValue="--"
+            onChange={(e) =>
+              setIsSelected({
+                ...isSelected,
+                year: Number(e.currentTarget.value),
+              })
+            }
+            data-testid="year"
           >
+            <option value="--">--</option>
             {yearArray.map((year: number) => (
               <option key={year} value={year}>
                 {year}
@@ -77,36 +115,66 @@ const SearchUser = () => {
             name="month"
             id="month"
             className="border"
-            defaultValue={currentMonth}
+            defaultValue="--"
+            onChange={(e) =>
+              setIsSelected({
+                ...isSelected,
+                month: Number(e.currentTarget.value),
+              })
+            }
+            data-testid="month"
           >
+            <option value="--">--</option>
             {monthArray.map((month: number) => (
               <option key={month} value={month}>
                 {month < 10 ? `0${month}` : month}
               </option>
             ))}
           </select>
-          <label htmlFor="month">&nbsp;月</label>
+          <label htmlFor="month">&nbsp;月入社</label>
         </div>
-        <div className="my-5">
+        <div className=" flex my-5">
           {department.map((department, id) => (
-            <WhiteCheckButton
-              key={id}
-              label={department.department}
-              className="w-20 mx-5 py-0.5"
-            />
+            <div key={id}>
+              {department.department !== isClicked.department ? (
+                <WhiteButton
+                  label={department.department}
+                  className={`w-20 mx-5 py-0.5 ${notClickedStyle}`}
+                  value={department.department}
+                  onClick={() => handleDepartmentClick(department.department)}
+                  data-testid={`department_${department.id}`}
+                />
+              ) : (
+                <WhiteButton
+                  label={department.department}
+                  className={`w-20 mx-5 py-0.5 ${clickedStyle}`}
+                  value={department.department}
+                  onClick={() => handleDepartmentClick(department.department)}
+                />
+              )}
+            </div>
           ))}
         </div>
-        <div className="mx-5 my-5">
+        <div className=" flex my-5">
           {entry_status.map((status) => (
-            <WhiteButton
-              key={status.id}
-              label={status.status}
-              className={baseStyle}
-              value={status.status}
-              // disabled={disabled}
-              // setStatus({...status, clicked: !clicked}),
-              onClick={() => [setClicked(!clicked), setDisabled(!disabled)]}
-            />
+            <div key={status.id}>
+              {status.status !== isClicked.status ? (
+                <WhiteButton
+                  label={status.status}
+                  className={`w-32 mx-5 py-0.5 ${notClickedStyle}`}
+                  value={status.status}
+                  onClick={() => handleStatusClick(status.status)}
+                  data-testid={`status_${status.id}`}
+                />
+              ) : (
+                <WhiteButton
+                  label={status.status}
+                  className={`w-32 mx-5 py-0.5 ${clickedStyle}`}
+                  value={status.status}
+                  onClick={() => handleStatusClick(status.status)}
+                />
+              )}
+            </div>
           ))}
         </div>
       </div>
