@@ -35,32 +35,39 @@ exports[`質問・回答例一覧画面テスト スナップショット 1`] = 
         class="mt-7 flex w-4/5 justify-between"
       >
         <button
-          class="bg-white hover:bg-gray-100 rounded-full border shadow-md text-xs py-1 px-5"
+          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+          data-testid="button-Java"
+          value="Java"
         >
           Java
         </button>
         <button
-          class="bg-white hover:bg-gray-100 rounded-full border shadow-md text-xs py-1 px-5"
+          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+          value="PHP"
         >
           PHP
         </button>
         <button
-          class="bg-white hover:bg-gray-100 rounded-full border shadow-md text-xs py-1 px-5"
+          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+          value="FR"
         >
           FR
         </button>
         <button
-          class="bg-white hover:bg-gray-100 rounded-full border shadow-md text-xs py-1 px-5"
+          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+          value="CL"
         >
           CL
         </button>
         <button
-          class="bg-white hover:bg-gray-100 rounded-full border shadow-md text-xs py-1 px-5"
+          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+          value="ML"
         >
           ML
         </button>
         <button
-          class="bg-white hover:bg-gray-100 rounded-full border shadow-md text-xs py-1 px-5"
+          class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+          value="QA"
         >
           QA
         </button>
@@ -68,6 +75,7 @@ exports[`質問・回答例一覧画面テスト スナップショット 1`] = 
       <div>
         <button
           class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white p-2 h-auto rounded-none text-xs py-1 px-5 w-auto my-7 active:rounded-none active:text-xs active:py-1 active:px-5 active:w-auto active:my-7"
+          data-testid="button-refine"
         >
           絞り込み
         </button>
@@ -88,6 +96,7 @@ exports[`質問・回答例一覧画面テスト スナップショット 1`] = 
     </a>
     <table
       class="w-4/5 border-2"
+      data-testid="projectTable"
     >
       <tbody>
         <tr
@@ -120,6 +129,7 @@ exports[`質問・回答例一覧画面テスト スナップショット 1`] = 
           </td>
           <td
             class="border-2 text-center"
+            data-testid="test1"
           >
             test1
           </td>
@@ -160,6 +170,7 @@ exports[`質問・回答例一覧画面テスト スナップショット 1`] = 
           </td>
           <td
             class="border-2 text-center"
+            data-testid="test2"
           >
             test2
           </td>
@@ -200,6 +211,7 @@ exports[`質問・回答例一覧画面テスト スナップショット 1`] = 
           </td>
           <td
             class="border-2 text-center"
+            data-testid="test3"
           >
             test3
           </td>
@@ -240,6 +252,7 @@ exports[`質問・回答例一覧画面テスト スナップショット 1`] = 
           </td>
           <td
             class="border-2 text-center"
+            data-testid="test4"
           >
             test4
           </td>
@@ -280,6 +293,7 @@ exports[`質問・回答例一覧画面テスト スナップショット 1`] = 
           </td>
           <td
             class="border-2 text-center"
+            data-testid="test5"
           >
             test5
           </td>
@@ -320,6 +334,7 @@ exports[`質問・回答例一覧画面テスト スナップショット 1`] = 
           </td>
           <td
             class="border-2 text-center"
+            data-testid="test6"
           >
             test6
           </td>
@@ -360,6 +375,7 @@ exports[`質問・回答例一覧画面テスト スナップショット 1`] = 
           </td>
           <td
             class="border-2 text-center"
+            data-testid="test7"
           >
             test7
           </td>
@@ -400,6 +416,7 @@ exports[`質問・回答例一覧画面テスト スナップショット 1`] = 
           </td>
           <td
             class="border-2 text-center"
+            data-testid="test8"
           >
             test8
           </td>
@@ -440,6 +457,7 @@ exports[`質問・回答例一覧画面テスト スナップショット 1`] = 
           </td>
           <td
             class="border-2 text-center"
+            data-testid="test9"
           >
             test9
           </td>
@@ -480,6 +498,7 @@ exports[`質問・回答例一覧画面テスト スナップショット 1`] = 
           </td>
           <td
             class="border-2 text-center"
+            data-testid="test10"
           >
             test10
           </td>

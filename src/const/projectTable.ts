@@ -77,7 +77,7 @@ const ProjectTableData = [
       },
     ],
     edit_date: "2023-7-6",
-    department: "java",
+    department: "Java",
   },
   {
     id: 3,
@@ -260,7 +260,7 @@ const ProjectTableData = [
       },
     ],
     edit_date: "2023-7-6",
-    department: "PHP",
+    department: "CL",
   },
   {
     id: 9,
@@ -291,7 +291,7 @@ const ProjectTableData = [
       },
     ],
     edit_date: "2023-7-6",
-    department: "PHP",
+    department: "FR",
   },
   {
     id: 10,
@@ -350,7 +350,7 @@ const ProjectTableData = [
       },
     ],
     edit_date: "2023-7-6",
-    department: "PHP",
+    department: "ML",
   },
   {
     id: 12,
@@ -412,7 +412,7 @@ const ProjectTableData = [
       },
     ],
     edit_date: "2023-7-6",
-    department: "PHP",
+    department: "QA",
   },
   {
     id: 14,

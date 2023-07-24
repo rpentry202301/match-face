@@ -34,7 +34,7 @@ exports[`AnswerListコンポーネントのテスト スナップショットテ
           回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。
         </div>
         <div
-          class="my-7 p-3 rounded-md bg-gray-200"
+          class="my-7 p-3 rounded-md bg-light-gray"
           id="modelAnswer"
         >
           <h3
@@ -92,7 +92,7 @@ exports[`AnswerListコンポーネントのテスト スナップショットテ
           選択肢A
         </div>
         <div
-          class="my-7 p-3 rounded-md bg-gray-200"
+          class="my-7 p-3 rounded-md bg-light-gray"
           id="modelAnswer"
         >
           <h3
@@ -132,7 +132,7 @@ exports[`AnswerListコンポーネントのテスト スナップショットテ
           回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。
         </div>
         <div
-          class="my-7 p-3 rounded-md bg-gray-200"
+          class="my-7 p-3 rounded-md bg-light-gray"
           id="modelAnswer"
         >
           <h3
@@ -175,7 +175,7 @@ exports[`AnswerListコンポーネントのテスト スナップショットテ
         回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。
       </div>
       <div
-        class="my-7 p-3 rounded-md bg-gray-200"
+        class="my-7 p-3 rounded-md bg-light-gray"
         id="modelAnswer"
       >
         <h3
@@ -233,7 +233,7 @@ exports[`AnswerListコンポーネントのテスト スナップショットテ
         選択肢A
       </div>
       <div
-        class="my-7 p-3 rounded-md bg-gray-200"
+        class="my-7 p-3 rounded-md bg-light-gray"
         id="modelAnswer"
       >
         <h3
@@ -273,7 +273,7 @@ exports[`AnswerListコンポーネントのテスト スナップショットテ
         回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。回答内容が入ります。
       </div>
       <div
-        class="my-7 p-3 rounded-md bg-gray-200"
+        class="my-7 p-3 rounded-md bg-light-gray"
         id="modelAnswer"
       >
         <h3
