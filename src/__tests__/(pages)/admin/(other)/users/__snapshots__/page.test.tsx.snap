@@ -36,6 +36,12 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
           name="year"
         >
           <option
+            selected=""
+            value="--"
+          >
+            --
+          </option>
+          <option
             value="2010"
           >
             2010
@@ -101,7 +107,6 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
             2022
           </option>
           <option
-            selected=""
             value="2023"
           >
             2023
@@ -118,6 +123,12 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
           id="month"
           name="month"
         >
+          <option
+            selected=""
+            value="--"
+          >
+            --
+          </option>
           <option
             value="1"
           >
@@ -149,7 +160,6 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
             06
           </option>
           <option
-            selected=""
             value="7"
           >
             07
@@ -183,7 +193,7 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
         <label
           for="month"
         >
-           月
+           月入社
         </label>
       </div>
       <div
