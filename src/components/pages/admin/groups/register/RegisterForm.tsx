@@ -34,8 +34,8 @@ const RegisterForm = () => {
         <div className="border-2  py-12 px-12 ">
           <form>
             <label htmlFor="group_name">▶グループ名を設定する</label>
-            <Input id="group_name" value={groupName} onChange={(e)=>setGroupName(e.target.value)} style={{ width: "600px" }} className="my-3 px-2 py-1 border-2 border-gray-300"/>
-            <p className="text-red">{errorGroupName}</p>
+            <Input id="group_name" value={groupName} onChange={(e)=>setGroupName(e.target.value)} style={{ width: "600px" }} className="my-3 px-2 py-1 border-2 border-gray-300" data-testid="groupName"/>
+            <p className="text-red" data-testid="errorGroupName">{errorGroupName}</p>
             <br />
             <label htmlFor="user">▶ユーザーを選択する</label>
             <span>&nbsp;</span>

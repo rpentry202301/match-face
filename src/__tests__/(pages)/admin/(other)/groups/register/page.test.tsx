@@ -34,8 +34,18 @@ describe('管理者/グループ設定画面のテスト',()=>{
             expect(modalConfirmation).toBeInTheDocument
         })
     })
+    describe('チーム名がブランク時の表示テスト',()=>{
+        it('グループ名を入力するインプットが空白のままグループを設定するボタン押下でエラー表示',async()=>{
+            const registerButton = screen.getByTestId('registerConfirm')
+            const groupName = screen.getByTestId('groupName')
+            const errorGroupName = screen.getByTestId("errorGroupName");
+            user.clear(groupName)
+            await user.click(registerButton)
+            expect(errorGroupName).toBeInTheDocument
+        })
+    })
     
-    // 実装を進めたら続きを書きます
+    // 実装を進めたら続きを書きますバリデーション
     // describe('グループ設定',()=>{
     //     it('設定するボタン押下で新規設定',async()=>{
     //         const registerButtonTrue =screen.getByTestId('registerTrue')
