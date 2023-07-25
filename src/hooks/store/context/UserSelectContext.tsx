@@ -7,16 +7,16 @@ import {
   useContext,
   useReducer,
 } from "react";
-import { userSelectReducer } from "../reducer/userSelectReducer";
-import { UserSelectReducerAction } from "@/types/admin/tasks/register/types";
+import { selecterReducer } from "../reducer/selecterReducer";
+import { SelectReducerAction } from "@/types/admin/tasks/register/types";
 
 const UserSelectContext = createContext<
-  [string[], Dispatch<UserSelectReducerAction>] | undefined
+  [string[], Dispatch<SelectReducerAction>] | undefined
 >(undefined);
 
 export const UserSelectProvider = ({ children }: { children: ReactNode }) => {
-  const [state, dispatch] = useReducer<Reducer<string[], UserSelectReducerAction>>(
-    userSelectReducer,
+  const [state, dispatch] = useReducer<Reducer<string[], SelectReducerAction>>(
+    selecterReducer,
     []
   );
   return (

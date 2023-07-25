@@ -1,7 +1,7 @@
 'use client';
 import OrangeButton from '@/components/ui/button/OrangeButton';
 import Link from 'next/link';
-import users from '@/const/login';
+import { users } from '@/const/login';
 import { useRouter } from 'next/navigation';
 import SiteTitle from '@/components/ui/SiteTitle';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -44,6 +44,7 @@ const LoginPage = () => {
   // 内容確認用(削除要)
   // const check = () => {
   //   console.log('errors', errors);
+  //   console.log('errors.type', errors.userId?.type);
   // };
   //
 
@@ -83,26 +84,26 @@ const LoginPage = () => {
         <div>
           <label htmlFor="password" className="">
             パスワード
-            <div>
-              <input
-                id="password"
-                type="password"
-                className="w-96 h-10 mt-2 border border-black"
-                {...register('password', {
-                  required: {
-                    value: true,
-                    message: '※パスワードを入力してください。',
-                  },
-                  validate: {
-                    checkPassword: (value) =>
-                      value !== correctUser.password
-                        ? '※正しいパスワードを入力してください。'
-                        : undefined,
-                  },
-                })}
-              />
-            </div>
           </label>
+          <div>
+            <input
+              id="password"
+              type="password"
+              className="w-96 h-10 mt-2 border border-black"
+              {...register('password', {
+                required: {
+                  value: true,
+                  message: '※パスワードを入力してください。',
+                },
+                validate: {
+                  checkPassword: (value) =>
+                    value !== correctUser.password
+                      ? '※正しいパスワードを入力してください。'
+                      : undefined,
+                },
+              })}
+            />
+          </div>
           {errors.password && (
             <p className="text-red">{errors.password.message}</p>
           )}
