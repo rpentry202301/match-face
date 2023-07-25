@@ -14,7 +14,7 @@ const ProjectTable = () => {
   useEffect(() => {
     const filterData = () => {
       // refine.departmentとrefine.wordがが空の場合、すべてのデータを表示
-      if (refine.department.length === 0 && refine.word === "") {
+      if (refine.department.length === 0 && refine.word.length === 0) {
         setData(ProjectTableData);
         return;
       }
@@ -23,18 +23,22 @@ const ProjectTable = () => {
         refine.department.includes(table.department)
       );
       // refine.wordに一致するデータをフィルタリング
-      const wordFilteredData = departmentFilteredData.filter(
-        (table) =>
-          table.project_name.includes(refine.word) ||
-          table.project_detail.includes(refine.word)
+      const wordFilteredData = departmentFilteredData.filter((table) =>
+        refine.word.some(
+          (keyword) =>
+            table.project_name.includes(keyword) ||
+            table.project_detail.includes(keyword)
+        )
       );
-      const wordOnlyFilteredData = ProjectTableData.filter(
-        (table) =>
-          table.project_name.includes(refine.word) ||
-          table.project_detail.includes(refine.word)
+      const wordOnlyFilteredData = ProjectTableData.filter((table) =>
+        refine.word.some(
+          (keyword) =>
+            table.project_name.includes(keyword) ||
+            table.project_detail.includes(keyword)
+        )
       );
       // refine.wordが空の場合、上記でフィルタリングしたデータを設定
-      if (refine.word === "") {
+      if (refine.word.length === 0) {
         setData(departmentFilteredData);
         return;
       }
