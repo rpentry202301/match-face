@@ -8,14 +8,24 @@ import TextArea from "@/components/ui/TextArea";
 import UserSelectModal from "../../tasks/register/UserSelectModal";
 import UserInput from "./UserInput";
 
-// グループ一覧に遷移する機能作ったほうが良い？
 
 const RegisterForm = () => {
   // モーダル表示用
   const [isOpen, setIsOpen] = useState(false);
 
+  // 初期値
+  const [groupName, setGroupName] = useState('') 
+  const [groupMember, setGroupMember] = useState('')
+  const [groupDescription, setGroupDescription] = useState('')
+  const [errorGroupName, setErrorGroupName] = useState('')
+
   const toggleModal = () => {
+    if(groupName === ''){
+      setErrorGroupName('グループ名が空欄です')
+    }else{
     setIsOpen(!isOpen);
+    setErrorGroupName('')
+    }
   };
 
   return (
@@ -24,18 +34,18 @@ const RegisterForm = () => {
         <div className="border-2  py-12 px-12 ">
           <form>
             <label htmlFor="group_name">▶グループ名を設定する</label>
-            <Input id="group_name" style={{ width: "600px" }} className="my-3 px-2 py-1 border-2 border-gray-300"/>
+            <Input id="group_name" value={groupName} onChange={(e)=>setGroupName(e.target.value)} style={{ width: "600px" }} className="my-3 px-2 py-1 border-2 border-gray-300"/>
+            <p className="text-red">{errorGroupName}</p>
             <br />
             <label htmlFor="user">▶ユーザーを選択する</label>
             <span>&nbsp;</span>
             <UserSelectModal/>
-            {/* <Input id="user" style={{ width: "600px" }} className="my-3 px-2 py-1 border-2 border-gray-300"/> */}
-            <UserInput />
+            <UserInput/>
             <br />
             <label htmlFor="group_description">▶備考</label>
-            <Input id="group_description" style={{ width: "600px" }} className="my-3 px-2 py-1 border-2 border-gray-300"/>
-            {/* テキストエリアにするかも*/}
-            {/* <TextArea id="group_description" cols={1} rows={1} value={''}/> */}
+            {/* <Input id="group_description" value={groupDescription} onChange={(e)=>setGroupDescription(e.target.value)} style={{ width: "600px" }} className="my-3 px-2 py-1 border-2 border-gray-300"/> */}
+            {/* テキストエリアにしました*/}
+            <TextArea id="group_description" cols={1} rows={1} value={groupDescription} onChange={(e)=>setGroupDescription(e.target.value)} className="my-3 px-2 py-1 border-2 border-gray-300"/>
           </form>
           <br />
           <div className="flex flex-col items-center justify-center">
