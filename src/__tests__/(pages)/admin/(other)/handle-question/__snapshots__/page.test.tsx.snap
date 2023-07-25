@@ -17,6 +17,7 @@ exports[`質問・回答例一覧画面テスト スナップショット 1`] = 
           <div>
             <input
               class="border w-full pl-1 border-deep-gray"
+              data-testid="input-search"
               id="search"
             />
           </div>
@@ -26,6 +27,7 @@ exports[`質問・回答例一覧画面テスト スナップショット 1`] = 
         >
           <button
             class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+            data-testid="button-search"
           >
             検索
           </button>
@@ -43,6 +45,7 @@ exports[`質問・回答例一覧画面テスト スナップショット 1`] = 
         </button>
         <button
           class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm rounded-full border shadow-md text-xs py-1 px-5"
+          data-testid="button-PHP"
           value="PHP"
         >
           PHP
