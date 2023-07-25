@@ -64,7 +64,7 @@ const RegisterForm = () => {
           <div className="block w-full h-full bg-black/30 absolute top-0 left-0">
             <div className="flex flex-col items-center justify-center h-screen">
               <div className="bg-white px-2 py-2">
-                <h2 className="font-black px-1 py-3">
+                <h2 className="font-black px-1 py-3" data-testid="confirmRemark">
                   グループを設定してよろしいですか?
                 </h2>
                 <div className="flex flex-col  items-center justify-center mx-5 my-1">

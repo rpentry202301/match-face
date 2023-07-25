@@ -29,9 +29,21 @@ describe('管理者/グループ設定画面のテスト',()=>{
     describe('モーダル表示テスト',()=>{
         it('グループを設定するボタン押下で確認表示',async()=>{
             const registerButton = screen.getByTestId('registerConfirm')
+            const groupName = screen.getByTestId('groupName')
+            // グループ名「test」を入力
+            await user.type(groupName,'test')
+            // グループを設定するボタン押下
             await user.click(registerButton)
             const modalConfirmation = screen.getByText('グループを設定してよろしいですか?')
             expect(modalConfirmation).toBeInTheDocument
+
+            const cancelButton = screen.getByText('キャンセル')
+            // キャンセルボタンを押下
+            await user.click(cancelButton)
+
+            // モーダルが閉じられていることを確認
+            const closeModal = screen.queryByText('グループを設定してよろしいですか?')
+            expect(closeModal).toBeNull()
         })
     })
     describe('チーム名がブランク時の表示テスト',()=>{
