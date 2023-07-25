@@ -12,19 +12,44 @@ const ProjectTable = () => {
   // console.log("projectTable", refine);
 
   useEffect(() => {
-    if (refine.department.length === 0) {
-      setData(ProjectTableData);
-    } else {
-      const filteredData = ProjectTableData.filter((table) =>
+    const filterData = () => {
+      // refine.departmentとrefine.wordがが空の場合、すべてのデータを表示
+      if (refine.department.length === 0 && refine.word === "") {
+        setData(ProjectTableData);
+        return;
+      }
+      // refine.departmentに一致するデータをフィルタリング
+      const departmentFilteredData = ProjectTableData.filter((table) =>
         refine.department.includes(table.department)
       );
-      setData(filteredData);
-    }
+      // refine.wordに一致するデータをフィルタリング
+      const wordFilteredData = departmentFilteredData.filter(
+        (table) =>
+          table.project_name.includes(refine.word) ||
+          table.project_detail.includes(refine.word)
+      );
+      const wordOnlyFilteredData = ProjectTableData.filter(
+        (table) =>
+          table.project_name.includes(refine.word) ||
+          table.project_detail.includes(refine.word)
+      );
+      // refine.wordが空の場合、上記でフィルタリングしたデータを設定
+      if (refine.word === "") {
+        setData(departmentFilteredData);
+        return;
+      }
+      // refine.departmentが空の場合、上記でフィルタリングしたデータを設定
+      if (refine.department.length === 0) {
+        setData(wordOnlyFilteredData);
+        return;
+      }
+      setData(wordFilteredData);
+    };
+    filterData();
   }, [refine]);
 
-
   const pageAmount =
-  data.length % 10 === 0
+    data.length % 10 === 0
       ? data.length / 10
       : Math.floor(data.length / 10) + 1;
 
@@ -36,7 +61,7 @@ const ProjectTable = () => {
 
   return (
     <>
-      <table className="w-4/5 border-2" data-testid='projectTable'>
+      <table className="w-4/5 border-2" data-testid="projectTable">
         <tbody>
           <tr className="border-2 border-current bg-light-gray">
             <th className="w-1/5 border-2 py-4">最終編集日</th>
@@ -48,7 +73,12 @@ const ProjectTable = () => {
             return (
               <tr key={data.id}>
                 <td className="border-2 py-6 text-center">{data.edit_date}</td>
-                <td className="border-2 text-center"  data-testid={`${data.project_name}`}>{data.project_name}</td>
+                <td
+                  className="border-2 text-center"
+                  data-testid={`${data.project_name}`}
+                >
+                  {data.project_name}
+                </td>
                 <td className="border-2 text-center">
                   {data.project_detail.slice(0, 20)}
                 </td>
