@@ -34,11 +34,17 @@ const AdminLoginPage = () => {
     // 仮データで設定
     const userId = adminCorrectUser.id;
     const password = adminCorrectUser.password;
-    if (data.userId === `${userId}` && data.password === password) {
+    if (isValid && data.userId === `${userId}` && data.password === password) {
       router.push('/admin');
     }
-    // console.log('data', data);
   };
+
+  // 内容確認用(削除要)
+  const check = () => {
+    console.log('errors', errors);
+    console.log('errors.type', errors.userId?.type);
+  };
+  //
 
   return (
     <>
@@ -112,6 +118,9 @@ const AdminLoginPage = () => {
             label="ログイン"
             className="mt-10 mb-4 w-48 rounded-none"
             type="submit"
+            // エラー確認用（削除要）
+            onClick={check}
+            //
           />
           <Link href="/remind" className=" text-blue">
             パスワードを忘れた

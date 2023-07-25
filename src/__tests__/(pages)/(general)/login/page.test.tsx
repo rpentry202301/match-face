@@ -45,7 +45,6 @@ describe('ページがレンダリングされた時', () => {
   });
 });
 
-// Start（初めてOrangeButtonがクリックされた時）
 describe('初めてOrangeButtonがクリックされた時', () => {
   beforeEach(() => {
     render(
@@ -161,105 +160,107 @@ describe('初めてOrangeButtonがクリックされた時', () => {
         await screen.findByText('※正しいパスワードを入力してください。')
       ).toBeInTheDocument();
     });
+  });
 
-    describe('ユーザーIDが半角英語のみで入力されている時', () => {
-      test('パスワードが未入力の場合、"※半角数字で入力してください。"と、"※パスワードを入力してください"が表示されること', async () => {
-        // ユーザーIDを半角英語のみで入力
-        const userIdInput = screen.getByLabelText('ユーザーID');
-        await userEvent.type(userIdInput, 'aaaa');
+  describe('ユーザーIDが半角英語のみで入力されている時', () => {
+    test('パスワードが未入力の場合、"※半角数字で入力してください。"と、"※パスワードを入力してください"が表示されること', async () => {
+      // ユーザーIDを半角英語のみで入力
+      const userIdInput = screen.getByLabelText('ユーザーID');
+      await userEvent.type(userIdInput, 'aaaa');
 
-        // ボタンをクリック
-        const loginButton = screen.getByRole('button', { name: 'ログイン' });
-        await user.click(loginButton);
+      // ボタンをクリック
+      const loginButton = screen.getByRole('button', { name: 'ログイン' });
+      await user.click(loginButton);
 
-        // エラーメッセージが表示される
-        expect(
-          await screen.findByText('※半角数字で入力してください。')
-        ).toBeInTheDocument();
-        expect(
-          await screen.findByText('※パスワードを入力してください。')
-        ).toBeInTheDocument();
-      });
-
-      test('登録済みのパスワードが入力されている場合、"※半角数字で入力してください。"が表示されること', async () => {
-        // ユーザーIDを半角英語のみで入力
-        const userIdInput = screen.getByLabelText('ユーザーID');
-        await userEvent.type(userIdInput, 'aaaa');
-
-        // 登録済みのパスワードを入力
-        const passwordInput = screen.getByLabelText('パスワード');
-        await userEvent.type(passwordInput, `${registeredUser.password}`);
-
-        // ボタンをクリック
-        const loginButton = screen.getByRole('button', { name: 'ログイン' });
-        await user.click(loginButton);
-
-        // エラーメッセージが表示される
-        expect(
-          await screen.findByText('※半角数字で入力してください。')
-        ).toBeInTheDocument();
-      });
-
-      test('登録されていないパスワードが入力されている場合、"※半角数字で入力してください。"と、”正しいパスワードを入力してください。"が表示されること', async () => {
-        // ユーザーIDを半角英語のみで入力
-        const userIdInput = screen.getByLabelText('ユーザーID');
-        await userEvent.type(userIdInput, 'aaaa');
-
-        // 登録されていないパスワードを入力
-        const passwordInput = screen.getByLabelText('パスワード');
-        await userEvent.type(passwordInput, `${notRegisteredUser.password}`);
-
-        // ボタンをクリック
-        const loginButton = screen.getByRole('button', { name: 'ログイン' });
-        await user.click(loginButton);
-
-        // エラーメッセージが表示される
-        expect(
-          await screen.findByText('※半角数字で入力してください。')
-        ).toBeInTheDocument();
-        expect(
-          await screen.findByText('※正しいパスワードを入力してください。')
-        ).toBeInTheDocument();
-      });
-
-      describe('ユーザーIDが半角英語と半角数字で入力されている時', () => {
-        test('パスワードが未入力の場合、"※半角数字で入力してください。"と、"※パスワードを入力してください"が表示されること', async () => {
-          // ユーザーIDを半角英語と半角数字で入力
-          const userIdInput = screen.getByLabelText('ユーザーID');
-          await userEvent.type(userIdInput, '111a');
-
-          // ボタンをクリック
-          const loginButton = screen.getByRole('button', { name: 'ログイン' });
-          await user.click(loginButton);
-
-          // エラーメッセージが表示される
-          expect(
-            await screen.findByText('※半角数字で入力してください。')
-          ).toBeInTheDocument();
-          expect(
-            await screen.findByText('※パスワードを入力してください。')
-          ).toBeInTheDocument();
-        });
-      });
-      test('登録済みのパスワードが入力されている場合、"※半角数字で入力してください。"が表示されること', async () => {
-        // ユーザーIDを半角英語と半角数字で入力
-        const userIdInput = screen.getByLabelText('ユーザーID');
-        await userEvent.type(userIdInput, '111a');
-
-        // 登録済みのパスワードを入力
-        const passwordInput = screen.getByLabelText('パスワード');
-        await userEvent.type(passwordInput, `${registeredUser.password}`);
-
-        // ボタンをクリック
-        const loginButton = screen.getByRole('button', { name: 'ログイン' });
-        await user.click(loginButton);
-
-        // エラーメッセージが表示される
-        expect(
-          await screen.findByText('※半角数字で入力してください。')
-        ).toBeInTheDocument();
-      });
+      // エラーメッセージが表示される
+      expect(
+        await screen.findByText('※半角数字で入力してください。')
+      ).toBeInTheDocument();
+      expect(
+        await screen.findByText('※パスワードを入力してください。')
+      ).toBeInTheDocument();
     });
+
+    test('登録済みのパスワードが入力されている場合、"※半角数字で入力してください。"が表示されること', async () => {
+      // ユーザーIDを半角英語のみで入力
+      const userIdInput = screen.getByLabelText('ユーザーID');
+      await userEvent.type(userIdInput, 'aaaa');
+
+      // 登録済みのパスワードを入力
+      const passwordInput = screen.getByLabelText('パスワード');
+      await userEvent.type(passwordInput, `${registeredUser.password}`);
+
+      // ボタンをクリック
+      const loginButton = screen.getByRole('button', { name: 'ログイン' });
+      await user.click(loginButton);
+
+      // エラーメッセージが表示される
+      expect(
+        await screen.findByText('※半角数字で入力してください。')
+      ).toBeInTheDocument();
+    });
+
+    test('登録されていないパスワードが入力されている場合、"※半角数字で入力してください。"と、”正しいパスワードを入力してください。"が表示されること', async () => {
+      // ユーザーIDを半角英語のみで入力
+      const userIdInput = screen.getByLabelText('ユーザーID');
+      await userEvent.type(userIdInput, 'aaaa');
+
+      // 登録されていないパスワードを入力
+      const passwordInput = screen.getByLabelText('パスワード');
+      await userEvent.type(passwordInput, `${notRegisteredUser.password}`);
+
+      // ボタンをクリック
+      const loginButton = screen.getByRole('button', { name: 'ログイン' });
+      await user.click(loginButton);
+
+      // エラーメッセージが表示される
+      expect(
+        await screen.findByText('※半角数字で入力してください。')
+      ).toBeInTheDocument();
+      expect(
+        await screen.findByText('※正しいパスワードを入力してください。')
+      ).toBeInTheDocument();
+    });
+  });
+
+  describe('ユーザーIDが半角英語と半角数字で入力されている時', () => {
+    test('パスワードが未入力の場合、"※半角数字で入力してください。"と、"※パスワードを入力してください"が表示されること', async () => {
+      // ユーザーIDを半角英語と半角数字で入力
+      const userIdInput = screen.getByLabelText('ユーザーID');
+      await userEvent.type(userIdInput, '111a');
+
+      // ボタンをクリック
+      const loginButton = screen.getByRole('button', { name: 'ログイン' });
+      await user.click(loginButton);
+
+      // エラーメッセージが表示される
+      expect(
+        await screen.findByText('※半角数字で入力してください。')
+      ).toBeInTheDocument();
+      expect(
+        await screen.findByText('※パスワードを入力してください。')
+      ).toBeInTheDocument();
+    });
+
+    test('登録済みのパスワードが入力されている場合、"※半角数字で入力してください。"が表示されること', async () => {
+      // ユーザーIDを半角英語と半角数字で入力
+      const userIdInput = screen.getByLabelText('ユーザーID');
+      await userEvent.type(userIdInput, '111a');
+
+      // 登録済みのパスワードを入力
+      const passwordInput = screen.getByLabelText('パスワード');
+      await userEvent.type(passwordInput, `${registeredUser.password}`);
+
+      // ボタンをクリック
+      const loginButton = screen.getByRole('button', { name: 'ログイン' });
+      await user.click(loginButton);
+
+      // エラーメッセージが表示される
+      expect(
+        await screen.findByText('※半角数字で入力してください。')
+      ).toBeInTheDocument();
+    });
+
     test('登録されていないパスワードが入力されている場合、"※半角数字で入力してください。"と、”正しいパスワードを入力してください。"が表示されること', async () => {
       // ユーザーIDを半角英語と半角数字で入力
       const userIdInput = screen.getByLabelText('ユーザーID');
@@ -281,118 +282,118 @@ describe('初めてOrangeButtonがクリックされた時', () => {
         await screen.findByText('※正しいパスワードを入力してください。')
       ).toBeInTheDocument();
     });
+  });
 
-    describe('登録されているユーザーIDが入力されている時', () => {
-      test('パスワードが未入力の場合、"※パスワードを入力してください"が表示されること', async () => {
-        // 登録されているユーザーIDを入力
-        const userIdInput = screen.getByLabelText('ユーザーID');
-        await userEvent.type(userIdInput, `${registeredUser.id}`);
+  describe('登録されているユーザーIDが入力されている時', () => {
+    test('パスワードが未入力の場合、"※パスワードを入力してください"が表示されること', async () => {
+      // 登録されているユーザーIDを入力
+      const userIdInput = screen.getByLabelText('ユーザーID');
+      await userEvent.type(userIdInput, `${registeredUser.id}`);
 
-        // ボタンをクリック
-        const loginButton = screen.getByRole('button', { name: 'ログイン' });
-        await user.click(loginButton);
+      // ボタンをクリック
+      const loginButton = screen.getByRole('button', { name: 'ログイン' });
+      await user.click(loginButton);
 
-        // エラーメッセージが表示される
-        expect(
-          await screen.findByText('※パスワードを入力してください。')
-        ).toBeInTheDocument();
-      });
-      test('登録済みのパスワードが入力されている場合、ログインに成功しトップ画面に遷移すること', async () => {
-        // 登録済みユーザーIDを入力;
-        const userIdInput = screen.getByLabelText('ユーザーID');
-        await userEvent.type(userIdInput, `${registeredUser.id}`);
+      // エラーメッセージが表示される
+      expect(
+        await screen.findByText('※パスワードを入力してください。')
+      ).toBeInTheDocument();
+    });
+    test('登録済みのパスワードが入力されている場合、ログインに成功しトップ画面に遷移すること', async () => {
+      // 登録済みユーザーIDを入力;
+      const userIdInput = screen.getByLabelText('ユーザーID');
+      await userEvent.type(userIdInput, `${registeredUser.id}`);
 
-        // 登録済みパスワードを入力
-        const passwordInput = screen.getByLabelText('パスワード');
-        await userEvent.type(passwordInput, `${registeredUser.password}`);
+      // 登録済みパスワードを入力
+      const passwordInput = screen.getByLabelText('パスワード');
+      await userEvent.type(passwordInput, `${registeredUser.password}`);
 
-        // ボタンをクリック
-        const loginButton = screen.getByRole('button', { name: 'ログイン' });
-        await user.click(loginButton);
+      // ボタンをクリック
+      const loginButton = screen.getByRole('button', { name: 'ログイン' });
+      await user.click(loginButton);
 
-        // トップ画面へ遷移
-        expect(push).toHaveBeenCalledWith('/');
-      });
-      test('登録されていないパスワードが入力されている場合、”正しいパスワードを入力してください。"が表示されること', async () => {
-        // 登録済みユーザーIDを入力;
-        const userIdInput = screen.getByLabelText('ユーザーID');
-        await userEvent.type(userIdInput, `${registeredUser.id}`);
+      // トップ画面へ遷移
+      expect(push).toHaveBeenCalledWith('/');
+    });
+    test('登録されていないパスワードが入力されている場合、”正しいパスワードを入力してください。"が表示されること', async () => {
+      // 登録済みユーザーIDを入力;
+      const userIdInput = screen.getByLabelText('ユーザーID');
+      await userEvent.type(userIdInput, `${registeredUser.id}`);
 
-        // 登録されていないパスワードを入力
-        const passwordInput = screen.getByLabelText('パスワード');
-        await userEvent.type(passwordInput, `${notRegisteredUser.password}`);
+      // 登録されていないパスワードを入力
+      const passwordInput = screen.getByLabelText('パスワード');
+      await userEvent.type(passwordInput, `${notRegisteredUser.password}`);
 
-        // ボタンをクリック
-        const loginButton = screen.getByRole('button', { name: 'ログイン' });
-        await user.click(loginButton);
+      // ボタンをクリック
+      const loginButton = screen.getByRole('button', { name: 'ログイン' });
+      await user.click(loginButton);
 
-        // エラーメッセージが表示される
-        expect(
-          await screen.findByText('※正しいパスワードを入力してください。')
-        ).toBeInTheDocument();
-      });
-      describe('ユーザーIDが半角数字のみで入力されているが、登録されていない時', () => {
-        test('パスワードが未入力の場合、"※正しいユーザーIDを入力してください。"と、"※パスワードを入力してください"が表示されること', async () => {
-          // 半角数字のみだが登録されていないユーザーIDを入力(99999)
-          const userIdInput = screen.getByLabelText('ユーザーID');
-          await userEvent.type(userIdInput, `${notRegisteredUser.id}`);
+      // エラーメッセージが表示される
+      expect(
+        await screen.findByText('※正しいパスワードを入力してください。')
+      ).toBeInTheDocument();
+    });
+  });
 
-          // ボタンをクリック
-          const loginButton = screen.getByRole('button', { name: 'ログイン' });
-          await user.click(loginButton);
+  describe('ユーザーIDが半角数字のみで入力されているが、登録されていない時', () => {
+    test('パスワードが未入力の場合、"※正しいユーザーIDを入力してください。"と、"※パスワードを入力してください"が表示されること', async () => {
+      // 半角数字のみだが登録されていないユーザーIDを入力(99999)
+      const userIdInput = screen.getByLabelText('ユーザーID');
+      await userEvent.type(userIdInput, `${notRegisteredUser.id}`);
 
-          // エラーメッセージが表示される
-          expect(
-            await screen.findByText('※正しいユーザーIDを入力してください。')
-          ).toBeInTheDocument();
-          expect(
-            await screen.findByText('※パスワードを入力してください。')
-          ).toBeInTheDocument();
-        });
-        test('登録済みのパスワードが入力されている場合、"※正しいユーザーIDを入力してください。"が表示されること', async () => {
-          // 半角数字のみだが登録されていないユーザーIDを入力(99999)
-          const userIdInput = screen.getByLabelText('ユーザーID');
-          await userEvent.type(userIdInput, `${notRegisteredUser.id}`);
+      // ボタンをクリック
+      const loginButton = screen.getByRole('button', { name: 'ログイン' });
+      await user.click(loginButton);
 
-          // 登録済みパスワードを入力
-          const passwordInput = screen.getByLabelText('パスワード');
-          await userEvent.type(passwordInput, `${registeredUser.password}`);
+      // エラーメッセージが表示される
+      expect(
+        await screen.findByText('※正しいユーザーIDを入力してください。')
+      ).toBeInTheDocument();
+      expect(
+        await screen.findByText('※パスワードを入力してください。')
+      ).toBeInTheDocument();
+    });
+    test('登録済みのパスワードが入力されている場合、"※正しいユーザーIDを入力してください。"が表示されること', async () => {
+      // 半角数字のみだが登録されていないユーザーIDを入力(99999)
+      const userIdInput = screen.getByLabelText('ユーザーID');
+      await userEvent.type(userIdInput, `${notRegisteredUser.id}`);
 
-          // ボタンをクリック
-          const loginButton = screen.getByRole('button', { name: 'ログイン' });
-          await user.click(loginButton);
+      // 登録済みパスワードを入力
+      const passwordInput = screen.getByLabelText('パスワード');
+      await userEvent.type(passwordInput, `${registeredUser.password}`);
 
-          // エラーメッセージが表示される
-          expect(
-            await screen.findByText('※正しいユーザーIDを入力してください。')
-          ).toBeInTheDocument();
-        });
-        test('登録されていないパスワードが入力されている場合、"※正しいユーザーIDを入力してください。"と、正しいパスワードを入力してください。”が表示されること', async () => {
-          // 半角数字のみだが登録されていないユーザーIDを入力(99999)
-          const userIdInput = screen.getByLabelText('ユーザーID');
-          await userEvent.type(userIdInput, `${notRegisteredUser.id}`);
+      // ボタンをクリック
+      const loginButton = screen.getByRole('button', { name: 'ログイン' });
+      await user.click(loginButton);
 
-          // 登録されていないパスワードを入力
-          const passwordInput = screen.getByLabelText('パスワード');
-          await userEvent.type(passwordInput, `${notRegisteredUser.password}`);
+      // エラーメッセージが表示される
+      expect(
+        await screen.findByText('※正しいユーザーIDを入力してください。')
+      ).toBeInTheDocument();
+    });
+    test('登録されていないパスワードが入力されている場合、"※正しいユーザーIDを入力してください。"と、正しいパスワードを入力してください。”が表示されること', async () => {
+      // 半角数字のみだが登録されていないユーザーIDを入力(99999)
+      const userIdInput = screen.getByLabelText('ユーザーID');
+      await userEvent.type(userIdInput, `${notRegisteredUser.id}`);
 
-          // ボタンをクリック
-          const loginButton = screen.getByRole('button', { name: 'ログイン' });
-          await user.click(loginButton);
+      // 登録されていないパスワードを入力
+      const passwordInput = screen.getByLabelText('パスワード');
+      await userEvent.type(passwordInput, `${notRegisteredUser.password}`);
 
-          // エラーメッセージが表示される
-          expect(
-            await screen.findByText('※正しいユーザーIDを入力してください。')
-          ).toBeInTheDocument();
-          expect(
-            await screen.findByText('※正しいパスワードを入力してください。')
-          ).toBeInTheDocument();
-        });
-      });
+      // ボタンをクリック
+      const loginButton = screen.getByRole('button', { name: 'ログイン' });
+      await user.click(loginButton);
+
+      // エラーメッセージが表示される
+      expect(
+        await screen.findByText('※正しいユーザーIDを入力してください。')
+      ).toBeInTheDocument();
+      expect(
+        await screen.findByText('※正しいパスワードを入力してください。')
+      ).toBeInTheDocument();
     });
   });
 });
-// End（初めてOrangeButtonがクリックされた時）
 
 describe('OrangeButtonがクリックされた時（2回目以降）', () => {
   beforeEach(() => {
@@ -402,6 +403,7 @@ describe('OrangeButtonがクリックされた時（2回目以降）', () => {
       </AppRouterContextProviderMock>
     );
   });
+
   describe('"※ユーザーIDを入力してください。"のみが表示されている時', () => {
     test('登録済みのパスワードと登録済みのユーザーIDが入力されている場合、"※ユーザーIDを入力してください。"の表示が消え、ログインに成功しトップ画面に遷移すること', async () => {
       // 登録済みパスワードを入力
@@ -435,6 +437,7 @@ describe('OrangeButtonがクリックされた時（2回目以降）', () => {
       expect(push).toHaveBeenCalledWith('/');
     });
   });
+
   describe('"※半角数字で入力してください"のみが表示されている時', () => {
     test('登録済みのパスワードと登録済みのユーザーIDが入力されている場合、"※半角数字で入力してください。"の表示が消え、ログインに成功しトップ画面に遷移すること', async () => {
       // ユーザーIDを半角英語で入力
@@ -471,6 +474,7 @@ describe('OrangeButtonがクリックされた時（2回目以降）', () => {
       expect(push).toHaveBeenCalledWith('/');
     });
   });
+
   describe('"※正しいユーザーIDを入力してください。"のみが表示されている時', () => {
     test('登録済みのパスワードと登録済みのユーザーIDが入力されている場合、"※正しいユーザーIDを入力してください。"の表示が消え、ログインに成功しトップ画面に遷移すること', async () => {
       // 登録されていないユーザーIDを入力
@@ -509,6 +513,7 @@ describe('OrangeButtonがクリックされた時（2回目以降）', () => {
       expect(push).toHaveBeenCalledWith('/');
     });
   });
+
   describe('"※パスワードを入力してください"のみが表示されている時', () => {
     test('登録済みのユーザーIDと登録済みのパスワードが入力されている場合、"※パスワードを入力してください。"の表示が消え、ログインに成功しトップ画面に遷移すること', async () => {
       // 登録済みユーザーIDを入力;
@@ -542,6 +547,7 @@ describe('OrangeButtonがクリックされた時（2回目以降）', () => {
       expect(push).toHaveBeenCalledWith('/');
     });
   });
+
   describe('"※正しいパスワードを入力してください。"のみが表示されている時', () => {
     test('登録済みのユーザーIDと登録済みのパスワードが入力されている場合、"※正しいパスワードを入力してください。"の表示が消え、ログインに成功しトップ画面に遷移すること', async () => {
       // 登録済みユーザーIDを入力;
