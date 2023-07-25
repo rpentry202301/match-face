@@ -3,7 +3,7 @@
 import React, { useContext } from "react";
 
 type Refine = {
-  word: string;
+  word: string[];
   department: string[];
 };
 
@@ -11,7 +11,7 @@ const SelectContext = React.createContext<[Refine, React.Dispatch<React.SetState
 
 export function SelectProvider({ children }: { children: React.ReactNode }) {
   const [select, setSelect] = React.useState<Refine>({
-    word: "",
+    word: [],
     department: [],
   });
 

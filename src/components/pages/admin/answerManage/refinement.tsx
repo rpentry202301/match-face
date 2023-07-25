@@ -8,7 +8,7 @@ import { useRefine } from "@/hooks/store/context/HandleQuestionContext";
 
 const Refinement = () => {
   const [select, setSelect] = useState<string[]>([]);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState<string[]>([]);
   const [refine, setRefine] = useRefine();
   const handleSelectButtonClick = (value: string) => {
     if (select.includes(value)) {
@@ -20,7 +20,7 @@ const Refinement = () => {
     }
   };
   const handleInputSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
+    setSearch(e.target.value.split(/[\s]+/));
   };
   const handleCheckButtonClick = () => {
     setRefine((prevRefine) => ({
