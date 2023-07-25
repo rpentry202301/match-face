@@ -1,7 +1,7 @@
 'use client';
 import SiteTitle from '@/components/ui/SiteTitle';
 import OrangeButton from '@/components/ui/button/OrangeButton';
-import { users } from '@/const/login';
+import { users, admin } from '@/const/login';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -13,8 +13,8 @@ type LoginForm = {
 };
 
 // ダミーデータ
-const userData = users;
-const adminCorrectUser = users[2];
+const userData = admin;
+const adminCorrectUser = admin[0];
 
 const AdminLoginPage = () => {
   // ルーター
@@ -99,12 +99,6 @@ const AdminLoginPage = () => {
                           ? '※正しいパスワードを入力してください。'
                           : undefined,
                     },
-                    // pattern: {
-                    //   value:
-                    //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[._\/#&%=\\~\-+*@()<>\\[\\]{}])[a-zA-Z\d._\/#&%=\\~\-+*@()<>\\[\\]{}]{8,}$/,
-
-                    //   message: '※正しいパスワードを入力してください。',
-                    // },
                   })}
                 />
               </div>

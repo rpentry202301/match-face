@@ -12,7 +12,19 @@ type User = {
   update_at: string;
 };
 
+type Admin = {
+  id: number;
+  name: string;
+  password: string;
+  email: string;
+  created_user: string;
+  created_at: string;
+  update_user: string;
+  update_at: string;
+};
+
 export type Users = User[];
+type Admins = Admin[];
 
 export const users: Users = [
   {
@@ -69,5 +81,38 @@ export const dummyUser: Users = [
     created_at: '9999-99-99',
     update_user: 'incorrectUser',
     update_at: '9999-99-99',
+  },
+];
+
+export const admin: Admins = [
+  {
+    id: 1111,
+    name: 'ラクス責任太郎',
+    password: 'adpassword#1',
+    email: 'admin1@example.com',
+    created_user: 'ラクス大王',
+    created_at: '2022-12-30',
+    update_user: 'ラクス大王',
+    update_at: '2023-01-02',
+  },
+  {
+    id: 2222,
+    name: 'ラクス責任次郎',
+    password: 'adpassword#2',
+    email: 'admin2@example.com',
+    created_user: 'ラクス大王',
+    created_at: '2022-12-30',
+    update_user: 'ラクス大王',
+    update_at: '2023-01-02',
+  },
+  {
+    id: 3333,
+    name: 'ラクス責任三郎',
+    password: 'adpassword#3',
+    email: 'admin3@example.com',
+    created_user: 'ラクス大王',
+    created_at: '2022-12-30',
+    update_user: 'ラクス大王',
+    update_at: '2023-01-02',
   },
 ];
