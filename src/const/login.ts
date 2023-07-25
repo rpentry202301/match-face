@@ -116,3 +116,16 @@ export const admin: Admins = [
     update_at: '2023-01-02',
   },
 ];
+
+export const dummyAdmin: Admins = [
+  {
+    id: 999999,
+    name: 'incorrect',
+    password: 'incorrectPass#1',
+    email: 'incorrect@example.com',
+    created_user: 'incorrectUser',
+    created_at: '9999-99-99',
+    update_user: 'incorrectUser',
+    update_at: '9999-99-99',
+  },
+];
