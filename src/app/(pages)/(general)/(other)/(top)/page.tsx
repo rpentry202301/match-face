@@ -1,6 +1,6 @@
 import Menu from '@/components/ui/Menu';
 import Notification from '@/components/pages/general/top/Notification';
-import { MenuContentsArray } from '@/const/top';
+import { menuContentsArray } from '@/const/top';
 
 type MenuContent = {
   id: number;
@@ -26,7 +26,7 @@ const Home = async () => {
       </div>
 
       <div className="grid grid-cols-2 gap-20 w-3/5 place-items-center mx-auto">
-        {MenuContentsArray.map((menuContent: MenuContent) => (
+        {menuContentsArray.map((menuContent: MenuContent) => (
           <div key={menuContent.id} className="">
             <Menu
               url={menuContent.url}
