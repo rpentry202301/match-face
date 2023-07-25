@@ -7,10 +7,21 @@ import { menuContentsArray } from '@/const/top';
 const menuContent = menuContentsArray[0];
 
 describe('スナップショット', () => {
-  test.todo('スナップショット');
+  test('スナップショット', () => {
+    const { container } = render(
+      <Menu
+        url={menuContent.url}
+        title={menuContent.title}
+        description={menuContent.description}
+        imgUrl={menuContent.imgUrl}
+        imgAlt={menuContent.imgAlt}
+      />
+    );
+    expect(container).toMatchSnapshot();
+  });
 });
 
-describe('引数にデータを与えた時', () => {
+describe('引数に指定のデータを与えた時', () => {
   beforeEach(() => {
     render(
       <Menu
