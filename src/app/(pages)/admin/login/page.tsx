@@ -1,7 +1,7 @@
 'use client';
 import SiteTitle from '@/components/ui/SiteTitle';
 import OrangeButton from '@/components/ui/button/OrangeButton';
-import users from '@/const/login';
+import { admin } from '@/const/login';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -13,8 +13,8 @@ type LoginForm = {
 };
 
 // ダミーデータ
-const userData = users;
-const adminCorrectUser = users[2];
+const userData = admin;
+const adminCorrectUser = admin[0];
 
 const AdminLoginPage = () => {
   // ルーター
@@ -34,11 +34,17 @@ const AdminLoginPage = () => {
     // 仮データで設定
     const userId = adminCorrectUser.id;
     const password = adminCorrectUser.password;
-    if (data.userId === `${userId}` && data.password === password) {
+    if (isValid && data.userId === `${userId}` && data.password === password) {
       router.push('/admin');
     }
-    // console.log('data', data);
   };
+
+  // 内容確認用(削除要)
+  const check = () => {
+    console.log('errors', errors);
+    console.log('errors.type', errors.userId?.type);
+  };
+  //
 
   return (
     <>
@@ -99,12 +105,6 @@ const AdminLoginPage = () => {
                           ? '※正しいパスワードを入力してください。'
                           : undefined,
                     },
-                    // pattern: {
-                    //   value:
-                    //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[._\/#&%=\\~\-+*@()<>\\[\\]{}])[a-zA-Z\d._\/#&%=\\~\-+*@()<>\\[\\]{}]{8,}$/,
-
-                    //   message: '※正しいパスワードを入力してください。',
-                    // },
                   })}
                 />
               </div>
@@ -118,6 +118,9 @@ const AdminLoginPage = () => {
             label="ログイン"
             className="mt-10 mb-4 w-48 rounded-none"
             type="submit"
+            // エラー確認用（削除要）
+            onClick={check}
+            //
           />
           <Link href="/remind" className=" text-blue">
             パスワードを忘れた

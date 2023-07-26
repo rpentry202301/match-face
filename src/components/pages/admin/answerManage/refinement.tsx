@@ -3,11 +3,12 @@ import WhiteButton from "@/components/ui/button/WhiteButton";
 import WhiteCheckButton from "@/components/ui/button/WhiteCheckButton";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import Input from "@/components/ui/Input";
-import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 import { useRefine } from "@/hooks/store/context/HandleQuestionContext";
 
 const Refinement = () => {
   const [select, setSelect] = useState<string[]>([]);
+  const [search, setSearch] = useState<string[]>([]);
   const [refine, setRefine] = useRefine();
   const handleSelectButtonClick = (value: string) => {
     if (select.includes(value)) {
@@ -18,9 +19,13 @@ const Refinement = () => {
       setSelect([...select, value]);
     }
   };
+  const handleInputSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value.split(/[\s]+/));
+  };
   const handleCheckButtonClick = () => {
     setRefine((prevRefine) => ({
       ...prevRefine,
+      word: search,
       department: select,
     }));
   };
@@ -28,10 +33,22 @@ const Refinement = () => {
     <div className="border-2 flex flex-col items-center w-5/12 max-w-5/12">
       <div className="mt-7 flex items-center w-4/5 ">
         <div className=" w-4/5">
-          <Input id="search" className="w-full pl-1 border-deep-gray" />
+          <Input
+            id="search"
+            className="w-full pl-1 border-deep-gray"
+            onChange={(e) => handleInputSearch(e)}
+            data-testid="input-search"
+          />
         </div>
         <div className=" w-1/5 flex justify-end">
-          <WhiteButton label="検索" className="text-xs py-1 px-5" />
+          <WhiteButton
+            label="検索"
+            className="text-xs py-1 px-5"
+            onClick={() => {
+              handleCheckButtonClick();
+            }}
+            data-testid="button-search"
+          />
         </div>
       </div>
       <div className="mt-7 flex w-4/5 justify-between">
@@ -43,7 +60,7 @@ const Refinement = () => {
               : "text-xs py-1 px-5"
           }
           value="Java"
-          data-testid='button-Java'
+          data-testid="button-Java"
           onClick={() => handleSelectButtonClick("Java")}
         />
         <WhiteButton
@@ -54,6 +71,7 @@ const Refinement = () => {
               : "text-xs py-1 px-5"
           }
           value="PHP"
+          data-testid="button-PHP"
           onClick={() => handleSelectButtonClick("PHP")}
         />
         <WhiteButton
@@ -103,7 +121,7 @@ const Refinement = () => {
         onClick={() => {
           handleCheckButtonClick();
         }}
-        data-testid='button-refine'
+        data-testid="button-refine"
       />
     </div>
   );

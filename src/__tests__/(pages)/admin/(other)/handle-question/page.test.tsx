@@ -55,4 +55,54 @@ describe("質問・回答例一覧画面テスト", () => {
     //テーブル内にJava属性を持たない行が表示されていないか
     expect(table).not.toContainElement(nonExistElement)
   });
+
+  it("PHP絞り込み&ワード検索実行", async () => {
+    const addWriteButton = screen.getByTestId("button-PHP");
+    const searchInput = screen.getByTestId("input-search");
+    const refineButton = screen.getByTestId("button-refine");
+    const table = screen.getByTestId("projectTable");
+    const descendant = screen.getByTestId("test3");
+    const nonExistElement = screen.getByTestId("test4");
+    fireEvent.change(searchInput, { target: { value: "test3" } });
+    fireEvent.click(addWriteButton);
+    fireEvent.click(refineButton);
+    //テーブル内にPHP属性かつtest3の行が表示されているか
+    expect(table).toContainElement(descendant)
+    expect(descendant).not.toContainElement(table)
+    //テーブル内にPHP属性かつtest3を持たない行が表示されていないか
+    expect(table).not.toContainElement(nonExistElement)
+  });
+
+  it("ワード検索実行", async () => {
+    const searchInput = screen.getByTestId("input-search");
+    const refineButton = screen.getByTestId("button-search");
+    const table = screen.getByTestId("projectTable");
+    const descendant = screen.getByTestId("test3");
+    const nonExistElement = screen.getByTestId("test1");
+    fireEvent.change(searchInput, { target: { value: "test3" } });
+    fireEvent.click(refineButton);
+    //テーブル内にtest3の行が表示されているか
+    expect(table).toContainElement(descendant)
+    expect(descendant).not.toContainElement(table)
+    //テーブル内にtest3を持たない行が表示されていないか
+    expect(table).not.toContainElement(nonExistElement)
+  });
+
+  it("ワード検索(複数部分一致)実行", async () => {
+    const searchInput = screen.getByTestId("input-search");
+    const refineButton = screen.getByTestId("button-search");
+    const table = screen.getByTestId("projectTable");
+    const descendant = screen.getByTestId("test1");
+    const descendant2 = screen.getByTestId("test2");
+    const nonExistElement = screen.getByTestId("test3");
+    fireEvent.change(searchInput, { target: { value: "1 2" } });
+    fireEvent.click(refineButton);
+    //テーブル内にtest1とtest2の行が表示されているか
+    expect(table).toContainElement(descendant)
+    expect(table).toContainElement(descendant2)
+    expect(descendant).not.toContainElement(table)
+    expect(descendant2).not.toContainElement(table)
+    //テーブル内に1と2を持たない行が表示されていないか
+    expect(table).not.toContainElement(nonExistElement)
+  });
 });

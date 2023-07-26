@@ -17,10 +17,16 @@ exports[`管理者/グループ設定画面のテスト スナップショット
         <div>
           <input
             class="my-3 px-2 py-1 border-2 border-gray-300"
+            data-testid="groupName"
             id="group_name"
             style="width: 600px;"
+            value=""
           />
         </div>
+        <p
+          class="text-red"
+          data-testid="errorGroupName"
+        />
         <br />
         <label
           for="user"
@@ -50,13 +56,12 @@ exports[`管理者/グループ設定画面のテスト スナップショット
         >
           ▶備考
         </label>
-        <div>
-          <input
-            class="my-3 px-2 py-1 border-2 border-gray-300"
-            id="group_description"
-            style="width: 600px;"
-          />
-        </div>
+        <textarea
+          class="w-full p-3 my-3 px-2 py-1 border-2 border-gray-300"
+          cols="1"
+          id="group_description"
+          rows="1"
+        />
       </form>
       <br />
       <div
