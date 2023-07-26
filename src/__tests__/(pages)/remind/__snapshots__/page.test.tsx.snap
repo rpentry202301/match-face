@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`スナップショット スナップショット 1`] = `
+<div>
+  <form>
+    <div
+      class="flex flex-col items-center justify-center h-screen"
+    >
+      <h1
+        class="text-orange text-4xl font-semibold m-8"
+      >
+        Match Face
+      </h1>
+      <span
+        class="mb-7"
+      >
+        パスワード再設定用のURLを登録メールアドレスに送信します。
+      </span>
+      <div
+        class=""
+      >
+        <label
+          for="email"
+        >
+          メールアドレス
+          <div>
+            <input
+              class=" w-96 h-10 mt-2 border border-black"
+              id="email"
+              name="email"
+              type="text"
+            />
+          </div>
+        </label>
+      </div>
+      <div>
+        <button
+          class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white p-2 h-auto text-lg mt-14 mb-4 w-56 rounded-none"
+          type="submit"
+        >
+          再設定用メール送信
+        </button>
+      </div>
+      <a
+        class="text-blue"
+        href="/login"
+      >
+        一般ログイン
+      </a>
+    </div>
+  </form>
+</div>
+`;
