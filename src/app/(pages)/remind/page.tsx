@@ -81,7 +81,7 @@ const RemindPage = () => {
           // onClick={check}
         />
         <Link href="/login" className="text-blue">
-          一般ログインへ
+          一般ログイン
         </Link>
       </div>
     </form>
