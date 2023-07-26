@@ -6,7 +6,7 @@ import { useSelectHistory } from "@/hooks/store/context/historiesContext"
 
 export default function HistoriesList ({projects,answer_requests,answers,users,answer_request_questions}:{projects:Projects,answer_requests:AnswerRequests,answers:Answers,users:Users,answer_request_questions:AnswerRequestQuestions}){
     const [open,setOpen] = useState<{id:number,status:boolean}[]>(projects.map((project)=>({id:project.id,status:false})))
-    const formData = useSelectHistory()
+    const formData:{month:string,department:string,skills:string[]}| undefined = useSelectHistory()
     console.log('HistoryListコンポーネントfetch用絞り込みデータ',formData)
     // ユーザーのアコーディオン開閉
     function handleClick(id:number){
