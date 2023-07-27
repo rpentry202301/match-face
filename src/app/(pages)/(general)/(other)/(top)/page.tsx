@@ -14,9 +14,10 @@ type MenuContent = {
 const Home = async () => {
   return (
     <main>
+      <div></div>
+
       <div className="flex flex-col items-center mt-8 mb-20">
         <Notification
-          title="進捗状況"
           completedTasksNumbers={12}
           incompletedTasksNumbers={10}
           deadlineDay="12月14日"
