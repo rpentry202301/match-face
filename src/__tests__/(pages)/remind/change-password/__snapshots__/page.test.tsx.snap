@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`スナップショット スナップショット 1`] = `
+<div>
+  <form
+    class="flex flex-col items-center justify-center h-screen"
+  >
+    <h1
+      class="text-orange text-4xl font-semibold m-8"
+    >
+      Match Face
+    </h1>
+    <div
+      class="flex flex-col items-center bg-light-gray p-4"
+    >
+      <p
+        class="font-semibold underline"
+      >
+        英小文字・数字・記号を１文字以上含む８文字以上で設定して下さい。
+      </p>
+      <p>
+        ※半角の英小文字・英大文字・数字・記号が使用できます。
+      </p>
+      <br />
+      <p>
+        使用可能記号 . _ / # & % = ~ - + * @ ( ) &lt; &gt; [ ] { }
+      </p>
+    </div>
+    <br />
+    <div
+      class="mb-2"
+    >
+      <label
+        class=""
+        for="newPassword"
+      >
+        新しいパスワード
+        <div>
+          <input
+            class="w-96 h-10 mt-2 border border-black"
+            id="newPassword"
+            name="newPassword"
+          />
+        </div>
+      </label>
+    </div>
+    <div>
+      <label
+        class=""
+        for="confirmPassword"
+      >
+        新しいパスワード（確認用）
+        <div>
+          <input
+            class="w-96 h-10 mt-2 border border-black"
+            id="confirmPassword"
+            name="confirmPassword"
+          />
+        </div>
+      </label>
+    </div>
+    <div>
+      <button
+        class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white p-2 h-auto text-lg mt-10 mb-4 w-48 rounded-none"
+        type="submit"
+      >
+        登録
+      </button>
+    </div>
+  </form>
+</div>
+`;
