@@ -5,17 +5,52 @@ import { useEffect, useState } from "react";
 
 // Todo: タスクリストを非同期通信で取得
 const TaskList = ({ tasks }: { tasks: Task[] }) => {
-  const [jobsFilter] = useJobsFilter();
-  
-  // useEffect(() => {
-  //   console.log("jobsFilter", jobsFilter);
-  //   console.log("length", jobsFilter.length);
-  // }, [jobsFilter]);
+  const [filteredTasks, setFilteredTasks] = useState<Task[]>(tasks);
+  const [filterList] = useJobsFilter();
 
-  const tasksFilteredByJob = tasks.filter((task) => {
-    if (jobsFilter.length === 0) return task;
-    return jobsFilter.includes(task.department);
-  });
+  useEffect(() => {
+    const filterData = () => {
+      // 検索条件指定なし
+      if (
+        filterList.departments.length === 0 &&
+        filterList.search.length === 0
+      ) {
+        setFilteredTasks(tasks);
+        return;
+      }
+      // 検索条件: departments
+      const jobsFilter = tasks.filter((task) =>
+        filterList.departments.includes(task.department)
+      );
+      if (filterList.search.length === 0) {
+        setFilteredTasks(jobsFilter);
+        return;
+      }
+      // 検索条件: search
+      const searchFilter = tasks.filter(
+        (task) => {
+          const charTask = Object.values(task).toString().toLowerCase();
+          for (const keyword of filterList.search) {
+            if (charTask.indexOf(keyword.toLowerCase()) === -1) {
+              return false;
+            }
+          }
+          return true;
+        }
+      );
+      if (filterList.departments.length === 0) {
+        setFilteredTasks(searchFilter);
+        return;
+      }
+      // 検索条件: departments + search
+      const bothFilter = searchFilter.filter((task) =>
+        filterList.departments.includes(task.department)
+      );
+      setFilteredTasks(bothFilter);
+      return;
+    };
+    filterData();
+  }, [tasks, filterList]);
 
   return (
     <div>
@@ -40,7 +75,7 @@ const TaskList = ({ tasks }: { tasks: Task[] }) => {
           </tr>
         </thead>
         <tbody>
-          {tasksFilteredByJob.map((task) => (
+          {filteredTasks.map((task) => (
             <tr key={task.id}>
               <td className="border-2 border-deep-gray p-2 text-center">
                 {task.project_name}

@@ -2,29 +2,31 @@
 
 import React from "react";
 
-// 職種フィルター用context
-const JobsFilterContext = React.createContext<
-  [string[], React.Dispatch<React.SetStateAction<string[]>>] | undefined
+type FilterType = {
+  search: string[];
+  departments: string[];
+};
+
+const FilterContext = React.createContext<
+  [FilterType, React.Dispatch<React.SetStateAction<FilterType>>] | undefined
 >(undefined);
 
-export const JobsFilterProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
-  const [filterlist, setFilterList] = React.useState<string[]>([]);
+export const FilterProvider = ({ children }: { children: React.ReactNode }) => {
+  const [filterlist, setFilterList] = React.useState<FilterType>({
+    search: [],
+    departments: [],
+  });
   return (
-    <JobsFilterContext.Provider value={[filterlist, setFilterList]}>
+    <FilterContext.Provider value={[filterlist, setFilterList]}>
       {children}
-    </JobsFilterContext.Provider>
+    </FilterContext.Provider>
   );
 };
 
 export const useJobsFilter = () => {
-  const context = React.useContext(JobsFilterContext);
+  const context = React.useContext(FilterContext);
   if (context === undefined) {
     throw new Error("useRefine must be used within a Provider");
   }
   return context;
 };
-// ここまで

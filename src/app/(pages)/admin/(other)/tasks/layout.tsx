@@ -1,4 +1,4 @@
-import { JobsFilterProvider } from "@/hooks/store/context/TasksContext";
+import { FilterProvider } from "@/hooks/store/context/TasksContext";
 
 export const metadata = {
   title: {
@@ -15,8 +15,8 @@ export default function TasksLayout({
   children: React.ReactNode;
 }) {
   return (
-    <JobsFilterProvider>
+    <FilterProvider>
       {children}
-    </JobsFilterProvider>
+    </FilterProvider>
   );
 }
