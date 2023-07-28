@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`スナップショット スナップショット 1`] = `
+<div>
+  <form>
+    <div
+      class="flex flex-col items-center justify-center h-screen"
+    >
+      <div
+        class="flex flex-col items-center m-3"
+      >
+        <h1
+          class="text-orange text-4xl font-semibold m-3"
+        >
+          Match Face
+        </h1>
+        <h2>
+          管理者用ログイン
+        </h2>
+      </div>
+      <div
+        class="mt-2 mb-2"
+      >
+        <label
+          class=""
+          for="userId"
+        >
+          ユーザーID
+          <div>
+            <input
+              class="w-96 h-10 mt-2 border border-black"
+              id="userId"
+              name="userId"
+              type="text"
+            />
+          </div>
+        </label>
+      </div>
+      <div>
+        <label
+          class=""
+          for="password"
+        >
+          パスワード
+          <div>
+            <input
+              class="w-96 h-10 mt-2 border border-black"
+              id="password"
+              name="password"
+              type="password"
+            />
+          </div>
+        </label>
+      </div>
+      <div>
+        <button
+          class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white p-2 h-auto text-lg mt-10 mb-4 w-48 rounded-none"
+          type="submit"
+        >
+          ログイン
+        </button>
+      </div>
+      <a
+        class=" text-blue"
+        href="/remind"
+      >
+        パスワードを忘れた
+      </a>
+      <a
+        class="text-blue pt-16"
+        href="/login"
+      >
+        一般ログイン
+      </a>
+    </div>
+  </form>
+</div>
+`;

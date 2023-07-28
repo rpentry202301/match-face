@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`スナップショット スナップショット 1`] = `
+<div>
+  <a
+    href="/questions"
+  >
+    <button
+      class="flex p-5 w-96 h-40 shadow-lg hover:bg-gray-100 flex-col active:bg-gray-200"
+    >
+      <p
+        class="border-b-[1px] border-b-black shadow-md text-2xl text-left w-full font-bold"
+      >
+        回答する
+      </p>
+      <div
+        class="flex pt-4 w-full"
+      >
+        <p
+          class="text-left mr-auto"
+        >
+          質問に答えて顔合わせの準備をします。
+        </p>
+        <img
+          alt="回答一覧画面アイコン"
+          class="pt-2 pl-2"
+          data-nimg="1"
+          decoding="async"
+          height="70"
+          loading="lazy"
+          src="/_next/image?url=%2Ficon%2Fdocument_icon.png&w=256&q=75"
+          srcset="/_next/image?url=%2Ficon%2Fdocument_icon.png&w=96&q=75 1x, /_next/image?url=%2Ficon%2Fdocument_icon.png&w=256&q=75 2x"
+          style="color: transparent;"
+          width="70"
+        />
+      </div>
+    </button>
+  </a>
+</div>
+`;

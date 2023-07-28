@@ -28,12 +28,12 @@ export default function Menu({
   return (
     <Link href={url}>
       <button {...props} className={className}>
-        <span className="border-b-[1px] border-b-black shadow-md text-2xl text-left w-full font-bold">
+        <p className="border-b-[1px] border-b-black shadow-md text-2xl text-left w-full font-bold">
           {title}
-        </span>
+        </p>
 
         <div className="flex pt-4 w-full">
-          <span className="text-left mr-auto">{description}</span>
+          <p className="text-left mr-auto">{description}</p>
           <Image
             src={imgUrl}
             alt={imgAlt}

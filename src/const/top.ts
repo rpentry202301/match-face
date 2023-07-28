@@ -1,4 +1,15 @@
-export const MenuContentsArray = [
+type Menu = {
+  id: number;
+  title: string;
+  url: string;
+  description: string;
+  imgUrl: string;
+  imgAlt: string;
+};
+
+type MenuArray = Menu[];
+
+export const menuContentsArray: MenuArray = [
   {
     id: 1,
     title: '回答する',
