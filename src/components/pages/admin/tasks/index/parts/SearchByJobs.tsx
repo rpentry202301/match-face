@@ -12,13 +12,13 @@ import { departments } from "@/const/tasks";
 const SearchByJobs = () => {
   // 職種フィルター状態管理
   const [jobsFilter, setJobsFilter] = useState<string[]>([]);
-  const [filterList, setFilterList] = useJobsFilter();  // context
+  const [filterList, setFilterList] = useJobsFilter(); // context
   // 検索入力値状態管理
 
   const handleSetFilter = (department: string) => {
     // 職種レコードを挿入
     if (!jobsFilter.includes(department)) {
-      const newArr = jobsFilter;
+      const newArr = [...jobsFilter];
       newArr.push(department);
       setJobsFilter(newArr);
     } else {
@@ -28,9 +28,9 @@ const SearchByJobs = () => {
       });
       setJobsFilter(newArr);
     }
-    console.log("jobsFilter", jobsFilter);
+    // console.log("jobsFilter2", jobsFilter);
   };
-  
+
   // フィルターを適用
   const handleApplyFilter = () => {
     setFilterList(jobsFilter);

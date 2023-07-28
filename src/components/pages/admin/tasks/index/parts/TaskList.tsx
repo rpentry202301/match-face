@@ -1,12 +1,21 @@
 "use client";
 import { useJobsFilter } from "@/hooks/store/context/TasksContext";
 import { Task } from "@/types/admin/tasks/register/types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Todo: タスクリストを非同期通信で取得
 const TaskList = ({ tasks }: { tasks: Task[] }) => {
-  const [taskList, setTaskList] = useState<Task[]>(tasks);
-  const [jobsFilter, setJobsFilter] = useJobsFilter();
+  const [jobsFilter] = useJobsFilter();
+  
+  // useEffect(() => {
+  //   console.log("jobsFilter", jobsFilter);
+  //   console.log("length", jobsFilter.length);
+  // }, [jobsFilter]);
+
+  const tasksFilteredByJob = tasks.filter((task) => {
+    if (jobsFilter.length === 0) return task;
+    return jobsFilter.includes(task.department);
+  });
 
   return (
     <div>
@@ -31,7 +40,7 @@ const TaskList = ({ tasks }: { tasks: Task[] }) => {
           </tr>
         </thead>
         <tbody>
-          {taskList.map((task) => (
+          {tasksFilteredByJob.map((task) => (
             <tr key={task.id}>
               <td className="border-2 border-deep-gray p-2 text-center">
                 {task.project_name}
