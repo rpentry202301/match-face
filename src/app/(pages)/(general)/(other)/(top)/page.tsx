@@ -20,8 +20,6 @@ const incompletedData = falseAnswerRequests;
 const Home = async () => {
   return (
     <main>
-      <div></div>
-
       <div className="flex flex-col items-center mt-8 mb-20">
         <Notification
           className=""
