@@ -1,13 +1,53 @@
 'use client'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {HistoriesUserListHead,HistoriesUserListBody} from "./user_list"
-import { Projects,AnswerRequests, Answers, Users, AnswerRequestQuestions } from '@/types/admin/histories/admin_histories'
+import { Projects,AnswerRequests, Answers, Users, AnswerRequestQuestions, ProjectSkills } from '@/types/admin/histories/admin_histories'
 import { useSelectHistory } from "@/hooks/store/context/historiesContext"
 
-export default function HistoriesList ({projects,answer_requests,answers,users,answer_request_questions}:{projects:Projects,answer_requests:AnswerRequests,answers:Answers,users:Users,answer_request_questions:AnswerRequestQuestions}){
+export default function HistoriesList ({projects,answer_requests,answers,users,answer_request_questions,project_skills}:{projects:Projects,answer_requests:AnswerRequests,answers:Answers,users:Users,answer_request_questions:AnswerRequestQuestions,project_skills:ProjectSkills}){
     const [open,setOpen] = useState<{id:number,status:boolean}[]>(projects.map((project)=>({id:project.id,status:false})))
-    const formData = useSelectHistory()
-    console.log('HistoryListコンポーネントfetch用絞り込みデータ',formData)
+    const [selectProjects,setSelectProjects] = useState(projects)
+    const formData:{month:string,department:null|number,skills:number[]}| undefined = useSelectHistory()
+    
+    function sortData(formData:{month:string,department:null|number,skills:number[]}| undefined){
+        let data:Projects = []
+        data = projects
+        if(formData===undefined||(formData.month===""&&formData.department===null&&formData.skills.length===0)){
+            data = projects
+        }else{
+            if(formData.month===""){
+                data = data
+            }else{
+                let select_deadline = answer_requests.filter((req) => req.deadline.includes(formData.month))
+                let select_data:Projects = []
+                select_deadline.map((deadline)=>{
+                    projects.map((project)=>{if(deadline.id===project.id){
+                      select_data.push(project)
+                }})})
+                data = select_data
+            }
+            if(formData.department===null){
+                data = data
+            }else{
+                let select_department = data.filter((d)=>d.department_id===formData.department)
+                data = select_department
+            }
+            if(formData.skills.length === 0){
+                data = data
+            }else{
+                const set = new Set(formData.skills.flatMap((s)=>project_skills.filter((skill)=>skill.skill_id.includes(s))))
+                const set_projects = [...set]
+                const select_projects = set_projects.flatMap((s)=>data.filter((p)=>p.id===s.project_id))
+                data = select_projects
+            }
+        }
+        setSelectProjects(data)
+    }
+    
+    useEffect(()=>{
+        sortData(formData)
+    },[formData])
+    
     // ユーザーのアコーディオン開閉
     function handleClick(id:number){
         const newOpen = open.map((state)=>{
@@ -30,7 +70,7 @@ export default function HistoriesList ({projects,answer_requests,answers,users,a
                         <th className="border border-slate-deep-gray bg-light-gray w-[40vw]" id="project_detail">案件概要</th>
                     </tr>
                 </thead>
-                {projects.map((project)=>(
+                {selectProjects.map((project)=>(
                 <tbody  key={project.id}>
                     {((open.find((state)=>state.id===project.id))!.status===false)&&(
                         <tr>

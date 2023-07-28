@@ -5,7 +5,7 @@ import React from 'react'
 import "@testing-library/jest-dom"
 import { AppRouterContextProviderMock } from '@/__tests__/test_utils/app-router-context-provider-mock'
 import HistoriesList from '@/components/pages/admin/histories/list'
-import { HistoriesProvider,SelectHistoryProvider } from '@/hooks/store/context/historiesContext'
+import { SelectHistoryProvider } from '@/hooks/store/context/historiesContext'
 
 describe('管理者/履歴一覧画面のテスト',() => {
     const user = userEvent.setup()
@@ -15,9 +15,7 @@ describe('管理者/履歴一覧画面のテスト',() => {
         it('レンダリング時',async() => {
             const view = render(
                 <SelectHistoryProvider>
-                <HistoriesProvider>
                     <HistoriesPage/>
-                </HistoriesProvider>
                 </SelectHistoryProvider>
             )
             expect(view.container).toMatchSnapshot()
@@ -27,11 +25,9 @@ describe('管理者/履歴一覧画面のテスト',() => {
         beforeEach(()=>{
             render(
                 <SelectHistoryProvider>
-                <HistoriesProvider>
                     <AppRouterContextProviderMock router={{ push }}>
                         <HistoriesPage />
                     </AppRouterContextProviderMock>
-                </HistoriesProvider>
                 </SelectHistoryProvider>
             );
         })
@@ -58,11 +54,9 @@ describe('管理者/履歴一覧画面のテスト',() => {
         beforeEach(()=>{
             render(
                 <SelectHistoryProvider>
-                <HistoriesProvider>
                     <AppRouterContextProviderMock router={{ push }}>
                         <HistoriesPage />
                     </AppRouterContextProviderMock>
-                </HistoriesProvider>
                 </SelectHistoryProvider>
             );
         })
