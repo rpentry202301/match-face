@@ -9,7 +9,7 @@ import { useSelectHistoryDispatch } from "@/hooks/store/context/historiesContext
 
 
 const HistoriesSelect = ({className,projects,answer_requests,departments,skills}:{className:string,projects:Projects,answer_requests:AnswerRequests,departments:Departments,skills:Skills}) => {
-    const [formData,setFormData] = useState<{month:string,department:string,skills:string[]}>({month:"",department:"",skills:[]})
+    const [formData,setFormData] = useState<{month:string,department:number|null,skills:number[]}>({month:"",department:null,skills:[]})
     const dispatch:Dispatch<SelectHistoryAction> = useSelectHistoryDispatch()
     const style = twMerge(
         "w-[75vw] ml-[12.5vw] border-2 text-center my-[5vh] py-[5vh]",
@@ -43,16 +43,16 @@ const HistoriesSelect = ({className,projects,answer_requests,departments,skills}
                 <div className="mb-[2vh]">
                     {departments.map((department)=>(
                         <span key={department.id}>
-                        {department.name!==formData.department&&
-                            <WhiteButton label={department.name} key={department.id} className="mx-[10px] w-[8vw] max-sm:w-[15vw] max-sm:mb-[8px]" value={department.name} 
+                        {department.id!==formData.department&&
+                            <WhiteButton label={department.name} key={department.id} className="mx-[10px] w-[8vw] max-sm:w-[15vw] max-sm:mb-[8px]" value={department.id} 
                                     onClick={(e)=>
                                         {e.preventDefault()
-                                        setFormData({...formData,department:e.currentTarget.value})}}/>}
-                        {department.name===formData.department&&
-                            <WhiteButton label={department.name} key={department.id} value={""} className="bg-deep-gray mx-[10px] w-[8vw] translate-y-0.5 max-sm:w-[15vw] max-sm:mb-[8px]"
+                                        setFormData({...formData,department:Number(e.currentTarget.value)})}}/>}
+                        {department.id===formData.department&&
+                            <WhiteButton label={department.name} key={department.id} value={"null"} className="bg-deep-gray mx-[10px] w-[8vw] translate-y-0.5 max-sm:w-[15vw] max-sm:mb-[8px]"
                                     onClick={(e)=>
                                         {e.preventDefault()
-                                        setFormData({...formData,department:e.currentTarget.value})}}/>}
+                                        setFormData({...formData,department:null})}}/>}
                         </span>
                     ))}
                 </div>
@@ -61,7 +61,7 @@ const HistoriesSelect = ({className,projects,answer_requests,departments,skills}
                 <fieldset id="skill" name="skill">
                         {skills.map((skill)=>(
                             <span  key={skill.id} className="px-[10px] whitespace-nowrap">
-                            <input type="checkbox" id={skill.skill} name={skill.skill} value={skill.skill}
+                            <input type="checkbox" id={skill.skill} name={skill.skill} value={skill.id}
                                 onChange={(e)=>setSkill(e,formData,setFormData)}/>
                             <label htmlFor={skill.skill}>{skill.skill}</label>
                             </span>
@@ -77,24 +77,24 @@ export default HistoriesSelect;
 
 export function setSkill(
   e: FormEvent<HTMLInputElement>,
-  formData: { month: string; department: string; skills: string[] },
+  formData: { month: string; department: null|number; skills: number[] },
   setFormData: Dispatch<
-    SetStateAction<{ month: string; department: string; skills: string[] }>
+    SetStateAction<{ month: string; department: null|number; skills: number[] }>
   >
 ) {
   const selectSkills = [];
   // 選択済みの項目は選択解除、未選択の項目は選択済みにする
-  formData.skills.includes(e.currentTarget.value)
+  formData.skills.includes(Number(e.currentTarget.value))
     ? selectSkills.push(
         ...formData.skills.filter(
-          (skill: string) => skill !== e.currentTarget.value
+          (skill: number) => skill !== Number(e.currentTarget.value)
         )
       )
-    : selectSkills.push(...formData.skills, e.currentTarget.value);
+    : selectSkills.push(...formData.skills, Number(e.currentTarget.value));
   setFormData({ ...formData, skills: selectSkills });
 }
 
-export function handleSubmit(e:FormEvent<HTMLFormElement>,formData:{month:string,department:string,skills:string[]},dispatch:Dispatch<SelectHistoryAction>){
+export function handleSubmit(e:FormEvent<HTMLFormElement>,formData:{month:string,department:null|number,skills:number[]},dispatch:Dispatch<SelectHistoryAction>){
     e.preventDefault()
     dispatch({type:'select',payload:formData})
 }

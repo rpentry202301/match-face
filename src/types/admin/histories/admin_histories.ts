@@ -1,6 +1,5 @@
 export type SelectHistoryAction = {
-    type:'select',
-    payload:{month:string,department:string,skills:string[]}
+    type:'select',payload:{month:string,department:null|number,skills:number[]}
 }
 
 export type Projects = {
@@ -88,4 +87,13 @@ export type AnswerRequestQuestions = {
     created_at: string;
     update_user: string;
     update_at: string;
+}[]
+export type ProjectSkills = {
+    id:number;
+    project_id:number;
+    skill_id:number[];
+    created_user:string;
+    created_at:string;
+    update_user:string;
+    update_at:string;
 }[]
