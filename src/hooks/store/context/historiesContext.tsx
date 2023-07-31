@@ -1,5 +1,5 @@
 'use client'
-import { createContext, Dispatch, useContext, useReducer, Reducer } from "react";
+import { createContext, Dispatch, useContext, useReducer } from "react";
 import { SelectHistoryAction } from "@/types/admin/histories/admin_histories";
 import { SelectHistoryReducer } from "../reducer/historiesReducer";
 

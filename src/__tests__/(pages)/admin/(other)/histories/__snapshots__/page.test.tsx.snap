@@ -46,7 +46,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
         <span>
           <button
             class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw] max-sm:w-[15vw] max-sm:mb-[8px]"
-            value="FR"
+            value="1"
           >
             FR
           </button>
@@ -54,7 +54,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
         <span>
           <button
             class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw] max-sm:w-[15vw] max-sm:mb-[8px]"
-            value="Java"
+            value="2"
           >
             Java
           </button>
@@ -62,7 +62,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
         <span>
           <button
             class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw] max-sm:w-[15vw] max-sm:mb-[8px]"
-            value="PHP"
+            value="3"
           >
             PHP
           </button>
@@ -70,7 +70,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
         <span>
           <button
             class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw] max-sm:w-[15vw] max-sm:mb-[8px]"
-            value="CL"
+            value="4"
           >
             CL
           </button>
@@ -78,7 +78,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
         <span>
           <button
             class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw] max-sm:w-[15vw] max-sm:mb-[8px]"
-            value="ML"
+            value="5"
           >
             ML
           </button>
@@ -86,7 +86,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
         <span>
           <button
             class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md mx-[10px] w-[8vw] max-sm:w-[15vw] max-sm:mb-[8px]"
-            value="QA"
+            value="6"
           >
             QA
           </button>
@@ -101,6 +101,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
           使用技術：
         </legend>
         <fieldset
+          class="text-justify"
           id="skill"
           name="skill"
         >
@@ -111,7 +112,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
               id="JavaScript"
               name="JavaScript"
               type="checkbox"
-              value="JavaScript"
+              value="1"
             />
             <label
               for="JavaScript"
@@ -126,7 +127,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
               id="TypeScript"
               name="TypeScript"
               type="checkbox"
-              value="TypeScript"
+              value="2"
             />
             <label
               for="TypeScript"
@@ -141,7 +142,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
               id="React"
               name="React"
               type="checkbox"
-              value="React"
+              value="3"
             />
             <label
               for="React"
@@ -156,7 +157,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
               id="Next.js"
               name="Next.js"
               type="checkbox"
-              value="Next.js"
+              value="4"
             />
             <label
               for="Next.js"
@@ -171,7 +172,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
               id="Vue.js"
               name="Vue.js"
               type="checkbox"
-              value="Vue.js"
+              value="5"
             />
             <label
               for="Vue.js"
@@ -186,7 +187,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
               id="Angular"
               name="Angular"
               type="checkbox"
-              value="Angular"
+              value="6"
             />
             <label
               for="Angular"
@@ -201,7 +202,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
               id="Nuxt.js"
               name="Nuxt.js"
               type="checkbox"
-              value="Nuxt.js"
+              value="7"
             />
             <label
               for="Nuxt.js"
@@ -216,7 +217,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
               id="jQuery"
               name="jQuery"
               type="checkbox"
-              value="jQuery"
+              value="8"
             />
             <label
               for="jQuery"
@@ -231,7 +232,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
               id="Redux"
               name="Redux"
               type="checkbox"
-              value="Redux"
+              value="9"
             />
             <label
               for="Redux"
@@ -246,7 +247,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
               id="vuex"
               name="vuex"
               type="checkbox"
-              value="vuex"
+              value="10"
             />
             <label
               for="vuex"
@@ -261,7 +262,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
               id="MaterialUI"
               name="MaterialUI"
               type="checkbox"
-              value="MaterialUI"
+              value="11"
             />
             <label
               for="MaterialUI"
@@ -276,7 +277,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
               id="tailwind"
               name="tailwind"
               type="checkbox"
-              value="tailwind"
+              value="12"
             />
             <label
               for="tailwind"
@@ -291,7 +292,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
               id="Bootstrap"
               name="Bootstrap"
               type="checkbox"
-              value="Bootstrap"
+              value="13"
             />
             <label
               for="Bootstrap"
@@ -306,7 +307,7 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
               id="Vercel"
               name="Vercel"
               type="checkbox"
-              value="Vercel"
+              value="14"
             />
             <label
               for="Vercel"

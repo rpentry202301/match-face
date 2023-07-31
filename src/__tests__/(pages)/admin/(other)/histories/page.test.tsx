@@ -1,11 +1,13 @@
-import { render,screen } from '@testing-library/react'
+import { render,screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import HistoriesPage from '@/app/(pages)/admin/(other)/histories/page'
+import HistoriesSelect from '@/components/pages/admin/histories/select'
 import React from 'react'
 import "@testing-library/jest-dom"
 import { AppRouterContextProviderMock } from '@/__tests__/test_utils/app-router-context-provider-mock'
 import HistoriesList from '@/components/pages/admin/histories/list'
 import { SelectHistoryProvider } from '@/hooks/store/context/historiesContext'
+import { projectsMock,answer_requestsMock,answersMock,usersMock,answer_request_questionsMock,project_skillsMock, skillsMock, departmentsMock } from './histories_test_mock'
 
 describe('管理者/履歴一覧画面のテスト',() => {
     const user = userEvent.setup()
@@ -26,7 +28,8 @@ describe('管理者/履歴一覧画面のテスト',() => {
             render(
                 <SelectHistoryProvider>
                     <AppRouterContextProviderMock router={{ push }}>
-                        <HistoriesPage />
+                    <HistoriesSelect className={''} projects={projectsMock} answer_requests={answer_requestsMock} departments={departmentsMock} skills={skillsMock}/>
+                    <HistoriesList projects={projectsMock} answer_requests={answer_requestsMock} answers={answersMock} users={usersMock} answer_request_questions={answer_request_questionsMock} project_skills={project_skillsMock}/>
                     </AppRouterContextProviderMock>
                 </SelectHistoryProvider>
             );
@@ -55,81 +58,181 @@ describe('管理者/履歴一覧画面のテスト',() => {
             render(
                 <SelectHistoryProvider>
                     <AppRouterContextProviderMock router={{ push }}>
-                        <HistoriesPage />
+                        <HistoriesSelect className={''} projects={projectsMock} answer_requests={answer_requestsMock} departments={departmentsMock} skills={skillsMock}/>
+                        <HistoriesList projects={projectsMock} answer_requests={answer_requestsMock} answers={answersMock} users={usersMock} answer_request_questions={answer_request_questionsMock} project_skills={project_skillsMock}/>
                     </AppRouterContextProviderMock>
                 </SelectHistoryProvider>
             );
         })
-        it('回答月の選択',async()=>{
-            const beforeSelectMonth = screen.getByRole("option",{name:"--"}) as HTMLOptionElement
-            expect(beforeSelectMonth.selected).toBe(true)
-            await user.selectOptions(screen.getByTestId('month'),'2023-07')
-            const selectMonth = screen.getByRole("option",{name:"2023-07"}) as HTMLOptionElement
-            expect(selectMonth.selected).toBe(true)
-            expect(beforeSelectMonth.selected).toBe(false)
+        describe('選択内容のテスト',()=>{
+            it('回答月の選択',async()=>{
+                const beforeSelectMonth = screen.getByRole("option",{name:"--"}) as HTMLOptionElement
+                expect(beforeSelectMonth.selected).toBe(true)
+                await user.selectOptions(screen.getByTestId('month'),'2023-07')
+                const selectMonth = screen.getByRole("option",{name:"2023-07"}) as HTMLOptionElement
+                expect(selectMonth.selected).toBe(true)
+                expect(beforeSelectMonth.selected).toBe(false)
+            })
+            it('職種の選択',async()=>{
+                const selectFR = screen.getByRole('button',{name:"FR"})
+                await user.click(selectFR)
+                expect(selectFR).toHaveClass("bg-deep-gray")
+                await user.click(selectFR)
+                expect(selectFR).toHaveClass("bg-white")
+            })
+            it('技術の選択',async()=>{
+                const selectJavaScript = screen.getByRole('checkbox',{name:"JavaScript"})
+                const selectTypeScript = screen.getByRole('checkbox',{name:"TypeScript"})
+                // JavaScriptをcheck
+                await user.click(selectJavaScript)
+                expect(selectJavaScript).toBeChecked()
+                // JavaScriptとTypeScriptをcheck
+                await user.click(selectTypeScript)
+                expect(selectJavaScript).toBeChecked()
+                expect(selectTypeScript).toBeChecked()
+                // JavaScriptのcheckを解除
+                await user.click(selectJavaScript)
+                expect(selectJavaScript).not.toBeChecked()
+                expect(selectTypeScript).toBeChecked()
+            })
         })
-        it('職種の選択',async()=>{
-            const selectJava = screen.getByRole('button',{name:"Java"})
-            await user.click(selectJava)
-            expect(selectJava).toHaveClass("bg-deep-gray")
-            await user.click(selectJava)
-            expect(selectJava).toHaveClass("bg-white")
+        describe('データ表示のテスト',()=>{
+            it('回答月の選択',async()=>{
+                const selectMonth = screen.getByTestId('month')
+                const form = screen.getByRole('button',{name:"絞り込み"})
+                const test1 = screen.getByText('テスト1')
+                const test5 = screen.getByText('テスト5')
+                await user.selectOptions(selectMonth,'2023-07')
+                await user.click(form)
+                expect(test1).toBeInTheDocument()
+                expect(test5).not.toBeInTheDocument()
+                await user.selectOptions(selectMonth,'2023-08')
+                await user.click(form)
+                waitFor(()=>{
+                expect(test1).not.toBeInTheDocument()
+                expect(test5).toBeInTheDocument()
+                })
+            })
+            it('職種の選択',async()=>{
+                const selectJava = screen.getByRole('button',{name:"Java"})
+                const form = screen.getByRole('button',{name:"絞り込み"})
+                const test1 = screen.getByText('テスト1')
+                const test4 = screen.getByText('テスト4')    
+                await user.click(selectJava)
+                await user.click(form)
+                expect(test1).not.toBeInTheDocument()
+                expect(test4).toBeInTheDocument()
+            })
+            it('スキルの選択',async()=>{
+                const selectJavaScript = screen.getByRole('checkbox',{name:"JavaScript"})
+                const selectTypeScript = screen.getByRole('checkbox',{name:"TypeScript"})
+                const form = screen.getByRole('button',{name:"絞り込み"})
+                const test1 = screen.getByText('テスト1')
+                const test2 = screen.getByText('テスト2')
+                const test3 = screen.getByText('テスト3')
+                await user.click(selectJavaScript)
+                await user.click(selectTypeScript)
+                await user.click(form)
+                expect(test1).toBeInTheDocument()
+                expect(test2).toBeInTheDocument()
+                expect(test3).toBeInTheDocument()
+                await user.click(selectTypeScript)
+                await user.click(form)
+                waitFor(()=>{
+                    expect(test1).toBeInTheDocument()
+                    expect(test2).toBeInTheDocument()
+                    expect(test3).not.toBeInTheDocument()
+                })
+                await user.click(selectJavaScript)
+                await user.click(form)
+                waitFor(()=>{
+                    expect(test1).not.toBeInTheDocument()
+                    expect(test2).toBeInTheDocument()
+                    expect(test3).toBeInTheDocument()
+                })
+            })
+            it('回答月+職種の選択',async()=>{
+                const selectMonth = screen.getByTestId('month')
+                const selectFR = screen.getByRole('button',{name:"FR"})
+                const form = screen.getByRole('button',{name:"絞り込み"})
+                const test1 = screen.getByText('テスト1')
+                const test4 = screen.getByText('テスト4')
+                const test5 = screen.getByText('テスト5')
+                await user.selectOptions(selectMonth,'2023-07')
+                await user.click(selectFR)
+                await user.click(form)
+                expect(test1).toBeInTheDocument()
+                expect(test4).not.toBeInTheDocument()
+                expect(test5).not.toBeInTheDocument()
+            })
+            it('回答月+スキルの選択',async()=>{
+                const selectMonth = screen.getByTestId('month')
+                const selectJavaScript = screen.getByRole('checkbox',{name:"JavaScript"})
+                const form = screen.getByRole('button',{name:"絞り込み"})
+                const test1 = screen.getByText('テスト1')
+                const test3 = screen.getByText('テスト3')
+                const test5 = screen.getByText('テスト5')
+                await user.selectOptions(selectMonth,'2023-07')
+                await user.click(selectJavaScript)
+                await user.click(form)
+                expect(test1).toBeInTheDocument()
+                expect(test3).not.toBeInTheDocument()
+                expect(test5).not.toBeInTheDocument()
+            })
+            it('職種+スキルの選択',async()=>{
+                const selectFR = screen.getByRole('button',{name:"FR"})
+                const selectJavaScript = screen.getByRole('checkbox',{name:"JavaScript"})
+                const form = screen.getByRole('button',{name:"絞り込み"})
+                const test1 = screen.getByText('テスト1')
+                const test3 = screen.getByText('テスト3')
+                const test4 = screen.getByText('テスト4')
+                await user.click(selectFR)
+                await user.click(selectJavaScript)
+                await user.click(form)
+                expect(test1).toBeInTheDocument()
+                expect(test3).not.toBeInTheDocument()
+                expect(test4).not.toBeInTheDocument()
+            })
+            it('回答月+職種+スキルの選択',async()=>{
+                const selectMonth = screen.getByTestId('month')
+                const selectFR = screen.getByRole('button',{name:"FR"})
+                const selectJavaScript = screen.getByRole('checkbox',{name:"JavaScript"})
+                const form = screen.getByRole('button',{name:"絞り込み"})
+                const test1 = screen.getByText('テスト1')
+                const test3 = screen.getByText('テスト3')
+                const test4 = screen.getByText('テスト4')
+                const test5 = screen.getByText('テスト5')
+                await user.selectOptions(selectMonth,'2023-07')
+                await user.click(selectFR)
+                await user.click(selectJavaScript)
+                await user.click(form)
+                expect(test1).toBeInTheDocument()
+                expect(test3).not.toBeInTheDocument()
+                expect(test4).not.toBeInTheDocument()
+                expect(test5).not.toBeInTheDocument()
+            })
+            it('未選択',async()=>{
+                const form = screen.getByRole('button',{name:"絞り込み"})
+                await user.click(form)
+                const test1 = screen.getByText('テスト1')
+                const test2 = screen.getByText('テスト2')
+                const test3 = screen.getByText('テスト3')
+                const test4 = screen.getByText('テスト4')
+                const test5 = screen.getByText('テスト5')
+                expect(test1).toBeInTheDocument()
+                expect(test2).toBeInTheDocument()
+                expect(test3).toBeInTheDocument()
+                expect(test4).toBeInTheDocument()
+                expect(test5).toBeInTheDocument()
+            })
         })
-        it('技術の選択',async()=>{
-            const selectTypescript = screen.getByRole('checkbox',{name:"TypeScript"})
-            const selectReact = screen.getByRole('checkbox',{name:"React"})
-            // Typescriptをcheck
-            await user.click(selectTypescript)
-            expect(selectTypescript).toBeChecked()
-            // TypescriptとReactをcheck
-            await user.click(selectReact)
-            expect(selectTypescript).toBeChecked()
-            expect(selectReact).toBeChecked()
-            // Typescriptのcheckを解除
-            await user.click(selectTypescript)
-            expect(selectTypescript).not.toBeChecked()
-            expect(selectReact).toBeChecked()
         })
-        it('絞り込みボタンを押下',async()=>{
-            const consoleMock = jest.fn()
-            global.console.log = consoleMock
-            const selectMonth = screen.getByTestId('month')
-            const selectJava = screen.getByRole('button',{name:"Java"})
-            const selectTypescript = screen.getByRole('checkbox',{name:"TypeScript"})
-            await user.selectOptions(selectMonth,'2023-07')
-            await user.click(selectJava)
-            await user.click(selectTypescript)
-            const form = screen.getByRole('button',{name:"絞り込み"})
-            await user.click(form)
-            expect(consoleMock).toHaveBeenCalled()
-            expect(consoleMock).toHaveBeenCalledTimes(1)
-            expect(consoleMock).toHaveBeenCalledWith("HistoryListコンポーネントfetch用絞り込みデータ",{ month: '2023-07', department: 'Java', skills: [ 'TypeScript' ] })
-        })
-    })
     describe('HistoriesListコンポーネントテスト',()=>{
-        const projectsMock = [
-            {id:1,name:'テスト1',detail:'テスト1の説明',enterprise_id:1,department_id:1,created_user:'テスト花子',created_at:'2023-07-10T16:52:46.053Z',update_user:'テスト花子',update_at:'2023-07-10T16:52:46.053Z'},
-            {id:2,name:'テスト2',detail:'テスト2の説明(文字数34)テスト2の説明テスト2の説明テスト2の説明',enterprise_id:1,department_id:1,created_user:'テスト花子',created_at:'2023-07-10T16:52:46.053Z',update_user:'テスト花子',update_at:'2023-07-10T16:52:46.053Z'},
-            {id:3,name:'テスト3',detail:'テスト3の説明(文字数35)テスト3の説明テスト3の説明テスト3の説明テ',enterprise_id:1,department_id:1,created_user:'テスト花子',created_at:'2023-07-10T16:52:46.053Z',update_user:'テスト花子',update_at:'2023-07-10T16:52:46.053Z'}
-        ]
-        const answer_requestsMock=[{id:1,user_id:[1,2],administrator_id:5,project_id:1,request_at:'2023-07-10T16:52:46.053Z',deadline:"2023-07-10T16:52:46.053Z",created_user:'テスト花子',created_at:'2023-07-10T16:52:46.053Z',update_user:'テスト花子',update_at:'2023-07-10T16:52:46.053Z'},]
-        const answersMock = [
-            {id:1,context:'テスト回答1',question_id:1,answer_request_id:1,user_id:1,Model_answer_fl:false,created_user:'テスト花子',created_at:'2023-07-10T16:52:46.053Z',update_user:'テスト花子',update_at:'2023-07-11T16:52:46.053Z'},
-            {id:2,context:'テスト回答2',question_id:1,answer_request_id:1,user_id:2,Model_answer_fl:false,created_user:'テスト花子',created_at:'2023-07-10T16:52:46.053Z',update_user:'テスト花子',update_at:'2023-07-10T16:52:46.053Z'},
-        ]
-        const usersMock = [
-            {id:1,name:'テスト太郎',password:'test1',email:'test1@example.com',hire_date:'2023-01-01',department_id:1,status_id:1,created_user:'テスト花子',created_at:'2023-07-10T16:52:46.053Z',update_user:'テスト花子',update_at:'2023-07-10T16:52:46.053Z'},
-            {id:2,name:'テスト次郎',password:'test2',email:'test2@example.com',hire_date:'2023-01-01',department_id:1,status_id:1,created_user:'テスト花子',created_at:'2023-07-10T16:52:46.053Z',update_user:'テスト花子',update_at:'2023-07-10T16:52:46.053Z'},
-        ]
-        const answer_request_questionsMock = [
-                {id:1,question_id:1,answer_request_id:1,is_answered:true,created_user:'テスト花子',created_at:'2023-07-10T16:52:46.053Z',update_user:'テスト花子',update_at:'2023-07-10T16:52:46.053Z'},
-                {id:2,question_id:1,answer_request_id:1,is_answered:false,created_user:'テスト花子',created_at:'2023-07-10T16:52:46.053Z',update_user:'テスト花子',update_at:'2023-07-10T16:52:46.053Z'},
-        ]
         beforeEach(async()=>{
             render(
                 <SelectHistoryProvider>
                 <AppRouterContextProviderMock router={{ push }}>
-                    <HistoriesList projects={projectsMock} answer_requests={answer_requestsMock} answers={answersMock} users={usersMock} answer_request_questions={answer_request_questionsMock}/>
+                    <HistoriesList projects={projectsMock} answer_requests={answer_requestsMock} answers={answersMock} users={usersMock} answer_request_questions={answer_request_questionsMock} project_skills={project_skillsMock}/>
                 </AppRouterContextProviderMock>
                 </SelectHistoryProvider>
             )
