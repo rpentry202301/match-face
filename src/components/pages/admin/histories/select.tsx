@@ -58,7 +58,7 @@ const HistoriesSelect = ({className,projects,answer_requests,departments,skills}
                 </div>
                 <div className="lg:flex justify-center mb-[2vh] max-w-[55vw] ml-[10vw]">
                 <legend className="lg:w-[215px] lg:h-10 lg:leading-10">使用技術：</legend>
-                <fieldset id="skill" name="skill">
+                <fieldset id="skill" name="skill" className="text-justify">
                         {skills.map((skill)=>(
                             <span  key={skill.id} className="px-[10px] whitespace-nowrap">
                             <input type="checkbox" id={skill.skill} name={skill.skill} value={skill.id}
