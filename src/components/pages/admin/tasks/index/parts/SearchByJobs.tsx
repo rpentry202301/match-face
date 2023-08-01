@@ -4,7 +4,7 @@ import OrangeButton from "@/components/ui/button/OrangeButton";
 import WhiteButton from "@/components/ui/button/WhiteButton";
 import WhiteCheckButton from "@/components/ui/button/WhiteCheckButton";
 import { SyntheticEvent, useState } from "react";
-import { useJobsFilter } from "@/hooks/store/context/TasksContext";
+import { useFilter } from "@/hooks/store/context/TasksContext";
 
 // 削除予定
 import { departments } from "@/const/tasks";
@@ -12,7 +12,7 @@ import { departments } from "@/const/tasks";
 const SearchByJobs = () => {
   // 職種フィルター状態管理
   const [jobsFilter, setJobsFilter] = useState<string[]>([]);
-  const [filterList, setFilterList] = useJobsFilter(); // context
+  const [filterList, setFilterList] = useFilter(); // context
   // 検索入力値状態管理
   const [inputVal, setInputVal] = useState<string>("");
 

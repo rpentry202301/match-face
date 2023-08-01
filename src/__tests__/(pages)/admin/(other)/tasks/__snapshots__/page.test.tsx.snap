@@ -9,20 +9,23 @@ exports[`タスク一覧画面 レンダリング時 1`] = `
       <div
         class="flex flex-col items-center border-2 rounded-md w-3/6 mx-auto mt-6 p-3"
       >
-        <div
-          class="flex items-center mb-4"
-        >
-          <div>
-            <input
-              class="border border-light-gray text-xs p-1 w-96"
-              id="search"
-            />
-          </div>
-          <button
-            class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md text-xs ml-2"
+        <div>
+          <form
+            class="flex items-center mb-4"
           >
-            検索
-          </button>
+            <div>
+              <input
+                class="border border-light-gray text-xs p-1 w-96"
+                id="search"
+              />
+            </div>
+            <button
+              class="bg-white hover:bg-gray-100 active:bg-gray-200 active:translate-y-0.5 active:shadow-sm py-2 px-4 rounded-full border shadow-md text-xs ml-2"
+              type="submit"
+            >
+              検索
+            </button>
+          </form>
         </div>
         <div
           class="flex items-center mb-4"
@@ -253,7 +256,7 @@ exports[`タスク一覧画面 レンダリング時 1`] = `
               <td
                 class="border-2 border-deep-gray p-2 text-center"
               >
-                2100-01-01
+                2200-01-01
               </td>
             </tr>
             <tr>
@@ -280,7 +283,7 @@ exports[`タスク一覧画面 レンダリング時 1`] = `
               <td
                 class="border-2 border-deep-gray p-2 text-center"
               >
-                2100-01-01
+                2200-01-01
               </td>
             </tr>
             <tr>
@@ -307,7 +310,7 @@ exports[`タスク一覧画面 レンダリング時 1`] = `
               <td
                 class="border-2 border-deep-gray p-2 text-center"
               >
-                2100-01-01
+                2200-01-01
               </td>
             </tr>
           </tbody>
