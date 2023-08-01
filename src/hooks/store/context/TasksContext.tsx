@@ -23,10 +23,10 @@ export const FilterProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export const useJobsFilter = () => {
+export const useFilter = () => {
   const context = React.useContext(FilterContext);
   if (context === undefined) {
-    throw new Error("useRefine must be used within a Provider");
+    throw new Error("useFilter must be used within a Provider");
   }
   return context;
 };

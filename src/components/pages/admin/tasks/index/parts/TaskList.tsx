@@ -1,12 +1,12 @@
 "use client";
-import { useJobsFilter } from "@/hooks/store/context/TasksContext";
+import { useFilter } from "@/hooks/store/context/TasksContext";
 import { Task } from "@/types/admin/tasks/register/types";
 import { useEffect, useState } from "react";
 
 // Todo: タスクリストを非同期通信で取得
 const TaskList = ({ tasks }: { tasks: Task[] }) => {
   const [filteredTasks, setFilteredTasks] = useState<Task[]>(tasks);
-  const [filterList] = useJobsFilter();
+  const [filterList] = useFilter();
 
   useEffect(() => {
     const filterData = () => {
