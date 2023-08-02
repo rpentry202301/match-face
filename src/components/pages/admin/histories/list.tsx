@@ -15,9 +15,7 @@ export default function HistoriesList ({projects,answer_requests,answers,users,a
         if(formData===undefined||(formData.month===""&&formData.department===null&&formData.skills.length===0)){
             data = projects
         }else{
-            if(formData.month===""){
-                data = data
-            }else{
+            if(formData.month!==""){
                 let select_deadline = answer_requests.filter((req) => req.deadline.includes(formData.month))
                 let select_data:Projects = []
                 select_deadline.map((deadline)=>{
@@ -26,15 +24,11 @@ export default function HistoriesList ({projects,answer_requests,answers,users,a
                 }})})
                 data = select_data
             }
-            if(formData.department===null){
-                data = data
-            }else{
+            if(formData.department!==null){
                 let select_department = data.filter((d)=>d.department_id===formData.department)
                 data = select_department
             }
-            if(formData.skills.length === 0){
-                data = data
-            }else{
+            if(formData.skills.length !== 0){
                 const set = new Set(formData.skills.flatMap((s)=>project_skills.filter((skill)=>skill.skill_id.includes(s))))
                 const set_projects = [...set]
                 const select_projects = set_projects.flatMap((s)=>data.filter((p)=>p.id===s.project_id))
