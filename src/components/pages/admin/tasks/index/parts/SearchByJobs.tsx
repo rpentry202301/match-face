@@ -60,6 +60,7 @@ const SearchByJobs = () => {
             id="search"
             className="border-light-gray text-xs p-1 w-96"
             onChange={(e) => setInputVal(e.target.value)}
+            data-testid="search-box"
           />
           <WhiteButton label="検索" className="text-xs ml-2" type="submit" />
         </form>

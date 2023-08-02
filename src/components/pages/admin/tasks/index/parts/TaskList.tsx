@@ -83,7 +83,7 @@ const TaskList = ({ tasks }: { tasks: Task[] }) => {
               <td className="border-2 border-deep-gray p-2 text-center">
                 {task.question.length}
               </td>
-              <td className="border-2 border-deep-gray p-2 text-center">
+              <td className="border-2 border-deep-gray p-2 text-center"  data-testid={`task-data-${task.department}`}>
                 {task.department}
               </td>
               <td className="border-2 border-deep-gray p-2 text-center">

@@ -2,7 +2,7 @@
 
 import React from "react";
 
-type FilterType = {
+export type FilterType = {
   search: string[];
   departments: string[];
 };
