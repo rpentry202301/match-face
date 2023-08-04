@@ -16,6 +16,7 @@ exports[`タスク一覧画面 レンダリング時 1`] = `
             <div>
               <input
                 class="border border-light-gray text-xs p-1 w-96"
+                data-testid="search-box"
                 id="search"
               />
             </div>
@@ -164,6 +165,7 @@ exports[`タスク一覧画面 レンダリング時 1`] = `
               </td>
               <td
                 class="border-2 border-deep-gray p-2 text-center"
+                data-testid="task-data-Java"
               >
                 Java
               </td>
@@ -191,6 +193,7 @@ exports[`タスク一覧画面 レンダリング時 1`] = `
               </td>
               <td
                 class="border-2 border-deep-gray p-2 text-center"
+                data-testid="task-data-PHP"
               >
                 PHP
               </td>
@@ -218,6 +221,7 @@ exports[`タスク一覧画面 レンダリング時 1`] = `
               </td>
               <td
                 class="border-2 border-deep-gray p-2 text-center"
+                data-testid="task-data-FR"
               >
                 FR
               </td>
@@ -245,6 +249,7 @@ exports[`タスク一覧画面 レンダリング時 1`] = `
               </td>
               <td
                 class="border-2 border-deep-gray p-2 text-center"
+                data-testid="task-data-CL"
               >
                 CL
               </td>
@@ -272,6 +277,7 @@ exports[`タスク一覧画面 レンダリング時 1`] = `
               </td>
               <td
                 class="border-2 border-deep-gray p-2 text-center"
+                data-testid="task-data-ML"
               >
                 ML
               </td>
@@ -299,6 +305,7 @@ exports[`タスク一覧画面 レンダリング時 1`] = `
               </td>
               <td
                 class="border-2 border-deep-gray p-2 text-center"
+                data-testid="task-data-QA"
               >
                 QA
               </td>
