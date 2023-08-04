@@ -1,3 +1,5 @@
+import { FilterProvider } from "@/hooks/store/context/TasksContext";
+
 export const metadata = {
   title: {
     default: "タスク一覧",
@@ -12,5 +14,9 @@ export default function TasksLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <FilterProvider>
+      {children}
+    </FilterProvider>
+  );
 }

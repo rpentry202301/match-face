@@ -51,6 +51,7 @@ exports[`TaskList.tsx レンダリング時 1`] = `
           </td>
           <td
             class="border-2 border-deep-gray p-2 text-center"
+            data-testid="task-data-Java"
           >
             Java
           </td>
@@ -78,6 +79,7 @@ exports[`TaskList.tsx レンダリング時 1`] = `
           </td>
           <td
             class="border-2 border-deep-gray p-2 text-center"
+            data-testid="task-data-PHP"
           >
             PHP
           </td>
@@ -105,6 +107,7 @@ exports[`TaskList.tsx レンダリング時 1`] = `
           </td>
           <td
             class="border-2 border-deep-gray p-2 text-center"
+            data-testid="task-data-FR"
           >
             FR
           </td>
@@ -132,6 +135,7 @@ exports[`TaskList.tsx レンダリング時 1`] = `
           </td>
           <td
             class="border-2 border-deep-gray p-2 text-center"
+            data-testid="task-data-CL"
           >
             CL
           </td>
@@ -143,7 +147,7 @@ exports[`TaskList.tsx レンダリング時 1`] = `
           <td
             class="border-2 border-deep-gray p-2 text-center"
           >
-            2100-01-01
+            2200-01-01
           </td>
         </tr>
         <tr>
@@ -159,6 +163,7 @@ exports[`TaskList.tsx レンダリング時 1`] = `
           </td>
           <td
             class="border-2 border-deep-gray p-2 text-center"
+            data-testid="task-data-ML"
           >
             ML
           </td>
@@ -170,7 +175,7 @@ exports[`TaskList.tsx レンダリング時 1`] = `
           <td
             class="border-2 border-deep-gray p-2 text-center"
           >
-            2100-01-01
+            2200-01-01
           </td>
         </tr>
         <tr>
@@ -186,6 +191,7 @@ exports[`TaskList.tsx レンダリング時 1`] = `
           </td>
           <td
             class="border-2 border-deep-gray p-2 text-center"
+            data-testid="task-data-QA"
           >
             QA
           </td>
@@ -197,7 +203,7 @@ exports[`TaskList.tsx レンダリング時 1`] = `
           <td
             class="border-2 border-deep-gray p-2 text-center"
           >
-            2100-01-01
+            2200-01-01
           </td>
         </tr>
       </tbody>
