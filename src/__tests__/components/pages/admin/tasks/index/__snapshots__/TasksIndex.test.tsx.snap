@@ -36,6 +36,7 @@ exports[`TaskIndex.tsx レンダリング時 1`] = `
           >
             <button
               class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
+              data-testid="Java-btn"
             >
               Java
             </button>
@@ -45,6 +46,7 @@ exports[`TaskIndex.tsx レンダリング時 1`] = `
           >
             <button
               class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
+              data-testid="PHP-btn"
             >
               PHP
             </button>
@@ -54,6 +56,7 @@ exports[`TaskIndex.tsx レンダリング時 1`] = `
           >
             <button
               class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
+              data-testid="FR-btn"
             >
               FR
             </button>
@@ -63,6 +66,7 @@ exports[`TaskIndex.tsx レンダリング時 1`] = `
           >
             <button
               class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
+              data-testid="CL-btn"
             >
               CL
             </button>
@@ -72,6 +76,7 @@ exports[`TaskIndex.tsx レンダリング時 1`] = `
           >
             <button
               class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
+              data-testid="ML-btn"
             >
               ML
             </button>
@@ -81,6 +86,7 @@ exports[`TaskIndex.tsx レンダリング時 1`] = `
           >
             <button
               class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16"
+              data-testid="QA-btn"
             >
               QA
             </button>
@@ -152,7 +158,9 @@ exports[`TaskIndex.tsx レンダリング時 1`] = `
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr
+              data-testid="task-data-1"
+            >
               <td
                 class="border-2 border-deep-gray p-2 text-center"
               >
@@ -165,7 +173,6 @@ exports[`TaskIndex.tsx レンダリング時 1`] = `
               </td>
               <td
                 class="border-2 border-deep-gray p-2 text-center"
-                data-testid="task-data-Java"
               >
                 Java
               </td>
@@ -180,7 +187,9 @@ exports[`TaskIndex.tsx レンダリング時 1`] = `
                 2100-01-01
               </td>
             </tr>
-            <tr>
+            <tr
+              data-testid="task-data-2"
+            >
               <td
                 class="border-2 border-deep-gray p-2 text-center"
               >
@@ -193,7 +202,6 @@ exports[`TaskIndex.tsx レンダリング時 1`] = `
               </td>
               <td
                 class="border-2 border-deep-gray p-2 text-center"
-                data-testid="task-data-PHP"
               >
                 PHP
               </td>
@@ -208,7 +216,9 @@ exports[`TaskIndex.tsx レンダリング時 1`] = `
                 2100-01-01
               </td>
             </tr>
-            <tr>
+            <tr
+              data-testid="task-data-3"
+            >
               <td
                 class="border-2 border-deep-gray p-2 text-center"
               >
@@ -221,7 +231,6 @@ exports[`TaskIndex.tsx レンダリング時 1`] = `
               </td>
               <td
                 class="border-2 border-deep-gray p-2 text-center"
-                data-testid="task-data-FR"
               >
                 FR
               </td>
@@ -236,7 +245,9 @@ exports[`TaskIndex.tsx レンダリング時 1`] = `
                 2100-01-01
               </td>
             </tr>
-            <tr>
+            <tr
+              data-testid="task-data-4"
+            >
               <td
                 class="border-2 border-deep-gray p-2 text-center"
               >
@@ -249,7 +260,6 @@ exports[`TaskIndex.tsx レンダリング時 1`] = `
               </td>
               <td
                 class="border-2 border-deep-gray p-2 text-center"
-                data-testid="task-data-CL"
               >
                 CL
               </td>
@@ -264,7 +274,9 @@ exports[`TaskIndex.tsx レンダリング時 1`] = `
                 2200-01-01
               </td>
             </tr>
-            <tr>
+            <tr
+              data-testid="task-data-5"
+            >
               <td
                 class="border-2 border-deep-gray p-2 text-center"
               >
@@ -277,7 +289,6 @@ exports[`TaskIndex.tsx レンダリング時 1`] = `
               </td>
               <td
                 class="border-2 border-deep-gray p-2 text-center"
-                data-testid="task-data-ML"
               >
                 ML
               </td>
@@ -292,7 +303,9 @@ exports[`TaskIndex.tsx レンダリング時 1`] = `
                 2200-01-01
               </td>
             </tr>
-            <tr>
+            <tr
+              data-testid="task-data-6"
+            >
               <td
                 class="border-2 border-deep-gray p-2 text-center"
               >
@@ -305,7 +318,6 @@ exports[`TaskIndex.tsx レンダリング時 1`] = `
               </td>
               <td
                 class="border-2 border-deep-gray p-2 text-center"
-                data-testid="task-data-QA"
               >
                 QA
               </td>

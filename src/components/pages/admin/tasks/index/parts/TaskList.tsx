@@ -76,14 +76,14 @@ const TaskList = ({ tasks }: { tasks: Task[] }) => {
         </thead>
         <tbody>
           {filteredTasks.map((task) => (
-            <tr key={task.id}>
+            <tr key={task.id} data-testid={`task-data-${task.id}`}>
               <td className="border-2 border-deep-gray p-2 text-center">
                 {task.project_name}
               </td>
               <td className="border-2 border-deep-gray p-2 text-center">
                 {task.question.length}
               </td>
-              <td className="border-2 border-deep-gray p-2 text-center"  data-testid={`task-data-${task.department}`}>
+              <td className="border-2 border-deep-gray p-2 text-center">
                 {task.department}
               </td>
               <td className="border-2 border-deep-gray p-2 text-center">

@@ -74,6 +74,7 @@ const SearchByJobs = () => {
                 label={department.name}
                 className="text-xs w-16"
                 onClick={() => handleSetFilter(department.name)}
+                data-testid={`${department.name}-btn`}
               />
             </div>
           );
