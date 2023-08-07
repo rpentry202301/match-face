@@ -4,11 +4,13 @@ import React, { useState } from "react";
 import { group } from "@/const/group";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import Link from "next/link";
+import { getGroup } from "./getGroups";
 
 const data = group;
 
 // あとでasync足す
 const GroupTable = () => {
+  getGroup()
   // モーダル表示用
   const [isOpen, setIsOpen] = useState(false);
   const [selectedGroupingDate, setSelectedGroupingDate] = useState("");
@@ -29,11 +31,6 @@ const GroupTable = () => {
     }
     setIsOpen(!isOpen);
   };
-
-  // 非同期処理あとで実装
-  // const url = 'sample'
-  // const response = await fetch(url)
-  // const data = await response.json()
 
   return (
     <>
