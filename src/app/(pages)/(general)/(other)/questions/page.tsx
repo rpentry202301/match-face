@@ -24,6 +24,7 @@ const userId = 1;
 
 const QuestionsPage = async () => {
   const response = await fetch("http://localhost:3000/api", {
+    cache: "no-store",
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -35,7 +36,7 @@ const QuestionsPage = async () => {
   if (!response.ok) throw new Error("Failed to fetch data");
   const FetchData = await response.json();
   const answerRequestList = FetchData.answerRequestList;
-  console.log("取得したデータ", answerRequestList);
+  // console.log("取得したデータ", answerRequestList);
 
   //  案件詳細の文字数制限
   const truncateString = (str: string, num: number) => {
