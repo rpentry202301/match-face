@@ -12,8 +12,30 @@ type LoginForm = {
   password: string;
 };
 
-const LoginPage = () => {
+// 仮のユーザーID
+const userId = 1;
+
+const LoginPage = async () => {
   const router = useRouter();
+
+  // Post
+  const checkLogin = async (event: any) => {
+    event.preventDefault();
+    const response = await fetch('http://localhost:3000/api/login', {
+      cache: 'no-store',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        userId: userId,
+        id: 1,
+        password: 'testtest',
+      }),
+    });
+    const data = await response.json();
+    console.log('data', data);
+  };
 
   // ダミーデータ
   const userData = users;
@@ -113,7 +135,7 @@ const LoginPage = () => {
           className="mt-10 mb-4 w-48 rounded-none"
           type="submit"
           // エラー確認用（削除要）
-          // onClick={check}
+          onClick={checkLogin}
           //
         />
         <Link href="/remind" className=" text-blue">
