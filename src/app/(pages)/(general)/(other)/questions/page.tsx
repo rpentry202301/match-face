@@ -23,7 +23,7 @@ type ProjectType = {
 const userId = 1;
 
 const QuestionsPage = async () => {
-  const response = await fetch("http://localhost:3000/api", {
+  const response = await fetch("http://localhost:3000/api/questions", {
     cache: "no-store",
     method: "POST",
     headers: {
