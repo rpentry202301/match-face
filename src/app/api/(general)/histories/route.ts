@@ -5,15 +5,22 @@ export async function POST(request: Request) {
   const userID = res.user_id;
   const month = res.month;
   const skill = res.skill;
-  console.log("コンソール", month, skill);
-  if (month && skill) {
-    console.log("if1", month, skill);
+  // 複数スキルのパラメーター
+  let newSkills = "";
+  for (let i = 0; i < skill.length; i++) {
+    const element = skill[i];
+    const combineSkills = `skillId=` + element + `&`;
+    newSkills += combineSkills;
+  }
+
+  if (month && skill.length > 0) {
+    console.log("if1", month, newSkills);
     const response = await fetch(
-      `http://localhost:8080/qa_system_api/user/${userID}/answer_requests?answerDate=${month}&skillId=${skill}`
+      `http://localhost:8080/qa_system_api/user/${userID}/answer_requests?${newSkills}&answerDate=${month}`
     );
     const data = await response.json();
     return NextResponse.json(data);
-  } else if (month && !skill) {
+  } else if (month && skill.length === 0) {
     console.log("if2", month, skill);
     const response = await fetch(
       `http://localhost:8080/qa_system_api/user/${userID}/answer_requests?answerDate=${month}`
@@ -21,9 +28,9 @@ export async function POST(request: Request) {
     const data = await response.json();
     return NextResponse.json(data);
   } else if (!month && skill.length > 0) {
-    console.log("if3", month, skill);
+    console.log("if3", month, newSkills);
     const response = await fetch(
-      `http://localhost:8080/qa_system_api/user/${userID}/answer_requests?skillId=${skill}`
+      `http://localhost:8080/qa_system_api/user/${userID}/answer_requests?${newSkills}`
     );
     const data = await response.json();
     return NextResponse.json(data);

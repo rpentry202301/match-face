@@ -2,11 +2,18 @@
 
 import HistoryList from "@/components/pages/general/histories/HistoryList";
 import OrangeButton from "@/components/ui/button/OrangeButton";
-import React, { Suspense, useEffect, useRef } from "react";
+import React, { Suspense, useEffect } from "react";
 import { useState } from "react";
-import { projects } from "@/const/histories";
-import type { DataType, SkillType } from "@/const/histories";
 import Loading from "@/components/elements/loading/Loading";
+
+type SkillType = {
+  id: number;
+  name: string;
+  createdUser: string;
+  createdAt: string;
+  updateUser: string;
+  updateAt: string;
+}[];
 
 const HistoriesPage = () => {
   const [month, setMonth] = useState("");
