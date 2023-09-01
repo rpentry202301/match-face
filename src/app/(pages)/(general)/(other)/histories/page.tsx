@@ -41,7 +41,7 @@ const HistoriesPage = () => {
 
   const deadlines = [
     { id: 1, value: "2023-08-01" },
-    { id: 2, value: "2023-10-01" },
+    { id: 2, value: "2023-09-01" },
     { id: 3, value: "2023-12-01" },
   ];
 
