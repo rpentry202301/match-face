@@ -12,30 +12,33 @@ type LoginForm = {
   password: string;
 };
 
-// 仮のユーザーID
+// 仮のユーザーIDとパスワード
 const userId = 1;
+const password = 'testtest';
 
 const LoginPage = async () => {
   const router = useRouter();
 
   // Post
-  const checkLogin = async (event: any) => {
-    event.preventDefault();
-    const response = await fetch('http://localhost:3000/api/login', {
-      cache: 'no-store',
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        userId: userId,
-        id: 1,
-        password: 'testtest',
-      }),
-    });
-    const data = await response.json();
-    console.log('data', data);
-  };
+  // const checkLogin = async (event: any) => {
+  //   event.preventDefault();
+  //   const response = await fetch('http://localhost:3000/api/login', {
+  //     cache: 'no-store',
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       userId: userId,
+  //       password: password,
+  //     }),
+  //   });
+  //   // if (!response.ok) {
+  //   //   throw new Error('api error');
+  //   // }
+  //   const data = await response.json();
+  //   console.log('data', data);
+  // };
 
   // ダミーデータ
   const userData = users;
@@ -60,7 +63,7 @@ const LoginPage = async () => {
     if (isValid && data.userId === `${userId}` && data.password === password) {
       router.push('/');
     }
-    // console.log('data', data);
+    console.log('data', data);
   };
 
   // 内容確認用(削除要)
@@ -135,7 +138,7 @@ const LoginPage = async () => {
           className="mt-10 mb-4 w-48 rounded-none"
           type="submit"
           // エラー確認用（削除要）
-          onClick={checkLogin}
+          // onClick={checkLogin}
           //
         />
         <Link href="/remind" className=" text-blue">
