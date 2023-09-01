@@ -12,7 +12,7 @@ interface HistoryListProps {
 interface TypeProject {
   administratorId: number;
   answered: boolean;
-  comment: {};
+  comment: { context: string };
   createdAt: string;
   createdUser: string;
   deadline: string;
@@ -84,7 +84,7 @@ const HistoryList: React.FC<HistoryListProps> = memo(
             {selectProject.map((project) => (
               <tr key={project.id}>
                 <td className="border text-center p-3">
-                  {project.comment ? (
+                  {project.comment.context.length > 0 ? (
                     <span className=" bg-orange text-white p-2 w-40 h-auto w-15 rounded py-1 px-2 text-xs">
                       新着
                     </span>
