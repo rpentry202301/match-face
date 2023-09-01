@@ -1,7 +1,6 @@
 'use client';
 import OrangeButton from '@/components/ui/button/OrangeButton';
 import Link from 'next/link';
-import { users } from '@/const/login';
 import { useRouter } from 'next/navigation';
 import SiteTitle from '@/components/ui/SiteTitle';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -16,33 +15,8 @@ type LoginForm = {
 const userId = 1;
 const password = 'testtest';
 
-const LoginPage = async () => {
+const LoginPage = () => {
   const router = useRouter();
-
-  // Post
-  // const checkLogin = async (event: any) => {
-  //   event.preventDefault();
-  //   const response = await fetch('http://localhost:3000/api/login', {
-  //     cache: 'no-store',
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       userId: userId,
-  //       password: password,
-  //     }),
-  //   });
-  //   // if (!response.ok) {
-  //   //   throw new Error('api error');
-  //   // }
-  //   const data = await response.json();
-  //   console.log('data', data);
-  // };
-
-  // ダミーデータ
-  const userData = users;
-  const correctUser = users[0];
 
   // フックフォーム
   const {
@@ -56,14 +30,33 @@ const LoginPage = async () => {
     reValidateMode: 'onSubmit',
   });
 
-  const onSubmit: SubmitHandler<LoginForm> = (data) => {
-    // 仮データで設定
-    const userId = correctUser.id;
-    const password = correctUser.password;
-    if (isValid && data.userId === `${userId}` && data.password === password) {
+  const onSubmit: SubmitHandler<LoginForm> = async (data, event: any) => {
+    event.preventDefault();
+    const response = await fetch('http://localhost:3000/api/login', {
+      cache: 'no-store',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        userId: data.userId,
+        password: data.password,
+      }),
+    });
+    const userData = await response.json();
+    console.log('data', data);
+    console.log('userData.user', userData.user);
+    console.log('userData.user.userId', userData.user.id);
+    console.log('userData.user.password', userData.user.password);
+
+    if (
+      isValid &&
+      data.userId === `${userData.user.id}`
+      // &&
+      // data.password === `${userData.user.password}`
+    ) {
       router.push('/');
     }
-    console.log('data', data);
   };
 
   // 内容確認用(削除要)
@@ -94,12 +87,12 @@ const LoginPage = async () => {
                     value: /^[0-9]+$/,
                     message: '※半角数字で入力してください。',
                   },
-                  validate: {
-                    checkUserId: (value) =>
-                      Number(value) !== correctUser.id
-                        ? '※正しいユーザーIDを入力してください。'
-                        : undefined,
-                  },
+                  // validate: {
+                  //   checkUserId: (value) =>
+                  //     Number(value) !== correctUser.id
+                  //       ? '※正しいユーザーIDを入力してください。'
+                  //       : undefined,
+                  // },
                 })}
               />
             </div>
@@ -120,12 +113,12 @@ const LoginPage = async () => {
                   value: true,
                   message: '※パスワードを入力してください。',
                 },
-                validate: {
-                  checkPassword: (value) =>
-                    value !== correctUser.password
-                      ? '※正しいパスワードを入力してください。'
-                      : undefined,
-                },
+                // validate: {
+                //   checkPassword: (value) =>
+                //     value !== correctUser.password
+                //       ? '※正しいパスワードを入力してください。'
+                //       : undefined,
+                // },
               })}
             />
           </div>
