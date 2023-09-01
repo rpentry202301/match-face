@@ -41,12 +41,12 @@ const LoginPage = () => {
         password: data.password,
       }),
     });
-    // ユーザーIDとパスワードが一致するデータがなければ{user:"{}"}が返ってくる
+    // ユーザーIDとパスワードが一致するデータがあればオブジェクト、なければ{user:"[]"}が返ってくる
     const userData = await response.json();
-    const userDataPropsArray = Object.keys(userData.user);
+    console.log('userData.user', userData.user);
 
-    // userデータプロパティの個数でエラー判定
-    if (userDataPropsArray.length === 2) {
+    // エラー判定
+    if (userData.user.length === 0) {
       setInValidUser(true);
     }
     // ユーザーIDとパスワードが返ってきたらログイン成功
