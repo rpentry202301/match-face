@@ -5,13 +5,13 @@ import { useRouter } from 'next/navigation';
 import SiteTitle from '@/components/ui/SiteTitle';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useState } from 'react';
+import { cookies } from 'next/headers';
 
 // データの型はnumberだが、都合上stringに設定
 type LoginForm = {
   userId: string;
   password: string;
 };
-
 const LoginPage = () => {
   const router = useRouter();
   const [inValidUser, setInValidUser] = useState(false);
@@ -43,7 +43,6 @@ const LoginPage = () => {
     });
     // ユーザーIDとパスワードが一致するデータがあればオブジェクト、なければ{user:"[]"}が返ってくる
     const userData = await response.json();
-    console.log('userData.user', userData.user);
 
     // エラー判定
     if (userData.user.length === 0) {
