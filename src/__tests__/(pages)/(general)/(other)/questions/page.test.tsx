@@ -9,22 +9,22 @@ import { UserEvent } from "@testing-library/user-event/dist/types/setup/setup";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
 
-// beforeAll(() => server.listen());
-// afterEach(() => {
-//   cleanup();
-// });
-// afterAll(() => {
-//   server.close();
-// });
-// const server = setupServer(
-//   rest.get("http://dummyurl", (req, res, ctx) => {
-//     //ステータスと返すデータの指定
-//     return res(ctx.status(200), ctx.json({ username: "dummyName" }));
-//   })
-// );
+beforeAll(() => server.listen());
+afterEach(() => {
+  cleanup();
+});
+afterAll(() => {
+  server.close();
+});
+const server = setupServer(
+  rest.get("http://dummyurl", (req, res, ctx) => {
+    //ステータスと返すデータの指定
+    return res(ctx.status(200), ctx.json({ username: "dummyName" }));
+  })
+);
 
 describe("スナップショットテスト", () => {
-  it("レンダリング時", async () => {
+  it("レンダリング時", () => {
     const { container } = render(<QuestionsPage />);
     expect(container).toMatchSnapshot();
   });

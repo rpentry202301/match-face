@@ -1,3 +1,5 @@
+"use client";
+
 import AnswerButton from "@/components/pages/general/questions/AnswerButton";
 import Link from "next/link";
 import {
@@ -7,6 +9,8 @@ import {
   ReactNode,
   ReactPortal,
   PromiseLikeOfReactNode,
+  useEffect,
+  useState,
 } from "react";
 
 type ProjectType = {
@@ -22,21 +26,32 @@ type ProjectType = {
 // 仮ユーザーID
 const userId = 1;
 
-const QuestionsPage = async () => {
-  const response = await fetch("http://localhost:3000/api/questions", {
-    cache: "no-store",
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      user_id: userId,
-    }),
-  });
-  if (!response.ok) throw new Error("Failed to fetch data");
-  const FetchData = await response.json();
-  const answerRequestList = FetchData.answerRequestList;
+const QuestionsPage = () => {
+  const fetchData = async () => {
+    const response = await fetch("http://localhost:3000/api/questions", {
+      cache: "no-store",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user_id: userId,
+      }),
+    });
+    if (!response.ok) throw new Error("Failed to fetch data");
+    const FetchData = await response.json();
+    const data = FetchData.answerRequestList;
+    return data;
+  };
   // console.log("取得したデータ", answerRequestList);
+
+  const [answerRequestList, setAnswerRequestList] = useState<ProjectType[]>([]);
+
+  useEffect(() => {
+    fetchData().then((data) => {
+      setAnswerRequestList(data);
+    });
+  }, []);
 
   //  案件詳細の文字数制限
   const truncateString = (str: string, num: number) => {
