@@ -4,6 +4,25 @@ export const getGroup = async() => {
     })
     const data = await response.json()
     const groupData = data.groupList
-    // console.log(groupData)
-    return groupData
+    const formattedData = groupData.map((item:any) =>{
+        const createdAtDate = new Date(item.createdAt)
+        const formattedCreatedAt = createdAtDate.toISOString().split('T')[0]
+        
+        let formattedUpdatedAt = "9999-12-31"
+        if(item.updateAt !== "-999999999-01-01T00:00:00"){
+            const updateAtDate = new Date(item.updateAt)
+            formattedUpdatedAt = updateAtDate.toISOString().split('T')[0]
+        } else{
+
+        }
+
+        return{
+            ...item,
+            createdAt:formattedCreatedAt,
+            updateAt:formattedUpdatedAt,
+        }
+    })
+    console.log('formattedData',formattedData)
+    console.log(groupData)
+    return formattedData
 }

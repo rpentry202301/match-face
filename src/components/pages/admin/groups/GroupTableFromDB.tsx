@@ -12,8 +12,10 @@ const GroupTableFromDb = () => {
     const getData = async () => {
       try {
         const fetchedData = await getGroup();
+        
+
         setGroupData(fetchedData);
-        console.log("これか", fetchedData);
+        // console.log("これか", fetchedData);
       } catch (error) {
         console.error(error);
       }
