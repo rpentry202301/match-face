@@ -4,6 +4,6 @@ export const getGroup = async() => {
     })
     const data = await response.json()
     const groupData = data.groupList
-    console.log(groupData)
+    // console.log(groupData)
     return groupData
 }
