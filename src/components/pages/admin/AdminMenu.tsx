@@ -1,8 +1,7 @@
 "use client";
-// import { dataArray } from "@/const/adminTop";
 import { useState, useEffect } from "react";
 import Menu from "@/components/ui/Menu";
-import MenuList from "@/types/admin/types"
+import { MenuList } from "@/types/types";
 
 const AdminMenu = () => {
   const [menuList, setMenuList] = useState<any[]>([]);

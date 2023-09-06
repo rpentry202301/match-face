@@ -1,8 +1,7 @@
 "use client";
 import Input from "@/components/ui/Input";
 import WhiteButton from "@/components/ui/button/WhiteButton";
-// import { department, userData } from "@/const/userList";
-// import { entry_status } from "@/const/userList";
+import WhiteCheckButton from "@/components/ui/button/WhiteCheckButton";
 import { useState, useEffect } from "react";
 import UserList from "./UserList";
 import OrangeButton from "@/components/ui/button/OrangeButton";
@@ -38,12 +37,12 @@ const SearchUser = () => {
   const [isSelected, setIsSelected] = useState<{
     year: string;
     month: string;
-    department: string;
+    department: {};
     status: string;
   }>({
     year: "",
     month: "",
-    department: "",
+    department: initDep,
     status: "",
   });
   console.log({ ...isSelected });
@@ -99,7 +98,15 @@ const SearchUser = () => {
     fetchUserData();
   }, []);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const initDep = department.map((data) => {
+    return {
+      name: department.name,
+      checked: false,
+    };
+  });
+  console.log(initDep);
+
+  const handleInputChange = () => {
     setIsSelected({
       ...isSelected,
       year: "--",
