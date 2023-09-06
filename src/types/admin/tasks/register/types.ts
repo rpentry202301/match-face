@@ -18,3 +18,19 @@ export type Task = {
   users: string[];
   answer_deadline: string;
 };
+
+//modal
+export type FetchUserModalData = {
+  departments: {
+    id: number,
+    name: string,
+  }[],
+  statuses: {
+    id: number,
+    name: string,
+  }[], 
+  userGroups: {
+    id: number,
+    name: string,
+  }[],
+}

@@ -5,43 +5,34 @@ import WhiteButton from "@/components/ui/button/WhiteButton"
 import WhiteButtonCheckBox from "@/components/pages/admin/tasks/register/parts/WhiteButtonCheckBox"
 import OrangeButton from "@/components/ui/button/OrangeButton"
 import SelectBox from "@/components/ui/selectbox/SelectBox"
-import { group as groupConst } from "@/const/group"
-import { departments } from "@/const/tasks"
 import UserList from "./parts/UserList"
 import { useUserSelect } from "@/hooks/store/context/UserSelectContext"
+import type { FetchUserModalData } from "@/types/admin/tasks/register/types"
 
-const state = ['研修中', '待機中', 'アサイン中']
-const groupValues = groupConst.map((group) => group.group_name)
 
 // 実際にレンダリングされるモーダルは以下に記述
-const UserSelectModal = async () => {
+const UserSelectModal = ({ fetchData }: { fetchData: FetchUserModalData }) => {
   const [ isOpened, setIsOpened ] = useState(false)
-  const [ fetchData, setFetchData ] = useState<any>([])
-
-  // ユーザー情報を取得
-  // useEffect(() => {
-  //   const fetchDep = async () => {
-  //     const res = await fetch("http://localhost:3000/api/admin/tasks/register/modal")
-  //     const data = await res.json()
-  //     setFetchData(data)
-  //   }
-  //   fetchDep()
-  // }, [])
-
+  
   // 状態初期化用にオブジェクトを作成
-  const initDepartments = departments.map((dep) => {
+  const initDepartments = fetchData.departments.map((dep: any) => {
     return {
+      id: dep.id,
       label: dep.name,
       checked: false,
     }
   })
-  const initState = state.map((state) => {
+  const initState = fetchData.statuses.map((state) => {
     return {
-      label: state,
+      id: state.id,
+      label: state.name,
       checked: false,
     }
   })
 
+  const groupValues = fetchData.userGroups.map((group) => group.name)
+  groupValues.unshift("")
+  
   const [ formData, setFormData ] = useState({
     search: "",
     year: "",
@@ -151,7 +142,7 @@ const UserSelectModal = async () => {
             <span className="text-xs">月入社</span>
           </div>
           <div className="flex gap-4 flex-wrap">
-            {departments.map((element) => (
+            {fetchData.departments.map((element) => (
               <WhiteButtonCheckBox
                 key={`dep_${element.id}`}
                 id={`dep_${element.id}`}
@@ -165,25 +156,25 @@ const UserSelectModal = async () => {
             ))}
           </div>
           <div className="flex gap-4">
-            {state.map((element) => {
+            {fetchData.statuses.map((element) => {
               return (
-                element.length < 4
+                element.name.length < 4
                 ? <WhiteButtonCheckBox
-                  key={element}
-                  id={element}
-                  label={element}
-                  value={element}
-                  checked={formData.state.filter((data) => data.label === element)[0].checked}
+                  key={`status_${element.id}`}
+                  id={`status_${element.id}`}
+                  label={element.name}
+                  value={element.name}
+                  checked={formData.state.filter((data) => data.label === element.name)[0].checked}
                   name="state"
                   className="text-xs w-16 px-1 whitespace-nowrap"
                   onChange={(e) => handleChangeCheckBox(e, "state")}
                 />
                 : <WhiteButtonCheckBox
-                  key={element}
-                  id={element}
-                  label={element}
-                  value={element}
-                  checked={formData.state.filter((data) => data.label === element)[0].checked}
+                  key={`status_${element.id}`}
+                  id={`status_${element.id}`}
+                  label={element.name}
+                  value={element.name}
+                  checked={formData.state.filter((data) => data.label === element.name)[0].checked}
                   name="state"
                   className="text-xs px-1 w-24"
                   onChange={(e) => handleChangeCheckBox(e, "state")}

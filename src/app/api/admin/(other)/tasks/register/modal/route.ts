@@ -1,16 +1,27 @@
 import { NextResponse } from 'next/server';
 
 export const GET = async () => {
-  const departments = await fetch(`${process.env.BE_URL}/departments`).then((res) => res.json());
+  const res = await fetch(`${process.env.BE_URL}/departments`,
+    {
+      cache: 'no-cache',
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  ).catch((err) => {
+    console.log(err);
 
-  console.log(departments);
+    return NextResponse.next();
+  });
+  
+  const data = await res.json();
+
+  console.log("api", data);
   
   return NextResponse.json(
     {
-      data: departments,
-    },
-    {
-      status: 200,
+      data: ["a", "b", "c"]
     }
   );
 };
