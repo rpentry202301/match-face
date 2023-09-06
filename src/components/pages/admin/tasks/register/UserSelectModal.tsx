@@ -1,5 +1,5 @@
 'use client'
-import { useState, ReactNode, ChangeEvent, FormEvent } from "react"
+import { useState, useEffect, ReactNode, ChangeEvent, FormEvent } from "react"
 import { createPortal } from "react-dom"
 import WhiteButton from "@/components/ui/button/WhiteButton"
 import WhiteButtonCheckBox from "@/components/pages/admin/tasks/register/parts/WhiteButtonCheckBox"
@@ -14,8 +14,19 @@ const state = ['研修中', '待機中', 'アサイン中']
 const groupValues = groupConst.map((group) => group.group_name)
 
 // 実際にレンダリングされるモーダルは以下に記述
-const UserSelectModal = () => {
+const UserSelectModal = async () => {
   const [ isOpened, setIsOpened ] = useState(false)
+  const [ fetchData, setFetchData ] = useState<any>([])
+
+  // ユーザー情報を取得
+  // useEffect(() => {
+  //   const fetchDep = async () => {
+  //     const res = await fetch("http://localhost:3000/api/admin/tasks/register/modal")
+  //     const data = await res.json()
+  //     setFetchData(data)
+  //   }
+  //   fetchDep()
+  // }, [])
 
   // 状態初期化用にオブジェクトを作成
   const initDepartments = departments.map((dep) => {
