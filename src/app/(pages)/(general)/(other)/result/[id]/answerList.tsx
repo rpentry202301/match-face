@@ -1,42 +1,37 @@
-import { question } from "@/const/testing";
-import { Answer } from "@/const/result";
 import ModelAnswerContent from "@/components/pages/general/result/ModelAnswer";
+import type { QuestionList } from "@/types/(general)/(other)/result/questions";
 
-type Props = {
-  project_id: number;
-};
-
-export const AnswerList = ({ project_id }: Props) => {
-  const currentQuestion = question.filter(
-    (question) => question.project_id === project_id
-  );
-
-  const currentAnswer = Answer.filter(
-    (answer) => answer.project_id === project_id
+export const AnswerList = ({
+  questionList,
+}: {
+  questionList: QuestionList;
+}) => {
+  // 回答の配列
+  const userAnswers = questionList.map((question) =>
+    question.answerList.filter((answer) => answer.modelAnswerFl === false)
   );
 
   return (
     <>
-      {currentQuestion.map((question, index) => (
+      {questionList.map((question, index) => (
         <div key={index} className="py-5">
           <h3 className="text-xl">
-            Q{index + 1}:{question.name}
+            Q{index + 1}:{question.context}
           </h3>
-          <p id={`content-${index + 1}`} className="mt-2 mb-4">
-            {question.content}
-          </p>
-          {question.type === "writing" ? (
+          {/* 選択問題ではない場合 */}
+          {question.choiceList.length === 0 ? (
             <div
               id={`answer-${index + 1}`}
               className="border border-gray p-3 mt-2 rounded-md shadow-md"
             >
               <h3 className="mb-2 text-xl">あなたの回答</h3>
-              {currentAnswer[index].content}
+              {userAnswers[index][0].context}
             </div>
           ) : (
+            // 選択問題の場合
             <>
               <ul>
-                {question.choices?.map((choice, index) => (
+                {question.choiceList?.map((choice, index) => (
                   <li key={index}>・{choice}</li>
                 ))}
               </ul>
@@ -45,14 +40,11 @@ export const AnswerList = ({ project_id }: Props) => {
                 className="border border-gray p-3 mt-5 rounded-md shadow-md"
               >
                 <h3 className="mb-2 text-xl">あなたの回答</h3>
-                {currentAnswer[index].content}
+                {userAnswers[index][0].context}
               </div>
             </>
           )}
-          <ModelAnswerContent
-            project_id={Number(project_id)}
-            question_id={question.id}
-          />
+          <ModelAnswerContent questionList={questionList} index={index} />
         </div>
       ))}
     </>
