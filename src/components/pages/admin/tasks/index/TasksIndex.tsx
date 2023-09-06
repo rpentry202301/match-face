@@ -10,7 +10,7 @@ import { TasksType } from "@/types/admin/tasks/types";
  * @todo_1 レスポンシブ対応
  */
 const TasksIndex = async () => {
-  // ヘッダーから検索条件{ searchKeyword, departmentId }を取得
+  // クエリから検索条件{ searchKeyword, departmentId }を取得
   const headerList = headers();
   const searchKeyword = headerList.get("searchKeyword");
   const departmentId = headerList.get("departmentId");
