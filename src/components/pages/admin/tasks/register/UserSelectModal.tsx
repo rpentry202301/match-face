@@ -13,9 +13,10 @@ import type { FetchUserModalData } from "@/types/admin/tasks/register/types"
 // 実際にレンダリングされるモーダルは以下に記述
 const UserSelectModal = ({ fetchData }: { fetchData: FetchUserModalData }) => {
   const [ isOpened, setIsOpened ] = useState(false)
+  const [ users, setUsers ] = useState(fetchData.users)
   
   // 状態初期化用にオブジェクトを作成
-  const initDepartments = fetchData.departments.map((dep: any) => {
+  const initDepartments = fetchData.departments.map((dep) => {
     return {
       id: dep.id,
       label: dep.name,
@@ -82,7 +83,44 @@ const UserSelectModal = ({ fetchData }: { fetchData: FetchUserModalData }) => {
   // Todo: APIができたら実装
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(formData)
+    const name = formData.search
+    const hireDate = (formData.year && formData.month)
+      ? `${formData.year}-${Number(formData.month) < 10 ? `0${formData.month}` : `${formData.month}`}-01`
+      : ""
+    const checkedDepId = formData.department.filter((data) => data.checked).map((dep) => dep.id)
+    const checkedStateId = formData.state.filter((data) => data.checked).map((state) => state.id)
+    const selectedGroup = fetchData.userGroups.filter((group) => group.name === formData.group)
+
+    const searchQuerys = [
+      name ? `name=${name}` : "",
+      hireDate ? `hireDate=${hireDate}` : "",
+      checkedDepId.length ? `departmentId=${checkedDepId}` : "",
+      checkedStateId.length ? `statusId=${checkedStateId}` : "",
+      selectedGroup.length ? `groupId=${selectedGroup[0].id}` : "",
+    ]
+
+    const query = searchQuerys.filter((query) => query !== "").join("&")
+
+    const url = `${process.env.NEXT_PUBLIC_BE_URL}/users?${query}`
+
+    console.log(url)
+
+    fetch(`${process.env.NEXT_PUBLIC_BE_URL}/users?${query}`, {
+      cache: 'no-cache',
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => {
+        console.log(res.status)
+        return res.json()
+      })
+      .then((data) => {
+        setUsers(data.userList)
+        console.log(users)
+      })
+      .catch((err) => console.log(err))
   }
 
   const handleChangeUserList = (e: ChangeEvent<HTMLInputElement>) => {
@@ -204,7 +242,7 @@ const UserSelectModal = ({ fetchData }: { fetchData: FetchUserModalData }) => {
         </div>
       </form>
 
-      <UserList users={fetchData.users} checkedValues={checkedValues} onChange={handleChangeUserList} />
+      <UserList users={users} checkedValues={checkedValues} onChange={handleChangeUserList} />
 
       <div className="mx-auto mt-8 w-fit">
         <OrangeButton label="選択完了" className="text-xs" onClick={handleClose}/>

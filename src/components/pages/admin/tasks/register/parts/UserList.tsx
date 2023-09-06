@@ -42,8 +42,8 @@ const UserList = ({
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
-            <tr key={`userId_${user.id}`}>
+          {users.map((user, i) => (
+            <tr key={`userId_${i}`}>
               <td className={`${tableDefaultClassName}`}>
                 <CheckBox
                   value={user.name}
