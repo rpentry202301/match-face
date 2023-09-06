@@ -3,6 +3,9 @@ import SearchByJobs from "./parts/SearchByJobs";
 import TaskList from "./parts/TaskList";
 import Link from "next/link";
 
+// 削除予定
+import { tasks } from "@/const/tasks";
+
 const TasksIndex = () => {
   return (
     <main>
@@ -15,7 +18,7 @@ const TasksIndex = () => {
         </Link>
       </div>
       <div className="flex justify-center">
-        <TaskList />
+        <TaskList tasks={tasks}/>
       </div>
     </main>
   );

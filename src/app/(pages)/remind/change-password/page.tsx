@@ -1,7 +1,7 @@
 'use client';
 import SiteTitle from '@/components/ui/SiteTitle';
 import OrangeButton from '@/components/ui/button/OrangeButton';
-import users from '@/const/login';
+import { users } from '@/const/login';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
@@ -15,7 +15,7 @@ const ChangePasswordPage = () => {
   const router = useRouter();
 
   //ダミーデータ
-  const userData = users;
+  // const userData = users;
 
   const {
     register,
@@ -69,7 +69,7 @@ const ChangePasswordPage = () => {
                   message: '※パスワードを入力してください。',
                 },
                 pattern: {
-                  // 記号 . _ / # & % = ~ - + * @ ( ) < > [ ] { } が1つ以上含まれるかつ、半角英数字が含まれる、かつ8文字以上
+                  // 記号 . _ / # & % = ~ - + * @ ( ) < > [ ] { } が1つ以上含まれる、かつ半角英数字が含まれる、かつ8文字以上
                   value:
                     /^(?=.*[a-z])(?=.*[\d])(?=.*[._\/#&%=~\-+*@()<>\[\]{}])[a-z\d._\/#&%=~\-+*@()<>\[\]{}]{8,}.*$/,
                   message: '※パスワードの条件を満たしていません。',
