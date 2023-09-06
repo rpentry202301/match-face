@@ -321,12 +321,6 @@ exports[`SelectDeadline.tsx スナップショットテスト レンダリング
             >
               30
             </option>
-            <option
-              data-testid="day:31"
-              value="31"
-            >
-              31
-            </option>
           </select>
           <p
             class="text-ms ml-0.5"
