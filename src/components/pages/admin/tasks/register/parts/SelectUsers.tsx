@@ -20,17 +20,19 @@ const SelectUsers = async () => {
     const departments = await fetcher('departments')
     const statuses = await fetcher('statuses')
     const userGroups = await fetcher('user_groups')
+    const users = await fetcher('users')
   
     return {
       departments: departments.departmentList,
       statuses: statuses.statusList,
       userGroups: userGroups.groupList,
+      users: users.userList,
     } as FetchUserModalData
   }
 
   const fetchData = await fetchModalData()
 
-  console.log(fetchData)
+  console.log(fetchData, fetchData.users[0].department)
 
   return (
     <div className="mb-5">

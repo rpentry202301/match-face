@@ -33,4 +33,19 @@ export type FetchUserModalData = {
     id: number,
     name: string,
   }[],
+  users: {
+    id: number,
+    name: string,
+    hireDate: string,
+    departmentId: number,
+    department: {
+      id: number,
+      name: string,
+    },
+    statusId: number,
+    status: {
+      id: number,
+      name: string,
+    },
+  }[],
 }

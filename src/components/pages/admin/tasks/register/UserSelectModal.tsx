@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, ReactNode, ChangeEvent, FormEvent } from "react"
+import { useState, ReactNode, ChangeEvent, FormEvent } from "react"
 import { createPortal } from "react-dom"
 import WhiteButton from "@/components/ui/button/WhiteButton"
 import WhiteButtonCheckBox from "@/components/pages/admin/tasks/register/parts/WhiteButtonCheckBox"
@@ -204,7 +204,7 @@ const UserSelectModal = ({ fetchData }: { fetchData: FetchUserModalData }) => {
         </div>
       </form>
 
-      <UserList checkedValues={checkedValues} onChange={handleChangeUserList} />
+      <UserList users={fetchData.users} checkedValues={checkedValues} onChange={handleChangeUserList} />
 
       <div className="mx-auto mt-8 w-fit">
         <OrangeButton label="選択完了" className="text-xs" onClick={handleClose}/>
