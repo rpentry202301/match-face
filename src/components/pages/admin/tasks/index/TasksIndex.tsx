@@ -3,9 +3,7 @@ import SearchByJobs from "./parts/SearchByJobs";
 import TaskList from "./parts/TaskList";
 import Link from "next/link";
 import { headers } from "next/headers";
-
-// 削除予定
-import { tasks } from "@/const/tasks";
+import { TasksType } from "@/types/admin/tasks/types";
 
 /**
  * @author Hayato Kobayashi
@@ -27,8 +25,8 @@ const TasksIndex = async () => {
       },
     }
   );
-  // console.log(await res);
-  // const taskses = await res.json();
+  const tasks: TasksType[] = await res.json();
+  console.log("tasks", tasks[0].answerUserList.length);
 
   return (
     <main>

@@ -1,3 +1,4 @@
+import { Answer_RequestsType } from "@/types/admin/tasks/types";
 import { NextResponse } from "next/server";
 
 /**
@@ -15,7 +16,8 @@ export async function GET(req: Request) {
       "Content-Type": "application/json",
     },
   });
-  console.log("res", res.status);
-  const tasks = await res.json();
+  // console.log("res", res.status);
+  const answerRequests: Answer_RequestsType = await res.json();
+  const tasks = answerRequests.answerRequests; // fetch時に"answerRequests.answerRequestsの形になるので修正"
   return NextResponse.json(tasks);
 }
