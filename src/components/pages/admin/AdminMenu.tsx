@@ -1,12 +1,25 @@
 "use client";
-import { dataArray } from "@/const/adminTop";
+// import { dataArray } from "@/const/adminTop";
+import { useState, useEffect } from "react";
 import Menu from "@/components/ui/Menu";
+import MenuList from "@/types/admin/types"
 
 const AdminMenu = () => {
+  const [menuList, setMenuList] = useState<any[]>([]);
+  useEffect(() => {
+    const fetchAdminMenu = async () => {
+      const response = await fetch("http://localhost:3000/api/admin");
+      const data = await response.json();
+      setMenuList(data.administratorMainElementList);
+      return menuList;
+    };
+    fetchAdminMenu();
+  }, []);
+
   return (
     <div className="flex justify-center items-center min-h-screen md:mt-[-40px]">
       <div className="grid grid-cols-1 md:grid-cols-3 md:mt-10">
-        {dataArray.map((data: any) => (
+        {menuList.map((data: MenuList) => (
           <div key={data.id} className="m-10">
             <Menu
               title={data.title}
