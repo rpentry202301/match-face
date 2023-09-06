@@ -6,62 +6,15 @@ type Data = {
   answer_status: boolean;
 }[];
 
-export const data: Data = [
+export const data = [
   {
-    id: "1",
-    project_name: "ポムポムプリン",
-    project_detail:
-      "日本のサンリオによるゴールデン・レトリバーの男のコをモチーフにしたキャラクター。",
-    answer_deadline: "2023/9/15",
-    answer_status: true,
-  },
-  {
-    id: "2",
-    project_name: "ポムポムプリン",
-    project_detail:
-      "日本のサンリオによるゴールデン・レトリバーの男のコをモチーフにしたキャラクター。",
-    answer_deadline: "2023/9/16",
-    answer_status: true,
-  },
-  {
-    id: "3",
-    project_name: "ポムポムプリン",
-    project_detail:
-      "日本のサンリオによるゴールデン・レトリバーの男のコをモチーフにしたキャラクター。",
-    answer_deadline: "2023/9/16",
-    answer_status: false,
-  },
-  {
-    id: "4",
-    project_name: "ポムポムプリン",
-    project_detail:
-      "日本のサンリオによるゴールデン・レトリバーの男のコをモチーフにしたキャラクター。",
-    answer_deadline: "2023/9/16",
-    answer_status: false,
-  },
-  {
-    id: "5",
-    project_name: "ポムポムプリン",
-    project_detail:
-      "日本のサンリオによるゴールデン・レトリバーの男のコをモチーフにしたキャラクター。",
-    answer_deadline: "2023/9/16",
-    answer_status: false,
-  },
-  {
-    id: "6",
-    project_name: "ポムポムプリン",
-    project_detail:
-      "日本のサンリオによるゴールデン・レトリバーの男のコをモチーフにしたキャラクター。",
-    answer_deadline: "2023/9/16",
-    answer_status: false,
-  },
-  {
-    id: "7",
-    project_name: "ポムポムプリン",
-    project_detail:
-      "日本のサンリオによるゴールデン・レトリバーの男のコをモチーフにしたキャラクター。",
-    answer_deadline: "2023/9/16",
-    answer_status: false,
+    id: 1,
+    deadline: "2023-12-01 18:00",
+    project: {
+      name: "バックエンド案件",
+      detail: "販促アプリの新規開発、既存システムの保守・運用。",
+    },
+    answered: false,
   },
 ];
 

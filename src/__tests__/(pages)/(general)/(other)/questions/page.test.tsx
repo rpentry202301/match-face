@@ -1,46 +1,64 @@
 import QuestionsPage from "@/app/(pages)/(general)/(other)/questions/page";
-import { render, screen, cleanup, act } from "@testing-library/react";
+import { render, screen, cleanup, act, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { data } from "@/const/questions";
 
 //ユーザのイベントをテストするため
 import { UserEvent } from "@testing-library/user-event/dist/types/setup/setup";
 // ダミーAPI作成用
-import { rest } from "msw";
+import { rest, RequestHandler, setupWorker } from "msw";
 import { setupServer } from "msw/node";
+import "cross-fetch/polyfill";
 
 beforeAll(() => server.listen());
-afterEach(() => {
-  cleanup();
-});
+// afterEach(() => {
+//   cleanup();
+// });
+afterEach(() => server.resetHandlers());
 afterAll(() => {
   server.close();
 });
-const server = setupServer(
-  rest.get("http://dummyurl", (req, res, ctx) => {
-    //ステータスと返すデータの指定
-    return res(ctx.status(200), ctx.json({ username: "dummyName" }));
-  })
-);
+// const server = setupServer(
+//   rest.post("/api/questions", async (req, res, ctx) => {
+//     const { user_id } = await req.json();
+//     //ステータスと返すデータの指定
+//     return res(
+//       ctx.status(200),
+//       ctx.json({
+//         id: 1,
+//         deadline: "2023-12-01 18:00",
+//         project: {
+//           name: "バックエンド案件",
+//           detail: "販促アプリの新規開発、既存システムの保守・運用。",
+//         },
+//         answered: false,
+//       })
+//     );
+//   })
+// );
+
+test("allows user to log in", async () => {
+  // Render components, perform requests, receive mocked responses.
+});
 
 describe("スナップショットテスト", () => {
-  it("レンダリング時", () => {
-    const { container } = render(<QuestionsPage />);
-    expect(container).toMatchSnapshot();
+  it("レンダリング時", async () => {
+    render(<QuestionsPage />);
+    expect(screen).toMatchSnapshot();
   });
 });
 describe("一般ユーザー質問一覧画面", () => {
   describe("テーブル", () => {
-    it("取得データの要素数+1個(見出しのtr)の<tr>が存在する", () => {
+    it("取得データの要素数+1個(見出しのtr)の<tr>が存在する", async () => {
       render(<QuestionsPage />);
       const dataNumbers = data.length;
-      const element = screen.getAllByRole("row");
+      const element = await screen.getAllByRole("row");
       screen.debug(element);
-      expect(element).toHaveLength(dataNumbers + 1);
+      await waitFor(() => expect(element).toHaveLength(dataNumbers + 1));
     });
     it("回答期日が表示される", () => {
       render(<QuestionsPage />);
-      const element = screen.getByText(data[0].answer_deadline);
+      const element = screen.getByText(data[0].deadline);
       screen.debug(element);
       expect(element).toBeInTheDocument();
     });
