@@ -391,14 +391,14 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             <div>
               <input
                 class="peer hidden"
-                id="研修中"
+                id="status_1"
                 name="state"
                 type="checkbox"
                 value="研修中"
               />
               <label
                 class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs w-16 px-1 whitespace-nowrap cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
-                for="研修中"
+                for="status_1"
               >
                 研修中
               </label>
@@ -406,14 +406,14 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             <div>
               <input
                 class="peer hidden"
-                id="待機中"
+                id="status_2"
                 name="state"
                 type="checkbox"
                 value="待機中"
               />
               <label
                 class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs w-16 px-1 whitespace-nowrap cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
-                for="待機中"
+                for="status_2"
               >
                 待機中
               </label>
@@ -421,14 +421,14 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             <div>
               <input
                 class="peer hidden"
-                id="アサイン中"
+                id="status_3"
                 name="state"
                 type="checkbox"
                 value="アサイン中"
               />
               <label
                 class="text-xs inline-flex items-center justify-center py-2 bg-white hover:bg-gray-100 border rounded-full shadow-mdtext-xs px-1 w-24 cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5"
-                for="アサイン中"
+                for="status_3"
               >
                 アサイン中
               </label>
@@ -450,28 +450,20 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
                 name="group"
               >
                 <option
-                  data-testid="group:2023年7月入社"
-                  value="2023年7月入社"
+                  data-testid="group:"
+                  value=""
+                />
+                <option
+                  data-testid="group:グループ2"
+                  value="グループ2"
                 >
-                  2023年7月入社
+                  グループ2
                 </option>
                 <option
-                  data-testid="group:2023年7月入社フロント"
-                  value="2023年7月入社フロント"
+                  data-testid="group:グループ1"
+                  value="グループ1"
                 >
-                  2023年7月入社フロント
-                </option>
-                <option
-                  data-testid="group:テストグループその3"
-                  value="テストグループその3"
-                >
-                  テストグループその3
-                </option>
-                <option
-                  data-testid="group:テストグループその4"
-                  value="テストグループその4"
-                >
-                  テストグループその4
+                  グループ1
                 </option>
               </select>
             </div>
@@ -514,7 +506,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
                 職種
               </th>
               <th
-                class="border-2 border-deep-gray px-4 py-2 text-center w-20"
+                class="border-2 border-deep-gray px-4 py-2 text-center w-28"
               >
                 状態
               </th>
@@ -533,28 +525,28 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
                 <input
                   class="w-4 h-4 accent-orange cursor-pointer"
                   type="checkbox"
-                  value="田中太郎"
+                  value="テスト珠子"
                 />
               </td>
               <td
                 class="border-2 border-deep-gray px-4 py-2 text-center"
               >
-                2023-07-01
+                2023-04-01
               </td>
               <td
                 class="border-2 border-deep-gray px-4 py-2 text-center"
               >
-                Java
+                FR
               </td>
               <td
                 class="border-2 border-deep-gray px-4 py-2 text-center"
               >
-                待機中
+                アサイン中
               </td>
               <td
                 class="border-2 border-deep-gray px-4 py-2 text-center"
               >
-                田中太郎
+                テスト珠子
               </td>
             </tr>
             <tr>
@@ -564,28 +556,28 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
                 <input
                   class="w-4 h-4 accent-orange cursor-pointer"
                   type="checkbox"
-                  value="鈴木二郎"
+                  value="テスト洋子"
                 />
               </td>
               <td
                 class="border-2 border-deep-gray px-4 py-2 text-center"
               >
-                2023-07-01
+                2023-04-01
               </td>
               <td
                 class="border-2 border-deep-gray px-4 py-2 text-center"
               >
-                Java
+                CL
               </td>
               <td
                 class="border-2 border-deep-gray px-4 py-2 text-center"
               >
-                待機中
+                研修中
               </td>
               <td
                 class="border-2 border-deep-gray px-4 py-2 text-center"
               >
-                鈴木二郎
+                テスト洋子
               </td>
             </tr>
             <tr>
@@ -595,13 +587,13 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
                 <input
                   class="w-4 h-4 accent-orange cursor-pointer"
                   type="checkbox"
-                  value="伊藤三郎"
+                  value="テスト太郎"
                 />
               </td>
               <td
                 class="border-2 border-deep-gray px-4 py-2 text-center"
               >
-                2023-07-01
+                2023-01-01
               </td>
               <td
                 class="border-2 border-deep-gray px-4 py-2 text-center"
@@ -616,7 +608,38 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
               <td
                 class="border-2 border-deep-gray px-4 py-2 text-center"
               >
-                伊藤三郎
+                テスト太郎
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="border-2 border-deep-gray px-4 py-2 text-center"
+              >
+                <input
+                  class="w-4 h-4 accent-orange cursor-pointer"
+                  type="checkbox"
+                  value="テスト次郎"
+                />
+              </td>
+              <td
+                class="border-2 border-deep-gray px-4 py-2 text-center"
+              >
+                2023-01-01
+              </td>
+              <td
+                class="border-2 border-deep-gray px-4 py-2 text-center"
+              >
+                PHP
+              </td>
+              <td
+                class="border-2 border-deep-gray px-4 py-2 text-center"
+              >
+                研修中
+              </td>
+              <td
+                class="border-2 border-deep-gray px-4 py-2 text-center"
+              >
+                テスト次郎
               </td>
             </tr>
           </tbody>

@@ -80,7 +80,6 @@ const UserSelectModal = ({ fetchData }: { fetchData: FetchUserModalData }) => {
     setFormData({ ...formData, [name]: newData})
   }
 
-  // Todo: APIができたら実装
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const name = formData.search
