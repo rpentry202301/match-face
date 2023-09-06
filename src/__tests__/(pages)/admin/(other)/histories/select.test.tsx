@@ -11,11 +11,11 @@ import { answer_request_groupsMock, departmentsMock, skillsMock } from './histor
  describe('select',()=>{ 
     const user = userEvent.setup()
     const push = jest.fn()  
-    let test1:Element;
-    let test2:Element;
-    let test3:Element;
-    let test4:Element;
-    let test5:Element;
+    let test1:HTMLElement;
+    let test2:HTMLElement;
+    let test3:HTMLElement;
+    let test4:HTMLElement;
+    let test5:HTMLElement;
     let form:HTMLFormElement;
     let selectMonth:HTMLOptionElement;
     let selectFR:HTMLInputElement;
