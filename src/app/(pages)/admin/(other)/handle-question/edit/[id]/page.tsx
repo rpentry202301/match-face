@@ -55,7 +55,7 @@ const EditQuestionPage = ({ params }: { params: { id: string } }) => {
       }
     };
     getData(
-      "http://localhost:8080/qa_system_api/projects/${Number(params.id)}"
+      `http://localhost:8080/qa_system_api/projects/${Number(params.id)}`
     ).then((projectDetails) => {
       setProjectData(projectDetails);
       setEditData(projectDetails.questionList);
