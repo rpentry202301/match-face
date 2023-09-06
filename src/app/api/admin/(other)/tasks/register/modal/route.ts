@@ -1,27 +1,23 @@
 import { NextResponse } from 'next/server';
 
-export const GET = async () => {
-  const res = await fetch(`${process.env.BE_URL}/departments`,
-    {
-      cache: 'no-cache',
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
-  ).catch((err) => {
-    console.log(err);
+export const GET = async (req: Request) => {
+  const query = new URLSearchParams(req.url.split('?')[1]);
 
-    return NextResponse.next();
+  const response = await fetch(`${process.env.BE_URL}/users?${query}`, {
+    cache: 'no-cache',
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+
+  if (!response.ok) {
+    return NextResponse.error();
+  }
+
+  const data = await response.json();
+  
+  return NextResponse.json(data, {
+    status: response.status,
   });
-  
-  const data = await res.json();
-
-  console.log("api", data);
-  
-  return NextResponse.json(
-    {
-      data: ["a", "b", "c"]
-    }
-  );
 };

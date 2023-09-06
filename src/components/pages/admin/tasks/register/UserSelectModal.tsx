@@ -101,11 +101,7 @@ const UserSelectModal = ({ fetchData }: { fetchData: FetchUserModalData }) => {
 
     const query = searchQuerys.filter((query) => query !== "").join("&")
 
-    const url = `${process.env.NEXT_PUBLIC_BE_URL}/users?${query}`
-
-    console.log(url)
-
-    fetch(`${process.env.NEXT_PUBLIC_BE_URL}/users?${query}`, {
+    fetch(`http://localhost:3000/api/admin/tasks/register/modal?${query}`, {
       cache: 'no-cache',
       method: 'GET',
       headers: {
