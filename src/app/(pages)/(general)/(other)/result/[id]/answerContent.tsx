@@ -14,8 +14,10 @@ type Props = {
 };
 
 const getProjects = async (project_id: number) => {
+  const url = process.env.NEXT_PUBLIC_BE_URL;
+
   try {
-    const response = await fetch(`http://localhost:3000/api/result`, {
+    const response = await fetch(`${url}/result`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
