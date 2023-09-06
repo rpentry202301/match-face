@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { getGroup } from "./getGroups";
-import type { Groups } from "@/types/admin/groups/groups";
 import Link from "next/link";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 
@@ -13,7 +12,6 @@ const GroupTableFromDb = () => {
       try {
         const fetchedData = await getGroup();
         
-
         setGroupData(fetchedData);
         // console.log("これか", fetchedData);
       } catch (error) {

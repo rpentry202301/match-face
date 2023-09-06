@@ -1,24 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import Link from "next/link";
 import Input from "@/components/ui/Input";
 import TextArea from "@/components/ui/TextArea";
 import UserSelectModal from "../../tasks/register/UserSelectModal";
 import UserInput from "./UserInput";
+import { useRouter } from "next/navigation";
 
 
 const RegisterForm = () => {
   // モーダル表示用
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter()
 
   // 初期値
   const [groupName, setGroupName] = useState('') 
-  const [groupMember, setGroupMember] = useState('')
+  const [groupMember, setGroupMember] = useState([])
   const [groupDescription, setGroupDescription] = useState('')
   const [errorGroupName, setErrorGroupName] = useState('')
 
+  //モーダル 
   const toggleModal = () => {
     if(groupName === ''){
       setErrorGroupName('グループ名が空欄です')
@@ -28,11 +31,28 @@ const RegisterForm = () => {
     }
   };
 
+  // 非同期通信(post)
+  const submitData = async(e:React.SyntheticEvent) =>{
+    e.preventDefault()
+    try{
+      const body = {
+        groupName,
+        groupDescription
+      }
+      const response = await fetch('')
+
+    }catch{
+
+    }
+    // router.push('/admin/groups')
+    // setIsOpen(!isOpen);
+  }
+
   return (
     <>
       <div className="flex flex-col items-center justify-center h-screen">
         <div className="border-2  py-12 px-12 ">
-          <form>
+          <form onSubmit={submitData}>
             <label htmlFor="group_name">▶グループ名を設定する</label>
             <Input id="group_name" value={groupName} onChange={(e)=>setGroupName(e.target.value)} style={{ width: "600px" }} className="my-3 px-2 py-1 border-2 border-gray-300" data-testid="groupName"/>
             <p className="text-red" data-testid="errorGroupName">{errorGroupName}</p>
@@ -43,8 +63,6 @@ const RegisterForm = () => {
             <UserInput/>
             <br />
             <label htmlFor="group_description">▶備考</label>
-            {/* <Input id="group_description" value={groupDescription} onChange={(e)=>setGroupDescription(e.target.value)} style={{ width: "600px" }} className="my-3 px-2 py-1 border-2 border-gray-300"/> */}
-            {/* テキストエリアにしました*/}
             <TextArea id="group_description" cols={1} rows={1} value={groupDescription} onChange={(e)=>setGroupDescription(e.target.value)} className="my-3 px-2 py-1 border-2 border-gray-300"/>
           </form>
           <br />
@@ -71,7 +89,7 @@ const RegisterForm = () => {
                   <Link href={"/admin/groups"}>
                     {/* 今は遷移にしてますがのちのちポストします */}
                     <button
-                      onClick={toggleModal}
+                      onClick={submitData}
                       className="hover:bg-gray-400 duration-200"
                       data-testid="registerTrue"
                     >

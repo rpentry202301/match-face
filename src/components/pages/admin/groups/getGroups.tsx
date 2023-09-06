@@ -1,5 +1,16 @@
 export const getGroup = async() => {
-    const response = await fetch("http://localhost:8080/qa_system_api/groups",{
+
+    const url = process.env.BE_URL
+
+     // 確認用(うまくいかないので一旦、放置)
+    //  const checkData = async() => {
+    //     const response = await fetch('http://localhost:3000/api/admin/groups',{cache:"no-cache"})
+    //     const data = await response.json()
+    //     console.log('いま確認用',data)
+    // }
+    // checkData()
+
+    const response = await fetch(`http://localhost:8080/qa_system_api/groups`,{
         cache:"no-cache"
     })
     const data = await response.json()
@@ -23,6 +34,6 @@ export const getGroup = async() => {
         }
     })
     console.log('formattedData',formattedData)
-    console.log(groupData)
+    console.log('url',process.env['BE_URL'])
     return formattedData
 }
