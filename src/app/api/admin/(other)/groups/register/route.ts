@@ -1,7 +1,11 @@
-import { NextApiResponse} from "next"
+import { NextRequest } from "next/server";
 
-export default async function POST(req:Request,res:NextApiResponse){
-    const response = await fetch('http://localhost:8080/qa_system_api/groups')
-    const groups = await response.json()
-    res.status(200).json({groups})
+export async function POST(){
+    const response = await fetch('http://localhost:8080/qa_system_api/groups',{cache:'no-cache'})
+    if (!response.ok) {
+        throw new Error("エラー");
+      }
+    const data = await response.json()
+    return NextRequest
+
 }
