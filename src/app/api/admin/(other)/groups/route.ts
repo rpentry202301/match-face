@@ -1,17 +1,12 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 
-export async function Get (req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === "GET") {
-    try {
-      const response = await fetch(`http://localhost:8080/qa_system_api/groups`,{
-        cache:"no-cache"
-    })
-      const data = await response.json()
-      res.status(200).json({data});
-    } catch (error) {
-      res.status(500).json({ messeage: "internal server error" });
-    }
-  } else {
-    res.status(405).json({ message: "method not allowed!!!  " });
+export async function GET() {
+  const response = await fetch(`http://localhost:8080/qa_system_api/groups`, {
+    cache: "no-cache",
+  });
+  if (!response.ok) {
+    throw new Error("エラー");
   }
-};
+  const data = await response.json();
+  return NextResponse.json(data.groupList);
+}
