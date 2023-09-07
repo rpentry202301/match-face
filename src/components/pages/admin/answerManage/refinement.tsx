@@ -1,6 +1,5 @@
 "use client";
 import WhiteButton from "@/components/ui/button/WhiteButton";
-import WhiteCheckButton from "@/components/ui/button/WhiteCheckButton";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import Input from "@/components/ui/Input";
 import { useState, ChangeEvent, useEffect } from "react";
@@ -56,8 +55,9 @@ const Refinement = () => {
       // もしvalueが配列に既に存在していれば、削除
       setSelect(select.filter((item) => item !== value));
     } else {
+      setSelect([])
       // もしvalueが配列に存在しなければ、追加
-      setSelect([...select, value]);
+      setSelect([value]);
     }
   };
   const handleInputSearch = (e: ChangeEvent<HTMLInputElement>) => {
