@@ -1,4 +1,4 @@
-export type Data = {
+export type DataType = {
   id: number;
   comment_created_at: boolean;
   name: string;
@@ -7,7 +7,16 @@ export type Data = {
   skill_id: number[];
 }[];
 
-export const projects: Data = [
+export type SkillType = {
+  id: number;
+  name: string;
+  createdUser: string;
+  createdAt: string;
+  updateUser: string;
+  updateAt: string;
+}[];
+
+export const projects: DataType = [
   {
     id: 1,
     comment_created_at: true,
