@@ -7,16 +7,16 @@ const handler = NextAuth({
     CredentialsProvider({
       name: 'Email & Password',
       credentials: {
-        email: {
-          label: 'Email',
-          type: 'email',
-          placeholder: 'example@example.com',
+        id: {
+          label: 'ユーザーID',
+          type: 'text',
+          // placeholder: 'example@example.com',
         },
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
         const response = await fetch(
-          `${process.env.BE_URL}/users/${credentials?.email}?password=${credentials?.password}`,
+          `${process.env.BE_URL}/users/${credentials?.id}?password=${credentials?.password}`,
           {
             cache: 'no-store',
             method: 'GET',
@@ -32,7 +32,7 @@ const handler = NextAuth({
         const userData = await response.json();
         const user = userData.user;
         console.log('user', user);
-        if (user && user.email === credentials?.email) {
+        if (user.id && user.password) {
           return user;
         } else if (userData.length === 0) {
           return null;
@@ -40,8 +40,8 @@ const handler = NextAuth({
       },
     }),
   ],
-  pages: {
-    signIn: '/login',
-  },
+  // pages: {
+  //   signIn: '/login',
+  // },
 });
 export { handler as GET, handler as POST };
