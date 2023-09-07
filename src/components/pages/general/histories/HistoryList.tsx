@@ -48,7 +48,7 @@ const HistoryList: React.FC<HistoryListProps> = memo(
         const FetchData = await response.json();
         const selectProject = FetchData.answerRequestList;
         setSelectProject(selectProject);
-        console.log("取得したデータ", selectProject, month, skill);
+        // console.log("取得したデータ", selectProject, month, skill);
       }
       getSelectedData();
     }, [click]);

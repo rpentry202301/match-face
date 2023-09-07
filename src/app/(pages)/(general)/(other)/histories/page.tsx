@@ -75,7 +75,7 @@ const HistoriesPage = () => {
 
   const handleClick = () => {
     setIsClick(!isClick);
-    console.log(isClick);
+    // console.log(isClick);
   };
 
   return (
