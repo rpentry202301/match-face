@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import SiteTitle from '@/components/ui/SiteTitle';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useState } from 'react';
+import { cookies } from 'next/headers';
 
 // データの型はnumberだが、都合上stringに設定
 type LoginForm = {
@@ -29,7 +30,7 @@ const LoginPage = () => {
 
   const onSubmit: SubmitHandler<LoginForm> = async (data, event: any) => {
     event.preventDefault();
-    const response = await fetch('http://localhost:3000/api/login', {
+    const response = await fetch('/api/login', {
       cache: 'no-store',
       method: 'POST',
       headers: {

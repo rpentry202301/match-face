@@ -1,3 +1,4 @@
+import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
@@ -8,6 +9,12 @@ export async function POST(request: Request) {
     `http://localhost:8080/qa_system_api/users/${userId}?password=${password}`
   );
   const data = await response.json();
-
+  cookies().set({
+    name: 'userId',
+    value: `${userId}`,
+    httpOnly: true,
+    secure: true,
+    path: '/',
+  });
   return NextResponse.json(data);
 }
