@@ -26,7 +26,7 @@ const TasksIndex = async () => {
     }
   );
   const tasks: TasksType[] = await res.json();
-  console.log("tasks", tasks[0].answerUserList.length);
+  // console.log("tasks", tasks);
 
   return (
     <main>
