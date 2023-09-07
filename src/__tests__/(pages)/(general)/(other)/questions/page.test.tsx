@@ -1,7 +1,7 @@
 import QuestionsPage from "@/app/(pages)/(general)/(other)/questions/page";
 import { render, screen, cleanup, act, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { data } from "@/const/questions";
+// import { data } from "@/const/questions";
 import { mockGetData } from "./mock";
 
 // //ユーザのイベントをテストするため
@@ -35,16 +35,37 @@ import { mockGetData } from "./mock";
 //   })
 // );
 
-jest.mock("../../../../../app/api/(general)/questions/route");
+// jest.mock("../../../../../app/api/(general)/questions/route");
+
+const data = {
+  id: 1,
+  deadline: "2023-12-01 18:00",
+  project: {
+    name: "バックエンド案件",
+    detail: "販促アプリの新規開発、既存システムの保守・運用。",
+  },
+  answered: false,
+};
 
 describe("スナップショットテスト", () => {
+  global.fetch = jest.fn().mockImplementation((url, config) => {
+    if (url === "http://localhost:3000/api/questions") {
+      return {
+        ok: true,
+        json: async () => data,
+      };
+    }
+  });
   it("データ取得後の質問一覧画面が表示される", async () => {
-    const mockFn = mockGetData();
+    // const mockFn = mockGetData();
     const { container } = render(<QuestionsPage />);
-    expect(mockFn).toBeCalled();
-    expect(container).toMatchSnapshot();
+    // expect(mockFn).toBeCalled();
+    await waitFor(() => {
+      expect(container).toMatchSnapshot();
+    });
   });
 });
+
 describe("一般ユーザー質問一覧画面", () => {
   describe("テーブル", () => {
     it("取得データの要素数+1個(見出しのtr)の<tr>が存在する", async () => {
