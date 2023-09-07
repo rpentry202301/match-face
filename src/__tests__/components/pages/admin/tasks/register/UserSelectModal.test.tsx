@@ -1,6 +1,6 @@
 import UserSelectModal from "@/components/pages/admin/tasks/register/UserSelectModal";
 import { UserSelectProvider } from "@/hooks/store/context/UserSelectContext";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 // コンポーネント内では初期表示用のfetchは無いので、ダミーデータを渡しています
@@ -119,6 +119,33 @@ export const userSelectModalFetchedData = {
   ]
 }
 
+// Fetch用mockデータ
+const dataFRMock = () => {
+  new Promise((resolve) => {
+    resolve({
+      ok: true,
+      status: 200,
+      json: async () => ({ data: {  users: [
+        {
+          id: 3,
+          name: 'テスト珠子',
+          hireDate: '2023-04-01',
+          departmentId: 3,
+          department: {
+            id: 3,
+            name: 'FR'
+          },
+          statusId: 3,
+          status: {
+            id: 3,
+            name: 'アサイン中'
+          },
+        },
+      ]}})
+    })
+  })
+}
+
 // モーダル展開用関数
 const open = () => {
   render(
@@ -194,6 +221,34 @@ describe("UserSelectModal.tsx", () => {
       expect(afterSelect.selected).toBe(true);
     })
 
+    it("部署のチェックボックステスト", async () => {
+      render(
+        <UserSelectProvider>
+          <UserSelectModal fetchData={userSelectModalFetchedData} />
+        </UserSelectProvider>
+      );
+      const beforeCheck = screen.getByTestId("check-box:FR") as HTMLInputElement;
+      expect(beforeCheck.checked).toBe(false);
+      // Javaを選択してテスト
+      await user.click(screen.getByTestId("check-box:FR"))
+      const afterCheck = screen.getByTestId("check-box:FR") as HTMLInputElement;
+      expect(afterCheck.checked).toBe(true);
+    })
+
+    it("ステータスのチェックボックステスト", async () => {
+      render(
+        <UserSelectProvider>
+          <UserSelectModal fetchData={userSelectModalFetchedData} />
+        </UserSelectProvider>
+      );
+      const beforeCheck = screen.getByTestId("check-box:待機中") as HTMLInputElement;
+      expect(beforeCheck.checked).toBe(false);
+      // 研修中を選択してテスト
+      await user.click(screen.getByTestId("check-box:待機中"))
+      const afterCheck = screen.getByTestId("check-box:待機中") as HTMLInputElement;
+      expect(afterCheck.checked).toBe(true);
+    })
+
     it("ユーザーグループの選択テスト", async () => {
       render(
         <UserSelectProvider>
@@ -211,5 +266,4 @@ describe("UserSelectModal.tsx", () => {
       expect(afterSelect.selected).toBe(true);
     })
   });
-  
 });

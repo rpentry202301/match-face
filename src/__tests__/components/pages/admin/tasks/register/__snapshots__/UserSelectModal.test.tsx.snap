@@ -297,6 +297,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             <div>
               <input
                 class="peer hidden"
+                data-testid="check-box:Java"
                 id="dep_1"
                 name="department"
                 type="checkbox"
@@ -312,6 +313,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             <div>
               <input
                 class="peer hidden"
+                data-testid="check-box:PHP"
                 id="dep_2"
                 name="department"
                 type="checkbox"
@@ -327,6 +329,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             <div>
               <input
                 class="peer hidden"
+                data-testid="check-box:FR"
                 id="dep_3"
                 name="department"
                 type="checkbox"
@@ -342,6 +345,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             <div>
               <input
                 class="peer hidden"
+                data-testid="check-box:CL"
                 id="dep_4"
                 name="department"
                 type="checkbox"
@@ -357,6 +361,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             <div>
               <input
                 class="peer hidden"
+                data-testid="check-box:ML"
                 id="dep_5"
                 name="department"
                 type="checkbox"
@@ -372,6 +377,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             <div>
               <input
                 class="peer hidden"
+                data-testid="check-box:QA"
                 id="dep_6"
                 name="department"
                 type="checkbox"
@@ -391,6 +397,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             <div>
               <input
                 class="peer hidden"
+                data-testid="check-box:研修中"
                 id="status_1"
                 name="state"
                 type="checkbox"
@@ -406,6 +413,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             <div>
               <input
                 class="peer hidden"
+                data-testid="check-box:待機中"
                 id="status_2"
                 name="state"
                 type="checkbox"
@@ -421,6 +429,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
             <div>
               <input
                 class="peer hidden"
+                data-testid="check-box:アサイン中"
                 id="status_3"
                 name="state"
                 type="checkbox"
@@ -651,6 +660,7 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
         <div>
           <button
             class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white rounded-xl p-2 w-40 h-auto text-xs"
+            data-testid="search-button"
           >
             選択完了
           </button>

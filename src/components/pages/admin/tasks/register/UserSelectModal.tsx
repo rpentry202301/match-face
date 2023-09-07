@@ -240,7 +240,7 @@ const UserSelectModal = ({ fetchData }: { fetchData: FetchUserModalData }) => {
       <UserList users={users} checkedValues={checkedValues} onChange={handleChangeUserList} />
 
       <div className="mx-auto mt-8 w-fit">
-        <OrangeButton label="選択完了" className="text-xs" onClick={handleClose}/>
+        <OrangeButton label="選択完了" className="text-xs" onClick={handleClose} data-testid="search-button" />
       </div>
     </Modal>
   )

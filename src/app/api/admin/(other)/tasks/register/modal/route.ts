@@ -11,6 +11,8 @@ export const GET = async (req: Request) => {
     },
   })
 
+  console.log(response.ok);
+
   if (!response.ok) {
     return NextResponse.error();
   }
