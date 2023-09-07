@@ -4,7 +4,7 @@ import React, { useContext } from "react";
 
 type Refine = {
   word: string[];
-  department: string[];
+  department: number[];
 };
 
 const SelectContext = React.createContext<[Refine, React.Dispatch<React.SetStateAction<Refine>>] | undefined>(undefined);

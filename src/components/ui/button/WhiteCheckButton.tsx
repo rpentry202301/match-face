@@ -1,5 +1,5 @@
 "use client";
-import { ComponentProps, useState } from "react";
+import { ComponentProps, useState, MouseEvent } from "react";
 import { twMerge } from "tailwind-merge";
 
 const WhiteCheckButton = ({ label, ...props }: W_BtnProps) => {
@@ -13,7 +13,10 @@ const WhiteCheckButton = ({ label, ...props }: W_BtnProps) => {
     <button
       {...props}
       className={mergeStyle}
-      onClick={() => setClicked(!clicked)}
+      onClick={(event: MouseEvent<HTMLButtonElement>) => {
+        setClicked(!clicked);
+        props.onClick ? props.onClick(event) : undefined;
+      }}
     >
       {label}
     </button>

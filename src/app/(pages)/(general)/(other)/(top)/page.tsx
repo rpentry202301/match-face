@@ -1,6 +1,7 @@
 import Menu from '@/components/ui/Menu';
 import Notification from '@/components/pages/general/top/Notification';
 import { menuContentsArray } from '@/const/top';
+import { trueAnswerRequests, falseAnswerRequests } from '@/const/notification';
 
 type MenuContent = {
   id: number;
@@ -11,17 +12,19 @@ type MenuContent = {
   imgAlt: string;
 };
 
+// todo: データは日付の昇順で並べる
+// ダミーデータ
+const completedData = trueAnswerRequests;
+const incompletedData = falseAnswerRequests;
+
 const Home = async () => {
   return (
     <main>
       <div className="flex flex-col items-center mt-8 mb-20">
         <Notification
-          title="進捗状況"
-          completedTasksNumbers={12}
-          incompletedTasksNumbers={10}
-          deadlineDay="12月14日"
-          deadlineNumbers={10}
           className=""
+          completedData={completedData}
+          incompletedData={incompletedData}
         />
       </div>
 
