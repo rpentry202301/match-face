@@ -4,39 +4,6 @@ import "@testing-library/jest-dom";
 // import { data } from "@/const/questions";
 import { mockGetData } from "./mock";
 
-// //ユーザのイベントをテストするため
-// import { UserEvent } from "@testing-library/user-event/dist/types/setup/setup";
-// // ダミーAPI作成用
-// import { rest, RequestHandler, setupWorker } from "msw";
-// import { setupServer } from "msw/node";
-// import "cross-fetch/polyfill";
-
-// beforeAll(() => server.listen());
-// afterEach(() => server.resetHandlers());
-// afterAll(() => {
-//   server.close();
-// });
-// const server = setupServer(
-//   rest.post("/api/questions", async (req, res, ctx) => {
-//     const { user_id } = await req.json();
-//     //ステータスと返すデータの指定
-//     return res(
-//       ctx.status(200),
-//       ctx.json({
-//         id: 1,
-//         deadline: "2023-12-01 18:00",
-//         project: {
-//           name: "バックエンド案件",
-//           detail: "販促アプリの新規開発、既存システムの保守・運用。",
-//         },
-//         answered: false,
-//       })
-//     );
-//   })
-// );
-
-// jest.mock("../../../../../app/api/(general)/questions/route");
-
 const data = {
   id: 1,
   deadline: "2023-12-01 18:00",
@@ -56,10 +23,9 @@ describe("スナップショットテスト", () => {
       };
     }
   });
-  it("データ取得後の質問一覧画面が表示される", async () => {
-    // const mockFn = mockGetData();
+  it("データ取得後");
+  it("データ取得前の質問一覧画面が表示される", async () => {
     const { container } = render(<QuestionsPage />);
-    // expect(mockFn).toBeCalled();
     await waitFor(() => {
       expect(container).toMatchSnapshot();
     });
