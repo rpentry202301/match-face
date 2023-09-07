@@ -71,10 +71,10 @@ const LoginPage = () => {
                     value: true,
                     message: '※ユーザーIDを入力してください。',
                   },
-                  // pattern: {
-                  //   value: /^[0-9]+$/,
-                  //   message: '※半角数字で入力してください。',
-                  // },
+                  pattern: {
+                    value: /^[0-9]+$/,
+                    message: '※半角数字で入力してください。',
+                  },
                 })}
               />
             </div>

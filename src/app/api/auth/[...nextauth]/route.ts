@@ -3,14 +3,16 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 
 const handler = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: 'jwt',
+  },
   providers: [
     CredentialsProvider({
       name: 'Email & Password',
       credentials: {
         id: {
           label: 'ユーザーID',
-          type: 'text',
-          // placeholder: 'example@example.com',
+          type: 'number',
         },
         password: { label: 'Password', type: 'password' },
       },
@@ -20,18 +22,10 @@ const handler = NextAuth({
           {
             cache: 'no-store',
             method: 'GET',
-            // headers: {
-            //   'Content-Type': 'application/json',
-            // },
-            // body: JSON.stringify({
-            //   userId: 1,
-            //   password: 'testtest',
-            // }),
           }
         );
         const userData = await response.json();
         const user = userData.user;
-        console.log('user', user);
         if (user.id && user.password) {
           return user;
         } else if (userData.length === 0) {
@@ -40,8 +34,20 @@ const handler = NextAuth({
       },
     }),
   ],
+  callbacks: {
+    jwt: async ({ token, user }) => {
+      if (token && user) {
+        token.id = user.id;
+      }
+      return token;
+    },
+    session: async ({ session, token }) => {
+      session.user = { name: token.name, email: token.email, id: token.id };
+      return session;
+    },
+  },
   // pages: {
-  //   signIn: '/login',
+  //   signIn: '/auth/sign-in',
   // },
 });
 export { handler as GET, handler as POST };
