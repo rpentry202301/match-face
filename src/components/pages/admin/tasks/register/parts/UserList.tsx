@@ -20,7 +20,7 @@ type User = {
 }
 
 const UserList = ({
-  users,
+  users = [],
   checkedValues,
   onChange
 }: {

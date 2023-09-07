@@ -9,43 +9,66 @@ import UserList from "./parts/UserList"
 import { useUserSelect } from "@/hooks/store/context/UserSelectContext"
 import type { FetchUserModalData } from "@/types/admin/tasks/register/types"
 
-
-// 実際にレンダリングされるモーダルは以下に記述
-const UserSelectModal = ({ fetchData }: { fetchData: FetchUserModalData }) => {
+const UserSelectModal = () => {
   const [ isOpened, setIsOpened ] = useState(false)
-  const [ users, setUsers ] = useState(fetchData.users)
-  
-  // 状態初期化用にオブジェクトを作成
-  const initDepartments = fetchData.departments.map((dep) => {
-    return {
-      id: dep.id,
-      label: dep.name,
-      checked: false,
-    }
-  })
-  const initState = fetchData.statuses.map((state) => {
-    return {
-      id: state.id,
-      label: state.name,
-      checked: false,
-    }
-  })
-
-  const groupValues = fetchData.userGroups.map((group) => group.name)
-  groupValues.unshift("")
-  
+  const [ initFetchData, setInitFetchData ] = useState<FetchUserModalData>()
+  const [ users, setUsers ] = useState(initFetchData?.users)
   const [ formData, setFormData ] = useState({
     search: "",
     year: "",
     month: "",
-    department: initDepartments,
-    state: initState,
+    department: [{
+      id: 0,
+      label: "",
+      checked: false,
+    }],
+    state: [{
+      id: 0,
+      label: "",
+      checked: false,
+    }],
     group: "",
   })
   const [ userSelect, userSelectDispatch ] = useUserSelect()
   const [ checkedValues, setCheckedValue ] = useState<string[]>(userSelect)
+  const [ groupValues, setGroupValues ] = useState<string[]>([""])
   
-  const open = () => {
+  // サーバーサイドからFetchではなくクライアントサイドからのFetchにしました
+  // サーバーサイドからのFetchだとモーダルの再利用が大変なため
+  const open = async () => {
+    const res = await fetch(`http://localhost:3000/api/admin/tasks/register/modal`)
+    const data = await res.json() as FetchUserModalData
+
+    const initDepartments = data.departments.map((dep) => {
+      return {
+        id: dep.id,
+        label: dep.name,
+        checked: false,
+      }
+    })
+
+    const initState = data.statuses.map((state) => {
+      return {
+        id: state.id,
+        label: state.name,
+        checked: false,
+      }
+    })
+  
+    const groupValues = data.userGroups.map((group) => group.name)
+    groupValues.unshift("")
+
+    setInitFetchData(data)
+    setFormData({
+      search: "",
+      year: "",
+      month: "",
+      department: initDepartments,
+      state: initState,
+      group: "",
+    })
+    setUsers(data.users)
+    setGroupValues(groupValues)
     setCheckedValue(userSelect)
     setIsOpened(true)
   }
@@ -88,14 +111,14 @@ const UserSelectModal = ({ fetchData }: { fetchData: FetchUserModalData }) => {
       : ""
     const checkedDepId = formData.department.filter((data) => data.checked).map((dep) => dep.id)
     const checkedStateId = formData.state.filter((data) => data.checked).map((state) => state.id)
-    const selectedGroup = fetchData.userGroups.filter((group) => group.name === formData.group)
+    const selectedGroup = initFetchData?.userGroups.filter((group) => group.name === formData.group)
 
     const searchQuerys = [
       name ? `name=${name}` : "",
       hireDate ? `hireDate=${hireDate}` : "",
       checkedDepId.length ? `departmentId=${checkedDepId}` : "",
       checkedStateId.length ? `statusId=${checkedStateId}` : "",
-      selectedGroup.length ? `groupId=${selectedGroup[0].id}` : "",
+      selectedGroup?.length ? `groupId=${selectedGroup[0].id}` : "",
     ]
 
     const query = searchQuerys.filter((query) => query !== "").join("&")
@@ -112,7 +135,7 @@ const UserSelectModal = ({ fetchData }: { fetchData: FetchUserModalData }) => {
         return res.json()
       })
       .then((data) => {
-        setUsers(data.userList)
+        setUsers(data.users)
         console.log(users)
       })
       .catch((err) => console.log(err))
@@ -175,7 +198,7 @@ const UserSelectModal = ({ fetchData }: { fetchData: FetchUserModalData }) => {
             <span className="text-xs">月入社</span>
           </div>
           <div className="flex gap-4 flex-wrap">
-            {fetchData.departments.map((element) => (
+            {initFetchData?.departments.map((element) => (
               <WhiteButtonCheckBox
                 key={`dep_${element.id}`}
                 id={`dep_${element.id}`}
@@ -189,7 +212,7 @@ const UserSelectModal = ({ fetchData }: { fetchData: FetchUserModalData }) => {
             ))}
           </div>
           <div className="flex gap-4">
-            {fetchData.statuses.map((element) => {
+            {initFetchData?.statuses.map((element) => {
               return (
                 element.name.length < 4
                 ? <WhiteButtonCheckBox
@@ -237,7 +260,7 @@ const UserSelectModal = ({ fetchData }: { fetchData: FetchUserModalData }) => {
         </div>
       </form>
 
-      <UserList users={users} checkedValues={checkedValues} onChange={handleChangeUserList} />
+      <UserList users={users || []} checkedValues={checkedValues} onChange={handleChangeUserList} />
 
       <div className="mx-auto mt-8 w-fit">
         <OrangeButton label="選択完了" className="text-xs" onClick={handleClose} data-testid="search-button" />
