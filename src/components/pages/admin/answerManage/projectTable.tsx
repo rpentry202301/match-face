@@ -28,23 +28,42 @@ const ProjectTable = () => {
 
   useEffect(() => {
     // console.log(refine);
-    const url = "http://localhost:8080/qa_system_api/projects";
-    const getData = async (url: string): Promise<Project[]> => {
-      try {
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error("Network response not OK");
-        }
-        const res: ProjectsResponse = await response.json();
-        return res.projectList;
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        return [];
+    // const url = "http://localhost:8080/qa_system_api/projects";
+    const setProjectData = async (search: string | null) => {
+      const response_projects = await fetch(
+        `http://localhost:3000/api/admin/handle-question/projects?search=${search}`
+      );
+      if (!response_projects.ok) {
+        throw new Error("Failed to fetch data");
       }
+      const projects = await response_projects.json();
+      setData(projects);
+      // const response_projects = await fetch(
+      //   `http://localhost:3000/api/admin/handle-question/projects`
+      // );
+      // if (!response_projects.ok) {
+      //   throw new Error("Failed to fetch data");
+      // }
+      // const projects: Project[] = await response_projects.json();
+      // setData(projects);
     };
+    setProjectData(null);
+    // const getData = async (url: string): Promise<Project[]> => {
+    //   try {
+    //     const response = await fetch(url);
+    //     if (!response.ok) {
+    //       throw new Error("Network response not OK");
+    //     }
+    //     const res: ProjectsResponse = await response.json();
+    //     return res.projectList;
+    //   } catch (error) {
+    //     console.error("Error fetching data:", error);
+    //     return [];
+    //   }
+    // };
 
     const filterData = async () => {
-      const nonFilter = await getData(url);
+      // const nonFilter = await getData(url);
       // console.log(filter)
       const keywordParam = `searchKeyword=${encodeURIComponent(
         refine.word[0]
@@ -54,22 +73,17 @@ const ProjectTable = () => {
         .join("&");
       // refine.departmentとrefine.wordがが空の場合、すべてのデータを表示
       if (refine.department.length === 0 && refine.word.length === 0) {
-        setData(nonFilter);
+        await setProjectData(null);
         return;
       } else if (refine.department.length === 0) {
-        const wordFilter = await getData(`${url}?${keywordParam}`);
+        await setProjectData(keywordParam);
         // console.log(wordFilter);
-        setData(wordFilter);
       } else if (refine.word.length === 0) {
-        const departmentFilter = await getData(`${url}?${departmentParams}`);
+        await setProjectData(departmentParams);
         // console.log(departmentFilter);
-        setData(departmentFilter);
       } else {
-        const allFilter = await getData(
-          `${url}?${keywordParam}&${departmentParams}`
-        );
+        setProjectData(`${keywordParam}&${departmentParams}`);
         // console.log(allFilter);
-        setData(allFilter);
       }
     };
     filterData();

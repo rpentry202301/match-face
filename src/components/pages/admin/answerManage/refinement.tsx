@@ -26,22 +26,29 @@ const Refinement = () => {
   const [refine, setRefine] = useRefine();
 
   useEffect(() => {
-    fetch("http://localhost:8080/qa_system_api/departments")
-      .then((response) => {
-        if (!response.ok) {
-          // console.log("error");
-          setDepartment([]);
-        }
-        return response.json();
-      })
-      .then((res: DepartmentResponse) => {
-        // console.log(res);
-        setDepartment(res.departmentList);
-      })
-      .catch((error) => {
-        // console.log("error");
-        setDepartment([]);
-      });
+    async function setData(){
+      const response_departments = await fetch('http://localhost:3000/api/admin/histories/departments')
+      if (!response_departments.ok){ throw new Error('Failed to fetch data');}
+      const department = await response_departments.json()
+      setDepartment(department)
+  }
+  setData()
+    // fetch("http://localhost:8080/qa_system_api/departments")
+    //   .then((response) => {
+    //     if (!response.ok) {
+    //       // console.log("error");
+    //       setDepartment([]);
+    //     }
+    //     return response.json();
+    //   })
+    //   .then((res: DepartmentResponse) => {
+    //     // console.log(res);
+    //     setDepartment(res.departmentList);
+    //   })
+    //   .catch((error) => {
+    //     // console.log("error");
+    //     setDepartment([]);
+    //   });
   }, []);
 
   const handleSelectButtonClick = (value: number) => {
