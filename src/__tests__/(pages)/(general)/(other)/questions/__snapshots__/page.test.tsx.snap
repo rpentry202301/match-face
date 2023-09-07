@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`スナップショットテスト データ取得後の質問一覧画面が表示される 1`] = `
+exports[`スナップショットテスト データ取得前の質問一覧画面が表示される 1`] = `
 <div>
   <div
     class="flex flex-col items-center h-screen "

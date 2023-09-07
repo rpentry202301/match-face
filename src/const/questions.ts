@@ -6,7 +6,7 @@ type Data = {
   answer_status: boolean;
 }[];
 
-export const data = [
+export const mockData = [
   {
     id: 1,
     deadline: "2023-12-01 18:00",
