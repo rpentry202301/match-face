@@ -1,41 +1,14 @@
 export type SelectHistoryAction = {
-    type:'select',payload:{month:string,department:null|number,skills:number[]}
+    type:'select',payload:{month:string,department:number[],skills:number[]}
 }
-
-export type Projects = {
-    id:number,
-    name:string,
-    detail: string;
-    enterprise_id: number;
-    department_id: number;
-    created_user: string;
-    created_at: string;
-    update_user: string;
-    update_at: string;
-}[]
-
-export type AnswerRequests = {
-    id: number;
-    user_id: number[];
-    administrator_id: number;
-    project_id: number;
-    request_at: string;
-    deadline: string;
-    created_user: string;
-    created_at: string;
-    update_user: string;
-    update_at: string;
-}[]
-
 export type Skills = {
     id: number;
-    skill: string;
+    name: string;
     created_user: string;
     created_at: string;
     update_user: string;
     update_at: string;
-}[]
-
+}
 export type Departments = {
     id: number;
     name: string;
@@ -43,57 +16,47 @@ export type Departments = {
     created_at: string;
     update_user: string;
     update_at: string;
-}[]
-
- export type Answers = {
-    id: number;
-    context: string;
-    question_id: number;
-    answer_request_id: number;
-    user_id: number;
-    Model_answer_fl: boolean;
-    created_user: string;
-    created_at: string;
-    update_user: string;
-    update_at: string;
-}[]
-
-export type Users = {
-    id: number;
-    name: string;
-    password: string;
-    email: string;
-    hire_date: string;
-    department_id: number;
-    status_id: number;
-    created_user: string;
-    created_at: string;
-    update_user: string;
-    update_at: string;
-}[]
-
-export type ProjectUserAnswer = {
+}
+export type AnswerRequestGroups = {
     id:number,
-    answer_status: boolean,
-    user_id:number
-}[]
-
-export type AnswerRequestQuestions = {
-    id: number;
-    question_id: number;
-    answer_request_id: number;
-    is_answered: boolean;
-    created_user: string;
-    created_at: string;
-    update_user: string;
-    update_at: string;
-}[]
-export type ProjectSkills = {
-    id:number;
-    project_id:number;
-    skill_id:number[];
-    created_user:string;
-    created_at:string;
-    update_user:string;
-    update_at:string;
+    project:{
+        id:number,
+        name:string,
+        detail:string,
+        enterpriseId:number,
+        departmentId:number,
+        skillId:number,
+        questionList:any[],
+        createUser:string,
+        createdAt:string,
+        updateUser:string,
+        updateAt:string,
+        deleted:boolean
+    },
+    department:{
+        id:number,
+        name:string,
+        createdUser:string,
+        createdAt:string,
+        updateUser:string,
+        updateAt:string
+    },
+    answerUserList:{
+        answerRequestId:number,
+        userId:number,
+        userName:string,
+        answered:boolean
+    }[],
+    questionCount:number,
+    deadline:string,
+    createdUser:string,
+    createdAt:string,
+    updateUser:string,
+    updateAt:string
+}
+export type AnswerUserList = {
+    answerRequestId:number,
+    userId:number,
+    userName:string,
+    answered:boolean
 }[]

@@ -1,53 +1,76 @@
 "use client";
 import ProjectTableData from "@/const/projectTable";
 import WhiteButton from "@/components/ui/button/WhiteButton";
+import { ProjectsResponse } from "@/const/projectTable";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRefine } from "@/hooks/store/context/HandleQuestionContext";
 
+type Project = {
+  createdAt: string;
+  createdUser: string;
+  deleted: boolean;
+  departmentId: number;
+  detail: string;
+  enterpriseId: number;
+  id: number;
+  name: string;
+  questionList: any[];
+  updateAt: string;
+  updateUser: string;
+};
+
 const ProjectTable = () => {
   const [page, setPage] = useState(0);
-  const [data, setData] = useState<any[]>(ProjectTableData);
+  const [data, setData] = useState<Project[]>([]);
   const [refine, setRefine] = useRefine();
   // console.log("projectTable", refine);
 
   useEffect(() => {
-    const filterData = () => {
+    // console.log(refine);
+    const url = "http://localhost:8080/qa_system_api/projects";
+    const getData = async (url: string): Promise<Project[]> => {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error("Network response not OK");
+        }
+        const res: ProjectsResponse = await response.json();
+        return res.projectList;
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        return [];
+      }
+    };
+
+    const filterData = async () => {
+      const nonFilter = await getData(url);
+      // console.log(filter)
+      const keywordParam = `searchKeyword=${encodeURIComponent(
+        refine.word[0]
+      )}`;
+      const departmentParams = refine.department
+        .map((id) => `departmentId=${id}`)
+        .join("&");
       // refine.departmentとrefine.wordがが空の場合、すべてのデータを表示
       if (refine.department.length === 0 && refine.word.length === 0) {
-        setData(ProjectTableData);
+        setData(nonFilter);
         return;
+      } else if (refine.department.length === 0) {
+        const wordFilter = await getData(`${url}?${keywordParam}`);
+        // console.log(wordFilter);
+        setData(wordFilter);
+      } else if (refine.word.length === 0) {
+        const departmentFilter = await getData(`${url}?${departmentParams}`);
+        // console.log(departmentFilter);
+        setData(departmentFilter);
+      } else {
+        const allFilter = await getData(
+          `${url}?${keywordParam}&${departmentParams}`
+        );
+        // console.log(allFilter);
+        setData(allFilter);
       }
-      // refine.departmentに一致するデータをフィルタリング
-      const departmentFilteredData = ProjectTableData.filter((table) =>
-        refine.department.includes(table.department)
-      );
-      // refine.wordに一致するデータをフィルタリング
-      const wordFilteredData = departmentFilteredData.filter((table) =>
-        refine.word.some(
-          (keyword) =>
-            table.project_name.includes(keyword) ||
-            table.project_detail.includes(keyword)
-        )
-      );
-      const wordOnlyFilteredData = ProjectTableData.filter((table) =>
-        refine.word.some(
-          (keyword) =>
-            table.project_name.includes(keyword) ||
-            table.project_detail.includes(keyword)
-        )
-      );
-      // refine.wordが空の場合、上記でフィルタリングしたデータを設定
-      if (refine.word.length === 0) {
-        setData(departmentFilteredData);
-        return;
-      }
-      // refine.departmentが空の場合、上記でフィルタリングしたデータを設定
-      if (refine.department.length === 0) {
-        setData(wordOnlyFilteredData);
-        return;
-      }
-      setData(wordFilteredData);
     };
     filterData();
   }, [refine]);
@@ -74,17 +97,20 @@ const ProjectTable = () => {
             <th className="w-1/5 border-2"></th>
           </tr>
           {pagingData.map((data) => {
+            const datePortion = data.createdAt.split("T")[0];
+            const [year, month, day] = datePortion.split("-");
+            const formattedDate = `${year}/${parseInt(month)}/${parseInt(day)}`;
             return (
               <tr key={data.id}>
-                <td className="border-2 py-6 text-center">{data.edit_date}</td>
+                <td className="border-2 py-6 text-center">{formattedDate}</td>
                 <td
                   className="border-2 text-center"
-                  data-testid={`${data.project_name}`}
+                  data-testid={`${data.name}`}
                 >
-                  {data.project_name}
+                  {data.name}
                 </td>
                 <td className="border-2 text-center">
-                  {data.project_detail.slice(0, 20)}
+                  {data.detail.slice(0, 20)}
                 </td>
                 <td className="border-2">
                   <div className="flex items-center justify-evenly">

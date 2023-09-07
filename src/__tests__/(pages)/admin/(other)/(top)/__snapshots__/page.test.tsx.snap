@@ -18,19 +18,19 @@ exports[`adminトップページのテスト スナップショット 1`] = `
             class="flex p-5 w-96 h-40 shadow-lg hover:bg-gray-100 flex-col active:bg-gray-200"
             data-testid="menu_link"
           >
-            <span
+            <p
               class="border-b-[1px] border-b-black shadow-md text-2xl text-left w-full font-bold"
             >
               質問・回答の追加・編集
-            </span>
+            </p>
             <div
               class="flex pt-4 w-full"
             >
-              <span
+              <p
                 class="text-left mr-auto"
               >
                 質問・回答例を追加・編集します。
-              </span>
+              </p>
               <img
                 alt="document_icon"
                 class="pt-2 pl-2"
@@ -57,19 +57,19 @@ exports[`adminトップページのテスト スナップショット 1`] = `
             class="flex p-5 w-96 h-40 shadow-lg hover:bg-gray-100 flex-col active:bg-gray-200"
             data-testid="menu_link"
           >
-            <span
+            <p
               class="border-b-[1px] border-b-black shadow-md text-2xl text-left w-full font-bold"
             >
               タスクの一覧
-            </span>
+            </p>
             <div
               class="flex pt-4 w-full"
             >
-              <span
+              <p
                 class="text-left mr-auto"
               >
                 タスクの一覧を確認できます。
-              </span>
+              </p>
               <img
                 alt="pencil_icon"
                 class="pt-2 pl-2"
@@ -96,19 +96,19 @@ exports[`adminトップページのテスト スナップショット 1`] = `
             class="flex p-5 w-96 h-40 shadow-lg hover:bg-gray-100 flex-col active:bg-gray-200"
             data-testid="menu_link"
           >
-            <span
+            <p
               class="border-b-[1px] border-b-black shadow-md text-2xl text-left w-full font-bold"
             >
               回答の閲覧
-            </span>
+            </p>
             <div
               class="flex pt-4 w-full"
             >
-              <span
+              <p
                 class="text-left mr-auto"
               >
                 ユーザーの回答を閲覧できます。
-              </span>
+              </p>
               <img
                 alt="search_icon"
                 class="pt-2 pl-2"
@@ -135,19 +135,19 @@ exports[`adminトップページのテスト スナップショット 1`] = `
             class="flex p-5 w-96 h-40 shadow-lg hover:bg-gray-100 flex-col active:bg-gray-200"
             data-testid="menu_link"
           >
-            <span
+            <p
               class="border-b-[1px] border-b-black shadow-md text-2xl text-left w-full font-bold"
             >
               ユーザー管理
-            </span>
+            </p>
             <div
               class="flex pt-4 w-full"
             >
-              <span
+              <p
                 class="text-left mr-auto"
               >
                 ユーザーの一覧を確認できます。
-              </span>
+              </p>
               <img
                 alt="user_icon"
                 class="pt-2 pl-2"
@@ -174,19 +174,19 @@ exports[`adminトップページのテスト スナップショット 1`] = `
             class="flex p-5 w-96 h-40 shadow-lg hover:bg-gray-100 flex-col active:bg-gray-200"
             data-testid="menu_link"
           >
-            <span
+            <p
               class="border-b-[1px] border-b-black shadow-md text-2xl text-left w-full font-bold"
             >
               グループ一覧
-            </span>
+            </p>
             <div
               class="flex pt-4 w-full"
             >
-              <span
+              <p
                 class="text-left mr-auto"
               >
                 グループの一覧を確認できます。
-              </span>
+              </p>
               <img
                 alt="group_icon"
                 class="pt-2 pl-2"

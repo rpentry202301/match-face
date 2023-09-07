@@ -16,6 +16,95 @@ export type AnswerEditData = {
   department: string;
 };
 
+export type Project = {
+  id: number;
+  name: string;
+  detail: string;
+  enterpriseId: number;
+  departmentId: number;
+  questionList: any[];
+  createdUser: string;
+  createdAt: string;
+  updateUser: string;
+  updateAt: string;
+  deleted: boolean;
+}
+
+export type ProjectsResponse = {
+  projectList: Project[];
+}
+
+export type Answer = {
+  id: number;
+  context: string;
+  question_id: number;
+  answer_request_id: number;
+  user_id: number;
+  model_answer_fl: boolean;
+  is_deleted: boolean;
+  created_user: string;
+  created_at: Date;
+  update_user: string;
+  update_at: Date;
+};
+
+export type Choice = {
+  id: number;
+  questionId: number;
+  context: string;
+  createdUser: string;
+  createdAt: string;
+  updateUser: string;
+  updateAt: string;
+  deleted: boolean;
+}
+
+export type Questions = {
+  id: number;
+  projectId: number;
+  context: string;
+  choiceList: Choice[];
+  answerList: Answer[];
+  createdUser: string;
+  createdAt: string;
+  updateUser: string;
+  updateAt: string;
+  deleted: boolean;
+}
+
+export type ProjectDetail = {
+  id: number;
+  name: string;
+  detail: string;
+  enterpriseId: number;
+  departmentId: number;
+  questionList: Questions[];
+  createdUser: string;
+  createdAt: string;
+  updateUser: string;
+  updateAt: string;
+  deleted: boolean;
+}
+
+export type ProjectResponse = {
+  project: ProjectDetail;
+};
+
+export const initialProjectDetail: ProjectDetail = {
+  id: 0,
+  name: "",
+  detail: "",
+  enterpriseId: 0,
+  departmentId: 0,
+  questionList: [],
+  createdUser: "",
+  createdAt: "",
+  updateUser: "",
+  updateAt: "",
+  deleted: false,
+};
+
+
 const ProjectTableData = [
   {
     id: 1,
