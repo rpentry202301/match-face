@@ -4,7 +4,7 @@ import GroupTableFromDb from "@/components/pages/admin/groups/GroupTableFromDB";
 const GroupsPage = () => {
   return (
     <>
-      {/* <GroupTable /> */}
+      {/* constからDB取得データに切り替えるため<GroupTable />コメントアウト */}
       <GroupTableFromDb />
     </>
   );

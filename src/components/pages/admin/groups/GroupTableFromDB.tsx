@@ -13,7 +13,6 @@ const GroupTableFromDb = () => {
         const fetchedData = await getGroup();
         
         setGroupData(fetchedData);
-        // console.log("これか", fetchedData);
       } catch (error) {
         console.error(error);
       }
@@ -28,7 +27,7 @@ const GroupTableFromDb = () => {
   const [selectedGroupDescription, setSelectedGroupDescription] = useState("");
   const [selectedGroupMember, setSelectedGroupMember] = useState("");
 
-  // anyの解決が必要
+  // 要any解決
   const toggleModal = (groupData: any) => {
     setSelectedGroupingDate(groupData.createdAt);
     setSelectedGroupName(groupData.name);

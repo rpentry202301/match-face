@@ -7,7 +7,6 @@ import Link from "next/link";
 
 const data = group;
 
-// あとでasync足す
 const GroupTable = () => {
   // モーダル表示用
   const [isOpen, setIsOpen] = useState(false);
