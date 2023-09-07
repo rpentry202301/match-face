@@ -5,7 +5,7 @@ const handler = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
     CredentialsProvider({
-      name: 'Sign in',
+      name: 'Email & Password',
       credentials: {
         email: {
           label: 'Email',
@@ -16,7 +16,7 @@ const handler = NextAuth({
       },
       async authorize(credentials) {
         const response = await fetch(
-          `http://localhost:8080/qa_system_api/users/${credentials?.email}?password=${credentials?.password}`,
+          `${process.env.BE_URL}/users/${credentials?.email}?password=${credentials?.password}`,
           {
             cache: 'no-store',
             method: 'GET',
@@ -40,8 +40,8 @@ const handler = NextAuth({
       },
     }),
   ],
-  //   pages: {
-  //     signIn: '/login',
-  //   },
+  pages: {
+    signIn: '/login',
+  },
 });
 export { handler as GET, handler as POST };
