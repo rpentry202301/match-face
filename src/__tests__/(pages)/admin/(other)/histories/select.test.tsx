@@ -11,11 +11,11 @@ import { answer_request_groupsMock, departmentsMock, skillsMock } from './histor
  describe('select',()=>{ 
     const user = userEvent.setup()
     const push = jest.fn()  
-    let test1:Element;
-    let test2:Element;
-    let test3:Element;
-    let test4:Element;
-    let test5:Element;
+    let test1:HTMLElement;
+    let test2:HTMLElement;
+    let test3:HTMLElement;
+    let test4:HTMLElement;
+    let test5:HTMLElement;
     let form:HTMLFormElement;
     let selectMonth:HTMLOptionElement;
     let selectFR:HTMLInputElement;
@@ -98,7 +98,6 @@ import { answer_request_groupsMock, departmentsMock, skillsMock } from './histor
             })
         })
         describe('絞り込みapiリクエストのテスト',()=>{
-            // 
             it('回答月の選択',async()=>{
                 const form = screen.getByRole('button',{name:"絞り込み"})
                 await user.selectOptions(selectMonth,'2023-07')
@@ -109,12 +108,12 @@ import { answer_request_groupsMock, departmentsMock, skillsMock } from './histor
                 })
                 await user.selectOptions(selectMonth,'2023-08')
                 await user.click(form)
+                test5 = screen.getByText('テスト5')
                 await waitFor (()=>{
                     expect(test1).not.toBeInTheDocument()
                     expect(test5).toBeInTheDocument()
                 })
             })
-            // 
             it('職種の選択',async()=>{
                 const selectJava = screen.getByRole('checkbox',{name:"Java"})
                 await user.click(selectJava)
@@ -152,7 +151,6 @@ import { answer_request_groupsMock, departmentsMock, skillsMock } from './histor
                     expect(test5).not.toBeInTheDocument()
                 })
             })
-            // 
             it('回答月+スキルの選択',async()=>{
                 await user.selectOptions(selectMonth,'2023-07')
                 await user.click(selectJavaScript)
@@ -163,7 +161,6 @@ import { answer_request_groupsMock, departmentsMock, skillsMock } from './histor
                     expect(test5).not.toBeInTheDocument()
                 })
             })
-            // 
             it('職種+スキルの選択',async()=>{
                 await user.click(selectFR)
                 await user.click(selectJavaScript)
