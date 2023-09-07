@@ -1,24 +1,21 @@
 "use client";
 
+// 後で実装。現状、dataがundifinedでかえってくる。
+
 import React, { useState, useEffect } from "react";
 import { getGroup } from "./getGroups";
 import Link from "next/link";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 
-const GroupTableFromDb = () => {
-  const [groupData, setGroupData] = useState([]);
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const fetchedData = await getGroup();
-        
-        setGroupData(fetchedData);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getData();
-  }, []);
+export async function getServerSideProps() {
+  const data = await getGroup();
+  console.log(data)
+  return { props: { data } };
+}
+
+const GroupTableServerSide = ({ data }: any) => {
+
+    console.log(data)
 
   // モーダル表示
   const [isOpen, setIsOpen] = useState(false);
@@ -28,13 +25,13 @@ const GroupTableFromDb = () => {
   const [selectedGroupMember, setSelectedGroupMember] = useState("");
 
   // 要any解決
-  const toggleModal = (groupData: any) => {
-    setSelectedGroupingDate(groupData.createdAt);
-    setSelectedGroupName(groupData.name);
-    setSelectedGroupDescription(groupData.description);
-    if (groupData.memberCount > 0) {
+  const toggleModal = (data: any) => {
+    setSelectedGroupingDate(data.createdAt);
+    setSelectedGroupName(data.name);
+    setSelectedGroupDescription(data.description);
+    if (data.memberCount > 0) {
       setSelectedGroupMember(
-        groupData.userList.map((member: string) => member).join(",")
+        data.userList.map((member: string) => member).join(",")
       );
     } else {
       setSelectedGroupMember("");
@@ -49,7 +46,7 @@ const GroupTableFromDb = () => {
         <div>
           <div
             className="block w-full h-full bg-black/30 absolute top-0 left-0"
-            onClick={() => toggleModal(groupData)}
+            onClick={() => toggleModal(data)}
           >
             <div className="flex flex-col items-center justify-center h-screen">
               <div className="bg-orange  h-9 w-3/5">
@@ -102,9 +99,13 @@ const GroupTableFromDb = () => {
           </div>
         </div>
       )}
+
+
       {/* 通常表示テーブル */}
+
+
       <div className="flex flex-col items-center justify-center h-screen table-fixed">
-        <table>
+        {/* <table>
           <thead>
             <tr>
               <th className="border px-4 py-2 bg-light-gray w-1/5">作成日</th>
@@ -120,7 +121,7 @@ const GroupTableFromDb = () => {
             </tr>
           </thead>
           <tbody>
-            {groupData.map((obj: any) => (
+            {data.map((obj: any) => (
               <tr key={obj.id}>
                 <td
                   className="border px-4 py-2 "
@@ -132,11 +133,12 @@ const GroupTableFromDb = () => {
                   className="border px-4 py-2"
                   style={{ textAlign: "center" }}
                 >
-                  <button onClick={()=>toggleModal(obj)}
-                  className="hover:bg-amber-200 duration-200"
-                  data-testid={`group_${obj.id}`}
+                  <button
+                    onClick={() => toggleModal(obj)}
+                    className="hover:bg-amber-200 duration-200"
+                    data-testid={`group_${obj.id}`}
                   >
-                  {obj.name}
+                    {obj.name}
                   </button>
                 </td>
                 <td
@@ -148,11 +150,11 @@ const GroupTableFromDb = () => {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table> */}
         <br />
         {!isOpen && (
           <Link href={"/admin/groups/register"} data-testid="register">
-            <OrangeButton label="新規グループ作成"/>
+            <OrangeButton label="新規グループ作成" />
           </Link>
         )}
       </div>
@@ -160,4 +162,4 @@ const GroupTableFromDb = () => {
   );
 };
 
-export default GroupTableFromDb;
+export default GroupTableServerSide;

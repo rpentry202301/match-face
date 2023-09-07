@@ -33,9 +33,9 @@ export const getGroup = async () => {
       updateAt: formattedUpdatedAt,
     };
   });
-  console.log("formattedData", formattedData);
+  // console.log("formattedData", formattedData);
 
   // 環境変数なぜか使えない
-  console.log("url", url);
+  console.log("環境変数を用いて取得したいurl", url);
   return formattedData;
 };
