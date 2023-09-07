@@ -1,22 +1,7 @@
 import QuestionsPage from "@/app/(pages)/(general)/(other)/questions/page";
 import { render, screen, cleanup, act, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { mockData } from "@/const/questions";
-import { mockGetData } from "./mock";
-
-const data = {
-  answerRequestList: [
-    {
-      id: 1,
-      deadline: "2023-12-01 18:00",
-      project: {
-        name: "バックエンド案件",
-        detail: "販促アプリの新規開発、既存システムの保守・運用。",
-      },
-      answered: false,
-    },
-  ],
-};
+import { mockData } from "./mock";
 
 // スナップショットテスト
 describe("スナップショットテスト", () => {
@@ -24,7 +9,7 @@ describe("スナップショットテスト", () => {
     if (url === "http://localhost:3000/api/questions") {
       return {
         ok: true,
-        json: async () => data,
+        json: async () => mockData,
       };
     }
   });
@@ -42,7 +27,7 @@ describe("一般ユーザー質問一覧画面", () => {
     if (url === "http://localhost:3000/api/questions") {
       return {
         ok: true,
-        json: async () => data,
+        json: async () => mockData,
       };
       // }
     }
@@ -56,17 +41,20 @@ describe("一般ユーザー質問一覧画面", () => {
     it("データ取得後にタイトルが表示される", async () => {
       let element: Element;
       await waitFor(() => {
-        element = screen.getByText("バックエンド案件");
+        element = screen.getByText("回答する");
       });
       screen.debug();
       await waitFor(() => expect(element).toBeInTheDocument());
     });
-    // it("取得データの要素数+1個(見出しのtr)の<tr>が存在する", async () => {
-    //   const dataNumbers = data.length;
-    //   const element = await screen.getAllByRole("row");
-    //   screen.debug(element);
-    //   await waitFor(() => expect(element).toHaveLength(dataNumbers + 1));
-    // });
+    it("取得データの要素数の<button>が存在する", async () => {
+      // const dataNumbers = mockData.answerRequestList.length;
+      let element: HTMLElement[];
+      await waitFor(() => {
+        element = screen.getAllByRole("button");
+      });
+      screen.debug();
+      await waitFor(() => expect(element).toHaveLength(3));
+    });
     // it("回答期日が表示される", () => {
     //   render(<QuestionsPage />);
     //   const element = screen.getByText(data[0].deadline);
@@ -74,19 +62,41 @@ describe("一般ユーザー質問一覧画面", () => {
     //   expect(element).toBeInTheDocument();
     // });
   });
-  // describe("ボタン", () => {
-  //   it("true時のボタンの色が緑である&&「確認する」", () => {
-  //     render(<QuestionsPage />);
-  //     const element = document.getElementById(`button-true-${data[0].id}`);
-  //     console.log(element);
-  //     expect(element).toHaveClass("bg-green");
-  //     expect(element).toHaveTextContent("確認する");
-  //   });
-  //   it("確認するボタンにresult/[id]へのLinkがある", () => {
-  //     render(<QuestionsPage />);
-  //     const element = screen.getByTestId(`confirmButton${data[0].id}`);
-  //     console.log(element);
-  //     expect(element).toHaveAttribute("href", `result/${data[0].id}`);
-  //   });
-  // });
+  describe("ボタン", () => {
+    it("回答済みであれば、ボタンの色が緑である&&「確認する」", async () => {
+      let element;
+      await waitFor(() => {
+        element = screen.getByTestId(
+          `confirmButton${mockData.answerRequestList[0].id}`
+        );
+      });
+      console.log(element);
+      expect(element).toHaveClass("bg-green");
+      expect(element).toHaveTextContent("確認する");
+    });
+    it("未回答であれば、ボタンの色が赤である&&「回答する」", async () => {
+      let element;
+      await waitFor(() => {
+        element = screen.getByTestId(
+          `confirmButton${mockData.answerRequestList[2].id}`
+        );
+      });
+      screen.debug();
+      expect(element).toHaveClass("bg-red");
+      expect(element).toHaveTextContent("回答する");
+    });
+    it("確認するボタンにresult/[id]へのLinkがある", async () => {
+      let element;
+      await waitFor(() => {
+        element = screen.getByTestId(
+          `linkButton${mockData.answerRequestList[0].id}`
+        );
+      });
+      screen.debug();
+      expect(element).toHaveAttribute(
+        "href",
+        `result/${mockData.answerRequestList[0].id}`
+      );
+    });
+  });
 });

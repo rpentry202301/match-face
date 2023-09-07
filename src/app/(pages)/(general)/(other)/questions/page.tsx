@@ -96,13 +96,22 @@ const QuestionsPage = () => {
                 {project.answered ? (
                   <Link
                     href={`result/${project.id}`}
-                    data-testid={`confirmButton${project.id}`}
+                    data-testid={`linkButton${project.id}`}
                   >
-                    <AnswerButton answered={project.answered} />
+                    <AnswerButton
+                      answered={project.answered}
+                      data-testid={`confirmButton${project.id}`}
+                    />
                   </Link>
                 ) : (
-                  <Link href={`testing/${project.id}`}>
-                    <AnswerButton answered={project.answered} />
+                  <Link
+                    href={`testing/${project.id}`}
+                    data-testid={`linkButton${project.id}`}
+                  >
+                    <AnswerButton
+                      answered={project.answered}
+                      data-testid={`confirmButton${project.id}`}
+                    />
                   </Link>
                 )}
               </td>
