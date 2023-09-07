@@ -67,8 +67,8 @@ export default function HistoriesList (){
                         <th className="border border-slate-deep-gray bg-light-gray w-[40vw]" id="project_detail">案件概要</th>
                     </tr>
                 </thead>
-                {selectProjects?.map((project:AnswerRequestGroups)=>(
-                <tbody key={project.id}>
+                {selectProjects?.map((project:AnswerRequestGroups,index)=>(
+                <tbody key={index}>
                         {(open?.find((state)=>state.id===project.id)!.status===false)&&(
                         <tr>
                             <td className="border border-slate-deep-gray" id="open"><button id="open_button" name="open_button" type="button" className="text-deep-gray" data-testid={`open_${project.id}`}
