@@ -35,7 +35,7 @@ const TasksIndex = async () => {
       </div>
       <div className="flex justify-center mb-8">
         <Link href={"/admin/tasks/register"} data-testid="link_task_register">
-          <OrangeButton label="新規タスク作成" />
+          <OrangeButton label="新規タスク作成" className="hover:underline"/>
         </Link>
       </div>
       <div className="flex justify-center">
