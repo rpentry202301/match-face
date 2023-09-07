@@ -4,7 +4,7 @@ export interface TasksType {
   project: Tasks_Project;
   department: Tasks_Department;
   answerUserList: Tasks_AnswerUserList[];
-  auestionCount: number;
+  questionCount: number;
   deadline: Date;
   createdUser: string;
   createdAt: Date;
