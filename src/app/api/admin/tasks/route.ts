@@ -13,7 +13,6 @@ export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams;
   const searchKeyword = searchParams.get("searchKeyword");
   const departmentId = searchParams.get("departmentId");
-
   /**
    * searchKeywordから加工されたクエリ
    * ex) "a_b_c" → "searchKeyword=a&searchKeyword=b&searchKeyword=c"
@@ -25,7 +24,7 @@ export async function GET(req: NextRequest) {
           if (i === 0) return `searchKeyword=${id}`;
           return `&searchKeyword=${id}`;
         })
-        .toString()
+        .join("")
     : "";
   /**
    * departmentIdから加工されたクエリ
@@ -37,9 +36,9 @@ export async function GET(req: NextRequest) {
         .split("_")
         .map((id, i) => {
           if (i === 0) return `${searchKeywordQuery && "&"}departmentId=${id}`;
-          return `&departmentId=${departmentId}`;
+          return `&departmentId=${id}`;
         })
-        .toString()
+        .join("")
     : "";
 
   const query = searchKeywordQuery + departmentIdQuery;
