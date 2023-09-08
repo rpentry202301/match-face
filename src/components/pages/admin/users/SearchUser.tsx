@@ -1,7 +1,6 @@
 "use client";
 import Input from "@/components/ui/Input";
 import WhiteButton from "@/components/ui/button/WhiteButton";
-import WhiteCheckButton from "@/components/ui/button/WhiteCheckButton";
 import { useState, useEffect } from "react";
 import UserList from "./UserList";
 import OrangeButton from "@/components/ui/button/OrangeButton";
@@ -34,19 +33,6 @@ const setMonth = () => {
 setMonth();
 
 const SearchUser = () => {
-  const [isSelected, setIsSelected] = useState<{
-    year: string;
-    month: string;
-    department: {};
-    status: string;
-  }>({
-    year: "",
-    month: "",
-    department: initDep,
-    status: "",
-  });
-  console.log({ ...isSelected });
-
   const [name, setName] = useState("");
   const [department, setDepartment] = useState<any[]>([]);
   const [status, setStatus] = useState<any[]>([]);
@@ -61,6 +47,19 @@ const SearchUser = () => {
   const notClickedStyle =
     "bg-white hover:bg3000-gray-100 rounded-full border shadow-md ";
 
+  const [isSelected, setIsSelected] = useState<{
+    year: string;
+    month: string;
+    department: string[];
+    status: string;
+  }>({
+    year: "--",
+    month: "--",
+    department: [],
+    status: "",
+  });
+  console.log(isSelected);
+
   useEffect(() => {
     // departmentの取得
     const fetchDepartments = async () => {
@@ -71,6 +70,7 @@ const SearchUser = () => {
       setDepartment(data.departmentList);
       return department;
     };
+
     // statusの取得
     const fetchStatus = async () => {
       const response = await fetch(
@@ -98,20 +98,12 @@ const SearchUser = () => {
     fetchUserData();
   }, []);
 
-  const initDep = department.map((data) => {
-    return {
-      name: department.name,
-      checked: false,
-    };
-  });
-  console.log(initDep);
-
   const handleInputChange = () => {
     setIsSelected({
       ...isSelected,
       year: "--",
       month: "--",
-      department: "",
+      department: [],
       status: "",
     });
     const filteredData = fetchData.filter((data) => data.name.includes(name));
@@ -123,6 +115,7 @@ const SearchUser = () => {
   const handleSubmit = () => {
     setName("");
     const { year, month, department, status } = isSelected;
+
     // yearかmonthどちらかが選択されていない場合、エラーを表示
     if (
       (year !== "--" && month === "--") ||
@@ -139,17 +132,22 @@ const SearchUser = () => {
       // console.log(year, month);
     }
 
-    if (year !== "--" && month !== "--" && department !== "" && status !== "") {
-      // 全項目選択した場合
-      const filterdData = fetchData.filter(
+    // 全項目選択した場合
+    if (
+      year !== "--" &&
+      month !== "--" &&
+      department.length !== 0 &&
+      status !== ""
+    ) {
+      const filteredData = fetchData.filter(
         (data) =>
           data.hireDate.slice(0, 4) === year &&
           data.hireDate.slice(5, 7) === month &&
-          data.department.name === department &&
+          department.includes(data.department.name) &&
           data.status.name === status
       );
-      setUserData(filterdData);
-      console.log("完全一致", filterdData);
+      setUserData(filteredData);
+      console.log("完全一致", filteredData);
       return;
     }
 
@@ -157,7 +155,7 @@ const SearchUser = () => {
     else if (
       year === "--" &&
       month === "--" &&
-      department === "" &&
+      department.length === 0 &&
       status === ""
     ) {
       setIsSelected({ ...isSelected, month: "--" });
@@ -171,41 +169,42 @@ const SearchUser = () => {
     else if (
       year !== "--" ||
       month !== "--" ||
-      department !== "" ||
+      department.length !== 0 ||
       status !== ""
     ) {
       // status以外選択した場合
       if (
         year !== "--" &&
         month !== "--" &&
-        department !== "" &&
+        department.length !== 0 &&
         status === ""
       ) {
-        const filterdData = fetchData.filter(
+        const filteredData = fetchData.filter(
           (data) =>
             data.hireDate.slice(0, 4) === year &&
             data.hireDate.slice(5, 7) === month &&
-            data.department.name === department
+            department.includes(data.department.name)
         );
-        setUserData(filterdData);
-        console.log("status以外が一致", filterdData);
+        setUserData(filteredData);
+        console.log("status以外が一致", filteredData);
         return;
       }
+
       // department以外選択した場合
       else if (
         year !== "--" &&
         month !== "--" &&
-        department === "" &&
+        department.length === 0 &&
         status !== ""
       ) {
-        const filterdData = fetchData.filter(
+        const filteredData = fetchData.filter(
           (data) =>
             data.hireDate.slice(0, 4) === year &&
             data.hireDate.slice(5, 7) === month &&
             data.status.name === status
         );
-        setUserData(filterdData);
-        console.log("department以外が一致", filterdData);
+        setUserData(filteredData);
+        console.log("department以外が一致", filteredData);
         return;
       }
 
@@ -213,16 +212,16 @@ const SearchUser = () => {
       else if (
         year !== "--" &&
         month !== "--" &&
-        department === "" &&
+        department.length === 0 &&
         status === ""
       ) {
-        const filterdData = fetchData.filter(
+        const filteredData = fetchData.filter(
           (data) =>
             data.hireDate.slice(0, 4) === year &&
             data.hireDate.slice(5, 7) === month
         );
-        setUserData(filterdData);
-        console.log("yearとmonthが一致", filterdData);
+        setUserData(filteredData);
+        console.log("yearとmonthが一致", filteredData);
         return;
       }
 
@@ -230,58 +229,63 @@ const SearchUser = () => {
       else if (
         year === "--" &&
         month === "--" &&
-        department !== "" &&
+        department.length !== 0 &&
         status !== ""
       ) {
-        const filterdData = fetchData.filter(
+        const filteredData = fetchData.filter(
           (data) =>
-            data.department.name === department && data.status.name === status
+            department.includes(data.department.name) &&
+            data.status.name === status
         );
-        setUserData(filterdData);
-        console.log("departmentとstatusが一致", filterdData);
+        setUserData(filteredData);
+        console.log("departmentとstatusが一致", filteredData);
         return;
       }
+
       // departmentのみ選択した場合
       else if (
         year === "--" &&
         month === "--" &&
-        department !== "" &&
+        department.length !== 0 &&
         status === ""
       ) {
-        const filterdData = fetchData.filter(
-          (data) => data.department.name === department
+        const filteredData = fetchData.filter((data) =>
+          department.includes(data.department.name)
         );
-        setUserData(filterdData);
-        console.log("departmentが一致", filterdData);
+        setUserData(filteredData);
+        console.log("departmentが一致", filteredData);
         return;
       }
 
       // statusのみ選択した場合
-      if (
+      else if (
         year === "--" &&
         month === "--" &&
-        department === "" &&
+        department.length === 0 &&
         status !== ""
       ) {
-        const filterdData = fetchData.filter(
+        const filteredData = fetchData.filter(
           (data) => data.status.name === status
         );
-        setUserData(filterdData);
-        console.log("statusが一致", filterdData);
+        setUserData(filteredData);
+        console.log("statusが一致", filteredData);
         return;
       }
     }
   };
 
-  // departmentのON/OFF切り替え
-  const handleDepartmentClick = (department: string) => {
-    // console.log("確認用", department);
-    if (isSelected.department === department) {
-      setIsSelected({ ...isSelected, department: "" });
-      return;
+  // departmentの追加・削除
+  const handleDepartmentClick = (departmentName: string) => {
+    if (!isSelected.department.includes(departmentName)) {
+      setIsSelected({
+        ...isSelected,
+        department: [...isSelected.department, departmentName],
+      });
     } else {
-      setIsSelected({ ...isSelected, department });
-      return;
+      const newSelected = isSelected.department.filter(
+        (department) => department !== departmentName
+      );
+      setIsSelected({ ...isSelected, department: newSelected });
     }
   };
 
@@ -363,9 +367,9 @@ const SearchUser = () => {
             )}
           </div>
           <div className=" flex my-5">
-            {department.map((department) => (
+            {department.map((department: any) => (
               <div key={department.id}>
-                {department.name !== isSelected.department ? (
+                {!isSelected.department.includes(department.name) ? (
                   <WhiteButton
                     label={department.name}
                     className={`w-20 mx-5 py-0.5 ${notClickedStyle}`}
