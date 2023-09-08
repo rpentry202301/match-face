@@ -1,9 +1,10 @@
+'use client';
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import SearchByJobs from "./parts/SearchByJobs";
 import TaskList from "./parts/TaskList";
 import Link from "next/link";
-import { headers } from "next/headers";
 import { TasksType } from "@/types/admin/tasks/types";
+import { useSearchParams } from "next/navigation";
 
 /**
  * @author Hayato Kobayashi
@@ -11,13 +12,13 @@ import { TasksType } from "@/types/admin/tasks/types";
  */
 const TasksIndex = async () => {
   // クエリから検索条件{ searchKeyword, departmentId }を取得
-  const headerList = headers();
-  const searchKeyword = headerList.get("searchKeyword");
-  const departmentId = headerList.get("departmentId");
+  const searchParams = useSearchParams();
+  // console.log("searchParams", searchParams.toString());
+  const query = searchParams.toString();
 
   // tasksデータの取得
   const res = await fetch(
-    `${process.env.NEXT_API_URL}/api/admin/tasks?searchKeyword=${searchKeyword}&departmentId=${departmentId}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/api/admin/tasks${query && "?" + query}`,
     {
       method: "GET",
       headers: {

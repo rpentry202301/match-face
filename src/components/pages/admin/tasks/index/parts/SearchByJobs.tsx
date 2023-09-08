@@ -10,7 +10,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const SearchByJobs = () => {
-  const [jobsFilter, setJobsFilter] = useState<string[]>([]); // 職種フィルター状態管理
+  const [jobsFilter, setJobsFilter] = useState<number[]>([]); // 職種フィルター状態管理
   const [inputVal, setInputVal] = useState<string>(""); // 検索入力値状態管理
 
   const router = useRouter();
@@ -42,16 +42,16 @@ const SearchByJobs = () => {
     router.push(`/admin/tasks${query}`);
   };
 
-  const handleSetFilter = (department: string) => {
+  const handleSetFilter = (departmentId: number) => {
     // 職種レコードを挿入
-    if (!jobsFilter.includes(department)) {
+    if (!jobsFilter.includes(departmentId)) {
       const newArr = [...jobsFilter];
-      newArr.push(department);
+      newArr.push(departmentId);
       setJobsFilter(newArr);
     } else {
       // 職種レコードを削除
       const newArr = jobsFilter.filter((job) => {
-        return job !== department;
+        return job !== departmentId;
       });
       setJobsFilter(newArr);
     }
@@ -74,7 +74,7 @@ const SearchByJobs = () => {
                 key={department.id}
                 label={department.name}
                 className="text-xs w-16 mx-3"
-                onClick={() => handleSetFilter(department.name)}
+                onClick={() => handleSetFilter(department.id)}
               />
             );
           })}

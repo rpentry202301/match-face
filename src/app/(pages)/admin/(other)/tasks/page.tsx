@@ -1,7 +1,13 @@
+import Loading from "@/components/elements/loading/Loading";
 import TasksIndex from "@/components/pages/admin/tasks/index/TasksIndex";
+import { Suspense } from "react";
 
 const TasksPage = () => {
-  return <TasksIndex />;
+  return (
+    <Suspense fallback={<Loading />}>
+      <TasksIndex />
+    </Suspense>
+  );
 };
 
 export default TasksPage;
