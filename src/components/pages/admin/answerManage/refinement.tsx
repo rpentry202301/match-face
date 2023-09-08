@@ -1,22 +1,63 @@
 "use client";
 import WhiteButton from "@/components/ui/button/WhiteButton";
-import WhiteCheckButton from "@/components/ui/button/WhiteCheckButton";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import Input from "@/components/ui/Input";
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useEffect } from "react";
 import { useRefine } from "@/hooks/store/context/HandleQuestionContext";
 
+type Department = {
+  id: number;
+  name: string;
+  createdUser: string;
+  createdAt: string;
+  updateUser: string;
+  updateAt: string;
+};
+
+type DepartmentResponse = {
+  departmentList: Department[];
+};
+
 const Refinement = () => {
-  const [select, setSelect] = useState<string[]>([]);
+  const [select, setSelect] = useState<number[]>([]);
   const [search, setSearch] = useState<string[]>([]);
+  const [department, setDepartment] = useState<Department[]>([]);
   const [refine, setRefine] = useRefine();
-  const handleSelectButtonClick = (value: string) => {
+
+  useEffect(() => {
+    async function setData(){
+      const response_departments = await fetch('http://localhost:3000/api/admin/histories/departments')
+      if (!response_departments.ok){ throw new Error('Failed to fetch data');}
+      const department = await response_departments.json()
+      setDepartment(department)
+  }
+  setData()
+    // fetch("http://localhost:8080/qa_system_api/departments")
+    //   .then((response) => {
+    //     if (!response.ok) {
+    //       // console.log("error");
+    //       setDepartment([]);
+    //     }
+    //     return response.json();
+    //   })
+    //   .then((res: DepartmentResponse) => {
+    //     // console.log(res);
+    //     setDepartment(res.departmentList);
+    //   })
+    //   .catch((error) => {
+    //     // console.log("error");
+    //     setDepartment([]);
+    //   });
+  }, []);
+
+  const handleSelectButtonClick = (value: number) => {
     if (select.includes(value)) {
       // もしvalueが配列に既に存在していれば、削除
       setSelect(select.filter((item) => item !== value));
     } else {
+      setSelect([])
       // もしvalueが配列に存在しなければ、追加
-      setSelect([...select, value]);
+      setSelect([value]);
     }
   };
   const handleInputSearch = (e: ChangeEvent<HTMLInputElement>) => {
@@ -52,68 +93,22 @@ const Refinement = () => {
         </div>
       </div>
       <div className="mt-7 flex w-4/5 justify-between">
-        <WhiteButton
-          label="Java"
-          className={
-            select.includes("Java")
-              ? "text-xs py-1 px-5 bg-gray-200 translate-y-0.5 shadow-sm rounded-full border"
-              : "text-xs py-1 px-5"
-          }
-          value="Java"
-          data-testid="button-Java"
-          onClick={() => handleSelectButtonClick("Java")}
-        />
-        <WhiteButton
-          label="PHP"
-          className={
-            select.includes("PHP")
-              ? "text-xs py-1 px-5 bg-gray-200 translate-y-0.5 shadow-sm rounded-full border"
-              : "text-xs py-1 px-5"
-          }
-          value="PHP"
-          data-testid="button-PHP"
-          onClick={() => handleSelectButtonClick("PHP")}
-        />
-        <WhiteButton
-          label="FR"
-          className={
-            select.includes("FR")
-              ? "text-xs py-1 px-5 bg-gray-200 translate-y-0.5 shadow-sm rounded-full border"
-              : "text-xs py-1 px-5"
-          }
-          value="FR"
-          onClick={() => handleSelectButtonClick("FR")}
-        />
-        <WhiteButton
-          label="CL"
-          className={
-            select.includes("CL")
-              ? "text-xs py-1 px-5 bg-gray-200 translate-y-0.5 shadow-sm rounded-full border"
-              : "text-xs py-1 px-5"
-          }
-          value="CL"
-          onClick={() => handleSelectButtonClick("CL")}
-        />
-        <WhiteButton
-          label="ML"
-          className={
-            select.includes("ML")
-              ? "text-xs py-1 px-5 bg-gray-200 translate-y-0.5 shadow-sm rounded-full border"
-              : "text-xs py-1 px-5"
-          }
-          value="ML"
-          onClick={() => handleSelectButtonClick("ML")}
-        />
-        <WhiteButton
-          label="QA"
-          className={
-            select.includes("QA")
-              ? "text-xs py-1 px-5 bg-gray-200 translate-y-0.5 shadow-sm rounded-full border"
-              : "text-xs py-1 px-5"
-          }
-          value="QA"
-          onClick={() => handleSelectButtonClick("QA")}
-        />
+        {department.map((data) => {
+          return (
+              <WhiteButton
+                key={data.id}
+                label={data.name}
+                className={
+                  select.includes(data.id)
+                    ? "text-xs py-1 px-5 bg-gray-200 translate-y-0.5 shadow-sm rounded-full border"
+                    : "text-xs py-1 px-5"
+                }
+                value={data.id}
+                data-testid={`button-${data.name}`}
+                onClick={() => handleSelectButtonClick(data.id)}
+              />
+          );
+        })}
       </div>
       <OrangeButton
         label="絞り込み"

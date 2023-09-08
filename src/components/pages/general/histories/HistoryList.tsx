@@ -2,28 +2,70 @@
 
 import GrayButton from "@/components/ui/button/GrayButton";
 import Link from "next/link";
-import { memo } from "react";
-import type { Data } from "@/const/histories";
+import { memo, useEffect, useState } from "react";
 
 interface HistoryListProps {
+  click?: boolean;
   month?: string;
   skill?: number[] | undefined;
-  selectProject?: Data;
+}
+interface TypeProject {
+  administratorId: number;
+  answered: boolean;
+  comment: { context: string };
+  createdAt: string;
+  createdUser: string;
+  deadline: string;
+  id: number;
+  project: { id: number; name: string; detail: string };
+  questionList: [];
+  requestAt: string;
+  updateAt: string;
+  updateUser: string;
+  user: {};
 }
 
 const HistoryList: React.FC<HistoryListProps> = memo(
-  // 引数が渡されなかった場合のデフォルト引数（=[]）
-  ({ selectProject = [] }) => {
-    // timestampからyyy/mmの形にする
-    // const timestamp = projects[0].answer_update_at;
-    // const newDate = new Date(timestamp);
-    // const getYear = newDate.getFullYear();
-    // const getMonth = newDate.getMonth() + 1;
-    // const formattedDate = `${getYear}/${String(getMonth).padStart(2, "0")}`;
-    // console.log("月", formattedDate);
+  ({ click, month, skill }) => {
+    const [selectProject, setSelectProject] = useState<TypeProject[]>([]);
 
+    useEffect(() => {
+      async function getSelectedData() {
+        const userId = 1;
+        const response = await fetch("http://localhost:3000/api/histories", {
+          cache: "no-store",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user_id: userId,
+            month: month,
+            skill: skill,
+          }),
+        });
+        if (!response.ok) throw new Error("Failed to fetch data");
+        const FetchData = await response.json();
+        const selectProject = FetchData.answerRequestList;
+        setSelectProject(selectProject);
+        // console.log("取得したデータ", selectProject, month, skill);
+      }
+      getSelectedData();
+    }, [click]);
+
+    // 詳細の文字数制限
     const truncateString = (str: any, num: any) => {
       return str.length <= num ? str : str.slice(0, num) + "...";
+    };
+    // 回答日の表示
+    const formedDeadline = (inputData: string): string => {
+      const date = new Date(inputData);
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+      const day = date.getDate();
+      return `${year}年${month < 10 ? "0" : ""}${month}月${
+        day < 10 ? "0" : ""
+      }${day}日`;
     };
 
     return (
@@ -42,7 +84,7 @@ const HistoryList: React.FC<HistoryListProps> = memo(
             {selectProject.map((project) => (
               <tr key={project.id}>
                 <td className="border text-center p-3">
-                  {project.comment_created_at ? (
+                  {project.comment.context.length > 0 ? (
                     <span className=" bg-orange text-white p-2 w-40 h-auto w-15 rounded py-1 px-2 text-xs">
                       新着
                     </span>
@@ -51,22 +93,25 @@ const HistoryList: React.FC<HistoryListProps> = memo(
                   )}
                 </td>
                 <td className="border text-center p-3">
-                  {project.answer_update_at}
+                  {" "}
+                  {formedDeadline(project.updateAt)}
                 </td>
-                <td className="border text-center px-4">{project.name}</td>
+                <td className="border text-center px-4">
+                  {project.project.name}
+                </td>
 
                 <td
                   className="border text-center px-4 "
                   data-test={`projectDetail${project.id}`}
                 >
-                  {truncateString(project.detail, 30)}
+                  {truncateString(project.project.detail, 30)}
                 </td>
                 <td className="border text-center px-4">
-                  <Link href={`result/${project.id}`}>
+                  <Link href={`result/${project.project.id}`}>
                     <GrayButton
                       label={"詳細"}
                       className="w-15 rounded py-1 px-2 text-xs"
-                      value={project.id}
+                      value={project.project.id}
                     />
                   </Link>
                 </td>
@@ -78,5 +123,6 @@ const HistoryList: React.FC<HistoryListProps> = memo(
     );
   }
 );
+
 HistoryList.displayName = "HistoryList";
 export default HistoryList;

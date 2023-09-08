@@ -7,14 +7,14 @@ import userEvent from "@testing-library/user-event";
 describe("質問・回答例編集画面テスト", () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    render(<EditQuestionPage />);
+    render(<EditQuestionPage params={{id:'1'}}/>);
   });
   afterAll(() => {
     jest.clearAllMocks();
   });
   
   it("スナップショット", async () => {
-    const { container } = render(<EditQuestionPage />);
+    const { container } = render(<EditQuestionPage params={{id:'1'}}/>);
     expect(container).toMatchSnapshot();
   });
 

@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`質問・回答例一覧画面テスト スナップショット 1`] = `
+<div>
+  <table
+    class="w-4/5 border-2"
+    data-testid="projectTable"
+  >
+    <tbody>
+      <tr
+        class="border-2 border-current bg-light-gray"
+      >
+        <th
+          class="w-1/5 border-2 py-4"
+        >
+          最終編集日
+        </th>
+        <th
+          class="w-1/5 border-2"
+        >
+          案件名
+        </th>
+        <th
+          class="w-2/5 border-2"
+        >
+          案件概要
+        </th>
+        <th
+          class="w-1/5 border-2"
+        />
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="w-5/12 max-w-5/12 flex justify-center my-7"
+  >
+    <ul
+      class="flex"
+    />
+  </div>
+</div>
+`;
