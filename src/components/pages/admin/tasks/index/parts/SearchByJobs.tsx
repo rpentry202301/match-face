@@ -20,27 +20,44 @@ const SearchByJobs = ({ departments }: Props) => {
   const query = useMemo(() => {
     if (jobsFilter.length === 0 && inputVal.length === 0) return "";
 
+    /**
+     * ワード検索クエリ
+     * ex) "a b c" → "searchKeyword=a&searchKeyword=b&searchKeyword=c"
+     */
     const searchKeyword =
       inputVal.length !== 0
-        ? `searchKeyword=${inputVal // ex)"a b c" → "a_b_c"
+        ? inputVal // ex)"a b c" → "a_b_c"
             .split(/[\s]+/)
             .filter((word) => word.length !== 0)
-            .join("_")}`
+            .map((word, i) => {
+              if (i === 0) return `searchKeyword=${word}`;
+              return `&searchKeyword=${word}`;
+            })
+            .join("")
         : "";
-
+    /**
+     * 職種フィルター検索クエリ
+     * ex) [1, 2, 3] → "departmentId=1&departmentId=2&departmentId=3"
+     * @note searchKeywordがある場合は先頭に"&"がつく
+     */
     const departmentId =
       jobsFilter.length !== 0
-        ? `${searchKeyword && "&"}departmentId=${jobsFilter.join("_")}`
+        ? jobsFilter
+            .map((job, i) => {
+              if (i === 0) return `${searchKeyword && "&"}departmentId=${job}`;
+              return `&departmentId=${job}`;
+            })
+            .join("")
         : "";
 
-    const searchQuery = `?${searchKeyword && searchKeyword}${departmentId}`;
+    const searchQuery = searchKeyword + departmentId;
     return searchQuery;
   }, [jobsFilter, inputVal]);
 
   // 検索入力値を適用
   const handleSearch = (e: SyntheticEvent) => {
     e.preventDefault();
-    router.push(`/admin/tasks${query}`);
+    router.push(`/admin/tasks${query && "?" + query}`);
   };
 
   const handleSetFilter = (departmentId: number) => {
