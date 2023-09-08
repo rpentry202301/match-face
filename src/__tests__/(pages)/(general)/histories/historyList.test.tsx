@@ -23,7 +23,7 @@ describe("スナップショットテスト", () => {
     }
   });
   it("スナップショット", async () => {
-    const { container } = render(<HistoriesPage />);
+    const { container } = render(<HistoryList />);
     await waitFor(() => {
       expect(container).toMatchSnapshot();
     });
@@ -46,48 +46,29 @@ describe("一般ユーザー質問一覧画面", () => {
       };
     }
   });
-  beforeEach(async () => {
-    await waitFor(() => {
-      render(<HistoriesPage />);
-    });
-  });
-  describe("Histories Page", () => {
-    it("絞り込み<button>が存在する", async () => {
+  describe("HistoryListコンポーネント", () => {
+    it("取得データの要素数の<button>が存在する", async () => {
       await waitFor(() => {
-        const element = screen.getAllByRole("button", { name: "絞り込み" });
-        expect(element).toBeTruthy();
+        render(<HistoryList />);
       });
-    });
-
-    it("絞り込み<button>をクリックすると、関数が呼び出される", async () => {
-      const mockFn = jest.fn();
-      await waitFor(async () => {
-        // await render(<OrangeButton label="絞り込み" onClick={mockFn} />);
-        const element = screen.getByTestId("submitButton");
-        // expect(element).toBeTruthy();
-        await userEvent.click(element);
-        // expect(mockFn).toHaveBeenCalled();
-        // await render(<HistoryList click={true} month={"2023-09-01"} />);
+      await waitFor(() => {
+        const element = screen.getAllByRole("button");
         screen.debug();
+        expect(element).toHaveLength(2);
       });
     });
-    it("JavaScriptが選択されていない", async () => {
-      let selectedSkill: HTMLElement;
-      await waitFor(() => {
-        selectedSkill = screen.getByRole("checkbox", { name: "JavaScript" });
-        expect(selectedSkill).not.toBeChecked();
-      });
-    });
-    it("JavaScriptが選択されていない", async () => {
-      let selectedSkill: HTMLElement;
-      await waitFor(async () => {
-        selectedSkill = screen.getByRole("checkbox", { name: "JavaScript" });
-        await userEvent.click(selectedSkill);
-        expect(selectedSkill).toBeChecked();
-      });
-    });
-    it("Javascriptチェックし絞り込みクリックすると、HistoryListに何も表示されない", async () => {});
   });
+
+  // describe("HistoryListに引数を与える", () => {
+  //   it("取得データの要素数は０である", async () => {
+  //     await render(<HistoryList month={"2023-10-01"} />);
+  //     await waitFor(() => {
+  //       const element = screen.getAllByRole("button");
+  //       screen.debug();
+  //       expect(element).toHaveLength(0);
+  //     });
+  //   });
+  // });
   //   describe("ボタン", () => {
   //     it("回答済みであれば、ボタンの色が緑である&&「確認する」", async () => {
   //       let element;
