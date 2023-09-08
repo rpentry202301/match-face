@@ -1,8 +1,7 @@
-import Input from "@/components/ui/Input";
 import UserSelectModal from "../UserSelectModal";
 import UserInput from "./UserInput ";
 
-const SelectUsers = () => {
+const SelectUsers = async () => {
   return (
     <div className="mb-5">
       <div className="flex items-center mb-2">
@@ -12,12 +11,6 @@ const SelectUsers = () => {
         </div>
       </div>
       <div>
-        {/* Todo: 別コンポーネントに<Input/>を渡す("use clent"使用のため) */}
-        {/* <Input
-          id="search"
-          className="border-2 border-light-gray text-xs p-1 w-full"
-          readOnly
-        /> */}
         <UserInput />
       </div>
     </div>

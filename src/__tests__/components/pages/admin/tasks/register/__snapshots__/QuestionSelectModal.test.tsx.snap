@@ -163,14 +163,12 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                           id="skill_1"
                           name="skill"
                           type="checkbox"
-                          value="JavaScript"
+                          value=""
                         />
                         <label
                           class="text-xs ml-1"
                           for="skill_1"
-                        >
-                          JavaScript
-                        </label>
+                        />
                       </div>
                       <div
                         class="flex"
@@ -180,14 +178,12 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                           id="skill_2"
                           name="skill"
                           type="checkbox"
-                          value="TypeScript"
+                          value=""
                         />
                         <label
                           class="text-xs ml-1"
                           for="skill_2"
-                        >
-                          TypeScript
-                        </label>
+                        />
                       </div>
                       <div
                         class="flex"
@@ -197,14 +193,12 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                           id="skill_3"
                           name="skill"
                           type="checkbox"
-                          value="React"
+                          value=""
                         />
                         <label
                           class="text-xs ml-1"
                           for="skill_3"
-                        >
-                          React
-                        </label>
+                        />
                       </div>
                       <div
                         class="flex"
@@ -214,14 +208,12 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                           id="skill_4"
                           name="skill"
                           type="checkbox"
-                          value="Next.js"
+                          value=""
                         />
                         <label
                           class="text-xs ml-1"
                           for="skill_4"
-                        >
-                          Next.js
-                        </label>
+                        />
                       </div>
                       <div
                         class="flex"
@@ -231,14 +223,12 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                           id="skill_5"
                           name="skill"
                           type="checkbox"
-                          value="Vue.js"
+                          value=""
                         />
                         <label
                           class="text-xs ml-1"
                           for="skill_5"
-                        >
-                          Vue.js
-                        </label>
+                        />
                       </div>
                       <div
                         class="flex"
@@ -248,14 +238,12 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                           id="skill_6"
                           name="skill"
                           type="checkbox"
-                          value="Angular"
+                          value=""
                         />
                         <label
                           class="text-xs ml-1"
                           for="skill_6"
-                        >
-                          Angular
-                        </label>
+                        />
                       </div>
                       <div
                         class="flex"
@@ -265,14 +253,12 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                           id="skill_7"
                           name="skill"
                           type="checkbox"
-                          value="Nuxt.js"
+                          value=""
                         />
                         <label
                           class="text-xs ml-1"
                           for="skill_7"
-                        >
-                          Nuxt.js
-                        </label>
+                        />
                       </div>
                       <div
                         class="flex"
@@ -282,14 +268,12 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                           id="skill_8"
                           name="skill"
                           type="checkbox"
-                          value="jQuery"
+                          value=""
                         />
                         <label
                           class="text-xs ml-1"
                           for="skill_8"
-                        >
-                          jQuery
-                        </label>
+                        />
                       </div>
                       <div
                         class="flex"
@@ -299,14 +283,12 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                           id="skill_9"
                           name="skill"
                           type="checkbox"
-                          value="Redux"
+                          value=""
                         />
                         <label
                           class="text-xs ml-1"
                           for="skill_9"
-                        >
-                          Redux
-                        </label>
+                        />
                       </div>
                       <div
                         class="flex"
@@ -316,14 +298,12 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                           id="skill_10"
                           name="skill"
                           type="checkbox"
-                          value="vuex"
+                          value=""
                         />
                         <label
                           class="text-xs ml-1"
                           for="skill_10"
-                        >
-                          vuex
-                        </label>
+                        />
                       </div>
                       <div
                         class="flex"
@@ -333,14 +313,12 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                           id="skill_11"
                           name="skill"
                           type="checkbox"
-                          value="MaterialUI"
+                          value=""
                         />
                         <label
                           class="text-xs ml-1"
                           for="skill_11"
-                        >
-                          MaterialUI
-                        </label>
+                        />
                       </div>
                       <div
                         class="flex"
@@ -350,14 +328,12 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                           id="skill_12"
                           name="skill"
                           type="checkbox"
-                          value="tailwind"
+                          value=""
                         />
                         <label
                           class="text-xs ml-1"
                           for="skill_12"
-                        >
-                          tailwind
-                        </label>
+                        />
                       </div>
                       <div
                         class="flex"
@@ -367,14 +343,12 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                           id="skill_13"
                           name="skill"
                           type="checkbox"
-                          value="Bootstrap"
+                          value=""
                         />
                         <label
                           class="text-xs ml-1"
                           for="skill_13"
-                        >
-                          Bootstrap
-                        </label>
+                        />
                       </div>
                       <div
                         class="flex"
@@ -384,14 +358,12 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                           id="skill_14"
                           name="skill"
                           type="checkbox"
-                          value="Vercel"
+                          value=""
                         />
                         <label
                           class="text-xs ml-1"
                           for="skill_14"
-                        >
-                          Vercel
-                        </label>
+                        />
                       </div>
                     </div>
                   </div>

@@ -1,57 +1,7 @@
-"use client";
-import { useFilter } from "@/hooks/store/context/TasksContext";
-import { Task } from "@/types/admin/tasks/register/types";
-import { useEffect, useState } from "react";
+import { TasksType } from "@/types/admin/tasks/types";
 
 // Todo: タスクリストを非同期通信で取得
-const TaskList = ({ tasks }: { tasks: Task[] }) => {
-  const [filteredTasks, setFilteredTasks] = useState<Task[]>(tasks);
-  const [filterList] = useFilter();
-
-  useEffect(() => {
-    const filterData = () => {
-      // 検索条件指定なし
-      if (
-        filterList.departments.length === 0 &&
-        filterList.search.length === 0
-      ) {
-        setFilteredTasks(tasks);
-        return;
-      }
-      // 検索条件: departments
-      const jobsFilter = tasks.filter((task) =>
-        filterList.departments.includes(task.department)
-      );
-      if (filterList.search.length === 0) {
-        setFilteredTasks(jobsFilter);
-        return;
-      }
-      // 検索条件: search
-      const searchFilter = tasks.filter(
-        (task) => {
-          const charTask = Object.values(task).toString().toLowerCase();
-          for (const keyword of filterList.search) {
-            if (charTask.indexOf(keyword.toLowerCase()) === -1) {
-              return false;
-            }
-          }
-          return true;
-        }
-      );
-      if (filterList.departments.length === 0) {
-        setFilteredTasks(searchFilter);
-        return;
-      }
-      // 検索条件: departments + search
-      const bothFilter = searchFilter.filter((task) =>
-        filterList.departments.includes(task.department)
-      );
-      setFilteredTasks(bothFilter);
-      return;
-    };
-    filterData();
-  }, [tasks, filterList]);
-
+const TaskList = ({ tasks }: { tasks: TasksType[] }) => {
   return (
     <div>
       <table className="border-collapse border-2 border-deep-gray text-sm">
@@ -75,25 +25,41 @@ const TaskList = ({ tasks }: { tasks: Task[] }) => {
           </tr>
         </thead>
         <tbody>
-          {filteredTasks.map((task) => (
+          {tasks.map((task) => (
             <tr key={task.id}>
               <td className="border-2 border-deep-gray p-2 text-center">
-                {task.project_name}
+                {task.project.name}
               </td>
               <td className="border-2 border-deep-gray p-2 text-center">
-                {task.question.length}
+                {task.questionCount}
               </td>
-              <td className="border-2 border-deep-gray p-2 text-center"  data-testid={`task-data-${task.department}`}>
-                {task.department}
+              <td
+                className="border-2 border-deep-gray p-2 text-center"
+                data-testid={`task-data-${task.department}`}
+              >
+                {task.department.name}
               </td>
               <td className="border-2 border-deep-gray p-2 text-center">
                 {/* 回答ユーザーは3名まで表示。それ以降は"..."で省略 */}
-                {task.users.length > 3
-                  ? task.users.slice(0, 3).join("、") + "..."
-                  : task.users.join("、")}
+                {task.answerUserList.length > 3
+                  ? task.answerUserList   // ex)テスト太郎、テスト次郎、テスト三郎...
+                      .slice(0, 3)
+                      .map((user, i) =>
+                        i !== 3 ? (
+                          <span key={user.userId}>{user.userName}、</span>
+                        ) : (
+                          <span key={user.userId}>{user.userName}...</span>
+                        )
+                      )
+                  : task.answerUserList.map((user, i) => (    // ex)テスト太郎、テスト次郎、テスト三郎
+                      <span key={user.userId}>
+                        {user.userName}
+                        {i + 1 !== task.answerUserList.length && "、"}
+                      </span>
+                    ))}
               </td>
               <td className="border-2 border-deep-gray p-2 text-center">
-                {task.answer_deadline}
+                {task.deadline.toString().slice(0, 10)}
               </td>
             </tr>
           ))}
