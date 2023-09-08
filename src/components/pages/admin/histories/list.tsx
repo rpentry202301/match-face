@@ -57,42 +57,42 @@ export default function HistoriesList (){
 
     return(
         <Suspense fallback={<Loading/>}> 
-        <section>
-                <table className="border-collapse border border-slate-deep-gray w-[75vw] ml-[12.5vw] text-center mb-[10vh]">
+        <section className=" max-md:overflow-x-auto max-md:mb-[30px]">
+                <table className="border-collapse border border-slate-deep-gray w-[75vw] ml-[12.5vw] text-center mb-[10vh] max-md:w-[180vw] max-md:mb-1 max-md:mx-[5vw]">
                 <thead>
                     <tr>
-                        <th className="border border-slate-deep-gray bg-light-gray w-[5vw]" id="open"></th>
-                        <th className="border border-slate-deep-gray bg-light-gray w-[15vw]" id="answer_answerDate">最終更新日</th>
-                        <th className="border border-slate-deep-gray bg-light-gray w-[15vw]" id="project_name">案件名</th>
-                        <th className="border border-slate-deep-gray bg-light-gray w-[40vw]" id="project_detail">案件概要</th>
+                        <th className="border border-slate-deep-gray bg-light-gray w-[5vw] py-2" id="open"></th>
+                        <th className="border border-slate-deep-gray bg-light-gray w-[15vw] py-2" id="answer_answerDate">最終更新日</th>
+                        <th className="border border-slate-deep-gray bg-light-gray w-[15vw] py-2" id="project_name">案件名</th>
+                        <th className="border border-slate-deep-gray bg-light-gray w-[40vw] py-2" id="project_detail">案件概要</th>
                     </tr>
                 </thead>
-                {selectProjects?.map((project:AnswerRequestGroups)=>(
+                {selectProjects.map((project:AnswerRequestGroups)=>(
                 <tbody key={project.id}>
-                        {(open?.find((state)=>state.id===project.id)!.status===false)&&(
+                        {(open.find((state)=>state.id===project.id)!.status===false)&&(
                         <tr>
-                            <td className="border border-slate-deep-gray" id="open"><button id="open_button" name="open_button" type="button" className="text-deep-gray" data-testid={`open_${project.id}`}
+                            <td className="border border-slate-deep-gray py-2" id="open"><button id="open_button" name="open_button" type="button" className="text-deep-gray" data-testid={`open_${project.id}`}
                                 onClick={()=>handleClick(project.id)}
                             >▶︎</button></td>
-                            <td className="border border-slate-deep-gray" id="answer_answerDate">{project.updateAt.slice(0,10)}</td>
-                            <td className="border border-slate-deep-gray" id="project_name">{project.project.name}</td>
+                            <td className="border border-slate-deep-gray py-2" id="answer_answerDate">{project.updateAt.slice(0,10)}</td>
+                            <td className="border border-slate-deep-gray py-2" id="project_name">{project.project.name}</td>
                             {project.project.detail.length<=35?
-                                <td className="border border-slate-deep-gray" id="project_detail" data-testid={`project_detail_${project.id}`}>{project.project.detail}</td>:
-                                <td className="border border-slate-deep-gray" id="project_detail" data-testid={`project_detail_${project.id}`}>{project.project.detail.slice(0,35)}...</td>
+                                <td className="border border-slate-deep-gray py-2" id="project_detail" data-testid={`project_detail_${project.id}`}>{project.project.detail}</td>:
+                                <td className="border border-slate-deep-gray py-2" id="project_detail" data-testid={`project_detail_${project.id}`}>{project.project.detail.slice(0,35)}...</td>
                             }
                         </tr>
                         )}
-                        {(open?.find((state)=>state.id===project.id)!.status===true)&&
+                        {(open.find((state)=>state.id===project.id)!.status===true)&&
                         <>
                         <tr>
-                            <td className="border border-slate-deep-gray" id="close"><button id="close_button" name="close_button" type="button" className="text-deep-gray" data-testid={`close_${project.id}`}
+                            <td className="border border-slate-deep-gray py-2" id="close"><button id="close_button" name="close_button" type="button" className="text-deep-gray" data-testid={`close_${project.id}`}
                                 onClick={()=>handleClick(project.id)}
                             >▼</button></td>
-                            <td className="border border-slate-deep-gray" id="answer_answerDate">{project.updateAt.slice(0,10)}</td>
-                            <td className="border border-slate-deep-gray" id="project_name">{project.project.name}</td>
+                            <td className="border border-slate-deep-gray py-2" id="answer_answerDate">{project.updateAt.slice(0,10)}</td>
+                            <td className="border border-slate-deep-gray py-2" id="project_name">{project.project.name}</td>
                             {project.project.detail.length<=35?
-                                <td className="border border-slate-deep-gray" id="project_detail" data-testid={`project_detail_${project.id}`}>{project.project.detail}</td>:
-                                <td className="border border-slate-deep-gray" id="project_detail" data-testid={`project_detail_${project.id}`}>{project.project.detail.slice(0,35)}...</td>
+                                <td className="border border-slate-deep-gray py-2" id="project_detail" data-testid={`project_detail_${project.id}`}>{project.project.detail}</td>:
+                                <td className="border border-slate-deep-gray py-2" id="project_detail" data-testid={`project_detail_${project.id}`}>{project.project.detail.slice(0,35)}...</td>
                             }
                         </tr>
                         <tr>

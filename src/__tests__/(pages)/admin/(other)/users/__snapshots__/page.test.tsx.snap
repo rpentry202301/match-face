@@ -285,8 +285,20 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
           </button>
         </div>
       </div>
+      <div
+        class=" text-center mt-10 mb-5"
+      >
+        <div>
+          <button
+            class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white rounded-xl p-2 h-auto w-28 text-sm"
+          >
+            絞り込み
+          </button>
+        </div>
+      </div>
     </div>
   </div>
+  <p />
   <div
     class="flex justify-center mb-10"
   >
@@ -439,7 +451,7 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
             <td
               class=" border"
             >
-              Java
+              PHP
             </td>
             <td
               class=" border"
@@ -464,7 +476,7 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
             <td
               class=" border"
             >
-              Java
+              FR
             </td>
             <td
               class=" border"
@@ -489,7 +501,7 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
             <td
               class=" border"
             >
-              Java
+              CL
             </td>
             <td
               class=" border"
@@ -514,7 +526,7 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
             <td
               class=" border"
             >
-              Java
+              ML
             </td>
             <td
               class=" border"
@@ -539,7 +551,7 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
             <td
               class=" border"
             >
-              Java
+              QA
             </td>
             <td
               class=" border"
