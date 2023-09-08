@@ -1,9 +1,9 @@
 import UserSelectModal from "@/components/pages/admin/tasks/register/UserSelectModal";
 import { UserSelectProvider } from "@/hooks/store/context/UserSelectContext";
+import { userSelectModalFetchedData } from "./parts/UserSelectModalForm.test";
 import { render, waitFor } from "@testing-library/react";
 
-// コンポーネント内では初期表示用のfetchは無いので、ダミーデータを渡しています
-
+// スナップショットはフォームのコンポーネント側で撮るので、ここではテストしない
 describe("UserSelectModal.tsx", () => {
   it("fetchが呼ばれているかテスト" , async () => {
     global.fetch = jest.fn().mockImplementation((url: string) => {
@@ -11,40 +11,28 @@ describe("UserSelectModal.tsx", () => {
         return {
           ok: true,
           json: async () => ({
-            departmentList: [
-              { id: 1, name: "部署1" },
-              { id: 2, name: "部署2" },
-            ],
+            departmentList: userSelectModalFetchedData.departments,
           }),
         };
       } else if (url.indexOf("statuses") !== -1) {
         return {
           ok: true,
           json: async () => ({
-            statusList: [
-              { id: 1, name: "ステータス1" },
-              { id: 2, name: "ステータス2" },
-            ],
+            statusList: userSelectModalFetchedData.statuses,
           }),
         };
       } else if (url.indexOf("user_groups") !== -1) {
         return {
           ok: true,
           json: async () => ({
-            groupList: [
-              { id: 1, name: "グループ1" },
-              { id: 2, name: "グループ2" },
-            ],
+            groupList: userSelectModalFetchedData.userGroups,
           }),
         };
       } else if (url.indexOf("users") !== -1) {
         return {
           ok: true,
           json: async () => ({
-            userList: [
-              { id: 1, name: "ユーザー1" },
-              { id: 2, name: "ユーザー2" },
-            ],
+            userList: userSelectModalFetchedData.users,
           }),
         };
       }

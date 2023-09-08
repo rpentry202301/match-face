@@ -33,6 +33,7 @@ const UserSelectModal = async () => {
   }
 
   const fetchData = await fetchModalData()
+  console.log(fetchData)
 
   return (
     <div>
