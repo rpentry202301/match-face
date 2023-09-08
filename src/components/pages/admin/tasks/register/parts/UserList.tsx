@@ -3,10 +3,28 @@ import { userTable } from "@/const/userTable"
 import CheckBox from "@/components/ui/checkbox/CheckBox"
 import { ChangeEvent } from "react"
 
+type User = {
+  id: number,
+  name: string,
+  hireDate: string,
+  departmentId: number,
+  department: {
+    id: number,
+    name: string,
+  },
+  statusId: number,
+  status: {
+    id: number,
+    name: string,
+  },
+}
+
 const UserList = ({
+  users = [],
   checkedValues,
   onChange
 }: {
+  users: User[],
   checkedValues: string[],
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }) => {
@@ -19,24 +37,24 @@ const UserList = ({
             <th className={`${tableDefaultClassName} w-1/12`}></th>
             <th className={`${tableDefaultClassName} w-3/12`}>入社日</th>
             <th className={`${tableDefaultClassName} w-20`}>職種</th>
-            <th className={`${tableDefaultClassName} w-20`}>状態</th>
+            <th className={`${tableDefaultClassName} w-28`}>状態</th>
             <th className={`${tableDefaultClassName} w-fit`}>氏名</th>
           </tr>
         </thead>
         <tbody>
-          {userTable.map((user) => (
-            <tr key={`userId_${user.id}`}>
+          {users.map((user, i) => (
+            <tr key={`userId_${i}`}>
               <td className={`${tableDefaultClassName}`}>
                 <CheckBox
-                  value={user.user_name}
+                  value={user.name}
                   onChange={onChange}
-                  checked={checkedValues.includes(user.user_name)}
+                  checked={checkedValues.includes(user.name)}
                 />
               </td>
-              <td className={`${tableDefaultClassName}`}>{user.entry_date}</td>
-              <td className={`${tableDefaultClassName}`}>{user.department}</td>
-              <td className={`${tableDefaultClassName}`}>{user.user_status}</td>
-              <td className={`${tableDefaultClassName}`}>{user.user_name}</td>
+              <td className={`${tableDefaultClassName}`}>{user.hireDate}</td>
+              <td className={`${tableDefaultClassName}`}>{user.department.name}</td>
+              <td className={`${tableDefaultClassName}`}>{user.status.name}</td>
+              <td className={`${tableDefaultClassName}`}>{user.name}</td>
             </tr>
           ))}
         </tbody>
