@@ -3,16 +3,16 @@ import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
   const res = await request.json();
-  const userId = res.userId;
+  const administratorId = res.administratorId;
   const password = res.password;
   try {
     const response = await fetch(
-      `${process.env.BE_URL}/users/${userId}?password=${password}`
+      `${process.env.BE_URL}/administrators/${administratorId}?password=${password}`
     );
     const data = await response.json();
     cookies().set({
-      name: 'userId',
-      value: `${userId}`,
+      name: 'administratorId',
+      value: `${administratorId}`,
       httpOnly: true,
       secure: true,
       path: '/',

@@ -1,9 +1,7 @@
 "use client";
 import Input from "@/components/ui/Input";
 import WhiteButton from "@/components/ui/button/WhiteButton";
-import { department, entry_data } from "@/const/userList";
-import { entry_status } from "@/const/userList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import UserList from "./UserList";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 
@@ -35,38 +33,87 @@ const setMonth = () => {
 setMonth();
 
 const SearchUser = () => {
-  const [isSelected, setIsSelected] = useState<{
-    year: string;
-    month: string;
-    department: string;
-    status: string;
-  }>({
-    year: "--",
-    month: "--",
-    department: "",
-    status: "",
-  });
-
   const [name, setName] = useState("");
-
-  const [userData, setUserData] = useState<any[]>(entry_data);
-
+  const [department, setDepartment] = useState<any[]>([]);
+  const [status, setStatus] = useState<any[]>([]);
+  // ↓絞り込み条件で表示するユーザーデータ
+  const [userData, setUserData] = useState<any[]>([]);
+  // ↓ユーザー一覧
+  const [fetchData, setfetchData] = useState<any[]>([]);
   const [error, setError] = useState(false);
-
   const clickedStyle =
     "bg-gray-200 translate-y-0.5 shadow-sm px-4 rounded-full border ";
 
   const notClickedStyle =
-    "bg-white hover:bg-gray-100 rounded-full border shadow-md ";
+    "bg-white hover:bg3000-gray-100 rounded-full border shadow-md ";
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
-    console.log(name);
+  const [isSelected, setIsSelected] = useState<{
+    year: string;
+    month: string;
+    department: string[];
+    status: string;
+  }>({
+    year: "--",
+    month: "--",
+    department: [],
+    status: "",
+  });
+  console.log(isSelected);
+
+  useEffect(() => {
+    // departmentの取得
+    const fetchDepartments = async () => {
+      const response = await fetch(`/api/admin/users/department`);
+      const data = await response.json();
+      setDepartment(data.departmentList);
+      return department;
+    };
+
+    // statusの取得
+    const fetchStatus = async () => {
+      const response = await fetch(
+        `/api/admin/users/status`
+      );
+      const data = await response.json();
+      setStatus(data.statusList);
+      return status;
+    };
+    // ユーザーデータの取得
+    const fetchUserData = async () => {
+      const response = await fetch(
+        `/api/admin/users/userList`
+      );
+      const data = await response.json();
+      const userList = data.userList.sort((a: any, b: any) =>
+        a.hireDate < b.hireDate ? -1 : 1
+      );
+      setUserData(userList);
+      setfetchData(userList);
+      return userList;
+    };
+    fetchDepartments();
+    fetchStatus();
+    fetchUserData();
+  }, []);
+
+  const handleInputChange = () => {
+    setIsSelected({
+      ...isSelected,
+      year: "--",
+      month: "--",
+      department: [],
+      status: "",
+    });
+    const filteredData = fetchData.filter((data) => data.name.includes(name));
+    console.log("検索結果：", filteredData);
+    setUserData(filteredData);
   };
 
   // 絞り込みボタンをクリック
   const handleSubmit = () => {
+    setName("");
     const { year, month, department, status } = isSelected;
+
     // yearかmonthどちらかが選択されていない場合、エラーを表示
     if (
       (year !== "--" && month === "--") ||
@@ -83,17 +130,22 @@ const SearchUser = () => {
       // console.log(year, month);
     }
 
-    if (year !== "--" && month !== "--" && department !== "" && status !== "") {
-      // 全項目選択済した場合
-      const filterdData = entry_data.filter(
+    // 全項目選択した場合
+    if (
+      year !== "--" &&
+      month !== "--" &&
+      department.length !== 0 &&
+      status !== ""
+    ) {
+      const filteredData = fetchData.filter(
         (data) =>
-          data.entry_date.slice(0, 4) === year &&
-          data.entry_date.slice(5, 7) === month &&
-          data.department === department &&
-          data.user_status === status
+          data.hireDate.slice(0, 4) === year &&
+          data.hireDate.slice(5, 7) === month &&
+          department.includes(data.department.name) &&
+          data.status.name === status
       );
-      console.log("完全一致", filterdData);
-      setUserData(filterdData);
+      setUserData(filteredData);
+      console.log("完全一致", filteredData);
       return;
     }
 
@@ -101,13 +153,13 @@ const SearchUser = () => {
     else if (
       year === "--" &&
       month === "--" &&
-      department === "" &&
+      department.length === 0 &&
       status === ""
     ) {
-      console.log("絞り込み条件なし", entry_data);
       setIsSelected({ ...isSelected, month: "--" });
 
-      setUserData(entry_data);
+      setUserData(fetchData);
+      console.log("絞り込み条件なし", fetchData);
       return;
     }
 
@@ -115,41 +167,42 @@ const SearchUser = () => {
     else if (
       year !== "--" ||
       month !== "--" ||
-      department !== "" ||
+      department.length !== 0 ||
       status !== ""
     ) {
       // status以外選択した場合
       if (
         year !== "--" &&
         month !== "--" &&
-        department !== "" &&
+        department.length !== 0 &&
         status === ""
       ) {
-        const filterdData = entry_data.filter(
+        const filteredData = fetchData.filter(
           (data) =>
-            data.entry_date.slice(0, 4) === year &&
-            data.entry_date.slice(5, 7) === month &&
-            data.department === department
+            data.hireDate.slice(0, 4) === year &&
+            data.hireDate.slice(5, 7) === month &&
+            department.includes(data.department.name)
         );
-        console.log("status以外が一致", filterdData);
-        setUserData(filterdData);
+        setUserData(filteredData);
+        console.log("status以外が一致", filteredData);
         return;
       }
+
       // department以外選択した場合
       else if (
         year !== "--" &&
         month !== "--" &&
-        department === "" &&
+        department.length === 0 &&
         status !== ""
       ) {
-        const filterdData = entry_data.filter(
+        const filteredData = fetchData.filter(
           (data) =>
-            data.entry_date.slice(0, 4) === year &&
-            data.entry_date.slice(5, 7) === month &&
-            data.user_status === status
+            data.hireDate.slice(0, 4) === year &&
+            data.hireDate.slice(5, 7) === month &&
+            data.status.name === status
         );
-        console.log("department以外が一致", filterdData);
-        setUserData(filterdData);
+        setUserData(filteredData);
+        console.log("department以外が一致", filteredData);
         return;
       }
 
@@ -157,16 +210,16 @@ const SearchUser = () => {
       else if (
         year !== "--" &&
         month !== "--" &&
-        department === "" &&
+        department.length === 0 &&
         status === ""
       ) {
-        const filterdData = entry_data.filter(
+        const filteredData = fetchData.filter(
           (data) =>
-            data.entry_date.slice(0, 4) === year &&
-            data.entry_date.slice(5, 7) === month
+            data.hireDate.slice(0, 4) === year &&
+            data.hireDate.slice(5, 7) === month
         );
-        console.log("yearとmonthが一致", filterdData);
-        setUserData(filterdData);
+        setUserData(filteredData);
+        console.log("yearとmonthが一致", filteredData);
         return;
       }
 
@@ -174,68 +227,63 @@ const SearchUser = () => {
       else if (
         year === "--" &&
         month === "--" &&
-        department !== "" &&
+        department.length !== 0 &&
         status !== ""
       ) {
-        const filterdData = entry_data.filter(
+        const filteredData = fetchData.filter(
           (data) =>
-            data.department === department && data.user_status === status
+            department.includes(data.department.name) &&
+            data.status.name === status
         );
-        console.log("departmentとstatusが一致", filterdData);
-        setUserData(filterdData);
+        setUserData(filteredData);
+        console.log("departmentとstatusが一致", filteredData);
         return;
       }
+
       // departmentのみ選択した場合
       else if (
         year === "--" &&
         month === "--" &&
-        department !== "" &&
+        department.length !== 0 &&
         status === ""
       ) {
-        const filterdData = entry_data.filter(
-          (data) => data.department === department
+        const filteredData = fetchData.filter((data) =>
+          department.includes(data.department.name)
         );
-        console.log("departmentが一致", filterdData);
-        setUserData(filterdData);
+        setUserData(filteredData);
+        console.log("departmentが一致", filteredData);
         return;
       }
 
       // statusのみ選択した場合
-      if (
+      else if (
         year === "--" &&
         month === "--" &&
-        department === "" &&
+        department.length === 0 &&
         status !== ""
       ) {
-        const filterdData = entry_data.filter(
-          (data) => data.user_status === status
+        const filteredData = fetchData.filter(
+          (data) => data.status.name === status
         );
-        console.log("statusが一致", filterdData);
-        setUserData(filterdData);
+        setUserData(filteredData);
+        console.log("statusが一致", filteredData);
         return;
       }
     }
   };
 
-  // monthの値を更新
-  const handleMonthChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedMonth = e.currentTarget.value;
-    if (selectedMonth === "--" || parseInt(selectedMonth) >= 10) {
-      setIsSelected({ ...isSelected, month: e.currentTarget.value });
+  // departmentの追加・削除
+  const handleDepartmentClick = (departmentName: string) => {
+    if (!isSelected.department.includes(departmentName)) {
+      setIsSelected({
+        ...isSelected,
+        department: [...isSelected.department, departmentName],
+      });
     } else {
-      setIsSelected({ ...isSelected, month: `0${e.currentTarget.value}` });
-    }
-  };
-
-  // departmentのON/OFF切り替え
-  const handleDepartmentClick = (department: string) => {
-    // console.log("確認用", department);
-    if (isSelected.department === department) {
-      setIsSelected({ ...isSelected, department: "" });
-      return;
-    } else {
-      setIsSelected({ ...isSelected, department });
-      return;
+      const newSelected = isSelected.department.filter(
+        (department) => department !== departmentName
+      );
+      setIsSelected({ ...isSelected, department: newSelected });
     }
   };
 
@@ -257,12 +305,13 @@ const SearchUser = () => {
               id="1"
               className=" w-[530px] mx-5 border-deep-gray"
               value={name}
-              onChange={handleInputChange}
+              onChange={(e) => setName(e.target.value)}
               data-testid="input"
             />
             <WhiteButton
               label="検索"
               className="w-20 py-0.5"
+              onClick={handleInputChange}
               data-testid="searchButton"
             />
           </div>
@@ -271,7 +320,7 @@ const SearchUser = () => {
               name="year"
               id="year"
               className="border"
-              defaultValue="--"
+              value={isSelected.year}
               onChange={(e) => [
                 setIsSelected({
                   ...isSelected,
@@ -292,14 +341,19 @@ const SearchUser = () => {
               name="month"
               id="month"
               className="border"
-              defaultValue="--"
-              onChange={handleMonthChange}
+              value={isSelected.month}
+              onChange={(e) => {
+                setIsSelected({
+                  ...isSelected,
+                  month: e.currentTarget.value,
+                });
+              }}
               data-testid="month"
             >
               <option value="--">--</option>
               {monthArray.map((month) => (
-                <option key={month} value={month}>
-                  {month < 10 ? `0${month}` : month}
+                <option key={month} value={month >= 10 ? month : `0${month}`}>
+                  {month >= 10 ? month : `0${month}`}
                 </option>
               ))}
             </select>
@@ -311,44 +365,44 @@ const SearchUser = () => {
             )}
           </div>
           <div className=" flex my-5">
-            {department.map((department, id) => (
-              <div key={id}>
-                {department.department !== isSelected.department ? (
+            {department.map((department: any) => (
+              <div key={department.id}>
+                {!isSelected.department.includes(department.name) ? (
                   <WhiteButton
-                    label={department.department}
+                    label={department.name}
                     className={`w-20 mx-5 py-0.5 ${notClickedStyle}`}
-                    value={department.department}
-                    onClick={() => handleDepartmentClick(department.department)}
+                    value={department.name}
+                    onClick={() => handleDepartmentClick(department.name)}
                     data-testid={`department_${department.id}`}
                   />
                 ) : (
                   <WhiteButton
-                    label={department.department}
+                    label={department.name}
                     className={`w-20 mx-5 py-0.5 ${clickedStyle}`}
-                    value={department.department}
-                    onClick={() => handleDepartmentClick(department.department)}
+                    value={department.name}
+                    onClick={() => handleDepartmentClick(department.name)}
                   />
                 )}
               </div>
             ))}
           </div>
           <div className=" flex my-5">
-            {entry_status.map((status) => (
+            {status.map((status) => (
               <div key={status.id}>
-                {status.status !== isSelected.status ? (
+                {status.name !== isSelected.status ? (
                   <WhiteButton
-                    label={status.status}
+                    label={status.name}
                     className={`w-32 mx-5 py-0.5 ${notClickedStyle}`}
-                    value={status.status}
-                    onClick={() => handleStatusClick(status.status)}
+                    value={status.name}
+                    onClick={() => handleStatusClick(status.name)}
                     data-testid={`status_${status.id}`}
                   />
                 ) : (
                   <WhiteButton
-                    label={status.status}
+                    label={status.name}
                     className={`w-32 mx-5 py-0.5 ${clickedStyle}`}
-                    value={status.status}
-                    onClick={() => handleStatusClick(status.status)}
+                    value={status.name}
+                    onClick={() => handleStatusClick(status.name)}
                   />
                 )}
               </div>

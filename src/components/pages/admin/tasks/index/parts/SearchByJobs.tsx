@@ -1,93 +1,109 @@
 "use client";
 import Input from "@/components/ui/Input";
 import OrangeButton from "@/components/ui/button/OrangeButton";
-import WhiteButton from "@/components/ui/button/WhiteButton";
 import WhiteCheckButton from "@/components/ui/button/WhiteCheckButton";
-import { SyntheticEvent, useState } from "react";
-import { useFilter } from "@/hooks/store/context/TasksContext";
+import { SyntheticEvent, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+import { Departments } from "@/types/admin/tasks/types";
 
-// 削除予定
-import { departments } from "@/const/tasks";
+/**
+ * @author Hayato Kobayashi
+ * @todo_1 レスポンシブ対応
+ */
+const SearchByJobs = ({ departments }: Props) => {
+  const [jobsFilter, setJobsFilter] = useState<number[]>([]); // 職種フィルター状態管理
+  const [inputVal, setInputVal] = useState<string>(""); // 検索入力値状態管理
 
-const SearchByJobs = () => {
-  // 職種フィルター状態管理
-  const [jobsFilter, setJobsFilter] = useState<string[]>([]);
-  const [filterList, setFilterList] = useFilter(); // context
-  // 検索入力値状態管理
-  const [inputVal, setInputVal] = useState<string>("");
+  const router = useRouter();
 
+  // 検索条件に設定するクエリ
+  const query = useMemo(() => {
+    if (jobsFilter.length === 0 && inputVal.length === 0) return "";
+
+    const searchKeyword =
+      inputVal.length !== 0
+        ? `searchKeyword=${inputVal // ex)"a b c" → "a_b_c"
+            .split(/[\s]+/)
+            .filter((word) => word.length !== 0)
+            .join("_")}`
+        : "";
+
+    const departmentId =
+      jobsFilter.length !== 0
+        ? `${searchKeyword && "&"}departmentId=${jobsFilter.join("_")}`
+        : "";
+
+    const searchQuery = `?${searchKeyword && searchKeyword}${departmentId}`;
+    return searchQuery;
+  }, [jobsFilter, inputVal]);
+
+  // 検索入力値を適用
   const handleSearch = (e: SyntheticEvent) => {
     e.preventDefault();
-    if (inputVal.length === 0) {
-      setFilterList({ ...filterList, search: [] });
-      return;
-    }
-    const wordList = inputVal
-      .split(/[\s]+/)
-      .filter((word) => word.length !== 0);
-    setFilterList({ ...filterList, search: wordList });
+    router.push(`/admin/tasks${query}`);
   };
 
-  const handleSetFilter = (department: string) => {
+  const handleSetFilter = (departmentId: number) => {
     // 職種レコードを挿入
-    if (!jobsFilter.includes(department)) {
+    if (!jobsFilter.includes(departmentId)) {
       const newArr = [...jobsFilter];
-      newArr.push(department);
+      newArr.push(departmentId);
       setJobsFilter(newArr);
     } else {
       // 職種レコードを削除
       const newArr = jobsFilter.filter((job) => {
-        return job !== department;
+        return job !== departmentId;
       });
       setJobsFilter(newArr);
     }
-    // console.log("jobsFilter2", jobsFilter);
-  };
-
-  // フィルターを適用
-  const handleApplyFilter = () => {
-    setFilterList({
-      ...filterList,
-      departments: jobsFilter,
-    });
   };
 
   return (
-    <div className="flex flex-col items-center border-2 rounded-md w-3/6 mx-auto mt-6 p-3">
-      <div>
-        <form onSubmit={handleSearch} className="flex items-center mb-4">
+    <div className="border-2 rounded-md w-3/6 mx-auto mt-6 p-3">
+      {/* 職種フィルター入力欄 */}
+      <div className="w-full mb-4">
+        <div className="mb-2">
+          <h2 className="text-base ml-3">▶️募集職種で検索</h2>
+        </div>
+        <div className="flex justify-center">
+          {departments.map((department) => {
+            return (
+              <WhiteCheckButton
+                key={department.id}
+                label={department.name}
+                className="text-xs w-16 mx-3"
+                onClick={() => handleSetFilter(department.id)}
+              />
+            );
+          })}
+        </div>
+      </div>
+
+      {/* 案件名/ユーザー名検索欄 */}
+      <div className="w-full">
+        <div className="mb-2">
+          <h2 className="text-base ml-3">▶️案件名/ユーザー名で検索</h2>
+        </div>
+        <form onSubmit={handleSearch} className="flex flex-col items-center">
           <Input
             id="search"
-            className="border-light-gray text-xs p-1 w-96"
+            className="border-light-gray text-xs p-1 w-[35rem]"
             onChange={(e) => setInputVal(e.target.value)}
             data-testid="search-box"
           />
-          <WhiteButton label="検索" className="text-xs ml-2" type="submit" />
+          <OrangeButton
+            label="検索"
+            className="w-20 text-sm mt-2"
+            type="submit"
+          />
         </form>
-      </div>
-      <div className="flex items-center mb-4">
-        {/* ToDo: 職種データを非同期通信でGET */}
-        {departments.map((department) => {
-          return (
-            <div key={department.id} className="mx-3">
-              <WhiteCheckButton
-                label={department.name}
-                className="text-xs w-16"
-                onClick={() => handleSetFilter(department.name)}
-              />
-            </div>
-          );
-        })}
-      </div>
-      <div>
-        <OrangeButton
-          label="絞り込み"
-          className="w-28 text-sm"
-          onClick={handleApplyFilter}
-        />
       </div>
     </div>
   );
+};
+
+type Props = {
+  departments: Departments[];
 };
 
 export default SearchByJobs;

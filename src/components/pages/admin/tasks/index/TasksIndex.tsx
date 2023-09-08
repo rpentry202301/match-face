@@ -2,22 +2,45 @@ import OrangeButton from "@/components/ui/button/OrangeButton";
 import SearchByJobs from "./parts/SearchByJobs";
 import TaskList from "./parts/TaskList";
 import Link from "next/link";
-import { headers } from "next/headers";
-import { TasksType } from "@/types/admin/tasks/types";
+import { Departments, TasksType } from "@/types/admin/tasks/types";
 
 /**
  * @author Hayato Kobayashi
  * @todo_1 レスポンシブ対応
  */
-const TasksIndex = async () => {
+const TasksIndex = async ({ departments, searchParams }: Props) => {
   // クエリから検索条件{ searchKeyword, departmentId }を取得
-  const headerList = headers();
-  const searchKeyword = headerList.get("searchKeyword");
-  const departmentId = headerList.get("departmentId");
+  const { searchKeyword, departmentId } = searchParams;
+  /**
+   * 検索文字列
+   * ex)
+   * searchKeyword = "a" → "searchKeyword=a" || 
+   * searchKeyword = ["a", "b", "c"] → "searchKeyword=a_b_c" || 
+   * searchKeyword = undefined → ""
+   */
+  const searchKeywordQuery = searchKeyword
+    ? Array.isArray(searchKeyword)
+      ? `searchKeyword=${searchKeyword.join("_")}`
+      : `searchKeyword=${searchKeyword}`
+    : "";
+  /**
+   * 職種フィルター検索文字列
+   * ex)
+   * departmentId = 1 → "departmentId=1" || 
+   * departmentId = [1, 2, 3] → "departmentId=1_2_3" || 
+   * departmentId = undefined → ""
+   * @note searchKeywordQueryがある場合は先頭に"&"がつく
+   */
+  const departmentIdQuery = departmentId
+    ? Array.isArray(departmentId)
+      ? `${searchKeywordQuery && "&"}departmentId=${departmentId.join("_")}`
+      : `${searchKeywordQuery && "&"}departmentId=${departmentId}`
+    : "";
+  const query = searchKeywordQuery + departmentIdQuery;
 
   // tasksデータの取得
   const res = await fetch(
-    `${process.env.NEXT_API_URL}/api/admin/tasks?searchKeyword=${searchKeyword}&departmentId=${departmentId}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/api/admin/tasks${query && "?" + query}`,
     {
       method: "GET",
       headers: {
@@ -26,16 +49,15 @@ const TasksIndex = async () => {
     }
   );
   const tasks: TasksType[] = await res.json();
-  console.log("tasks", tasks[0].answerUserList.length);
 
   return (
     <main>
       <div className="mb-8">
-        <SearchByJobs />
+        <SearchByJobs departments={departments} />
       </div>
       <div className="flex justify-center mb-8">
         <Link href={"/admin/tasks/register"} data-testid="link_task_register">
-          <OrangeButton label="新規タスク作成" />
+          <OrangeButton label="新規タスク作成" className="hover:underline" />
         </Link>
       </div>
       <div className="flex justify-center">
@@ -43,6 +65,14 @@ const TasksIndex = async () => {
       </div>
     </main>
   );
+};
+
+type Props = {
+  departments: Departments[];
+  searchParams: {
+    departmentId: string | string[] | undefined;
+    searchKeyword: string | string[] | undefined;
+  };
 };
 
 export default TasksIndex;
