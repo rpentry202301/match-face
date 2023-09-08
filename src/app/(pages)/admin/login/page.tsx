@@ -51,7 +51,7 @@ const AdminLoginPage = () => {
         router.push('/admin');
       }
     } catch (error) {
-      console.error('api error');
+      throw new Error('api error');
     }
   };
 
