@@ -1,5 +1,5 @@
 export const getGroup = async () => {
-  const url = process.env.BE_URL;
+  const url = process.env['NEXT_PUBLIC_BE_URL']
 
   // 確認用→成功したのでコメントアウト
   //  const checkData = async() => {
@@ -33,9 +33,8 @@ export const getGroup = async () => {
       updateAt: formattedUpdatedAt,
     };
   });
-  // console.log("formattedData", formattedData);
 
-  // 環境変数なぜか使えない
-  console.log("環境変数を用いて取得したいurl", url);
+  // 環境変数(BE_URLで行った方がよいがうまくいかない)
+  // console.log("環境変数を用いて取得したいurl", url);
   return formattedData;
 };

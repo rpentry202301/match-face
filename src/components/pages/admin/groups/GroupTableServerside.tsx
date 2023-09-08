@@ -1,48 +1,37 @@
-"use client";
-
-// 後で実装。現状、dataがundifinedでかえってくる。
 
 import React, { useState, useEffect } from "react";
-import { getGroup } from "./getGroups";
 import Link from "next/link";
 import OrangeButton from "@/components/ui/button/OrangeButton";
+import { fetchData } from "./fetchData";
 
-export async function getServerSideProps() {
-  const data = await getGroup();
-  console.log(data)
-  return { props: { data } };
-}
+const GroupTableServerSide = async () => {
+  const data = await fetchData();
 
-const GroupTableServerSide = ({ data }: any) => {
+  // モーダル表示(要any解決)
+  // const [isOpen, setIsOpen] = useState(false);
+  // const [selectedGroupingDate, setSelectedGroupingDate] = useState("");
+  // const [selectedGroupName, setSelectedGroupName] = useState("");
+  // const [selectedGroupDescription, setSelectedGroupDescription] = useState("");
+  // const [selectedGroupMember, setSelectedGroupMember] = useState("");
 
-    console.log(data)
-
-  // モーダル表示
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedGroupingDate, setSelectedGroupingDate] = useState("");
-  const [selectedGroupName, setSelectedGroupName] = useState("");
-  const [selectedGroupDescription, setSelectedGroupDescription] = useState("");
-  const [selectedGroupMember, setSelectedGroupMember] = useState("");
-
-  // 要any解決
-  const toggleModal = (data: any) => {
-    setSelectedGroupingDate(data.createdAt);
-    setSelectedGroupName(data.name);
-    setSelectedGroupDescription(data.description);
-    if (data.memberCount > 0) {
-      setSelectedGroupMember(
-        data.userList.map((member: string) => member).join(",")
-      );
-    } else {
-      setSelectedGroupMember("");
-    }
-    setIsOpen(!isOpen);
-  };
+  // const toggleModal = (data: any) => {
+  //   setSelectedGroupingDate(data.createdAt);
+  //   setSelectedGroupName(data.name);
+  //   setSelectedGroupDescription(data.description);
+  //   if (data.memberCount > 0) {
+  //     setSelectedGroupMember(
+  //       data.userList.map((member: string) => member).join(",")
+  //     );
+  //   } else {
+  //     setSelectedGroupMember("");
+  //   }
+  //   setIsOpen(!isOpen);
+  // };
 
   return (
     <>
       {/* モーダル内テーブル */}
-      {isOpen && (
+      {/* {isOpen && (
         <div>
           <div
             className="block w-full h-full bg-black/30 absolute top-0 left-0"
@@ -98,14 +87,12 @@ const GroupTableServerSide = ({ data }: any) => {
             </div>
           </div>
         </div>
-      )}
-
+      )} */}
 
       {/* 通常表示テーブル */}
 
-
       <div className="flex flex-col items-center justify-center h-screen table-fixed">
-        {/* <table>
+        <table>
           <thead>
             <tr>
               <th className="border px-4 py-2 bg-light-gray w-1/5">作成日</th>
@@ -121,7 +108,7 @@ const GroupTableServerSide = ({ data }: any) => {
             </tr>
           </thead>
           <tbody>
-            {data.map((obj: any) => (
+            {data?.map((obj: any) => (
               <tr key={obj.id}>
                 <td
                   className="border px-4 py-2 "
@@ -134,11 +121,11 @@ const GroupTableServerSide = ({ data }: any) => {
                   style={{ textAlign: "center" }}
                 >
                   <button
-                    onClick={() => toggleModal(obj)}
+                    // onClick={() => toggleModal(obj)}
                     className="hover:bg-amber-200 duration-200"
                     data-testid={`group_${obj.id}`}
                   >
-                    {obj.name}
+                  {obj.name}
                   </button>
                 </td>
                 <td
@@ -150,13 +137,11 @@ const GroupTableServerSide = ({ data }: any) => {
               </tr>
             ))}
           </tbody>
-        </table> */}
+        </table>
         <br />
-        {!isOpen && (
-          <Link href={"/admin/groups/register"} data-testid="register">
-            <OrangeButton label="新規グループ作成" />
-          </Link>
-        )}
+        <Link href={"/admin/groups/register"} data-testid="register">
+          <OrangeButton label="新規グループ作成" />
+        </Link>
       </div>
     </>
   );
