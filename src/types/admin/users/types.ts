@@ -1,7 +1,29 @@
 export type UserData = {
   id: number;
-  user_name: string;
-  user_status: string;
-  entry_date: string;
-  department: string;
+  name: string;
+  password: string;
+  email: string;
+  hireDate: string;
+  departmentId: number;
+  department: {
+    id: number;
+    name: string;
+    createdUser: string;
+    createdAt: string;
+    updateUser: string;
+    updateAt: string;
+  };
+  statusId: number;
+  status: {
+    id: number;
+    name: string;
+    createdUser: string;
+    createdAt: string;
+    updateUser: string;
+    updateAt: string;
+  };
+  createdUser: string;
+  createdAt: string;
+  updateUser: string;
+  updateAt: string;
 }[];
