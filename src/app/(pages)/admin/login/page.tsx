@@ -4,6 +4,7 @@ import OrangeButton from '@/components/ui/button/OrangeButton';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { useState } from 'react';
 
 // データの型はnumberだが、都合上stringに設定
 type LoginForm = {
@@ -12,8 +13,9 @@ type LoginForm = {
 };
 
 const AdminLoginPage = () => {
-  // ルーター
   const router = useRouter();
+  const [inValidAdministrator, setInValidAdministrator] = useState(false);
+  console.log('inValidAdministrator', inValidAdministrator);
 
   // フックフォーム
   const {
@@ -26,8 +28,8 @@ const AdminLoginPage = () => {
   });
 
   const onSubmit: SubmitHandler<LoginForm> = async (data) => {
+    // データ取得
     try {
-      // データ取得
       const response = await fetch('/api/admin/login', {
         cache: 'no-store',
         method: 'POST',
@@ -37,8 +39,15 @@ const AdminLoginPage = () => {
           password: data.password,
         }),
       });
+      // ユーザーIDとパスワードが一致するデータがあればオブジェクト、なければ{administrator:"[]"}が返ってくる
       const administratorData = await response.json();
-      if (isValid && administratorData.administrator) {
+      const administrator = administratorData.administrator;
+      console.log('administratorData', administratorData);
+      if (administrator.length === 0) {
+        setInValidAdministrator(true);
+      }
+      if (isValid && administrator.id && administrator.password) {
+        setInValidAdministrator(false);
         router.push('/admin');
       }
     } catch (error) {
@@ -72,6 +81,12 @@ const AdminLoginPage = () => {
                       value: /^[0-9]+$/,
                       message: '※半角数字で入力してください。',
                     },
+                    // validate: {
+                    //   checkUserId: () =>
+                    //     inValidAdministrator
+                    //       ? '※正しいユーザーIDを入力してください。'
+                    //       : undefined,
+                    // },
                   })}
                 />
               </div>
@@ -100,15 +115,19 @@ const AdminLoginPage = () => {
             {errors.password && (
               <p className="text-red ">{errors.password.message}</p>
             )}
+            {inValidAdministrator &&
+              !errors.administratorId &&
+              !errors.password && (
+                <p className="text-red">
+                  ユーザーIDもしくはパスワードに誤りがあります。
+                </p>
+              )}
           </div>
 
           <OrangeButton
             label="ログイン"
             className="mt-10 mb-4 w-48 rounded-none"
             type="submit"
-            // エラー確認用（削除要）
-            // onClick={check}
-            //
           />
           <Link href="/remind" className=" text-blue">
             パスワードを忘れた
