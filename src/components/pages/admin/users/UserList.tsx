@@ -10,30 +10,30 @@ const selectOptions = [
 
 const UserList = (props: { data: UserData }) => {
   const userData = props.data;
-  const [sortedData, setSortedData] = useState<any[]>(userData);
-  // console.log(userData);
+  const [sortedData, setSortedData] = useState<any[]>([]);
   const [sortOption, setSortOption] = useState("入社日昇順");
+
 
   // データを昇順もしくは降順に並べ替える
   const sortOptionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortOption(e.currentTarget.value);
     if (e.currentTarget.value === "入社日昇順") {
       const newData = userData.sort(function (a, b) {
-        return a.entry_date < b.entry_date ? -1 : 1;
+        return a.hireDate < b.hireDate ? -1 : 1;
       });
       setSortedData(newData);
-      console.log("昇順", newData);
+      // console.log("昇順", newData);
     } else {
       const newData = userData.sort(function (a, b) {
-        return b.entry_date < a.entry_date ? -1 : 1;
+        return b.hireDate < a.hireDate ? -1 : 1;
       });
       setSortedData(newData);
-      console.log("降順", newData);
+      // console.log("降順", newData);
     }
   };
 
   useEffect(() => {
-    console.log(sortOption);
+    // console.log(sortOption);
     setSortOption(sortOption);
   }, [userData, sortOption]);
 
@@ -74,11 +74,11 @@ const UserList = (props: { data: UserData }) => {
               {userData.map((data: any) => (
                 <tr className="border text-center" key={data.id}>
                   <td className=" border py-3" data-testid="entry_date">
-                    {data.entry_date}
+                    {data.hireDate}
                   </td>
-                  <td className=" border">{data.department}</td>
-                  <td className=" border">{data.user_status}</td>
-                  <td className=" border">{data.user_name}</td>
+                  <td className=" border">{data.department.name}</td>
+                  <td className=" border">{data.status.name}</td>
+                  <td className=" border">{data.name}</td>
                 </tr>
               ))}
             </tbody>
