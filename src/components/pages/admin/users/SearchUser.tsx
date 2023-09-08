@@ -59,12 +59,11 @@ const SearchUser = () => {
     status: "",
   });
   console.log(isSelected);
-  const url = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
     // departmentの取得
     const fetchDepartments = async () => {
-      const response = await fetch(`${url}/api/admin/users/department`);
+      const response = await fetch(`/api/admin/users/department`);
       const data = await response.json();
       setDepartment(data.departmentList);
       return department;
@@ -73,7 +72,7 @@ const SearchUser = () => {
     // statusの取得
     const fetchStatus = async () => {
       const response = await fetch(
-        `${url}/api/admin/users/status`
+        `/api/admin/users/status`
       );
       const data = await response.json();
       setStatus(data.statusList);
@@ -82,7 +81,7 @@ const SearchUser = () => {
     // ユーザーデータの取得
     const fetchUserData = async () => {
       const response = await fetch(
-        `${url}/api/admin/users/userList`
+        `/api/admin/users/userList`
       );
       const data = await response.json();
       const userList = data.userList.sort((a: any, b: any) =>
