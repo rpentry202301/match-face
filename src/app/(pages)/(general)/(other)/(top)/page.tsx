@@ -1,6 +1,5 @@
 import Menu from '@/components/ui/Menu';
 import Notification from '@/components/pages/general/top/Notification';
-import { menuContentsArray } from '@/const/top';
 import { trueAnswerRequests, falseAnswerRequests } from '@/const/notification';
 
 type MenuContent = {
@@ -17,7 +16,17 @@ type MenuContent = {
 const completedData = trueAnswerRequests;
 const incompletedData = falseAnswerRequests;
 
-const Home = async () => {
+const Top = async () => {
+  const response = await fetch(`${process.env.BE_URL}/user_main_elements`, {
+    cache: 'no-store',
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const topData = await response.json();
+  const menuContentsArray = topData.userMainElementList;
+  // console.log('menuContentsArray', menuContentsArray);
   return (
     <main>
       <div className="flex flex-col items-center mt-8 mb-20">
@@ -45,4 +54,4 @@ const Home = async () => {
   );
 };
 
-export default Home;
+export default Top;
