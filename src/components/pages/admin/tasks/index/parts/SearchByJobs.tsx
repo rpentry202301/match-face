@@ -21,8 +21,8 @@ const SearchByJobs = ({ departments }: Props) => {
     if (jobsFilter.length === 0 && inputVal.length === 0) return "";
 
     /**
-     * searchKeywordから加工されたクエリ
-     * ex) "a_b_c" → "searchKeyword=a&searchKeyword=b&searchKeyword=c"
+     * ワード検索クエリ
+     * ex) "a b c" → "searchKeyword=a&searchKeyword=b&searchKeyword=c"
      */
     const searchKeyword =
       inputVal.length !== 0
@@ -36,12 +36,9 @@ const SearchByJobs = ({ departments }: Props) => {
             .join("")
         : "";
     /**
-     * 職種フィルター検索文字列
-     * ex)
-     * departmentId = 1 → "departmentId=1" ||
-     * departmentId = [1, 2, 3] → "departmentId=1_2_3" ||
-     * departmentId = undefined → ""
-     * @note searchKeywordQueryがある場合は先頭に"&"がつく
+     * 職種フィルター検索クエリ
+     * ex) [1, 2, 3] → "departmentId=1&departmentId=2&departmentId=3"
+     * @note searchKeywordがある場合は先頭に"&"がつく
      */
     const departmentId =
       jobsFilter.length !== 0

@@ -2,7 +2,11 @@ import OrangeButton from "@/components/ui/button/OrangeButton";
 import SearchByJobs from "./parts/SearchByJobs";
 import TaskList from "./parts/TaskList";
 import Link from "next/link";
-import { Answer_RequestsType, Departments, TasksType } from "@/types/admin/tasks/types";
+import {
+  Answer_RequestsType,
+  Departments,
+  TasksType,
+} from "@/types/admin/tasks/types";
 
 /**
  * @author Hayato Kobayashi
@@ -12,35 +16,33 @@ const TasksIndex = async ({ departments, searchParams }: Props) => {
   // クエリから検索条件{ searchKeyword, departmentId }を取得
   const { searchKeyword, departmentId } = searchParams;
   /**
-   * 検索文字列
-   * ex)
-   * searchKeyword = "a" → "searchKeyword=a" || 
-   * searchKeyword = ["a", "b", "c"] → "searchKeyword=a_b_c" || 
-   * searchKeyword = undefined → ""
+   * ワード検索クエリ
+   * ex) "a b c" → "searchKeyword=a&searchKeyword=b&searchKeyword=c"
    */
   const searchKeywordQuery = searchKeyword
     ? Array.isArray(searchKeyword)
-      ? searchKeyword.map((word, i) => {
-        if (i === 0) return `searchKeyword=${word}`;
-          return `&searchKeyword=${word}`;
-      }).join("")
+      ? searchKeyword
+          .map((word, i) => {
+            if (i === 0) return `searchKeyword=${word}`;
+            return `&searchKeyword=${word}`;
+          })
+          .join("")
       : `searchKeyword=${searchKeyword}`
     : "";
   /**
-   * 職種フィルター検索文字列
-   * ex)
-   * departmentId = 1 → "departmentId=1" || 
-   * departmentId = [1, 2, 3] → "departmentId=1_2_3" || 
-   * departmentId = undefined → ""
+   * 職種フィルター検索クエリ
+   * ex) [1, 2, 3] → "departmentId=1&departmentId=2&departmentId=3"
    * @note searchKeywordQueryがある場合は先頭に"&"がつく
    */
   const departmentIdQuery = departmentId
     ? Array.isArray(departmentId)
-      ? departmentId.map((id, i) => {
-        if (i === 0) return `${searchKeywordQuery && "&"}departmentId=${id}`;
-        return `&departmentId=${id}`;
-      })
-      .join("")
+      ? departmentId
+          .map((id, i) => {
+            if (i === 0)
+              return `${searchKeywordQuery && "&"}departmentId=${id}`;
+            return `&departmentId=${id}`;
+          })
+          .join("")
       : `${searchKeywordQuery && "&"}departmentId=${departmentId}`
     : "";
   const query = searchKeywordQuery + departmentIdQuery;
