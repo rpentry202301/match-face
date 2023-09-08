@@ -76,7 +76,33 @@ const QuestionSelectModalForm = ({ fetchData }: { fetchData: FetchQuestionModalD
   // Todo: APIができたら実装
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(formData)
+    const searchKeyword = search
+    const checkedDepId = formData.department.filter((data) => data.checked).map((dep) => dep.id)
+    const checkedSkillId = formData.skill.filter((data) => data.checked).map((skill) => skill.id)
+
+    const searchQuerys = [
+      searchKeyword ? `searchKeyword=${searchKeyword}` : "",
+      checkedDepId.length ? `departmentId=${checkedDepId}` : "",
+      checkedSkillId.length ? `skillId=${checkedSkillId}` : "",
+    ]
+
+    const query = searchQuerys.filter((query) => query !== "").join("&")
+
+    fetch(`/api/admin/tasks/register/questions?${query}`, {
+      cache: 'no-cache',
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((res) => {
+        console.log(res.status)
+        return res.json()
+      })
+      .then((data) => {
+        setQuestions(data.questionList)
+      })
+      .catch((err) => console.log(err))
   }
 
   return (

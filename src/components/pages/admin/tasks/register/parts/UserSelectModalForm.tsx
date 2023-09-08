@@ -101,7 +101,7 @@ const UserSelectModalForm = ({ fetchData }: { fetchData: FetchUserModalData }) =
 
     const query = searchQuerys.filter((query) => query !== "").join("&")
 
-    fetch(`/api/admin/tasks/register/modal?${query}`, {
+    fetch(`/api/admin/tasks/register/users?${query}`, {
       cache: 'no-cache',
       method: 'GET',
       headers: {
