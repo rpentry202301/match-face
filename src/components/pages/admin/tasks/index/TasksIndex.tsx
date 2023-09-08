@@ -40,7 +40,7 @@ const TasksIndex = async ({ departments, searchParams }: Props) => {
 
   // tasksデータの取得
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/admin/tasks${query && "?" + query}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/admin/tasks${query && "?" + query}`,
     {
       method: "GET",
       headers: {
