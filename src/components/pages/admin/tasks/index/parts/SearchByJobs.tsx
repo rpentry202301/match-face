@@ -3,19 +3,20 @@ import Input from "@/components/ui/Input";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import WhiteCheckButton from "@/components/ui/button/WhiteCheckButton";
 import { SyntheticEvent, useMemo, useState } from "react";
-
-// 削除予定
-import { departments } from "@/const/tasks";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Departments } from "@/types/admin/tasks/types";
 
-const SearchByJobs = () => {
+/**
+ * @author Hayato Kobayashi
+ * @todo_1 レスポンシブ対応
+ */
+const SearchByJobs = ({ departments }: Props) => {
   const [jobsFilter, setJobsFilter] = useState<number[]>([]); // 職種フィルター状態管理
   const [inputVal, setInputVal] = useState<string>(""); // 検索入力値状態管理
 
   const router = useRouter();
 
-  // 検索条件をクエリに設定
+  // 検索条件に設定するクエリ
   const query = useMemo(() => {
     if (jobsFilter.length === 0 && inputVal.length === 0) return "";
 
@@ -55,10 +56,7 @@ const SearchByJobs = () => {
       });
       setJobsFilter(newArr);
     }
-    // console.log("jobsFilter2", jobsFilter);
   };
-
-  // 検索条件を含めたクエリを生成
 
   return (
     <div className="border-2 rounded-md w-3/6 mx-auto mt-6 p-3">
@@ -102,6 +100,10 @@ const SearchByJobs = () => {
       </div>
     </div>
   );
+};
+
+type Props = {
+  departments: Departments[];
 };
 
 export default SearchByJobs;

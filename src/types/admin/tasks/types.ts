@@ -47,3 +47,13 @@ interface Tasks_AnswerUserList {
   userName: string;
   answered: boolean;
 }
+
+// departments
+export interface Departments {
+  id: number;
+  name: string;
+  createtdUser: string;
+  createdAt: Date;
+  updateUser: string;
+  updateAt: Date;
+}
