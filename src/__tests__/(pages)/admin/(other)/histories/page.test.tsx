@@ -41,7 +41,7 @@ describe('管理者/履歴一覧画面のテスト',() => {
                 expect(view.container).toMatchSnapshot()
             })
         })
-    })
+    })      
     describe('リストテスト',()=>{
         beforeEach(async()=>{
             await act(()=>render(
