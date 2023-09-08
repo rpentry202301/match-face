@@ -3,7 +3,7 @@
 exports[`管理者/履歴一覧画面のテスト スナップショットテスト レンダリング時 1`] = `
 <div>
   <section
-    class="w-[75vw] ml-[12.5vw] border-2 text-center my-[5vh] py-[5vh]"
+    class="w-[75vw] ml-[12.5vw] border-2 text-center my-[5vh] py-[5vh] max-md:w-[90vw] max-md:ml-[5vw]"
   >
     <form
       action="submit"
@@ -31,10 +31,10 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
         </select>
       </div>
       <div
-        class="mb-[2vh] flex mx-auto flex-wrap w-[65vw] justify-between"
+        class="mb-[1.5vh] flex mx-auto flex-wrap w-[65vw] justify-between max-lg:after:contents:'' max-lg:after:w-[100px] max-lg:before:contents:'' max-lg:before:w-[100px] max-lg:before:order-1"
       />
       <div
-        class="lg:flex justify-center mb-[2vh] max-w-[55vw] ml-[10vw]"
+        class="lg:flex justify-center mb-[2vh] w-[55vw] ml-[10vw] max-md:w-[70vw]"
       >
         <legend
           class="lg:w-[215px] lg:h-10 lg:leading-10"
@@ -57,30 +57,32 @@ exports[`管理者/履歴一覧画面のテスト スナップショットテス
       </div>
     </form>
   </section>
-  <section>
+  <section
+    class=" max-md:overflow-x-auto max-md:mb-[30px]"
+  >
     <table
-      class="border-collapse border border-slate-deep-gray w-[75vw] ml-[12.5vw] text-center mb-[10vh]"
+      class="border-collapse border border-slate-deep-gray w-[75vw] ml-[12.5vw] text-center mb-[10vh] max-md:w-[180vw] max-md:mb-1 max-md:mx-[5vw]"
     >
       <thead>
         <tr>
           <th
-            class="border border-slate-deep-gray bg-light-gray w-[5vw]"
+            class="border border-slate-deep-gray bg-light-gray w-[5vw] py-2"
             id="open"
           />
           <th
-            class="border border-slate-deep-gray bg-light-gray w-[15vw]"
+            class="border border-slate-deep-gray bg-light-gray w-[15vw] py-2"
             id="answer_answerDate"
           >
             最終更新日
           </th>
           <th
-            class="border border-slate-deep-gray bg-light-gray w-[15vw]"
+            class="border border-slate-deep-gray bg-light-gray w-[15vw] py-2"
             id="project_name"
           >
             案件名
           </th>
           <th
-            class="border border-slate-deep-gray bg-light-gray w-[40vw]"
+            class="border border-slate-deep-gray bg-light-gray w-[40vw] py-2"
             id="project_detail"
           >
             案件概要

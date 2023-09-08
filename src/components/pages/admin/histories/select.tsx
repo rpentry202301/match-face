@@ -12,7 +12,7 @@ const HistoriesSelect = ({className}:{className:string}) => {
     const [formData,setFormData] = useState<{month:string,department:number[],skills:number[]}>({month:"",department:[],skills:[]})
     const dispatch:Dispatch<SelectHistoryAction> = useSelectHistoryDispatch()
     const style = twMerge(
-        "w-[75vw] ml-[12.5vw] border-2 text-center my-[5vh] py-[5vh]",
+        "w-[75vw] ml-[12.5vw] border-2 text-center my-[5vh] py-[5vh]  max-md:w-[90vw] max-md:ml-[5vw]",
         className
         );
     const [departments,setDepartments] = useState([])
@@ -61,17 +61,17 @@ const HistoriesSelect = ({className}:{className:string}) => {
                         ))}
                     </select>
                 </div>
-                <div className="mb-[2vh] flex mx-auto flex-wrap w-[65vw] justify-between">
+                <div className="mb-[1.5vh] flex mx-auto flex-wrap w-[65vw] justify-between max-lg:after:contents:'' max-lg:after:w-[100px] max-lg:before:contents:'' max-lg:before:w-[100px] max-lg:before:order-1">
                     {departments.map((department:Departments)=>(
                         <WhiteButtonCheckBox 
                             label={department.name} key={department.id} value={department.id} id={department.name}
-                            className="text-sm w-[100px]"
+                            className="text-sm w-[100px] mb-2"
                             onClick={(e) => {
                             setArray(e, formData, setFormData, 'department');
                             } }/>
                     ))}
                 </div>
-                <div className="lg:flex justify-center mb-[2vh] max-w-[55vw] ml-[10vw]">
+                <div className="lg:flex justify-center mb-[2vh] w-[55vw] ml-[10vw] max-md:w-[70vw]">
                 <legend className="lg:w-[215px] lg:h-10 lg:leading-10">使用技術：</legend>
                 <fieldset id="skill" name="skill" className="text-justify">
                         {skills.map((skill:Skills)=>(
