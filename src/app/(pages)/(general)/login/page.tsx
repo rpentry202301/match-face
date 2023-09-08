@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import SiteTitle from '@/components/ui/SiteTitle';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useState } from 'react';
-import { cookies } from 'next/headers';
 
 // データの型はnumberだが、都合上stringに設定
 type LoginForm = {
