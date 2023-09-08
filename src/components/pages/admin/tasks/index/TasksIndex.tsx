@@ -20,7 +20,10 @@ const TasksIndex = async ({ departments, searchParams }: Props) => {
    */
   const searchKeywordQuery = searchKeyword
     ? Array.isArray(searchKeyword)
-      ? `searchKeyword=${searchKeyword.join("_")}`
+      ? searchKeyword.map((word, i) => {
+        if (i === 0) return `searchKeyword=${word}`;
+          return `&searchKeyword=${word}}`;
+      }).join("")
       : `searchKeyword=${searchKeyword}`
     : "";
   /**
