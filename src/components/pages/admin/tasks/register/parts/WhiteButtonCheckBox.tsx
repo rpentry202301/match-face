@@ -8,7 +8,7 @@ const WhiteButtonCheckBox = ({ id, label, ...props }: W_BtnProps) => {
   const mergeStyle = twMerge(baseStyle + props.className);
   return (
     <div>
-      <input {...props} type="checkbox" id={id} className={"peer hidden"} />
+      <input {...props} type="checkbox" id={id} className={"peer hidden"} data-testid={`check-box:${label}`} />
       <label htmlFor={id} className={`${mergeStyle} cursor-pointer peer-checked:shadow-sm peer-checked:bg-gray-200 peer-checked:translate-y-0.5`}>
         {label}
       </label>

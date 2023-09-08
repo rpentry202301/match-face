@@ -22,15 +22,15 @@ const HistoriesSelect = ({className}:{className:string}) => {
 
     useEffect(()=>{
         async function setData(){
-            const response_departments = await fetch('http://localhost:3000/api/admin/histories/departments')
+            const response_departments = await fetch('/api/admin/histories/departments')
             if (!response_departments.ok){ throw new Error('Failed to fetch data');}
             const department = await response_departments.json()
             setDepartments(department)
-            const response_skills = await fetch('http://localhost:3000/api/admin/histories/skills')
+            const response_skills = await fetch('/api/admin/histories/skills')
             if (!response_skills.ok){ throw new Error('Failed to fetch data');}
             const skill = await response_skills.json()
             setSkills(skill)
-            const response_answer_request_groups = await fetch('http://localhost:3000/api/admin/histories')
+            const response_answer_request_groups = await fetch('/api/admin/histories')
             if (!response_answer_request_groups.ok){ throw new Error('Failed to fetch data');}
             const answer_request_group = await response_answer_request_groups.json()
             setAnswerRequestGroups(answer_request_group)

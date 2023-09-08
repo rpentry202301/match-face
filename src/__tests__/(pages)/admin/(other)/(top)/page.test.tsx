@@ -5,8 +5,8 @@ import React from "react";
 import "@testing-library/jest-dom";
 import { dataArray } from "@/const/adminTop";
 
-const user = userEvent.setup();
 describe("adminトップページのテスト", () => {
+  const user = userEvent.setup();
   beforeEach(() => {
     render(<AdminHome />);
   });
