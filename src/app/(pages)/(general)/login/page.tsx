@@ -29,7 +29,7 @@ const LoginPage = () => {
 
   const onSubmit: SubmitHandler<LoginForm> = async (data, event: any) => {
     event.preventDefault();
-    const response = await fetch('http://localhost:3000/api/login', {
+    const response = await fetch('/api/login', {
       cache: 'no-store',
       method: 'POST',
       headers: {
