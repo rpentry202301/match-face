@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserSelectModal.tsx スナップショットテスト モーダルを開いている状態 1`] = `
+exports[`UserSelectModalForm.tsx スナップショットテスト モーダルを開いている状態 1`] = `
 <body>
   <div />
   <div
@@ -463,16 +463,16 @@ exports[`UserSelectModal.tsx スナップショットテスト モーダルを�
                   value=""
                 />
                 <option
-                  data-testid="group:グループ2"
-                  value="グループ2"
-                >
-                  グループ2
-                </option>
-                <option
                   data-testid="group:グループ1"
                   value="グループ1"
                 >
                   グループ1
+                </option>
+                <option
+                  data-testid="group:グループ2"
+                  value="グループ2"
+                >
+                  グループ2
                 </option>
               </select>
             </div>
