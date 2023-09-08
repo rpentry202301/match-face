@@ -13,7 +13,7 @@ export default function HistoriesList (){
 
     useEffect(()=>{
         async function setData(){
-            const response_answer_request_groups = await fetch('http://localhost:3000/api/admin/histories')
+            const response_answer_request_groups = await fetch('/api/admin/histories')
             if(!response_answer_request_groups.ok){throw new Error('Failed to fetch data')}
             const answer_request_group = await response_answer_request_groups.json()
             setAnswerRequestGroups(answer_request_group)
@@ -43,7 +43,7 @@ export default function HistoriesList (){
         if(formData===undefined||(formData.month===""&&formData.department.length===0&&formData.skills.length===0)){
             data = answer_request_groups
         }else{
-            const response = await fetch(`http://localhost:3000/api/admin/histories/select?answerDate=${formData.month}-01&departmentId=${formData.department}&skillId=${formData.skills}`)
+            const response = await fetch(`/api/admin/histories/select?answerDate=${formData.month}-01&departmentId=${formData.department}&skillId=${formData.skills}`)
             if(!response.ok)throw new Error('Failed to fetch data')
             const select_data = await response.json()
             data = select_data
