@@ -6,7 +6,7 @@ export async function POST(request: Request) {
   const userId = res.userId;
   const password = res.password;
   const response = await fetch(
-    `http://localhost:8080/qa_system_api/users/${userId}?password=${password}`
+    `${process.env.BE_URL}/users/${userId}?password=${password}`
   );
   const data = await response.json();
   cookies().set({
