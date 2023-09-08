@@ -15,7 +15,6 @@ type LoginForm = {
 const AdminLoginPage = () => {
   const router = useRouter();
   const [inValidAdministrator, setInValidAdministrator] = useState(false);
-  console.log('inValidAdministrator', inValidAdministrator);
 
   // フックフォーム
   const {
@@ -42,7 +41,6 @@ const AdminLoginPage = () => {
       // ユーザーIDとパスワードが一致するデータがあればオブジェクト、なければ{administrator:"[]"}が返ってくる
       const administratorData = await response.json();
       const administrator = administratorData.administrator;
-      console.log('administratorData', administratorData);
       if (administrator.length === 0) {
         setInValidAdministrator(true);
       }
@@ -81,12 +79,6 @@ const AdminLoginPage = () => {
                       value: /^[0-9]+$/,
                       message: '※半角数字で入力してください。',
                     },
-                    // validate: {
-                    //   checkUserId: () =>
-                    //     inValidAdministrator
-                    //       ? '※正しいユーザーIDを入力してください。'
-                    //       : undefined,
-                    // },
                   })}
                 />
               </div>
