@@ -1,12 +1,12 @@
 import GroupTableFromDb from "@/components/pages/admin/groups/GroupTableFromDB";
-import GroupTableServerSide from "@/components/pages/admin/groups/GroupTableServerside";
+import GroupsTable from "@/components/pages/admin/groups/GroupsTable";
 
 const GroupsPage = () => {
   return (
     <>
-      <GroupTableFromDb />
+      {/* <GroupTableFromDb /> */}
       {/* サーバーサイドでデータ取得完了後、こちらを実装したい*/}
-      <GroupTableServerSide/> 
+      <GroupsTable/>
     </>
   );
 };

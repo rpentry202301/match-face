@@ -1,3 +1,5 @@
+// 使用せず。追って削除 
+
 export const fetchData = async()=>{
     const url = process.env['BE_URL']
   
@@ -28,6 +30,5 @@ export const fetchData = async()=>{
       return formattedData
     }else{
       console.error('jsonデータが配列でない')
-  
     }
   }

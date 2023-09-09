@@ -10,3 +10,7 @@ updatedAt:string,
 userList:any[], 
 memberCount:number
 }
+
+export type GroupAction = | {
+type:'SET_DATA'; payload:Groups[]
+} 

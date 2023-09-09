@@ -1,13 +1,15 @@
+// 使用せず。追って削除。
+
 export const getGroup = async () => {
   const url = process.env['NEXT_PUBLIC_BE_URL']
 
   // 確認用→成功したのでコメントアウト
-  //  const checkData = async() => {
-  //     const response = await fetch('http://localhost:3000/api/admin/groups',{cache:"no-cache"})
-  //     const data = await response.json()
-  //     console.log('API経由で取得',data)
-  // }
-  // checkData()
+    // const checkData = async() => {
+    //     const response = await fetch('http://localhost:3000/api/admin/groups',{cache:"no-cache"})
+    //     const data = await response.json()
+    //     console.log('API経由で取得',data)
+    // }
+    // checkData()
 
   const response = await fetch(`http://localhost:3000/api/admin/groups`, {
     cache: "no-cache",

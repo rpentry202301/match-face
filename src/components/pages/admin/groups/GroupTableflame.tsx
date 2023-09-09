@@ -1,41 +1,44 @@
+'use client'
 
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import Link from "next/link";
 import OrangeButton from "@/components/ui/button/OrangeButton";
-import { fetchData } from "./fetchData";
+import type { Groups } from "@/types/admin/groups/groups";
 
-const GroupTableServerSide = async () => {
-  const data = await fetchData();
+// propsの型定義後で修正
+const GroupTableflame = (props:any) => {
 
-  // モーダル表示(要any解決)
-  // const [isOpen, setIsOpen] = useState(false);
-  // const [selectedGroupingDate, setSelectedGroupingDate] = useState("");
-  // const [selectedGroupName, setSelectedGroupName] = useState("");
-  // const [selectedGroupDescription, setSelectedGroupDescription] = useState("");
-  // const [selectedGroupMember, setSelectedGroupMember] = useState("");
+  const data = props.data
 
-  // const toggleModal = (data: any) => {
-  //   setSelectedGroupingDate(data.createdAt);
-  //   setSelectedGroupName(data.name);
-  //   setSelectedGroupDescription(data.description);
-  //   if (data.memberCount > 0) {
-  //     setSelectedGroupMember(
-  //       data.userList.map((member: string) => member).join(",")
-  //     );
-  //   } else {
-  //     setSelectedGroupMember("");
-  //   }
-  //   setIsOpen(!isOpen);
-  // };
+  // モーダル表示
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedGroupingDate, setSelectedGroupingDate] = useState("");
+  const [selectedGroupName, setSelectedGroupName] = useState("");
+  const [selectedGroupDescription, setSelectedGroupDescription] = useState("");
+  const [selectedGroupMember, setSelectedGroupMember] = useState("");
+
+  const toggleModal = (obj:Groups) => {
+    setSelectedGroupingDate(obj.createdAt);
+    setSelectedGroupName(obj.name);
+    setSelectedGroupDescription(obj.description);
+    if (obj.memberCount > 0) {
+      setSelectedGroupMember(
+        obj.userList.map((member: string) => member).join(",")
+      );
+    } else {
+      setSelectedGroupMember("");
+    }
+    setIsOpen(!isOpen);
+  };
 
   return (
     <>
       {/* モーダル内テーブル */}
-      {/* {isOpen && (
+      {isOpen && (
         <div>
           <div
             className="block w-full h-full bg-black/30 absolute top-0 left-0"
-            onClick={() => toggleModal(data)}
+            onClick={() => setIsOpen(!isOpen)}
           >
             <div className="flex flex-col items-center justify-center h-screen">
               <div className="bg-orange  h-9 w-3/5">
@@ -87,7 +90,7 @@ const GroupTableServerSide = async () => {
             </div>
           </div>
         </div>
-      )} */}
+      )}
 
       {/* 通常表示テーブル */}
 
@@ -121,7 +124,7 @@ const GroupTableServerSide = async () => {
                   style={{ textAlign: "center" }}
                 >
                   <button
-                    // onClick={() => toggleModal(obj)}
+                    onClick={() => toggleModal(obj)}
                     className="hover:bg-amber-200 duration-200"
                     data-testid={`group_${obj.id}`}
                   >
@@ -139,12 +142,14 @@ const GroupTableServerSide = async () => {
           </tbody>
         </table>
         <br />
+        {!isOpen && (
         <Link href={"/admin/groups/register"} data-testid="register">
           <OrangeButton label="新規グループ作成" />
         </Link>
+        )}
       </div>
     </>
   );
 };
 
-export default GroupTableServerSide;
+export default GroupTableflame;

@@ -1,12 +1,15 @@
 "use client";
 
+//使用せず。追って削除 
+
 import React, { useState, useEffect } from "react";
 import { getGroup } from "./getGroups";
 import Link from "next/link";
 import OrangeButton from "@/components/ui/button/OrangeButton";
+import type { Groups } from "@/types/admin/groups/groups";
 
 const GroupTableFromDb = () => {
-  const [groupData, setGroupData] = useState([]);
+  const [groupData, setGroupData] = useState<Groups[] | undefined>([]);
   useEffect(() => {
     const getData = async () => {
       try {
@@ -28,13 +31,13 @@ const GroupTableFromDb = () => {
   const [selectedGroupMember, setSelectedGroupMember] = useState("");
 
   // 要any解決
-  const toggleModal = (groupData: any) => {
-    setSelectedGroupingDate(groupData.createdAt);
-    setSelectedGroupName(groupData.name);
-    setSelectedGroupDescription(groupData.description);
-    if (groupData.memberCount > 0) {
+  const toggleModal = (obj:Groups) => {
+    setSelectedGroupingDate(obj.createdAt);
+    setSelectedGroupName(obj.name);
+    setSelectedGroupDescription(obj.description);
+    if (obj.memberCount > 0) {
       setSelectedGroupMember(
-        groupData.userList.map((member: string) => member).join(",")
+        obj.userList.map((member: string) => member).join(",")
       );
     } else {
       setSelectedGroupMember("");
@@ -49,7 +52,7 @@ const GroupTableFromDb = () => {
         <div>
           <div
             className="block w-full h-full bg-black/30 absolute top-0 left-0"
-            onClick={() => toggleModal(groupData)}
+            onClick={() => setIsOpen(!isOpen)}
           >
             <div className="flex flex-col items-center justify-center h-screen">
               <div className="bg-orange  h-9 w-3/5">
@@ -120,7 +123,7 @@ const GroupTableFromDb = () => {
             </tr>
           </thead>
           <tbody>
-            {groupData.map((obj: any) => (
+            {groupData?.map((obj: any) => (
               <tr key={obj.id}>
                 <td
                   className="border px-4 py-2 "
