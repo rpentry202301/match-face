@@ -1,12 +1,8 @@
 import GroupTableflame from "./GroupTableflame";
-
+import { fetchData } from "./fetchData";
 
 const GroupsTable = async () => {
-  const url = process.env["BE_URL"];
-
-  const response = await fetch(`${url}/groups`, { cache: "no-cache" });
-  const rowData = await response.json();
-  const data = rowData.groupList;
+  const data = await fetchData();
 
   // 日付表記をtimestampからyyyy-mm-ddに変更
   if (Array.isArray(data)) {
