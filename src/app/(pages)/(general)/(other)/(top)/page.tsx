@@ -1,6 +1,5 @@
 import Menu from '@/components/ui/Menu';
 import Notification from '@/components/pages/general/top/Notification';
-import { trueAnswerRequests, falseAnswerRequests } from '@/const/notification';
 
 type MenuContent = {
   id: number;
