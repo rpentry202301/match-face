@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TaskList.tsx スナップショットテスト 1`] = `
+<div>
+  <div
+    class="border-2 rounded-md w-3/6 mx-auto mt-6 p-3"
+  >
+    <div
+      class="w-full mb-4"
+    >
+      <div
+        class="mb-2"
+      >
+        <h2
+          class="text-base ml-3"
+        >
+          ▶️募集職種で検索
+        </h2>
+      </div>
+      <div
+        class="flex justify-center"
+      >
+        <button
+          class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16 mx-3"
+          data-testid="btn_Java"
+        >
+          Java
+        </button>
+        <button
+          class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16 mx-3"
+          data-testid="btn_PHP"
+        >
+          PHP
+        </button>
+        <button
+          class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16 mx-3"
+          data-testid="btn_FR"
+        >
+          FR
+        </button>
+        <button
+          class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16 mx-3"
+          data-testid="btn_CL"
+        >
+          CL
+        </button>
+        <button
+          class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16 mx-3"
+          data-testid="btn_ML"
+        >
+          ML
+        </button>
+        <button
+          class="bg-white hover:bg-gray-100 py-2 px-4 rounded-full border shadow-md text-xs w-16 mx-3"
+          data-testid="btn_QA"
+        >
+          QA
+        </button>
+      </div>
+    </div>
+    <div
+      class="w-full"
+    >
+      <div
+        class="mb-2"
+      >
+        <h2
+          class="text-base ml-3"
+        >
+          ▶️案件名/ユーザー名で検索
+        </h2>
+      </div>
+      <form
+        class="flex flex-col items-center"
+      >
+        <div>
+          <input
+            class="border border-light-gray text-xs p-1 w-[35rem]"
+            data-testid="search-box"
+            id="search"
+          />
+        </div>
+        <div>
+          <button
+            class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white rounded-xl p-2 h-auto w-20 text-sm mt-2"
+            type="submit"
+          >
+            検索
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+`;

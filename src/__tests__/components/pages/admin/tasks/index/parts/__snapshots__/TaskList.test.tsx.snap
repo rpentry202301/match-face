@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TaskList.tsx スナップショットテスト 1`] = `
+<div>
+  <div>
+    <table
+      class="border-collapse border-2 border-deep-gray text-sm"
+    >
+      <thead
+        class="bg-light-gray"
+      >
+        <tr>
+          <th
+            class="border-2 border-deep-gray p-2 text-center w-72"
+          >
+            案件名
+          </th>
+          <th
+            class="border-2 border-deep-gray p-2 text-center w-16"
+          >
+            質問数
+          </th>
+          <th
+            class="border-2 border-deep-gray p-2 text-center w-16"
+          >
+            職種
+          </th>
+          <th
+            class="border-2 border-deep-gray p-2 text-center w-72"
+          >
+            回答ユーザー
+          </th>
+          <th
+            class="border-2 border-deep-gray p-2 text-center w-28"
+          >
+            期日
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td
+            class="border-2 border-deep-gray p-2 text-center"
+          >
+            バックエンド案件
+          </td>
+          <td
+            class="border-2 border-deep-gray p-2 text-center"
+          >
+            2
+          </td>
+          <td
+            class="border-2 border-deep-gray p-2 text-center"
+            data-testid="task-data-[object Object]"
+          >
+            Java
+          </td>
+          <td
+            class="border-2 border-deep-gray p-2 text-center"
+          >
+            <span>
+              テスト太郎
+            </span>
+          </td>
+          <td
+            class="border-2 border-deep-gray p-2 text-center"
+          >
+            2023-12-01
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-2 border-deep-gray p-2 text-center"
+          >
+            バックエンド案件
+          </td>
+          <td
+            class="border-2 border-deep-gray p-2 text-center"
+          >
+            2
+          </td>
+          <td
+            class="border-2 border-deep-gray p-2 text-center"
+            data-testid="task-data-[object Object]"
+          >
+            PHP
+          </td>
+          <td
+            class="border-2 border-deep-gray p-2 text-center"
+          >
+            <span>
+              テスト太郎
+            </span>
+          </td>
+          <td
+            class="border-2 border-deep-gray p-2 text-center"
+          >
+            2023-12-01
+          </td>
+        </tr>
+        <tr>
+          <td
+            class="border-2 border-deep-gray p-2 text-center"
+          >
+            フロントエンド案件
+          </td>
+          <td
+            class="border-2 border-deep-gray p-2 text-center"
+          >
+            2
+          </td>
+          <td
+            class="border-2 border-deep-gray p-2 text-center"
+            data-testid="task-data-[object Object]"
+          >
+            FR
+          </td>
+          <td
+            class="border-2 border-deep-gray p-2 text-center"
+          >
+            <span>
+              テスト太郎
+            </span>
+          </td>
+          <td
+            class="border-2 border-deep-gray p-2 text-center"
+          >
+            2023-12-01
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;

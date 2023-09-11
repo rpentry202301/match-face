@@ -11,9 +11,18 @@ jest.mock("next/navigation", () => ({
 }));
 
 describe("TaskList.tsx", () => {
+  beforeAll(() => {
+    jest.clearAllMocks();
+    cleanup();
+  })
   afterAll(() => {
     jest.clearAllMocks();
     cleanup();
+  });
+
+  it("スナップショットテスト", () => {
+    const { container } = render(<SearchByJobs departments={departments} />);
+    expect(container).toMatchSnapshot();
   });
 
   describe("入力テスト", () => {
