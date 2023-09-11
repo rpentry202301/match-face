@@ -13,27 +13,42 @@ type MenuContent = {
 
 // todo: データは日付の昇順で並べる
 // ダミーデータ
-const completedData = trueAnswerRequests;
-const incompletedData = falseAnswerRequests;
+// const completedData = trueAnswerRequests;
+// const notAnsweredAnswerRequests = falseAnswerRequests;
 
 const Top = async () => {
+  // 進捗状況データ取得
+
+  // 回答済データ
+  const answeredRes = await fetch(
+    `${process.env.BE_URL}/user/1/answer_requests/is_answered/true`,
+    { cache: 'no-store' }
+  );
+  const answeredData = await answeredRes.json();
+  const answeredAnswerRequests = answeredData.progressAnswerRequestList;
+
+  // 未回答データ
+  const notAnsweredRes = await fetch(
+    `${process.env.BE_URL}/user/1/answer_requests/is_answered/false`,
+    { cache: 'no-store' }
+  );
+  const notAnsweredData = await notAnsweredRes.json();
+  const notAnsweredAnswerRequests = notAnsweredData.progressAnswerRequestList;
+
+  // メニューボタン用データ取得
   const response = await fetch(`${process.env.BE_URL}/user_main_elements`, {
     cache: 'no-store',
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
   });
   const topData = await response.json();
   const menuContentsArray = topData.userMainElementList;
-  // console.log('menuContentsArray', menuContentsArray);
+
   return (
     <main>
       <div className="flex flex-col items-center mt-8 mb-20">
         <Notification
           className=""
-          completedData={completedData}
-          incompletedData={incompletedData}
+          answeredAnswerRequests={answeredAnswerRequests}
+          notAnsweredAnswerRequests={notAnsweredAnswerRequests}
         />
       </div>
 
