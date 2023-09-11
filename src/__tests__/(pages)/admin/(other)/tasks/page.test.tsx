@@ -9,6 +9,11 @@ jest.mock("next/navigation", () => ({
   }),
 }));
 
+/**
+ * ※Next.js&Jest自体のバグにより、このテストは無意味なものになりました。
+ * @author Hayato Kobayashi
+ * @note asyncコンポーネントのスナップショットテストは出来ない(公式にもissueあり)
+ */
 describe("タスク一覧画面", () => {
   afterAll(() => {
     jest.clearAllMocks();
