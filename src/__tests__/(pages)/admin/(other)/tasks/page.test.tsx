@@ -1,7 +1,6 @@
 import TasksPage from "@/app/(pages)/admin/(other)/tasks/page";
 import { cleanup, render } from "@testing-library/react";
 import { UserSelectProvider } from "@/hooks/store/context/UserSelectContext";
-import { FilterProvider } from "@/hooks/store/context/TasksContext";
 
 // useContextをモーダルで使用しているため、Providerを追加しています
 
@@ -17,11 +16,9 @@ describe("タスク一覧画面", () => {
 
   it("レンダリング時", () => {
     const { container } = render(
-      <FilterProvider>
         <UserSelectProvider>
-          <TasksPage />
+          <TasksPage searchParams={{departmentId: "", searchKeyword: ""}}/>
         </UserSelectProvider>
-      </FilterProvider>
     );
     expect(container).toMatchSnapshot();
   });

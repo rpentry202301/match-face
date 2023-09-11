@@ -90,6 +90,7 @@ const SearchByJobs = ({ departments }: Props) => {
                 label={department.name}
                 className="text-xs w-16 mx-3"
                 onClick={() => handleSetFilter(department.id)}
+                data-testid={`btn_${department.name}`}
               />
             );
           })}

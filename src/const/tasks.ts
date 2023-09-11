@@ -1,27 +1,52 @@
+// テスト用データ
 export const departments = [
   {
     id: 1,
     name: "Java",
+    createtdUser: "hoge",
+    createdAt: new Date(),
+    updateUser: "hoge",
+    updateAt: new Date(),
   },
   {
     id: 2,
     name: "PHP",
+    createtdUser: "hoge",
+    createdAt: new Date(),
+    updateUser: "hoge",
+    updateAt: new Date(),
   },
   {
     id: 3,
     name: "FR",
+    createtdUser: "hoge",
+    createdAt: new Date(),
+    updateUser: "hoge",
+    updateAt: new Date(),
   },
   {
     id: 4,
     name: "CL",
+    createtdUser: "hoge",
+    createdAt: new Date(),
+    updateUser: "hoge",
+    updateAt: new Date(),
   },
   {
     id: 5,
     name: "ML",
+    createtdUser: "hoge",
+    createdAt: new Date(),
+    updateUser: "hoge",
+    updateAt: new Date(),
   },
   {
     id: 6,
     name: "QA",
+    createtdUser: "hoge",
+    createdAt: new Date(),
+    updateUser: "hoge",
+    updateAt: new Date(),
   },
 ];
 

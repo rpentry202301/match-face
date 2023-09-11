@@ -2,11 +2,7 @@ import OrangeButton from "@/components/ui/button/OrangeButton";
 import SearchByJobs from "./parts/SearchByJobs";
 import TaskList from "./parts/TaskList";
 import Link from "next/link";
-import {
-  Answer_RequestsType,
-  Departments,
-  TasksType,
-} from "@/types/admin/tasks/types";
+import { Answer_RequestsType, Departments } from "@/types/admin/tasks/types";
 
 /**
  * @author Hayato Kobayashi
