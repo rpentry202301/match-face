@@ -1,3 +1,5 @@
+import { Answer_RequestsType } from "@/types/admin/tasks/types";
+
 // テスト用データ
 export const departments = [
   {
@@ -50,53 +52,121 @@ export const departments = [
   },
 ];
 
-export const tasks = [
-  {
-    id: 1,
-    project_name: "hoge",
-    department: "Java",
-    question: ["hoge", "hoge", "hoge"],
-    users: ["佐藤太郎", "鈴木次郎", "伊藤三郎"],
-    answer_deadline: "2100-01-01",
-  },
-  {
-    id: 2,
-    project_name: "foo",
-    department: "PHP",
-    question: ["foo", "foo", "foo"],
-    users: ["佐藤太郎", "鈴木次郎", "伊藤三郎", "田中四郎"],
-    answer_deadline: "2100-01-01",
-  },
-  {
-    id: 3,
-    project_name: "bar",
-    department: "FR",
-    question: ["bar", "bar", "bar"],
-    users: ["佐藤太郎", "鈴木次郎", "伊藤三郎"],
-    answer_deadline: "2100-01-01",
-  },
-  {
-    id: 4,
-    project_name: "hogehoge",
-    department: "CL",
-    question: ["hogehoge", "hogehoge", "hogehoge"],
-    users: ["佐藤太郎", "鈴木次郎", "伊藤三郎"],
-    answer_deadline: "2200-01-01",
-  },
-  {
-    id: 5,
-    project_name: "foofoo",
-    department: "ML",
-    question: ["foofoo", "foofoo", "foofoo"],
-    users: ["佐藤太郎", "鈴木次郎", "伊藤三郎", "田中四郎"],
-    answer_deadline: "2200-01-01",
-  },
-  {
-    id: 6,
-    project_name: "barbar",
-    department: "QA",
-    question: ["barbar", "barbar", "barbar"],
-    users: ["佐藤太郎", "鈴木次郎", "伊藤三郎"],
-    answer_deadline: "2200-01-01",
-  },
-];
+export const answer_requests: Answer_RequestsType = {
+  answerRequests: [
+    {
+      id: 1,
+      project: {
+        id: 1,
+        name: "バックエンド案件",
+        detail: "販促アプリの新規開発、既存システムの保守・運用。",
+        enterpriseId: 0,
+        departmentId: 0,
+        questionList: [],
+        createdUser: "",
+        createdAt: "-999999999-01-01T00:00:00",
+        updateUser: "",
+        updateAt: "-999999999-01-01T00:00:00",
+        deleted: false,
+      },
+      department: {
+        id: 1,
+        name: "Java",
+        createdUser: "",
+        createdAt: "-999999999-01-01T00:00:00",
+        updateUser: "",
+        updateAt: "-999999999-01-01T00:00:00",
+      },
+      answerUserList: [
+        {
+          answerRequestId: 1,
+          userId: 1,
+          userName: "テスト太郎",
+          answered: false,
+        },
+      ],
+      questionCount: 2,
+      deadline: "2023-12-01T18:00:00",
+      createdUser: "テスト用",
+      createdAt: "2023-09-11T11:51:22.182407",
+      updateUser: "テスト用",
+      updateAt: "2023-09-11T11:51:22.182407",
+    },
+    {
+      id: 2,
+      project: {
+        id: 2,
+        name: "バックエンド案件",
+        detail: "販促アプリの新規開発、既存システムの保守・運用。",
+        enterpriseId: 0,
+        departmentId: 0,
+        questionList: [],
+        createdUser: "",
+        createdAt: "-999999999-01-01T00:00:00",
+        updateUser: "",
+        updateAt: "-999999999-01-01T00:00:00",
+        deleted: false,
+      },
+      department: {
+        id: 2,
+        name: "PHP",
+        createdUser: "",
+        createdAt: "-999999999-01-01T00:00:00",
+        updateUser: "",
+        updateAt: "-999999999-01-01T00:00:00",
+      },
+      answerUserList: [
+        {
+          answerRequestId: 2,
+          userId: 2,
+          userName: "テスト太郎",
+          answered: false,
+        },
+      ],
+      questionCount: 2,
+      deadline: "2023-12-01T18:00:00",
+      createdUser: "テスト用",
+      createdAt: "2023-09-11T11:51:22.182407",
+      updateUser: "テスト用",
+      updateAt: "2023-09-11T11:51:22.182407",
+    },
+    {
+      id: 3,
+      project: {
+        id: 3,
+        name: "フロントエンド案件",
+        detail: "販促アプリの新規開発、既存システムの保守・運用。",
+        enterpriseId: 0,
+        departmentId: 0,
+        questionList: [],
+        createdUser: "",
+        createdAt: "-999999999-01-01T00:00:00",
+        updateUser: "",
+        updateAt: "-999999999-01-01T00:00:00",
+        deleted: false,
+      },
+      department: {
+        id: 3,
+        name: "FR",
+        createdUser: "",
+        createdAt: "-999999999-01-01T00:00:00",
+        updateUser: "",
+        updateAt: "-999999999-01-01T00:00:00",
+      },
+      answerUserList: [
+        {
+          answerRequestId: 3,
+          userId: 3,
+          userName: "テスト太郎",
+          answered: false,
+        },
+      ],
+      questionCount: 2,
+      deadline: "2023-12-01T18:00:00",
+      createdUser: "テスト用",
+      createdAt: "2023-09-11T11:51:22.182407",
+      updateUser: "テスト用",
+      updateAt: "2023-09-11T11:51:22.182407",
+    },
+  ],
+};
