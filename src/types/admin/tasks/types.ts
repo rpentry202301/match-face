@@ -5,9 +5,9 @@ export interface TasksType {
   department: Tasks_Department;
   answerUserList: Tasks_AnswerUserList[];
   questionCount: number;
-  deadline: Date;
+  deadline: string;
   createdUser: string;
-  createdAt: Date;
+  createdAt: string;
   updateUser: string;
   updateAt: string;
 }
