@@ -1,12 +1,21 @@
 'use client'
-import questionData from "@/const/answerEdit"
 import CheckBox from "@/components/ui/checkbox/CheckBox"
 import { ChangeEvent } from "react"
 
+type Question = {
+  id: number,
+  projectId: number,
+  projectName: string,
+  context: string,
+  updateAt: string,
+}
+
 const QuestionList = ({
+  questions,
   checkedValues,
   onChange
 }: {
+  questions: Question[],
   checkedValues: string[],
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }) => {
@@ -22,24 +31,22 @@ const QuestionList = ({
             <th className={`${tableDefaultClassName}`}>質問内容</th>
           </tr>
         </thead>
-          {questionData.map((projects) => (
-            <tbody key={`pjId_${projects.id}`}>
-              {projects.questions.map((questions) => (
-                <tr key={`userId_${questions.question_id}`}>
-                  <td className={`${tableDefaultClassName}`}>
-                    <CheckBox
-                      value={questions.question}
-                      onChange={onChange}
-                      checked={checkedValues.includes(questions.question)}
-                    />
-                  </td>
-                  <td className={`${tableDefaultClassName}`}>{projects.edit_date}</td>
-                  <td className={`${tableDefaultClassName}`}>{projects.project_name}</td>
-                  <td className={`${tableDefaultClassName}`}>{questions.question}</td>
-                </tr>
-              ))}
-            </tbody>
-          ))}
+          <tbody>
+            {questions.map((question) => (
+              <tr key={`qId_${question.id}`}>
+                <td className={`${tableDefaultClassName}`}>
+                  <CheckBox
+                    value={question.context}
+                    onChange={onChange}
+                    checked={checkedValues.includes(question.context)}
+                  />
+                </td>
+                <td className={`${tableDefaultClassName}`}>{question.updateAt.slice(0, 10)}</td>
+                <td className={`${tableDefaultClassName}`}>{question.projectName}</td>
+                <td className={`${tableDefaultClassName}`}>{question.context}</td>
+              </tr>
+            ))}
+          </tbody>
       </table>
     </div>
   )

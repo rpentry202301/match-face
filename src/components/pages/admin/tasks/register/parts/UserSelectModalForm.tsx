@@ -10,7 +10,6 @@ import { useUserSelect } from "@/hooks/store/context/UserSelectContext"
 import type { FetchUserModalData } from "@/types/admin/tasks/register/types"
 
 const UserSelectModalForm = ({ fetchData }: { fetchData: FetchUserModalData }) => {
-  // console.log(fetchData)
   const [ isOpened, setIsOpened ] = useState(false)
   const [ users, setUsers ] = useState(fetchData.users)
 
@@ -101,7 +100,7 @@ const UserSelectModalForm = ({ fetchData }: { fetchData: FetchUserModalData }) =
 
     const query = searchQuerys.filter((query) => query !== "").join("&")
 
-    fetch(`/api/admin/tasks/register/modal?${query}`, {
+    fetch(`/api/admin/tasks/register/users?${query}`, {
       cache: 'no-cache',
       method: 'GET',
       headers: {
