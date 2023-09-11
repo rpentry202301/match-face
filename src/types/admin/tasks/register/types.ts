@@ -49,3 +49,21 @@ export type FetchUserModalData = {
     },
   }[],
 }
+
+export type FetchQuestionModalData = {
+  departments: {
+    id: number,
+    name: string,
+  }[],
+  skills: {
+    id: number,
+    name: string,
+  }[],
+  questions: {
+    id: number,
+    projectId: number,
+    projectName: string,
+    context: string,
+    updateAt: string,
+  }[],
+}

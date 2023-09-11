@@ -2,7 +2,11 @@ import OrangeButton from "@/components/ui/button/OrangeButton";
 import SearchByJobs from "./parts/SearchByJobs";
 import TaskList from "./parts/TaskList";
 import Link from "next/link";
-import { Departments, TasksType } from "@/types/admin/tasks/types";
+import {
+  Answer_RequestsType,
+  Departments,
+  TasksType,
+} from "@/types/admin/tasks/types";
 
 /**
  * @author Hayato Kobayashi
@@ -12,35 +16,40 @@ const TasksIndex = async ({ departments, searchParams }: Props) => {
   // クエリから検索条件{ searchKeyword, departmentId }を取得
   const { searchKeyword, departmentId } = searchParams;
   /**
-   * 検索文字列
-   * ex)
-   * searchKeyword = "a" → "searchKeyword=a" || 
-   * searchKeyword = ["a", "b", "c"] → "searchKeyword=a_b_c" || 
-   * searchKeyword = undefined → ""
+   * ワード検索クエリ
+   * ex) "a b c" → "searchKeyword=a&searchKeyword=b&searchKeyword=c"
    */
   const searchKeywordQuery = searchKeyword
     ? Array.isArray(searchKeyword)
-      ? `searchKeyword=${searchKeyword.join("_")}`
+      ? searchKeyword
+          .map((word, i) => {
+            if (i === 0) return `searchKeyword=${word}`;
+            return `&searchKeyword=${word}`;
+          })
+          .join("")
       : `searchKeyword=${searchKeyword}`
     : "";
   /**
-   * 職種フィルター検索文字列
-   * ex)
-   * departmentId = 1 → "departmentId=1" || 
-   * departmentId = [1, 2, 3] → "departmentId=1_2_3" || 
-   * departmentId = undefined → ""
+   * 職種フィルター検索クエリ
+   * ex) [1, 2, 3] → "departmentId=1&departmentId=2&departmentId=3"
    * @note searchKeywordQueryがある場合は先頭に"&"がつく
    */
   const departmentIdQuery = departmentId
     ? Array.isArray(departmentId)
-      ? `${searchKeywordQuery && "&"}departmentId=${departmentId.join("_")}`
+      ? departmentId
+          .map((id, i) => {
+            if (i === 0)
+              return `${searchKeywordQuery && "&"}departmentId=${id}`;
+            return `&departmentId=${id}`;
+          })
+          .join("")
       : `${searchKeywordQuery && "&"}departmentId=${departmentId}`
     : "";
   const query = searchKeywordQuery + departmentIdQuery;
 
   // tasksデータの取得
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/admin/tasks${query && "?" + query}`,
+    `${process.env.BE_URL}/answer_requests${query && "?" + query}`,
     {
       method: "GET",
       headers: {
@@ -48,7 +57,7 @@ const TasksIndex = async ({ departments, searchParams }: Props) => {
       },
     }
   );
-  const tasks: TasksType[] = await res.json();
+  const answer_requests: Answer_RequestsType = await res.json();
 
   return (
     <main>
@@ -61,7 +70,7 @@ const TasksIndex = async ({ departments, searchParams }: Props) => {
         </Link>
       </div>
       <div className="flex justify-center">
-        <TaskList tasks={tasks} />
+        <TaskList tasks={answer_requests.answerRequests} />
       </div>
     </main>
   );

@@ -1,6 +1,9 @@
 import { TasksType } from "@/types/admin/tasks/types";
 
-// Todo: タスクリストを非同期通信で取得
+/**
+ * @author Hayato Kobayashi
+ * @todo_1 レスポンシブ対応
+ */
 const TaskList = ({ tasks }: { tasks: TasksType[] }) => {
   return (
     <div>
