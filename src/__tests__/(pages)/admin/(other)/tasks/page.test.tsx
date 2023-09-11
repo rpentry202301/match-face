@@ -1,24 +1,33 @@
 import TasksPage from "@/app/(pages)/admin/(other)/tasks/page";
+import { answer_requests, departments } from "@/const/tasks";
 import { cleanup, render } from "@testing-library/react";
-import { UserSelectProvider } from "@/hooks/store/context/UserSelectContext";
+import { useRouter } from "next/navigation";
 
-// useContextをモーダルで使用しているため、Providerを追加しています
+jest.mock("next/navigation", () => ({
+  useRouter: () => ({
+    push: jest.fn(),
+  }),
+}));
 
 describe("タスク一覧画面", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-    cleanup();
-  });
   afterAll(() => {
     jest.clearAllMocks();
     cleanup();
   });
 
-  it("レンダリング時", () => {
+  it("スナップショットテスト", () => {
+    global.fetch = jest
+      .fn()
+      .mockResolvedValueOnce(() => ({
+        ok: true,
+        json: () => Promise.resolve({ departmentList: departments }),
+      }))
+      .mockResolvedValueOnce(() => ({
+        ok: true,
+        json: () => Promise.resolve(answer_requests),
+      }));
     const { container } = render(
-        <UserSelectProvider>
-          <TasksPage searchParams={{departmentId: "", searchKeyword: ""}}/>
-        </UserSelectProvider>
+      <TasksPage searchParams={{ departmentId: "", searchKeyword: "" }} />
     );
     expect(container).toMatchSnapshot();
   });
