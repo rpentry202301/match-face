@@ -1,7 +1,7 @@
 import TasksIndex from "@/components/pages/admin/tasks/index/TasksIndex";
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { departments } from "@/const/tasks";
+import { answer_requests, departments } from "@/const/tasks";
 
 jest.mock("next/navigation", () => ({
   useRouter: () => ({
@@ -9,11 +9,10 @@ jest.mock("next/navigation", () => ({
   }),
 }));
 
-const mockSearchParamsFn = (departmentId: string, searchKeyword: string) => ({
-  departmentId: departmentId,
-  searchKeyword: searchKeyword,
-});
-
+/**
+ * @author Hayato Kobayashi
+ * @note asyncコンポーネントのスナップショットテストは出来ない(公式にもissueあり)
+ */
 describe("TaskIndex.tsx", () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -24,10 +23,28 @@ describe("TaskIndex.tsx", () => {
     cleanup();
   });
 
-  it("新規タスク作成ボタンリンク", () => {
-    render(<TasksIndex searchParams={mockSearchParamsFn("", "")} />);
-    const LinkButton = screen.getByTestId("link_task_register");
-    // console.log("LinkButton", LinkButton);
-    expect(LinkButton).toHaveAttribute("href", "/admin/tasks/register");
+  it("非同期通信が実施されたか", async () => {
+    global.fetch = jest
+      .fn()
+      .mockImplementationOnce(() => ({
+        ok: true,
+        json: async () => ({
+          departmentList: departments,
+        }),
+      }))
+      .mockImplementationOnce(() => ({
+        ok: true,
+        json: async () => answer_requests,
+      }));
+    render(
+      <>
+        {await TasksIndex({
+          searchParams: { departmentId: "", searchKeyword: "" },
+        })}
+      </>
+    );
+    await waitFor(() => {
+      expect(fetch).toBeCalledTimes(2);
+    });
   });
 });
