@@ -41,23 +41,23 @@ exports[`Question.tsx QuestionListのスナップショット 1`] = `
               checked=""
               class="w-4 h-4 accent-orange cursor-pointer"
               type="checkbox"
-              value="問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１"
+              value="開発経験について教えてください。"
             />
           </td>
           <td
             class="border-2 border-deep-gray px-4 py-2 text-center"
           >
-            2023-7-6
+            2023-09-07
           </td>
           <td
             class="border-2 border-deep-gray px-4 py-2 text-center"
           >
-            test1
+            バックエンド案件
           </td>
           <td
             class="border-2 border-deep-gray px-4 py-2 text-center"
           >
-            問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１問題文１
+            開発経験について教えてください。
           </td>
         </tr>
         <tr>
@@ -67,49 +67,23 @@ exports[`Question.tsx QuestionListのスナップショット 1`] = `
             <input
               class="w-4 h-4 accent-orange cursor-pointer"
               type="checkbox"
-              value="問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２"
+              value="1番得意な言語は何ですか。"
             />
           </td>
           <td
             class="border-2 border-deep-gray px-4 py-2 text-center"
           >
-            2023-7-6
+            2023-09-07
           </td>
           <td
             class="border-2 border-deep-gray px-4 py-2 text-center"
           >
-            test1
+            バックエンド案件
           </td>
           <td
             class="border-2 border-deep-gray px-4 py-2 text-center"
           >
-            問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２問題文２
-          </td>
-        </tr>
-        <tr>
-          <td
-            class="border-2 border-deep-gray px-4 py-2 text-center"
-          >
-            <input
-              class="w-4 h-4 accent-orange cursor-pointer"
-              type="checkbox"
-              value="問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３"
-            />
-          </td>
-          <td
-            class="border-2 border-deep-gray px-4 py-2 text-center"
-          >
-            2023-7-6
-          </td>
-          <td
-            class="border-2 border-deep-gray px-4 py-2 text-center"
-          >
-            test1
-          </td>
-          <td
-            class="border-2 border-deep-gray px-4 py-2 text-center"
-          >
-            問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３問題文３
+            1番得意な言語は何ですか。
           </td>
         </tr>
       </tbody>
