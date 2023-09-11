@@ -50,6 +50,8 @@ export default function Notification({
   // console.log('deadlineDate', deadlineDate);
   // console.log('deadlineArr', deadlineArr);
   // console.log('filteredDeadline', filteredDeadline);
+  // const data = filteredDeadline.map((incompleted: any) => incompleted);
+  // console.log('incompleted', data);
 
   return (
     <>
