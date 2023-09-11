@@ -153,7 +153,7 @@ const QuestionSelectModalForm = ({ fetchData }: { fetchData: FetchQuestionModalD
                             name="skill"
                             onChange={(e) => handleChangeCheckBox(e, "skill")}
                           />
-                          <label htmlFor={`skill_${skill.id}`} className="text-xs ml-1">{skill.name}</label>
+                          <label htmlFor={`skill_${skill.id}`} className="text-xs ml-1 hover:cursor-pointer">{skill.name}</label>
                         </div>
                       ))}
                     </div>

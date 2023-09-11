@@ -172,7 +172,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                           value="JavaScript"
                         />
                         <label
-                          class="text-xs ml-1"
+                          class="text-xs ml-1 hover:cursor-pointer"
                           for="skill_1"
                         >
                           JavaScript
@@ -189,7 +189,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                           value="TypeScript"
                         />
                         <label
-                          class="text-xs ml-1"
+                          class="text-xs ml-1 hover:cursor-pointer"
                           for="skill_2"
                         >
                           TypeScript
@@ -206,7 +206,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                           value="React"
                         />
                         <label
-                          class="text-xs ml-1"
+                          class="text-xs ml-1 hover:cursor-pointer"
                           for="skill_3"
                         >
                           React
@@ -223,7 +223,7 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
                           value="Next.js"
                         />
                         <label
-                          class="text-xs ml-1"
+                          class="text-xs ml-1 hover:cursor-pointer"
                           for="skill_4"
                         >
                           Next.js
