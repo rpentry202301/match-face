@@ -45,13 +45,17 @@ export default function Notification({
       (answerRequest) => answerRequest.deadline === deadline
     )
   );
-
-  // console.log('new Set(deadlineDate)', new Set(deadlineDate));
-  // console.log('deadlineDate', deadlineDate);
-  // console.log('deadlineArr', deadlineArr);
-  // console.log('filteredDeadline', filteredDeadline);
-  // const data = filteredDeadline.map((incompleted: any) => incompleted);
-  // console.log('incompleted', data);
+  // // filteredDeadlineの配列内の各オブジェクトをループ処理(各オブジェクトのdeadlineの形式を変更)
+  filteredDeadline.forEach((array) =>
+    array.forEach((item) => {
+      const deadlineDate = new Date(item.deadline);
+      const year = deadlineDate.getFullYear();
+      const month = String(deadlineDate.getMonth() + 1).padStart(2, '0');
+      const day = String(deadlineDate.getDate()).padStart(2, '0');
+      const formattedDeadline = `${year}年${month}月${day}日`;
+      item.deadline = formattedDeadline;
+    })
+  );
 
   return (
     <>
@@ -60,7 +64,7 @@ export default function Notification({
           進捗状況
         </h1>
         <div className="pt-5">
-          <h2 className="">【対応済】{answeredAnswerRequests.length}件</h2>
+          <h2>【対応済】{answeredAnswerRequests.length}件</h2>
           <h2 className="pt-5">
             【未対応】{notAnsweredAnswerRequests.length}件
           </h2>

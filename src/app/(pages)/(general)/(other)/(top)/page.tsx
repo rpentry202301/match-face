@@ -11,11 +11,6 @@ type MenuContent = {
   imgAlt: string;
 };
 
-// todo: データは日付の昇順で並べる
-// ダミーデータ
-// const completedData = trueAnswerRequests;
-// const notAnsweredAnswerRequests = falseAnswerRequests;
-
 const Top = async () => {
   // 進捗状況データ取得
 
