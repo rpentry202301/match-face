@@ -1,5 +1,7 @@
 "use client";
 
+// ユーザー選択のモーダルを一旦、コメントアウト。
+
 import React, { useState } from "react";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import Link from "next/link";
@@ -52,7 +54,7 @@ const RegisterForm = () => {
         router.push('/admin/groups')
         setIsOpen(!isOpen);
       }else{
-        console.error("データ登録に失敗しました")
+        console.error("データ登録に物凄く失敗しました")
       }
     } catch(error) {
       console.error(error)
@@ -79,8 +81,12 @@ const RegisterForm = () => {
             <br />
             <label htmlFor="user">▶ユーザーを選択する</label>
             <span>&nbsp;</span>
-            <UserSelectModal />
-            <UserInput />
+            {/* 使い方訊く。 */}
+            < br/>
+            <span>あとでモーダルとインプット配置</span>
+            <br />
+            {/* <UserSelectModal />
+            <UserInput /> */}
             <br />
             <label htmlFor="group_description">▶備考</label>
             <TextArea
@@ -117,7 +123,6 @@ const RegisterForm = () => {
                 </h2>
                 <div className="flex flex-col  items-center justify-center mx-5 my-1">
                   <Link href={"/admin/groups"}>
-                    {/* 今は遷移にしてますがのちのちポストします */}
                     <button
                       onClick={submitData}
                       className="hover:bg-gray-400 duration-200"
