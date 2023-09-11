@@ -1,5 +1,6 @@
 import Menu from '@/components/ui/Menu';
 import Notification from '@/components/pages/general/top/Notification';
+import { cookies } from 'next/headers';
 
 type MenuContent = {
   id: number;
@@ -11,11 +12,12 @@ type MenuContent = {
 };
 
 const Top = async () => {
-  // 進捗状況データ取得
-
+  const cookie = cookies();
+  const userId = cookie.get('userId')?.value;
+  // 以下進捗状況データ取得
   // 回答済データ
   const answeredRes = await fetch(
-    `${process.env.BE_URL}/user/1/answer_requests/is_answered/true`,
+    `${process.env.BE_URL}/user/${userId}/answer_requests/is_answered/true`,
     { cache: 'no-store' }
   );
   const answeredData = await answeredRes.json();
@@ -23,7 +25,7 @@ const Top = async () => {
 
   // 未回答データ
   const notAnsweredRes = await fetch(
-    `${process.env.BE_URL}/user/1/answer_requests/is_answered/false`,
+    `${process.env.BE_URL}/user/${userId}/answer_requests/is_answered/false`,
     { cache: 'no-store' }
   );
   const notAnsweredData = await notAnsweredRes.json();
@@ -44,6 +46,7 @@ const Top = async () => {
           answeredAnswerRequests={answeredAnswerRequests}
           notAnsweredAnswerRequests={notAnsweredAnswerRequests}
         />
+        {/* )} */}
       </div>
 
       <div className="grid grid-cols-2 gap-20 w-3/5 place-items-center mx-auto">
