@@ -26,12 +26,18 @@ const TaskRegisterIndex = ({ children, id }: Props) => {
     });
   };
 
-  const handleClickPost = () => {
+  const handleClickPost = async () => {
     // deadlineをtimestamp型に成型
     const { year, month, day, hour } = deadline;
     const deadline2Timestamp = `${year}-${("0" + month).slice(-2)}-${(
       "0" + day
     ).slice(-2)}T${("0" + hour).slice(-2)}:00:00`;
+
+    const postData = {
+      administraorId: id,
+      userIds: userSelect.map((user) => user.id),
+      deadline: deadline2Timestamp,
+    };
   };
 
   return (

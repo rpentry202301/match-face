@@ -11,7 +11,7 @@ const TaskRegisterPage = () => {
   const cookieId = cookieStore.get("administratorId");
 
   return (
-    <TaskRegisterIndex id={`${cookieId?.value}`}>;
+    <TaskRegisterIndex id={`${cookieId?.value}`}>
       <SelectUsers />
       <SelectQuestions />
     </TaskRegisterIndex>
