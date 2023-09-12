@@ -39,7 +39,7 @@ describe("HistoryListコンポーネント", () => {
         render(<HistoryList />);
       });
       await waitFor(() =>
-        expect(screen.getAllByText("バックエンド案件")).toHaveLength(2)
+        expect(screen.getAllByText("バックエンド案件")).toHaveLength(3)
       );
     });
     it("案件詳細が30文字以上の時文字数制限がかかり、30文字以降は...の表示になっている", async () => {
