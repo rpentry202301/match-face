@@ -4,7 +4,6 @@ import { mockHistoriesData, skillData } from "./mock";
 import HistoriesPage from "@/app/(pages)/(general)/(other)/histories/page";
 import HistoryList from "@/components/pages/general/histories/HistoryList";
 import userEvent from "@testing-library/user-event";
-import OrangeButton from "@/components/ui/button/OrangeButton";
 
 // スナップショットテスト
 describe("スナップショットテスト", () => {
@@ -31,7 +30,7 @@ describe("スナップショットテスト", () => {
 });
 
 // 機能・インタラクションテスト
-describe("一般ユーザー質問一覧画面", () => {
+describe("一般ユーザー回答履歴一覧画面", () => {
   global.fetch = jest.fn().mockImplementation((url, config) => {
     if (url === "http://localhost:3000/api/histories/skills") {
       return {
@@ -59,26 +58,21 @@ describe("一般ユーザー質問一覧画面", () => {
       });
     });
 
-    it("絞り込み<button>をクリックすると、関数が呼び出される", async () => {
-      const mockFn = jest.fn();
+    it("何も選択せず絞り込みボタンをクリックすると、ユーザーの全件を表示する", async () => {
       await waitFor(async () => {
-        // await render(<OrangeButton label="絞り込み" onClick={mockFn} />);
         const element = screen.getByTestId("submitButton");
-        // expect(element).toBeTruthy();
         await userEvent.click(element);
-        // expect(mockFn).toHaveBeenCalled();
-        // await render(<HistoryList click={true} month={"2023-09-01"} />);
         screen.debug();
       });
     });
-    it("JavaScriptが選択されていない", async () => {
+    it("JavaScriptにチェックがついていないことを確認", async () => {
       let selectedSkill: HTMLElement;
       await waitFor(() => {
         selectedSkill = screen.getByRole("checkbox", { name: "JavaScript" });
         expect(selectedSkill).not.toBeChecked();
       });
     });
-    it("JavaScriptが選択されていない", async () => {
+    it("JavaScriptにチェックがついていることを確認", async () => {
       let selectedSkill: HTMLElement;
       await waitFor(async () => {
         selectedSkill = screen.getByRole("checkbox", { name: "JavaScript" });
@@ -86,32 +80,5 @@ describe("一般ユーザー質問一覧画面", () => {
         expect(selectedSkill).toBeChecked();
       });
     });
-    it("Javascriptチェックし絞り込みクリックすると、HistoryListに何も表示されない", async () => {});
   });
-  //   describe("ボタン", () => {
-  //     it("回答済みであれば、ボタンの色が緑である&&「確認する」", async () => {
-  //       let element;
-  //       await waitFor(() => {
-  //         element = screen.getByTestId(
-  //           `confirmButton${mockData.answerRequestList[0].id}`
-  //         );
-  //       });
-  //       console.log(element);
-  //       expect(element).toHaveClass("bg-green");
-  //       expect(element).toHaveTextContent("確認する");
-  //     });
-  //     it("確認するボタンにresult/[id]へのLinkがある", async () => {
-  //       let element;
-  //       await waitFor(() => {
-  //         element = screen.getByTestId(
-  //           `linkButton${mockData.answerRequestList[0].id}`
-  //         );
-  //       });
-  //       screen.debug();
-  //       expect(element).toHaveAttribute(
-  //         "href",
-  //         `result/${mockData.answerRequestList[0].id}`
-  //       );
-  //     });
-  //   });
 });
