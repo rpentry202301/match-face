@@ -1,4 +1,4 @@
-import Menu from '@/components/ui/Menu';
+import Menu from '@/components/pages/general/top/Menu';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { menuContentsArray } from '@/const/top';

@@ -1,4 +1,4 @@
-import Menu from '@/components/ui/Menu';
+import Menu from '@/components/pages/general/top/Menu';
 import Notification from '@/components/pages/general/top/Notification';
 import { cookies } from 'next/headers';
 
