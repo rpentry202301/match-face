@@ -1,15 +1,14 @@
 "use client";
 import SelectBox from "@/components/ui/selectbox/SelectBox";
-import { monthArr, timeArr, getDayArrInMonth, getThis_NextYear } from "@/lib/common/date/date";
-import { useState } from "react";
+import {
+  monthArr,
+  timeArr,
+  getDayArrInMonth,
+  getThis_NextYear,
+} from "@/lib/common/date/date";
+import { ChangeEvent, useState } from "react";
 
-const SelectDeadline = () => {
-  const [date, setDate] = useState({
-    year: new Date().getFullYear(),
-    month: new Date().getMonth() + 1,
-    day: 1,
-    time: 18,
-  });
+const SelectDeadline = ({ state, handleChange }: Props) => {
   return (
     <div>
       <div className="flex items-center">
@@ -24,10 +23,8 @@ const SelectDeadline = () => {
               name="year"
               className="w-20 h-6 text-sm"
               optionVal={getThis_NextYear()}
-              value={date.year}
-              onChange={(e) =>
-                setDate({ ...date, year: Number(e.target.value) })
-              }
+              value={state.year}
+              onChange={handleChange}
             />
             <p className="text-ms ml-0.5">年</p>
           </div>
@@ -38,10 +35,8 @@ const SelectDeadline = () => {
               name="month"
               className="w-20 h-6 text-sm"
               optionVal={monthArr}
-              value={date.month}
-              onChange={(e) =>
-                setDate({ ...date, month: Number(e.target.value) })
-              }
+              value={state.month}
+              onChange={handleChange}
             />
             <p className="text-ms ml-0.5">月</p>
           </div>
@@ -51,11 +46,9 @@ const SelectDeadline = () => {
               name="day"
               data-testid="day"
               className="w-20 h-6 text-sm"
-              optionVal={getDayArrInMonth(date.year, date.month)}
-              value={date.day}
-              onChange={(e) =>
-                setDate({ ...date, day: Number(e.target.value) })
-              }
+              optionVal={getDayArrInMonth(state.year, state.month)}
+              value={state.day}
+              onChange={handleChange}
             />
             <p className="text-ms ml-0.5">日</p>
           </div>
@@ -66,10 +59,8 @@ const SelectDeadline = () => {
               name="time"
               className="w-20 h-6 text-sm"
               optionVal={timeArr()}
-              value={date.time}
-              onChange={(e) =>
-                setDate({ ...date, time: Number(e.target.value) })
-              }
+              value={state.time}
+              onChange={handleChange}
             />
             <p className="text-ms ml-0.5">時</p>
           </div>
@@ -79,7 +70,14 @@ const SelectDeadline = () => {
   );
 };
 
-export default SelectDeadline;
+type Props = {
+  state: {
+    year: number;
+    month: number;
+    day: number;
+    time: number;
+  };
+  handleChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+};
 
-// 削除予定
-const hoge = Array(20).fill(10);
+export default SelectDeadline;
