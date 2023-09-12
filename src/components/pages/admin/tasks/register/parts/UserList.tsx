@@ -46,6 +46,7 @@ const UserList = ({
             <tr key={`userId_${i}`}>
               <td className={`${tableDefaultClassName}`}>
                 <CheckBox
+                  id={user.id.toString()}
                   value={user.name}
                   onChange={onChange}
                   checked={checkedValues.includes(user.name)}
