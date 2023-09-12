@@ -7,7 +7,7 @@ type AnswerRequest = {
   project_id: number;
   request_at: string;
   deadline: string;
-  is_answered: boolean;
+  answered: boolean;
   created_user: string;
   created_at: string;
   update_user: string;
