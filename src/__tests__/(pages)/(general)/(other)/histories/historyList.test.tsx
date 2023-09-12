@@ -5,20 +5,14 @@ import HistoryList from "@/components/pages/general/histories/HistoryList";
 
 // スナップショットテスト
 describe("スナップショットテスト", () => {
-  // global.fetch = jest.fn().mockImplementation((url, config) => {
-  //   if (url === "http://localhost:3000/api/histories/skills") {
-  //     return {
-  //       ok: true,
-  //       json: async () => skillData,
-  //     };
-  //   }
-  //   if (url === "http://localhost:3000/api/histories") {
-  //     return {
-  //       ok: true,
-  //       json: async () => mockHistoriesData,
-  //     };
-  //   }
-  // });
+  global.fetch = jest.fn().mockImplementation((url, config) => {
+    if (url === "http://localhost:3000/api/histories") {
+      return {
+        ok: true,
+        json: async () => mockHistoriesData,
+      };
+    }
+  });
   it("スナップショット", async () => {
     const { container } = render(<HistoryList />);
     await waitFor(() => {
@@ -28,9 +22,9 @@ describe("スナップショットテスト", () => {
 });
 
 // 機能・インタラクションテスト
-describe("一般ユーザー質問一覧画面", () => {
-  describe("Fetch前のHistoryList", () => {
-    it("非同期通信前はリストに何も表示されない", async () => {
+describe("HistoryListコンポーネント", () => {
+  describe("Fetch完了前のHistoryList", () => {
+    it("非同期通信完了前、リストに何も表示されない", async () => {
       await waitFor(() => {
         render(<HistoryList />);
       });
@@ -39,25 +33,20 @@ describe("一般ユーザー質問一覧画面", () => {
     });
   });
 
-  describe("Fetch後のHistoryList", () => {
+  describe("Fetch完了後のHistoryList", () => {
     it("絞り込み後、mock.tsで定義済みのデータが表示されている", async () => {
       await waitFor(() => {
         render(<HistoryList />);
       });
-      await waitFor(() => {
-        global.fetch = jest.fn().mockImplementation((url, config) => {
-          if (url === "http://localhost:3000/api/histories") {
-            return {
-              ok: true,
-              json: async () => mockHistoriesData,
-            };
-          }
-        });
-      });
-      await waitFor(() => screen.debug());
       await waitFor(() =>
         expect(screen.getAllByText("バックエンド案件")).toHaveLength(2)
       );
+    });
+    it("文字数制限の関数が呼び出されている", () => {
+      const truncateString = jest.fn();
+      //   const element = screen.getByTestId(`projectDetail${data[0].id}`);
+      //   screen.debug(element);
+      expect(truncateString).toHaveBeenCalled();
     });
   });
 });

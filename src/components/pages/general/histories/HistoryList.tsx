@@ -54,7 +54,7 @@ const HistoryList: React.FC<HistoryListProps> = memo(
     }, [click]);
 
     // 詳細の文字数制限
-    const truncateString = (str: any, num: any) => {
+    const truncateString = (str: string, num: number) => {
       return str.length <= num ? str : str.slice(0, num) + "...";
     };
     // 回答日の表示

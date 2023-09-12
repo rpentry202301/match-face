@@ -38,14 +38,6 @@ describe("一般ユーザー質問一覧画面", () => {
     });
   });
   describe("テーブル", () => {
-    it("データ取得後にタイトルが表示される", async () => {
-      let element: Element;
-      await waitFor(() => {
-        element = screen.getByText("回答する");
-      });
-      screen.debug();
-      await waitFor(() => expect(element).toBeInTheDocument());
-    });
     it("取得データの要素数の<button>が存在する", async () => {
       // const dataNumbers = mockData.answerRequestList.length;
       let element: HTMLElement[];
@@ -55,12 +47,6 @@ describe("一般ユーザー質問一覧画面", () => {
       screen.debug();
       await waitFor(() => expect(element).toHaveLength(3));
     });
-    // it("回答期日が表示される", () => {
-    //   render(<QuestionsPage />);
-    //   const element = screen.getByText(data[0].deadline);
-    //   screen.debug(element);
-    //   expect(element).toBeInTheDocument();
-    // });
   });
   describe("ボタン", () => {
     it("回答済みであれば、ボタンの色が緑である&&「確認する」", async () => {

@@ -11,7 +11,8 @@ export const mockHistoriesData = {
       project: {
         id: 1,
         name: "バックエンド案件",
-        detail: "販促アプリの新規開発、既存システムの保守・運用。",
+        detail:
+          "販促アプリの新規開発、既存システムの保守・運用。販促アプリの新規開発、既存システムの保守・運用。",
       },
       questionList: [],
       requestAt: "2023-09-07T14:22:49.131009",
