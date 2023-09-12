@@ -54,12 +54,12 @@ const SelectDeadline = ({ state, handleChange }: Props) => {
           </div>
           <div className="flex items-center ml-4">
             <SelectBox
-              id="time"
-              data-testid="time"
-              name="time"
+              id="hour"
+              data-testid="hour"
+              name="hour"
               className="w-20 h-6 text-sm"
               optionVal={timeArr()}
-              value={state.time}
+              value={state.hour}
               onChange={handleChange}
             />
             <p className="text-ms ml-0.5">時</p>
@@ -75,7 +75,7 @@ type Props = {
     year: string;
     month: string;
     day: string;
-    time: string;
+    hour: string;
   };
   handleChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 };
