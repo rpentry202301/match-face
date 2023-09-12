@@ -9,7 +9,7 @@ export type QuestionList = {
   projectId: number;
   updateAt: string;
   updateUser?: string;
-}[];
+};
 
 export type ChoiceList = {};
 

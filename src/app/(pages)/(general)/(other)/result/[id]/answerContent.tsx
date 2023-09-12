@@ -37,7 +37,7 @@ const getProjects = async (project_id: number) => {
 export const AnswerContent = ({ project_id }: Props) => {
   const router = useRouter();
   const [project, setProject] = useState<Project | null>(null);
-  const [questionList, setQuestionList] = useState<QuestionList | null>(null);
+  const [questionList, setQuestionList] = useState<QuestionList[] | null>(null);
   const [currentComment, setCurrentComment] = useState<Comment | null>(null);
   const [answerDate, setAnswerDate] = useState<Date | null>(null);
 
