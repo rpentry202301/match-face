@@ -2,7 +2,9 @@
 
 exports[`TaskList.tsx スナップショットテスト 1`] = `
 <div>
-  <div>
+  <div
+    data-testid="data-table"
+  >
     <table
       class="border-collapse border-2 border-deep-gray text-sm"
     >
