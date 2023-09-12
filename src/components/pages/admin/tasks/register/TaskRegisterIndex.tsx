@@ -8,10 +8,10 @@ import { ChangeEvent, useState } from "react";
  */
 const TaskRegisterIndex = ({ children, id }: Props) => {
   const [deadline, setDeadline] = useState({
-    year: new Date().getFullYear(),
-    month: new Date().getMonth() + 1,
-    day: 1,
-    time: 18,
+    year: new Date().getFullYear().toString(),
+    month: (new Date().getMonth() + 1).toString(),
+    day: new Date().getDate().toString(),
+    time: `${18}`,
   });
 
   const handleChangeDeadline = (e: ChangeEvent<HTMLSelectElement>) => {

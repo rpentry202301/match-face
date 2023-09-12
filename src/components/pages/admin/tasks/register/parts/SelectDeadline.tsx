@@ -72,10 +72,10 @@ const SelectDeadline = ({ state, handleChange }: Props) => {
 
 type Props = {
   state: {
-    year: number;
-    month: number;
-    day: number;
-    time: number;
+    year: string;
+    month: string;
+    day: string;
+    time: string;
   };
   handleChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 };
