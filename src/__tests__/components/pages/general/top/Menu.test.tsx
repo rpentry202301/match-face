@@ -1,7 +1,7 @@
 import Menu from '@/components/pages/general/top/Menu';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { menuContentsArray } from '@/const/top';
+import { menuContentsArray } from '@/const/menu';
 
 // ダミーデータ
 const menuContent = menuContentsArray[0];
