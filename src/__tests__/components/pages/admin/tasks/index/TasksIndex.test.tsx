@@ -1,32 +1,50 @@
 import TasksIndex from "@/components/pages/admin/tasks/index/TasksIndex";
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { FilterProvider } from "@/hooks/store/context/TasksContext";
+import { answer_requests, departments } from "@/const/tasks";
 
+jest.mock("next/navigation", () => ({
+  useRouter: () => ({
+    push: jest.fn(),
+  }),
+}));
+
+/**
+ * @author Hayato Kobayashi
+ * @note asyncコンポーネントのスナップショットテストは出来ない(公式にもissueあり)
+ */
 describe("TaskIndex.tsx", () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    cleanup();
   });
   afterAll(() => {
     jest.clearAllMocks();
+    cleanup();
   });
 
-  it("レンダリング時", () => {
-    const { container } = render(
-      <FilterProvider>
-        <TasksIndex />
-      </FilterProvider>
-    );
-    expect(container).toMatchSnapshot();
-  });
-  it("新規タスク作成ボタンリンク", () => {
+  it("非同期通信が実施されたか", async () => {
+    global.fetch = jest
+      .fn()
+      .mockImplementationOnce(() => ({
+        ok: true,
+        json: async () => ({
+          departmentList: departments,
+        }),
+      }))
+      .mockImplementationOnce(() => ({
+        ok: true,
+        json: async () => answer_requests,
+      }));
     render(
-      <FilterProvider>
-        <TasksIndex />
-      </FilterProvider>
+      <>
+        {await TasksIndex({
+          searchParams: { departmentId: "", searchKeyword: "" },
+        })}
+      </>
     );
-    const LinkButton = screen.getByTestId("link_task_register");
-    // console.log("LinkButton", LinkButton);
-    expect(LinkButton).toHaveAttribute("href", "/admin/tasks/register");
+    await waitFor(() => {
+      expect(fetch).toBeCalledTimes(2);
+    });
   });
 });
