@@ -1,7 +1,5 @@
 "use client";
 
-// ユーザー選択のモーダルを一旦、コメントアウト。
-
 import React, { useState } from "react";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import Link from "next/link";
@@ -39,7 +37,8 @@ const RegisterForm = () => {
       const body = {
         groupName,
         groupDescription,
-        // メンバーはあとで
+        userIds:[1],
+        administratorId:0
       };
         const response = await fetch(
           "http://localhost:3000/api/admin/groups/register",
@@ -54,10 +53,10 @@ const RegisterForm = () => {
         router.push('/admin/groups')
         setIsOpen(!isOpen);
       }else{
-        console.error("データ登録に物凄く失敗しました")
+        console.error("データ登録に失敗しました:")
       }
     } catch(error) {
-      console.error(error)
+      console.error('エラー発生',error)
     }
   };
 
@@ -80,14 +79,9 @@ const RegisterForm = () => {
             </p>
             <br />
             <label htmlFor="user">▶ユーザーを選択する</label>
-            <span>&nbsp;</span>
-            {/* 使い方訊く。 */}
-            < br/>
-            <span>あとでモーダルとインプット配置</span>
-            <br />
-            {/* <UserSelectModal />
-            <UserInput /> */}
-            <br />
+            {/*コンポートの外に配置することで対処両方*/}
+            {/* <UserSelectModal /> */}
+            <UserInput />
             <label htmlFor="group_description">▶備考</label>
             <TextArea
               id="group_description"
