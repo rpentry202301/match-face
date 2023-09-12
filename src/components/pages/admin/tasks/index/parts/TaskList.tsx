@@ -5,8 +5,12 @@ import { TasksType } from "@/types/admin/tasks/types";
  * @todo_1 レスポンシブ対応
  */
 const TaskList = ({ tasks }: { tasks: TasksType[] }) => {
+  if (tasks.length === 0) return (
+    <div>表示するデータがありません</div>
+  )
+
   return (
-    <div>
+    <div data-testid="data-table">
       <table className="border-collapse border-2 border-deep-gray text-sm">
         <thead className="bg-light-gray">
           <tr>
