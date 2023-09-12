@@ -102,7 +102,7 @@ const HistoryList: React.FC<HistoryListProps> = memo(
 
                 <td
                   className="border text-center px-4 "
-                  data-test={`projectDetail${project.id}`}
+                  data-testid={`projectDetail${project.id}`}
                 >
                   {truncateString(project.project.detail, 30)}
                 </td>

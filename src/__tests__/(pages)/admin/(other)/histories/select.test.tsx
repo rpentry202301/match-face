@@ -23,29 +23,29 @@ import { answer_request_groupsMock, departmentsMock, skillsMock } from './histor
     describe('絞り込みテスト',()=>{
         beforeEach(async () => {
             global.fetch = jest.fn().mockImplementation((url,config)=>{
-                if(url === 'http://localhost:3000/api/admin/histories/departments'){
+                if(url === '/api/admin/histories/departments'){
                     return {ok:true,json: async () => (departmentsMock)}
-                }else if(url === 'http://localhost:3000/api/admin/histories/skills'){
+                }else if(url === '/api/admin/histories/skills'){
                     return {ok:true,json: async () => (skillsMock)}
-                }else if(url === 'http://localhost:3000/api/admin/histories'){
+                }else if(url === '/api/admin/histories'){
                     return {ok:true,json: async () => (answer_request_groupsMock)}
-                }else if(url === 'http://localhost:3000/api/admin/histories/select?answerDate=2023-07-01&departmentId=&skillId='){
+                }else if(url === '/api/admin/histories/select?answerDate=2023-07-01&departmentId=&skillId='){
                     return {ok:true,json: async () => ([answer_request_groupsMock[0],answer_request_groupsMock[1],answer_request_groupsMock[2],answer_request_groupsMock[3]])}
-                }else if(url === 'http://localhost:3000/api/admin/histories/select?answerDate=2023-08-01&departmentId=&skillId='){
+                }else if(url === '/api/admin/histories/select?answerDate=2023-08-01&departmentId=&skillId='){
                     return {ok:true,json: async () => ([answer_request_groupsMock[4]])}
-                }else if(url === 'http://localhost:3000/api/admin/histories/select?answerDate=-01&departmentId=2&skillId='){
+                }else if(url === '/api/admin/histories/select?answerDate=-01&departmentId=2&skillId='){
                     return {ok:true,json: async () => ([answer_request_groupsMock[3]])}
-                }else if(url === 'http://localhost:3000/api/admin/histories/select?answerDate=-01&departmentId=&skillId=1,2'){
+                }else if(url === '/api/admin/histories/select?answerDate=-01&departmentId=&skillId=1,2'){
                     return {ok:true,json: async () => (answer_request_groupsMock)}
-                }else if(url === 'http://localhost:3000/api/admin/histories/select?answerDate=-01&departmentId=&skillId=1'){
+                }else if(url === '/api/admin/histories/select?answerDate=-01&departmentId=&skillId=1'){
                 return {ok:true,json: async () => ([answer_request_groupsMock[0],answer_request_groupsMock[1]])}
-                }else if(url === 'http://localhost:3000/api/admin/histories/select?answerDate=2023-07-01&departmentId=1&skillId='){
+                }else if(url === '/api/admin/histories/select?answerDate=2023-07-01&departmentId=1&skillId='){
                     return {ok:true,json: async () => ([answer_request_groupsMock[0],answer_request_groupsMock[1],answer_request_groupsMock[2]])}
-                }else if(url === 'http://localhost:3000/api/admin/histories/select?answerDate=2023-07-01&departmentId=&skillId=1'){
+                }else if(url === '/api/admin/histories/select?answerDate=2023-07-01&departmentId=&skillId=1'){
                     return {ok:true,json: async () => ([answer_request_groupsMock[0],answer_request_groupsMock[1],answer_request_groupsMock[3]])}
-                }else if(url === 'http://localhost:3000/api/admin/histories/select?answerDate=-01&departmentId=1&skillId=1'){
+                }else if(url === '/api/admin/histories/select?answerDate=-01&departmentId=1&skillId=1'){
                     return {ok:true,json: async () => ([answer_request_groupsMock[0],answer_request_groupsMock[1],answer_request_groupsMock[4]])}
-                }else if(url === 'http://localhost:3000/api/admin/histories/select?answerDate=2023-07-01&departmentId=1&skillId=1'){
+                }else if(url === '/api/admin/histories/select?answerDate=2023-07-01&departmentId=1&skillId=1'){
                     return {ok:true,json: async () => ([answer_request_groupsMock[0],answer_request_groupsMock[1]])}
                 }
             })

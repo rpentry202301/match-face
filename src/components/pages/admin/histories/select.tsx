@@ -12,7 +12,7 @@ const HistoriesSelect = ({className}:{className:string}) => {
     const [formData,setFormData] = useState<{month:string,department:number[],skills:number[]}>({month:"",department:[],skills:[]})
     const dispatch:Dispatch<SelectHistoryAction> = useSelectHistoryDispatch()
     const style = twMerge(
-        "w-[75vw] ml-[12.5vw] border-2 text-center my-[5vh] py-[5vh]",
+        "w-[75vw] ml-[12.5vw] border-2 text-center my-[5vh] py-[5vh]  max-md:w-[90vw] max-md:ml-[5vw]",
         className
         );
     const [departments,setDepartments] = useState([])
@@ -22,15 +22,15 @@ const HistoriesSelect = ({className}:{className:string}) => {
 
     useEffect(()=>{
         async function setData(){
-            const response_departments = await fetch('http://localhost:3000/api/admin/histories/departments')
+            const response_departments = await fetch('/api/admin/histories/departments')
             if (!response_departments.ok){ throw new Error('Failed to fetch data');}
             const department = await response_departments.json()
             setDepartments(department)
-            const response_skills = await fetch('http://localhost:3000/api/admin/histories/skills')
+            const response_skills = await fetch('/api/admin/histories/skills')
             if (!response_skills.ok){ throw new Error('Failed to fetch data');}
             const skill = await response_skills.json()
             setSkills(skill)
-            const response_answer_request_groups = await fetch('http://localhost:3000/api/admin/histories')
+            const response_answer_request_groups = await fetch('/api/admin/histories')
             if (!response_answer_request_groups.ok){ throw new Error('Failed to fetch data');}
             const answer_request_group = await response_answer_request_groups.json()
             setAnswerRequestGroups(answer_request_group)
@@ -61,17 +61,17 @@ const HistoriesSelect = ({className}:{className:string}) => {
                         ))}
                     </select>
                 </div>
-                <div className="mb-[2vh] flex mx-auto flex-wrap w-[65vw] justify-between">
+                <div className="mb-[1.5vh] flex mx-auto flex-wrap w-[65vw] justify-between max-lg:after:contents:'' max-lg:after:w-[100px] max-lg:before:contents:'' max-lg:before:w-[100px] max-lg:before:order-1">
                     {departments.map((department:Departments)=>(
                         <WhiteButtonCheckBox 
                             label={department.name} key={department.id} value={department.id} id={department.name}
-                            className="text-sm w-[100px]"
+                            className="text-sm w-[100px] mb-2"
                             onClick={(e) => {
                             setArray(e, formData, setFormData, 'department');
                             } }/>
                     ))}
                 </div>
-                <div className="lg:flex justify-center mb-[2vh] max-w-[55vw] ml-[10vw]">
+                <div className="lg:flex justify-center mb-[2vh] w-[55vw] ml-[10vw] max-md:w-[70vw]">
                 <legend className="lg:w-[215px] lg:h-10 lg:leading-10">使用技術：</legend>
                 <fieldset id="skill" name="skill" className="text-justify">
                         {skills.map((skill:Skills)=>(

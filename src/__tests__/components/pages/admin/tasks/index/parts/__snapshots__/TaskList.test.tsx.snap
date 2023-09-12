@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TaskList.tsx レンダリング時 1`] = `
+exports[`TaskList.tsx スナップショットテスト 1`] = `
 <div>
   <div>
     <table
@@ -42,168 +42,90 @@ exports[`TaskList.tsx レンダリング時 1`] = `
           <td
             class="border-2 border-deep-gray p-2 text-center"
           >
-            hoge
+            バックエンド案件
           </td>
           <td
             class="border-2 border-deep-gray p-2 text-center"
           >
-            3
+            2
           </td>
           <td
             class="border-2 border-deep-gray p-2 text-center"
-            data-testid="task-data-Java"
+            data-testid="task-data-[object Object]"
           >
             Java
           </td>
           <td
             class="border-2 border-deep-gray p-2 text-center"
           >
-            佐藤太郎、鈴木次郎、伊藤三郎
+            <span>
+              テスト太郎
+            </span>
           </td>
           <td
             class="border-2 border-deep-gray p-2 text-center"
           >
-            2100-01-01
+            2023-12-01
           </td>
         </tr>
         <tr>
           <td
             class="border-2 border-deep-gray p-2 text-center"
           >
-            foo
+            バックエンド案件
           </td>
           <td
             class="border-2 border-deep-gray p-2 text-center"
           >
-            3
+            2
           </td>
           <td
             class="border-2 border-deep-gray p-2 text-center"
-            data-testid="task-data-PHP"
+            data-testid="task-data-[object Object]"
           >
             PHP
           </td>
           <td
             class="border-2 border-deep-gray p-2 text-center"
           >
-            佐藤太郎、鈴木次郎、伊藤三郎...
+            <span>
+              テスト太郎
+            </span>
           </td>
           <td
             class="border-2 border-deep-gray p-2 text-center"
           >
-            2100-01-01
+            2023-12-01
           </td>
         </tr>
         <tr>
           <td
             class="border-2 border-deep-gray p-2 text-center"
           >
-            bar
+            フロントエンド案件
           </td>
           <td
             class="border-2 border-deep-gray p-2 text-center"
           >
-            3
+            2
           </td>
           <td
             class="border-2 border-deep-gray p-2 text-center"
-            data-testid="task-data-FR"
+            data-testid="task-data-[object Object]"
           >
             FR
           </td>
           <td
             class="border-2 border-deep-gray p-2 text-center"
           >
-            佐藤太郎、鈴木次郎、伊藤三郎
+            <span>
+              テスト太郎
+            </span>
           </td>
           <td
             class="border-2 border-deep-gray p-2 text-center"
           >
-            2100-01-01
-          </td>
-        </tr>
-        <tr>
-          <td
-            class="border-2 border-deep-gray p-2 text-center"
-          >
-            hogehoge
-          </td>
-          <td
-            class="border-2 border-deep-gray p-2 text-center"
-          >
-            3
-          </td>
-          <td
-            class="border-2 border-deep-gray p-2 text-center"
-            data-testid="task-data-CL"
-          >
-            CL
-          </td>
-          <td
-            class="border-2 border-deep-gray p-2 text-center"
-          >
-            佐藤太郎、鈴木次郎、伊藤三郎
-          </td>
-          <td
-            class="border-2 border-deep-gray p-2 text-center"
-          >
-            2200-01-01
-          </td>
-        </tr>
-        <tr>
-          <td
-            class="border-2 border-deep-gray p-2 text-center"
-          >
-            foofoo
-          </td>
-          <td
-            class="border-2 border-deep-gray p-2 text-center"
-          >
-            3
-          </td>
-          <td
-            class="border-2 border-deep-gray p-2 text-center"
-            data-testid="task-data-ML"
-          >
-            ML
-          </td>
-          <td
-            class="border-2 border-deep-gray p-2 text-center"
-          >
-            佐藤太郎、鈴木次郎、伊藤三郎...
-          </td>
-          <td
-            class="border-2 border-deep-gray p-2 text-center"
-          >
-            2200-01-01
-          </td>
-        </tr>
-        <tr>
-          <td
-            class="border-2 border-deep-gray p-2 text-center"
-          >
-            barbar
-          </td>
-          <td
-            class="border-2 border-deep-gray p-2 text-center"
-          >
-            3
-          </td>
-          <td
-            class="border-2 border-deep-gray p-2 text-center"
-            data-testid="task-data-QA"
-          >
-            QA
-          </td>
-          <td
-            class="border-2 border-deep-gray p-2 text-center"
-          >
-            佐藤太郎、鈴木次郎、伊藤三郎
-          </td>
-          <td
-            class="border-2 border-deep-gray p-2 text-center"
-          >
-            2200-01-01
+            2023-12-01
           </td>
         </tr>
       </tbody>

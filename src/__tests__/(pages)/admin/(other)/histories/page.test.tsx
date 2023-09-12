@@ -13,17 +13,17 @@ describe('管理者/履歴一覧画面のテスト',() => {
     const user = userEvent.setup()
     const push = jest.fn()
     global.fetch = jest.fn().mockImplementation((url,config)=>{
-        if(url === 'http://localhost:3000/api/admin/histories/departments'){
+        if(url === '/api/admin/histories/departments'){
             return {
                 ok:true,
                 json: async () => (departmentsMock),
             }
-        }else if(url === 'http://localhost:3000/api/admin/histories/skills'){
+        }else if(url === '/api/admin/histories/skills'){
             return {
                 ok:true,
                 json: async () => (skillsMock),
             }
-        }else if(url === 'http://localhost:3000/api/admin/histories'){
+        }else if(url === '/api/admin/histories'){
             return {
                 ok:true,
                 json: async () => (answer_request_groupsMock),
@@ -41,7 +41,7 @@ describe('管理者/履歴一覧画面のテスト',() => {
                 expect(view.container).toMatchSnapshot()
             })
         })
-    })
+    })      
     describe('リストテスト',()=>{
         beforeEach(async()=>{
             await act(()=>render(

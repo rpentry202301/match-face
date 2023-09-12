@@ -4,10 +4,10 @@ export interface TasksType {
   project: Tasks_Project;
   department: Tasks_Department;
   answerUserList: Tasks_AnswerUserList[];
-  auestionCount: number;
-  deadline: Date;
+  questionCount: number;
+  deadline: string;
   createdUser: string;
-  createdAt: Date;
+  createdAt: string;
   updateUser: string;
   updateAt: string;
 }
@@ -46,4 +46,14 @@ interface Tasks_AnswerUserList {
   userId: number;
   userName: string;
   answered: boolean;
+}
+
+// departments
+export interface Departments {
+  id: number;
+  name: string;
+  createtdUser: string;
+  createdAt: Date;
+  updateUser: string;
+  updateAt: Date;
 }

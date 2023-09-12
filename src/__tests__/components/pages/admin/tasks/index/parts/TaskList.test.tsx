@@ -1,24 +1,20 @@
 import TaskList from "@/components/pages/admin/tasks/index/parts/TaskList";
-import { cleanup, render, screen } from "@testing-library/react";
-import { tasks } from "@/const/tasks";
-import { FilterProvider, FilterType } from "@/hooks/store/context/TasksContext";
-import { useFilter } from "@/hooks/store/context/TasksContext";
-import "@testing-library/jest-dom";
+import { answer_requests } from "@/const/tasks";
+import { cleanup, render } from "@testing-library/react";
 
 describe("TaskList.tsx", () => {
-  beforeEach(() => {
+  beforeAll(() => {
     jest.clearAllMocks();
+    cleanup();
   });
   afterAll(() => {
     jest.clearAllMocks();
     cleanup();
   });
 
-  it("レンダリング時", () => {
+  it("スナップショットテスト", () => {
     const { container } = render(
-      <FilterProvider>
-        <TaskList tasks={tasks} />
-      </FilterProvider>
+      <TaskList tasks={answer_requests.answerRequests} />
     );
     expect(container).toMatchSnapshot();
   });

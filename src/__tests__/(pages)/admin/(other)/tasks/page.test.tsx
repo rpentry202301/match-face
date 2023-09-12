@@ -1,28 +1,39 @@
-import TasksPage from "@/app/(pages)/admin/(other)/tasks/page";
-import { cleanup, render } from "@testing-library/react";
-import { UserSelectProvider } from "@/hooks/store/context/UserSelectContext";
-import { FilterProvider } from "@/hooks/store/context/TasksContext";
+// import TasksPage from "@/app/(pages)/admin/(other)/tasks/page";
+// import { answer_requests, departments } from "@/const/tasks";
+// import { cleanup, render } from "@testing-library/react";
+// import { useRouter } from "next/navigation";
 
-// useContextをモーダルで使用しているため、Providerを追加しています
+// jest.mock("next/navigation", () => ({
+//   useRouter: () => ({
+//     push: jest.fn(),
+//   }),
+// }));
 
-describe("タスク一覧画面", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-    cleanup();
-  });
-  afterAll(() => {
-    jest.clearAllMocks();
-    cleanup();
-  });
+// /**
+//  * ※Next.js&Jest自体のバグにより、このテストは無意味なものになりました。
+//  * @author Hayato Kobayashi
+//  * @note asyncコンポーネントのスナップショットテストは出来ない(公式にもissueあり)
+//  */
+// describe("タスク一覧画面", () => {
+//   afterAll(() => {
+//     jest.clearAllMocks();
+//     cleanup();
+//   });
 
-  it("レンダリング時", () => {
-    const { container } = render(
-      <FilterProvider>
-        <UserSelectProvider>
-          <TasksPage />
-        </UserSelectProvider>
-      </FilterProvider>
-    );
-    expect(container).toMatchSnapshot();
-  });
-});
+//   it("スナップショットテスト", () => {
+//     global.fetch = jest
+//       .fn()
+//       .mockResolvedValueOnce(() => ({
+//         ok: true,
+//         json: () => Promise.resolve({ departmentList: departments }),
+//       }))
+//       .mockResolvedValueOnce(() => ({
+//         ok: true,
+//         json: () => Promise.resolve(answer_requests),
+//       }));
+//     const { container } = render(
+//       <TasksPage searchParams={{ departmentId: "", searchKeyword: "" }} />
+//     );
+//     expect(container).toMatchSnapshot();
+//   });
+// });

@@ -42,56 +42,19 @@ describe("HistoryListコンポーネント", () => {
         expect(screen.getAllByText("バックエンド案件")).toHaveLength(2)
       );
     });
-    it("文字数制限の関数が呼び出されている", () => {
-      const truncateString = jest.fn();
-      //   const element = screen.getByTestId(`projectDetail${data[0].id}`);
-      //   screen.debug(element);
-      expect(truncateString).toHaveBeenCalled();
+    it("案件詳細が30文字以上の時文字数制限がかかり、30文字以降は...の表示になっている", async () => {
+      await waitFor(() => {
+        render(<HistoryList />);
+      });
+      await waitFor(() => {
+        screen.debug();
+      });
+      await waitFor(() => {
+        const element = screen.getByTestId(
+          `projectDetail${mockHistoriesData.answerRequestList[0].id}`
+        );
+        expect(element).toHaveTextContent("...");
+      });
     });
   });
 });
-
-// describe("POSTが正しい内容で呼び出されたか検証<成功していない>", () => {
-//   it("handles form submission and fetches data", async () => {
-//     // Mock fetch メソッド
-//     const fetchMock = jest.fn();
-
-//     // Mock JSON メソッド
-//     const jsonMock = jest.fn().mockResolvedValue(mockHistoriesData);
-
-//     // モックを設定
-//     global.fetch = fetchMock;
-//     fetchMock.mockResolvedValue({
-//       json: jsonMock,
-//     });
-
-//     // コンポーネントをレンダリング
-//     render(<HistoryList month="2023-09-01" skill={[8]} />);
-
-//     // フォーム送信後の非同期操作を待つ
-//     await act(async () => {
-//       // fetchリクエストが正しく呼び出されたかどうかを確認
-//       expect(global.fetch).toHaveBeenCalledWith(
-//         "http://localhost:3000/api/histories",
-//         {
-//           method: "POST",
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//           body: JSON.stringify({
-//             user_id: 1,
-//             month: "2023-09-01",
-//             skill: [8],
-//           }),
-//         }
-//       );
-
-// レスポンスが正しく表示されるか確認
-// const responseElement = getByText("Response: success");
-// expect(responseElement).toBeInTheDocument();
-//     });
-
-//     // fetch関数のモックをクリーンアップ
-//     fetchMock.mockRestore();
-//   });
-// });

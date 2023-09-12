@@ -40,27 +40,25 @@ const EditQuestionPage = ({ params }: { params: { id: string } }) => {
   const formattedDate = `${year}/${parseInt(month)}/${parseInt(day)}`;
 
   useEffect(() => {
-    const getData = async (url: string): Promise<ProjectDetail> => {
-      try {
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error("Network response not OK");
-        }
-        const res: ProjectResponse = await response.json();
-        // console.log(res.project)
-        return res.project;
-      } catch (error) {
-        console.error(error);
-        return initialProjectDetail;
+    const getData = async () => {
+      const response_projects = await fetch(
+        `http://localhost:3000/api/admin/handle-question/questions?id=${Number(
+          params.id
+        )}`
+      );
+      if (!response_projects.ok) {
+        throw new Error("Failed to fetch data");
       }
+      const project: ProjectDetail = await response_projects.json();
+      return project
     };
-    getData(
-      `http://localhost:8080/qa_system_api/projects/${Number(params.id)}`
-    ).then((projectDetails) => {
-      setProjectData(projectDetails);
-      setEditData(projectDetails.questionList);
-      setNewId(projectDetails.questionList.length + 1);
-    });
+    const setting = async() => {
+      const project = await getData()
+      setProjectData(project);
+      setEditData(project.questionList);
+      setNewId(project.questionList.length + 1);
+    }
+    setting()
   }, [params]);
 
   const addWriteQuestion = () => {

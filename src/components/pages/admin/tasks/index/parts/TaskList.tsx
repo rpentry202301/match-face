@@ -1,9 +1,10 @@
-"use client";
 import { TasksType } from "@/types/admin/tasks/types";
 
-// Todo: タスクリストを非同期通信で取得
+/**
+ * @author Hayato Kobayashi
+ * @todo_1 レスポンシブ対応
+ */
 const TaskList = ({ tasks }: { tasks: TasksType[] }) => {
-
   return (
     <div>
       <table className="border-collapse border-2 border-deep-gray text-sm">
@@ -33,7 +34,7 @@ const TaskList = ({ tasks }: { tasks: TasksType[] }) => {
                 {task.project.name}
               </td>
               <td className="border-2 border-deep-gray p-2 text-center">
-                {task.project.questionList.length}
+                {task.questionCount}
               </td>
               <td
                 className="border-2 border-deep-gray p-2 text-center"
