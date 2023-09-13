@@ -5,10 +5,34 @@ import Link from "next/link";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import type { Groups } from "@/types/admin/groups/groups";
 
+type Props = {
+  data:[{
+    createAt:string,
+    createdUser:string,
+    description:string,
+    id:number,
+    memberCount:number,
+    name:string ,
+    updateAt:string,
+    updateUser:string,
+    userList:[],
+  }]
+}
+
+
 // propsの型定義後で修正
 const GroupTableflame = (props:any) => {
 
   const data = props.data
+
+  // const checkData = ()=>{
+  //   if(data){
+  //     console.log('型定義',typeof props, props)
+  //     console.log(typeof data[0].memberCount)
+  //   }
+  // }
+
+  // checkData()
 
   // モーダル表示
   const [isOpen, setIsOpen] = useState(false);
