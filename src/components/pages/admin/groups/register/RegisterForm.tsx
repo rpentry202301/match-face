@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { ReactNode, useState} from "react";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import Link from "next/link";
 import Input from "@/components/ui/Input";
@@ -8,7 +8,11 @@ import TextArea from "@/components/ui/TextArea";
 import { useRouter } from "next/navigation";
 import UserInput from "./UserInput";
 
-const RegisterForm = ({children}:any) => {
+type RegisterFormProps = {
+  children:ReactNode
+}
+
+const RegisterForm = ({children}:RegisterFormProps) => {
   // モーダル表示用
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
