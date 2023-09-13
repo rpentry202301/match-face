@@ -12,7 +12,6 @@ const createJestConfig = nextJest({
 const config: Config.InitialOptions = {
   // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
@@ -20,9 +19,6 @@ const config: Config.InitialOptions = {
   testPathIgnorePatterns: [
     '<rootDir>/src/__tests__/test_utils/app-router-context-provider-mock.tsx',
   ],
-  transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
-  },
 };
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
