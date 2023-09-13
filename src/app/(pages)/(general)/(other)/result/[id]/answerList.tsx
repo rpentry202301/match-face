@@ -7,8 +7,6 @@ export const AnswerList = ({
 }: {
   questionList: QuestionList[];
 }) => {
-  console.log("questionlist", questionList);
-
   return (
     <>
       {questionList.map((question, index) => (
