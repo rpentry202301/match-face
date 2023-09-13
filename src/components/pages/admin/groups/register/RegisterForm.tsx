@@ -5,10 +5,8 @@ import OrangeButton from "@/components/ui/button/OrangeButton";
 import Link from "next/link";
 import Input from "@/components/ui/Input";
 import TextArea from "@/components/ui/TextArea";
-import UserSelectModal from "../../tasks/register/UserSelectModal";
-import UserInput from "./UserInput";
 import { useRouter } from "next/navigation";
-
+import UserInput from "./UserInput";
 
 const RegisterForm = ({children}:any) => {
   // モーダル表示用
@@ -65,7 +63,7 @@ const RegisterForm = ({children}:any) => {
     <>
       <div className="flex flex-col items-center justify-center h-screen">
         <div className="border-2  py-12 px-12 ">
-          <form onSubmit={submitData}>
+          <form onSubmit={(e) =>submitData(e)}>
             <label htmlFor="group_name">▶グループ名を設定する</label>
             <Input
               id="group_name"
@@ -78,12 +76,8 @@ const RegisterForm = ({children}:any) => {
             <p className="text-red" data-testid="errorGroupName">
               {errorGroupName}
             </p>
-            {/* <br /> */}
-             {/* <label htmlFor="user">▶ユーザーを選択する</label> */}
-            {/*コンポートの外に配置することで対処両方*/}
-            {/* <UserSelectModal /> */}
-            {children}
-            {/* <UserInput /> */}
+            <label htmlFor="user" className="leading-9 mr-3">▶ユーザーを選択する</label>
+            <UserInput/>
             <label htmlFor="group_description">▶備考</label>
             <TextArea
               id="group_description"
@@ -94,6 +88,7 @@ const RegisterForm = ({children}:any) => {
               className="my-3 px-2 py-1 border-2 border-gray-300"
             />
           </form>
+          {children}
           <br />
           <div className="flex flex-col items-center justify-center">
             <OrangeButton
@@ -102,7 +97,7 @@ const RegisterForm = ({children}:any) => {
               onClick={toggleModal}
               data-testid="registerConfirm"
             />
-          </div>
+          </div>  
         </div>
       </div>
 
