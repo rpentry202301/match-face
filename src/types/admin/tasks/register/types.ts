@@ -70,4 +70,8 @@ export type FetchQuestionModalData = {
     context: string;
     updateAt: string;
   }[];
+  projects: {
+    id: number;
+    name: string;
+  }[];
 };
