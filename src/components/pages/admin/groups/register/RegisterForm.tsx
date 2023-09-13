@@ -9,7 +9,8 @@ import UserSelectModal from "../../tasks/register/UserSelectModal";
 import UserInput from "./UserInput";
 import { useRouter } from "next/navigation";
 
-const RegisterForm = () => {
+
+const RegisterForm = ({children}:any) => {
   // モーダル表示用
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
@@ -77,11 +78,12 @@ const RegisterForm = () => {
             <p className="text-red" data-testid="errorGroupName">
               {errorGroupName}
             </p>
-            <br />
-            <label htmlFor="user">▶ユーザーを選択する</label>
+            {/* <br /> */}
+             {/* <label htmlFor="user">▶ユーザーを選択する</label> */}
             {/*コンポートの外に配置することで対処両方*/}
             {/* <UserSelectModal /> */}
-            <UserInput />
+            {children}
+            {/* <UserInput /> */}
             <label htmlFor="group_description">▶備考</label>
             <TextArea
               id="group_description"
