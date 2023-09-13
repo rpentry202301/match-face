@@ -9,7 +9,7 @@ export const menuDataMock = () => {
   new Promise((resolve) => {
     resolve({
       ok: true,
-      status: 200,
+      // status: 200,
       json: async () => ({ data: { menuData } }),
     });
   });
