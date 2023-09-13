@@ -1,10 +1,13 @@
-'use client'
-import Input from "@/components/ui/Input"
-import { useUserSelect } from "@/hooks/store/context/UserSelectContext"
+"use client";
+import Input from "@/components/ui/Input";
+import { useUserSelect } from "@/hooks/store/context/UserSelectContext";
 
 const UserInput = () => {
-  const [ userSelect ] = useUserSelect()
-  const users = userSelect.reduce((cur, user) => cur + ", " + user, "").slice(2)
+  const [userSelect] = useUserSelect();
+  const users = userSelect
+    .map((user) => user.name)
+    .reduce((cur, user) => cur + ", " + user, "")
+    .slice(2);
   return (
     <Input
       id="search"
@@ -12,7 +15,7 @@ const UserInput = () => {
       value={users}
       readOnly
     />
-  )
-}
+  );
+};
 
-export default UserInput
+export default UserInput;
