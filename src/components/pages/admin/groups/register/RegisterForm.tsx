@@ -88,7 +88,10 @@ const RegisterForm = ({children}:any) => {
               className="my-3 px-2 py-1 border-2 border-gray-300"
             />
           </form>
+          {/* メンバー追加ボタンの配置、要修正。最悪、このdivにclassNameかatyleを当てて強引にレイアウトをいじる。 */}
+          <div>
           {children}
+          </div>
           <br />
           <div className="flex flex-col items-center justify-center">
             <OrangeButton
