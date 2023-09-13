@@ -48,12 +48,12 @@ const RegisterForm = () => {
             body: JSON.stringify(body),
           }
         );
-      if (response.ok) {
+      if (response.status === 200) {
         console.log("データを登録しました", body);
         router.push('/admin/groups')
         setIsOpen(!isOpen);
       }else{
-        console.error("データ登録に失敗しました:")
+        console.error("データ登録に失敗しました:",response.status)
       }
     } catch(error) {
       console.error('エラー発生',error)
