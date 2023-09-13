@@ -17,22 +17,22 @@ type AnswerRequest = {
 type AnswerRequests = AnswerRequest[];
 
 type MenuProps = {
-  completedData: AnswerRequests;
-  incompletedData: AnswerRequests;
+  answeredAnswerRequests: AnswerRequests;
+  notAnsweredAnswerRequests: AnswerRequests;
   className: string;
 };
 
 export default function Notification({
   // is_answered === trueのデータ
-  completedData,
+  answeredAnswerRequests,
   // is_answered === falseのデータ
-  incompletedData,
+  notAnsweredAnswerRequests,
   className,
 }: MenuProps) {
   const mergedClassName = twMerge('p-5 w-3/5 h-auto shadow-lg', className);
 
-  // incompletedDataのdeadlineを全て出す
-  const deadlineDate = incompletedData.map((deadline) => {
+  // notAnsweredAnswerRequestsのdeadlineを全て出す
+  const deadlineDate = notAnsweredAnswerRequests.map((deadline) => {
     return deadline.deadline;
   });
 
@@ -41,15 +41,21 @@ export default function Notification({
 
   // データをdeadlineごとの配列にしてまとめる
   const filteredDeadline = deadlineArr.map((deadline) =>
-    incompletedData.filter(
+    notAnsweredAnswerRequests.filter(
       (answerRequest) => answerRequest.deadline === deadline
     )
   );
-
-  // console.log('new Set(deadlineDate)', new Set(deadlineDate));
-  // console.log('deadlineDate', deadlineDate);
-  // console.log('deadlineArr', deadlineArr);
-  // console.log('filteredDeadline', filteredDeadline);
+  // // filteredDeadlineの配列内の各オブジェクトをループ処理(各オブジェクトのdeadlineの形式を変更)
+  filteredDeadline.forEach((array) =>
+    array.forEach((item) => {
+      const deadlineDate = new Date(item.deadline);
+      const year = deadlineDate.getFullYear();
+      const month = String(deadlineDate.getMonth() + 1).padStart(2, '0');
+      const day = String(deadlineDate.getDate()).padStart(2, '0');
+      const formattedDeadline = `${year}年${month}月${day}日`;
+      item.deadline = formattedDeadline;
+    })
+  );
 
   return (
     <>
@@ -58,8 +64,10 @@ export default function Notification({
           進捗状況
         </h1>
         <div className="pt-5">
-          <h2 className="">【対応済】{completedData.length}件</h2>
-          <h2 className="pt-5">【未対応】{incompletedData.length}件</h2>
+          <h2>【対応済】{answeredAnswerRequests.length}件</h2>
+          <h2 className="pt-5">
+            【未対応】{notAnsweredAnswerRequests.length}件
+          </h2>
 
           {filteredDeadline.map((incompleted) => (
             <ul className="pl-5" key={incompleted[0].deadline}>
