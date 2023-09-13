@@ -1,38 +1,25 @@
-'use client'
+"use client";
 
-import React, { useState} from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import type { Groups } from "@/types/admin/groups/groups";
 
-type Props = {
-  data:[{
-    createAt:string,
-    createdUser:string,
-    description:string,
-    id:number,
-    memberCount:number,
-    name:string ,
-    updateAt:string,
-    updateUser:string,
-    userList:[],
-  }]
-}
-
+type GroupsDataProps = {
+  data: Groups[];
+};
 
 // propsの型定義後で修正
-const GroupTableflame = (props:any) => {
+const GroupTableflame = (props:GroupsDataProps) => {
+  const data = props.data;
 
-  const data = props.data
+  const checkData = () => {
+    if (data) {
+      console.log("型定義", typeof props, props);
+    }
+  };
 
-  // const checkData = ()=>{
-  //   if(data){
-  //     console.log('型定義',typeof props, props)
-  //     console.log(typeof data[0].memberCount)
-  //   }
-  // }
-
-  // checkData()
+  checkData();
 
   // モーダル表示
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +28,7 @@ const GroupTableflame = (props:any) => {
   const [selectedGroupDescription, setSelectedGroupDescription] = useState("");
   const [selectedGroupMember, setSelectedGroupMember] = useState("");
 
-  const toggleModal = (obj:Groups) => {
+  const toggleModal = (obj: Groups) => {
     setSelectedGroupingDate(obj.createdAt);
     setSelectedGroupName(obj.name);
     setSelectedGroupDescription(obj.description);
@@ -152,7 +139,7 @@ const GroupTableflame = (props:any) => {
                     className="hover:bg-amber-200 duration-200"
                     data-testid={`group_${obj.id}`}
                   >
-                  {obj.name}
+                    {obj.name}
                   </button>
                 </td>
                 <td
@@ -167,9 +154,9 @@ const GroupTableflame = (props:any) => {
         </table>
         <br />
         {!isOpen && (
-        <Link href={"/admin/groups/register"} data-testid="register">
-          <OrangeButton label="新規グループ作成" />
-        </Link>
+          <Link href={"/admin/groups/register"} data-testid="register">
+            <OrangeButton label="新規グループ作成" />
+          </Link>
         )}
       </div>
     </>

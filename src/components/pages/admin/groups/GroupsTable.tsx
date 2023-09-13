@@ -1,33 +1,15 @@
 import GroupTableflame from "./GroupTableflame";
 import { fetchData } from "./fetchData";
+import type { Groups } from "@/types/admin/groups/groups";
 
-type Data = {
-  createdAt:string,
-  createdUser:string,
-  description:string,
-  id:number,
-  memberCount:number,
-  name:string ,
-  updateAt:string,
-  updateUser:string,
-  userList:[],
-}
+
 
 const GroupsTable = async () => {
   const data = await fetchData();
 
-  const checkData = () =>{
-    if(data){
-      console.log('いま確認したい',typeof data,data)
-      console.log('createdAt',typeof data[0].createdAt)
-    }
-  }
-
-  checkData()
-
   // 日付表記をtimestampからyyyy-mm-ddに変更
   if (Array.isArray(data)) {
-    const formattedData = data.map((item:Data) => {
+    const formattedData = data.map((item:Groups) => {
       const createdAtDate = new Date(item.createdAt);
       const formattedCreatedAt = createdAtDate.toISOString().split("T")[0];
 
