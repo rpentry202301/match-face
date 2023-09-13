@@ -8,6 +8,7 @@ import CheckBox from "@/components/ui/checkbox/CheckBox";
 import QuestionList from "./QuestionList";
 import { useSelectedQuestion } from "@/hooks/store/context/SelectedQuestionContext";
 import type { FetchQuestionModalData } from "@/types/admin/tasks/register/types";
+import SelectProjects from "./SelectProjects";
 
 // 実際にレンダリングされるモーダルは以下に記述
 const QuestionSelectModalForm = ({
@@ -46,12 +47,15 @@ const QuestionSelectModalForm = ({
   const [checkedValues, setCheckedValue] = useState<string[]>(selectedQuestion);
 
   // 選択中のprojectsデータID
-  const [activePjId, setActivePjId] = useState(0);
+  const [activePj, setActivePj] = useState({
+    id: 0,
+    name: "",
+  });
 
   // 現在の案件に一致する質問データ
   const activePjQuestions = useMemo(() => {
-    return questions.filter((question) => question.id === activePjId);
-  }, [questions, activePjId]);
+    return questions.filter((question) => question.projectId === activePj.id);
+  }, [questions, activePj]);
 
   const open = () => {
     setCheckedValue(selectedQuestion);
@@ -137,25 +141,28 @@ const QuestionSelectModalForm = ({
               className="flex flex-col item-center justify-center px-12 py-5 border-2 w-full"
             >
               <div className="flex flex-col items-center gap-5">
-                <div>
-                  <label htmlFor="project_name" className="text-sm">
-                    案件名：
-                  </label>
-                  <select
+                <SelectProjects
+                  projects={fetchData.projects}
+                  activePj={activePj}
+                  onClick={(id: number, name: string) =>
+                    setActivePj({ id: id, name: name })
+                  }
+                />
+                {/* <div className="absolute"></div> */}
+                {/* <select
                     data-testid="project_name"
                     name="project_name"
                     id="project_name"
-                    className="border-2 w-52"
-                    onChange={(e) => setActivePjId(Number(e.target.value))}
+                    className="border-2 w-96 cursor-pointer"
+                    onChange={(e) => setActivePj(Number(e.target.value))}
                   >
                     <option value={0}>{""}</option>
                     {fetchData.projects.map((project) => (
-                      <option key={project.id} value={project.id}>
+                      <option key={project.id} value={project.id} className="cursor-pointer">
                         {project.name}
                       </option>
                     ))}
-                  </select>
-                </div>
+                  </select> */}
                 <div className="flex flex-col items-center gap-5">
                   <div className="flex items-start justify-center gap-2 w-fit">
                     <input
@@ -223,10 +230,10 @@ const QuestionSelectModalForm = ({
           </div>
         </div>
 
-        {activePjId === 0 ? (
+        {activePj.id === 0 ? (
           <div>案件名を選択して下さい</div>
         ) : activePjQuestions.length === 0 ? (
-          <div>案件名に一致する質問がありません</div>
+          <div>表示できる質問がありません</div>
         ) : (
           <>
             <QuestionList
@@ -281,8 +288,8 @@ const Modal = ({
 
   // レンダリングするDOMをbodyに固定するためPortalを使用
   const elmModal = (
-    <div className="fixed top-0 left-0 z-30 flex items-center justify-center w-full h-full">
-      <div className="relative z-20 w-3/4 max-w-5xl py-7 px-10 bg-white">
+    <div className="fixed top-0 left-0 z-20 flex items-center justify-center w-full h-full">
+      <div className="relative z-10 w-3/4 max-w-5xl py-7 px-10 bg-white">
         {children}
       </div>
       {canCloseByClickingBackground ? (
