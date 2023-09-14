@@ -17,6 +17,8 @@ const RegisterForm = ({children}:RegisterFormProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
+  const url = process.env['NEXT_PUBLIC_API_URL']
+
   // 初期値
   const [groupName, setGroupName] = useState("");
   const [groupMember, setGroupMember] = useState([]);
@@ -43,7 +45,7 @@ const RegisterForm = ({children}:RegisterFormProps) => {
         administratorId:0
       };
         const response = await fetch(
-          "http://localhost:3000/api/admin/groups/register",
+          `${url}/admin/groups/register`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
