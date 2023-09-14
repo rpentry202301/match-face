@@ -32,7 +32,7 @@ const HistoryList: React.FC<HistoryListProps> = memo(
     useEffect(() => {
       async function getSelectedData() {
         const userId = 1;
-        const response = await fetch("http://localhost:3000/api/histories", {
+        const response = await fetch(`/api/histories`, {
           cache: "no-store",
           method: "POST",
           headers: {

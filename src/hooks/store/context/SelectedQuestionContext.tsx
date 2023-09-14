@@ -7,18 +7,29 @@ import {
   useContext,
   useReducer,
 } from "react";
-import { selecterReducer } from "../reducer/selecterReducer";
-import { SelectReducerAction } from "@/types/admin/tasks/register/types";
+import { QusetionsReducer } from "../reducer/selecterReducer";
+import { QuestionsReducerAction } from "@/types/admin/tasks/register/types";
+
+export type Questions = {
+  projectId: number;
+  list: {
+    id: number;
+    name: string;
+  }[];
+};
 
 const SelectedQuestionContext = createContext<
-  [string[], Dispatch<SelectReducerAction>] | undefined
+  [Questions, Dispatch<QuestionsReducerAction>] | undefined
 >(undefined);
 
-export const SelectedQuestionProvider = ({ children }: { children: ReactNode }) => {
-  const [state, dispatch] = useReducer<Reducer<string[], SelectReducerAction>>(
-    selecterReducer,
-    []
-  );
+export const SelectedQuestionProvider = ({
+  children,
+}: {
+  children: ReactNode;
+}) => {
+  const [state, dispatch] = useReducer<
+    Reducer<Questions, QuestionsReducerAction>
+  >(QusetionsReducer, { projectId: 0, list: [] });
   return (
     <SelectedQuestionContext.Provider value={[state, dispatch]}>
       {children}

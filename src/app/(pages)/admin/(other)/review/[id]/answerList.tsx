@@ -1,65 +1,26 @@
-import { question } from "@/const/testing";
-import { Answer } from "@/const/review";
-import { User } from "@/const/review";
-import ModelAnswerContent from "@/components/pages/general/result/ModelAnswer";
+import type { QuestionList } from "@/types/(general)/(other)/result/questions";
+import { CurrentAnswer } from "./currentAnswer";
 
-type Props = {
-  project_id: number;
-  user_id: number;
-};
-
-export const AnswerList = ({ user_id, project_id }: Props) => {
-  const currentQuestion = question.filter(
-    (question) => question.project_id === Number(project_id)
-  );
-
-  const currentAnswer = Answer.filter(
-    (answer) => answer.project_id === Number(project_id)
-  );
-
-  const answerUser = User.filter((user) => user.id === user_id);
-
+export const AnswerList = ({
+  questionList,
+}: {
+  questionList: QuestionList[];
+}) => {
   return (
     <>
-      {currentQuestion.map((question, index) => (
-        <div key={index} className="py-5">
-          <h3 className="text-xl">
-            Q{index + 1}:{question.name}
-          </h3>
-          <p id={`content-${index + 1}`} className="mt-2 mb-4">
-            {question.content}
-          </p>
-          {question.type === "writing" ? (
-            <>
-              <div
-                id={`answer-${index}`}
-                className="border border-gray p-3 mt-2 rounded-md shadow-md"
-              >
-                <h3 className="mb-2 text-xl">{answerUser[0].name}の解答</h3>
-                {currentAnswer[index].content}
-              </div>
-            </>
+      {questionList.map((question, index) => (
+        <>
+          {question.answerList[0].modelAnswerFl === false ? (
+            <div key={index} className="py-5">
+              <h3 className="text-xl">
+                Q{index + 1}:{question.context}
+              </h3>
+              <CurrentAnswer question={question} />
+            </div>
           ) : (
-            <>
-              <ul>
-                {question.choices?.map((choice, index) => (
-                  <li key={index}>・{choice}</li>
-                ))}
-              </ul>
-              <div
-                id={`answer-${index}`}
-                className="border border-gray p-3 mt-5 rounded-md shadow-md"
-              >
-                <h3 className="mb-2 text-xl">{answerUser[0].name}の解答</h3>
-                {currentAnswer[index].content}
-              </div>
-            </>
+            <></>
           )}
-          <ModelAnswerContent
-            project_id={project_id}
-            question_id={question.id}
-          />
-        </div>
+        </>
       ))}
     </>
   );
