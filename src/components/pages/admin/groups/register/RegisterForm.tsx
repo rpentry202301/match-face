@@ -35,7 +35,6 @@ const RegisterForm = ({children}:RegisterFormProps) => {
 
   // 非同期通信(post)
   const submitData = async (e: React.SyntheticEvent) => {
-    e.preventDefault();
     try {
       const body = {
         groupName,
