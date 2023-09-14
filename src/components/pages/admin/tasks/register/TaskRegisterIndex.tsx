@@ -3,7 +3,6 @@ import OrangeButton from "@/components/ui/button/OrangeButton";
 import SelectDeadline from "./parts/SelectDeadline";
 import { ChangeEvent, useState } from "react";
 import { useUserSelect } from "@/hooks/store/context/UserSelectContext";
-import { useRouter } from "next/navigation";
 import { useSelectedQuestion } from "@/hooks/store/context/SelectedQuestionContext";
 import ConfirmModal from "./parts/ConfirmModal";
 
@@ -22,8 +21,6 @@ const TaskRegisterIndex = ({ children, id }: Props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
   const [confirm, setConfirm] = useState(false);
-
-  const router = useRouter();
 
   const handleChangeDeadline = (e: ChangeEvent<HTMLSelectElement>) => {
     setDeadline({
