@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 
 export async function GET() {
-  const response = await fetch(`http://localhost:8080/qa_system_api/groups`, {
+  const url = process.env['BE_URL']
+  const response = await fetch(`${url}/groups`, {
     cache: "no-cache",
   });
   if (!response.ok) {
