@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
+/**
+ * @author Hayato Kobayashi
+ * @Todo POSTリクエストを成功させる
+ */
 export const POST = async (req: NextRequest) => {
   const bodyData = await req.json();
 
