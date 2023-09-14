@@ -5,6 +5,7 @@ import { ChangeEvent, useState } from "react";
 import { useUserSelect } from "@/hooks/store/context/UserSelectContext";
 import { useRouter } from "next/navigation";
 import { useSelectedQuestion } from "@/hooks/store/context/SelectedQuestionContext";
+import ConfirmModal from "./parts/ConfirmModal";
 
 /**
  * @author Hayato Kobayashi
@@ -20,6 +21,7 @@ const TaskRegisterIndex = ({ children, id }: Props) => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [confirm, setConfirm] = useState(false);
 
   const router = useRouter();
 
@@ -42,9 +44,9 @@ const TaskRegisterIndex = ({ children, id }: Props) => {
 
     const postData = {
       administraorId: id,
-      userIds: userSelect.map((user) => user.id),
+      userIds: userSelect.map((user) => Number(user.id)),
       projectId: selectedQuestion.projectId,
-      questionIds: selectedQuestion.list.map((question) => question.id),
+      questionIds: selectedQuestion.list.map((question) => Number(question.id)),
       deadline: deadline2Timestamp,
     };
 
@@ -61,6 +63,7 @@ const TaskRegisterIndex = ({ children, id }: Props) => {
 
     if (!res.ok) {
       setError(true);
+      setIsLoading(false);
       return;
     }
     setIsLoading(false);
@@ -82,16 +85,22 @@ const TaskRegisterIndex = ({ children, id }: Props) => {
             handleChange={handleChangeDeadline}
           />
           <div className="flex justify-center mt-10">
-            <OrangeButton
-              label="新規タスクを作成"
-              className={
-                btnDisabled
-                  ? "text-base bg-orange opacity-50 hover:bg-orange"
-                  : "text-base"
-              }
-              onClick={handleClickPost}
-              disabled={btnDisabled}
-            />
+            <ConfirmModal
+              isOpened={confirm}
+              submit={() => handleClickPost()}
+              close={() => setConfirm(false)}
+            >
+              <OrangeButton
+                label="新規タスクを作成"
+                className={
+                  btnDisabled
+                    ? "text-base bg-orange opacity-50 hover:bg-orange"
+                    : "text-base"
+                }
+                onClick={() => setConfirm(true)}
+                disabled={btnDisabled}
+              />
+            </ConfirmModal>
           </div>
           {error && (
             <p className="text-red text-center mt-4">
