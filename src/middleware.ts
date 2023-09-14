@@ -27,13 +27,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // 正規表現を使うのを断念、直接middlewareをかけるパスを指定
-  matcher: [
-    '/',
-    '/questions',
-    '/testing/:path*',
-    '/histories',
-    '/result/:path*',
-    '/admin/:path*',
-  ],
+  matcher: ['/((?!_next/static).*)'],
 };
