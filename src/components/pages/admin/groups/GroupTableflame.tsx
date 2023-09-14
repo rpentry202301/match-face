@@ -1,27 +1,32 @@
 "use client";
 
 import React, { useState } from "react";
-import { group } from "@/const/group";
-import OrangeButton from "@/components/ui/button/OrangeButton";
 import Link from "next/link";
+import OrangeButton from "@/components/ui/button/OrangeButton";
+import type { Groups } from "@/types/admin/groups/groups";
 
-const data = group;
+type GroupsDataProps = {
+  data: Groups[];
+};
 
-const GroupTable = () => {
-  // モーダル表示用
+// propsの型定義後で修正
+const GroupTableflame = (props:GroupsDataProps) => {
+  const data = props.data;
+
+  // モーダル表示
   const [isOpen, setIsOpen] = useState(false);
   const [selectedGroupingDate, setSelectedGroupingDate] = useState("");
   const [selectedGroupName, setSelectedGroupName] = useState("");
   const [selectedGroupDescription, setSelectedGroupDescription] = useState("");
   const [selectedGroupMember, setSelectedGroupMember] = useState("");
 
-  const toggleModal = (group: any) => {
-    setSelectedGroupingDate(group.grouping_date);
-    setSelectedGroupName(group.group_name);
-    setSelectedGroupDescription(group.grouping_description);
-    if (group.group_member) {
+  const toggleModal = (obj: Groups) => {
+    setSelectedGroupingDate(obj.createdAt);
+    setSelectedGroupName(obj.name);
+    setSelectedGroupDescription(obj.description);
+    if (obj.memberCount > 0) {
       setSelectedGroupMember(
-        group.group_member.map((member: any) => member.user_name).join(",")
+        obj.userList.map((member: string) => member).join(",")
       );
     } else {
       setSelectedGroupMember("");
@@ -36,7 +41,7 @@ const GroupTable = () => {
         <div>
           <div
             className="block w-full h-full bg-black/30 absolute top-0 left-0"
-            onClick={() => toggleModal(group)}
+            onClick={() => setIsOpen(!isOpen)}
           >
             <div className="flex flex-col items-center justify-center h-screen">
               <div className="bg-orange  h-9 w-3/5">
@@ -91,6 +96,7 @@ const GroupTable = () => {
       )}
 
       {/* 通常表示テーブル */}
+
       <div className="flex flex-col items-center justify-center h-screen table-fixed">
         <table>
           <thead>
@@ -108,31 +114,31 @@ const GroupTable = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((group) => (
-              <tr key={group.id}>
+            {data?.map((obj: any) => (
+              <tr key={obj.id}>
                 <td
                   className="border px-4 py-2 "
                   style={{ textAlign: "center" }}
                 >
-                  {group.grouping_date}
+                  {obj.createdAt}
                 </td>
                 <td
                   className="border px-4 py-2"
                   style={{ textAlign: "center" }}
                 >
                   <button
-                    onClick={() => toggleModal(group)}
+                    onClick={() => toggleModal(obj)}
                     className="hover:bg-amber-200 duration-200"
-                    data-testid={`group_${group.id}`}
+                    data-testid={`group_${obj.id}`}
                   >
-                    {group.group_name}
+                    {obj.name}
                   </button>
                 </td>
                 <td
                   className="border px-4 py-2"
                   style={{ textAlign: "center" }}
                 >
-                  {group.group_member.length}
+                  {obj.memberCount}
                 </td>
               </tr>
             ))}
@@ -149,4 +155,4 @@ const GroupTable = () => {
   );
 };
 
-export default GroupTable;
+export default GroupTableflame;

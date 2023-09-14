@@ -1,12 +1,8 @@
-import GroupTable from "@/components/pages/admin/groups/GroupTable";
-import GroupTableFromDb from "@/components/pages/admin/groups/GroupTableFromDB";
+import GroupsTable from "@/components/pages/admin/groups/GroupsTable";
 
 const GroupsPage = () => {
   return (
-    <>
-      {/* constからDB取得データに切り替えるため<GroupTable />コメントアウト */}
-      <GroupTableFromDb />
-    </>
+      <GroupsTable/>
   );
 };
 
