@@ -29,6 +29,9 @@ export function middleware(request: NextRequest) {
 export const config = {
   // 正規表現を使うのを断念、直接middlewareをかけるパスを指定
   matcher: [
+    // パスワード再設定機能を実装していないためmiddlewareで指定
+    '/remind/:path*',
+    //
     '/',
     '/questions',
     '/testing/:path*',
