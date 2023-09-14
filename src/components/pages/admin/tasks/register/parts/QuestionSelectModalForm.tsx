@@ -6,7 +6,10 @@ import WhiteButtonCheckBox from "./WhiteButtonCheckBox";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import CheckBox from "@/components/ui/checkbox/CheckBox";
 import QuestionList from "./QuestionList";
-import { useSelectedQuestion } from "@/hooks/store/context/SelectedQuestionContext";
+import {
+  Questions,
+  useSelectedQuestion,
+} from "@/hooks/store/context/SelectedQuestionContext";
 import type { FetchQuestionModalData } from "@/types/admin/tasks/register/types";
 import SelectProjects from "./SelectProjects";
 
@@ -44,13 +47,32 @@ const QuestionSelectModalForm = ({
   });
 
   const [selectedQuestion, selectedQuestionDispatch] = useSelectedQuestion();
-  const [checkedValues, setCheckedValue] = useState<string[]>(selectedQuestion);
+  const [checkedValues, setCheckedValue] =
+    useState<Questions>(selectedQuestion);
 
   // 選択中のprojectsデータID
   const [activePj, setActivePj] = useState({
     id: 0,
     name: "",
   });
+  /**
+   * activePj切替用ハンドラ
+   */
+  const handleChangePj = (id: number, name: string) => {
+    if (id === activePj.id) {
+      return;
+    } else {
+      setActivePj({ id: id, name: name });
+      setCheckedValue({ projectId: id, list: [] });
+      selectedQuestionDispatch({
+        type: "select",
+        payload: { projectId: id, list: [] },
+      });
+    }
+  };
+  // console.log("activePj", activePj);
+  // console.log("checkedValues", checkedValues);
+  // console.log("selectedQuestion", selectedQuestion);
 
   // 現在の案件に一致する質問データ
   const activePjQuestions = useMemo(() => {
@@ -77,13 +99,22 @@ const QuestionSelectModalForm = ({
     setFormData({ ...formData, [name]: newData });
   };
 
-  const handleChangeQuestionList = (e: ChangeEvent<HTMLInputElement>) => {
-    if (checkedValues.includes(e.target.value)) {
-      setCheckedValue(
-        checkedValues.filter((value) => value !== e.target.value)
-      );
+  const handleChangeQuestionList = (
+    e: ChangeEvent<HTMLInputElement>,
+    id: number
+  ) => {
+    if (checkedValues.list.map((Q) => Q.name).includes(e.target.value)) {
+      setCheckedValue({
+        ...checkedValues,
+        list: checkedValues.list.filter(
+          (question) => question.name !== e.target.value
+        ),
+      });
     } else {
-      setCheckedValue([...checkedValues, e.target.value]);
+      setCheckedValue({
+        ...checkedValues,
+        list: [...checkedValues.list, { id: id, name: e.target.value }],
+      });
     }
   };
 
@@ -145,24 +176,9 @@ const QuestionSelectModalForm = ({
                   projects={fetchData.projects}
                   activePj={activePj}
                   onClick={(id: number, name: string) =>
-                    setActivePj({ id: id, name: name })
+                    handleChangePj(id, name)
                   }
                 />
-                {/* <div className="absolute"></div> */}
-                {/* <select
-                    data-testid="project_name"
-                    name="project_name"
-                    id="project_name"
-                    className="border-2 w-96 cursor-pointer"
-                    onChange={(e) => setActivePj(Number(e.target.value))}
-                  >
-                    <option value={0}>{""}</option>
-                    {fetchData.projects.map((project) => (
-                      <option key={project.id} value={project.id} className="cursor-pointer">
-                        {project.name}
-                      </option>
-                    ))}
-                  </select> */}
                 <div className="flex flex-col items-center gap-5">
                   <div className="flex items-start justify-center gap-2 w-fit">
                     <input

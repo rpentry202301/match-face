@@ -1,3 +1,4 @@
+import { Questions } from "@/hooks/store/context/SelectedQuestionContext";
 import { Users } from "@/hooks/store/context/UserSelectContext";
 
 // Hooks
@@ -7,6 +8,8 @@ export type SelectReducerAction = {
 };
 
 export type UsersReducerAction = { type: string; payload: Users[] };
+
+export type QuestionsReducerAction = { type: string; payload: Questions };
 
 export type TasksReducerAction = {
   type: "initState";
