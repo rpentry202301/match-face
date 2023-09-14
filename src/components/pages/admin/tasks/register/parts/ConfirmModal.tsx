@@ -3,6 +3,10 @@
 import GrayButton from "@/components/ui/button/GrayButton";
 import { createPortal } from "react-dom";
 
+/**
+ * @author Hayato Kobayashi
+ * @description 新規タスク作成確認モーダル
+ */
 const ConfirmModal = ({ children, isOpened, submit, close }: ModalProps) => {
   if (!isOpened) return <>{children}</>;
 
