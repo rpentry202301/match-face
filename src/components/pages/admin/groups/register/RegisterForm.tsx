@@ -67,7 +67,7 @@ const RegisterForm = ({children}:RegisterFormProps) => {
     <>
       <div className="flex flex-col items-center justify-center h-screen">
         <div className="border-2  py-12 px-12 ">
-          <form onSubmit={(e) =>submitData(e)}>
+          <div>
             <label htmlFor="group_name">▶グループ名を設定する</label>
             <Input
               id="group_name"
@@ -80,7 +80,7 @@ const RegisterForm = ({children}:RegisterFormProps) => {
             <p className="text-red" data-testid="errorGroupName">
               {errorGroupName}
             </p>
-            <label htmlFor="user" className="leading-9 mr-3">▶ユーザーを選択する</label>
+            {children}
             <UserInput/>
             <label htmlFor="group_description">▶備考</label>
             <TextArea
@@ -91,12 +91,7 @@ const RegisterForm = ({children}:RegisterFormProps) => {
               onChange={(e) => setGroupDescription(e.target.value)}
               className="my-3 px-2 py-1 border-2 border-gray-300"
             />
-          </form>
-          {/* メンバー追加ボタンの配置、要修正。最悪、このdivにclassNameかatyleを当てて強引にレイアウトをいじる。 */}
-          <div>
-          {children}
-          </div>
-          <br />
+          </div>         
           <div className="flex flex-col items-center justify-center">
             <OrangeButton
               label="グループを設定する"
@@ -122,7 +117,7 @@ const RegisterForm = ({children}:RegisterFormProps) => {
                 <div className="flex flex-col  items-center justify-center mx-5 my-1">
                   <Link href={"/admin/groups"}>
                     <button
-                      onClick={submitData}
+                      onClick={(e) =>submitData(e)}
                       className="hover:bg-gray-400 duration-200"
                       data-testid="registerTrue"
                     >
