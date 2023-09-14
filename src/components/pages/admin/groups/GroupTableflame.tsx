@@ -13,14 +13,6 @@ type GroupsDataProps = {
 const GroupTableflame = (props:GroupsDataProps) => {
   const data = props.data;
 
-  const checkData = () => {
-    if (data) {
-      console.log("型定義", typeof props, props);
-    }
-  };
-
-  checkData();
-
   // モーダル表示
   const [isOpen, setIsOpen] = useState(false);
   const [selectedGroupingDate, setSelectedGroupingDate] = useState("");

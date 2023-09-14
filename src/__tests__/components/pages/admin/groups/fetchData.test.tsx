@@ -1,4 +1,4 @@
-import { fetchData } from "@/components/pages/admin/groups/fetchData";
+import { fetchData } from "@/lib/common/date/fetch/fetchData";
 
 describe("fetchData.tsx", () => {
   it("データを取得してきているか", async () => {

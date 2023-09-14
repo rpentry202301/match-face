@@ -1,11 +1,12 @@
 import GroupTableflame from "./GroupTableflame";
-import { fetchData } from "./fetchData";
+import { fetchData } from "@/lib/common/fetch/fetchData";
 import type { Groups } from "@/types/admin/groups/groups";
 
 
 
 const GroupsTable = async () => {
-  const data = await fetchData();
+  const rowData = await fetchData('groups');
+  const data = rowData.groupList
 
   // 日付表記をtimestampからyyyy-mm-ddに変更
   if (Array.isArray(data)) {
@@ -30,6 +31,7 @@ const GroupsTable = async () => {
     return <GroupTableflame data={formattedData} />;
   } else {
     console.error("jsonデータが配列でない");
+    console.log(data)
   }
 };
 
