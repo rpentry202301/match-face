@@ -1,109 +1,163 @@
-'use client'
-import { useState, ReactNode, ChangeEvent, FormEvent } from "react"
-import { createPortal } from "react-dom"
-import WhiteButton from "@/components/ui/button/WhiteButton"
-import WhiteButtonCheckBox from "./WhiteButtonCheckBox"
-import OrangeButton from "@/components/ui/button/OrangeButton"
-import CheckBox from "@/components/ui/checkbox/CheckBox"
-import QuestionList from "./QuestionList"
-import { useSelectedQuestion } from "@/hooks/store/context/SelectedQuestionContext"
-import type { FetchQuestionModalData } from "@/types/admin/tasks/register/types"
+"use client";
+import { useState, ReactNode, ChangeEvent, FormEvent, useMemo } from "react";
+import { createPortal } from "react-dom";
+import WhiteButton from "@/components/ui/button/WhiteButton";
+import WhiteButtonCheckBox from "./WhiteButtonCheckBox";
+import OrangeButton from "@/components/ui/button/OrangeButton";
+import CheckBox from "@/components/ui/checkbox/CheckBox";
+import QuestionList from "./QuestionList";
+import {
+  Questions,
+  useSelectedQuestion,
+} from "@/hooks/store/context/SelectedQuestionContext";
+import type { FetchQuestionModalData } from "@/types/admin/tasks/register/types";
+import SelectProjects from "./SelectProjects";
 
 // 実際にレンダリングされるモーダルは以下に記述
-const QuestionSelectModalForm = ({ fetchData }: { fetchData: FetchQuestionModalData }) => {
-  const [ search, setSearch ] = useState('')
-  const [ isOpened, setIsOpened ] = useState(false)
-  const [ questions, setQuestions ] = useState(fetchData.questions)
-  
+const QuestionSelectModalForm = ({
+  fetchData,
+}: {
+  fetchData: FetchQuestionModalData;
+}) => {
+  const [search, setSearch] = useState("");
+  const [isOpened, setIsOpened] = useState(false);
+  const [questions, setQuestions] = useState(fetchData.questions);
+
   // 状態初期化用にオブジェクトを作成
   const initDepartments = fetchData.departments.map((dep) => {
     return {
       id: dep.id,
       label: dep.name,
       checked: false,
-    }
-  })
+    };
+  });
 
   const initSkills = fetchData.skills.map((skill) => {
     return {
       id: skill.id,
       label: skill.name,
       checked: false,
-    }
-  })
+    };
+  });
 
-  const [ formData, setFormData ] = useState({
+  const [formData, setFormData] = useState({
     search: "",
     department: initDepartments,
     skill: initSkills,
-  })
+  });
 
-  const [ selectedQuestion, selectedQuestionDispatch ] = useSelectedQuestion()
-  const [ checkedValues, setCheckedValue ] = useState<string[]>(selectedQuestion)
+  const [selectedQuestion, selectedQuestionDispatch] = useSelectedQuestion();
+  const [checkedValues, setCheckedValue] =
+    useState<Questions>(selectedQuestion);
+
+  // 選択中のprojectsデータID
+  const [activePj, setActivePj] = useState({
+    id: 0,
+    name: "",
+  });
+  /**
+   * activePj切替用ハンドラ
+   */
+  const handleChangePj = (id: number, name: string) => {
+    if (id === activePj.id) {
+      return;
+    } else {
+      setActivePj({ id: id, name: name });
+      setCheckedValue({ projectId: id, list: [] });
+      selectedQuestionDispatch({
+        type: "select",
+        payload: { projectId: id, list: [] },
+      });
+    }
+  };
+  // console.log("activePj", activePj);
+  // console.log("checkedValues", checkedValues);
+  // console.log("selectedQuestion", selectedQuestion);
+
+  // 現在の案件に一致する質問データ
+  const activePjQuestions = useMemo(() => {
+    return questions.filter((question) => question.projectId === activePj.id);
+  }, [questions, activePj]);
 
   const open = () => {
-    setCheckedValue(selectedQuestion)
-    setIsOpened(true)
-  }
-  const close = () => setIsOpened(false)
+    setCheckedValue(selectedQuestion);
+    setIsOpened(true);
+  };
+  const close = () => setIsOpened(false);
 
-  const handleChangeCheckBox = (e: ChangeEvent<HTMLInputElement>, name: "department" | "skill") => {
+  const handleChangeCheckBox = (
+    e: ChangeEvent<HTMLInputElement>,
+    name: "department" | "skill"
+  ) => {
     const newData = formData[name];
     newData.map((data) => {
-      if(data.label === e.target.value) {
-        data.checked = !data.checked
+      if (data.label === e.target.value) {
+        data.checked = !data.checked;
       }
-      return newData
-    })
-    setFormData({ ...formData, [name]: newData})
-  }
+      return newData;
+    });
+    setFormData({ ...formData, [name]: newData });
+  };
 
-  const handleChangeQuestionList = (e: ChangeEvent<HTMLInputElement>) => {
-    if (checkedValues.includes(e.target.value)) {
-      setCheckedValue(
-        checkedValues.filter((value) => value !== e.target.value)
-      )
+  const handleChangeQuestionList = (
+    e: ChangeEvent<HTMLInputElement>,
+    id: number
+  ) => {
+    if (checkedValues.list.map((Q) => Q.name).includes(e.target.value)) {
+      setCheckedValue({
+        ...checkedValues,
+        list: checkedValues.list.filter(
+          (question) => question.name !== e.target.value
+        ),
+      });
     } else {
-      setCheckedValue([...checkedValues, e.target.value])
+      setCheckedValue({
+        ...checkedValues,
+        list: [...checkedValues.list, { id: id, name: e.target.value }],
+      });
     }
-  }
+  };
 
   const handleClose = () => {
-    selectedQuestionDispatch({ type: "select", payload: checkedValues })
-    close()
-  }
+    selectedQuestionDispatch({ type: "select", payload: checkedValues });
+    close();
+  };
 
   // Todo: APIができたら実装
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const searchKeyword = search
-    const checkedDepId = formData.department.filter((data) => data.checked).map((dep) => dep.id)
-    const checkedSkillId = formData.skill.filter((data) => data.checked).map((skill) => skill.id)
+    e.preventDefault();
+    const searchKeyword = search;
+    const checkedDepId = formData.department
+      .filter((data) => data.checked)
+      .map((dep) => dep.id);
+    const checkedSkillId = formData.skill
+      .filter((data) => data.checked)
+      .map((skill) => skill.id);
 
     const searchQuerys = [
       searchKeyword ? `searchKeyword=${searchKeyword}` : "",
       checkedDepId.length ? `departmentId=${checkedDepId}` : "",
       checkedSkillId.length ? `skillId=${checkedSkillId}` : "",
-    ]
+    ];
 
-    const query = searchQuerys.filter((query) => query !== "").join("&")
+    const query = searchQuerys.filter((query) => query !== "").join("&");
 
     fetch(`/api/admin/tasks/register/questions?${query}`, {
-      cache: 'no-cache',
-      method: 'GET',
+      cache: "no-cache",
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     })
       .then((res) => {
-        console.log(res.status)
-        return res.json()
+        console.log(res.status);
+        return res.json();
       })
       .then((data) => {
-        setQuestions(data.questionList)
+        setQuestions(data.questionList);
       })
-      .catch((err) => console.log(err))
-  }
+      .catch((err) => console.log(err));
+  };
 
   return (
     <Modal buttonText="追加" isOpened={isOpened} open={open} close={close}>
@@ -113,8 +167,18 @@ const QuestionSelectModalForm = ({ fetchData }: { fetchData: FetchQuestionModalD
             <div className="text-base">
               <h2>▶️質問を選択する</h2>
             </div>
-            <form onSubmit={handleSubmit} className="flex flex-col item-center justify-center px-12 py-5 border-2 w-full">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col item-center justify-center px-12 py-5 border-2 w-full"
+            >
               <div className="flex flex-col items-center gap-5">
+                <SelectProjects
+                  projects={fetchData.projects}
+                  activePj={activePj}
+                  onClick={(id: number, name: string) =>
+                    handleChangePj(id, name)
+                  }
+                />
                 <div className="flex flex-col items-center gap-5">
                   <div className="flex items-start justify-center gap-2 w-fit">
                     <input
@@ -134,7 +198,11 @@ const QuestionSelectModalForm = ({ fetchData }: { fetchData: FetchQuestionModalD
                         id={`teck_${element.id}`}
                         label={element.name}
                         value={element.name}
-                        checked={formData.department.filter((data) => data.label === element.name)[0].checked}
+                        checked={
+                          formData.department.filter(
+                            (data) => data.label === element.name
+                          )[0].checked
+                        }
                         name="department"
                         className="text-xs w-16"
                         onChange={(e) => handleChangeCheckBox(e, "department")}
@@ -149,33 +217,69 @@ const QuestionSelectModalForm = ({ fetchData }: { fetchData: FetchQuestionModalD
                           <CheckBox
                             id={`skill_${skill.id}`}
                             value={skill.name}
-                            checked={formData.skill.filter((data) => data.label === skill.name)[0].checked}
+                            checked={
+                              formData.skill.filter(
+                                (data) => data.label === skill.name
+                              )[0].checked
+                            }
                             name="skill"
                             onChange={(e) => handleChangeCheckBox(e, "skill")}
                           />
-                          <label htmlFor={`skill_${skill.id}`} className="text-xs ml-1 hover:cursor-pointer">{skill.name}</label>
+                          <label
+                            htmlFor={`skill_${skill.id}`}
+                            className="text-xs ml-1 hover:cursor-pointer"
+                          >
+                            {skill.name}
+                          </label>
                         </div>
                       ))}
                     </div>
                   </div>
                 </div>
-                <OrangeButton type="submit" label="絞り込み" className="text-xs" />
+                <OrangeButton
+                  type="submit"
+                  label="絞り込み"
+                  className="text-xs"
+                />
               </div>
             </form>
           </div>
         </div>
 
-        <QuestionList
+        {activePj.id === 0 ? (
+          <div>案件名を選択して下さい</div>
+        ) : activePjQuestions.length === 0 ? (
+          <div>表示できる質問がありません</div>
+        ) : (
+          <>
+            <QuestionList
+              questions={activePjQuestions}
+              checkedValues={checkedValues}
+              onChange={handleChangeQuestionList}
+            />
+
+            <OrangeButton
+              label="選択完了"
+              className="text-xs"
+              onClick={handleClose}
+            />
+          </>
+        )}
+        {/* <QuestionList
           questions={questions}
           checkedValues={checkedValues}
           onChange={handleChangeQuestionList}
         />
 
-        <OrangeButton label="選択完了" className="text-xs" onClick={handleClose}/>
+        <OrangeButton
+          label="選択完了"
+          className="text-xs"
+          onClick={handleClose}
+        /> */}
       </div>
     </Modal>
-  )
-}
+  );
+};
 
 const Modal = ({
   children,
@@ -185,32 +289,36 @@ const Modal = ({
   open,
   close,
 }: {
-  children: ReactNode,
-  buttonText: string,
-  canCloseByClickingBackground?: boolean,
-  isOpened: boolean,
-  open: () => void,
-  close: () => void,
+  children: ReactNode;
+  buttonText: string;
+  canCloseByClickingBackground?: boolean;
+  isOpened: boolean;
+  open: () => void;
+  close: () => void;
 }) => {
   if (!isOpened) {
     return (
       <WhiteButton label={buttonText} onClick={open} className="text-xs" />
-    )
+    );
   }
 
   // レンダリングするDOMをbodyに固定するためPortalを使用
   const elmModal = (
-    <div className="fixed top-0 left-0 z-30 flex items-center justify-center w-full h-full">
-      <div className="relative z-20 w-3/4 max-w-5xl py-7 px-10 bg-white">
+    <div className="fixed top-0 left-0 z-20 flex items-center justify-center w-full h-full">
+      <div className="relative z-10 w-3/4 max-w-5xl py-7 px-10 bg-white">
         {children}
       </div>
-      {canCloseByClickingBackground
-        ? <div className="absolute top-0 left-0 w-full h-full bg-black opacity-30" onClick={close} />
-        : <div className="absolute top-0 left-0 w-full h-full bg-black opacity-30" />
-      }
+      {canCloseByClickingBackground ? (
+        <div
+          className="absolute top-0 left-0 w-full h-full bg-black opacity-30"
+          onClick={close}
+        />
+      ) : (
+        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-30" />
+      )}
     </div>
-  )
-  return createPortal(elmModal, document.body)
-}
+  );
+  return createPortal(elmModal, document.body);
+};
 
-export default QuestionSelectModalForm
+export default QuestionSelectModalForm;
