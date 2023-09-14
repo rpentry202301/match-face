@@ -19,6 +19,7 @@ const TaskRegisterIndex = ({ children, id }: Props) => {
     hour: `${18}`,
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const router = useRouter();
 
@@ -31,6 +32,7 @@ const TaskRegisterIndex = ({ children, id }: Props) => {
 
   const handleClickPost = async () => {
     setIsLoading(true);
+    setError(false);
 
     // deadlineをtimestamp型に成型
     const { year, month, day, hour } = deadline;
@@ -46,8 +48,21 @@ const TaskRegisterIndex = ({ children, id }: Props) => {
       deadline: deadline2Timestamp,
     };
 
-    
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/tasks/register`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(postData),
+      }
+    );
 
+    if (!res.ok) {
+      setError(true);
+      return;
+    }
     setIsLoading(false);
   };
 
@@ -78,6 +93,11 @@ const TaskRegisterIndex = ({ children, id }: Props) => {
               disabled={btnDisabled}
             />
           </div>
+          {error && (
+            <p className="text-red text-center mt-4">
+              エラーが発生しました。管理者にお問い合わせ下さい。
+            </p>
+          )}
         </div>
       </div>
     </main>
