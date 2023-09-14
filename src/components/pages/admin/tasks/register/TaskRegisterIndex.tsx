@@ -43,7 +43,7 @@ const TaskRegisterIndex = ({ children, id }: Props) => {
     ).slice(-2)}T${("0" + hour).slice(-2)}:00:00`;
 
     const postData = {
-      administraorId: id,
+      administraorId: Number(id),
       userIds: userSelect.map((user) => Number(user.id)),
       projectId: selectedQuestion.projectId,
       questionIds: selectedQuestion.list.map((question) => Number(question.id)),
@@ -51,7 +51,7 @@ const TaskRegisterIndex = ({ children, id }: Props) => {
     };
 
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/tasks/register`,
+      `${process.env.NEXT_PUBLIC_API_URL}/admin/tasks/register`,
       {
         method: "POST",
         headers: {
