@@ -4,18 +4,21 @@ import SelectDeadline from "./parts/SelectDeadline";
 import { ChangeEvent, useState } from "react";
 import { useUserSelect } from "@/hooks/store/context/UserSelectContext";
 import { useRouter } from "next/navigation";
+import { useSelectedQuestion } from "@/hooks/store/context/SelectedQuestionContext";
 
 /**
  * @author Hayato Kobayashi
  */
 const TaskRegisterIndex = ({ children, id }: Props) => {
   const [userSelect] = useUserSelect();
+  const [selectedQuestion, selectedQuestionDispatch] = useSelectedQuestion();
   const [deadline, setDeadline] = useState({
     year: new Date().getFullYear().toString(),
     month: (new Date().getMonth() + 1).toString(),
     day: new Date().getDate().toString(),
     hour: `${18}`,
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
 
@@ -27,6 +30,8 @@ const TaskRegisterIndex = ({ children, id }: Props) => {
   };
 
   const handleClickPost = async () => {
+    setIsLoading(true);
+
     // deadlineをtimestamp型に成型
     const { year, month, day, hour } = deadline;
     const deadline2Timestamp = `${year}-${("0" + month).slice(-2)}-${(
@@ -36,9 +41,21 @@ const TaskRegisterIndex = ({ children, id }: Props) => {
     const postData = {
       administraorId: id,
       userIds: userSelect.map((user) => user.id),
+      projectId: selectedQuestion.projectId,
+      questionIds: selectedQuestion.list.map((question) => question.id),
       deadline: deadline2Timestamp,
     };
+
+    
+
+    setIsLoading(false);
   };
+
+  const btnDisabled =
+    isLoading ||
+    userSelect.length === 0 ||
+    selectedQuestion.projectId === 0 ||
+    selectedQuestion.list.length === 0;
 
   return (
     <main>
@@ -52,8 +69,13 @@ const TaskRegisterIndex = ({ children, id }: Props) => {
           <div className="flex justify-center mt-10">
             <OrangeButton
               label="新規タスクを作成"
-              className="text-base"
+              className={
+                btnDisabled
+                  ? "text-base bg-orange opacity-50 hover:bg-orange"
+                  : "text-base"
+              }
               onClick={handleClickPost}
+              disabled={btnDisabled}
             />
           </div>
         </div>
