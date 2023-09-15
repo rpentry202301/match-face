@@ -30,8 +30,8 @@ const SelectProjects = ({ projects, activePj, onClick }: Props) => {
               className="w-4 h-4 text-gray-400"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M19.5 8.25l-7.5 7.5-7.5-7.5"
               />
             </svg>
