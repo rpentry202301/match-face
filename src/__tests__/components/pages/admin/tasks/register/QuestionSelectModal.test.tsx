@@ -1,6 +1,6 @@
 import QuestionSelectModal from "@/components/pages/admin/tasks/register/QuestionSelectModal ";
 import { SelectedQuestionProvider } from "@/hooks/store/context/SelectedQuestionContext";
-import { fetchData } from "./parts/ QuestionSelectModalForm.test";
+import { fetchData } from "./parts/QuestionSelectModalForm.test";
 import { render, waitFor } from "@testing-library/react";
 
 // スナップショットはフォームのコンポーネント側で撮るので、ここではテストしない
