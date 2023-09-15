@@ -1,7 +1,7 @@
 import TaskList from "@/components/pages/admin/tasks/index/parts/TaskList";
 import { answer_requests } from "@/const/tasks";
 import { cleanup, render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom"
+import "@testing-library/jest-dom";
 
 describe("TaskList.tsx", () => {
   beforeAll(() => {
@@ -21,7 +21,7 @@ describe("TaskList.tsx", () => {
   });
   it("表示できるデータが存在しない", () => {
     cleanup();
-    render(<TaskList tasks={[]}/>);
+    render(<TaskList tasks={[]} />);
 
     const noDatatxt = screen.getByText("表示するデータがありません");
     expect(noDatatxt).toBeInTheDocument();

@@ -5,9 +5,7 @@ import { TasksType } from "@/types/admin/tasks/types";
  * @todo_1 レスポンシブ対応
  */
 const TaskList = ({ tasks }: { tasks: TasksType[] }) => {
-  if (tasks.length === 0) return (
-    <div>表示するデータがありません</div>
-  )
+  if (tasks.length === 0) return <div>表示するデータがありません</div>;
 
   return (
     <div data-testid="data-table">
@@ -49,7 +47,7 @@ const TaskList = ({ tasks }: { tasks: TasksType[] }) => {
               <td className="border-2 border-deep-gray p-2 text-center">
                 {/* 回答ユーザーは3名まで表示。それ以降は"..."で省略 */}
                 {task.answerUserList.length > 3
-                  ? task.answerUserList   // ex)テスト太郎、テスト次郎、テスト三郎...
+                  ? task.answerUserList // ex)テスト太郎、テスト次郎、テスト三郎...
                       .slice(0, 3)
                       .map((user, i) =>
                         i !== 3 ? (
@@ -58,12 +56,17 @@ const TaskList = ({ tasks }: { tasks: TasksType[] }) => {
                           <span key={user.userId}>{user.userName}...</span>
                         )
                       )
-                  : task.answerUserList.map((user, i) => (    // ex)テスト太郎、テスト次郎、テスト三郎
-                      <span key={user.userId}>
-                        {user.userName}
-                        {i + 1 !== task.answerUserList.length && "、"}
-                      </span>
-                    ))}
+                  : task.answerUserList.map(
+                      (
+                        user,
+                        i // ex)テスト太郎、テスト次郎、テスト三郎
+                      ) => (
+                        <span key={user.userId}>
+                          {user.userName}
+                          {i + 1 !== task.answerUserList.length && "、"}
+                        </span>
+                      )
+                    )}
               </td>
               <td className="border-2 border-deep-gray p-2 text-center">
                 {task.deadline.toString().slice(0, 10)}
