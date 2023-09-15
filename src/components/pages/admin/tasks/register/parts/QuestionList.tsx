@@ -16,9 +16,8 @@ const QuestionList = ({
   checkedValues,
   onChange,
 }: {
-  questions: Question[];
-  checkedValues: Questions;
-  onChange: (e: ChangeEvent<HTMLInputElement>, id: number) => void;
+  checkedValues: string[];
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }) => {
   const tableDefaultClassName =
     "border-2 border-deep-gray px-4 py-2 text-center";

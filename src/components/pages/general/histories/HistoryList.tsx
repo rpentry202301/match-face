@@ -32,29 +32,35 @@ const HistoryList: React.FC<HistoryListProps> = memo(
     useEffect(() => {
       async function getSelectedData() {
         const userId = 1;
-        const response = await fetch(`/api/histories`, {
-          cache: "no-store",
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            user_id: userId,
-            month: month,
-            skill: skill,
-          }),
-        });
-        if (!response.ok) throw new Error("Failed to fetch data");
-        const FetchData = await response.json();
-        const selectProject = FetchData.answerRequestList;
-        setSelectProject(selectProject);
-        // console.log("取得したデータ", selectProject, month, skill);
+        try {
+          const response = await fetch(`http://localhost:3000/api/histories`, {
+            cache: "no-store",
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              user_id: userId,
+              month: month,
+              skill: skill,
+            }),
+          });
+          if (!response.ok) {
+            throw new Error("Failed to fetch data");
+          }
+          const FetchData = await response.json();
+          const selectProject = FetchData.answerRequestList;
+          setSelectProject(selectProject);
+          // console.log("取得したデータ", selectProject, month, skill);
+        } catch (error) {
+          console.error("エラーが発生しました:", error);
+        }
       }
       getSelectedData();
     }, [click]);
 
     // 詳細の文字数制限
-    const truncateString = (str: any, num: any) => {
+    const truncateString = (str: string, num: number) => {
       return str.length <= num ? str : str.slice(0, num) + "...";
     };
     // 回答日の表示
@@ -102,7 +108,7 @@ const HistoryList: React.FC<HistoryListProps> = memo(
 
                 <td
                   className="border text-center px-4 "
-                  data-test={`projectDetail${project.id}`}
+                  data-testid={`projectDetail${project.id}`}
                 >
                   {truncateString(project.project.detail, 30)}
                 </td>
