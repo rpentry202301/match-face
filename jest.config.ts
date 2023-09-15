@@ -1,5 +1,4 @@
 // next.js用のjest設定　https://nextjs.org/docs/pages/building-your-application/optimizing/testing#setting-up-jest-with-the-rust-compiler
-import type { Config } from '@jest/types';
 import nextJest from 'next/jest.js';
 
 const createJestConfig = nextJest({
@@ -9,7 +8,7 @@ const createJestConfig = nextJest({
 
 // Add any custom config to be passed to Jest
 /** @type {import('jest').Config} */
-const config: Config.InitialOptions = {
+const config = {
   // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   testEnvironment: 'jest-environment-jsdom',
