@@ -40,6 +40,7 @@ exports[`Question.tsx QuestionListのスナップショット 1`] = `
             <input
               checked=""
               class="w-4 h-4 accent-orange cursor-pointer"
+              data-testid="Q-1"
               type="checkbox"
               value="開発経験について教えてください。"
             />
@@ -66,6 +67,7 @@ exports[`Question.tsx QuestionListのスナップショット 1`] = `
           >
             <input
               class="w-4 h-4 accent-orange cursor-pointer"
+              data-testid="Q-2"
               type="checkbox"
               value="1番得意な言語は何ですか。"
             />
