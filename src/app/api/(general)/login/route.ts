@@ -10,13 +10,17 @@ export async function POST(request: Request) {
       `${process.env.BE_URL}/users/${userId}?password=${password}`
     );
     const data = await response.json();
-    cookies().set({
-      name: 'userId',
-      value: `${userId}`,
-      httpOnly: true,
-      secure: true,
-      path: '/',
-    });
+    if (data.user.id && data.user.length !== 0) {
+      cookies().set({
+        name: 'userId',
+        value: `${data.user.id}`,
+        httpOnly: true,
+        secure: true,
+        path: '/',
+      });
+    }
+    const bool = cookies().has('administratorId');
+    console.log('bool', bool);
     return NextResponse.json(data);
   } catch (error) {
     throw new Error('api error');
