@@ -7,25 +7,50 @@ export function middleware(request: NextRequest) {
 
   if (
     userCookie === false &&
-    request.nextUrl.pathname.includes('login') === false
+    adminCookie === false &&
+    request.nextUrl.pathname.startsWith('/admin') === false &&
+    !request.nextUrl.pathname.match('/login')
   ) {
     return NextResponse.redirect(new URL('/login', request.url));
   }
 
   if (
+    userCookie === false &&
     adminCookie === false &&
     request.nextUrl.pathname.startsWith('/admin') === true &&
-    request.nextUrl.pathname.includes('login') === false
+    !request.nextUrl.pathname.match('/admin/login')
   ) {
     return NextResponse.redirect(new URL('/admin/login', request.url));
   }
 
-  if (userCookie === true && adminCookie !== false) {
-    return NextResponse.next();
+  if (
+    userCookie === true &&
+    adminCookie === false &&
+    request.nextUrl.pathname.startsWith('/admin') === true &&
+    !request.nextUrl.pathname.match('/login') &&
+    !request.nextUrl.pathname.match('/admin/login')
+  ) {
+    return NextResponse.redirect(new URL('/login', request.url));
   }
 
-  if (adminCookie === true && userCookie !== false) {
-    return NextResponse.next();
+  if (
+    userCookie === false &&
+    adminCookie === true &&
+    request.nextUrl.pathname.startsWith('/admin') === false &&
+    !request.nextUrl.pathname.match('/login') &&
+    !request.nextUrl.pathname.match('/admin/login')
+  ) {
+    return NextResponse.redirect(new URL('/admin/login', request.url));
+  }
+
+  // cookieの実装の仕様上念の為つけた
+  if (
+    userCookie === true &&
+    adminCookie === true &&
+    !request.nextUrl.pathname.match('/login') &&
+    !request.nextUrl.pathname.match('/admin/login')
+  ) {
+    return NextResponse.redirect(new URL('/login', request.url));
   }
 }
 
