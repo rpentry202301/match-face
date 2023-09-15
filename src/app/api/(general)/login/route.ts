@@ -10,6 +10,7 @@ export async function POST(request: Request) {
       `${process.env.BE_URL}/users/${userId}?password=${password}`
     );
     const data = await response.json();
+    cookies().delete('administratorId');
     if (data.user.id && data.user.length !== 0) {
       cookies().set({
         name: 'userId',
@@ -17,10 +18,9 @@ export async function POST(request: Request) {
         httpOnly: true,
         secure: true,
         path: '/',
+        maxAge: 60 * 60 * 24,
       });
     }
-    const bool = cookies().has('administratorId');
-    console.log('bool', bool);
     return NextResponse.json(data);
   } catch (error) {
     throw new Error('api error');

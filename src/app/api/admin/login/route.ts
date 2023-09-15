@@ -10,7 +10,7 @@ export async function POST(request: Request) {
       `${process.env.BE_URL}/administrators/${administratorId}?password=${password}`
     );
     const data = await response.json();
-    console.log('data', data);
+    cookies().delete('userId');
     if (data.administrator.id && data.administrator.length !== 0) {
       cookies().set({
         name: 'administratorId',
@@ -18,6 +18,7 @@ export async function POST(request: Request) {
         httpOnly: true,
         secure: true,
         path: '/',
+        maxAge: 60 * 60 * 24,
       });
     }
     return NextResponse.json(data);
