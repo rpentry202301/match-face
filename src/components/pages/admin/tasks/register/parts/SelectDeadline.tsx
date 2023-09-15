@@ -6,7 +6,7 @@ import {
   getDayArrInMonth,
   getThis_NextYear,
 } from "@/lib/common/date/date";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent } from "react";
 
 const SelectDeadline = ({ state, handleChange }: Props) => {
   return (

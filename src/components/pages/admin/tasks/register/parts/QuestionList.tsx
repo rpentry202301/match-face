@@ -43,6 +43,7 @@ const QuestionList = ({
                   checked={checkedValues.list
                     .map((question) => question.name)
                     .includes(question.context)}
+                  data-testid={`Q-${question.id}`}
                 />
               </td>
               <td className={`${tableDefaultClassName}`}>

@@ -17,7 +17,7 @@ const SelectProjects = ({ projects, activePj, onClick }: Props) => {
         <div
           className={selectboxStyle}
           onClick={() => setisActive(!isActive)}
-          data-testid="search-box"
+          data-testid="pj-select"
         >
           <span>{activePj.name}</span>
           <span>
@@ -30,8 +30,8 @@ const SelectProjects = ({ projects, activePj, onClick }: Props) => {
               className="w-4 h-4 text-gray-400"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M19.5 8.25l-7.5 7.5-7.5-7.5"
               />
             </svg>
@@ -57,6 +57,7 @@ const SelectProjects = ({ projects, activePj, onClick }: Props) => {
                 setisActive(false);
               }}
               className="p-1 cursor-pointer hover:bg-orange hover:text-white"
+              data-testid={`pj-${project.id}`}
             >
               {project.name}
             </div>

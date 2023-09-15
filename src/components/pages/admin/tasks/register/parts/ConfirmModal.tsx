@@ -30,7 +30,7 @@ type ModalProps = {
  */
 const PortalConfirmModal = ({ submit, close }: PortalProps) => {
   const portal = (
-    <div className="fixed top-0 left-0 w-full h-screen">
+    <div className="fixed top-0 left-0 w-full h-screen" data-testid="confirm-modal">
       <div className="flex flex-col items-center justify-center h-screen">
         <div className="bg-white px-10 py-10 z-20">
           <h2 className="font-black mb-10 text-xl" data-testid="confirmRemark">
@@ -57,6 +57,7 @@ const PortalConfirmModal = ({ submit, close }: PortalProps) => {
       <div
         className="absolute top-0 left-0 w-full h-full bg-black opacity-30"
         onClick={() => close()}
+        data-testid="modal-bg"
       />
     </div>
   );
