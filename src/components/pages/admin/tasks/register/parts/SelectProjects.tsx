@@ -17,7 +17,7 @@ const SelectProjects = ({ projects, activePj, onClick }: Props) => {
         <div
           className={selectboxStyle}
           onClick={() => setisActive(!isActive)}
-          data-testid="search-box"
+          data-testid="pj-select"
         >
           <span>{activePj.name}</span>
           <span>
@@ -57,6 +57,7 @@ const SelectProjects = ({ projects, activePj, onClick }: Props) => {
                 setisActive(false);
               }}
               className="p-1 cursor-pointer hover:bg-orange hover:text-white"
+              data-testid={`pj-${project.id}`}
             >
               {project.name}
             </div>
