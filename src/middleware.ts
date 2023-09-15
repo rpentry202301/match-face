@@ -1,4 +1,3 @@
-import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
@@ -7,21 +6,25 @@ export function middleware(request: NextRequest) {
   const adminCookie: boolean = request.cookies.has('administratorId');
 
   if (
+    userCookie === false &&
+    request.nextUrl.pathname.includes('login') === false
+  ) {
+    return NextResponse.redirect(new URL('/login', request.url));
+  }
+
+  if (
     adminCookie === false &&
     request.nextUrl.pathname.startsWith('/admin') === true &&
     request.nextUrl.pathname.includes('login') === false
   ) {
     return NextResponse.redirect(new URL('/admin/login', request.url));
-  } else if (adminCookie === true) {
+  }
+
+  if (userCookie === true && adminCookie !== false) {
     return NextResponse.next();
   }
 
-  if (
-    userCookie === false &&
-    request.nextUrl.pathname.includes('login') === false
-  ) {
-    return NextResponse.redirect(new URL('/login', request.url));
-  } else if (userCookie === true) {
+  if (adminCookie === true && userCookie !== false) {
     return NextResponse.next();
   }
 }
