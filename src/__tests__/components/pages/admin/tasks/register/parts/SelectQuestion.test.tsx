@@ -2,6 +2,7 @@ import SelectQuestions from "@/components/pages/admin/tasks/register/parts/Selec
 import { SelectedQuestionProvider } from "@/hooks/store/context/SelectedQuestionContext";
 import { render } from "@testing-library/react";
 
+// asyncコンポーネントを含むためテストできず
 describe("SelectQuestions.tsx", () => {
   beforeEach(() => {
     jest.clearAllMocks();
