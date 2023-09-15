@@ -16,28 +16,28 @@ export async function POST(request: Request) {
   if (month && skill.length > 0) {
     console.log("if1", month, newSkills);
     const response = await fetch(
-      `http://localhost:8080/qa_system_api/user/${userID}/answer_requests?${newSkills}&answerDate=${month}`
+      `${process.env.BE_URL}/user/${userID}/answer_requests?${newSkills}&answerDate=${month}`
     );
     const data = await response.json();
     return NextResponse.json(data);
   } else if (month && skill.length === 0) {
     console.log("if2", month, skill);
     const response = await fetch(
-      `http://localhost:8080/qa_system_api/user/${userID}/answer_requests?answerDate=${month}`
+      `${process.env.BE_URL}/user/${userID}/answer_requests?answerDate=${month}`
     );
     const data = await response.json();
     return NextResponse.json(data);
   } else if (!month && skill.length > 0) {
     console.log("if3", month, newSkills);
     const response = await fetch(
-      `http://localhost:8080/qa_system_api/user/${userID}/answer_requests?${newSkills}`
+      `${process.env.BE_URL}user/${userID}/answer_requests?${newSkills}`
     );
     const data = await response.json();
     return NextResponse.json(data);
   } else {
     console.log("if4", month, skill);
     const response = await fetch(
-      `http://localhost:8080/qa_system_api/user/${userID}/answer_requests`
+      `${process.env.BE_URL}/user/${userID}/answer_requests`
     );
     const data = await response.json();
     return NextResponse.json(data);

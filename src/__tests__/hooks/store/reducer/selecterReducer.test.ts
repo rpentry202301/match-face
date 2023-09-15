@@ -1,12 +1,26 @@
-import { selecterReducer } from "@/hooks/store/reducer/selecterReducer";
+import {
+  UsersReducer,
+  QusetionsReducer,
+} from "@/hooks/store/reducer/selecterReducer";
 
-describe("selecterReducer", () => {
+describe("usersReducer", () => {
   test("select: ユーザーを選択する", () => {
-    const result = selecterReducer([], {
+    const result = UsersReducer([], {
       type: "select",
-      payload: ["田中太郎"]
-    })
+      payload: [{ id: "1", name: "" }],
+    });
 
-    expect(result).toEqual(["田中太郎"])
-  })
-})
+    expect(result).toEqual([{ id: "1", name: "" }]);
+  });
+  test("QuestionReducer", () => {
+    const result = QusetionsReducer(
+      { projectId: 0, list: [] },
+      {
+        type: "select",
+        payload: { projectId: 1, list: [{ id: 1, name: "hoge" }] },
+      }
+    );
+
+    expect(result).toEqual({ projectId: 1, list: [{ id: 1, name: "hoge" }] });
+  });
+});

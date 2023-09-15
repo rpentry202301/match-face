@@ -1,6 +1,24 @@
 import SelectDeadline from "@/components/pages/admin/tasks/register/parts/SelectDeadline";
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { ChangeEvent, useState } from "react";
+
+// SelectDeadlineテスト用ドライバ
+const SelectDeadlineDriver = () => {
+  const [deadline, setDeadline] = useState({
+    year: "2023",
+    month: "1",
+    day: "1",
+    hour: "18",
+  });
+  const handleChangeDeadline = (e: ChangeEvent<HTMLSelectElement>) => {
+    setDeadline({
+      ...deadline,
+      [`${e.target.name}`]: e.target.value,
+    });
+  };
+  return <SelectDeadline state={deadline} handleChange={handleChangeDeadline}/>
+};
 
 describe("SelectDeadline.tsx", () => {
   beforeEach(() => {
@@ -12,27 +30,29 @@ describe("SelectDeadline.tsx", () => {
 
   describe("スナップショットテスト", () => {
     it("レンダリング時", () => {
-      const { container } = render(<SelectDeadline />);
+      const { container } = render(
+        <SelectDeadlineDriver />
+      );
       expect(container).toMatchSnapshot();
     });
   });
-  
+
   describe("入力テスト", () => {
     const user = userEvent.setup();
     beforeEach(() => {
-      render(<SelectDeadline />);
+      cleanup();
+      render(<SelectDeadlineDriver />);
     });
     it("「年」セレクトボックス選択", async () => {
       // 現在選択されている値をテスト
-      const thisYear = new Date().getFullYear();
       const beforeSelect = screen.getByRole("option", {
-        name: `${thisYear}`,
+        name: "2023",
       }) as HTMLOptionElement;
       expect(beforeSelect.selected).toBe(true);
       // 異なる年を選択してテスト
-      await user.selectOptions(screen.getByTestId("year"), `${thisYear + 1}`);
+      await user.selectOptions(screen.getByTestId("year"), "2024");
       const afterSelect = screen.getByRole("option", {
-        name: `${thisYear + 1}`,
+        name: "2024",
       }) as HTMLOptionElement;
       expect(afterSelect.selected).toBe(true);
       // 最初に選択されていた値との差分をテスト
@@ -40,18 +60,16 @@ describe("SelectDeadline.tsx", () => {
     });
     it("「月」セレクトボックス選択", async () => {
       // デフォルトは今月
-      const thisMonth = new Date().getMonth() + 1;
-      const beforeSelect = screen.getByTestId(`month:${thisMonth}`) as HTMLOptionElement;
+      const beforeSelect = screen.getByTestId("month:1") as HTMLOptionElement;
       expect(beforeSelect.selected).toBe(true);
       // 翌月を選択
-      const otherMonth = thisMonth + 1 >= 13 ? 1 : thisMonth + 1;
-      await user.selectOptions(screen.getByTestId("month"), `${otherMonth}`);
-      const afterSelect = screen.getByTestId(`month:${otherMonth}`) as HTMLOptionElement;
+      await user.selectOptions(screen.getByTestId("month"), "11");
+      const afterSelect = screen.getByTestId("month:11") as HTMLOptionElement;
       expect(afterSelect.selected).toBe(true);
       expect(beforeSelect.selected).toBe(false);
     });
     it("「日」セレクトボックス選択", async () => {
-      // デフォルトは1日
+      // 1日を選択
       const beforeSelect = screen.getByTestId("day:1") as HTMLOptionElement;
       expect(beforeSelect.selected).toBe(true);
       // 11日を選択
@@ -62,11 +80,11 @@ describe("SelectDeadline.tsx", () => {
     });
     it("「時間」セレクトボックス選択", async () => {
       // デフォルトは18時
-      const beforeSelect = screen.getByTestId("time:18") as HTMLOptionElement;
+      const beforeSelect = screen.getByTestId("hour:18") as HTMLOptionElement;
       expect(beforeSelect.selected).toBe(true);
       // 15時を選択
-      await user.selectOptions(screen.getByTestId("time"), "15");
-      const afterSelect = screen.getByTestId("time:15") as HTMLOptionElement;
+      await user.selectOptions(screen.getByTestId("hour"), "15");
+      const afterSelect = screen.getByTestId("hour:15") as HTMLOptionElement;
       expect(afterSelect.selected).toBe(true);
       expect(beforeSelect.selected).toBe(false);
     });

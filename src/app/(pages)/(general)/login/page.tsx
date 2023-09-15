@@ -115,9 +115,10 @@ const LoginPage = () => {
           className="mt-10 mb-4 w-48 rounded-none"
           type="submit"
         />
-        <Link href="/remind" className=" text-blue">
-          パスワードを忘れた
-        </Link>
+        {/* 一旦実装を中止 */}
+        {/* <Link href="/remind" className=" text-blue"> */}
+        <p className="text-blue">パスワードを忘れた</p>
+        {/* </Link> */}
         <Link href="/admin/login" className="text-blue pt-16">
           管理者ログイン
         </Link>

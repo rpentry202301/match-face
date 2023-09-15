@@ -1,25 +1,25 @@
 import TextArea from "@/components/ui/TextArea";
-import { User } from "@/const/review";
 import Image from "next/image";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import GrayButton from "@/components/ui/button/GrayButton";
 import ConfirmationModal from "@/components/ui/ConfirmationModal";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { Comment } from "@/types/(general)/(other)/result/questions";
 
 type Props = {
   admin_id: number;
+  comment: Comment;
 };
 
-export const CommentContent = ({ admin_id }: Props) => {
+export const CommentContent = ({ admin_id, comment }: Props) => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-  const commentUser = User.filter((user) => user.id === admin_id);
-  const [comment, setComment] = useState("");
+  const [currentComment, setComment] = useState(comment.context);
   const [error, setError] = useState(false);
 
   function checkLength() {
-    if (comment.length > 300) {
+    if (currentComment.length > 300) {
       setError(true);
     } else {
       setError(false);
@@ -34,7 +34,7 @@ export const CommentContent = ({ admin_id }: Props) => {
       <div className=" flex justify-between flex-wrap ">
         <div className="w-1/6 flex justify-center items-center">
           <Image
-            src={commentUser[0].image_url}
+            src="/icon/user_icon.png"
             alt="コメントしたユーザーのアイコン"
             width={70}
             height={70}
@@ -46,7 +46,7 @@ export const CommentContent = ({ admin_id }: Props) => {
             placeholder="コメントを入力してください"
             cols={50}
             rows={6}
-            value={comment}
+            value={currentComment}
             onChange={(e) => {
               setComment(e.target.value);
               checkLength();

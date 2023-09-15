@@ -1,25 +1,31 @@
 import TaskList from "@/components/pages/admin/tasks/index/parts/TaskList";
+import { answer_requests } from "@/const/tasks";
 import { cleanup, render, screen } from "@testing-library/react";
-import { tasks } from "@/const/tasks";
-import { FilterProvider, FilterType } from "@/hooks/store/context/TasksContext";
-import { useFilter } from "@/hooks/store/context/TasksContext";
-import "@testing-library/jest-dom";
+import "@testing-library/jest-dom"
 
 describe("TaskList.tsx", () => {
-  beforeEach(() => {
+  beforeAll(() => {
     jest.clearAllMocks();
+    cleanup();
   });
   afterAll(() => {
     jest.clearAllMocks();
     cleanup();
   });
 
-  it("レンダリング時", () => {
+  it("スナップショットテスト", () => {
     const { container } = render(
-      <FilterProvider>
-        <TaskList tasks={tasks} />
-      </FilterProvider>
+      <TaskList tasks={answer_requests.answerRequests} />
     );
     expect(container).toMatchSnapshot();
+  });
+  it("表示できるデータが存在しない", () => {
+    cleanup();
+    render(<TaskList tasks={[]}/>);
+
+    const noDatatxt = screen.getByText("表示するデータがありません");
+    expect(noDatatxt).toBeInTheDocument();
+    const dataTable = screen.queryByTestId("data-table");
+    expect(dataTable).toBeNull();
   });
 });

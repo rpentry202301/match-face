@@ -1,14 +1,14 @@
 import QuestionSelectModal from "@/components/pages/admin/tasks/register/QuestionSelectModal ";
 import { SelectedQuestionProvider } from "@/hooks/store/context/SelectedQuestionContext";
-import { fetchData } from "./parts/ QuestionSelectModalForm.test";
+import { fetchData } from "./parts/QuestionSelectModalForm.test";
 import { render, waitFor } from "@testing-library/react";
 
 // スナップショットはフォームのコンポーネント側で撮るので、ここではテストしない
 describe("UserSelectModal.tsx", () => {
-  it("fetchが呼ばれているかテスト" , async () => {
+  it("fetchが呼ばれているかテスト", async () => {
     global.fetch = jest.fn().mockImplementation((url: string) => {
       if (url.indexOf("departments") !== -1) {
-        console.log(url)
+        console.log(url);
         return {
           ok: true,
           json: async () => ({
@@ -16,7 +16,7 @@ describe("UserSelectModal.tsx", () => {
           }),
         };
       } else if (url.indexOf("skills") !== -1) {
-        console.log(url)
+        console.log(url);
         return {
           ok: true,
           json: async () => ({
@@ -24,11 +24,19 @@ describe("UserSelectModal.tsx", () => {
           }),
         };
       } else if (url.indexOf("questions") !== -1) {
-        console.log(url)
+        console.log(url);
         return {
           ok: true,
           json: async () => ({
             questionList: fetchData.questions,
+          }),
+        };
+      } else if (url.indexOf("projects") !== -1) {
+        console.log(url);
+        return {
+          ok: true,
+          json: async () => ({
+            questionList: fetchData.projects,
           }),
         };
       }
@@ -38,11 +46,10 @@ describe("UserSelectModal.tsx", () => {
       <SelectedQuestionProvider>
         {await QuestionSelectModal()}
       </SelectedQuestionProvider>
-    )
+    );
 
     await waitFor(() => {
-      expect(fetch).toBeCalledTimes(3)
-    })
-  })
-})
-  
+      expect(fetch).toBeCalledTimes(4);
+    });
+  });
+});

@@ -121,9 +121,9 @@ const AdminLoginPage = () => {
             className="mt-10 mb-4 w-48 rounded-none"
             type="submit"
           />
-          <Link href="/remind" className=" text-blue">
-            パスワードを忘れた
-          </Link>
+          {/* <Link href="/remind" className=" text-blue"> */}
+          <p className="text-blue">パスワードを忘れた</p>
+          {/* </Link> */}
           <Link href="/login" className="text-blue pt-16">
             一般ログイン
           </Link>
