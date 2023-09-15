@@ -1,6 +1,6 @@
 import QuestionSelectModalForm from "@/components/pages/admin/tasks/register/parts/QuestionSelectModalForm";
 import { SelectedQuestionProvider } from "@/hooks/store/context/SelectedQuestionContext";
-import { screen, render, fireEvent } from "@testing-library/react";
+import { screen, render, fireEvent, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 
@@ -128,6 +128,12 @@ const open = () => {
 };
 
 describe("QuestionSelectModal.tsx", () => {
+  beforeAll(() => {
+    cleanup();
+  });
+  afterAll(() => {
+    cleanup();
+  });
   beforeEach(() => {
     jest.clearAllMocks();
     open();
