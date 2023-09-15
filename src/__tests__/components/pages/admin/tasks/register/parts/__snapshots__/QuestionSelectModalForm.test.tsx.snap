@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`QuestionSelectModal.tsx スナップショットテスト モーダルを開いている状態 1`] = `
+exports[`QuestionSelectModal.tsx スナップショットテスト モーダルを開いている状態(案件未選択) 1`] = `
 <body>
   <div />
   <div
-    class="fixed top-0 left-0 z-30 flex items-center justify-center w-full h-full"
+    class="fixed top-0 left-0 z-20 flex items-center justify-center w-full h-full"
   >
     <div
-      class="relative z-20 w-3/4 max-w-5xl py-7 px-10 bg-white"
+      class="relative z-10 w-3/4 max-w-5xl py-7 px-10 bg-white"
     >
       <div
         class="flex flex-col items-center gap-8 w-full mx-auto"
@@ -31,6 +31,39 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
               <div
                 class="flex flex-col items-center gap-5"
               >
+                <div>
+                  <div
+                    class="flex justify-center items-center"
+                  >
+                    <label
+                      class="text-sm"
+                    >
+                      案件名：
+                    </label>
+                    <div
+                      class="relative flex justify-between border-light-gray border-2 text-xs cursor-pointer h-9 p-2 lg:w-96 sm:w-80 w-72 hover:border-2 hover:border-deep-gray"
+                      data-testid="pj-select"
+                    >
+                      <span />
+                      <span>
+                        <svg
+                          class="w-4 h-4 text-gray-400"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                </div>
                 <div
                   class="flex flex-col items-center gap-5"
                 >
@@ -244,98 +277,8 @@ exports[`QuestionSelectModal.tsx スナップショットテスト モーダル�
             </form>
           </div>
         </div>
-        <div
-          class="w-full mx-auto"
-        >
-          <table
-            class="border-collapse border-2 border-deep-gray text-sm mx-auto w-full"
-          >
-            <thead
-              class="bg-light-gray"
-            >
-              <tr>
-                <th
-                  class="border-2 border-deep-gray px-4 py-2 text-center w-1/12"
-                />
-                <th
-                  class="border-2 border-deep-gray px-4 py-2 text-center w-2/12"
-                >
-                  最終編集日
-                </th>
-                <th
-                  class="border-2 border-deep-gray px-4 py-2 text-center w-3/12"
-                >
-                  案件名
-                </th>
-                <th
-                  class="border-2 border-deep-gray px-4 py-2 text-center"
-                >
-                  質問内容
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td
-                  class="border-2 border-deep-gray px-4 py-2 text-center"
-                >
-                  <input
-                    class="w-4 h-4 accent-orange cursor-pointer"
-                    type="checkbox"
-                    value="開発経験について教えてください。"
-                  />
-                </td>
-                <td
-                  class="border-2 border-deep-gray px-4 py-2 text-center"
-                >
-                  2023-09-07
-                </td>
-                <td
-                  class="border-2 border-deep-gray px-4 py-2 text-center"
-                >
-                  バックエンド案件
-                </td>
-                <td
-                  class="border-2 border-deep-gray px-4 py-2 text-center"
-                >
-                  開発経験について教えてください。
-                </td>
-              </tr>
-              <tr>
-                <td
-                  class="border-2 border-deep-gray px-4 py-2 text-center"
-                >
-                  <input
-                    class="w-4 h-4 accent-orange cursor-pointer"
-                    type="checkbox"
-                    value="1番得意な言語は何ですか。"
-                  />
-                </td>
-                <td
-                  class="border-2 border-deep-gray px-4 py-2 text-center"
-                >
-                  2023-09-07
-                </td>
-                <td
-                  class="border-2 border-deep-gray px-4 py-2 text-center"
-                >
-                  バックエンド案件
-                </td>
-                <td
-                  class="border-2 border-deep-gray px-4 py-2 text-center"
-                >
-                  1番得意な言語は何ですか。
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
         <div>
-          <button
-            class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white rounded-xl p-2 w-40 h-auto text-xs"
-          >
-            選択完了
-          </button>
+          案件名を選択して下さい
         </div>
       </div>
     </div>
