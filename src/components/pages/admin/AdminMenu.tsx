@@ -18,18 +18,22 @@ const AdminMenu = () => {
   return (
     <div className="flex justify-center items-center min-h-screen md:mt-[-40px]">
       <div className="grid grid-cols-1 md:grid-cols-3 md:mt-10">
-        {menuList.map((data: MenuList) => (
-          <div key={data.id} className="m-10">
-            <Menu
-              title={data.title}
-              url={data.url}
-              description={data.description}
-              imgUrl={data.imgUrl}
-              imgAlt={data.imgAlt}
-              data-testid="menu_link"
-            />
-          </div>
-        ))}
+        {menuList ? (
+          menuList.map((data: MenuList) => (
+            <div key={data.id} className="m-10">
+              <Menu
+                title={data.title}
+                url={data.url}
+                description={data.description}
+                imgUrl={data.imgUrl}
+                imgAlt={data.imgAlt}
+                data-testid={`menu_link_${data.id}`}
+              />
+            </div>
+          ))
+        ) : (
+          <h1>Loading...</h1>
+        )}
       </div>
     </div>
   );
