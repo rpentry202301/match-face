@@ -125,6 +125,8 @@ const HistoriesPage = () => {
               <OrangeButton
                 label="絞り込み"
                 type="submit"
+                name="絞り込み"
+                data-testid="submitButton"
                 onClick={() => handleClick()}
               />
             </div>

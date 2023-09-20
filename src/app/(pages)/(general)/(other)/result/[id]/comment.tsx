@@ -1,28 +1,17 @@
-import TextArea from "@/components/ui/TextArea";
-import { Comment } from "@/const/result";
 import { User } from "@/const/result";
+import { Comment } from "@/types/(general)/(other)/result/questions";
 import Image from "next/image";
 
-type Props = {
-  user_id: number;
-  project_id: number;
-};
-
-export const CommentContent = ({ user_id, project_id }: Props) => {
-  const currentComment = Comment.filter(
-    (comment) => comment.user_id === user_id && project_id === project_id
-  );
-  const commentUser = User.filter(
-    (user) => user.id === currentComment[0].admin_id
-  );
-
+export const CommentContent = ({ comment }: { comment: Comment }) => {
   return (
     <>
-      <h3 className="text-xl mb-3">{commentUser[0].name}からのコメント</h3>
+      <h3 className="text-xl mb-3">
+        {comment.commentAdministrator}からのコメント
+      </h3>
       <div className="border border-black rounded-md p-3 flex justify-between ">
         <div className="w-1/6 flex justify-center items-center">
           <Image
-            src={commentUser[0].image_url}
+            src="/icon/user_icon.png"
             alt="コメントしたユーザーのアイコン"
             width={70}
             height={70}
@@ -30,7 +19,7 @@ export const CommentContent = ({ user_id, project_id }: Props) => {
           />
         </div>
         <div id="comment" className="w-5/6">
-          {currentComment[0].content}
+          {comment.context}
         </div>
       </div>
     </>

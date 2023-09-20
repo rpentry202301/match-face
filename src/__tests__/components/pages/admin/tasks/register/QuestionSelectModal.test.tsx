@@ -1,46 +1,55 @@
 import QuestionSelectModal from "@/components/pages/admin/tasks/register/QuestionSelectModal ";
 import { SelectedQuestionProvider } from "@/hooks/store/context/SelectedQuestionContext";
-import { screen, render, fireEvent } from "@testing-library/react";
+import { fetchData } from "./parts/QuestionSelectModalForm.test";
+import { render, waitFor } from "@testing-library/react";
 
-// Todo: 非同期関数実装後に自動テストの追加・修正の必要あり
-
-// モーダル展開用関数
-const open = () => {
-  render(
-    <SelectedQuestionProvider>
-      <QuestionSelectModal />
-    </SelectedQuestionProvider>
-  );
-  fireEvent.click(screen.getByRole("button"));
-}
-
-describe("QuestionSelectModal.tsx", () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-    open();
-  })
-
-  describe("スナップショットテスト", () => {
-    it("モーダルを開いている状態", () => {
-      const { baseElement } = render(
-        <SelectedQuestionProvider>
-          <QuestionSelectModal />
-        </SelectedQuestionProvider>
-      );
-      expect(baseElement).toMatchSnapshot();
+// スナップショットはフォームのコンポーネント側で撮るので、ここではテストしない
+describe("UserSelectModal.tsx", () => {
+  it("fetchが呼ばれているかテスト", async () => {
+    global.fetch = jest.fn().mockImplementation((url: string) => {
+      if (url.indexOf("departments") !== -1) {
+        console.log(url);
+        return {
+          ok: true,
+          json: async () => ({
+            departmentList: fetchData.departments,
+          }),
+        };
+      } else if (url.indexOf("skills") !== -1) {
+        console.log(url);
+        return {
+          ok: true,
+          json: async () => ({
+            skillList: fetchData.skills,
+          }),
+        };
+      } else if (url.indexOf("questions") !== -1) {
+        console.log(url);
+        return {
+          ok: true,
+          json: async () => ({
+            questionList: fetchData.questions,
+          }),
+        };
+      } else if (url.indexOf("projects") !== -1) {
+        console.log(url);
+        return {
+          ok: true,
+          json: async () => ({
+            questionList: fetchData.projects,
+          }),
+        };
+      }
     });
-  })
 
-  describe("入力テスト", () => {
-    it("検索ボックスの入力テスト", async () => {
-      render(
-        <SelectedQuestionProvider>
-          <QuestionSelectModal />
-        </SelectedQuestionProvider>
-      );
-      const input = screen.getByTestId("search-box") as HTMLInputElement;
-      fireEvent.change(input, { target: { value: "案件" } });
-      expect(input.value).toBe("案件");
+    render(
+      <SelectedQuestionProvider>
+        {await QuestionSelectModal()}
+      </SelectedQuestionProvider>
+    );
+
+    await waitFor(() => {
+      expect(fetch).toBeCalledTimes(4);
     });
-  })
-})
+  });
+});

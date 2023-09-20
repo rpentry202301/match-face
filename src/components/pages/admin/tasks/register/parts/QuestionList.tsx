@@ -1,16 +1,26 @@
-'use client'
-import questionData from "@/const/answerEdit"
-import CheckBox from "@/components/ui/checkbox/CheckBox"
-import { ChangeEvent } from "react"
+"use client";
+import CheckBox from "@/components/ui/checkbox/CheckBox";
+import { Questions } from "@/hooks/store/context/SelectedQuestionContext";
+import { ChangeEvent } from "react";
+
+type Question = {
+  id: number;
+  projectId: number;
+  projectName: string;
+  context: string;
+  updateAt: string;
+};
 
 const QuestionList = ({
+  questions,
   checkedValues,
-  onChange
+  onChange,
 }: {
-  checkedValues: string[],
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void
+  checkedValues: string[];
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }) => {
-  const tableDefaultClassName = "border-2 border-deep-gray px-4 py-2 text-center"
+  const tableDefaultClassName =
+    "border-2 border-deep-gray px-4 py-2 text-center";
   return (
     <div className="w-full mx-auto">
       <table className="border-collapse border-2 border-deep-gray text-sm mx-auto w-full">
@@ -22,27 +32,32 @@ const QuestionList = ({
             <th className={`${tableDefaultClassName}`}>質問内容</th>
           </tr>
         </thead>
-          {questionData.map((projects) => (
-            <tbody key={`pjId_${projects.id}`}>
-              {projects.questions.map((questions) => (
-                <tr key={`userId_${questions.question_id}`}>
-                  <td className={`${tableDefaultClassName}`}>
-                    <CheckBox
-                      value={questions.question}
-                      onChange={onChange}
-                      checked={checkedValues.includes(questions.question)}
-                    />
-                  </td>
-                  <td className={`${tableDefaultClassName}`}>{projects.edit_date}</td>
-                  <td className={`${tableDefaultClassName}`}>{projects.project_name}</td>
-                  <td className={`${tableDefaultClassName}`}>{questions.question}</td>
-                </tr>
-              ))}
-            </tbody>
+        <tbody>
+          {questions.map((question) => (
+            <tr key={`qId_${question.id}`}>
+              <td className={`${tableDefaultClassName}`}>
+                <CheckBox
+                  value={question.context}
+                  onChange={(e) => onChange(e, question.id)}
+                  checked={checkedValues.list
+                    .map((question) => question.name)
+                    .includes(question.context)}
+                  data-testid={`Q-${question.id}`}
+                />
+              </td>
+              <td className={`${tableDefaultClassName}`}>
+                {question.updateAt.slice(0, 10)}
+              </td>
+              <td className={`${tableDefaultClassName}`}>
+                {question.projectName}
+              </td>
+              <td className={`${tableDefaultClassName}`}>{question.context}</td>
+            </tr>
           ))}
+        </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
 
-export default QuestionList
+export default QuestionList;

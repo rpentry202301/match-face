@@ -321,6 +321,12 @@ exports[`SelectDeadline.tsx スナップショットテスト レンダリング
             >
               30
             </option>
+            <option
+              data-testid="day:31"
+              value="31"
+            >
+              31
+            </option>
           </select>
           <p
             class="text-ms ml-0.5"
@@ -333,150 +339,150 @@ exports[`SelectDeadline.tsx スナップショットテスト レンダリング
         >
           <select
             class="border-2 border-light-gray cursor-pointer w-20 h-6 text-sm"
-            data-testid="time"
-            id="time"
-            name="time"
+            data-testid="hour"
+            id="hour"
+            name="hour"
           >
             <option
-              data-testid="time:0"
+              data-testid="hour:0"
               value="0"
             >
               0
             </option>
             <option
-              data-testid="time:1"
+              data-testid="hour:1"
               value="1"
             >
               1
             </option>
             <option
-              data-testid="time:2"
+              data-testid="hour:2"
               value="2"
             >
               2
             </option>
             <option
-              data-testid="time:3"
+              data-testid="hour:3"
               value="3"
             >
               3
             </option>
             <option
-              data-testid="time:4"
+              data-testid="hour:4"
               value="4"
             >
               4
             </option>
             <option
-              data-testid="time:5"
+              data-testid="hour:5"
               value="5"
             >
               5
             </option>
             <option
-              data-testid="time:6"
+              data-testid="hour:6"
               value="6"
             >
               6
             </option>
             <option
-              data-testid="time:7"
+              data-testid="hour:7"
               value="7"
             >
               7
             </option>
             <option
-              data-testid="time:8"
+              data-testid="hour:8"
               value="8"
             >
               8
             </option>
             <option
-              data-testid="time:9"
+              data-testid="hour:9"
               value="9"
             >
               9
             </option>
             <option
-              data-testid="time:10"
+              data-testid="hour:10"
               value="10"
             >
               10
             </option>
             <option
-              data-testid="time:11"
+              data-testid="hour:11"
               value="11"
             >
               11
             </option>
             <option
-              data-testid="time:12"
+              data-testid="hour:12"
               value="12"
             >
               12
             </option>
             <option
-              data-testid="time:13"
+              data-testid="hour:13"
               value="13"
             >
               13
             </option>
             <option
-              data-testid="time:14"
+              data-testid="hour:14"
               value="14"
             >
               14
             </option>
             <option
-              data-testid="time:15"
+              data-testid="hour:15"
               value="15"
             >
               15
             </option>
             <option
-              data-testid="time:16"
+              data-testid="hour:16"
               value="16"
             >
               16
             </option>
             <option
-              data-testid="time:17"
+              data-testid="hour:17"
               value="17"
             >
               17
             </option>
             <option
-              data-testid="time:18"
+              data-testid="hour:18"
               value="18"
             >
               18
             </option>
             <option
-              data-testid="time:19"
+              data-testid="hour:19"
               value="19"
             >
               19
             </option>
             <option
-              data-testid="time:20"
+              data-testid="hour:20"
               value="20"
             >
               20
             </option>
             <option
-              data-testid="time:21"
+              data-testid="hour:21"
               value="21"
             >
               21
             </option>
             <option
-              data-testid="time:22"
+              data-testid="hour:22"
               value="22"
             >
               22
             </option>
             <option
-              data-testid="time:23"
+              data-testid="hour:23"
               value="23"
             >
               23

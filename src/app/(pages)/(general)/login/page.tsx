@@ -27,30 +27,33 @@ const LoginPage = () => {
     reValidateMode: 'onSubmit',
   });
 
-  const onSubmit: SubmitHandler<LoginForm> = async (data, event: any) => {
-    event.preventDefault();
-    const response = await fetch('/api/login', {
-      cache: 'no-store',
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        userId: data.userId,
-        password: data.password,
-      }),
-    });
-    // ユーザーIDとパスワードが一致するデータがあればオブジェクト、なければ{user:"[]"}が返ってくる
-    const userData = await response.json();
+  const onSubmit: SubmitHandler<LoginForm> = async (data) => {
+    try {
+      const response = await fetch('/api/login', {
+        cache: 'no-store',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: data.userId,
+          password: data.password,
+        }),
+      });
+      // ユーザーIDとパスワードが一致するデータがあればオブジェクト、なければ{user:"[]"}が返ってくる
+      const userData = await response.json();
 
-    // エラー判定
-    if (userData.user.length === 0) {
-      setInValidUser(true);
-    }
-    // ユーザーIDとパスワードが返ってきたらログイン成功
-    if (isValid && userData.user.id && userData.user.password) {
-      setInValidUser(false);
-      router.push('/');
+      // エラー判定
+      if (userData.user.length === 0) {
+        setInValidUser(true);
+      }
+      // ユーザーIDとパスワードが返ってきたらログイン成功
+      if (isValid && userData.user.id && userData.user.password) {
+        setInValidUser(false);
+        router.push('/');
+      }
+    } catch (error) {
+      throw new Error('api error');
     }
   };
 
@@ -101,7 +104,7 @@ const LoginPage = () => {
           {errors.password && (
             <p className="text-red">{errors.password.message}</p>
           )}
-          {inValidUser && (
+          {inValidUser && !errors.userId && !errors.password && (
             <p className="text-red">
               ユーザーIDもしくはパスワードに誤りがあります。
             </p>
@@ -112,9 +115,10 @@ const LoginPage = () => {
           className="mt-10 mb-4 w-48 rounded-none"
           type="submit"
         />
-        <Link href="/remind" className=" text-blue">
-          パスワードを忘れた
-        </Link>
+        {/* 一旦実装を中止 */}
+        {/* <Link href="/remind" className=" text-blue"> */}
+        <p className="text-blue">パスワードを忘れた</p>
+        {/* </Link> */}
         <Link href="/admin/login" className="text-blue pt-16">
           管理者ログイン
         </Link>

@@ -1,13 +1,13 @@
-"use client";
-import { useState, useEffect } from "react";
-import Menu from "@/components/ui/Menu";
-import { MenuList } from "@/types/types";
+'use client';
+import { useState, useEffect } from 'react';
+import Menu from '@/components/pages/general/top/Menu';
+import { MenuList } from '@/types/types';
 
 const AdminMenu = () => {
   const [menuList, setMenuList] = useState<any[]>([]);
   useEffect(() => {
     const fetchAdminMenu = async () => {
-      const response = await fetch("/api/admin");
+      const response = await fetch('/api/admin');
       const data = await response.json();
       setMenuList(data.administratorMainElementList);
       return menuList;

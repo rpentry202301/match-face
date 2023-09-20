@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`スナップショットテスト スナップショット 1`] = `
+<div>
+  <div
+    class="flex flex-wrap justify-around"
+  >
+    <section
+      class="w-[75vw] border-2 text-center my-[5vh] py-[5vh]"
+    >
+      <div>
+        <div
+          class="mb-[2vh]"
+        >
+          <label
+            for="month"
+          >
+            回答月：
+          </label>
+          <select
+            class="border-2"
+            id="month"
+            name="month"
+          >
+            <option
+              value=""
+            >
+              --
+            </option>
+            <option
+              value="2023-01-01"
+            >
+              2023-01-01
+            </option>
+            <option
+              value="2023-02-01"
+            >
+              2023-02-01
+            </option>
+            <option
+              value="2023-03-01"
+            >
+              2023-03-01
+            </option>
+            <option
+              value="2023-04-01"
+            >
+              2023-04-01
+            </option>
+            <option
+              value="2023-05-01"
+            >
+              2023-05-01
+            </option>
+            <option
+              value="2023-06-01"
+            >
+              2023-06-01
+            </option>
+            <option
+              value="2023-07-01"
+            >
+              2023-07-01
+            </option>
+            <option
+              value="2023-08-01"
+            >
+              2023-08-01
+            </option>
+            <option
+              value="2023-09-01"
+            >
+              2023-09-01
+            </option>
+            <option
+              value="2023-10-01"
+            >
+              2023-10-01
+            </option>
+            <option
+              value="2023-11-01"
+            >
+              2023-11-01
+            </option>
+            <option
+              value="2023-12-01"
+            >
+              2023-12-01
+            </option>
+          </select>
+        </div>
+        <div
+          class="lg:flex justify-center mb-[2vh] max-w-[55vw] ml-[10vw]"
+        >
+          <legend
+            class="lg:w-[215px] lg:h-10 lg:leading-10"
+          >
+            使用技術：
+          </legend>
+          <fieldset
+            id="skill"
+            name="skill"
+          />
+        </div>
+        <div>
+          <button
+            class="bg-orange drop-shadow-md hover:saturate-150 active:drop-shadow-none active:shadow-inner hover:bg-depp-orange active:bg-depp-orange active:translate-y-0.5 text-white rounded-xl p-2 w-40 h-auto text-lg"
+            data-testid="submitButton"
+            name="絞り込み"
+            type="submit"
+          >
+            絞り込み
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div
+    class="flex flex-col items-center h-screen "
+  >
+    <div>
+      <table
+        class="table-auto border border-collapse my-20 w-[80vw]"
+      >
+        <thead>
+          <tr>
+            <th
+              class="border p-4 bg-neutral-300"
+            >
+              コメント
+            </th>
+            <th
+              class="border  bg-neutral-300"
+            >
+              回答日
+            </th>
+            <th
+              class="border  bg-neutral-300"
+            >
+              案件名
+            </th>
+            <th
+              class="border  bg-neutral-300"
+            >
+              案件概要
+            </th>
+            <th
+              class="border  bg-neutral-300"
+            />
+          </tr>
+        </thead>
+        <tbody />
+      </table>
+    </div>
+  </div>
+</div>
+`;

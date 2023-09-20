@@ -1,7 +1,6 @@
-import Menu from '@/components/ui/Menu';
+import Menu from '@/components/pages/general/top/Menu';
 import Notification from '@/components/pages/general/top/Notification';
-import { menuContentsArray } from '@/const/top';
-import { trueAnswerRequests, falseAnswerRequests } from '@/const/notification';
+import { cookies } from 'next/headers';
 
 type MenuContent = {
   id: number;
@@ -12,19 +11,42 @@ type MenuContent = {
   imgAlt: string;
 };
 
-// todo: データは日付の昇順で並べる
-// ダミーデータ
-const completedData = trueAnswerRequests;
-const incompletedData = falseAnswerRequests;
+const Top = async () => {
+  const cookie = cookies();
+  const userId = cookie.get('userId')?.value;
+  // 以下進捗状況データ取得
+  // 回答済データ
+  const answeredRes = await fetch(
+    `${process.env.BE_URL}/user/${userId}/answer_requests/is_answered/true`,
+    { cache: 'no-store' }
+  );
+  const answeredData = await answeredRes.json();
+  const answeredAnswerRequests = answeredData.progressAnswerRequestList;
 
-const Home = async () => {
+  console.log('answeredAnswerRequests', answeredAnswerRequests[0].answered);
+
+  // 未回答データ
+  const notAnsweredRes = await fetch(
+    `${process.env.BE_URL}/user/${userId}/answer_requests/is_answered/false`,
+    { cache: 'no-store' }
+  );
+  const notAnsweredData = await notAnsweredRes.json();
+  const notAnsweredAnswerRequests = notAnsweredData.progressAnswerRequestList;
+
+  // メニューボタン用データ取得
+  const response = await fetch(`${process.env.BE_URL}/user_main_elements`, {
+    cache: 'no-store',
+  });
+  const topData = await response.json();
+  const menuContentsArray = topData.userMainElementList;
+
   return (
     <main>
       <div className="flex flex-col items-center mt-8 mb-20">
         <Notification
           className=""
-          completedData={completedData}
-          incompletedData={incompletedData}
+          answeredAnswerRequests={answeredAnswerRequests}
+          notAnsweredAnswerRequests={notAnsweredAnswerRequests}
         />
       </div>
 
@@ -45,4 +67,4 @@ const Home = async () => {
   );
 };
 
-export default Home;
+export default Top;
