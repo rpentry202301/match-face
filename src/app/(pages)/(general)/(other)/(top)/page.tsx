@@ -1,4 +1,4 @@
-import Menu from '@/components/ui/Menu';
+import Menu from '@/components/pages/general/top/Menu';
 import Notification from '@/components/pages/general/top/Notification';
 import { cookies } from 'next/headers';
 
@@ -23,6 +23,8 @@ const Top = async () => {
   const answeredData = await answeredRes.json();
   const answeredAnswerRequests = answeredData.progressAnswerRequestList;
 
+  console.log('answeredAnswerRequests', answeredAnswerRequests[0].answered);
+
   // 未回答データ
   const notAnsweredRes = await fetch(
     `${process.env.BE_URL}/user/${userId}/answer_requests/is_answered/false`,
@@ -46,7 +48,6 @@ const Top = async () => {
           answeredAnswerRequests={answeredAnswerRequests}
           notAnsweredAnswerRequests={notAnsweredAnswerRequests}
         />
-        {/* )} */}
       </div>
 
       <div className="grid grid-cols-2 gap-20 w-3/5 place-items-center mx-auto">
