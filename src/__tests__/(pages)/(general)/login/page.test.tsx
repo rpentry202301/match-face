@@ -268,187 +268,131 @@ describe('OrangeButtonがクリックされた時（2回目以降）', () => {
       </AppRouterContextProviderMock>
     );
   });
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
 
-  //   describe('"※ユーザーIDを入力してください。"のみが表示されている時', () => {
-  //     test('登録済みのパスワードと登録済みのユーザーIDが入力されている場合、"※ユーザーIDを入力してください。"の表示が消え、ログインに成功しトップ画面に遷移すること', async () => {
-  //       // 登録済みパスワードを入力
-  //       const passwordInput = screen.getByLabelText('パスワード');
-  //       await userEvent.type(passwordInput, `${registeredUser.password}`);
+  describe('"※ユーザーIDを入力してください。"のみが表示されている時', () => {
+    test('登録済みのパスワードと登録済みのユーザーIDが入力されている場合、"※ユーザーIDを入力してください。"の表示が消え、ログインに成功しトップ画面に遷移すること', async () => {
+      global.fetch = jest.fn().mockImplementation(registeredUserMock);
 
-  //       // 初めてボタンをクリック
-  //       const loginButton = screen.getByRole('button', { name: 'ログイン' });
-  //       await user.click(loginButton);
+      const passwordInput = screen.getByLabelText('パスワード');
+      await userEvent.type(passwordInput, `${user.password}`);
 
-  //       // エラーメッセージが表示されている
-  //       expect(
-  //         await screen.findByText('※ユーザーIDを入力してください。')
-  //       ).toBeInTheDocument();
+      const loginButton = screen.getByRole('button', { name: 'ログイン' });
+      await userEv.click(loginButton);
 
-  //       // 登録済みユーザーIDを入力;
-  //       const userIdInput = screen.getByLabelText('ユーザーID');
-  //       await userEvent.type(userIdInput, `${registeredUser.id}`);
+      expect(
+        await screen.findByText('※ユーザーIDを入力してください。')
+      ).toBeInTheDocument();
 
-  //       // ボタンをクリック（2回目）
-  //       await user.click(loginButton);
+      const userIdInput = screen.getByLabelText('ユーザーID');
+      await userEvent.type(userIdInput, `${user.id}`);
 
-  //       // エラーメッセージが消えたことを確認
-  //       expect(
-  //         await waitFor(() =>
-  //           screen.queryByText('※ユーザーIDを入力してください。')
-  //         )
-  //       ).toBeNull();
+      // ボタンをクリック（2回目）
+      await userEv.click(loginButton);
+      expect(fetch).toBeCalledTimes(1);
+      expect(
+        await waitFor(() =>
+          screen.queryByText('※ユーザーIDを入力してください。')
+        )
+      ).toBeNull();
+      expect(push).toHaveBeenCalledWith('/');
+    });
+  });
 
-  //       // トップ画面へ遷移
-  //       expect(push).toHaveBeenCalledWith('/');
-  //     });
-  //   });
+  describe('"※半角数字で入力してください"のみが表示されている時', () => {
+    test('登録済みのパスワードと登録済みのユーザーIDが入力されている場合、"※半角数字で入力してください。"の表示が消え、ログインに成功しトップ画面に遷移すること', async () => {
+      global.fetch = jest.fn().mockImplementation(registeredUserMock);
 
-  //   describe('"※半角数字で入力してください"のみが表示されている時', () => {
-  //     test('登録済みのパスワードと登録済みのユーザーIDが入力されている場合、"※半角数字で入力してください。"の表示が消え、ログインに成功しトップ画面に遷移すること', async () => {
-  //       // ユーザーIDを半角英語で入力
-  //       const userIdInput = screen.getByLabelText('ユーザーID');
-  //       await userEvent.type(userIdInput, 'aaaa');
+      const userIdInput = screen.getByLabelText('ユーザーID');
+      await userEvent.type(userIdInput, 'aaaa');
 
-  //       // 登録済みパスワードを入力
-  //       const passwordInput = screen.getByLabelText('パスワード');
-  //       await userEvent.type(passwordInput, `${registeredUser.password}`);
+      const passwordInput = screen.getByLabelText('パスワード');
+      await userEvent.type(passwordInput, `${user.password}`);
 
-  //       // 初めてボタンをクリック
-  //       const loginButton = screen.getByRole('button', { name: 'ログイン' });
-  //       await user.click(loginButton);
+      const loginButton = screen.getByRole('button', { name: 'ログイン' });
+      await userEv.click(loginButton);
 
-  //       // エラーメッセージが表示されている
-  //       expect(
-  //         await screen.findByText('※半角数字で入力してください。')
-  //       ).toBeInTheDocument();
+      expect(
+        await screen.findByText('※半角数字で入力してください。')
+      ).toBeInTheDocument();
 
-  //       // 入力した値を削除
-  //       await userEvent.clear(userIdInput);
-  //       // 登録済みユーザーIDを入力;
-  //       await userEvent.type(userIdInput, `${registeredUser.id}`);
+      await userEvent.clear(userIdInput);
+      await userEvent.type(userIdInput, `${user.id}`);
 
-  //       // ボタンをクリック（2回目）
-  //       await user.click(loginButton);
+      // ボタンをクリック（2回目）
+      await userEv.click(loginButton);
+      expect(fetch).toBeCalledTimes(1);
+      expect(
+        await waitFor(() => screen.queryByText('※半角数字で入力してください。'))
+      ).toBeNull();
+      expect(push).toHaveBeenCalledWith('/');
+    });
+  });
 
-  //       // エラーメッセージが消えたことを確認
-  //       expect(
-  //         await waitFor(() => screen.queryByText('※半角数字で入力してください。'))
-  //       ).toBeNull();
+  describe('"※ユーザーIDもしくはパスワードに誤りがあります。"のみが表示されている時', () => {
+    test('登録済みのユーザーIDと登録済みのパスワードが入力されている場合、"※ユーザーIDもしくはパスワードに誤りがあります。"の表示が消え、ログインに成功しトップ画面に遷移すること', async () => {
+      global.fetch = jest.fn().mockImplementation(notRegisteredUserMock);
 
-  //       // トップ画面へ遷移
-  //       expect(push).toHaveBeenCalledWith('/');
-  //     });
-  //   });
+      const userIdInput = screen.getByLabelText('ユーザーID');
+      await userEvent.type(userIdInput, `${notRegisteredUser.id}`);
 
-  //   describe('"※正しいユーザーIDを入力してください。"のみが表示されている時', () => {
-  //     test('登録済みのパスワードと登録済みのユーザーIDが入力されている場合、"※正しいユーザーIDを入力してください。"の表示が消え、ログインに成功しトップ画面に遷移すること', async () => {
-  //       // 登録されていないユーザーIDを入力
-  //       const userIdInput = screen.getByLabelText('ユーザーID');
-  //       await userEvent.type(userIdInput, `${notRegisteredUser.id}`);
+      const passwordInput = screen.getByLabelText('パスワード');
+      await userEvent.type(passwordInput, `${user.password}`);
 
-  //       // 登録済みパスワードを入力
-  //       const passwordInput = screen.getByLabelText('パスワード');
-  //       await userEvent.type(passwordInput, `${registeredUser.password}`);
+      const loginButton = screen.getByRole('button', { name: 'ログイン' });
+      await userEv.click(loginButton);
 
-  //       // 初めてボタンをクリック
-  //       const loginButton = screen.getByRole('button', { name: 'ログイン' });
-  //       await user.click(loginButton);
+      expect(
+        await screen.findByText(
+          '※ユーザーIDもしくはパスワードに誤りがあります。'
+        )
+      ).toBeInTheDocument();
+      expect(fetch).toBeCalledTimes(1);
 
-  //       // エラーメッセージが表示されている
-  //       expect(
-  //         await screen.findByText('※正しいユーザーIDを入力してください。')
-  //       ).toBeInTheDocument();
+      await userEvent.clear(userIdInput);
+      await userEvent.type(userIdInput, `${user.id}`);
+      global.fetch = jest.fn().mockImplementation(registeredUserMock);
 
-  //       // 入力した値を削除
-  //       await userEvent.clear(userIdInput);
-  //       // 登録済みユーザーIDを入力;
-  //       await userEvent.type(userIdInput, `${registeredUser.id}`);
+      // ボタンをクリック（2回目）
+      await userEv.click(loginButton);
+      expect(fetch).toBeCalledTimes(1);
+      expect(
+        await waitFor(() =>
+          screen.queryByText('※ユーザーIDもしくはパスワードに誤りがあります。')
+        )
+      ).toBeNull();
+      expect(push).toHaveBeenCalledWith('/');
+    });
+  });
 
-  //       // ボタンをクリック（2回目）
-  //       await user.click(loginButton);
+  describe('"※パスワードを入力してください"のみが表示されている時', () => {
+    test('登録済みのユーザーIDと登録済みのパスワードが入力されている場合、"※パスワードを入力してください。"の表示が消え、ログインに成功しトップ画面に遷移すること', async () => {
+      global.fetch = jest.fn().mockImplementation(registeredUserMock);
 
-  //       // エラーメッセージが消えたことを確認
-  //       expect(
-  //         await waitFor(() =>
-  //           screen.queryByText('※正しいユーザーIDを入力してください。')
-  //         )
-  //       ).toBeNull();
+      const userIdInput = screen.getByLabelText('ユーザーID');
+      await userEvent.type(userIdInput, `${user.id}`);
 
-  //       // トップ画面へ遷移
-  //       expect(push).toHaveBeenCalledWith('/');
-  //     });
-  //   });
+      const loginButton = screen.getByRole('button', { name: 'ログイン' });
+      await userEv.click(loginButton);
 
-  //   describe('"※パスワードを入力してください"のみが表示されている時', () => {
-  //     test('登録済みのユーザーIDと登録済みのパスワードが入力されている場合、"※パスワードを入力してください。"の表示が消え、ログインに成功しトップ画面に遷移すること', async () => {
-  //       // 登録済みユーザーIDを入力;
-  //       const userIdInput = screen.getByLabelText('ユーザーID');
-  //       await userEvent.type(userIdInput, `${registeredUser.id}`);
+      expect(
+        await screen.findByText('※パスワードを入力してください。')
+      ).toBeInTheDocument();
 
-  //       // 初めてボタンをクリック
-  //       const loginButton = screen.getByRole('button', { name: 'ログイン' });
-  //       await user.click(loginButton);
+      const passwordInput = screen.getByLabelText('パスワード');
+      await userEvent.type(passwordInput, `${user.password}`);
 
-  //       // エラーメッセージが表示されている
-  //       expect(
-  //         await screen.findByText('※パスワードを入力してください。')
-  //       ).toBeInTheDocument();
-
-  //       // 登録済みパスワードを入力;
-  //       const passwordInput = screen.getByLabelText('パスワード');
-  //       await userEvent.type(passwordInput, `${registeredUser.password}`);
-
-  //       // ボタンをクリック（2回目）
-  //       await user.click(loginButton);
-
-  //       // エラーメッセージが消えたことを確認
-  //       expect(
-  //         await waitFor(() =>
-  //           screen.queryByText('※パスワードを入力してください。')
-  //         )
-  //       ).toBeNull();
-
-  //       // トップ画面へ遷移
-  //       expect(push).toHaveBeenCalledWith('/');
-  //     });
-  //   });
-
-  //   describe('"※正しいパスワードを入力してください。"のみが表示されている時', () => {
-  //     test('登録済みのユーザーIDと登録済みのパスワードが入力されている場合、"※正しいパスワードを入力してください。"の表示が消え、ログインに成功しトップ画面に遷移すること', async () => {
-  //       // 登録済みユーザーIDを入力;
-  //       const userIdInput = screen.getByLabelText('ユーザーID');
-  //       await userEvent.type(userIdInput, `${registeredUser.id}`);
-
-  //       // 登録されていないパスワードを入力
-  //       const passwordInput = screen.getByLabelText('パスワード');
-  //       await userEvent.type(passwordInput, `${notRegisteredUser.password}`);
-
-  //       // 初めてボタンをクリック
-  //       const loginButton = screen.getByRole('button', { name: 'ログイン' });
-  //       await user.click(loginButton);
-
-  //       // エラーメッセージが表示されている
-  //       expect(
-  //         await screen.findByText('※正しいパスワードを入力してください。')
-  //       ).toBeInTheDocument();
-
-  //       // 入力した値を削除
-  //       await userEvent.clear(passwordInput);
-  //       // 登録済みパスワードを入力;
-  //       await userEvent.type(passwordInput, `${registeredUser.password}`);
-
-  //       // ボタンをクリック（2回目）
-  //       await user.click(loginButton);
-
-  //       // エラーメッセージが消えたことを確認
-  //       expect(
-  //         await waitFor(() =>
-  //           screen.queryByText('※正しいパスワードを入力してください。')
-  //         )
-  //       ).toBeNull();
-
-  //       // トップ画面へ遷移
-  //       expect(push).toHaveBeenCalledWith('/');
-  //     });
-  //   });
+      // ボタンをクリック（2回目）
+      await userEv.click(loginButton);
+      expect(fetch).toBeCalledTimes(1);
+      expect(
+        await waitFor(() =>
+          screen.queryByText('※パスワードを入力してください。')
+        )
+      ).toBeNull();
+      expect(push).toHaveBeenCalledWith('/');
+    });
+  });
 });

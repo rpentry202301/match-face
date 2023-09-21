@@ -42,7 +42,6 @@ const LoginPage = () => {
       });
       // ユーザーIDとパスワードが一致するデータがあればオブジェクト、なければ{user:"[]"}が返ってくる
       const userData = await response.json();
-      console.log('userData', userData);
 
       // エラー判定
       if (userData.user.length === 0) {
