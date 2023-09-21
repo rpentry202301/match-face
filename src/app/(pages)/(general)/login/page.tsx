@@ -106,7 +106,7 @@ const LoginPage = () => {
           )}
           {inValidUser && !errors.userId && !errors.password && (
             <p className="text-red">
-              ユーザーIDもしくはパスワードに誤りがあります。
+              ※ユーザーIDもしくはパスワードに誤りがあります。
             </p>
           )}
         </div>
