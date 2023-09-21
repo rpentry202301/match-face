@@ -111,7 +111,7 @@ const AdminLoginPage = () => {
               !errors.administratorId &&
               !errors.password && (
                 <p className="text-red">
-                  ユーザーIDもしくはパスワードに誤りがあります。
+                  ※ユーザーIDもしくはパスワードに誤りがあります。
                 </p>
               )}
           </div>
