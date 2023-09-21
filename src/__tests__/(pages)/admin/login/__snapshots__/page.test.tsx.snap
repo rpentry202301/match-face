@@ -23,7 +23,7 @@ exports[`スナップショット スナップショット 1`] = `
       >
         <label
           class=""
-          for="administrarorId"
+          for="administratorId"
         >
           ユーザーID
           <div>

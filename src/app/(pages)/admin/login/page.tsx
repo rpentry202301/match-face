@@ -63,7 +63,7 @@ const AdminLoginPage = () => {
           </div>
 
           <div className="mt-2 mb-2">
-            <label htmlFor="administrarorId" className="">
+            <label htmlFor="administratorId" className="">
               ユーザーID
               <div>
                 <input
