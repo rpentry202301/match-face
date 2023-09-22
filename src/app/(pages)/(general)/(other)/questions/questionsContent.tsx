@@ -14,8 +14,9 @@ type ProjectType = {
   answered: boolean;
 };
 
-export const QuestionsContent = ({ userId }: { userId: number }) => {
-  const fetchData = async () => {
+// 回答期限内のプロジェクトの取得
+const getProject = async (userId: number) => {
+  try {
     const response = await fetch("/api/questions", {
       cache: "no-store",
       method: "POST",
@@ -26,27 +27,52 @@ export const QuestionsContent = ({ userId }: { userId: number }) => {
         user_id: userId,
       }),
     });
-    if (!response.ok) throw new Error("Failed to fetch data");
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
     const FetchData = await response.json();
     const data = FetchData.answerRequestList;
+    console.log("取得したデータ", data);
     return data;
-  };
-  // console.log("取得したデータ", answerRequestList);
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return false;
+  }
+};
 
+export const QuestionsContent = ({ userId }: { userId: number }) => {
   const [answerRequestList, setAnswerRequestList] = useState<ProjectType[]>([]);
+  const [dataFetch, setDataFetch] = useState(true);
 
   useEffect(() => {
-    fetchData().then((data) => {
-      setAnswerRequestList(data);
-    });
-  }, []);
+    const fetchData = async () => {
+      const apiProject = await getProject(userId);
+      if (apiProject.length > 0) {
+        setAnswerRequestList(apiProject);
+      }
+      if (apiProject.length <= 0) {
+        setDataFetch(false);
+      }
+    };
+    fetchData();
+  }, [userId]);
 
-  //  案件詳細の文字数制限
+  // プロジェクトがなかった場合の画面表示
+  if (!dataFetch) {
+    return <div>現在質問はありません</div>;
+  }
+  // データ取得中の画面表示
+  if (!answerRequestList) {
+    return <div>Loading...</div>;
+  }
+
+  //  案件詳細の表示文字数を制限する関数
   const truncateString = (str: string, num: number) => {
     return str.length <= num ? str : str.slice(0, num) + "...";
   };
 
-  // 回答期限の表示
+  // 回答期限の表示形式を整える関数
   const formedDeadline = (inputData: string): string => {
     const date = new Date(inputData);
     const year = date.getFullYear();
