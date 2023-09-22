@@ -29,7 +29,7 @@ const getProject = async (userId: number) => {
     });
 
     if (!response.ok) {
-      throw new Error("Network response was not ok");
+      throw new Error("データの取得に失敗しました");
     }
     const FetchData = await response.json();
     const data = FetchData.answerRequestList;
@@ -50,8 +50,7 @@ export const QuestionsContent = ({ userId }: { userId: number }) => {
       const apiProject = await getProject(userId);
       if (apiProject.length > 0) {
         setAnswerRequestList(apiProject);
-      }
-      if (apiProject.length <= 0) {
+      } else if (apiProject.length === 0) {
         setDataFetch(false);
       }
     };
