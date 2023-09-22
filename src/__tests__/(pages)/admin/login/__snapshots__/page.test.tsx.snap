@@ -23,14 +23,14 @@ exports[`スナップショット スナップショット 1`] = `
       >
         <label
           class=""
-          for="userId"
+          for="administratorId"
         >
           ユーザーID
           <div>
             <input
               class="w-96 h-10 mt-2 border border-black"
-              id="userId"
-              name="userId"
+              id="administratorId"
+              name="administratorId"
               type="text"
             />
           </div>
@@ -60,12 +60,11 @@ exports[`スナップショット スナップショット 1`] = `
           ログイン
         </button>
       </div>
-      <a
-        class=" text-blue"
-        href="/remind"
+      <p
+        class="text-blue"
       >
         パスワードを忘れた
-      </a>
+      </p>
       <a
         class="text-blue pt-16"
         href="/login"

@@ -2,6 +2,7 @@ import SelectUsers from "@/components/pages/admin/tasks/register/parts/SelectUse
 import { UserSelectProvider } from "@/hooks/store/context/UserSelectContext";
 import { render } from "@testing-library/react";
 
+// asyncコンポーネントのためテストできず
 describe("SelectUsers.tsx", () => {
   beforeEach(() => {
     jest.clearAllMocks();

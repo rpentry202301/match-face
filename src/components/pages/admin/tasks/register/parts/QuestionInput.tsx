@@ -4,11 +4,11 @@ import { useSelectedQuestion } from "@/hooks/store/context/SelectedQuestionConte
 
 const QuestionInput = () => {
   const [ selectedQuestion ] = useSelectedQuestion()
-  const omission = selectedQuestion.map((question) => {
-    if (question.length > 10) {
-      return question.slice(0, 10) + "..."
+  const omission = selectedQuestion.list.map((question) => {
+    if (question.name.length > 10) {
+      return question.name.slice(0, 10) + "..."
     } else {
-      return question
+      return question.name
     }
   })
   const questions = omission.reduce((cur, question) => cur + ", " + question, "").slice(2)

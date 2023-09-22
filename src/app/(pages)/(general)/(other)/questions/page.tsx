@@ -1,5 +1,6 @@
-import AnswerButton from "@/components/pages/general/questions/AnswerButton";
-import Link from "next/link";
+'use client';
+import AnswerButton from '@/components/pages/general/questions/AnswerButton';
+import Link from 'next/link';
 import {
   Key,
   ReactElement,
@@ -7,7 +8,9 @@ import {
   ReactNode,
   ReactPortal,
   PromiseLikeOfReactNode,
-} from "react";
+  useEffect,
+  useState,
+} from 'react';
 
 type ProjectType = {
   id: Key;
@@ -22,25 +25,36 @@ type ProjectType = {
 // 仮ユーザーID
 const userId = 1;
 
-const QuestionsPage = async () => {
-  const response = await fetch("http://localhost:3000/api/questions", {
-    cache: "no-store",
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      user_id: userId,
-    }),
-  });
-  if (!response.ok) throw new Error("Failed to fetch data");
-  const FetchData = await response.json();
-  const answerRequestList = FetchData.answerRequestList;
+const QuestionsPage = () => {
+  const fetchData = async () => {
+    const response = await fetch('http://localhost:3000/api/questions', {
+      cache: 'no-store',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        user_id: userId,
+      }),
+    });
+    if (!response.ok) throw new Error('Failed to fetch data');
+    const FetchData = await response.json();
+    const data = FetchData.answerRequestList;
+    return data;
+  };
   // console.log("取得したデータ", answerRequestList);
+
+  const [answerRequestList, setAnswerRequestList] = useState<ProjectType[]>([]);
+
+  useEffect(() => {
+    fetchData().then((data) => {
+      setAnswerRequestList(data);
+    });
+  }, []);
 
   //  案件詳細の文字数制限
   const truncateString = (str: string, num: number) => {
-    return str.length <= num ? str : str.slice(0, num) + "...";
+    return str.length <= num ? str : str.slice(0, num) + '...';
   };
 
   // 回答期限の表示
@@ -49,8 +63,8 @@ const QuestionsPage = async () => {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const day = date.getDate();
-    return `${year}年${month < 10 ? "0" : ""}${month}月${
-      day < 10 ? "0" : ""
+    return `${year}年${month < 10 ? '0' : ''}${month}月${
+      day < 10 ? '0' : ''
     }${day}日`;
   };
 
@@ -81,13 +95,22 @@ const QuestionsPage = async () => {
                 {project.answered ? (
                   <Link
                     href={`result/${project.id}`}
-                    data-testid={`confirmButton${project.id}`}
+                    data-testid={`linkButton${project.id}`}
                   >
-                    <AnswerButton answered={project.answered} />
+                    <AnswerButton
+                      answered={project.answered}
+                      data-testid={`confirmButton${project.id}`}
+                    />
                   </Link>
                 ) : (
-                  <Link href={`testing/${project.id}`}>
-                    <AnswerButton answered={project.answered} />
+                  <Link
+                    href={`testing/${project.id}`}
+                    data-testid={`linkButton${project.id}`}
+                  >
+                    <AnswerButton
+                      answered={project.answered}
+                      data-testid={`confirmButton${project.id}`}
+                    />
                   </Link>
                 )}
               </td>

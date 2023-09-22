@@ -4,6 +4,8 @@ import { UserSelectProvider } from "@/hooks/store/context/UserSelectContext";
 import { SelectedQuestionProvider } from "@/hooks/store/context/SelectedQuestionContext";
 
 // useContextをモーダルで使用しているため、Providerを追加しています
+// "next/headers"のimportでエラーが起きる
+// asyncコンポーネントを含むためテスト出来ず
 
 describe('タスク一覧画面', () => {
   beforeEach(() => {

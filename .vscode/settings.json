@@ -1,0 +1,14 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "match_face",
+      "database": "match_face",
+      "username": "yukatakahashi",
+      "password": ""
+    }
+  ]
+}

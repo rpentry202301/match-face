@@ -1,18 +1,23 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { ReactNode, useState} from "react";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import Link from "next/link";
 import Input from "@/components/ui/Input";
 import TextArea from "@/components/ui/TextArea";
-import UserSelectModal from "../../tasks/register/UserSelectModal";
-import UserInput from "./UserInput";
 import { useRouter } from "next/navigation";
+import UserInput from "./UserInput";
 
-const RegisterForm = () => {
+type RegisterFormProps = {
+  children:ReactNode
+}
+
+const RegisterForm = ({children}:RegisterFormProps) => {
   // モーダル表示用
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
+
+  const url = process.env['NEXT_PUBLIC_API_URL']
 
   // 初期値
   const [groupName, setGroupName] = useState("");
@@ -32,30 +37,30 @@ const RegisterForm = () => {
 
   // 非同期通信(post)
   const submitData = async (e: React.SyntheticEvent) => {
-    e.preventDefault();
     try {
       const body = {
         groupName,
         groupDescription,
-        // メンバーはあとで
+        userIds:[1],
+        administratorId:0
       };
         const response = await fetch(
-          "http://localhost:3000/api/admin/groups/register",
+          `${url}/admin/groups/register`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(body),
           }
         );
-      if (response.ok) {
+      if (response.status === 200) {
         console.log("データを登録しました", body);
         router.push('/admin/groups')
         setIsOpen(!isOpen);
       }else{
-        console.error("データ登録に失敗しました")
+        console.error("データ登録に失敗しました:",response.status)
       }
     } catch(error) {
-      console.error(error)
+      console.error('エラー発生',error)
     }
   };
 
@@ -63,7 +68,7 @@ const RegisterForm = () => {
     <>
       <div className="flex flex-col items-center justify-center h-screen">
         <div className="border-2  py-12 px-12 ">
-          <form onSubmit={submitData}>
+          <div>
             <label htmlFor="group_name">▶グループ名を設定する</label>
             <Input
               id="group_name"
@@ -76,12 +81,8 @@ const RegisterForm = () => {
             <p className="text-red" data-testid="errorGroupName">
               {errorGroupName}
             </p>
-            <br />
-            <label htmlFor="user">▶ユーザーを選択する</label>
-            <span>&nbsp;</span>
-            <UserSelectModal />
-            <UserInput />
-            <br />
+            {children}
+            <UserInput/>
             <label htmlFor="group_description">▶備考</label>
             <TextArea
               id="group_description"
@@ -91,8 +92,7 @@ const RegisterForm = () => {
               onChange={(e) => setGroupDescription(e.target.value)}
               className="my-3 px-2 py-1 border-2 border-gray-300"
             />
-          </form>
-          <br />
+          </div>         
           <div className="flex flex-col items-center justify-center">
             <OrangeButton
               label="グループを設定する"
@@ -100,7 +100,7 @@ const RegisterForm = () => {
               onClick={toggleModal}
               data-testid="registerConfirm"
             />
-          </div>
+          </div>  
         </div>
       </div>
 
@@ -117,9 +117,8 @@ const RegisterForm = () => {
                 </h2>
                 <div className="flex flex-col  items-center justify-center mx-5 my-1">
                   <Link href={"/admin/groups"}>
-                    {/* 今は遷移にしてますがのちのちポストします */}
                     <button
-                      onClick={submitData}
+                      onClick={(e) =>submitData(e)}
                       className="hover:bg-gray-400 duration-200"
                       data-testid="registerTrue"
                     >
