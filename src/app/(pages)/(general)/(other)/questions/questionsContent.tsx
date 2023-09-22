@@ -2,17 +2,7 @@
 
 import AnswerButton from "@/components/pages/general/questions/AnswerButton";
 import Link from "next/link";
-import {
-  Key,
-  ReactElement,
-  JSXElementConstructor,
-  ReactNode,
-  ReactPortal,
-  PromiseLikeOfReactNode,
-  useEffect,
-  useState,
-} from "react";
-// import { cookies } from "next/headers";
+import { Key, useEffect, useState } from "react";
 
 type ProjectType = {
   id: Key;
@@ -27,7 +17,7 @@ type ProjectType = {
 // 仮ユーザーID
 // const userId = 1;
 
-export const QuestionsContent = (userId: number) => {
+export const QuestionsContent = ({ userId }: { userId: number }) => {
   const fetchData = async () => {
     const response = await fetch("http://localhost:3000/api/questions", {
       cache: "no-store",

@@ -6,7 +6,7 @@ const QuestionsPage = () => {
   const userId = cookie.get("userId")?.value;
   return (
     <>
-      <div className="my-7 flex flex-col items-center">
+      <div>
         <QuestionsContent userId={Number(userId)} />
       </div>
     </>
