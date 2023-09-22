@@ -14,9 +14,6 @@ type ProjectType = {
   answered: boolean;
 };
 
-// 仮ユーザーID
-// const userId = 1;
-
 export const QuestionsContent = ({ userId }: { userId: number }) => {
   const fetchData = async () => {
     const response = await fetch("/api/questions", {
