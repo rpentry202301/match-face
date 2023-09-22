@@ -1,6 +1,7 @@
-'use client';
-import AnswerButton from '@/components/pages/general/questions/AnswerButton';
-import Link from 'next/link';
+"use client";
+
+import AnswerButton from "@/components/pages/general/questions/AnswerButton";
+import Link from "next/link";
 import {
   Key,
   ReactElement,
@@ -10,7 +11,8 @@ import {
   PromiseLikeOfReactNode,
   useEffect,
   useState,
-} from 'react';
+} from "react";
+// import { cookies } from "next/headers";
 
 type ProjectType = {
   id: Key;
@@ -23,21 +25,23 @@ type ProjectType = {
 };
 
 // 仮ユーザーID
-const userId = 1;
+// const userId = 1;
 
 const QuestionsPage = () => {
   const fetchData = async () => {
-    const response = await fetch('http://localhost:3000/api/questions', {
-      cache: 'no-store',
-      method: 'POST',
+    const cookie = cookies();
+    const userId = cookie.get("userId")?.value;
+    const response = await fetch("http://localhost:3000/api/questions", {
+      cache: "no-store",
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         user_id: userId,
       }),
     });
-    if (!response.ok) throw new Error('Failed to fetch data');
+    if (!response.ok) throw new Error("Failed to fetch data");
     const FetchData = await response.json();
     const data = FetchData.answerRequestList;
     return data;
@@ -54,7 +58,7 @@ const QuestionsPage = () => {
 
   //  案件詳細の文字数制限
   const truncateString = (str: string, num: number) => {
-    return str.length <= num ? str : str.slice(0, num) + '...';
+    return str.length <= num ? str : str.slice(0, num) + "...";
   };
 
   // 回答期限の表示
@@ -63,8 +67,8 @@ const QuestionsPage = () => {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const day = date.getDate();
-    return `${year}年${month < 10 ? '0' : ''}${month}月${
-      day < 10 ? '0' : ''
+    return `${year}年${month < 10 ? "0" : ""}${month}月${
+      day < 10 ? "0" : ""
     }${day}日`;
   };
 
