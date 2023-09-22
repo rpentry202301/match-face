@@ -31,11 +31,13 @@ const getProjects = async (project_id: number) => {
     return await response.json();
   } catch (error) {
     console.error("Fetch error:", error);
+    return false;
   }
 };
 
 export const AnswerContent = ({ project_id }: Props) => {
   const router = useRouter();
+  const [datafetch, setDataFetch] = useState(true);
   const [project, setProject] = useState<Project | null>(null);
   const [questionList, setQuestionList] = useState<QuestionList[] | null>(null);
   const [currentComment, setCurrentComment] = useState<Comment | null>(null);
@@ -49,12 +51,17 @@ export const AnswerContent = ({ project_id }: Props) => {
         setQuestionList(apiProject.answerRequest.questionList);
         setCurrentComment(apiProject.answerRequest.comment);
         setAnswerDate(new Date(apiProject.answerRequest.updateAt));
+      } else {
+        setDataFetch(false);
       }
     };
 
     fetchData();
   }, [project_id]);
 
+  if (!datafetch) {
+    return <div>この案件のデータはありません</div>;
+  }
   if (!project || !questionList || !currentComment || !answerDate) {
     return <div>Loading...</div>;
   }
