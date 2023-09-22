@@ -1,4 +1,4 @@
-import QuestionsPage from "@/app/(pages)/(general)/(other)/questions/page";
+import QuestionsPage from "@/app/(pages)/(general)/(other)/questions/questionsContent";
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { mockData } from "./mock";
