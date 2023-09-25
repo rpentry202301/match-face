@@ -1,49 +1,52 @@
 import userEvent from "@testing-library/user-event";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import AdminHome from "@/app/(pages)/admin/(other)/(top)/page";
+import AdminMenu from "@/components/pages/admin/AdminMenu";
 import React from "react";
 import "@testing-library/jest-dom";
-import { dataArray } from "@/const/adminTop";
+import { adminMenuMock } from "./adminMenuMock";
 
-describe("adminトップページのテスト", () => {
+global.fetch = jest.fn().mockImplementation(() =>
+  Promise.resolve({
+    json: () => Promise.resolve(adminMenuMock),
+  })
+);
+
+describe("管理者トップページのテスト", () => {
   const user = userEvent.setup();
-  beforeEach(() => {
-    render(<AdminHome />);
+
+  beforeEach(async () => {
+    await waitFor(() => {
+      render(<AdminMenu />);
+    });
   });
+
   it("スナップショット", async () => {
     const { container } = render(<AdminHome />);
-    expect(container).toMatchSnapshot();
+    await waitFor(() => expect(container).toMatchSnapshot());
   });
 
-  it("データとメニューの数が等しい", async () => {
-    const menuComponents = screen.getAllByTestId("menu_link");
-    // console.log(menuComponents.length);
-    expect(menuComponents.length).toBe(dataArray.length);
-  });
-  it("メニューが正しく表示される", () => {
-    const title = screen.getByText(dataArray[0].title);
-    const url = document.querySelector(`a[href="${dataArray[0].url}"]`);
-    const description = screen.getByText(dataArray[0].description);
-    const img = document.querySelector("img");
-    // console.log(img);
-    const imgAlt = img?.getAttribute("alt");
-    // console.log(imgAlt);
-    const imgUrl = img?.getAttribute("src");
-    // console.log(imgUrl);
+  it("管理者メニューが表示される", async () => {
+    // expect(screen.getByText("Loading...")).toBeInTheDocument();
 
-    expect(title).toBeInTheDocument();
-    expect(url).toBeInTheDocument();
-    expect(description).toBeInTheDocument();
-    expect(imgAlt).toContain(dataArray[0].imgAlt);
-    expect(imgUrl).toContain("document_icon.png");
+    await waitFor(() => {
+      const adminMenu = screen.getAllByRole("button");
+      expect(adminMenu).toHaveLength(5);
+      screen.debug();
+    });
+
+    await waitFor(() => {
+      const menuButton = screen.getByTestId("menu_link_1");
+      expect(menuButton).toBeInTheDocument();
+      expect(menuButton).toHaveTextContent("質問・回答例の追加・編集");
+    });
   });
 
-  it("メニュークリックでページ遷移", () => {
-    const menu = document.querySelector(
-      `a[href="${dataArray[0].url}"]`
+  it("メニュークリックでページ遷移する", async () => {
+    const menuButton = document.querySelector(
+      "a[href='/admin/handle-question']"
     ) as HTMLElement;
-    // console.log(menu);
-    user.click(menu);
-    expect(menu).toHaveAttribute("href", "/admin/handle-question");
+    user.click(menuButton);
+    expect(menuButton).toHaveAttribute("href", "/admin/handle-question");
   });
 });

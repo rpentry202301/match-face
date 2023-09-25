@@ -13,7 +13,6 @@ const UserList = (props: { data: UserData }) => {
   const [sortedData, setSortedData] = useState<any[]>([]);
   const [sortOption, setSortOption] = useState("入社日昇順");
 
-
   // データを昇順もしくは降順に並べ替える
   const sortOptionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortOption(e.currentTarget.value);
@@ -71,16 +70,17 @@ const UserList = (props: { data: UserData }) => {
               </tr>
             </thead>
             <tbody>
-              {userData.map((data: any) => (
-                <tr className="border text-center" key={data.id}>
-                  <td className=" border py-3" data-testid="entry_date">
-                    {data.hireDate}
-                  </td>
-                  <td className=" border">{data.department.name}</td>
-                  <td className=" border">{data.status.name}</td>
-                  <td className=" border">{data.name}</td>
-                </tr>
-              ))}
+              {userData &&
+                userData.map((data: any) => (
+                  <tr className="border text-center" key={data.id}>
+                    <td className=" border py-3" data-testid="hireDate">
+                      {data.hireDate}
+                    </td>
+                    <td className=" border">{data.department.name}</td>
+                    <td className=" border">{data.status.name}</td>
+                    <td className=" border">{data.name}</td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>

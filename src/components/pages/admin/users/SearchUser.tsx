@@ -71,18 +71,14 @@ const SearchUser = () => {
 
     // statusの取得
     const fetchStatus = async () => {
-      const response = await fetch(
-        `/api/admin/users/status`
-      );
+      const response = await fetch(`/api/admin/users/status`);
       const data = await response.json();
       setStatus(data.statusList);
       return status;
     };
     // ユーザーデータの取得
     const fetchUserData = async () => {
-      const response = await fetch(
-        `/api/admin/users/userList`
-      );
+      const response = await fetch(`/api/admin/users/userList`);
       const data = await response.json();
       const userList = data.userList.sort((a: any, b: any) =>
         a.hireDate < b.hireDate ? -1 : 1
@@ -365,48 +361,50 @@ const SearchUser = () => {
             )}
           </div>
           <div className=" flex my-5">
-            {department.map((department: any) => (
-              <div key={department.id}>
-                {!isSelected.department.includes(department.name) ? (
-                  <WhiteButton
-                    label={department.name}
-                    className={`w-20 mx-5 py-0.5 ${notClickedStyle}`}
-                    value={department.name}
-                    onClick={() => handleDepartmentClick(department.name)}
-                    data-testid={`department_${department.id}`}
-                  />
-                ) : (
-                  <WhiteButton
-                    label={department.name}
-                    className={`w-20 mx-5 py-0.5 ${clickedStyle}`}
-                    value={department.name}
-                    onClick={() => handleDepartmentClick(department.name)}
-                  />
-                )}
-              </div>
-            ))}
+            {department &&
+              department.map((department: any) => (
+                <div key={department.id}>
+                  {!isSelected.department.includes(department.name) ? (
+                    <WhiteButton
+                      label={department.name}
+                      className={`w-20 mx-5 py-0.5 ${notClickedStyle}`}
+                      value={department.name}
+                      onClick={() => handleDepartmentClick(department.name)}
+                      data-testid={`department_${department.id}`}
+                    />
+                  ) : (
+                    <WhiteButton
+                      label={department.name}
+                      className={`w-20 mx-5 py-0.5 ${clickedStyle}`}
+                      value={department.name}
+                      onClick={() => handleDepartmentClick(department.name)}
+                    />
+                  )}
+                </div>
+              ))}
           </div>
           <div className=" flex my-5">
-            {status.map((status) => (
-              <div key={status.id}>
-                {status.name !== isSelected.status ? (
-                  <WhiteButton
-                    label={status.name}
-                    className={`w-32 mx-5 py-0.5 ${notClickedStyle}`}
-                    value={status.name}
-                    onClick={() => handleStatusClick(status.name)}
-                    data-testid={`status_${status.id}`}
-                  />
-                ) : (
-                  <WhiteButton
-                    label={status.name}
-                    className={`w-32 mx-5 py-0.5 ${clickedStyle}`}
-                    value={status.name}
-                    onClick={() => handleStatusClick(status.name)}
-                  />
-                )}
-              </div>
-            ))}
+            {status &&
+              status.map((status) => (
+                <div key={status.id}>
+                  {status.name !== isSelected.status ? (
+                    <WhiteButton
+                      label={status.name}
+                      className={`w-32 mx-5 py-0.5 ${notClickedStyle}`}
+                      value={status.name}
+                      onClick={() => handleStatusClick(status.name)}
+                      data-testid={`status_${status.id}`}
+                    />
+                  ) : (
+                    <WhiteButton
+                      label={status.name}
+                      className={`w-32 mx-5 py-0.5 ${clickedStyle}`}
+                      value={status.name}
+                      onClick={() => handleStatusClick(status.name)}
+                    />
+                  )}
+                </div>
+              ))}
           </div>
           <div className=" text-center mt-10 mb-5">
             <OrangeButton
