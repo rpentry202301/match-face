@@ -33,7 +33,7 @@ const getProject = async (userId: number) => {
     }
     const FetchData = await response.json();
     const data = FetchData.answerRequestList;
-    console.log("取得したデータ", data);
+    // console.log("取得したデータ", data);
     return data;
   } catch (error) {
     console.error("Fetch error:", error);
