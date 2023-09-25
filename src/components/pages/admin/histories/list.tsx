@@ -1,5 +1,5 @@
 'use client'
-import { Suspense, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import {HistoriesUserListHead,HistoriesUserListBody} from "./user_list"
 import { AnswerRequestGroups } from '@/types/admin/histories/admin_histories'
 import { useSelectHistory } from "@/hooks/store/context/historiesContext"
@@ -56,7 +56,6 @@ export default function HistoriesList (){
     },[formData])
 
     return(
-        <Suspense fallback={<Loading/>}> 
         <section className=" max-md:overflow-x-auto max-md:mb-[30px]">
                 <table className="border-collapse border border-slate-deep-gray w-[75vw] ml-[12.5vw] text-center mb-[10vh] max-md:w-[180vw] max-md:mb-1 max-md:mx-[5vw]">
                 <thead>
@@ -105,6 +104,5 @@ export default function HistoriesList (){
                 ))}
             </table>
         </section>
-        </Suspense>
     )
 }

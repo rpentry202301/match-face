@@ -1,11 +1,10 @@
 "use client";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import { twMerge } from "tailwind-merge";
-import { Dispatch, FormEvent, SetStateAction, Suspense, useEffect } from "react";
+import { Dispatch, FormEvent, SetStateAction, useEffect } from "react";
 import { useState } from "react";
 import { AnswerRequestGroups, Departments, SelectHistoryAction, Skills } from "@/types/admin/histories/admin_histories";
 import { useSelectHistoryDispatch } from "@/hooks/store/context/historiesContext";
-import Loading from "@/components/elements/loading/Loading";
 import WhiteButtonCheckBox from "../tasks/register/parts/WhiteButtonCheckBox";
 
 const HistoriesSelect = ({className}:{className:string}) => {
@@ -48,8 +47,7 @@ const HistoriesSelect = ({className}:{className:string}) => {
     const set = new Set(allAnswerDate)
     const answerDate = Array.from(set)
     
-    return (
-        <Suspense fallback={<Loading/>}>        
+    return (       
         <section  className={style}>
             <form data-testid="form" action="submit" onSubmit={(e)=>{handleSubmit(e,formData,dispatch)}}>
                 <div className="mb-[2vh]">
@@ -86,7 +84,6 @@ const HistoriesSelect = ({className}:{className:string}) => {
                 <OrangeButton label="絞り込み" type="submit" />
             </form>
         </section>
-        </Suspense>
     )
 }
 export default HistoriesSelect;

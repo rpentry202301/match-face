@@ -1,16 +1,12 @@
-'use client'
-import Loading from '@/components/elements/loading/Loading';
+// 'use client'
 import HistoriesList from '@/components/pages/admin/histories/list';
 import HistoriesSelect from '@/components/pages/admin/histories/select'
-import { Suspense } from 'react';
 
-const HistoriesPage = () => {
+const HistoriesPage = async() => {
   return (
     <>
-      <Suspense fallback={<Loading/>}>
         <HistoriesSelect className={''}/>
         <HistoriesList />
-      </Suspense>
     </>);
 };
 
