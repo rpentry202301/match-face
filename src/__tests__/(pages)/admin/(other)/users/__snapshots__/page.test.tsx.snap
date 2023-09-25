@@ -36,7 +36,6 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
           name="year"
         >
           <option
-            selected=""
             value="--"
           >
             --
@@ -124,53 +123,52 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
           name="month"
         >
           <option
-            selected=""
             value="--"
           >
             --
           </option>
           <option
-            value="1"
+            value="01"
           >
             01
           </option>
           <option
-            value="2"
+            value="02"
           >
             02
           </option>
           <option
-            value="3"
+            value="03"
           >
             03
           </option>
           <option
-            value="4"
+            value="04"
           >
             04
           </option>
           <option
-            value="5"
+            value="05"
           >
             05
           </option>
           <option
-            value="6"
+            value="06"
           >
             06
           </option>
           <option
-            value="7"
+            value="07"
           >
             07
           </option>
           <option
-            value="8"
+            value="08"
           >
             08
           </option>
           <option
-            value="9"
+            value="09"
           >
             09
           </option>
@@ -198,93 +196,10 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
       </div>
       <div
         class=" flex my-5"
-      >
-        <div>
-          <button
-            class="active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 w-20 mx-5 py-0.5 bg-white hover:bg-gray-100 rounded-full border shadow-md"
-            data-testid="department_1"
-            value="Java"
-          >
-            Java
-          </button>
-        </div>
-        <div>
-          <button
-            class="active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 w-20 mx-5 py-0.5 bg-white hover:bg-gray-100 rounded-full border shadow-md"
-            data-testid="department_2"
-            value="PHP"
-          >
-            PHP
-          </button>
-        </div>
-        <div>
-          <button
-            class="active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 w-20 mx-5 py-0.5 bg-white hover:bg-gray-100 rounded-full border shadow-md"
-            data-testid="department_3"
-            value="FR"
-          >
-            FR
-          </button>
-        </div>
-        <div>
-          <button
-            class="active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 w-20 mx-5 py-0.5 bg-white hover:bg-gray-100 rounded-full border shadow-md"
-            data-testid="department_4"
-            value="CL"
-          >
-            CL
-          </button>
-        </div>
-        <div>
-          <button
-            class="active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 w-20 mx-5 py-0.5 bg-white hover:bg-gray-100 rounded-full border shadow-md"
-            data-testid="department_5"
-            value="ML"
-          >
-            ML
-          </button>
-        </div>
-        <div>
-          <button
-            class="active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 w-20 mx-5 py-0.5 bg-white hover:bg-gray-100 rounded-full border shadow-md"
-            data-testid="department_6"
-            value="QA"
-          >
-            QA
-          </button>
-        </div>
-      </div>
+      />
       <div
         class=" flex my-5"
-      >
-        <div>
-          <button
-            class="active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 w-32 mx-5 py-0.5 bg-white hover:bg-gray-100 rounded-full border shadow-md"
-            data-testid="status_1"
-            value="研修中"
-          >
-            研修中
-          </button>
-        </div>
-        <div>
-          <button
-            class="active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 w-32 mx-5 py-0.5 bg-white hover:bg-gray-100 rounded-full border shadow-md"
-            data-testid="status_2"
-            value="待機中"
-          >
-            待機中
-          </button>
-        </div>
-        <div>
-          <button
-            class="active:bg-gray-200 active:translate-y-0.5 active:shadow-sm px-4 w-32 mx-5 py-0.5 bg-white hover:bg-gray-100 rounded-full border shadow-md"
-            data-testid="status_3"
-            value="アサイン中"
-          >
-            アサイン中
-          </button>
-        </div>
-      </div>
+      />
       <div
         class=" text-center mt-10 mb-5"
       >
@@ -363,208 +278,7 @@ exports[`ユーザー管理画面のテスト スナップショット 1`] = `
             </th>
           </tr>
         </thead>
-        <tbody>
-          <tr
-            class="border text-center"
-          >
-            <td
-              class=" border py-3"
-              data-testid="entry_date"
-            >
-              2023-06-23
-            </td>
-            <td
-              class=" border"
-            >
-              Java
-            </td>
-            <td
-              class=" border"
-            >
-              待機中
-            </td>
-            <td
-              class=" border"
-            >
-              田中太郎
-            </td>
-          </tr>
-          <tr
-            class="border text-center"
-          >
-            <td
-              class=" border py-3"
-              data-testid="entry_date"
-            >
-              2023-06-24
-            </td>
-            <td
-              class=" border"
-            >
-              Java
-            </td>
-            <td
-              class=" border"
-            >
-              待機中
-            </td>
-            <td
-              class=" border"
-            >
-              山田花子
-            </td>
-          </tr>
-          <tr
-            class="border text-center"
-          >
-            <td
-              class=" border py-3"
-              data-testid="entry_date"
-            >
-              2023-06-25
-            </td>
-            <td
-              class=" border"
-            >
-              Java
-            </td>
-            <td
-              class=" border"
-            >
-              待機中
-            </td>
-            <td
-              class=" border"
-            >
-              高橋和夫
-            </td>
-          </tr>
-          <tr
-            class="border text-center"
-          >
-            <td
-              class=" border py-3"
-              data-testid="entry_date"
-            >
-              2023-06-26
-            </td>
-            <td
-              class=" border"
-            >
-              PHP
-            </td>
-            <td
-              class=" border"
-            >
-              待機中
-            </td>
-            <td
-              class=" border"
-            >
-              佐藤ゆき
-            </td>
-          </tr>
-          <tr
-            class="border text-center"
-          >
-            <td
-              class=" border py-3"
-              data-testid="entry_date"
-            >
-              2023-06-27
-            </td>
-            <td
-              class=" border"
-            >
-              FR
-            </td>
-            <td
-              class=" border"
-            >
-              待機中
-            </td>
-            <td
-              class=" border"
-            >
-              鈴木康子
-            </td>
-          </tr>
-          <tr
-            class="border text-center"
-          >
-            <td
-              class=" border py-3"
-              data-testid="entry_date"
-            >
-              2023-06-28
-            </td>
-            <td
-              class=" border"
-            >
-              CL
-            </td>
-            <td
-              class=" border"
-            >
-              待機中
-            </td>
-            <td
-              class=" border"
-            >
-              山本亮
-            </td>
-          </tr>
-          <tr
-            class="border text-center"
-          >
-            <td
-              class=" border py-3"
-              data-testid="entry_date"
-            >
-              2023-06-29
-            </td>
-            <td
-              class=" border"
-            >
-              ML
-            </td>
-            <td
-              class=" border"
-            >
-              待機中
-            </td>
-            <td
-              class=" border"
-            >
-              相田三雄
-            </td>
-          </tr>
-          <tr
-            class="border text-center"
-          >
-            <td
-              class=" border py-3"
-              data-testid="entry_date"
-            >
-              2023-06-30
-            </td>
-            <td
-              class=" border"
-            >
-              QA
-            </td>
-            <td
-              class=" border"
-            >
-              待機中
-            </td>
-            <td
-              class=" border"
-            >
-              中村隼人
-            </td>
-          </tr>
-        </tbody>
+        <tbody />
       </table>
     </div>
   </div>

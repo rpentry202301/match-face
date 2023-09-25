@@ -1,3 +1,4 @@
+"use client";
 import AnswerButton from "@/components/pages/general/questions/AnswerButton";
 import Link from "next/link";
 import {

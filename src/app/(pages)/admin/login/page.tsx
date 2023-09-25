@@ -63,7 +63,7 @@ const AdminLoginPage = () => {
           </div>
 
           <div className="mt-2 mb-2">
-            <label htmlFor="administrarorId" className="">
+            <label htmlFor="administratorId" className="">
               ユーザーID
               <div>
                 <input
@@ -111,7 +111,7 @@ const AdminLoginPage = () => {
               !errors.administratorId &&
               !errors.password && (
                 <p className="text-red">
-                  ユーザーIDもしくはパスワードに誤りがあります。
+                  ※ユーザーIDもしくはパスワードに誤りがあります。
                 </p>
               )}
           </div>

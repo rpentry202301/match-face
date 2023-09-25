@@ -1,5 +1,5 @@
-"use client";
-import AdminMenu from "@/components/pages/admin/AdminMenu";
+'use client';
+import AdminMenu from '@/components/pages/admin/AdminMenu';
 const AdminHome = () => {
   return (
     <>

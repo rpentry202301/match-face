@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`adminトップページのテスト スナップショット 1`] = `
+exports[`管理者トップページのテスト スナップショット 1`] = `
 <div>
   <div
     class="flex justify-center items-center min-h-screen md:mt-[-40px]"
