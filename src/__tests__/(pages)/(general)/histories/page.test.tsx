@@ -92,16 +92,9 @@ describe("一般ユーザー回答履歴一覧画面", () => {
 
     // テスト途中
     it("2023-10-01が選択されることを確認", async () => {
-      await waitFor(async () => {
-        await userEvent.selectOptions(
-          screen.getByTestId("selectMonth"),
-          "2023-10-01"
-        );
-      });
+      userEvent.selectOptions(screen.getByTestId("selectMonth"), "2023-10-01");
       await waitFor(async () => {
         testIdMonth = screen.getByTestId("selectMonth") as HTMLOptionElement;
-      });
-      await waitFor(async () => {
         expect(testIdMonth.selected).toBe(true);
       });
     });
