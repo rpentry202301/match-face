@@ -91,6 +91,7 @@ const HistoriesPage = () => {
                   id="month"
                   className="border-2"
                   onChange={handleMonthChange}
+                  data-testid="selectMonth"
                 >
                   <option value="">--</option>
                   {deadlines.map((deadline) => (

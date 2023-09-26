@@ -47,7 +47,7 @@ describe("一般ユーザー質問一覧画面", () => {
     });
   });
   describe("テーブル", () => {
-    it("取得データの要素数の<button>が存在する", async () => {
+    it("取得データが３つの時、３つの<button>が存在する", async () => {
       // const dataNumbers = mockData.answerRequestList.length;
       let element: HTMLElement[];
       await waitFor(() => {

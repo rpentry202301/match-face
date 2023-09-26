@@ -52,6 +52,10 @@ describe("一般ユーザー回答履歴一覧画面", () => {
     });
   });
   describe("Histories Page", () => {
+    let selectedSkill: HTMLElement;
+    let element: HTMLElement;
+    let javascript: HTMLElement[];
+    let testIdMonth: HTMLOptionElement;
     it("絞り込み<button>が存在する", async () => {
       await waitFor(() => {
         const element = screen.getAllByRole("button", { name: "絞り込み" });
@@ -64,6 +68,9 @@ describe("一般ユーザー回答履歴一覧画面", () => {
         const element = screen.getByTestId("submitButton");
         await userEvent.click(element);
         screen.debug();
+        await waitFor(() =>
+          expect(screen.getAllByText("バックエンド案件")).toHaveLength(3)
+        );
       });
     });
     it("JavaScriptにチェックがついていないことを確認", async () => {
@@ -78,7 +85,40 @@ describe("一般ユーザー回答履歴一覧画面", () => {
       await waitFor(async () => {
         selectedSkill = screen.getByRole("checkbox", { name: "JavaScript" });
         await userEvent.click(selectedSkill);
+        screen.debug();
         expect(selectedSkill).toBeChecked();
+      });
+    });
+
+    // テスト途中
+    it("2023-10-01が選択されることを確認", async () => {
+      await waitFor(async () => {
+        await userEvent.selectOptions(
+          screen.getByTestId("selectMonth"),
+          "2023-10-01"
+        );
+      });
+      await waitFor(async () => {
+        testIdMonth = screen.getByTestId("selectMonth") as HTMLOptionElement;
+      });
+      await waitFor(async () => {
+        expect(testIdMonth.selected).toBe(true);
+      });
+    });
+
+    // テスト途中
+    it("javascriptを選択後絞り込みボタンをクリックすると、0件を表示する", async () => {
+      await waitFor(async () => {
+        selectedSkill = screen.getByRole("checkbox", { name: "JavaScript" });
+        element = screen.getByTestId("submitButton");
+        javascript = screen.getAllByText("バックエンド案件");
+      });
+      await userEvent.click(selectedSkill);
+      await userEvent.click(element);
+      screen.debug();
+      await waitFor(() => {
+        expect(selectedSkill).toBeChecked();
+        expect(javascript).toHaveLength(3);
       });
     });
   });
