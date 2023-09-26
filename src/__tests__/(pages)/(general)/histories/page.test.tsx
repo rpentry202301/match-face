@@ -52,10 +52,12 @@ describe("一般ユーザー回答履歴一覧画面", () => {
     });
   });
   describe("Histories Page", () => {
-    let selectedSkill: HTMLElement;
-    let element: HTMLElement;
-    let javascript: HTMLElement[];
-    let testIdMonth: HTMLOptionElement;
+    it("非同期処理の確認。fetchが2回呼び出されたこと確認", async () => {
+      await waitFor(() => {
+        expect(fetch).toBeCalledTimes(2);
+      });
+    });
+
     it("絞り込み<button>が存在する", async () => {
       await waitFor(() => {
         const element = screen.getAllByRole("button", { name: "絞り込み" });
@@ -90,29 +92,21 @@ describe("一般ユーザー回答履歴一覧画面", () => {
       });
     });
 
-    // テスト途中
     it("2023-10-01が選択されることを確認", async () => {
-      userEvent.selectOptions(screen.getByTestId("selectMonth"), "2023-10-01");
-      await waitFor(async () => {
-        testIdMonth = screen.getByTestId("selectMonth") as HTMLOptionElement;
-        expect(testIdMonth.selected).toBe(true);
-      });
-    });
-
-    // テスト途中
-    it("javascriptを選択後絞り込みボタンをクリックすると、0件を表示する", async () => {
-      await waitFor(async () => {
-        selectedSkill = screen.getByRole("checkbox", { name: "JavaScript" });
-        element = screen.getByTestId("submitButton");
-        javascript = screen.getAllByText("バックエンド案件");
-      });
-      await userEvent.click(selectedSkill);
-      await userEvent.click(element);
-      screen.debug();
+      let selectMonth: HTMLOptionElement;
       await waitFor(() => {
-        expect(selectedSkill).toBeChecked();
-        expect(javascript).toHaveLength(3);
+        selectMonth = screen.getByTestId("Month") as HTMLOptionElement;
       });
+      const beforeSelectMonth: HTMLOptionElement = screen.getByRole("option", {
+        name: "--",
+      });
+      expect(beforeSelectMonth.selected).toBe(true);
+      await userEvent.selectOptions(screen.getByTestId("Month"), "2023-10-01");
+      const selectOct: HTMLOptionElement = screen.getByRole("option", {
+        name: "2023-10-01",
+      });
+      expect(selectOct.selected).toBe(true);
+      expect(beforeSelectMonth.selected).toBe(false);
     });
   });
 });
