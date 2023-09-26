@@ -7,14 +7,12 @@ export const metadata = {
 export default function HistoriesLayout({
   children,
 }: {
-  children: React.ReactElement;
+  children: React.ReactNode;
 }) {
   return (
-    <>
     <SelectHistoryProvider>
         {children}
     </SelectHistoryProvider>
-    </>
   );
 }
   

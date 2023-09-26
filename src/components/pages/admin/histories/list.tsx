@@ -1,5 +1,5 @@
 'use client'
-import { Suspense, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import {HistoriesUserListHead,HistoriesUserListBody} from "./user_list"
 import { AnswerRequestGroups } from '@/types/admin/histories/admin_histories'
 import { useSelectHistory } from "@/hooks/store/context/historiesContext"
@@ -10,11 +10,12 @@ export default function HistoriesList (){
     const [open,setOpen] = useState<{id:number,status:boolean}[]>([])
     const [selectProjects,setSelectProjects] = useState<AnswerRequestGroups[]>([])
     const formData:{month:string,department:number[],skills:number[]}| undefined = useSelectHistory()
+    const [error,setError] = useState({data:false,select:false})
 
     useEffect(()=>{
         async function setData(){
             const response_answer_request_groups = await fetch('/api/admin/histories')
-            if(!response_answer_request_groups.ok){throw new Error('Failed to fetch data')}
+            if(!response_answer_request_groups.ok){return setError({...error,data:true})}
             const answer_request_group = await response_answer_request_groups.json()
             setAnswerRequestGroups(answer_request_group)
         }
@@ -44,7 +45,7 @@ export default function HistoriesList (){
             data = answer_request_groups
         }else{
             const response = await fetch(`/api/admin/histories/select?answerDate=${formData.month}-01&departmentId=${formData.department}&skillId=${formData.skills}`)
-            if(!response.ok)throw new Error('Failed to fetch data')
+            if(!response.ok){return setError({...error,select:true})}
             const select_data = await response.json()
             data = select_data
         }
@@ -56,8 +57,8 @@ export default function HistoriesList (){
     },[formData])
 
     return(
-        <Suspense fallback={<Loading/>}> 
         <section className=" max-md:overflow-x-auto max-md:mb-[30px]">
+            {error.select&&<div className="w-[100%] text-center mb-4 mt-[-10px]">絞り込みに失敗しました</div>}
                 <table className="border-collapse border border-slate-deep-gray w-[75vw] ml-[12.5vw] text-center mb-[10vh] max-md:w-[180vw] max-md:mb-1 max-md:mx-[5vw]">
                 <thead>
                     <tr>
@@ -104,7 +105,7 @@ export default function HistoriesList (){
                 </tbody>
                 ))}
             </table>
+            {error.data&&<div className="w-[100%] text-center">データの取得に失敗しました</div>}
         </section>
-        </Suspense>
     )
 }

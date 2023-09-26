@@ -8,6 +8,7 @@ import { AppRouterContextProviderMock } from '@/__tests__/test_utils/app-router-
 import HistoriesList from '@/components/pages/admin/histories/list'
 import { SelectHistoryProvider } from '@/hooks/store/context/historiesContext'
 import { skillsMock, departmentsMock,answer_request_groupsMock } from './histories_test_mock'
+import { SelectHistoryReducer } from '@/hooks/store/reducer/historiesReducer'
 
 describe('管理者/履歴一覧画面のテスト',() => {
     const user = userEvent.setup()
@@ -96,6 +97,13 @@ describe('管理者/履歴一覧画面のテスト',() => {
                 expect(screen.getByTestId('status_2').textContent).toBe('未回答')
             })
         })
+    })
+    describe('Reducerのテスト',()=>{
+        const result = SelectHistoryReducer({ month: '', department:[], skills:[] }, {
+          type: "select",
+          payload: { month: '', department:[], skills:[] }
+        })
+        expect(result).toEqual({ month: '', department:[], skills:[] })
     })
 })
    

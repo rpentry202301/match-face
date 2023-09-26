@@ -1,11 +1,10 @@
 "use client";
 import OrangeButton from "@/components/ui/button/OrangeButton";
 import { twMerge } from "tailwind-merge";
-import { Dispatch, FormEvent, SetStateAction, Suspense, useEffect } from "react";
+import { Dispatch, FormEvent, SetStateAction, useEffect } from "react";
 import { useState } from "react";
 import { AnswerRequestGroups, Departments, SelectHistoryAction, Skills } from "@/types/admin/histories/admin_histories";
 import { useSelectHistoryDispatch } from "@/hooks/store/context/historiesContext";
-import Loading from "@/components/elements/loading/Loading";
 import WhiteButtonCheckBox from "../tasks/register/parts/WhiteButtonCheckBox";
 
 const HistoriesSelect = ({className}:{className:string}) => {
@@ -18,25 +17,26 @@ const HistoriesSelect = ({className}:{className:string}) => {
     const [departments,setDepartments] = useState([])
     const [skills,setSkills] = useState([])
     const [answer_request_groups,setAnswerRequestGroups] = useState([])
-
+    const [error,setError] = useState(false)
 
     useEffect(()=>{
         async function setData(){
             const response_departments = await fetch('/api/admin/histories/departments')
-            if (!response_departments.ok){ throw new Error('Failed to fetch data');}
+            if (!response_departments.ok){ return setError(true);}
             const department = await response_departments.json()
             setDepartments(department)
             const response_skills = await fetch('/api/admin/histories/skills')
-            if (!response_skills.ok){ throw new Error('Failed to fetch data');}
+            if (!response_skills.ok){ return setError(true);}
             const skill = await response_skills.json()
             setSkills(skill)
             const response_answer_request_groups = await fetch('/api/admin/histories')
-            if (!response_answer_request_groups.ok){ throw new Error('Failed to fetch data');}
+            if (!response_answer_request_groups.ok){ return setError(true);}
             const answer_request_group = await response_answer_request_groups.json()
             setAnswerRequestGroups(answer_request_group)
         }
         setData()
     },[])
+
 
     // 選択用日付
     const allAnswerDate:string[] = []
@@ -48,10 +48,10 @@ const HistoriesSelect = ({className}:{className:string}) => {
     const set = new Set(allAnswerDate)
     const answerDate = Array.from(set)
     
-    return (
-        <Suspense fallback={<Loading/>}>        
+    return (       
         <section  className={style}>
-            <form data-testid="form" action="submit" onSubmit={(e)=>{handleSubmit(e,formData,dispatch)}}>
+            {error&&<div className="w-[100%]">データの取得に失敗しました</div>}
+            {!error&&<form data-testid="form" action="submit" onSubmit={(e)=>{handleSubmit(e,formData,dispatch)}}>
                 <div className="mb-[2vh]">
                     <label htmlFor="month">更新月：</label>
                     <select data-testid="month" name="month" id="month" className="border-2" onChange={(e)=>setFormData({...formData,month:e.target.value})}>
@@ -85,8 +85,8 @@ const HistoriesSelect = ({className}:{className:string}) => {
                 </div>
                 <OrangeButton label="絞り込み" type="submit" />
             </form>
+            }
         </section>
-        </Suspense>
     )
 }
 export default HistoriesSelect;
