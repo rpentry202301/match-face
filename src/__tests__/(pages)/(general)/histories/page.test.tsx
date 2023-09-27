@@ -52,6 +52,12 @@ describe("一般ユーザー回答履歴一覧画面", () => {
     });
   });
   describe("Histories Page", () => {
+    it("非同期処理の確認。fetchが2回呼び出されたこと確認", async () => {
+      await waitFor(() => {
+        expect(fetch).toBeCalledTimes(2);
+      });
+    });
+
     it("絞り込み<button>が存在する", async () => {
       await waitFor(() => {
         const element = screen.getAllByRole("button", { name: "絞り込み" });
@@ -64,6 +70,9 @@ describe("一般ユーザー回答履歴一覧画面", () => {
         const element = screen.getByTestId("submitButton");
         await userEvent.click(element);
         screen.debug();
+        await waitFor(() =>
+          expect(screen.getAllByText("バックエンド案件")).toHaveLength(3)
+        );
       });
     });
     it("JavaScriptにチェックがついていないことを確認", async () => {
@@ -78,8 +87,26 @@ describe("一般ユーザー回答履歴一覧画面", () => {
       await waitFor(async () => {
         selectedSkill = screen.getByRole("checkbox", { name: "JavaScript" });
         await userEvent.click(selectedSkill);
+        screen.debug();
         expect(selectedSkill).toBeChecked();
       });
+    });
+
+    it("2023-10-01が選択されることを確認", async () => {
+      let selectMonth: HTMLOptionElement;
+      await waitFor(() => {
+        selectMonth = screen.getByTestId("Month") as HTMLOptionElement;
+      });
+      const beforeSelectMonth: HTMLOptionElement = screen.getByRole("option", {
+        name: "--",
+      });
+      expect(beforeSelectMonth.selected).toBe(true);
+      await userEvent.selectOptions(screen.getByTestId("Month"), "2023-10-01");
+      const selectOct: HTMLOptionElement = screen.getByRole("option", {
+        name: "2023-10-01",
+      });
+      expect(selectOct.selected).toBe(true);
+      expect(beforeSelectMonth.selected).toBe(false);
     });
   });
 });

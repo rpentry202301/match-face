@@ -25,7 +25,7 @@ describe("スナップショットテスト", () => {
 });
 
 // 機能・インタラクションテスト
-describe("HistoryListコンポーネント", () => {
+describe("HistoryListコンポーネント、初期表示", () => {
   describe("Fetch完了前のHistoryList", () => {
     it("非同期通信完了前、リストに何も表示されない", async () => {
       await waitFor(() => {
@@ -37,7 +37,7 @@ describe("HistoryListコンポーネント", () => {
   });
 
   describe("Fetch完了後のHistoryList", () => {
-    it("絞り込み後、mock.tsで定義済みのデータが表示されている", async () => {
+    it("データ取得後、取得したデータは３つあることを確認", async () => {
       await waitFor(() => {
         render(<HistoryList />);
       });
