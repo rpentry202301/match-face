@@ -1,34 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# RP-QASystemF
 
-## Getting Started
+## 概要
 
-First, run the development server:
+- エンジニアが顔合わせをする際の想定質問を、Webテスト形式でできるアプリケーション
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+<img width="300" alt="RP-QASystemF-architecture-image" src="https://github.com/RP-QASystem/RP-QASystemF/assets/122004532/52968096-c372-43be-800d-f4911a31fec4 ">
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 環境構築手順
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 主な使用技術
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Node.js
+- Next.js(app router) 13.4.7
+  - React 18.2.0
+- Jest 29.5.0
+- TailwindCSS 3.3.2
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+### 手順 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. 実行環境の構築
+- Node.jsのインストール
+- [Node.js公式](https://nodejs.org/ja/download)よりインストール(16.14以降)[^1]
+[^1]: [Next.js公式のGetting Started > Installation](https://nextjs.org/docs/getting-started/installation)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2. プロジェクトの環境構築
+- 任意のフォルダに本リポジトリをクローン
+    ```
+    git clone git@github.com:RP-QASystem/RP-QASystemF.git
+    ```
 
-## Deploy on Vercel
+- [yarn公式](https://classic.yarnpkg.com/en/)よりyarnのインストール
+- インストール後、yarnコマンド実行で依存関係を構築
+    ```
+    yarn
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- 開発サーバーの起動
+    ```
+    yarn dev
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## ドキュメント
+- [ディレクトリ構成](https://drive.google.com/file/d/11jAjCUoC9mMUdYHJZ13Onj7T4YGurpWW/view?usp=sharing)
+- [画面遷移図](https://drive.google.com/file/d/1-_KRi0QKjMPSWCGb-LDMd0A8upXcHCox/view?usp=sharing)
+- [環境変数一覧](https://docs.google.com/document/d/1OCm4vvA95b57HCcW6eWnFQNsGHtn5ZnV4fyMRNyLrgM/edit?usp=sharing)
+- [ライブラリ・フレームワーク一覧](https://docs.google.com/spreadsheets/d/1J2pbtpJvDxnDqWD1qR0G5gS1Tphu4CeygcolhA5b4lY/edit?usp=sharing)
+- [画面設計書](https://docs.google.com/spreadsheets/d/1sgrRegXWkKxqBCr96ndCfuSTX7QY8X2_21N89q-LyR8/edit?usp=sharing)
